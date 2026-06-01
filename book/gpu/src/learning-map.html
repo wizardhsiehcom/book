@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPU 互動學習地圖</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: #1a1b26;
+    color: #c0caf5;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #7aa2f7;
+    margin-bottom: 0.5rem;
+  }
+
+  .header p {
+    color: #565f89;
+    font-size: 0.9rem;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tab-btn {
+    background: #24283b;
+    border: 1px solid #414868;
+    border-radius: 8px;
+    color: #a9b1d6;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 0.55rem 1.1rem;
+    transition: all 0.18s;
+  }
+
+  .tab-btn:hover {
+    border-color: #7aa2f7;
+    color: #7aa2f7;
+  }
+
+  .tab-btn.active {
+    background: #1a3a6b;
+    border-color: #7aa2f7;
+    color: #7aa2f7;
+  }
+
+  /* Tab panels */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Card grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Card */
+  .card {
+    background: #24283b;
+    border: 1px solid #414868;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.18s;
+  }
+
+  .card:hover { border-color: #7aa2f7; }
+
+  .card-header {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+    padding: 1rem 1.1rem;
+    user-select: none;
+  }
+
+  .card-header-left {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .card-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+  .card-title {
+    color: #c0caf5;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .card-subtitle {
+    color: #565f89;
+    font-size: 0.78rem;
+    margin-top: 0.1rem;
+  }
+
+  .chevron {
+    color: #565f89;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    transition: transform 0.2s;
+  }
+
+  .card.open .chevron { transform: rotate(180deg); }
+
+  /* Card body */
+  .card-body {
+    display: none;
+    border-top: 1px solid #414868;
+    padding: 1rem 1.1rem;
+  }
+
+  .card.open .card-body { display: block; }
+
+  .card-body p {
+    color: #9aa5ce;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-bottom: 0.7rem;
+  }
+
+  .card-body p:last-child { margin-bottom: 0; }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+  }
+
+  .tag {
+    background: #1a3a6b;
+    border: 1px solid #3d59a1;
+    border-radius: 4px;
+    color: #7aa2f7;
+    font-size: 0.72rem;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .key-insight {
+    background: #1e2a1e;
+    border-left: 3px solid #9ece6a;
+    border-radius: 0 6px 6px 0;
+    color: #9ece6a;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    margin-top: 0.8rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .highlight { color: #e0af68; font-weight: 600; }
+
+  .section-intro {
+    color: #565f89;
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  a.card-link {
+    color: #7aa2f7;
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+  a.card-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🗺️ GPU 互動學習地圖</h1>
+  <p>點擊標籤切換主題，點擊卡片展開深入問題</p>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('arch', this)">⚙️ 架構原理</button>
+  <button class="tab-btn" onclick="switchTab('perf', this)">📊 效能比較</button>
+  <button class="tab-btn" onclick="switchTab('comp', this)">⚔️ 競爭格局</button>
+  <button class="tab-btn" onclick="switchTab('consumer', this)">🎮 消費級市場</button>
+  <button class="tab-btn" onclick="switchTab('ai', this)">🤖 AI 加速器</button>
+</div>
+
+<!-- ===== 架構原理 ===== -->
+<div id="tab-arch" class="tab-panel active">
+  <p class="section-intro">從這裡開始。理解 GPU 架構原理後，所有效能數字和競爭態勢才有意義。</p>
+  <div class="card-grid">
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🏗️</span>
+          <div>
+            <div class="card-title">GPU vs CPU：設計哲學差異</div>
+            <div class="card-subtitle">為什麼 GPU 更擅長 AI 運算？</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>CPU 針對<strong class="highlight">低延遲串行任務</strong>最佳化，核心少但強大，搭配大型快取和複雜的分支預測。GPU 則相反：大量簡單核心，針對<strong class="highlight">高吞吐量平行任務</strong>設計。</p>
+        <p>矩陣乘法（AI 運算的核心）天然適合平行：C[i][j] 的每個元素都可以獨立計算，與其他元素無依賴關係。</p>
+        <div class="key-insight">關鍵洞察：GPU 用「多等待，多執行」的策略隱藏記憶體延遲——一個 Warp 在等待資料時，立即切換到另一個 Warp 繼續計算。</div>
+        <div class="tag-row"><span class="tag">SM</span><span class="tag">CUDA Cores</span><span class="tag">Tensor Cores</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🧵</span>
+          <div>
+            <div class="card-title">CUDA 執行模型</div>
+            <div class="card-subtitle">Grid → Block → Thread → Warp</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>CUDA 用三層結構組織計算：<strong class="highlight">Grid</strong>（所有 Block）→ <strong class="highlight">Block</strong>（在同一 SM 上執行，共享記憶體）→ <strong class="highlight">Thread</strong>（最小執行單位）。</p>
+        <p>真正的排程單位是 <strong class="highlight">Warp</strong>（32 個 Thread）。所有 Warp 內的 Thread 同步執行相同指令（SIMT）。如果有分支發散（Warp Divergence），效率大幅下降。</p>
+        <div class="key-insight">實務重點：優化 CUDA 程式的首要目標是避免 Warp Divergence，以及讓記憶體存取合併（Coalesced Access）。</div>
+        <div class="tag-row"><span class="tag">Warp</span><span class="tag">SIMT</span><span class="tag">Occupancy</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">💾</span>
+          <div>
+            <div class="card-title">記憶體層次</div>
+            <div class="card-subtitle">為何記憶體頻寬才是瓶頸？</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>從快到慢：Register（~8 TB/s）→ Shared Memory / L1（~20 TB/s）→ L2 Cache（~10 TB/s）→ HBM（3–8 TB/s）→ PCIe / NVLink（頻寬差 10–100×）。</p>
+        <p>LLM 推論是<strong class="highlight">Memory Bound</strong>（記憶體瓶頸）：每次生成 Token，模型所有權重都要從 HBM 讀一遍，計算量相對少。這就是為何 HBM 容量和頻寬在推論場景如此重要。</p>
+        <div class="key-insight">MI300X 的 192 GB HBM3 vs H100 的 80 GB，在推論場景造成根本性的架構差異：前者能單卡裝載 70B 模型，後者需要 2 卡。</div>
+        <div class="tag-row"><span class="tag">HBM3e</span><span class="tag">Shared Memory</span><span class="tag">Memory Bound</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🔗</span>
+          <div>
+            <div class="card-title">多 GPU 擴展策略</div>
+            <div class="card-subtitle">訓練 100B+ 模型需要什麼？</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>大型 LLM 單卡裝不下，需要切分：<strong class="highlight">資料平行</strong>（DDP，每 GPU 一份模型，切分 Batch）、<strong class="highlight">Tensor 平行</strong>（切分矩陣）、<strong class="highlight">Pipeline 平行</strong>（不同 GPU 負責不同層）。</p>
+        <p>多 GPU 效率取決於 GPU 間通訊頻寬：PCIe 5.0 的 128 GB/s vs NVLink 4.0 的 900 GB/s vs NVLink 5.0（B200）的 1.8 TB/s。NVLink 讓 All-Reduce 快 7–10 倍。</p>
+        <div class="key-insight">這是 NVIDIA B200 在大規模訓練領先的核心原因——不只是 FLOPS，而是 NVLink 讓多 GPU 通訊開銷幾乎消失。</div>
+        <div class="tag-row"><span class="tag">NVLink</span><span class="tag">Tensor Parallel</span><span class="tag">NCCL</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 效能比較 ===== -->
+<div id="tab-perf" class="tab-panel">
+  <p class="section-intro">訓練和推論的瓶頸截然不同。看懂了架構再看這些數字，才能理解背後的原因。</p>
+  <div class="card-grid">
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🏋️</span>
+          <div>
+            <div class="card-title">訓練效能：NVIDIA 大幅領先</div>
+            <div class="card-subtitle">MLPerf 測試顯示 2–3× 差距</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>第三方 MLPerf Training v4.0 測試（2024）：NVIDIA H100 在 LLM 訓練上比 AMD MI300X 快約 <strong class="highlight">2–3 倍</strong>。</p>
+        <p>MI300X 的峰值 FP8 TFLOPS（5,220）<em>超過</em> H100（3,958），但軟體讓實際效能打折：cuDNN 的 Kernel 最佳化、NCCL 的通訊效率，都遠超 ROCm 對應庫。</p>
+        <div class="key-insight">硬體規格不等於實際效能。GPU 的「使用率」由軟體決定——CUDA 生態能讓 Tensor Core 保持高使用率，ROCm 仍有差距。</div>
+        <div class="tag-row"><span class="tag">MLPerf</span><span class="tag">cuDNN</span><span class="tag">Tensor Core 使用率</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">⚡</span>
+          <div>
+            <div class="card-title">推論效能：AMD 有競爭力</div>
+            <div class="card-subtitle">Memory Bound 場景 MI300X 不落下風</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>Together AI 測試（2024 Q4，LLaMA-3 70B，FP8，Batch 64）：<strong class="highlight">MI300X ~2,800 tok/s，H100 ~2,100 tok/s</strong>，MI300X 領先 33%。</p>
+        <p>原因：70B 模型在 MI300X 上單卡可裝載（192 GB），省去跨 GPU 通訊；H100 需要 2 卡，All-Reduce 開銷拖慢速度。</p>
+        <div class="key-insight">推論的競爭和訓練完全不同：這裡更重要的是記憶體頻寬和容量，而不是 FLOPS。</div>
+        <div class="tag-row"><span class="tag">vLLM</span><span class="tag">Memory Bound</span><span class="tag">tok/s</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">💰</span>
+          <div>
+            <div class="card-title">性價比與 TCO</div>
+            <div class="card-subtitle">每個 Token 多少錢？</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>雲端租用成本（2025 估）：H100 SXM ~$3/小時，MI300X ~$2.5/小時，A100 ~$1.9/小時。</p>
+        <p>B200 售價預估 $30,000–$40,000，但推論效能是 H100 的 <strong class="highlight">5 倍</strong>。對推論密集型工作負載，每 Token 成本可能更低。</p>
+        <div class="key-insight">採購邏輯：訓練看 FLOPS/美元，推論看 tok/s/美元。B200 的高售價在推論場景可能比 H100 更划算。</div>
+        <div class="tag-row"><span class="tag">TCO</span><span class="tag">雲端定價</span><span class="tag">tok/s/美元</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🔢</span>
+          <div>
+            <div class="card-title">量化精度的影響</div>
+            <div class="card-subtitle">FP16 / FP8 / INT4 差多少？</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>精度降低讓模型變小、速度更快：FP16（基準）→ FP8（~2× 速度，極小品質損失）→ INT4 GPTQ（~3× 速度，依模型而定）。</p>
+        <p>B200 支援 <strong class="highlight">FP4</strong>（業界首款），理論上能再提升 2×。但 FP4 的品質損失需要仔細驗證。</p>
+        <div class="key-insight">現代 LLM 推論幾乎都用 FP8 或 INT4，FP16 只用在精度要求極高的場景。</div>
+        <div class="tag-row"><span class="tag">FP8</span><span class="tag">BF16</span><span class="tag">GPTQ</span><span class="tag">AWQ</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 競爭格局 ===== -->
+<div id="tab-comp" class="tab-panel">
+  <p class="section-intro">NVIDIA 的護城河不只是硬體。理解生態系的飛輪，才能判斷競爭者何時有機會打破壟斷。</p>
+  <div class="card-grid">
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🏰</span>
+          <div>
+            <div class="card-title">NVIDIA 的生態護城河</div>
+            <div class="card-subtitle">400 萬開發者、40,000 家公司</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>NVIDIA 的護城河由三層構成：<strong class="highlight">硬體</strong>（Tensor Core、NVLink）→ <strong class="highlight">軟體堆疊</strong>（cuDNN、cuBLAS、NCCL、TensorRT）→ <strong class="highlight">生態系</strong>（400 萬+ 開發者、3,000+ GPU 加速應用）。</p>
+        <p>切換成本極高：把 CUDA 程式移植到 ROCm，需要確認所有第三方庫、重新測試效能、驗證模型品質。大型機構可能需要數個月工程人力。</p>
+        <div class="key-insight">飛輪效應：更多開發者 → 更多應用 → 更高需求 → 更多投入改善 CUDA → 再吸引更多開發者。這個飛輪從 2006 年轉到現在。</div>
+        <div class="tag-row"><span class="tag">CUDA 生態</span><span class="tag">切換成本</span><span class="tag">飛輪效應</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🔴</span>
+          <div>
+            <div class="card-title">AMD ROCm 7.0 的進展</div>
+            <div class="card-subtitle">顯著改善但差距仍在</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>ROCm 7.0（2025）主要改進：HipBLAS GEMM 效率 +30–40%、Flash Attention 2 接近 CUDA 水準、PyTorch ROCm 後端常見模型無需修改。</p>
+        <p>但訓練場景仍落後：RCCL vs NCCL 的效率差距、MIOpen 少數算子未最佳化、企業工程師招聘困難。AMD 選擇從<strong class="highlight">推論場景</strong>切入，是更務實的策略。</p>
+        <div class="key-insight">ROCm 的策略轉變：不再硬拼 CUDA 訓練生態，而是在推論場景（記憶體容量優勢）找到差異化立足點。</div>
+        <div class="tag-row"><span class="tag">ROCm 7.0</span><span class="tag">HipBLAS</span><span class="tag">Flash Attention</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🔓</span>
+          <div>
+            <div class="card-title">打破 CUDA 壟斷的路徑</div>
+            <div class="card-subtitle">Triton / JAX / 自研晶片</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p><strong class="highlight">OpenAI Triton</strong>：用 Python 寫出接近 CUDA 效率的 GPU 程式，支援多個後端（CUDA、ROCm），降低遷移摩擦。</p>
+        <p><strong class="highlight">JAX / XLA</strong>：透過編譯器抽象層，同一份程式碼可執行在 GPU（CUDA/ROCm）、TPU、或自研晶片上。</p>
+        <p><strong class="highlight">自研晶片</strong>（AWS Trainium、Google TPU）：完全繞過 CUDA，用自家堆疊鎖定客戶。</p>
+        <div class="key-insight">這些路徑的共同邏輯：把抽象層提高，讓硬體選擇在編譯期決定，而非寫死在程式碼裡。</div>
+        <div class="tag-row"><span class="tag">Triton</span><span class="tag">JAX/XLA</span><span class="tag">後端無關</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🔵</span>
+          <div>
+            <div class="card-title">Intel Arc 的入局</div>
+            <div class="card-subtitle">入門市場的攪局者</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>Intel Arc B580（2024 Q4，$249）：16 GB VRAM、1440p 遊戲效能，比同價位對手多 2× VRAM。XeSS 超採樣技術也在持續改善。</p>
+        <p>Intel 不期待打 NVIDIA 旗艦，而是蠶食入門到中階市場，2025 年市場份額估計 2–4%。</p>
+        <div class="key-insight">Intel 的意義：讓消費者有第三個選擇，間接壓制 NVIDIA 和 AMD 在入門市場的定價空間。</div>
+        <div class="tag-row"><span class="tag">Arc B580</span><span class="tag">XeSS</span><span class="tag">入門市場</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 消費級市場 ===== -->
+<div id="tab-consumer" class="tab-panel">
+  <p class="section-intro">2025 年消費級 GPU 市場正在重新洗牌。AMD RX 9070 XT 是近年最重要的市場事件。</p>
+  <div class="card-grid">
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🏆</span>
+          <div>
+            <div class="card-title">RX 9070 XT：市場突破</div>
+            <div class="card-subtitle">$549 拿到 RTX 4080 效能</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>RDNA 4 架構的 RX 9070 XT，在 1440p 遊戲效能上達到 RTX 4080 水準，售價只要 <strong class="highlight">$549</strong>（RTX 4080 原為 $999）。</p>
+        <p>最重要的不是性能，而是<strong class="highlight">供應穩定</strong>：NVIDIA RTX 50 系列嚴重缺貨，市場售價遠高於建議售價，而 RX 9070 XT 長期維持接近建議售價。</p>
+        <div class="key-insight">性價比故事在 PC 社群傳播極快（Reddit、YouTube 測評），讓 RX 9070 XT 成為 2025 上半年最多討論的 GPU。</div>
+        <div class="tag-row"><span class="tag">RDNA 4</span><span class="tag">FSR 4</span><span class="tag">性價比</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🟢</span>
+          <div>
+            <div class="card-title">RTX 50 系列的缺陷</div>
+            <div class="card-subtitle">DLSS 4 是亮點，供應是問題</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>RTX 50 系列的技術突破是真實的：DLSS 4 Multi Frame Generation 可同時生成 3 幀中間幀，FP4 支援讓本地 AI 推論更快，Blackwell 架構遊戲效能提升 30–50%。</p>
+        <p>問題是：台積電 4nm 產能被資料中心 GPU 擠壓，消費級 GPU 缺貨嚴重。RTX 5080（$999 建議售價）長期在市場上以 <strong class="highlight">$1,300+</strong> 流通。</p>
+        <div class="key-insight">這是 AMD 2025 年的最大機運：NVIDIA 優先照顧 H100/B200 大客戶，消費級市場出現真空。</div>
+        <div class="tag-row"><span class="tag">DLSS 4</span><span class="tag">Blackwell</span><span class="tag">缺貨</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">📈</span>
+          <div>
+            <div class="card-title">AMD 市場份額回升</div>
+            <div class="card-subtitle">12% → 18–20%</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>2022 年 NVIDIA 獨霸消費級市場（88% 份額），AMD 只剩 12%。2025 年，AMD 預計回升至 <strong class="highlight">18–20%</strong>，創 2019 年 RX 5700 XT 之後最高。</p>
+        <p>這是繼 Ryzen CPU 成功後，AMD 在主流硬體市場的又一次重要突破。</p>
+        <div class="key-insight">對長期投資者和開發者的意義：AMD 的消費級 GPU 軟體驅動質量正在提升，FSR 4 閉環生態也開始建立。</div>
+        <div class="tag-row"><span class="tag">市場份額</span><span class="tag">RDNA 4</span><span class="tag">消費者採用</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🆚</span>
+          <div>
+            <div class="card-title">FSR 4 vs DLSS 4</div>
+            <div class="card-subtitle">超採樣技術的差距縮小了</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>DLSS（NVIDIA）長期是業界最佳超採樣技術，FSR 過去因品質不及而被詬病。RDNA 4 首次在硬體層面加入 <strong class="highlight">AI Accelerator</strong>，讓 FSR 4 能執行神經網路版本的超採樣。</p>
+        <p>早期評測顯示 FSR 4 品質「顯著提升，接近 DLSS」。但 DLSS 4 Multi Frame Generation 的 3 幀生成仍是 NVIDIA 獨有優勢。</p>
+        <div class="key-insight">FSR 4 只支援 RDNA 4（RX 9070 以上），不像 FSR 3 可以向下相容。這是 AMD 推動升級的策略。</div>
+        <div class="tag-row"><span class="tag">FSR 4</span><span class="tag">DLSS 4</span><span class="tag">XeSS</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== AI 加速器 ===== -->
+<div id="tab-ai" class="tab-panel">
+  <p class="section-intro">不同加速器在不同任務上各有優勢。這裡提供決策框架，幫助你判斷何時選哪種加速器。</p>
+  <div class="card-grid">
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🟩</span>
+          <div>
+            <div class="card-title">NVIDIA B200：訓練王者</div>
+            <div class="card-subtitle">FP4 + NVLink 5.0 + 成熟 CUDA</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>B200 的三個關鍵優勢：<strong class="highlight">FP4 支援</strong>（推論效能比 H100 提升 5×）、<strong class="highlight">NVLink 5.0</strong>（1.8 TB/s，大規模訓練擴展性最強）、<strong class="highlight">CUDA 生態繼承</strong>（所有 CUDA 程式無縫移植）。</p>
+        <p>雙晶片封裝：兩個 Blackwell Die 透過 10 TB/s 互連，對外呈現為單一 192 GB GPU。功耗高達 1,000W，需要特殊冷卻。</p>
+        <div class="key-insight">GB200 NVL72（72 個 B200 + 36 個 Grace CPU 組成的機架系統）是 OpenAI、Meta、Google 的主要採購目標。</div>
+        <div class="tag-row"><span class="tag">Blackwell</span><span class="tag">FP4</span><span class="tag">NVLink 5.0</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🔴</span>
+          <div>
+            <div class="card-title">AMD MI300X：推論競爭者</div>
+            <div class="card-subtitle">192 GB HBM3，大模型推論更划算</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>MI300X 的核心優勢是 <strong class="highlight">192 GB HBM3</strong>（5.3 TB/s 頻寬），讓 70B 以下模型可以單卡裝載，省去跨 GPU 通訊。在 Memory Bound 推論場景，比 H100 快約 30%。</p>
+        <p>訓練場景仍落後 H100（2–3 倍差距）。Azure ND MI300X v5 系列已 GA，適合推論密集型雲端工作負載。</p>
+        <div class="key-insight">選 MI300X 的最佳時機：需要在同一張卡上裝載 70B–140B 級別的模型，且工作負載是推論而非訓練。</div>
+        <div class="tag-row"><span class="tag">CDNA 3</span><span class="tag">HBM3</span><span class="tag">ROCm 7.0</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🔵</span>
+          <div>
+            <div class="card-title">Google TPU v5p</div>
+            <div class="card-subtitle">GCP + JAX = Gemini 的訓練平台</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p>TPU 基於 <strong class="highlight">Systolic Array</strong>（脈動陣列），資料在固定方向的矩陣電路中流動，記憶體存取開銷遠低於 GPU。TPU v5p 的 BF16 TFLOPS 為 918，搭配 4,800 Gbps ICI 互連。</p>
+        <p>Gemini 系列模型使用 JAX + TPU v5p 訓練。JAX + XLA 是 TPU 的首選組合，PyTorch 也透過 torch_xla 支援。</p>
+        <div class="key-insight">TPU 的獨特優勢：數千顆 TPU 透過 ICI 直接串連成超大規模計算網格，不需要昂貴的 InfiniBand 交換器。</div>
+        <div class="tag-row"><span class="tag">TPU v5p</span><span class="tag">JAX</span><span class="tag">Systolic Array</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🏭</span>
+          <div>
+            <div class="card-title">自研晶片：AWS / 微軟 / Meta</div>
+            <div class="card-subtitle">犧牲通用性換特定效率</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p><strong class="highlight">AWS Trainium 2</strong>：在 AWS 上訓練 LLM，成本比 NVIDIA GPU 低 40%（官方宣稱）。透過 NeuronSDK 整合 PyTorch，但非標準算子支援有限。</p>
+        <p><strong class="highlight">微軟 Maia 100</strong>：主要供 OpenAI 服務使用，細節未公開。<strong class="highlight">Meta MTIA v2</strong>：推薦系統 + LLaMA 推論，不對外出售。</p>
+        <div class="key-insight">自研晶片的真正意義：作為 NVIDIA 採購談判的籌碼，以及將特定工作負載從高價 GPU 轉移出去，而非完全替代 NVIDIA。</div>
+        <div class="tag-row"><span class="tag">Trainium 2</span><span class="tag">Maia 100</span><span class="tag">MTIA v2</span></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-icon">🗺️</span>
+          <div>
+            <div class="card-title">如何選擇加速器</div>
+            <div class="card-subtitle">決策框架</div>
+          </div>
+        </div>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <p><strong class="highlight">大規模 LLM 訓練</strong> → NVIDIA B200（NVLink + CUDA 成熟度）</p>
+        <p><strong class="highlight">大模型推論（70B+）</strong> → AMD MI300X（192 GB 單卡裝載）</p>
+        <p><strong class="highlight">GCP 深度整合</strong> → Google TPU v5p（JAX 最佳搭檔）</p>
+        <p><strong class="highlight">AWS 長期推論</strong> → Trainium 2 / Inferentia 2（成本最低）</p>
+        <p><strong class="highlight">通用訓練 + 推論</strong> → H100 / H200（生態最成熟）</p>
+        <div class="key-insight">沒有最好的加速器，只有最適合特定工作負載的選擇。決策的關鍵問題：你的工作負載是 Compute Bound 還是 Memory Bound？</div>
+        <div class="tag-row"><span class="tag">決策框架</span><span class="tag">TCO</span><span class="tag">工作負載分析</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function toggleCard(card) {
+  card.classList.toggle('open');
+}
+</script>
+</body>
+</html>
