@@ -21,6 +21,7 @@ Update an existing mdBook under `D:\book\book\`.
    ```
    cd <target> && mdbook build
    ```
+   To preview locally: `mdbook serve --port 9000 --open`
    Report success or any errors.
 
 ## Conventions

@@ -1,0 +1,12 @@
+# Build output — 每次 mdbook build 重新產生，不含知識內容
+book/*/html/
+
+# 原始素材 — PDF 等大型二進位檔
+data/
+
+# Vendor JS — 純前端執行期程式碼，對 AI 閱讀無意義
+**/mermaid.min.js
+**/mermaid-init.js
+
+# 字型檔 — 二進位，無文字內容
+**/fonts/

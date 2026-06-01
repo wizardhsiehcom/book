@@ -1,0 +1,18 @@
+[book]
+title = "CoWoS 技術精讀筆記：從 2.5D 封裝到 AI 時代"
+authors = ["Edison Hsieh"]
+language = "zh-Hant"
+src = "src"
+
+[build]
+build-dir = "html"
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output.html]
+git-repository-url = ""
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+additional-css = ["custom.css"]
+fold.enable = true
+fold.level = 1

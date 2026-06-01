@@ -31,9 +31,11 @@ data/                  # 來源 PDF 等素材（git ignored）
 cd book\hack100
 mdbook build
 
-# 本地預覽
-mdbook serve --open
+# 本地預覽（port 9000）
+mdbook serve --port 9000 --open
 ```
+
+**啟動書庫**：直接用瀏覽器開啟 `index.html`，點選任一本書即可閱讀（不需 server）。
 
 ## 建立新書
 

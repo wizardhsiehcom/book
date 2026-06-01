@@ -60,7 +60,13 @@ If the title or source material is missing and you cannot infer them safely, ask
      ```
      cd D:\book\book\<folder-name> && mdbook build
      ```
+   - To preview locally: `mdbook serve --port 9000 --open`
    - Report success or any errors.
+
+7. **Register the book in the launcher**
+   - Open `D:\book\index.html`.
+   - Copy an existing `.card` block and update the `href`, icon, title, description, and tag to match the new book.
+   - Insert it before the `<!-- 新增書籍時在此複製一個 .card 區塊 -->` comment.
 
 ## Recommended output shape
 

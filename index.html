@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>書庫</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 1.5rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      color: #f8fafc;
+    }
+
+    .subtitle {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: #1e2330;
+      border: 1px solid #2d3448;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card:hover {
+      border-color: #6366f1;
+      transform: translateY(-2px);
+    }
+
+    .card-icon { font-size: 2rem; }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1.4;
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .card-tag {
+      font-size: 0.72rem;
+      color: #6366f1;
+      background: #1e1f3a;
+      border: 1px solid #3730a3;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    footer {
+      margin-top: 4rem;
+      color: #334155;
+      font-size: 0.78rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>📚 書庫</h1>
+  <p class="subtitle">點選書籍直接開啟</p>
+
+  <div class="grid">
+
+    <a class="card" href="book/hack100/html/index.html">
+      <span class="card-icon">⚙️</span>
+      <span class="card-title">Binary Hacks 精讀筆記</span>
+      <span class="card-desc">AI 時代的底層觀念 — 格式、執行期、浮點數、Profiling、並行</span>
+      <span class="card-tag">systems · AI infra</span>
+    </a>
+
+    <a class="card" href="book/cowos/html/index.html">
+      <span class="card-icon">🔬</span>
+      <span class="card-title">CoWoS 技術精讀筆記</span>
+      <span class="card-desc">從 TSV、矽中介板到 CoWoS-S/R/L，以及 HBM 整合與 AI 加速器應用</span>
+      <span class="card-tag">advanced packaging · AI hardware</span>
+    </a>
+
+    <a class="card" href="book/semi-jobs/html/index.html">
+      <span class="card-icon">🏭</span>
+      <span class="card-title">半導體職務完全指南</span>
+      <span class="card-desc">IC Design、製程、設備、封裝、FAE 等 20+ 職務的工作內容、薪資與職涯路徑</span>
+      <span class="card-tag">career · semiconductor</span>
+    </a>
+
+    <!-- 新增書籍時在此複製一個 .card 區塊 -->
+
+  </div>
+
+  <footer>開啟方式：直接在瀏覽器中開啟此 index.html</footer>
+</body>
+</html>
