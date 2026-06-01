@@ -1,0 +1,9 @@
+# mdBook build output
+book/*/html/
+
+# Source PDFs and other copyrighted materials
+data/
+
+# Vendor JS bundled into each book (tracked in template only)
+book/*/mermaid.min.js
+!book/template/mermaid.min.js
