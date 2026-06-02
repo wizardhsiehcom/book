@@ -7,142 +7,672 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #05060f;
+      --surface: rgba(18, 20, 40, 0.65);
+      --border: rgba(255,255,255,0.06);
+      --text: #e2e8f0;
+      --muted: #475569;
+      --accent: #6366f1;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: "Segoe UI", system-ui, sans-serif;
-      background: #0f1117;
-      color: #e2e8f0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Aurora background ── */
+    #aurora {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      mix-blend-mode: screen;
+      opacity: 0.18;
+      will-change: transform;
+    }
+
+    .blob-1 { width: 700px; height: 700px; background: radial-gradient(circle, #6366f1, transparent 70%); top: -15%; left: -10%; animation: drift1 22s ease-in-out infinite; }
+    .blob-2 { width: 500px; height: 500px; background: radial-gradient(circle, #0ea5e9, transparent 70%); top: 20%; right: -8%; animation: drift2 28s ease-in-out infinite; }
+    .blob-3 { width: 600px; height: 600px; background: radial-gradient(circle, #a855f7, transparent 70%); bottom: -10%; left: 25%; animation: drift3 34s ease-in-out infinite; }
+    .blob-4 { width: 350px; height: 350px; background: radial-gradient(circle, #14b8a6, transparent 70%); bottom: 10%; right: 15%; animation: drift4 26s ease-in-out infinite; }
+
+    @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(60px,-40px) scale(1.08)} 66%{transform:translate(-30px,60px) scale(0.94)} }
+    @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-50px,40px) scale(1.05)} 66%{transform:translate(40px,-50px) scale(0.96)} }
+    @keyframes drift3 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(40px,30px) scale(0.93)} 66%{transform:translate(-60px,-20px) scale(1.07)} }
+    @keyframes drift4 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-40px,-50px) scale(1.1)} }
+
+    /* ── Cursor spotlight ── */
+    #spotlight {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(600px circle at var(--mx,50%) var(--my,50%), rgba(99,102,241,0.07), transparent 60%);
+      transition: background 0.1s;
+    }
+
+    /* ── Dot grid ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    /* ── Layout ── */
+    .page {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 4rem 1.5rem;
+      padding: 5rem 1.5rem 7rem;
     }
 
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-      color: #f8fafc;
-    }
-
-    .subtitle {
-      color: #64748b;
-      font-size: 0.9rem;
+    /* ── Header ── */
+    header {
+      text-align: center;
       margin-bottom: 3rem;
     }
 
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #818cf8;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 100px;
+      padding: 0.3rem 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .badge::before { content: ''; width: 6px; height: 6px; background: #818cf8; border-radius: 50%; box-shadow: 0 0 6px #818cf8; animation: blink 2s ease-in-out infinite; }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 45%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.8rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Stats ── */
+    .stats {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .stat {
+      padding: 0.85rem 1.75rem;
+      text-align: center;
+    }
+
+    .stat + .stat { border-left: 1px solid var(--border); }
+
+    .stat-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a5b4fc, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .stat-label { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.05em; margin-top: 0.2rem; }
+
+    /* ── Search ── */
+    .search-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      margin-bottom: 1.75rem;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+
+    #search {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--text);
+      font-size: 0.88rem;
+      padding: 0.72rem 1.1rem 0.72rem 2.6rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      backdrop-filter: blur(12px);
+    }
+
+    #search::placeholder { color: #334155; }
+
+    #search:focus {
+      border-color: rgba(99,102,241,0.45);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.1), 0 0 20px rgba(99,102,241,0.08);
+    }
+
+    /* ── Filters ── */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      justify-content: center;
+      margin-bottom: 2.75rem;
+      max-width: 860px;
+    }
+
+    .filter-btn {
+      font-size: 0.72rem;
+      padding: 0.32rem 0.9rem;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.18s;
+      backdrop-filter: blur(8px);
+      letter-spacing: 0.02em;
+    }
+
+    .filter-btn:hover {
+      background: rgba(99,102,241,0.1);
+      border-color: rgba(99,102,241,0.3);
+      color: #a5b4fc;
+    }
+
+    .filter-btn.active {
+      background: rgba(99,102,241,0.15);
+      border-color: rgba(99,102,241,0.45);
+      color: #a5b4fc;
+      box-shadow: 0 0 14px rgba(99,102,241,0.25);
+    }
+
+    /* ── Grid ── */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      gap: 1.2rem;
       width: 100%;
       max-width: 900px;
     }
 
+    /* ── Cards ── */
     .card {
-      background: #1e2330;
-      border: 1px solid #2d3448;
-      border-radius: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 1.5rem;
       text-decoration: none;
       color: inherit;
-      transition: border-color 0.2s, transform 0.15s;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.55rem;
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), border-color 0.22s, box-shadow 0.22s;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Top accent bar */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-color, #6366f1), transparent);
+      opacity: 0.6;
+      transition: opacity 0.22s, width 0.22s;
+    }
+
+    /* Inner noise texture */
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+      border-radius: 16px;
     }
 
     .card:hover {
-      border-color: #6366f1;
-      transform: translateY(-2px);
+      transform: translateY(-5px) scale(1.01);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow:
+        0 12px 40px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 0 30px var(--glow-color, rgba(99,102,241,0.15));
     }
 
-    .card-icon { font-size: 2rem; }
+    .card:hover::before { opacity: 1; }
+
+    .card-icon {
+      font-size: 1.9rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 8px var(--accent-color, #6366f1));
+    }
 
     .card-title {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 600;
       color: #f1f5f9;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .card-desc {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: #94a3b8;
-      line-height: 1.6;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
     }
 
     .card-tag {
-      font-size: 0.72rem;
-      color: #6366f1;
-      background: #1e1f3a;
-      border: 1px solid #3730a3;
+      font-size: 0.68rem;
+      letter-spacing: 0.03em;
+      color: var(--tc, #a5b4fc);
+      background: var(--tb, rgba(99,102,241,0.08));
+      border: 1px solid var(--te, rgba(99,102,241,0.2));
       border-radius: 4px;
-      padding: 0.15rem 0.5rem;
-      align-self: flex-start;
-      margin-top: auto;
+      padding: 0.15rem 0.55rem;
     }
 
+    /* ── Empty state ── */
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .empty-text { color: var(--muted); font-size: 0.88rem; }
+
+    /* ── Footer ── */
     footer {
-      margin-top: 4rem;
-      color: #334155;
-      font-size: 0.78rem;
+      margin-top: 5rem;
+      color: #1e293b;
+      font-size: 0.72rem;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Scroll fade-in via IntersectionObserver ── */
+    .card.hidden { opacity: 0; transform: translateY(18px); animation: none; }
+    .card.visible { animation: fadeUp 0.45s ease both; }
+
+    /* ── Slice halves ── */
+    .slice-half {
+      position: fixed;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      color: #e2e8f0;
+      background: rgba(14, 16, 32, 0.92);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      backdrop-filter: blur(20px);
+      pointer-events: none;
+      z-index: 9999;
+      will-change: transform, opacity;
     }
   </style>
 </head>
 <body>
-  <h1>📚 書庫</h1>
-  <p class="subtitle">點選書籍直接開啟（MkDocs 版）</p>
 
-  <div class="grid">
-
-    <a class="card" href="book/hack100/html/index.html">
-      <span class="card-icon">⚙️</span>
-      <span class="card-title">Binary Hacks 精讀筆記</span>
-      <span class="card-desc">AI 時代的底層觀念 — 格式、執行期、浮點數、Profiling、並行</span>
-      <span class="card-tag">systems · AI infra</span>
-    </a>
-
-    <a class="card" href="book/cowos/html/index.html">
-      <span class="card-icon">🔬</span>
-      <span class="card-title">CoWoS 技術精讀筆記</span>
-      <span class="card-desc">從 TSV、矽中介板到 CoWoS-S/R/L，以及 HBM 整合與 AI 加速器應用</span>
-      <span class="card-tag">advanced packaging · AI hardware</span>
-    </a>
-
-    <a class="card" href="book/semi-jobs/html/index.html">
-      <span class="card-icon">🏭</span>
-      <span class="card-title">半導體職務完全指南</span>
-      <span class="card-desc">IC Design、製程、設備、封裝、FAE 等 20+ 職務的工作內容、薪資與職涯路徑</span>
-      <span class="card-tag">career · semiconductor</span>
-    </a>
-
-    <a class="card" href="book/tsmc/html/index.html">
-      <span class="card-icon">🏭</span>
-      <span class="card-title">台積電全方位指南</span>
-      <span class="card-desc">從歷史沿革、技術製程、廠區版圖，到財務策略、地緣政治與職涯規劃的完整知識地圖</span>
-      <span class="card-tag">TSMC · semiconductor</span>
-    </a>
-
-    <a class="card" href="book/gpu/html/index.html">
-      <span class="card-icon">🖥️</span>
-      <span class="card-title">GPU 完整學習指南</span>
-      <span class="card-desc">GPU 架構、CUDA 程式模型、記憶體層次與 AI 推論加速的完整知識地圖</span>
-      <span class="card-tag">GPU · CUDA · AI infra</span>
-    </a>
-
-    <a class="card" href="book/nvidia/html/index.html">
-      <span class="card-icon">🟢</span>
-      <span class="card-title">NVIDIA 深度解析筆記</span>
-      <span class="card-desc">從 GPU 晶片、CUDA 生態、資料中心產品到 NVIDIA 商業策略與競爭態勢的深度解析</span>
-      <span class="card-tag">NVIDIA · semiconductor · AI</span>
-    </a>
-
-    <!-- 新增書籍時在此複製一個 .card 區塊 -->
-
+  <div id="aurora" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
   </div>
 
-  <footer>開啟方式：先執行 build-books.sh，再開啟此 index.html</footer>
+  <div id="spotlight" aria-hidden="true"></div>
+
+  <div class="page">
+
+    <header>
+      <div class="badge">Personal Knowledge Base</div>
+      <h1>書庫</h1>
+      <p class="subtitle">點選書籍直接開啟 · MkDocs 版</p>
+    </header>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="search" type="search" placeholder="搜尋書名、描述、標籤…" autocomplete="off" spellcheck="false">
+    </div>
+
+    <div class="filters" id="filters"></div>
+
+    <div class="grid" id="grid"></div>
+
+    <footer id="footer">先執行 build-books.sh 建置後開啟</footer>
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════════════════
+    //  書目資料
+    //  新增書籍：在此陣列末尾加一個物件即可，其餘自動渲染。
+    // ═══════════════════════════════════════════════════════
+    const BOOKS = [
+      {
+        icon: "⚙️",
+        title: "Binary Hacks 精讀筆記",
+        desc: "AI 時代的底層觀念 — 格式、執行期、浮點數、Profiling、並行",
+        tags: ["systems", "AI infra"],
+        href: "book/hack100/html/index.html",
+        accent: "#f59e0b",
+        glow: "rgba(245,158,11,0.18)",
+      },
+      {
+        icon: "🔬",
+        title: "CoWoS 技術精讀筆記",
+        desc: "從 TSV、矽中介板到 CoWoS-S/R/L，以及 HBM 整合與 AI 加速器應用",
+        tags: ["advanced packaging", "AI hardware"],
+        href: "book/cowos/html/index.html",
+        accent: "#06b6d4",
+        glow: "rgba(6,182,212,0.18)",
+      },
+      {
+        icon: "🏭",
+        title: "半導體職務完全指南",
+        desc: "IC Design、製程、設備、封裝、FAE 等 20+ 職務的工作內容、薪資與職涯路徑",
+        tags: ["career", "semiconductor"],
+        href: "book/semi-jobs/html/index.html",
+        accent: "#22c55e",
+        glow: "rgba(34,197,94,0.18)",
+      },
+      {
+        icon: "🏭",
+        title: "台積電全方位指南",
+        desc: "從歷史沿革、技術製程、廠區版圖，到財務策略、地緣政治與職涯規劃的完整知識地圖",
+        tags: ["TSMC", "semiconductor"],
+        href: "book/tsmc/html/index.html",
+        accent: "#3b82f6",
+        glow: "rgba(59,130,246,0.18)",
+      },
+      {
+        icon: "🖥️",
+        title: "GPU 完整學習指南",
+        desc: "GPU 架構、CUDA 程式模型、記憶體層次與 AI 推論加速的完整知識地圖",
+        tags: ["GPU", "CUDA", "AI infra"],
+        href: "book/gpu/html/index.html",
+        accent: "#10b981",
+        glow: "rgba(16,185,129,0.18)",
+      },
+      {
+        icon: "🟢",
+        title: "NVIDIA 深度解析筆記",
+        desc: "從 GPU 晶片、CUDA 生態、資料中心產品到 NVIDIA 商業策略與競爭態勢的深度解析",
+        tags: ["NVIDIA", "semiconductor", "AI"],
+        href: "book/nvidia/html/index.html",
+        accent: "#76b900",
+        glow: "rgba(118,185,0,0.18)",
+      },
+    ];
+    // ═══════════════════════════════════════════════════════
+
+    const TAG_COLOR = {
+      "systems":            { tc: "#fbbf24", tb: "rgba(251,191,36,0.08)",  te: "rgba(251,191,36,0.2)" },
+      "AI infra":           { tc: "#a78bfa", tb: "rgba(167,139,250,0.08)", te: "rgba(167,139,250,0.2)" },
+      "AI hardware":        { tc: "#67e8f9", tb: "rgba(103,232,249,0.08)", te: "rgba(103,232,249,0.2)" },
+      "advanced packaging": { tc: "#2dd4bf", tb: "rgba(45,212,191,0.08)",  te: "rgba(45,212,191,0.2)" },
+      "career":             { tc: "#4ade80", tb: "rgba(74,222,128,0.08)",  te: "rgba(74,222,128,0.2)" },
+      "semiconductor":      { tc: "#60a5fa", tb: "rgba(96,165,250,0.08)",  te: "rgba(96,165,250,0.2)" },
+      "TSMC":               { tc: "#60a5fa", tb: "rgba(96,165,250,0.08)",  te: "rgba(96,165,250,0.2)" },
+      "GPU":                { tc: "#34d399", tb: "rgba(52,211,153,0.08)",  te: "rgba(52,211,153,0.2)" },
+      "CUDA":               { tc: "#fde047", tb: "rgba(253,224,71,0.08)",  te: "rgba(253,224,71,0.2)" },
+      "NVIDIA":             { tc: "#86efac", tb: "rgba(134,239,172,0.08)", te: "rgba(134,239,172,0.2)" },
+      "AI":                 { tc: "#c4b5fd", tb: "rgba(196,181,253,0.08)", te: "rgba(196,181,253,0.2)" },
+    };
+    const TAG_DEFAULT = { tc: "#a5b4fc", tb: "rgba(99,102,241,0.08)", te: "rgba(99,102,241,0.2)" };
+
+    const allTags = [...new Set(BOOKS.flatMap(b => b.tags))].sort();
+    let activeTag = null;
+    let query = "";
+
+    // Spotlight
+    document.addEventListener("mousemove", e => {
+      document.getElementById("spotlight").style.setProperty("--mx", e.clientX + "px");
+      document.getElementById("spotlight").style.setProperty("--my", e.clientY + "px");
+    });
+
+    function renderStats() {
+      document.getElementById("stats").innerHTML = `
+        <div class="stat">
+          <div class="stat-num">${BOOKS.length}</div>
+          <div class="stat-label">本書籍</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">${allTags.length}</div>
+          <div class="stat-label">個主題</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">${new Set(BOOKS.flatMap(b => b.tags.filter(t => t.includes("AI")))).size > 0 ? "AI" : "—"}</div>
+          <div class="stat-label">重點領域</div>
+        </div>`;
+    }
+
+    function renderFilters() {
+      const el = document.getElementById("filters");
+      const btns = [
+        `<button class="filter-btn ${activeTag === null ? 'active' : ''}" data-tag="__all">全部 (${BOOKS.length})</button>`,
+        ...allTags.map(t => {
+          const count = BOOKS.filter(b => b.tags.includes(t)).length;
+          return `<button class="filter-btn ${activeTag === t ? 'active' : ''}" data-tag="${t}">${t} (${count})</button>`;
+        })
+      ];
+      el.innerHTML = btns.join("");
+      el.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeTag = btn.dataset.tag === "__all" ? null : btn.dataset.tag;
+          renderFilters();
+          renderGrid();
+        });
+      });
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById("grid");
+      const q = query.toLowerCase();
+      const visible = BOOKS.filter(b => {
+        const matchTag = activeTag === null || b.tags.includes(activeTag);
+        const matchQ = !q || b.title.toLowerCase().includes(q) || b.desc.toLowerCase().includes(q) || b.tags.some(t => t.toLowerCase().includes(q));
+        return matchTag && matchQ;
+      });
+
+      if (visible.length === 0) {
+        grid.innerHTML = `
+          <div class="empty">
+            <div class="empty-icon">🔍</div>
+            <div class="empty-text">找不到符合「${query || activeTag}」的書籍</div>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = visible.map((b, i) => {
+        const tagsHtml = b.tags.map(t => {
+          const s = TAG_COLOR[t] || TAG_DEFAULT;
+          return `<span class="card-tag" style="--tc:${s.tc};--tb:${s.tb};--te:${s.te}">${t}</span>`;
+        }).join("");
+
+        return `<a class="card" href="${b.href}"
+          style="--accent-color:${b.accent};--glow-color:${b.glow};animation-delay:${i * 55}ms">
+          <span class="card-icon">${b.icon}</span>
+          <span class="card-title">${b.title}</span>
+          <span class="card-desc">${b.desc}</span>
+          <div class="card-footer">${tagsHtml}</div>
+        </a>`;
+      }).join("");
+
+      // Attach slice-transition to every card
+      grid.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', e => {
+          e.preventDefault();
+          sliceAndGo(card, card.getAttribute('href'));
+        });
+      });
+
+      document.getElementById("footer").textContent = `共 ${BOOKS.length} 本 · 先執行 build-books.sh 建置後開啟`;
+    }
+
+    document.getElementById("search").addEventListener("input", e => {
+      query = e.target.value;
+      renderGrid();
+    });
+
+    // ── Slice-and-navigate animation ────────────────────────
+    function sliceAndGo(card, href) {
+      const rect  = card.getBoundingClientRect();
+      const W = rect.width, H = rect.height;
+
+      // 30° diagonal cut through card centre
+      const tan30 = Math.tan(Math.PI / 6);           // ≈ 0.5774
+      const leftY  = H / 2 - tan30 * (W / 2);
+      const rightY = H / 2 + tan30 * (W / 2);
+      const lp = (leftY  / H * 100).toFixed(2) + '%';
+      const rp = (rightY / H * 100).toFixed(2) + '%';
+
+      const accent = card.style.getPropertyValue('--accent-color') || '#6366f1';
+
+      // 1 ── Dim overlay
+      const dimmer = document.createElement('div');
+      Object.assign(dimmer.style, {
+        position: 'fixed', inset: '0', zIndex: '9990',
+        background: 'rgba(5,6,15,0)', pointerEvents: 'none',
+        transition: 'background 0.2s ease',
+      });
+      document.body.appendChild(dimmer);
+
+      // 2 ── Flash slash line at cut angle
+      const lineLen = (W / Math.cos(Math.PI / 6)) + 20;
+      const slash = document.createElement('div');
+      Object.assign(slash.style, {
+        position: 'fixed',
+        left:  `${rect.left + W / 2 - lineLen / 2}px`,
+        top:   `${rect.top  + H / 2 - 1.5}px`,
+        width: `${lineLen}px`, height: '3px',
+        background: `linear-gradient(90deg, transparent, #fff 25%, ${accent} 50%, #fff 75%, transparent)`,
+        boxShadow: `0 0 10px 3px ${accent}, 0 0 24px 6px ${accent}44`,
+        transform: 'rotate(30deg)', transformOrigin: 'center center',
+        zIndex: '10001', pointerEvents: 'none',
+        opacity: '0', transition: 'opacity 0.04s',
+      });
+      document.body.appendChild(slash);
+
+      // 3 ── Two slice halves (cloned card content)
+      const sharedBase = {
+        left: `${rect.left}px`, top: `${rect.top}px`,
+        width: `${W}px`, height: `${H}px`,
+      };
+      function makeHalf(clipPath) {
+        const el = document.createElement('div');
+        el.className = 'slice-half';
+        el.innerHTML = card.innerHTML;
+        Object.assign(el.style, sharedBase, { clipPath });
+        // forward per-card CSS vars so tags render with correct colours
+        el.style.setProperty('--accent-color', accent);
+        el.style.setProperty('--glow-color', card.style.getPropertyValue('--glow-color'));
+        document.body.appendChild(el);
+        return el;
+      }
+      const topHalf = makeHalf(`polygon(0 0, 100% 0, 100% ${rp}, 0 ${lp})`);
+      const botHalf = makeHalf(`polygon(0 ${lp}, 100% ${rp}, 100% 100%, 0 100%)`);
+
+      card.style.visibility = 'hidden';
+
+      // ── Animate ──────────────────────────────────────────
+      requestAnimationFrame(() => {
+        // Frame A: dim + flash the slash line
+        dimmer.style.background = 'rgba(5,6,15,0.78)';
+        slash.style.opacity = '1';
+
+        requestAnimationFrame(() => {
+          // Frame B: fade slash, split the two halves apart (交錯)
+          slash.style.transition = 'opacity 0.18s ease 0.04s';
+          slash.style.opacity = '0';
+
+          const tx = W * 0.62, ty = 14, rot = 2.8;
+          const t = 'transform 0.44s cubic-bezier(0.4,0,0.15,1), opacity 0.36s ease 0.06s';
+          topHalf.style.transition = t;
+          botHalf.style.transition = t;
+          topHalf.style.transform = `translateX(-${tx}px) translateY(-${ty}px) rotate(-${rot}deg)`;
+          botHalf.style.transform = `translateX(${tx}px)  translateY(${ty}px)  rotate(${rot}deg)`;
+          topHalf.style.opacity = '0';
+          botHalf.style.opacity = '0';
+        });
+      });
+
+      setTimeout(() => { window.location.href = href; }, 490);
+    }
+    // ────────────────────────────────────────────────────────
+
+    renderStats();
+    renderFilters();
+    renderGrid();
+  </script>
 </body>
 </html>
