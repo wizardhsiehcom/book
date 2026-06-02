@@ -1,5 +1,14 @@
 # mdBook build output
 book/*/html/
+newbook/book/*/html/
+newbook/site/
+
+# Local Python environment (uv)
+newbook/.venv/
+
+# Generated duplicated per-book assets (synced before build/serve)
+newbook/docs/*/assets/
+newbook/docs/*/fonts/
 
 # Source PDFs and other copyrighted materials
 data/

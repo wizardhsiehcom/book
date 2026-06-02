@@ -25,7 +25,7 @@ cd book/<name> && mdbook serve --port 9000 --open
 3. Create `src/SUMMARY.md` and `src/README.md`.
 4. Register the book in `index.html` by copying an existing `.card` block before the `<!-- 新增書籍時在此複製一個 .card 區塊 -->` comment.
 
-Or use the `/mdbook-create` command to do all of this automatically.
+Or use the `/mkdocs-create` command to do all of this automatically.
 
 ## Content conventions
 
@@ -45,6 +45,6 @@ Or use the `/mdbook-create` command to do all of this automatically.
 
 | Command | Purpose |
 |---------|---------|
-| `/mdbook-create` | Create a new book from the template |
-| `/mdbook-update` | Update or add pages in an existing book |
-| `/mdbook-theme` | Change `default-theme` / `preferred-dark-theme` in `book.toml` |
+| `/mkdocs-create` | Create a new standalone MkDocs book |
+| `/mkdocs-update` | Update or add pages in an existing MkDocs book |
+| `/mkdocs-theme` | Change a book's MkDocs theme in `newbook/configs/*.yml` |

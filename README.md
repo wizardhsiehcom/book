@@ -1,56 +1,47 @@
-# book
+# 技術讀書筆記（MkDocs）
 
-個人閱讀筆記知識庫，以 [mdBook](https://rust-lang.github.io/mdBook/) 建立，每本書各自一份可瀏覽的靜態網站。
+此專案已改為 **MkDocs 多書獨立站點**：每本書各自一個設定檔與輸出目錄，導覽不混在一起。
 
-## 結構
+## 目錄重點
 
-```
-book/
-├── template/          # 新書模板（book.toml、Mermaid assets、CSS）
-├── hack100/           # Binary Hacks 精讀筆記：AI 時代的底層觀念
-│   ├── book.toml
-│   ├── src/           # Markdown 原始頁面
-│   └── html/          # Build 輸出（git ignored）
-└── ...                # 未來書籍
-data/                  # 來源 PDF 等素材（git ignored）
-.claude/commands/      # Claude commands
-```
+- `index.html`: 根入口頁（卡片式書籍清單）
+- `configs/*.yml`: 每本書一份 MkDocs 設定
+- `docs/<book>/`: 各書 Markdown 內容
+- `docs/assets/`: 共用資產來源（CSS / Mermaid / 字型）
+- `build-books.sh`: 一鍵建置所有書
+- `serve-book.sh`: 單本即時預覽
+- `sync-assets.sh`: 建置前同步共用資產到各書
 
-## 現有書籍
+三個腳本都會自動掃描 `configs/*.yml`。新增書時只要新增 `configs/<book>.yml` 與 `docs/<book>/`，不需改腳本。
 
-| 資料夾 | 書名 | 說明 |
-|--------|------|------|
-| `hack100` | Binary Hacks 精讀筆記 | 從 AI 工程角度重組，聚焦底層觀念 |
+## 常用指令（uv）
 
-## 快速開始
+### 預覽單一本書
 
-**Prerequisites**：[mdBook](https://github.com/rust-lang/mdBook)、[mdbook-mermaid](https://github.com/badboy/mdbook-mermaid)
-
-```powershell
-# Build 某本書
-cd book\hack100
-mdbook build
-
-# 本地預覽（port 9000）
-mdbook serve --port 9000 --open
+```bash
+./serve-book.sh cowos
 ```
 
-**啟動書庫**：直接用瀏覽器開啟 `index.html`，點選任一本書即可閱讀（不需 server）。
+可用書名：`cowos`、`gpu`、`hack100`、`nvidia`、`semi-jobs`、`tsmc`
 
-## 建立新書
+### 建置全部
 
-使用 Claude command：
-
-```
-/mdbook-create <書名或資料夾名稱>
+```bash
+./build-books.sh
 ```
 
-流程：從 `book/template/` 複製模板 → 填入架構 → 補充細節 → `mdbook build`。
+### 建置單一本
 
-## Claude Commands
+```bash
+uv run mkdocs build -f configs/cowos.yml
+```
 
-| Command | 說明 |
-|---------|------|
-| `/mdbook-create` | 建立新書（從 template 初始化） |
-| `/mdbook-update` | 更新現有書籍的頁面或新增章節 |
-| `/mdbook-theme` | 調整 mdBook 主題與 CSS |
+## 輸出位置
+
+每本書輸出到：`book/<book>/html/index.html`
+
+例如：`book/cowos/html/index.html`
+
+## Dark Mode 重用
+
+所有 `configs/*.yml` 已內建 Material 的亮暗切換按鈕（預設依系統深色偏好），新書可直接沿用同一段 `theme.palette` 設定。

@@ -1,0 +1,58 @@
+site_name: NVIDIA 深度解析筆記
+site_description: NVIDIA 專書（獨立主題）
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/nvidia
+site_dir: ../book/nvidia/html
+use_directory_urls: false
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+nav:
+  - 導讀: README.md
+  - 公司概覽: overview.md
+  - 商業模式：Fabless 設計公司: business-model.md
+  - GPU 技術基礎: gpu-fundamentals.md
+  - 架構演進：從 Hopper 到 Blackwell: architecture-roadmap.md
+  - CUDA 軟體護城河: cuda-ecosystem.md
+  - 資料中心與 AI 應用: data-center-ai.md
+  - 財務分析: financials.md
+  - 市場競爭與護城河: competitive-moat.md
+  - 風險與出口管制: risks-export-controls.md
+  - 如何閱讀 NVIDIA 年報（10-K）: reading-10k.md

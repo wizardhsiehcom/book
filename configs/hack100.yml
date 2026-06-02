@@ -1,0 +1,62 @@
+site_name: Binary Hacks 精讀筆記：AI 時代的底層觀念
+site_description: Hack100 專書（獨立主題）
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/hack100
+site_dir: ../book/hack100/html
+use_directory_urls: false
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+nav:
+  - 導讀：為什麼 AI 工程師還需要 Binary Hacks: README.md
+  - 架構總覽:
+      - 全書地圖：從 Binary Hacks 到 AI 工程: 00-map.md
+  - 核心觀念:
+      - 二進位思維與可觀察性: 01-binary-observability.md
+      - 格式、連結與符號: 02-binary-format-linking.md
+      - JIT、編譯器與 Kernel 生成: 03-codegen-jit.md
+      - 程式啟動、動態載入與攔截: 04-runtime-loading.md
+      - 記憶體安全、整數陷阱與除錯工具: 05-memory-safety-debugging.md
+      - Profiling、硬體計數器與效能工程: 06-profiling-performance.md
+      - 並行、記憶體排序與協程: 07-concurrency-memory-model.md
+      - 浮點數、量化與 AI 數值穩定性: 08-floating-point-ai.md
+  - 附錄:
+      - 工具對照：從 2006 到 AI 時代: appendix-tools.md
+      - 版權與撰寫原則: appendix-copyright.md

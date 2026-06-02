@@ -1,0 +1,174 @@
+site_name: Edison 技術讀書筆記
+site_description: 由 mdBook 遷移到 MkDocs 的多主題技術筆記站
+site_author: Edison Hsieh
+site_url: ""
+
+theme:
+  name: material
+  language: zh-TW
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: docs
+site_dir: site
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+nav:
+  - CoWoS:
+    - 導讀: index.md
+    - 全書地圖: cowos/00-map.md
+    - 一、基礎觀念:
+      - 為什麼需要先進封裝: cowos/01-why-advanced-packaging.md
+      - TSV：矽穿孔技術基礎: cowos/02-tsv-basics.md
+      - 矽中介板與 2.5D 整合: cowos/03-silicon-interposer-2d5.md
+    - 二、CoWoS 核心技術:
+      - CoWoS 架構總覽: cowos/04-cowos-overview.md
+      - CoWoS-S：矽中介板版本: cowos/05-cowos-s.md
+      - CoWoS-R 與 CoWoS-L：有機與局部矽版本: cowos/06-cowos-r-l.md
+      - HBM 整合與記憶體頻寬: cowos/07-hbm-integration.md
+    - 三、AI 時代應用:
+      - CoWoS 在 AI 加速器中的角色: cowos/08-cowos-ai-hpc.md
+      - 競爭技術比較: cowos/09-competing-technologies.md
+      - 可靠性與製造挑戰: cowos/10-reliability-manufacturing.md
+    - 附錄:
+      - 學習資源與論文導讀: cowos/appendix-references.md
+      - 術語表: cowos/appendix-glossary.md
+
+  - GPU:
+    - 導讀與互動學習地圖: gpu/README.md
+    - 前提知識:
+      - 前提知識導讀: gpu/prerequisites/overview.md
+      - 計算機組織基礎: gpu/prerequisites/computer-basics.md
+      - 執行緒與平行概念: gpu/prerequisites/parallel-concepts.md
+      - 矩陣運算基礎: gpu/prerequisites/matrix-math.md
+    - 架構原理:
+      - GPU 基礎架構: gpu/architecture/gpu-fundamentals.md
+      - CUDA 程式設計模型: gpu/architecture/cuda-model.md
+      - 記憶體層次結構: gpu/architecture/memory-hierarchy.md
+      - 平行運算原理: gpu/architecture/parallel-computing.md
+    - 效能比較:
+      - 訓練效能基準: gpu/performance/training-benchmarks.md
+      - 推論效能基準: gpu/performance/inference-benchmarks.md
+      - 性價比分析: gpu/performance/cost-analysis.md
+    - 競爭格局:
+      - NVIDIA 生態系護城河: gpu/competitive/nvidia-moat.md
+      - AMD ROCm 7.0 的挑戰: gpu/competitive/amd-rocm.md
+      - 軟體生態決定勝負: gpu/competitive/software-ecosystem.md
+    - 消費級市場:
+      - GeForce 系列現況: gpu/consumer/geforce.md
+      - AMD RX 9070 XT 的市場突破: gpu/consumer/rx9070xt.md
+      - 消費級市場格局轉變: gpu/consumer/market-shift.md
+    - AI 加速器:
+      - NVIDIA B200 與 NVLink: gpu/ai-accelerators/b200.md
+      - AMD MI300X 推論優勢: gpu/ai-accelerators/mi300x.md
+      - Google TPU v5p: gpu/ai-accelerators/tpu-v5p.md
+      - 自研晶片：AWS、微軟、Meta: gpu/ai-accelerators/custom-silicon.md
+      - 加速器取捨總覽: gpu/ai-accelerators/tradeoffs.md
+
+  - Hack100:
+    - 導讀：為什麼 AI 工程師還需要 Binary Hacks: hack100/README.md
+    - 架構總覽:
+      - 全書地圖：從 Binary Hacks 到 AI 工程: hack100/00-map.md
+    - 核心觀念:
+      - 二進位思維與可觀察性: hack100/01-binary-observability.md
+      - 格式、連結與符號: hack100/02-binary-format-linking.md
+      - JIT、編譯器與 Kernel 生成: hack100/03-codegen-jit.md
+      - 程式啟動、動態載入與攔截: hack100/04-runtime-loading.md
+      - 記憶體安全、整數陷阱與除錯工具: hack100/05-memory-safety-debugging.md
+      - Profiling、硬體計數器與效能工程: hack100/06-profiling-performance.md
+      - 並行、記憶體排序與協程: hack100/07-concurrency-memory-model.md
+      - 浮點數、量化與 AI 數值穩定性: hack100/08-floating-point-ai.md
+    - 附錄:
+      - 工具對照：從 2006 到 AI 時代: hack100/appendix-tools.md
+      - 版權與撰寫原則: hack100/appendix-copyright.md
+
+  - NVIDIA:
+    - 導讀: nvidia/README.md
+    - 公司概覽: nvidia/overview.md
+    - 商業模式：Fabless 設計公司: nvidia/business-model.md
+    - GPU 技術基礎: nvidia/gpu-fundamentals.md
+    - 架構演進：從 Hopper 到 Blackwell: nvidia/architecture-roadmap.md
+    - CUDA 軟體護城河: nvidia/cuda-ecosystem.md
+    - 資料中心與 AI 應用: nvidia/data-center-ai.md
+    - 財務分析: nvidia/financials.md
+    - 市場競爭與護城河: nvidia/competitive-moat.md
+    - 風險與出口管制: nvidia/risks-export-controls.md
+    - 如何閱讀 NVIDIA 年報（10-K）: nvidia/reading-10k.md
+
+  - Semi Jobs:
+    - 導讀: semi-jobs/README.md
+    - 產業全貌地圖: semi-jobs/00-map.md
+    - 職務合作關係圖: semi-jobs/20-collaboration.md
+    - CoWoS 跨職務合作: semi-jobs/21-cowos-collaboration.md
+    - 一、設計類職務:
+      - IC 設計工程師: semi-jobs/01-ic-design.md
+      - Layout / 實體設計工程師: semi-jobs/02-layout.md
+      - 驗證工程師: semi-jobs/03-verification.md
+      - DFT 工程師: semi-jobs/04-dft.md
+      - EDA / CAD / PDK 工程師: semi-jobs/05-eda-cad.md
+    - 二、製程類職務:
+      - 製程工程師總覽: semi-jobs/06-process-overview.md
+      - 微影工程師: semi-jobs/07-photo.md
+      - 蝕刻 / 薄膜 / CMP 工程師: semi-jobs/08-etch-dep-cmp.md
+      - 整合工程師: semi-jobs/09-integration.md
+    - 三、設備與廠務:
+      - 設備工程師: semi-jobs/10-equipment.md
+      - 廠務工程師: semi-jobs/11-facilities.md
+    - 四、品質與可靠度:
+      - QA / 品質工程師: semi-jobs/12-qa.md
+      - 可靠度工程師: semi-jobs/13-reliability.md
+      - 失效分析工程師: semi-jobs/14-failure-analysis.md
+    - 五、封裝與測試:
+      - 封裝工程師: semi-jobs/15-packaging.md
+      - 測試工程師: semi-jobs/16-test.md
+    - 六、業務技術支援:
+      - FAE 現場應用工程師: semi-jobs/17-fae.md
+    - 七、製造與 AI:
+      - 工業工程師（IE）: semi-jobs/18-ie.md
+      - AI / 軟體工程師: semi-jobs/19-ai-software.md
+    - 附錄:
+      - 薪資全覽比較: semi-jobs/appendix-salary.md
+      - 入職門檻與學歷規劃: semi-jobs/appendix-entry.md
+      - 2024–2025 趨勢與熱門職缺: semi-jobs/appendix-trends.md
+      - 學習資源與求職平台: semi-jobs/appendix-resources.md
+
+  - TSMC:
+    - 導讀與學習路線: tsmc/README.md
+    - 一、公司輪廓:
+      - 公司概覽: tsmc/01-overview.md
+      - 歷史沿革: tsmc/02-history.md
+      - 組織與治理: tsmc/03-organization.md
+    - 二、技術製程:
+      - 製程節點總覽: tsmc/04-nodes.md
+      - 先進封裝：CoWoS 與 3DFabric: tsmc/05-advanced-packaging.md
+      - 技術路線圖: tsmc/06-roadmap.md
+    - 三、產業版圖:
+      - 廠區分布: tsmc/07-fabs.md
+      - 客戶結構: tsmc/08-customers.md
+      - 上下游供應鏈: tsmc/09-supply-chain.md
+    - 四、財務與策略:
+      - 財務表現: tsmc/10-financials.md
+      - 地緣政治與全球化: tsmc/11-geopolitics.md
+    - 五、職涯與學習:
+      - 職涯指南: tsmc/12-career.md
+      - 學習資源: tsmc/13-resources.md

@@ -1,0 +1,76 @@
+site_name: GPU 完整學習指南
+site_description: GPU 專書（獨立主題）
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/gpu
+site_dir: ../book/gpu/html
+use_directory_urls: false
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+nav:
+  - 導讀與互動學習地圖: README.md
+  - 前提知識:
+      - 前提知識導讀: prerequisites/overview.md
+      - 計算機組織基礎: prerequisites/computer-basics.md
+      - 執行緒與平行概念: prerequisites/parallel-concepts.md
+      - 矩陣運算基礎: prerequisites/matrix-math.md
+  - 架構原理:
+      - GPU 基礎架構: architecture/gpu-fundamentals.md
+      - CUDA 程式設計模型: architecture/cuda-model.md
+      - 記憶體層次結構: architecture/memory-hierarchy.md
+      - 平行運算原理: architecture/parallel-computing.md
+  - 效能比較:
+      - 訓練效能基準: performance/training-benchmarks.md
+      - 推論效能基準: performance/inference-benchmarks.md
+      - 性價比分析: performance/cost-analysis.md
+  - 競爭格局:
+      - NVIDIA 生態系護城河: competitive/nvidia-moat.md
+      - AMD ROCm 7.0 的挑戰: competitive/amd-rocm.md
+      - 軟體生態決定勝負: competitive/software-ecosystem.md
+  - 消費級市場:
+      - GeForce 系列現況: consumer/geforce.md
+      - AMD RX 9070 XT 的市場突破: consumer/rx9070xt.md
+      - 消費級市場格局轉變: consumer/market-shift.md
+  - AI 加速器:
+      - NVIDIA B200 與 NVLink: ai-accelerators/b200.md
+      - AMD MI300X 推論優勢: ai-accelerators/mi300x.md
+      - Google TPU v5p: ai-accelerators/tpu-v5p.md
+      - 自研晶片：AWS、微軟、Meta: ai-accelerators/custom-silicon.md
+      - 加速器取捨總覽: ai-accelerators/tradeoffs.md
