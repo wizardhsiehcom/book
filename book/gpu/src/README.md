@@ -4,11 +4,13 @@
 
 ## 建議學習路徑
 
-最建議從「**架構原理**」的 [CUDA 程式設計模型](architecture/cuda-model.md) 入手，建立概念後再看效能比較，這樣看數字才能理解背後的意義。
+**完全新手**：先從[前提知識](prerequisites/overview.md)建立基礎，再進入架構原理。  
+**有程式背景**：可從[GPU 基礎架構](architecture/gpu-fundamentals.md)入手，遇到不熟悉的概念再回頭查前提知識。
 
 ```mermaid
 flowchart LR
-    A["架構原理<br/>CUDA 概念"] --> B["效能比較<br/>訓練 vs 推論"]
+    P["前提知識<br/>計算機 · 平行 · 矩陣"] --> A["架構原理<br/>CUDA 概念"]
+    A --> B["效能比較<br/>訓練 vs 推論"]
     B --> C["競爭格局<br/>NVIDIA vs AMD"]
     C --> D["消費級市場<br/>RX 9070 XT"]
     C --> E["AI 加速器<br/>B200 / MI300X / TPU"]

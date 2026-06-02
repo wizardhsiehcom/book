@@ -4,6 +4,15 @@
 
 ---
 
+## 前提知識
+
+- [前提知識導讀](prerequisites/overview.md)
+- [計算機組織基礎](prerequisites/computer-basics.md)
+- [執行緒與平行概念](prerequisites/parallel-concepts.md)
+- [矩陣運算基礎](prerequisites/matrix-math.md)
+
+---
+
 ## 架構原理
 
 - [GPU 基礎架構](architecture/gpu-fundamentals.md)
