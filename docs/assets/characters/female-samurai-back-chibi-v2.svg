@@ -32,63 +32,51 @@
       <stop offset="0.4" stop-color="#2a2a42"/>
       <stop offset="1" stop-color="#111120"/>
     </linearGradient>
+    <!-- Neck cylinder: dark edges → light centre simulates curvature -->
+    <linearGradient id="v2-neck-cyl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"    stop-color="#c8a48c"/>
+      <stop offset="0.28" stop-color="#edcdb0"/>
+      <stop offset="0.5"  stop-color="#f6e2cc"/>
+      <stop offset="0.72" stop-color="#edcdb0"/>
+      <stop offset="1"    stop-color="#c8a48c"/>
+    </linearGradient>
   </defs>
 
   <!-- Ground shadow -->
-  <ellipse cx="218" cy="577" rx="128" ry="21" fill="#06100e" opacity="0.8"/>
-  <ellipse cx="218" cy="581" rx="90"  ry="11" fill="#1a5070" opacity="0.26"/>
+  <ellipse cx="218" cy="612" rx="100" ry="16" fill="#06100e" opacity="0.8"/>
+  <ellipse cx="218" cy="616" rx="70"  ry="9"  fill="#1a5070" opacity="0.26"/>
 
   <g transform="translate(58 40)">
     <!-- All coords relative to this group. Character center x≈180. -->
 
     <!-- ══════════════════════════════════════
-         KATANA  (right-side hip carry, handle
-         clearly visible beside upper body)
-         ══════════════════════════════════════ -->
-    <g transform="translate(272 300) rotate(10)">
-      <!-- Saya (scabbard) going downward -->
-      <rect x="-6" y="0" width="14" height="190" rx="7" fill="url(#v2-saya)"/>
-      <rect x="-3" y="5" width="5"  height="178" rx="2.5" fill="#2e2e48" opacity="0.8"/>
-      <!-- Saya tip ring -->
-      <rect x="-8" y="184" width="18" height="10" rx="5" fill="#131326"/>
-      <!-- Koiguchi ring at top of saya -->
-      <rect x="-8" y="-4" width="18" height="9" rx="4" fill="#3a4560"/>
-      <!-- Tsuba (guard) — sits just above saya mouth -->
-      <ellipse cx="1" cy="-12" rx="20" ry="9"   fill="#3c4a64"/>
-      <ellipse cx="1" cy="-12" rx="15" ry="6.5" fill="#232e44"/>
-      <ellipse cx="1" cy="-12" rx="20" ry="9"   fill="none" stroke="#5a6e90" stroke-width="1.2"/>
-      <!-- Blade edge visible above tsuba (partial draw) -->
-      <rect x="-4" y="-58" width="9"  height="50" rx="4"  fill="url(#v2-blade)"/>
-      <rect x="-1" y="-56" width="2"  height="46" rx="1"  fill="rgba(255,255,255,0.85)"/>
-      <!-- Tsuka (handle) -->
-      <rect x="-6" y="-136" width="14" height="80" rx="6" fill="#2c1a0e"/>
-      <!-- Tsuka-ito wrapping lines -->
-      <line x1="-6" y1="-132" x2="8" y2="-125" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
-      <line x1="-6" y1="-120" x2="8" y2="-113" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
-      <line x1="-6" y1="-108" x2="8" y2="-101" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
-      <line x1="-6" y1="-96"  x2="8" y2="-89"  stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
-      <line x1="-6" y1="-84"  x2="8" y2="-77"  stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
-      <line x1="-6" y1="-72"  x2="8" y2="-65"  stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
-      <!-- Kashira (pommel cap) -->
-      <ellipse cx="1" cy="-136" rx="9" ry="6" fill="#1c1008"/>
-    </g>
-
-    <!-- ══════════════════════════════════════
          HAKAMA  (wide pleated pants)
          ══════════════════════════════════════ -->
-    <!-- Left leg -->
-    <path d="M94 325 C76 372,62 432,66 494 C70 534,88 560,114 564 C138 568,158 552,164 524 C172 490,166 444,158 402 C152 368,148 344,144 330 Z"
+    <!-- Left leg — slimmer, longer, elegant A-line -->
+    <path d="M96 327
+             C84 362,78 406,80 454
+             C82 500,96 544,118 567
+             C132 577,150 577,156 571
+             C160 563,160 530,154 488
+             C149 446,145 398,144 356
+             C144 340,143 330,96 327 Z"
       fill="url(#v2-hakama)"/>
-    <!-- Right leg -->
-    <path d="M266 325 C284 372,298 432,294 494 C290 534,272 560,246 564 C222 568,202 552,196 524 C188 490,194 444,202 402 C208 368,212 344,216 330 Z"
+    <!-- Right leg (mirror) -->
+    <path d="M264 327
+             C276 362,282 406,280 454
+             C278 500,264 544,242 567
+             C228 577,210 577,204 571
+             C200 563,200 530,206 488
+             C211 446,215 398,216 356
+             C216 340,217 330,264 327 Z"
       fill="url(#v2-hakama)"/>
     <!-- Center overlap panel -->
-    <path d="M144 330 C154 344,168 350,180 350 C192 350,206 344,216 330 L216 564 L180 570 L144 564 Z"
+    <path d="M144 330 C154 344,168 350,180 350 C192 350,206 344,216 330 L216 571 L180 575 L144 571 Z"
       fill="#0f1828" opacity="0.75"/>
     <!-- Pleat lines -->
-    <line x1="180" y1="350" x2="180" y2="568" stroke="#07101e" stroke-width="2.2" opacity="0.55"/>
-    <line x1="156" y1="340" x2="148" y2="562" stroke="#07101e" stroke-width="1.1" opacity="0.3"/>
-    <line x1="204" y1="340" x2="212" y2="562" stroke="#07101e" stroke-width="1.1" opacity="0.3"/>
+    <line x1="180" y1="350" x2="180" y2="573" stroke="#07101e" stroke-width="2.2" opacity="0.55"/>
+    <line x1="156" y1="340" x2="150" y2="569" stroke="#07101e" stroke-width="1.1" opacity="0.3"/>
+    <line x1="204" y1="340" x2="210" y2="569" stroke="#07101e" stroke-width="1.1" opacity="0.3"/>
 
     <!-- ══════════════════════════════════════
          HAORI  (jacket — two back panels)
@@ -127,81 +115,261 @@
     <ellipse cx="180" cy="307" rx="5" ry="4" fill="#c49430"/>
 
     <!-- ══════════════════════════════════════
+         KATANA — SAYA + TSUBA + BLADE (drawn
+         before sleeves; sleeve hides all these
+         plus the lower handle)
+         ══════════════════════════════════════ -->
+    <g transform="translate(268 310) rotate(14)">
+      <!-- Saya body -->
+      <rect x="-6" y="0" width="14" height="250" rx="7" fill="url(#v2-saya)"/>
+      <rect x="-3" y="5" width="5"  height="238" rx="2.5" fill="#2e2e48" opacity="0.8"/>
+      <path d="M-1 10 C-1 90,-1 180,-1 244" stroke="rgba(80,80,120,0.25)" stroke-width="1.5" fill="none"/>
+      <rect x="-8" y="244" width="18" height="10" rx="5" fill="#131326"/>
+      <!-- Koiguchi ring -->
+      <rect x="-8" y="-4"  width="18" height="9"  rx="4" fill="#3a4560"/>
+      <!-- Tsuba (guard) — hidden behind sleeve -->
+      <ellipse cx="1" cy="-12" rx="20" ry="9"   fill="#3c4a64"/>
+      <ellipse cx="1" cy="-12" rx="15" ry="6.5" fill="#232e44"/>
+      <ellipse cx="1" cy="-12" rx="20" ry="9"   fill="none" stroke="#5a6e90" stroke-width="1.2"/>
+      <!-- Blade above tsuba — hidden behind sleeve -->
+      <rect x="-4" y="-58" width="9"  height="50" rx="4"  fill="url(#v2-blade)"/>
+      <rect x="-1" y="-56" width="2"  height="46" rx="1"  fill="rgba(255,255,255,0.85)"/>
+      <!-- Lower tsuka (bottom 3 wraps hidden by sleeve) -->
+      <rect x="-6" y="-90" width="14" height="34" rx="4" fill="#2c1a0e"/>
+      <line x1="-6" y1="-86" x2="8" y2="-79" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-6" y1="-74" x2="8" y2="-67" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+    </g>
+
+    <!-- ══════════════════════════════════════
          SLEEVES  (haori wide sleeves)
          ══════════════════════════════════════ -->
     <!-- Left sleeve -->
     <path d="M80 242 C54 274,44 318,58 356 C68 384,92 390,108 370 C122 350,118 302,98 268 C90 250,82 240,80 242 Z"
       fill="#192846"/>
     <path d="M82 246 C62 280,56 318,66 352" stroke="#0e1c38" stroke-width="3" fill="none" opacity="0.4" stroke-linecap="round"/>
-    <!-- Left sleeve hem -->
-    <path d="M56 356 C62 376,76 386,92 386 C104 386,116 377,120 364"
-      stroke="#1e3458" stroke-width="2.5" fill="none" opacity="0.65"/>
+    <!-- Left sleeve opening (filled hem face) -->
+    <path d="M58 356 C62 374,76 388,92 388 C106 388,118 378,122 364
+             C118 360,106 370,92 370 C78 370,65 360,60 346 Z"
+      fill="#1e3258"/>
     <!-- Right sleeve -->
     <path d="M280 242 C306 274,316 318,302 356 C292 384,268 390,252 370 C238 350,242 302,262 268 C270 250,278 240,280 242 Z"
       fill="#192846"/>
     <path d="M278 246 C298 280,304 318,294 352" stroke="#0e1c38" stroke-width="3" fill="none" opacity="0.4" stroke-linecap="round"/>
-    <!-- Right sleeve hem -->
-    <path d="M304 356 C298 376,284 386,268 386 C256 386,244 377,240 364"
-      stroke="#1e3458" stroke-width="2.5" fill="none" opacity="0.65"/>
+    <!-- Right sleeve opening (filled hem face) -->
+    <path d="M302 356 C298 374,284 388,268 388 C254 388,242 378,238 364
+             C242 360,254 370,268 370 C282 370,295 360,300 346 Z"
+      fill="#1e3258"/>
 
     <!-- Shoulder caps -->
     <path d="M94 208 C78 224,74 242,82 258 C92 246,104 234,116 228 Z" fill="#223458" opacity="0.9"/>
     <path d="M266 208 C282 224,286 242,278 258 C268 246,256 234,244 228 Z" fill="#223458" opacity="0.9"/>
 
     <!-- ══════════════════════════════════════
-         WHITE KIMONO COLLAR  (eri)
+         HAORI HEM  (bottom edge, visible above
+         hakama since both are dark navy)
          ══════════════════════════════════════ -->
-    <path d="M136 200 C146 193,158 189,168 188 C163 198,160 213,158 226 C150 220,142 216,136 212 Z"
+    <path d="M80 318 C88 354,112 373,144 375 L216 375 C248 373,272 354,280 318"
+      stroke="#2e4468" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <!-- Hem corner accent dots -->
+    <circle cx="144" cy="375" r="2.5" fill="#2e4468" opacity="0.7"/>
+    <circle cx="216" cy="375" r="2.5" fill="#2e4468" opacity="0.7"/>
+
+    <!-- ══════════════════════════════════════
+         KATANA — UPPER HANDLE ONLY (drawn after
+         sleeves; only upper tsuka + kashira show)
+         ══════════════════════════════════════ -->
+    <g transform="translate(268 310) rotate(14)">
+      <!-- Upper tsuka (top 4 wrapping sections) -->
+      <rect x="-6" y="-136" width="14" height="48" rx="5" fill="#2c1a0e"/>
+      <line x1="-6" y1="-132" x2="8" y2="-125" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-6" y1="-120" x2="8" y2="-113" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-6" y1="-108" x2="8" y2="-101" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-6" y1="-96"  x2="8" y2="-89"  stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <!-- Kashira (pommel cap) -->
+      <ellipse cx="1" cy="-136" rx="9" ry="6" fill="#1c1008"/>
+    </g>
+
+    <!-- ══════════════════════════════════════
+         BACK COLLAR  (eri — back view)
+         ONE connected shape: horizontal nape
+         band + two downward strips.
+         Outer edge → across nape → inner edge.
+         ══════════════════════════════════════ -->
+    <path d="
+      M150 224
+      C149 212,148 200,149 188
+      C155 181,168 179,180 179
+      C192 179,205 181,211 188
+      C212 200,211 212,210 224
+      C207 227,198 226,196 222
+      C196 210,196 198,194 191
+      C190 186,186 184,180 184
+      C174 184,170 186,166 191
+      C164 198,164 210,164 222
+      C162 226,153 227,150 224 Z"
       fill="#f4efe7"/>
-    <path d="M224 200 C214 193,202 189,192 188 C197 198,200 213,202 226 C210 220,218 216,224 212 Z"
-      fill="#f4efe7"/>
-    <!-- Collar shadow edge -->
-    <path d="M144 200 C154 195,163 191,168 189" stroke="#c8bfb0" stroke-width="1.2" fill="none" opacity="0.7"/>
-    <path d="M216 200 C206 195,197 191,192 189" stroke="#c8bfb0" stroke-width="1.2" fill="none" opacity="0.7"/>
+    <!-- Inner fold shadow line -->
+    <path d="M166 191 C168 184,174 182,180 182 C186 182,192 184,194 191"
+      stroke="#cdc4b4" stroke-width="1.2" fill="none" opacity="0.7"/>
+    <!-- Left strip shadow -->
+    <path d="M151 190 C149 202,149 214,150 222"
+      stroke="#cdc4b4" stroke-width="1" fill="none" opacity="0.55"/>
+    <!-- Right strip shadow -->
+    <path d="M209 190 C211 202,211 214,210 222"
+      stroke="#cdc4b4" stroke-width="1" fill="none" opacity="0.55"/>
+
+    <!-- Head group shifted up 20px so nape skin
+         shows above the collar (which stays fixed) -->
+    <g transform="translate(0 -20)">
 
     <!-- ══════════════════════════════════════
          NECK  (skin, visible between collar)
          ══════════════════════════════════════ -->
-    <rect x="162" y="184" width="36" height="30" rx="15" fill="url(#v2-skin)"/>
-    <!-- Neck centre shadow (back of neck) -->
-    <rect x="168" y="194" width="24" height="20" rx="10" fill="rgba(0,0,0,0.09)"/>
+    <!-- Neck cylinder body: horizontal gradient = dark-light-dark -->
+    <rect x="160" y="192" width="40" height="17" rx="1" fill="url(#v2-neck-cyl)"/>
+    <!-- Cylinder top-rim ellipse (seen from slightly above) -->
+    <ellipse cx="180" cy="192" rx="20" ry="4.5" fill="#f2deca"/>
+    <ellipse cx="180" cy="192" rx="16" ry="3"   fill="#f8e8d6"/>
 
     <!-- ══════════════════════════════════════
-         HEAD  (large chibi — skin base)
+         EARS  (lower, narrower; drawn before hair)
+         Hair covers upper ear; only lobe visible.
          ══════════════════════════════════════ -->
-    <ellipse cx="180" cy="116" rx="82" ry="76" fill="url(#v2-skin)"/>
+    <!-- Left ear lobe area -->
+    <ellipse cx="110" cy="135" rx="9" ry="11" fill="url(#v2-skin)"/>
+    <!-- Subtle inner ear crease (back of ear) -->
+    <path d="M114 128 C116 133,116 139,113 144" stroke="rgba(0,0,0,0.1)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Right ear lobe area -->
+    <ellipse cx="250" cy="135" rx="9" ry="11" fill="url(#v2-skin)"/>
+    <path d="M246 128 C244 133,244 139,247 144" stroke="rgba(0,0,0,0.1)" stroke-width="2" fill="none" stroke-linecap="round"/>
 
     <!-- ══════════════════════════════════════
-         BACK HAIR  (cap over head)
+         HEAD  (narrower chibi — skin base)
          ══════════════════════════════════════ -->
-    <path d="M98 108 C96 58,132 32,180 31 C228 32,264 60,262 110 C260 158,238 190,212 204 C198 214,162 214,148 204 C120 188,100 158,98 108 Z"
+    <ellipse cx="180" cy="116" rx="68" ry="74" fill="url(#v2-skin)"/>
+
+    <!-- ══════════════════════════════════════
+         BACK HAIR — main cap
+         Full-width to cover head top & sides.
+         Side hairline arcs naturally over the
+         upper ear, leaving lobe exposed below.
+         ══════════════════════════════════════ -->
+    <path d="M109 112
+             C107 60,135 30,180 29
+             C225 30,253 62,251 114
+             C250 144,244 170,234 188
+             C222 194,204 202,180 196
+             C156 202,138 194,126 178
+             C116 170,110 144,109 112 Z"
       fill="url(#v2-hair)"/>
-    <!-- Hair highlight streaks -->
-    <path d="M144 48 C160 38,182 34,202 40" stroke="rgba(88,100,132,0.32)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M114 82 C122 64,138 50,156 46"  stroke="rgba(70,82,112,0.22)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Side hair sections: temporal hair swept backward.
+         Slightly darker overlay that tapers at the lobe. -->
+    <!-- Left side -->
+    <path d="M109 112
+             C105 125,103 140,107 154
+             C111 164,118 170,125 168
+             L126 174
+             C118 172,111 163,107 152
+             C103 138,105 120,108 108 Z"
+      fill="#151c2e" opacity="0.65"/>
+    <!-- Right side -->
+    <path d="M251 112
+             C255 125,257 140,253 154
+             C249 164,242 170,235 168
+             L234 174
+             C242 172,249 163,253 152
+             C257 138,255 120,252 108 Z"
+      fill="#151c2e" opacity="0.65"/>
+
+    <!-- Hair flow lines — strands converging toward crown.
+         Left side curves inward-upward (swept back),
+         right mirrors, centre goes straight up. -->
+    <!-- Left sweep lines -->
+    <path d="M118 170 C120 154,126 136,138 114 C148 96,163 86,175 84"
+      stroke="rgba(52,62,90,0.36)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M113 165 C116 148,124 128,138 110 C150 94,166 84,176 82"
+      stroke="rgba(52,62,90,0.27)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <!-- Right sweep lines -->
+    <path d="M242 170 C240 154,234 136,222 114 C212 96,197 86,185 84"
+      stroke="rgba(52,62,90,0.36)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M247 165 C244 148,236 128,222 110 C210 94,194 84,184 82"
+      stroke="rgba(52,62,90,0.27)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <!-- Centre top strands (crown to tie — updated for high tie cy=76) -->
+    <path d="M158 46 C161 58,166 66,172 72" stroke="rgba(55,65,94,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M180 32 C180 48,180 62,180 70"  stroke="rgba(55,65,94,0.26)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <path d="M202 46 C199 58,194 66,188 72"  stroke="rgba(55,65,94,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- Crown highlight -->
+    <path d="M150 42 C164 34,196 34,210 42" stroke="rgba(92,106,142,0.28)" stroke-width="3" fill="none" stroke-linecap="round"/>
 
     <!-- ══════════════════════════════════════
-         PONYTAIL  (from crown → straight down
-         the back, over haori)
+         PONYTAIL — filled body for volume,
+         individual strands for hair texture.
          ══════════════════════════════════════ -->
-    <!-- Ponytail body -->
-    <path d="M163 100 C155 140,151 188,156 252 C160 300,166 336,170 360 C173 378,177 394,180 404 C183 394,187 378,190 360 C194 336,200 300,204 252 C209 188,205 140,197 100 Z"
-      fill="#0c1320"/>
-    <!-- Subtle centre highlight -->
-    <path d="M178 108 C175 150,173 198,176 258 C178 304,180 340,180 404"
-      stroke="rgba(50,62,90,0.42)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Filled body (bulk of the ponytail) -->
+    <path d="M170 78
+             C165 112,163 150,165 186
+             C167 210,169 228,172 240
+             C175 250,178 255,180 257
+             C182 255,185 250,188 240
+             C191 228,193 210,195 186
+             C197 150,195 112,190 78 Z"
+      fill="#0d1422"/>
+    <!-- Strand lines for hair texture (over body) -->
+    <!-- Centre -->
+    <path d="M180 80 C180 114,179 152,179 190 C179 214,180 232,180 250"
+      stroke="rgba(55,68,98,0.5)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <!-- Inner left -->
+    <path d="M176 80 C175 114,174 152,173 188 C172 212,172 228,172 240"
+      stroke="rgba(50,62,90,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <!-- Inner right -->
+    <path d="M184 80 C185 114,186 152,187 188 C188 212,188 228,188 240"
+      stroke="rgba(50,62,90,0.4)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <!-- Outer left wisp -->
+    <path d="M173 82 C171 112,169 148,168 182 C167 204,167 220,167 230"
+      stroke="rgba(48,58,86,0.32)" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <!-- Outer right wisp -->
+    <path d="M187 82 C189 112,191 148,192 182 C193 204,193 220,193 230"
+      stroke="rgba(48,58,86,0.32)" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <!-- Tip sparse strands (below body end) -->
+    <path d="M179 254 C179 260,179 265,179 268"
+      stroke="#0d1422" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+    <path d="M175 250 C174 257,173 263,172 267"
+      stroke="#0d1422" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.65"/>
+    <path d="M185 250 C186 257,187 263,188 267"
+      stroke="#0d1422" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.65"/>
+    <path d="M171 244 C170 251,169 257,168 261"
+      stroke="#0d1422" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.42"/>
+    <path d="M189 244 C190 251,191 257,192 261"
+      stroke="#0d1422" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.42"/>
 
     <!-- ══════════════════════════════════════
          HAIR TIE  (at crown)
          ══════════════════════════════════════ -->
-    <!-- Dark base ring -->
-    <ellipse cx="180" cy="97" rx="17" ry="8"  fill="#0a1020"/>
-    <!-- Blue-grey band -->
-    <ellipse cx="180" cy="97" rx="12" ry="5.5" fill="#6a86ae"/>
-    <ellipse cx="180" cy="97" rx="7"  ry="3.5" fill="#7c9ac6"/>
-    <!-- Tiny bow loops -->
-    <path d="M161 94 C157 91,155 95,158 99 C160 102,165 100,165 97 Z" fill="#5e7898"/>
-    <path d="M199 94 C203 91,205 95,202 99 C200 102,195 100,195 97 Z" fill="#5e7898"/>
+    <ellipse cx="180" cy="76" rx="16" ry="7.5" fill="#0a1020"/>
+    <ellipse cx="180" cy="76" rx="11" ry="5.2" fill="#6a86ae"/>
+    <ellipse cx="180" cy="76" rx="6.5" ry="3.2" fill="#7c9ac6"/>
+    <!-- Bow loops -->
+    <path d="M162 73 C158 70,156 74,159 78 C161 81,166 79,166 76 Z" fill="#5e7898"/>
+    <path d="M198 73 C202 70,204 74,201 78 C199 81,194 79,194 76 Z" fill="#5e7898"/>
+
+    <!-- ══════════════════════════════════════
+         EARRINGS — hang from exposed lobe
+         ══════════════════════════════════════ -->
+    <!-- Left earring (lobe bottom ≈ y=146) -->
+    <circle cx="110" cy="136" r="3"   fill="#3a4a64"/>
+    <circle cx="109" cy="135" r="1.1" fill="rgba(190,215,255,0.75)"/>
+    <line x1="110" y1="139" x2="109" y2="149" stroke="#4a5c78" stroke-width="1.4"/>
+    <ellipse cx="109" cy="155" rx="4"   ry="5.5" fill="#3e5e96"/>
+    <ellipse cx="108" cy="151" rx="1.6" ry="2.2" fill="rgba(180,220,255,0.65)"/>
+    <!-- Right earring -->
+    <circle cx="250" cy="136" r="3"   fill="#3a4a64"/>
+    <circle cx="251" cy="135" r="1.1" fill="rgba(190,215,255,0.75)"/>
+    <line x1="250" y1="139" x2="251" y2="149" stroke="#4a5c78" stroke-width="1.4"/>
+    <ellipse cx="251" cy="155" rx="4"   ry="5.5" fill="#3e5e96"/>
+    <ellipse cx="252" cy="151" rx="1.6" ry="2.2" fill="rgba(180,220,255,0.65)"/>
+
+    </g><!-- end head group -->
 
   </g>
 </svg>

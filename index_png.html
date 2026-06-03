@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>書庫</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/samurai.css">
+  <style>
+    /* ── PNG character lighting ──────────────────────────
+       補光策略：
+       1. ::after 環境光暈（藍紫色，配合頁面 aurora 色調）
+          把角色邊緣融入背景，白色雜點被光暈掩蓋
+       2. drop-shadow 輪廓光，讓角色從深色背景中浮現
+       3. brightness/contrast 輕微提亮，讓 PNG 質感接近 SVG
+    ── */
+    .samurai-wrap {
+      filter:
+        drop-shadow(0 0 12px rgba(99, 130, 255, 0.35))
+        drop-shadow(0 0 32px rgba(56, 100, 220, 0.20))
+        drop-shadow(0 22px 48px rgba(2, 6, 23, 0.82));
+    }
+
+    /* 環境背光：角色身後的柔和光圈 */
+    .samurai-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -15% -25%;
+      background: radial-gradient(
+        ellipse at 48% 55%,
+        rgba(80, 120, 255, 0.14) 0%,
+        rgba(56, 90, 210, 0.07) 45%,
+        transparent 72%
+      );
+      filter: blur(18px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* 圖片本身微調：略提對比讓主體更清晰 */
+    .samurai-fallback {
+      filter: brightness(1.04) contrast(1.06);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="aurora" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <div id="spotlight" aria-hidden="true"></div>
+
+  <div class="samurai-stage" id="samuraiStage" aria-hidden="true">
+    <div class="slash-trail"></div>
+    <div class="slash-arc"></div>
+    <div class="samurai-wrap" id="samuraiWrap">
+      <img class="samurai-fallback" id="samuraiFallback"
+           src="docs/assets/characters/raster/samurai-nbg.png" alt="">
+      <div class="katana-glint"></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <header>
+      <div class="badge">Personal Knowledge Base</div>
+      <h1>書庫</h1>
+      <p class="subtitle">點選書籍直接開啟 · MkDocs 版</p>
+    </header>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="search" type="search" placeholder="搜尋書名、描述、標籤…" autocomplete="off" spellcheck="false">
+    </div>
+
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+    <footer id="footer">先執行 build-books.sh 建置後開啟</footer>
+  </div>
+
+  <script src="js/books-data.js"></script>
+  <script src="js/books-app.js"></script>
+</body>
+</html>
