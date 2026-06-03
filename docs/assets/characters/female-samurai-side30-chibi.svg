@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 620" role="img" aria-label="chibi female samurai 30 degree side view">
+  <defs>
+    <linearGradient id="cloakSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e384d"/>
+      <stop offset="0.48" stop-color="#141d30"/>
+      <stop offset="1" stop-color="#070c16"/>
+    </linearGradient>
+    <linearGradient id="hairSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3142"/>
+      <stop offset="1" stop-color="#090d15"/>
+    </linearGradient>
+    <linearGradient id="bladeSide" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="0.56" stop-color="#dae5f2"/>
+      <stop offset="1" stop-color="#8aa2c0"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="176" cy="575" rx="136" ry="26" fill="#08101f" opacity="0.72"/>
+  <ellipse cx="178" cy="579" rx="98" ry="13" fill="#226790" opacity="0.22"/>
+
+  <!-- thinner katana handle + blade -->
+  <g transform="translate(272 232) rotate(-35)">
+    <rect x="-2.8" y="-8" width="6.5" height="248" rx="3" fill="url(#bladeSide)" opacity="0.94"/>
+    <rect x="-5.2" y="214" width="10.2" height="36" rx="3" fill="#192233"/>
+    <rect x="-9.2" y="206" width="18" height="6" rx="2" fill="#6e83a4"/>
+  </g>
+
+  <g transform="translate(64 46)">
+    <!-- body cloak with sharper hem -->
+    <path d="M120 262 C95 291, 82 347, 87 410 C92 477, 113 531, 147 557 C176 578, 234 577, 269 552 C306 526, 328 471, 334 409 C340 347, 327 289, 300 259 C266 223, 151 223, 120 262 Z"
+      fill="url(#cloakSide)"/>
+
+    <path d="M115 205 C92 224, 86 254, 103 285 C126 326, 253 330, 281 289 C302 257, 297 224, 271 205 C240 181, 145 181, 115 205 Z"
+      fill="#1f2a3e"/>
+
+    <!-- high collar -->
+    <path d="M156 219 L185 194 L226 205 L224 252 L156 252 Z" fill="#192336"/>
+
+    <!-- head turned around 30 degrees -->
+    <g>
+      <ellipse cx="198" cy="132" rx="86" ry="75" fill="#efd9c8"/>
+      <path d="M164 138 C175 118, 204 111, 225 122 C236 128, 243 139, 242 150 C223 145, 194 145, 164 138 Z" fill="#e2bda5" opacity="0.62"/>
+
+      <!-- visible partial face (side) -->
+      <path d="M228 142 C234 145, 237 151, 236 158 C235 167, 229 174, 222 176 C219 168, 218 160, 219 152 Z" fill="#e8c8b0"/>
+      <path d="M224 154 C228 154, 232 156, 234 159" fill="none" stroke="#6d4c40" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="228" cy="151" r="1.8" fill="#2d3345"/>
+    </g>
+
+    <!-- hair mass behind head -->
+    <path d="M112 122 C111 73, 145 44, 197 43 C249 44, 286 75, 285 124 C284 173, 257 201, 231 218 C214 229, 180 229, 163 218 C136 201, 113 172, 112 122 Z"
+      fill="url(#hairSide)"/>
+
+    <!-- front fringe indicates side turn -->
+    <path d="M224 110 C244 118, 256 132, 258 149 C248 142, 236 139, 220 139 Z" fill="#151d2c"/>
+
+    <!-- long ponytail -->
+    <path d="M238 170 C294 194, 339 249, 344 314 C348 374, 317 441, 271 457 C246 466, 226 456, 214 436 C203 416, 210 391, 232 376 C257 359, 289 357, 301 333 C310 314, 302 287, 277 258 C259 238, 245 213, 238 170 Z"
+      fill="#0f1624"/>
+    <path d="M262 252 C291 280, 307 323, 302 358 C298 390, 278 417, 253 427 C242 431, 235 426, 240 416 C250 399, 263 385, 267 361 C272 329, 262 289, 244 262 Z"
+      fill="#1c2940" opacity="0.84"/>
+
+    <rect x="230" y="164" width="24" height="10" rx="2" fill="#8ea6cb"/>
+
+    <!-- belt strip -->
+    <path d="M114 342 C148 356, 233 356, 268 341 L273 364 C234 382, 146 383, 108 365 Z" fill="#41577c"/>
+
+    <!-- sleeves -->
+    <path d="M102 286 C74 315, 66 352, 81 377 C95 398, 125 397, 140 377 C157 355, 155 320, 127 287 Z" fill="#1a2437"/>
+    <path d="M278 287 C307 316, 315 352, 300 377 C287 399, 256 398, 241 377 C224 355, 226 321, 254 288 Z" fill="#1a2437"/>
+
+    <!-- torn hem -->
+    <path d="M124 524 L137 489 L152 532 L173 486 L189 534 L210 489 L226 536 L247 492 L263 537 L282 501 L295 540 L308 512 L320 553 L298 568 L271 561 L247 573 L222 560 L191 573 L166 558 L142 567 Z"
+      fill="#0b111d" stroke="#3d4c68" stroke-width="2"/>
+  </g>
+</svg>

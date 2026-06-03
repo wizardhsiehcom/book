@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 620" role="img" aria-label="back-facing chibi female samurai">
+  <defs>
+    <linearGradient id="cloak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b3346"/>
+      <stop offset="0.45" stop-color="#131b2c"/>
+      <stop offset="1" stop-color="#070d18"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#232838"/>
+      <stop offset="1" stop-color="#0a0f18"/>
+    </linearGradient>
+    <linearGradient id="blade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1f5f9"/>
+      <stop offset="0.5" stop-color="#dbe5f3"/>
+      <stop offset="1" stop-color="#8ea4c3"/>
+    </linearGradient>
+    <linearGradient id="belt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5c6b89"/>
+      <stop offset="1" stop-color="#2c364f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="180" cy="574" rx="138" ry="28" fill="#08101f" opacity="0.72"/>
+  <ellipse cx="184" cy="578" rx="96" ry="14" fill="#1f5d86" opacity="0.24"/>
+
+  <!-- Katana on the back -->
+  <g transform="translate(258 238) rotate(-36)">
+    <rect x="-4" y="-8" width="12" height="236" rx="6" fill="url(#blade)" opacity="0.9"/>
+    <rect x="-11" y="205" width="26" height="34" rx="8" fill="#1b2436"/>
+    <rect x="-17" y="198" width="38" height="11" rx="5" fill="#62708a"/>
+  </g>
+
+  <!-- Body: chibi ratio (large head, compact body) -->
+  <g transform="translate(70 54)">
+    <!-- Lower cloak -->
+    <path d="M129 262 C86 310, 73 398, 98 488 C116 548, 142 564, 178 568 C220 572, 254 555, 276 514 C307 456, 307 352, 267 283 C247 248, 152 234, 129 262 Z"
+      fill="url(#cloak)"/>
+
+    <!-- Shoulder layer -->
+    <path d="M120 194 C93 212, 86 244, 102 278 C128 333, 247 337, 277 286 C299 248, 292 216, 262 194 C231 171, 150 170, 120 194 Z"
+      fill="#202a3d"/>
+
+    <!-- Collar and back knot -->
+    <ellipse cx="190" cy="228" rx="58" ry="36" fill="#1a2335"/>
+    <path d="M190 250 L165 276 L190 294 L215 276 Z" fill="#30415f"/>
+
+    <!-- Head (bigger to keep two-head chibi look) -->
+    <ellipse cx="190" cy="130" rx="82" ry="74" fill="#f0dac8"/>
+
+    <!-- Hair from back -->
+    <path d="M108 121 C106 74, 141 46, 189 45 C239 46, 273 76, 272 124 C271 170, 247 198, 222 213 C205 224, 175 224, 157 213 C130 197, 110 168, 108 121 Z"
+      fill="url(#hair)"/>
+
+    <!-- Ponytail inspired shape (original design) -->
+    <path d="M235 168 C288 196, 319 246, 306 296 C296 336, 255 360, 226 338 C205 323, 201 296, 216 274 C230 254, 254 245, 262 223 C267 208, 258 189, 235 168 Z"
+      fill="#121a28"/>
+
+    <!-- Hair tie accent -->
+    <rect x="228" y="164" width="20" height="16" rx="7" fill="#8ca0c5"/>
+
+    <!-- Back ornament strip -->
+    <path d="M120 338 C148 352, 232 352, 260 338 L266 362 C232 379, 148 379, 114 362 Z" fill="url(#belt)"/>
+
+    <!-- Sleeves -->
+    <path d="M106 274 C74 309, 65 350, 84 377 C101 400, 133 396, 145 374 C159 349, 152 305, 126 274 Z" fill="#1b2538"/>
+    <path d="M274 276 C306 310, 316 349, 298 377 C282 401, 249 398, 237 374 C224 350, 229 307, 254 276 Z" fill="#1b2538"/>
+  </g>
+</svg>

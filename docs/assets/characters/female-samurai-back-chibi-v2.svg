@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 620" role="img" aria-label="back-facing chibi female samurai v2">
+  <defs>
+    <linearGradient id="v2-haori" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e2d4e"/>
+      <stop offset="1" stop-color="#0c1422"/>
+    </linearGradient>
+    <linearGradient id="v2-hakama" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16203a"/>
+      <stop offset="1" stop-color="#060b18"/>
+    </linearGradient>
+    <linearGradient id="v2-hair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#21273b"/>
+      <stop offset="1" stop-color="#080c18"/>
+    </linearGradient>
+    <linearGradient id="v2-blade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="#eef4fc"/>
+      <stop offset="0.3" stop-color="#ffffff"/>
+      <stop offset="0.7" stop-color="#ccd8ee"/>
+      <stop offset="1"   stop-color="#8aa0c0"/>
+    </linearGradient>
+    <linearGradient id="v2-obi" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="#6b4c0e"/>
+      <stop offset="0.5" stop-color="#c49028"/>
+      <stop offset="1"   stop-color="#6b4c0e"/>
+    </linearGradient>
+    <linearGradient id="v2-skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f5e2ce"/>
+      <stop offset="1" stop-color="#e8cfba"/>
+    </linearGradient>
+    <linearGradient id="v2-saya" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#18182a"/>
+      <stop offset="0.4" stop-color="#2a2a42"/>
+      <stop offset="1" stop-color="#111120"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="218" cy="577" rx="128" ry="21" fill="#06100e" opacity="0.8"/>
+  <ellipse cx="218" cy="581" rx="90"  ry="11" fill="#1a5070" opacity="0.26"/>
+
+  <g transform="translate(58 40)">
+    <!-- All coords relative to this group. Character center x≈180. -->
+
+    <!-- ══════════════════════════════════════
+         KATANA  (right-side hip carry, handle
+         clearly visible beside upper body)
+         ══════════════════════════════════════ -->
+    <g transform="translate(272 300) rotate(10)">
+      <!-- Saya (scabbard) going downward -->
+      <rect x="-6" y="0" width="14" height="190" rx="7" fill="url(#v2-saya)"/>
+      <rect x="-3" y="5" width="5"  height="178" rx="2.5" fill="#2e2e48" opacity="0.8"/>
+      <!-- Saya tip ring -->
+      <rect x="-8" y="184" width="18" height="10" rx="5" fill="#131326"/>
+      <!-- Koiguchi ring at top of saya -->
+      <rect x="-8" y="-4" width="18" height="9" rx="4" fill="#3a4560"/>
+      <!-- Tsuba (guard) — sits just above saya mouth -->
+      <ellipse cx="1" cy="-12" rx="20" ry="9"   fill="#3c4a64"/>
+      <ellipse cx="1" cy="-12" rx="15" ry="6.5" fill="#232e44"/>
+      <ellipse cx="1" cy="-12" rx="20" ry="9"   fill="none" stroke="#5a6e90" stroke-width="1.2"/>
+      <!-- Blade edge visible above tsuba (partial draw) -->
+      <rect x="-4" y="-58" width="9"  height="50" rx="4"  fill="url(#v2-blade)"/>
+      <rect x="-1" y="-56" width="2"  height="46" rx="1"  fill="rgba(255,255,255,0.85)"/>
+      <!-- Tsuka (handle) -->
+      <rect x="-6" y="-136" width="14" height="80" rx="6" fill="#2c1a0e"/>
+      <!-- Tsuka-ito wrapping lines -->
+      <line x1="-6" y1="-132" x2="8" y2="-125" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-6" y1="-120" x2="8" y2="-113" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-6" y1="-108" x2="8" y2="-101" stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-6" y1="-96"  x2="8" y2="-89"  stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-6" y1="-84"  x2="8" y2="-77"  stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-6" y1="-72"  x2="8" y2="-65"  stroke="#1a0e08" stroke-width="2.5" opacity="0.7"/>
+      <!-- Kashira (pommel cap) -->
+      <ellipse cx="1" cy="-136" rx="9" ry="6" fill="#1c1008"/>
+    </g>
+
+    <!-- ══════════════════════════════════════
+         HAKAMA  (wide pleated pants)
+         ══════════════════════════════════════ -->
+    <!-- Left leg -->
+    <path d="M94 325 C76 372,62 432,66 494 C70 534,88 560,114 564 C138 568,158 552,164 524 C172 490,166 444,158 402 C152 368,148 344,144 330 Z"
+      fill="url(#v2-hakama)"/>
+    <!-- Right leg -->
+    <path d="M266 325 C284 372,298 432,294 494 C290 534,272 560,246 564 C222 568,202 552,196 524 C188 490,194 444,202 402 C208 368,212 344,216 330 Z"
+      fill="url(#v2-hakama)"/>
+    <!-- Center overlap panel -->
+    <path d="M144 330 C154 344,168 350,180 350 C192 350,206 344,216 330 L216 564 L180 570 L144 564 Z"
+      fill="#0f1828" opacity="0.75"/>
+    <!-- Pleat lines -->
+    <line x1="180" y1="350" x2="180" y2="568" stroke="#07101e" stroke-width="2.2" opacity="0.55"/>
+    <line x1="156" y1="340" x2="148" y2="562" stroke="#07101e" stroke-width="1.1" opacity="0.3"/>
+    <line x1="204" y1="340" x2="212" y2="562" stroke="#07101e" stroke-width="1.1" opacity="0.3"/>
+
+    <!-- ══════════════════════════════════════
+         HAORI  (jacket — two back panels)
+         ══════════════════════════════════════ -->
+    <!-- Left outer edge -->
+    <path d="M100 220 C80 242,72 278,80 320 C88 354,112 372,144 374 L144 330 C122 330,104 314,98 290 C92 266,96 240,108 226 Z"
+      fill="url(#v2-haori)"/>
+    <!-- Right outer edge -->
+    <path d="M260 220 C280 242,288 278,280 320 C272 354,248 372,216 374 L216 330 C238 330,256 314,262 290 C268 266,264 240,252 226 Z"
+      fill="url(#v2-haori)"/>
+    <!-- Left back panel -->
+    <path d="M108 226 C122 214,150 208,180 208 L180 374 L144 374 C112 372,88 354,80 320 C72 278,80 242,100 220 Z"
+      fill="#192846"/>
+    <!-- Right back panel -->
+    <path d="M252 226 C238 214,210 208,180 208 L180 374 L216 374 C248 372,272 354,280 320 C288 278,280 242,260 220 Z"
+      fill="#192846"/>
+    <!-- Center spine seam -->
+    <line x1="180" y1="208" x2="180" y2="374" stroke="#0b1527" stroke-width="3" opacity="0.6"/>
+    <!-- Subtle horizontal accent stitching -->
+    <path d="M126 258 C142 254,163 252,178 252" stroke="#253a60" stroke-width="1.4" fill="none" opacity="0.7"/>
+    <path d="M234 258 C218 254,197 252,182 252" stroke="#253a60" stroke-width="1.4" fill="none" opacity="0.7"/>
+    <path d="M130 298 C146 294,164 292,178 292" stroke="#253a60" stroke-width="1.1" fill="none" opacity="0.5"/>
+    <path d="M230 298 C214 294,196 292,182 292" stroke="#253a60" stroke-width="1.1" fill="none" opacity="0.5"/>
+
+    <!-- ══════════════════════════════════════
+         OBI  (belt — gold/amber)
+         ══════════════════════════════════════ -->
+    <path d="M88 304 C112 298,152 294,180 294 C208 294,248 298,272 304 L270 332 C246 338,208 342,180 342 C152 342,114 338,90 332 Z"
+      fill="url(#v2-obi)"/>
+    <!-- Obi sheen highlight -->
+    <path d="M108 305 C132 300,158 297,180 297 C202 297,228 300,252 305"
+      stroke="rgba(255,215,80,0.5)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Obi-musubi (knot) at center back -->
+    <path d="M168 307 C164 300,165 296,172 295 C176 295,180 298,180 304 C180 298,184 295,188 295 C195 296,196 300,192 307 L188 320 C184 326,176 326,172 320 Z"
+      fill="#a87e1e" opacity="0.9"/>
+    <ellipse cx="180" cy="307" rx="5" ry="4" fill="#c49430"/>
+
+    <!-- ══════════════════════════════════════
+         SLEEVES  (haori wide sleeves)
+         ══════════════════════════════════════ -->
+    <!-- Left sleeve -->
+    <path d="M80 242 C54 274,44 318,58 356 C68 384,92 390,108 370 C122 350,118 302,98 268 C90 250,82 240,80 242 Z"
+      fill="#192846"/>
+    <path d="M82 246 C62 280,56 318,66 352" stroke="#0e1c38" stroke-width="3" fill="none" opacity="0.4" stroke-linecap="round"/>
+    <!-- Left sleeve hem -->
+    <path d="M56 356 C62 376,76 386,92 386 C104 386,116 377,120 364"
+      stroke="#1e3458" stroke-width="2.5" fill="none" opacity="0.65"/>
+    <!-- Right sleeve -->
+    <path d="M280 242 C306 274,316 318,302 356 C292 384,268 390,252 370 C238 350,242 302,262 268 C270 250,278 240,280 242 Z"
+      fill="#192846"/>
+    <path d="M278 246 C298 280,304 318,294 352" stroke="#0e1c38" stroke-width="3" fill="none" opacity="0.4" stroke-linecap="round"/>
+    <!-- Right sleeve hem -->
+    <path d="M304 356 C298 376,284 386,268 386 C256 386,244 377,240 364"
+      stroke="#1e3458" stroke-width="2.5" fill="none" opacity="0.65"/>
+
+    <!-- Shoulder caps -->
+    <path d="M94 208 C78 224,74 242,82 258 C92 246,104 234,116 228 Z" fill="#223458" opacity="0.9"/>
+    <path d="M266 208 C282 224,286 242,278 258 C268 246,256 234,244 228 Z" fill="#223458" opacity="0.9"/>
+
+    <!-- ══════════════════════════════════════
+         WHITE KIMONO COLLAR  (eri)
+         ══════════════════════════════════════ -->
+    <path d="M136 200 C146 193,158 189,168 188 C163 198,160 213,158 226 C150 220,142 216,136 212 Z"
+      fill="#f4efe7"/>
+    <path d="M224 200 C214 193,202 189,192 188 C197 198,200 213,202 226 C210 220,218 216,224 212 Z"
+      fill="#f4efe7"/>
+    <!-- Collar shadow edge -->
+    <path d="M144 200 C154 195,163 191,168 189" stroke="#c8bfb0" stroke-width="1.2" fill="none" opacity="0.7"/>
+    <path d="M216 200 C206 195,197 191,192 189" stroke="#c8bfb0" stroke-width="1.2" fill="none" opacity="0.7"/>
+
+    <!-- ══════════════════════════════════════
+         NECK  (skin, visible between collar)
+         ══════════════════════════════════════ -->
+    <rect x="162" y="184" width="36" height="30" rx="15" fill="url(#v2-skin)"/>
+    <!-- Neck centre shadow (back of neck) -->
+    <rect x="168" y="194" width="24" height="20" rx="10" fill="rgba(0,0,0,0.09)"/>
+
+    <!-- ══════════════════════════════════════
+         HEAD  (large chibi — skin base)
+         ══════════════════════════════════════ -->
+    <ellipse cx="180" cy="116" rx="82" ry="76" fill="url(#v2-skin)"/>
+
+    <!-- ══════════════════════════════════════
+         BACK HAIR  (cap over head)
+         ══════════════════════════════════════ -->
+    <path d="M98 108 C96 58,132 32,180 31 C228 32,264 60,262 110 C260 158,238 190,212 204 C198 214,162 214,148 204 C120 188,100 158,98 108 Z"
+      fill="url(#v2-hair)"/>
+    <!-- Hair highlight streaks -->
+    <path d="M144 48 C160 38,182 34,202 40" stroke="rgba(88,100,132,0.32)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M114 82 C122 64,138 50,156 46"  stroke="rgba(70,82,112,0.22)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- ══════════════════════════════════════
+         PONYTAIL  (from crown → straight down
+         the back, over haori)
+         ══════════════════════════════════════ -->
+    <!-- Ponytail body -->
+    <path d="M163 100 C155 140,151 188,156 252 C160 300,166 336,170 360 C173 378,177 394,180 404 C183 394,187 378,190 360 C194 336,200 300,204 252 C209 188,205 140,197 100 Z"
+      fill="#0c1320"/>
+    <!-- Subtle centre highlight -->
+    <path d="M178 108 C175 150,173 198,176 258 C178 304,180 340,180 404"
+      stroke="rgba(50,62,90,0.42)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- ══════════════════════════════════════
+         HAIR TIE  (at crown)
+         ══════════════════════════════════════ -->
+    <!-- Dark base ring -->
+    <ellipse cx="180" cy="97" rx="17" ry="8"  fill="#0a1020"/>
+    <!-- Blue-grey band -->
+    <ellipse cx="180" cy="97" rx="12" ry="5.5" fill="#6a86ae"/>
+    <ellipse cx="180" cy="97" rx="7"  ry="3.5" fill="#7c9ac6"/>
+    <!-- Tiny bow loops -->
+    <path d="M161 94 C157 91,155 95,158 99 C160 102,165 100,165 97 Z" fill="#5e7898"/>
+    <path d="M199 94 C203 91,205 95,202 99 C200 102,195 100,195 97 Z" fill="#5e7898"/>
+
+  </g>
+</svg>
