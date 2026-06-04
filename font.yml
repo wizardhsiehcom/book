@@ -1,0 +1,19 @@
+# ============================================================
+# 字型設定檔 — 所有書籍共用
+# 修改後執行：bash sync-assets.sh
+# ============================================================
+
+# 主字型名稱（@font-face font-family）
+family: GenWanMin2
+
+# CSS fallback 字型串（直接寫入 CSS）
+fallback: "'Noto Serif TC', serif"
+
+# 字重設定（每個 weight 對應一個 woff2 檔案放在 docs/assets/fonts/ 下）
+weights:
+  regular:
+    file: GenWanMin2-R.woff2
+    value: 400
+  bold:
+    file: GenWanMin2-SB.woff2
+    value: 600

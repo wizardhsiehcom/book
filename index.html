@@ -5,8 +5,128 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>書庫</title>
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/samurai.css">
+  <style>
+    @font-face {
+      font-family: 'GenWanMin2';
+      src: url('docs/assets/fonts/GenWanMin2-R.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GenWanMin2';
+      src: url('docs/assets/fonts/GenWanMin2-SB.woff2') format('woff2');
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Cubic-11';
+      src: url('docs/assets/fonts/Cubic_11.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    /* ── 字型套用（套在 .page 而非 body，縮小 reflow 範圍） ── */
+    .page.font-mingti       { font-family: 'GenWanMin2', 'Noto Serif TC', serif; }
+    .page.font-pixel        { font-family: 'Cubic-11', monospace; }
+    .page { will-change: font-family; }
+
+    /* ── 共用控制欄樣式 ── */
+    .top-controls {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.45rem;
+    }
+
+    .ctrl-bar {
+      display: flex;
+      gap: 0.35rem;
+      background: rgba(18, 20, 40, 0.75);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 100px;
+      padding: 0.3rem 0.45rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .ctrl-label {
+      font-size: 0.6rem;
+      color: #334155;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0 0.4rem;
+      align-self: center;
+      user-select: none;
+    }
+
+    .ctrl-btn {
+      font-size: 0.7rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 100px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.18s;
+      line-height: 1.4;
+    }
+    .ctrl-btn:hover { color: #c7d2fe; background: rgba(99,102,241,0.12); }
+    .ctrl-btn.active {
+      background: rgba(99,102,241,0.22);
+      border-color: rgba(99,102,241,0.4);
+      color: #a5b4fc;
+    }
+
+    /* ── PNG 補光 ── */
+    body.variant-png .samurai-wrap {
+      filter:
+        drop-shadow(0 0 12px rgba(99, 130, 255, 0.35))
+        drop-shadow(0 0 32px rgba(56, 100, 220, 0.20))
+        drop-shadow(0 22px 48px rgba(2, 6, 23, 0.82));
+    }
+    body.variant-png .samurai-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -15% -25%;
+      background: radial-gradient(
+        ellipse at 48% 55%,
+        rgba(80, 120, 255, 0.14) 0%,
+        rgba(56, 90, 210, 0.07) 45%,
+        transparent 72%
+      );
+      filter: blur(18px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    body.variant-png .samurai-fallback {
+      filter: brightness(1.04) contrast(1.06);
+    }
+  </style>
+  <link rel="preload" as="image" href="docs/assets/characters/female-samurai-back-chibi-v2.svg">
+  <link rel="preload" as="image" href="docs/assets/characters/raster/samurai-nbg.png">
 </head>
 <body>
+
+  <div class="top-controls">
+    <!-- 角色切換 -->
+    <nav class="ctrl-bar" aria-label="角色版本">
+      <span class="ctrl-label">角色</span>
+      <button class="ctrl-btn" data-variant="none">無</button>
+      <button class="ctrl-btn" data-variant="svg">SVG</button>
+      <button class="ctrl-btn" data-variant="png">PNG</button>
+    </nav>
+    <!-- 字型切換 -->
+    <nav class="ctrl-bar" aria-label="字型">
+      <span class="ctrl-label">字型</span>
+      <button class="ctrl-btn" data-font="system">系統</button>
+      <button class="ctrl-btn" data-font="mingti">明體</button>
+      <button class="ctrl-btn" data-font="pixel">像素</button>
+    </nav>
+  </div>
 
   <div id="aurora" aria-hidden="true">
     <div class="blob blob-1"></div>
@@ -16,6 +136,19 @@
   </div>
 
   <div id="spotlight" aria-hidden="true"></div>
+
+  <div class="samurai-stage" id="samuraiStage" aria-hidden="true">
+    <div class="slash-trail"></div>
+    <div class="slash-arc"></div>
+    <div class="samurai-wrap" id="samuraiWrap">
+      <!-- 兩張圖預先放入 DOM，切換只改 display，不觸發重新載入 -->
+      <img class="samurai-fallback" id="imgSvg"
+           src="docs/assets/characters/female-samurai-back-chibi-v2.svg" alt="" style="display:none">
+      <img class="samurai-fallback" id="imgPng"
+           src="docs/assets/characters/raster/samurai-nbg.png" alt="" style="display:none">
+      <div class="katana-glint"></div>
+    </div>
+  </div>
 
   <div class="page">
     <header>
@@ -38,5 +171,51 @@
 
   <script src="js/books-data.js"></script>
   <script src="js/books-app.js"></script>
+  <script>
+    /* ── 角色切換（display 切換，不動 src） ── */
+    function applyVariant(v) {
+      const stage  = document.getElementById('samuraiStage');
+      const imgSvg = document.getElementById('imgSvg');
+      const imgPng = document.getElementById('imgPng');
+
+      document.body.classList.remove('variant-none', 'variant-svg', 'variant-png');
+      document.body.classList.add('variant-' + v);
+
+      stage.style.display  = v === 'none' ? 'none' : '';
+      imgSvg.style.display = v === 'svg'  ? ''     : 'none';
+      imgPng.style.display = v === 'png'  ? ''     : 'none';
+
+      document.querySelectorAll('[data-variant]').forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.variant === v)
+      );
+      localStorage.setItem('bookVariant', v);
+    }
+
+    /* ── 字型切換（套在 .page 縮小 reflow 範圍） ── */
+    const FONTS = { system: '', mingti: 'font-mingti', pixel: 'font-pixel' };
+    const pageEl = document.querySelector('.page');
+
+    function applyFont(f) {
+      Object.values(FONTS).filter(c => c).forEach(c => pageEl.classList.remove(c));
+      if (FONTS[f]) pageEl.classList.add(FONTS[f]);
+
+      document.querySelectorAll('[data-font]').forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.font === f)
+      );
+      localStorage.setItem('bookFont', f);
+    }
+
+    /* ── 事件綁定 ── */
+    document.querySelectorAll('[data-variant]').forEach(btn =>
+      btn.addEventListener('click', () => applyVariant(btn.dataset.variant))
+    );
+    document.querySelectorAll('[data-font]').forEach(btn =>
+      btn.addEventListener('click', () => applyFont(btn.dataset.font))
+    );
+
+    /* ── 讀取上次選擇 ── */
+    applyVariant(localStorage.getItem('bookVariant') || 'svg');
+    applyFont(localStorage.getItem('bookFont') || 'system');
+  </script>
 </body>
 </html>

@@ -48,6 +48,15 @@ const BOOKS = [
     glow: "rgba(16,185,129,0.18)",
   },
   {
+    icon: "🔥",
+    title: "熱風・熱壓・熱板　電子接合指南",
+    desc: "SMT 回流焊、熱壓 ACF 製程、顯示器模組（FOG/COG/COF）到缺陷分析的完整學習地圖",
+    tags: ["SMT", "electronics manufacturing"],
+    href: "book/smt-bonding/html/index.html",
+    accent: "#f97316",
+    glow: "rgba(249,115,22,0.18)",
+  },
+  {
     icon: "🟢",
     title: "NVIDIA 深度解析筆記",
     desc: "從 GPU 晶片、CUDA 生態、資料中心產品到 NVIDIA 商業策略與競爭態勢的深度解析",
@@ -70,5 +79,7 @@ const TAG_COLOR = {
   "CUDA":               { tc: "#fde047", tb: "rgba(253,224,71,0.08)",  te: "rgba(253,224,71,0.2)" },
   "NVIDIA":             { tc: "#86efac", tb: "rgba(134,239,172,0.08)", te: "rgba(134,239,172,0.2)" },
   "AI":                 { tc: "#c4b5fd", tb: "rgba(196,181,253,0.08)", te: "rgba(196,181,253,0.2)" },
+  "SMT":                { tc: "#fb923c", tb: "rgba(251,146,60,0.08)",  te: "rgba(251,146,60,0.2)" },
+  "electronics manufacturing": { tc: "#fca5a5", tb: "rgba(252,165,165,0.08)", te: "rgba(252,165,165,0.2)" },
 };
 const TAG_DEFAULT = { tc: "#a5b4fc", tb: "rgba(99,102,241,0.08)", te: "rgba(99,102,241,0.2)" };

@@ -1,0 +1,69 @@
+site_name: 熱風・熱壓・熱板　電子接合完整指南
+site_description: SMT 回流焊、熱壓接合、ACF 製程與缺陷分析完整學習地圖
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/smt-bonding
+site_dir: ../book/smt-bonding/html
+use_directory_urls: false
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+nav:
+  - 導讀與學習路線: README.md
+  - 前提知識:
+      - PCB 與 SMT 基礎概念: 00-pcb-basics.md
+      - 名詞解釋速查表: 00-glossary.md
+  - 一、熱風回流焊:
+      - 熱風回流爐原理: 01-hot-air.md
+      - 爐溫曲線設定: 02-temp-profile.md
+  - 二、熱壓接合:
+      - 熱壓接合原理: 03-hot-bar.md
+      - ACF 導電膠製程: 04-acf.md
+      - 顯示器模組應用（FOG/COG/COF）: 05-display-modules.md
+  - 三、熱板傳導回流:
+      - 熱板適用場合與限制: 06-hot-plate.md
+  - 四、比較與選型:
+      - 三大工藝比較: 07-comparison.md
+  - 五、品質與分析:
+      - 缺陷分析方法: 08-defect-analysis.md
+      - 三大工藝的 AOI 檢測重點: 08b-aoi.md
+      - 材料規格解讀: 09-materials.md
+  - 學習資源: 10-resources.md
+  - 圖片來源與版權聲明: 99-image-credits.md

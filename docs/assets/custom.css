@@ -1,4 +1,18 @@
 @font-face {
+    font-family: 'GenWanMin2';
+    src: url('fonts/GenWanMin2-R.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GenWanMin2';
+    src: url('fonts/GenWanMin2-SB.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
     font-family: 'Cubic-11';
     src: url('fonts/Cubic_11.woff2') format('woff2'),
          url('fonts/Cubic_11.woff') format('woff');
@@ -6,20 +20,58 @@
     font-style: normal;
     font-display: swap;
 }
-
-/* Apply Cubic-11 for CJK characters throughout the book */
+/* ── 預設（GenWanMin2）── */
 body,
 .content p,
-.content h1,
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6,
 .content li,
 .content td,
 .content th,
 .menu-title,
 .chapter li a {
-    font-family: 'Cubic-11', 'Open Sans', sans-serif;
+    font-family: 'GenWanMin2', 'Noto Serif TC', serif;
+    font-weight: 400;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    font-family: 'GenWanMin2', 'Noto Serif TC', serif;
+    font-weight: 600;
+}
+
+/* ── 系統字型 ── */
+body.font-system,
+body.font-system .content p,
+body.font-system .content li,
+body.font-system .content td,
+body.font-system .content th {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+}
+body.font-system .content h1,
+body.font-system .content h2,
+body.font-system .content h3,
+body.font-system .content h4,
+body.font-system .content h5,
+body.font-system .content h6 {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+}
+
+/* ── 像素字型 ── */
+body.font-pixel,
+body.font-pixel .content p,
+body.font-pixel .content li,
+body.font-pixel .content td,
+body.font-pixel .content th,
+body.font-pixel .content h1,
+body.font-pixel .content h2,
+body.font-pixel .content h3,
+body.font-pixel .content h4,
+body.font-pixel .content h5,
+body.font-pixel .content h6 {
+    font-family: 'Cubic-11', monospace;
+    font-weight: normal;
 }

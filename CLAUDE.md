@@ -48,3 +48,4 @@ Or use the `/mkdocs-create` command to do all of this automatically.
 | `/mkdocs-create` | Create a new standalone MkDocs book |
 | `/mkdocs-update` | Update or add pages in an existing MkDocs book |
 | `/mkdocs-theme` | Change a book's MkDocs theme in `newbook/configs/*.yml` |
+| `/mkdocs-add-images` | Find Wikimedia Commons images and insert them into book pages with captions and credit entries |
