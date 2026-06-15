@@ -1,0 +1,65 @@
+site_name: 深度學習實戰
+site_description: 從數學直覺到 PyTorch 實作，系統理解 CNN、RNN 與 Transformer 三大架構
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/dl_practice
+site_dir: ../book/dl_practice/html
+use_directory_urls: false
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+nav:
+  - 導讀與學習路徑: README.md
+  - 全書地圖: 00-map.md
+  - 一、基礎:
+      - 類神經網路基礎: foundations/neural-network-basics.md
+      - 反向傳播: foundations/backprop.md
+  - 二、CNN:
+      - CNN 基礎: cnn/cnn-fundamentals.md
+      - CNN 經典架構: cnn/cnn-architectures.md
+  - 三、RNN:
+      - RNN 基礎: rnn/rnn-fundamentals.md
+      - LSTM 與 GRU: rnn/lstm-gru.md
+  - 四、Transformer:
+      - 注意力機制: transformer/attention.md
+      - Transformer 架構: transformer/transformer-architecture.md
+  - 五、PyTorch 實作:
+      - PyTorch 基礎操作: pytorch/pytorch-basics.md
+      - 完整訓練流程: pytorch/training-loop.md

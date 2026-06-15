@@ -65,6 +65,24 @@ const BOOKS = [
     accent: "#76b900",
     glow: "rgba(118,185,0,0.18)",
   },
+  {
+    icon: "🧠",
+    title: "第二大腦：用 LLM 蒸餾筆記成書",
+    desc: "在「都用 LLM 寫」的前提下，筆記是輸入、書是輸出——如何讓知識真正沉澱而不變黑洞",
+    tags: ["note-taking", "LLM", "knowledge management"],
+    href: "book/second-brain/html/index.html",
+    accent: "#a855f7",
+    glow: "rgba(168,85,247,0.18)",
+  },
+  {
+    icon: "🤖",
+    title: "深度學習實戰",
+    desc: "從數學直覺到 PyTorch 實作，系統理解 CNN、RNN 與 Transformer 三大架構",
+    tags: ["deep learning", "PyTorch", "AI"],
+    href: "book/dl_practice/html/index.html",
+    accent: "#ef4444",
+    glow: "rgba(239,68,68,0.18)",
+  },
 ];
 
 const TAG_COLOR = {
