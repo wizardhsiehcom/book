@@ -45,4 +45,5 @@ markdown_extensions:
 
 nav:
   - 用 LLM 把筆記蒸餾成書: README.md
+  - 用 Claude Code 把對話寫成筆記: claude-code-notes.md
   - 從 Fable 5 被管到該不該學資安: ai-access-security.md
