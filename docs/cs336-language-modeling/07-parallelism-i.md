@@ -156,10 +156,10 @@ Pipeline parallelism 切的是模型深度。假設有多層 MLP，rank 0 負責
 
 | 材料 | 狀態 |
 |---|---|
-| `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/lecture_07.py` | 已下載，待材料階段閱讀 |
-| `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/var/traces/lecture_07.json` | 已下載，待材料階段閱讀 |
-| `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/var/traces/lecture_07_stdout.txt` | 已下載，待材料階段閱讀 |
-| `data/Stanford CS336 Language Modeling from Scratch/code/assignment2-systems-main/` | 已下載，待材料階段閱讀 |
+| `data/cs336/lectures material/lecture_07.py` | 已下載，待材料階段閱讀 |
+| `data/cs336/lectures material/var/traces/lecture_07.json` | 已下載，待材料階段閱讀 |
+| `data/cs336/lectures material/var/traces/lecture_07_stdout.txt` | 已下載，待材料階段閱讀 |
+| `data/cs336/code/assignment2-systems-main/` | 已下載，待材料階段閱讀 |
 
 因此，本章目前只根據逐字稿建立初稿。程式細節、stdout 數字、trace 行為與 assignment API 需要在材料階段再核對。
 

@@ -4,7 +4,7 @@
 
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 5, GPUs, TPUs
-- 逐字稿檔案：`data/Stanford CS336 Language Modeling from Scratch/05 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 5： GPUs, TPUs.en.txt`
+- 逐字稿檔案：`data/cs336/transcripts/05_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_5_GPUs_TPUs.txt`
 - 完整閱讀範圍：第 1 行到第 2404 行
 - 總行數：2404
 - 本筆記限制：未使用網路搜尋，未加入逐字稿外部資料。講者提到的 Horace He、GPU Mode、TPU/GPU book、FlashAttention 論文、nanoGPT speed run 等，只作為逐字稿內部內容記錄，不外查補充。

@@ -110,8 +110,8 @@ draft token 數太少，浪費了 target 模型的批次處理能力；太多，
 
 此段只建立關聯，不提供作業解答。
 
-- Course material：Lecture 10 lecture code `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/lecture_10.py`，以及 trace `var/traces/lecture_10.json`。已下載，待材料階段閱讀。
+- Course material：Lecture 10 lecture code `data/cs336/lectures material/lecture_10.py`，以及 trace `var/traces/lecture_10.json`。已下載，待材料階段閱讀。
 - Assignment 關聯：本講對應 Assignment 2（Systems）due、Assignment 3（Scaling）out。Assignment 2 涉及 profiling/benchmark、Triton FlashAttention2 實作、記憶體效率的分散式訓練，與本章的 arithmetic intensity、記憶體頻寬分析工具直接相關。本章只整理能力要求與關聯，不提供作業解答。
-- 本地材料路徑：`data/Stanford CS336 Language Modeling from Scratch/code/assignment2-systems-main/`、`data/Stanford CS336 Language Modeling from Scratch/code/assignment3-scaling-main/`，已下載，待閱讀。
+- 本地材料路徑：`data/cs336/code/assignment2-systems-main/`、`data/cs336/code/assignment3-scaling-main/`，已下載，待閱讀。
 - 材料狀態：待材料階段閱讀。
 - 缺少的材料或 URL：講者多次引用的「Google scaling book」（transformer 與 inference 章節）是本講不少圖表與敘述的來源，但本地未見該材料，也沒有 URL，待使用者提供或後續材料階段查核。GQA、MLA/DeepSeek V2、CLA、剪枝、GPTQ、activation-aware quantization、Orca、vLLM/PagedAttention 等相關論文的正式標題、作者與連結，逐字稿中均未給出，需材料階段或外部補充階段查核。

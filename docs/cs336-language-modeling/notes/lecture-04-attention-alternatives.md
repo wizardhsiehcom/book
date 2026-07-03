@@ -5,7 +5,7 @@
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 4
 - 主題：Attention Alternatives 與 Mixture of Experts
-- 逐字稿檔案：`data/Stanford CS336 Language Modeling from Scratch/04 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 4： Attention Alternatives.en.txt`
+- 逐字稿檔案：`data/cs336/transcripts/04_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_4_Attention_Al.txt`
 - 完整閱讀範圍：第 1 行到第 2581 行
 - 總行數：2581 行
 - 外部資料：未使用；本筆記只依據逐字稿整理

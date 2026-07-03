@@ -1,6 +1,6 @@
 # PyTorch (einops)
 
-本章來源逐字稿：`data/Stanford CS336 Language Modeling from Scratch/02 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 2： PyTorch (einops).en.txt`
+本章來源逐字稿：`data/cs336/transcripts/02_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_2_PyTorch_eino.txt`
 
 完整閱讀筆記見：[Lecture 2 閱讀筆記](notes/lecture-02-pytorch-einops.md)。
 

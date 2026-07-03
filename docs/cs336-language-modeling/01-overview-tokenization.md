@@ -1,6 +1,6 @@
 # Overview, Tokenization：從效率視角看語言模型
 
-對應逐字稿：`data/Stanford CS336 Language Modeling from Scratch/01 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 1： Overview, Tokenization.en.txt`
+對應逐字稿：`data/cs336/transcripts/01_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_1_Overview_Tok.txt`
 
 本章已完整閱讀逐字稿，閱讀筆記見[Lecture 1 閱讀筆記](notes/lecture-01-overview-tokenization.md)。
 

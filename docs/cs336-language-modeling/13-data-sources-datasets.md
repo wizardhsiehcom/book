@@ -137,8 +137,8 @@ NVIDIA 的 Nemotron-CC 則反過來質疑 DCLM 過濾得太激進，丟掉太多
 
 此段只建立關聯，不提供作業解答。
 
-- Course material：`data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/lecture_13.py`，已下載，待材料階段閱讀。
-- 對應 trace：`data/Stanford CS336 Language Modeling from Scratch/var/traces/lecture_13.json`，已下載，待材料階段閱讀。
-- Assignment 關聯：Assignment 4（Data），已下載於 `data/Stanford CS336 Language Modeling from Scratch/code/assignment4-data-main/`，重點是把原始 Common Crawl dump 轉成可訓練的 pre-training 資料，並透過 filtering 與 deduplication 改善模型表現；本章只整理背景概念與能力要求，不提供作業解答。
+- Course material：`data/cs336/lectures material/lecture_13.py`，已下載，待材料階段閱讀。
+- 對應 trace：`data/cs336/lectures material/var/traces/lecture_13.json`，已下載，待材料階段閱讀。
+- Assignment 關聯：Assignment 4（Data），已下載於 `data/cs336/code/assignment4-data-main/`，重點是把原始 Common Crawl dump 轉成可訓練的 pre-training 資料，並透過 filtering 與 deduplication 改善模型表現；本章只整理背景概念與能力要求，不提供作業解答。
 - 材料狀態：待材料階段閱讀（尚未讀取 code、trace、assignment repo 的實際內容）。
 - 下一講（Lecture 14：Data: filtering, deduplication, mixing, synthetic data）將接續本章預告的 filtering 技術細節、去重方法、資料混比與 synthetic data 授權議題。

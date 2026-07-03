@@ -5,7 +5,7 @@
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 2
 - 主題：PyTorch、einops、resource accounting
-- 逐字稿：`data/Stanford CS336 Language Modeling from Scratch/02 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 2： PyTorch (einops).en.txt`
+- 逐字稿：`data/cs336/transcripts/02_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_2_PyTorch_eino.txt`
 - 完整閱讀範圍：第 1 行到第 2080 行
 - 外部資料：未使用。本文只根據逐字稿整理。
 

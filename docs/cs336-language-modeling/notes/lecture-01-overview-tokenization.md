@@ -2,7 +2,7 @@
 
 ## 基本資料
 
-- 對應逐字稿：`data/Stanford CS336 Language Modeling from Scratch/01 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 1： Overview, Tokenization.en.txt`
+- 對應逐字稿：`data/cs336/transcripts/01_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_1_Overview_Tok.txt`
 - 完整閱讀日期：2026-07-03
 - 閱讀範圍：逐字稿第 1 行到第 2152 行
 - 狀態：已完整讀完、已抽象、已成章

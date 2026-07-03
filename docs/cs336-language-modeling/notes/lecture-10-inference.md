@@ -4,7 +4,7 @@
 
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 10, Inference
-- 逐字稿檔案：`data/Stanford CS336 Language Modeling from Scratch/10 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 10： Inference.en.txt`
+- 逐字稿檔案：`data/cs336/transcripts/10_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_10_Inference.txt`
 - 完整閱讀範圍：第 1 行到第 2267 行（檔案總行數 2267 行）
 - 講者：逐字稿開頭提及「last time Tatsu talked about scaling laws」，本講由另一位講者（Percy，依 `cs336-materials-plan.md` 課程排程表對應 Lecture 10: Inference [Percy]）主講；逐字稿本身未再度自報姓名，此處姓名依材料計畫排程表推斷，非逐字稿內文直接證據。
 - 本筆記限制：未使用網路搜尋，未加入逐字稿外部資料。講者提及的「scaling book from Google」是本講許多圖表與敘述的引用來源，但本筆記未閱讀該書，僅記錄講者口頭提及的事實。
@@ -355,9 +355,9 @@ accept with probability min(1, Q(x) / P(x))
 
 此段只建立關聯，不提供作業解答。
 
-- Course material：Lecture 10 lecture code `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/lecture_10.py`；trace `var/traces/lecture_10.json`。皆已下載，待材料階段閱讀。
+- Course material：Lecture 10 lecture code `data/cs336/lectures material/lecture_10.py`；trace `var/traces/lecture_10.json`。皆已下載，待材料階段閱讀。
 - Assignment 關聯：依 `plan/cs336-materials-plan.md` 課程排程表，本講對應 Assignment 2 due、Assignment 3 out；Assignment 2（Systems）涉及 profiling、Triton FlashAttention2、記憶體效率分散式訓練，與本講的 arithmetic intensity、記憶體頻寬分析工具直接相關；Assignment 3（Scaling）與下一講的 scaling laws 更直接相關。本筆記未閱讀 Assignment 2/3 repo 內容，不展開細節。
-- 本地材料路徑：`data/Stanford CS336 Language Modeling from Scratch/code/assignment2-systems-main/`、`data/Stanford CS336 Language Modeling from Scratch/code/assignment3-scaling-main/`（皆已下載，待閱讀）。
+- 本地材料路徑：`data/cs336/code/assignment2-systems-main/`、`data/cs336/code/assignment3-scaling-main/`（皆已下載，待閱讀）。
 - 材料狀態：待材料階段閱讀（lecture code、trace、assignment repo 均尚未讀取內容）。
 - 缺少的材料或 URL：講者多次提到的「Google 的 scaling book（關於 transformer 與 inference 的章節）」是本講許多圖表與敘述的引用來源，但本地未見該材料，也沒有 URL；若要在書稿中更精確重現圖表或公式，需要使用者提供該書的檔案或連結。GQA 2023 論文、MLA/DeepSeek V2 論文、CLA 論文、NVIDIA 剪枝論文、GPTQ 論文、activation-aware quantization 論文、Orca 論文、vLLM/PagedAttention 論文的確切標題、作者與連結，逐字稿中均未給出，需材料階段或使用者提供。
 

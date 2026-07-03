@@ -35,7 +35,7 @@
 目前已偵測到你補充的材料：
 
 ```text
-data/Stanford CS336 Language Modeling from Scratch/
+data/cs336/
   code/
     assignment1-basics-main/
     assignment2-systems-main/
@@ -57,11 +57,11 @@ data/Stanford CS336 Language Modeling from Scratch/
 
 | 作業 | 主題 | 學習目標 | 對應章節 | 材料狀態 |
 |---|---|---|---|---|
-| Assignment 1 | Basics | 實作 tokenizer、model architecture、optimizer，訓練 minimal Transformer LM | 01-03、部分 06 | 已下載，待閱讀：`data/Stanford CS336 Language Modeling from Scratch/code/assignment1-basics-main/`；PDF：`cs336_assignment1_basics.pdf` |
-| Assignment 2 | Systems | profile/benchmark A1 模型與 layers；用 Triton 實作 FlashAttention2；建立 memory-efficient distributed training | 05-08、10 | 已下載，待閱讀：`data/Stanford CS336 Language Modeling from Scratch/code/assignment2-systems-main/`；PDF：`cs336_assignment2_systems.pdf` |
-| Assignment 3 | Scaling | 理解 Transformer 各元件；查詢 training API，fit scaling law 並做 scaling projection | 03、09、11 | 已下載，待閱讀：`data/Stanford CS336 Language Modeling from Scratch/code/assignment3-scaling-main/`；PDF：`cs336_assignment3_scaling.pdf` |
-| Assignment 4 | Data | 將 raw Common Crawl dumps 轉成 pretraining data；做 filtering 與 deduplication 改善模型 | 12-14 | 已下載，待閱讀：`data/Stanford CS336 Language Modeling from Scratch/code/assignment4-data-main/`；PDF：`cs336_assignment4_data.pdf` |
-| Assignment 5 | Alignment and Reasoning RL | 用 SFT 與 RL 訓練 LM 做數學推理；Optional Part 2 包含 DPO 等 safety alignment | 15-17 | 已下載，待閱讀：`data/Stanford CS336 Language Modeling from Scratch/code/assignment5-alignment-main/`；PDF：`cs336_spring2026_assignment5_alignment.pdf`、`cs336_spring2026_assignment5_supplement_safety_rlhf.pdf` |
+| Assignment 1 | Basics | 實作 tokenizer、model architecture、optimizer，訓練 minimal Transformer LM | 01-03、部分 06 | 已下載，待閱讀：`data/cs336/code/assignment1-basics-main/`；PDF：`cs336_assignment1_basics.pdf` |
+| Assignment 2 | Systems | profile/benchmark A1 模型與 layers；用 Triton 實作 FlashAttention2；建立 memory-efficient distributed training | 05-08、10 | 已下載，待閱讀：`data/cs336/code/assignment2-systems-main/`；PDF：`cs336_assignment2_systems.pdf` |
+| Assignment 3 | Scaling | 理解 Transformer 各元件；查詢 training API，fit scaling law 並做 scaling projection | 03、09、11 | 已下載，待閱讀：`data/cs336/code/assignment3-scaling-main/`；PDF：`cs336_assignment3_scaling.pdf` |
+| Assignment 4 | Data | 將 raw Common Crawl dumps 轉成 pretraining data；做 filtering 與 deduplication 改善模型 | 12-14 | 已下載，待閱讀：`data/cs336/code/assignment4-data-main/`；PDF：`cs336_assignment4_data.pdf` |
+| Assignment 5 | Alignment and Reasoning RL | 用 SFT 與 RL 訓練 LM 做數學推理；Optional Part 2 包含 DPO 等 safety alignment | 15-17 | 已下載，待閱讀：`data/cs336/code/assignment5-alignment-main/`；PDF：`cs336_spring2026_assignment5_alignment.pdf`、`cs336_spring2026_assignment5_supplement_safety_rlhf.pdf` |
 
 ## 課程排程與材料關聯
 

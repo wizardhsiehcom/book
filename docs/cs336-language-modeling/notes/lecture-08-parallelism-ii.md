@@ -4,7 +4,7 @@
 
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 8, Parallelism II
-- 逐字稿檔案：`data/Stanford CS336 Language Modeling from Scratch/08 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 8： Parallelism.en.txt`
+- 逐字稿檔案：`data/cs336/transcripts/08_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_8_Parallelism.txt`
 - 完整閱讀範圍：第 1 行到第 2407 行
 - 逐字稿總行數：2407
 - 閱讀狀態：已完整閱讀逐字稿。未讀投影片、assignment code、外部論文或網頁；相關內容僅依逐字稿中提到的資訊作佔位。
@@ -327,8 +327,8 @@ Lecture 8 把「從零實作」推到單機之外。前面章節若只寫出 Tra
 
 | 材料 | 本次狀態 | 備註 |
 |---|---|---|
-| `lecture_08.pdf` | 已下載，待材料階段閱讀 | 路徑：`data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/lecture_08.pdf`。本 worker 依指示未讀。 |
-| Assignment 2 code repo | 已下載，待材料階段閱讀 | 路徑：`data/Stanford CS336 Language Modeling from Scratch/code/assignment2-systems-main`。本 worker 依指示未讀。 |
+| `lecture_08.pdf` | 已下載，待材料階段閱讀 | 路徑：`data/cs336/lectures material/lecture_08.pdf`。本 worker 依指示未讀。 |
+| Assignment 2 code repo | 已下載，待材料階段閱讀 | 路徑：`data/cs336/code/assignment2-systems-main`。本 worker 依指示未讀。 |
 
 逐字稿中提到 assignment 會要求學生：
 

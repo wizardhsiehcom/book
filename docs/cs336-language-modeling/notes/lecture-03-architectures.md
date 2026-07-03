@@ -5,7 +5,7 @@
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 3
 - 主題：Architectures
-- 逐字稿檔案：`data/Stanford CS336 Language Modeling from Scratch/03 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 3： Architectures.en.txt`
+- 逐字稿檔案：`data/cs336/transcripts/03_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_3_Architecture.txt`
 - 完整閱讀範圍：第 1 行到第 2648 行
 - 總行數：2648 行
 - 外部資料：未使用；本筆記只根據逐字稿整理

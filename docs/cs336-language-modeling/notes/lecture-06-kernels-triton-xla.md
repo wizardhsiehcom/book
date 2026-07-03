@@ -4,7 +4,7 @@
 
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 6, Kernels, Triton, XLA
-- 逐字稿檔案：`data/Stanford CS336 Language Modeling from Scratch/06 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 6： Kernels, Triton, XLA.en.txt`
+- 逐字稿檔案：`data/cs336/transcripts/06_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_6_Kernels_Trit.txt`
 - 完整閱讀範圍：第 1 行到第 2275 行
 - 總行數：2275
 - 閱讀狀態：已完整閱讀逐字稿；未讀 lecture code、trace、assignment code repo，依任務要求僅列材料狀態。
@@ -223,9 +223,9 @@ row-major matrix 中，往下一列通常加上 column count，往右一欄加 1
 
 ## 相關作業與材料佔位
 
-- `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/lecture_06.py`：已下載，待材料階段閱讀。此 worker 依任務要求未讀、不整合。
-- `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/var/traces/lecture_06.json`：已下載，待材料階段閱讀；本 worker 未讀。
-- `data/Stanford CS336 Language Modeling from Scratch/code/assignment2-systems-main/`：已下載，待材料階段閱讀。此 worker 依任務要求未讀、不整合。
+- `data/cs336/lectures material/lecture_06.py`：已下載，待材料階段閱讀。此 worker 依任務要求未讀、不整合。
+- `data/cs336/lectures material/var/traces/lecture_06.json`：已下載，待材料階段閱讀；本 worker 未讀。
+- `data/cs336/code/assignment2-systems-main/`：已下載，待材料階段閱讀。此 worker 依任務要求未讀、不整合。
 
 ## 資訊不足與待補清單
 

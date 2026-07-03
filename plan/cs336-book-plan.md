@@ -1,6 +1,6 @@
 # CS336《Language Modeling from Scratch》成書計畫
 
-本計畫用來把 `data/Stanford CS336 Language Modeling from Scratch/` 內的 Stanford CS336 Spring 2026 課程逐字稿，整理成一本繁體中文的技術書。核心原則是：每一講都必須閱讀完整 `.en.txt` 逐字稿，從第一行到最後一行，不以片段、摘要、搜尋命中或抽樣段落代替完整閱讀。
+本計畫用來把 `data/cs336/` 內的 Stanford CS336 Spring 2026 課程逐字稿，整理成一本繁體中文的技術書。逐字稿位於 `data/cs336/transcripts/`（純文字、無 timestamp）。核心原則是：每一講都必須閱讀完整逐字稿，從第一行到最後一行，不以片段、摘要、搜尋命中或抽樣段落代替完整閱讀。
 
 ## 目標
 
@@ -112,7 +112,7 @@
 
 每一講按順序處理，流程固定：
 
-1. 開啟對應 `.en.txt`。
+1. 開啟 `data/cs336/transcripts/` 內對應的逐字稿 `.txt`。
 2. 從頭到尾完整閱讀，不跳段。
 3. 邊讀邊記錄：
    - 本講主問題

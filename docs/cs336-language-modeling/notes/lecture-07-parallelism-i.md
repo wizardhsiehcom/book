@@ -4,7 +4,7 @@
 
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 7, Parallelism
-- 逐字稿檔案：`data/Stanford CS336 Language Modeling from Scratch/07 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 7： Parallelism.en.txt`
+- 逐字稿檔案：`data/cs336/transcripts/07_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_7_Parallelism.txt`
 - 完整閱讀範圍：第 1 行到第 1980 行
 - 總行數：1980
 - 閱讀狀態：已完整閱讀逐字稿；本筆記未整合 lecture code、trace、stdout、assignment repo 或外部資料。
@@ -227,10 +227,10 @@ pipeline parallelism 通常比 tensor parallelism 更能忍受慢一點的 inter
 
 | 材料 | 狀態 | 本階段處理 |
 |---|---|---|
-| `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/lecture_07.py` | 已下載，待材料階段閱讀 | 未讀、不整合 |
-| `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/var/traces/lecture_07.json` | 已下載，待材料階段閱讀 | 未讀、不整合 |
-| `data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/var/traces/lecture_07_stdout.txt` | 已下載，待材料階段閱讀 | 未讀、不整合 |
-| `data/Stanford CS336 Language Modeling from Scratch/code/assignment2-systems-main/` | 已下載，待材料階段閱讀 | 未讀、不整合 |
+| `data/cs336/lectures material/lecture_07.py` | 已下載，待材料階段閱讀 | 未讀、不整合 |
+| `data/cs336/lectures material/var/traces/lecture_07.json` | 已下載，待材料階段閱讀 | 未讀、不整合 |
+| `data/cs336/lectures material/var/traces/lecture_07_stdout.txt` | 已下載，待材料階段閱讀 | 未讀、不整合 |
+| `data/cs336/code/assignment2-systems-main/` | 已下載，待材料階段閱讀 | 未讀、不整合 |
 
 逐字稿中與 Assignment 2 有關的線索：
 

@@ -4,7 +4,7 @@
 
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 11, Scaling Laws（本書視為 Scaling Laws II，承接 Lecture 9 Scaling Laws I）
-- 逐字稿檔案：`data/Stanford CS336 Language Modeling from Scratch/11 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 11：  Scaling Laws.en.txt`（檔名「Lecture 11：」後有兩個空格）
+- 逐字稿檔案：`data/cs336/transcripts/11_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_11_Scaling_Law.txt`（檔名「Lecture 11：」後有兩個空格）
 - 完整閱讀範圍：第 1 行到第 2355 行（檔案總行數）
 - 總行數：2355
 - 本筆記限制：未使用網路搜尋，未加入逐字稿外部資料。逐字稿中出現的人名與論文名（例如 Hessness/Hestness、Kaya、Tengyu、Percy、David、Jeremy Bernstein、Greg Yang、Will Held、StepFun、Kimi K2 等）皆可能有 ASR 轉寫誤差，本筆記只依講者口頭描述整理，不外查校正拼寫或出處。
@@ -288,7 +288,7 @@ eta_L ∝ 1 / fan_in
 
 ## 相關作業與材料佔位
 
-- Lecture 11 PDF：`data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/lecture_11.pdf` 已下載，待材料階段閱讀。
+- Lecture 11 PDF：`data/cs336/lectures material/lecture_11.pdf` 已下載，待材料階段閱讀。
 - Assignment 3（Scaling）code repo：已下載，待材料階段閱讀。逐字稿本身未在本講明確提及 Assignment 3 的細節（Lecture 9 才提到），本筆記不補充作業細節。
 - 待材料階段補齊：MiniCPM、DeepSeek LLM、StepFun 超參數論文、Muon 原始說明、μP 相關論文（Tensor Programs、Jeremy Bernstein 的 review、Cerebras-GPT）的確切公式、圖表與作者/機構名稱校正。
 

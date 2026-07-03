@@ -4,7 +4,7 @@
 
 - 課程：Stanford CS336 Language Modeling from Scratch, Spring 2026
 - 講次：Lecture 9, Scaling Laws I
-- 逐字稿檔案：`data/Stanford CS336 Language Modeling from Scratch/09 - Stanford CS336 Language Modeling from Scratch ｜ Spring 2026 ｜ Lecture 9： Scaling Laws.en.txt`
+- 逐字稿檔案：`data/cs336/transcripts/09_Stanford_CS336_Language_Modeling_from_Scratch_Spring_2026_Lecture_9_Scaling_Laws.txt`
 - 完整閱讀範圍：第 1 行到第 2390 行
 - 總行數：2390
 - 本筆記限制：未使用網路搜尋，未加入逐字稿外部資料。講者提到的 Kaplan、Rosenfeld、Chinchilla、Hessness、Hestness/Hessness、Hassabis、DataDecide、Epoch AI、Pearson and Song、Resolving Discrepancies in Compute Optimal Scaling of Language Models 等，只依逐字稿內容整理，未外查 bibliographic details。
@@ -280,7 +280,7 @@ B_crit ≈ E_min / S_min
 
 ## 相關作業與材料佔位
 
-- Lecture 9 PDF：`data/Stanford CS336 Language Modeling from Scratch/cs336_materials/lectures-main/lecture_09.pdf` 已下載，待材料階段閱讀。
+- Lecture 9 PDF：`data/cs336/lectures material/lecture_09.pdf` 已下載，待材料階段閱讀。
 - Assignment 3 code repo：已下載，待材料階段閱讀。
 - Assignment 3 逐字稿內部關聯：講者說 assignment 3 的部分內容會讓學生做出類似 data scaling law 的圖；本筆記未讀作業 repo，不補充細節。
 

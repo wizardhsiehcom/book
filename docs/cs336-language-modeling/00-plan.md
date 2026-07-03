@@ -34,12 +34,12 @@
 | 07 | Parallelism I | 初稿完成 |
 | 08 | Parallelism II | 初稿完成 |
 | 09 | Scaling Laws I | 初稿完成 |
-| 10 | Inference | 待完整閱讀 |
-| 11 | Scaling Laws II | 待完整閱讀 |
-| 12 | Evaluation | 待完整閱讀 |
-| 13 | Data: Sources and Datasets | 待完整閱讀 |
-| 14 | Data Pipeline and Quality | 待完整閱讀 |
-| 15 | Mid/Post-Training | 待完整閱讀 |
-| 16 | Post-Training: RLVR | 待完整閱讀 |
-| 17 | Alignment and Multimodality | 待完整閱讀 |
-| 18 | Guest Lecture: Dan Fu | 待完整閱讀 |
+| 10 | Inference | 初稿完成 |
+| 11 | Scaling Laws II | 初稿完成 |
+| 12 | Evaluation | 初稿完成 |
+| 13 | Data: Sources and Datasets | 初稿完成 |
+| 14 | Data Pipeline and Quality | 初稿完成 |
+| 15 | Mid/Post-Training | 初稿完成 |
+| 16 | Post-Training: RLVR | 初稿完成 |
+| 17 | Alignment and Multimodality | 初稿完成 |
+| 18 | Guest Lecture: Dan Fu | 初稿完成 |
