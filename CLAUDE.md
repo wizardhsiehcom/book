@@ -1,6 +1,7 @@
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file is the canonical source of project instructions for Claude Code, Codex, and Antigravity. Other agent entry points should stay thin and point back here.
 
 ## What this repo is
 
@@ -66,3 +67,4 @@ Use the `/mkdocs-create` command, or manually:
 | `/mkdocs-update` | Update or add pages to an existing book |
 | `/mkdocs-theme` | Change a book's MkDocs theme in `configs/<name>.yml` |
 | `/mkdocs-add-images` | Find Wikimedia Commons images and insert them into book pages with captions and credit entries |
+| `/sync-agent` | Synchronize Claude Code, Codex, and Antigravity project instructions and shared skills |

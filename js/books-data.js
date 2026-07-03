@@ -92,6 +92,15 @@ const BOOKS = [
     accent: "#ef4444",
     glow: "rgba(239,68,68,0.18)",
   },
+  {
+    icon: "🧩",
+    title: "CS336 語言模型從零開始",
+    desc: "逐講精讀 Stanford CS336 逐字稿，從 tokenization、架構、系統到 scaling、data 與 alignment",
+    tags: ["LLM", "systems", "AI infra"],
+    href: "book/cs336-language-modeling/html/index.html",
+    accent: "#14b8a6",
+    glow: "rgba(20,184,166,0.18)",
+  },
 ];
 
 const TAG_COLOR = {
@@ -106,6 +115,7 @@ const TAG_COLOR = {
   "CUDA":               { tc: "#fde047", tb: "rgba(253,224,71,0.08)",  te: "rgba(253,224,71,0.2)" },
   "NVIDIA":             { tc: "#86efac", tb: "rgba(134,239,172,0.08)", te: "rgba(134,239,172,0.2)" },
   "AI":                 { tc: "#c4b5fd", tb: "rgba(196,181,253,0.08)", te: "rgba(196,181,253,0.2)" },
+  "LLM":                { tc: "#5eead4", tb: "rgba(94,234,212,0.08)",  te: "rgba(94,234,212,0.2)" },
   "SMT":                { tc: "#fb923c", tb: "rgba(251,146,60,0.08)",  te: "rgba(251,146,60,0.2)" },
   "electronics manufacturing": { tc: "#fca5a5", tb: "rgba(252,165,165,0.08)", te: "rgba(252,165,165,0.2)" },
 };
