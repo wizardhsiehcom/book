@@ -1,0 +1,77 @@
+site_name: CS336 Language Modeling from Scratch 精讀筆記
+site_description: Stanford CS336 Spring 2026 課程逐字稿精讀整理
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/cs336-language-modeling
+site_dir: ../book/cs336-language-modeling/html
+use_directory_urls: false
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-plan.md
+  - 第一篇：起點與工具:
+      - Overview, Tokenization: 01-overview-tokenization.md
+      - PyTorch (einops): 02-pytorch-einops.md
+  - 第二篇：模型架構:
+      - Architectures: 03-architectures.md
+      - Attention Alternatives: 04-attention-alternatives.md
+  - 第三篇：訓練系統:
+      - GPUs, TPUs: 05-gpus-tpus.md
+      - Kernels, Triton, XLA: 06-kernels-triton-xla.md
+      - Parallelism I: 07-parallelism-i.md
+      - Parallelism II: 08-parallelism-ii.md
+  - 第四篇：規模、推論與評估:
+      - Scaling Laws I: 09-scaling-laws-i.md
+      - Inference: 10-inference.md
+      - Scaling Laws II: 11-scaling-laws-ii.md
+      - Evaluation: 12-evaluation.md
+  - 第五篇：資料與 post-training:
+      - "Data: Sources and Datasets": 13-data-sources-datasets.md
+      - Data Pipeline and Quality: 14-data-pipeline-quality.md
+      - Mid/Post-Training: 15-mid-post-training.md
+      - "Post-Training: RLVR": 16-post-training-rlvr.md
+  - 第六篇：對齊、多模態與延伸:
+      - Alignment and Multimodality: 17-alignment-multimodality.md
+      - "Guest Lecture: Dan Fu": 18-guest-lecture-dan-fu.md
+  - 附錄:
+      - 術語表: appendix-glossary.md
+      - 參考資料: appendix-references.md
