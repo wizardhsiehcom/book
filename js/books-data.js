@@ -75,6 +75,15 @@ const BOOKS = [
     glow: "rgba(168,85,247,0.18)",
   },
   {
+    icon: "🪟",
+    title: "CoPoS 面板級先進封裝筆記",
+    desc: "從 CoWoS 極限到 310×310mm 面板與玻璃基板——TSMC 次世代封裝的完整學習地圖",
+    tags: ["advanced packaging", "TSMC"],
+    href: "book/copos/html/index.html",
+    accent: "#ec4899",
+    glow: "rgba(236,72,153,0.18)",
+  },
+  {
     icon: "🤖",
     title: "深度學習實戰",
     desc: "從數學直覺到 PyTorch 實作，系統理解 CNN、RNN 與 Transformer 三大架構",

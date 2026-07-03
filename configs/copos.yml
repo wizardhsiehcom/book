@@ -1,0 +1,69 @@
+site_name: CoPoS 面板級先進封裝筆記：從 CoWoS 到玻璃基板時代
+site_description: CoPoS 專書（獨立主題）
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/copos
+site_dir: ../book/copos/html
+use_directory_urls: false
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+nav:
+  - 導讀: README.md
+  - 全書計畫地圖: 00-plan.md
+  - 一、前提知識:
+      - 先進封裝為什麼存在: 01-why-advanced-packaging.md
+      - 封裝基本流程與術語: 02-packaging-basics.md
+      - CoWoS 快速回顧: 03-cowos-recap.md
+      - 扇出型封裝與 FOPLP: 04-fan-out-and-foplp.md
+  - 二、CoPoS 核心:
+      - CoPoS 是什麼: 05-copos-overview.md
+      - 從圓到方：面板尺寸與利用率: 06-panel-geometry.md
+      - 玻璃基板: 07-glass-substrate.md
+      - 面板級製程挑戰: 08-panel-process-challenges.md
+  - 三、產業時程與供應鏈:
+      - TSMC 布局與時程: 09-tsmc-roadmap.md
+      - 供應鏈與競爭陣營: 10-supply-chain-competition.md
+  - 四、進階與展望:
+      - CoWoS、CoPoS、SoW-X 比較: 11-copos-vs-alternatives.md
+      - 未來展望: 12-future-outlook.md
+  - 附錄:
+      - 術語表: appendix-glossary.md
+      - 學習資源: appendix-references.md
