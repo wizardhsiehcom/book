@@ -1,0 +1,79 @@
+site_name: EE364a 凸優化 I 精讀筆記
+site_description: Stanford EE364a（Stephen Boyd）Convex Optimization I 逐字稿精讀整理
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/ee364a-convex-optimization
+site_dir: ../book/ee364a-convex-optimization/html
+use_directory_urls: false
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-plan.md
+  - 第一篇：凸優化基礎:
+      - 導論與凸優化總覽: 01-introduction.md
+      - 凸集: 02-convex-sets.md
+      - 凸函數: 03-convex-functions.md
+      - 保凸運算與擬凸性: 04-operations-and-quasiconvexity.md
+      - 對數凹性與凸優化問題: 05-log-concavity-and-convex-problems.md
+      - 具名凸優化問題類別: 06-convex-problem-classes.md
+  - 第二篇：對偶與多目標:
+      - 向量優化與對偶初步: 07-vector-optimization-and-duality.md
+      - 對偶問題、KKT 與敏感度: 08-dual-problem-kkt-sensitivity.md
+      - 對偶理論收尾與近似擬合: 09-duality-wrapup-and-approximation.md
+  - 第三篇：應用問題:
+      - 統計估計與強健近似: 10-statistical-estimation.md
+      - 實驗設計與幾何問題: 11-geometric-problems.md
+      - 幾何問題與數值線性代數基礎: 12-geometric-problems.md
+  - 第四篇：演算法基礎:
+      - 數值線性代數與無約束最小化: 13-numerical-linear-algebra-and-unconstrained-minimization.md
+      - 牛頓法: 14-newtons-method.md
+      - 等式約束最小化: 15-equality-constrained-minimization.md
+  - 第五篇：內點法與收尾:
+      - 障礙法: 16-barrier-method.md
+      - 障礙法理論複雜度與L1方法: 17-barrier-complexity-and-l1-methods.md
+      - L1啟發式演算法與矩陣秩最小化: 18-l1-heuristic.md
+  - 附錄:
+      - 術語表: appendix-glossary.md
+      - 參考資料: appendix-references.md
