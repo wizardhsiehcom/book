@@ -148,3 +148,9 @@ tile 版本則把 `x` 換成 tile 的局部最大值與局部和。這讓 softma
 六個基本技巧可以串成同一條線：避免 warp 內分歧、降低 precision、fusion 減少中間讀寫、recomputation 用算力換記憶體、coalescing 讓 DRAM 讀取整齊、tiling 讓資料在 shared memory 中重用。FlashAttention 則展示了這些技巧如何合成一個實際改變 LLM 訓練與推論效率的 kernel。
 
 對從零實作語言模型來說，本講的訊息很務實：不要只寫出數學上正確的模型，也要讓模型形狀、資料格式與核心操作符合硬體。真正的 scale 不只來自更大模型，也來自更有效地使用已經買到的每一分 compute。
+
+## 相關作業與材料
+
+- Course material：`data/cs336/lectures material/lecture_05.pdf`。狀態：已核對 PDF metadata / outline；投影片未完整閱讀。
+- Assignment 關聯：Assignment 2（`data/cs336/code/assignment2-systems-main/`）對應 profiling、benchmarking、memory accounting、mixed precision 與 single-GPU memory 的實作/分析範圍。狀態：已核對 README、PDF outline、測試介面；handout 未完整閱讀。
+- 本段只整理學習目標與章節關聯，不提供作業解答。

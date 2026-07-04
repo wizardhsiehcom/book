@@ -124,6 +124,12 @@ Pipeline parallelism 切的是模型深度。假設有多層 MLP，rank 0 負責
 - tensor parallelism 切 layer 內部 tensor，頻繁交換 activation。
 - pipeline parallelism 切 layers，靠 micro batches 填滿 pipeline。
 
+| 策略 | 切分對象 | 每張 GPU 持有 | 主要通訊 | 最適合解決 |
+|---|---|---|---|---|
+| Data parallelism | batch | 完整模型、本地資料分片 | gradient all reduce | 加速可放入單卡的模型訓練 |
+| Tensor parallelism | layer 內矩陣 / hidden 維度 | 參數與 activation 的一部分 | all gather / reduce scatter activation | 單層 tensor 太大或要用高速互連分攤 matmul |
+| Pipeline parallelism | layers / depth | 連續幾層模型 | activation send / receive | 模型深度或參數量超出單卡容量 |
+
 它們不是互斥的。大模型訓練常會組合使用：例如同一節點內做 tensor parallelism，節點間做 data parallelism 或 sharded data parallelism；必要時再加 pipeline parallelism 分散 layers。
 
 選擇策略時，要同時看記憶體與通訊：
@@ -150,18 +156,9 @@ Pipeline parallelism 切的是模型深度。假設有多層 MLP，rank 0 負責
 
 ## 相關作業與材料
 
-本講逐字稿提到 Assignment 2 會讓學生更實際地接觸 distributed communication 與 parallelism，尤其是 collective operations、不同 parallelization techniques 的組合，以及 communication / computation overlap。
-
-依本章 worker 階段規則，以下材料只列狀態，不閱讀、不整合：
-
-| 材料 | 狀態 |
-|---|---|
-| `data/cs336/lectures material/lecture_07.py` | 已下載，待材料階段閱讀 |
-| `data/cs336/lectures material/var/traces/lecture_07.json` | 已下載，待材料階段閱讀 |
-| `data/cs336/lectures material/var/traces/lecture_07_stdout.txt` | 已下載，待材料階段閱讀 |
-| `data/cs336/code/assignment2-systems-main/` | 已下載，待材料階段閱讀 |
-
-因此，本章目前只根據逐字稿建立初稿。程式細節、stdout 數字、trace 行為與 assignment API 需要在材料階段再核對。
+- Course material：`data/cs336/lectures material/lecture_07.py`；trace：`data/cs336/lectures material/var/traces/lecture_07.json`；stdout：`data/cs336/lectures material/var/traces/lecture_07_stdout.txt`。狀態：已核對 lecture README 與程式主流程；trace/stdout 未讀。
+- Assignment 關聯：Assignment 2（`data/cs336/code/assignment2-systems-main/`）對應 distributed communication、DDP、FSDP、optimizer state sharding 與 parallelism analysis 的實作/分析範圍。狀態：已核對 README、PDF outline、測試介面；handout 未完整閱讀。
+- 本段只整理學習目標與章節關聯，不提供作業解答。
 
 ## 小結
 

@@ -16,15 +16,24 @@
 
 把 HTML 轉成文字，本質上是一連串啟發式決策：要移除樣板（導覽列、廣告、頁首頁尾、選單），要抽取「內容」主體。但「什麼算內容」並非總是清楚——某些導覽元素或許正好能讓模型學到網頁長什麼樣子；圖片與表格又該如何處理？這裡有一個根本的張力：HTML 在結構上是階層的、在渲染後是視覺的，而我們卻要把它壓成一串線性 token，這個線性化過程天生有損。表格尤其棘手：簡單表格還能用 Markdown 渲染，巢狀表格就只能在某個點放棄或近似。
 
-因為要快、又不需要太多「智慧」，HTML 轉文字幾乎都是 rule-based。講者也留了一個伏筆：這一步未來或許有 model-based 介入的空間，但前提是模型必須極快、又真的能做得更聰明。不論如何，任何規則式處理都有失敗率，所以資料裡永遠有瑕疵；而工具的準確度確實會影響下游品質——延續上一章的結論，resiliparse（逐字稿轉寫為 "Brazilia parse"，存疑）、Trafilatura 這類工具在 DCLM 的評測上優於 common crawl 官方的 WAT 轉換。
+因為要快、又不需要太多「智慧」，HTML 轉文字幾乎都是 rule-based。講者也留了一個伏筆：這一步未來或許有 model-based 介入的空間，但前提是模型必須極快、又真的能做得更聰明。不論如何，任何規則式處理都有失敗率，所以資料裡永遠有瑕疵；而工具的準確度確實會影響下游品質——延續上一章的結論，resiliparse、Trafilatura 這類工具在 DCLM 的評測上優於 common crawl 官方的 WAT 轉換。
 
-PDF 是另一種值得單獨一提的格式。Hugging Face 有一份叫 FinePDFs（逐字稿轉寫為 "find PDFs"，存疑）的資料集專門處理它。PDF 有幾個特點：一是 common crawl 裡的 PDF 常被截斷（PDF 檔很大），逼得你必須 re-crawl；二是很多 PDF 其實是掃描檔，等同影像，要跑 OCR 或用 VLM，成本遠高於處理純文字；三是 PDF 由設計就是「關於版面」的，保留了 layout 卻丟失語意結構（HTML 有 H1、P 這些標籤可用，PDF 沒有）。代價這麼高，為什麼還要處理 PDF？因為它雖然只占整個網路的一小部分，平均品質卻明顯高於一般網頁——一個人願意費工做成 PDF，通常代表他真的有些東西想說。
+PDF 是另一種值得單獨一提的格式。Hugging Face 有一份叫 FinePDFs 的資料集專門處理它。PDF 有幾個特點：一是 common crawl 裡的 PDF 常被截斷（PDF 檔很大），逼得你必須 re-crawl；二是很多 PDF 其實是掃描檔，等同影像，要跑 OCR 或用 VLM，成本遠高於處理純文字；三是 PDF 由設計就是「關於版面」的，保留了 layout 卻丟失語意結構（HTML 有 H1、P 這些標籤可用，PDF 沒有）。代價這麼高，為什麼還要處理 PDF？因為它雖然只占整個網路的一小部分，平均品質卻明顯高於一般網頁——一個人願意費工做成 PDF，通常代表他真的有些東西想說。
 
 ### 過濾：一個統一的框架
 
 轉換完成後，你離「可用」還很遠。下一道工序是 filtering，而講者刻意用一個抽象框架來統攝所有過濾：
 
 你有一小批**高品質的 target 資料**（你想要的樣子），以及一大批剛轉換出來的 **raw 資料**。目標是在 raw 裡找出「與 target 相似」的子集。幾乎所有過濾都能塞進這個骨架。
+
+```mermaid
+flowchart LR
+    A["target 資料<br/>少量、高品質"] --> C["訓練 scoring function<br/>KenLM / fastText / 小分類器"]
+    B["raw 資料<br/>大量、雜訊高"] --> C
+    C --> D["替 raw 文件打分"]
+    D --> E["依門檻或機率保留"]
+    E --> F["filtered training subset"]
+```
 
 過濾的理由主要有三種：語言辨識（訓練英文模型就濾掉非英文）、品質過濾（最主要的目的，要百科等級的內容而非垃圾與 spam）、毒性過濾（網路上不乏惡意內容，你可能不想讓模型學）。
 
@@ -41,10 +50,10 @@ PDF 是另一種值得單獨一提的格式。Hugging Face 有一份叫 FinePDFs
 
 「品質」沒有普世定義——它是一個工具,你想要什麼就把品質定義成什麼。講者用幾個實例把這個框架具象化:
 
-- **要數學,就抓數學**:OpenMathText（逐字稿口述,2023,存疑）用了多步 pipeline:先用規則判斷是否含 LaTeX 指令,再用 KenLM(在已知的數學資料集 proof pile 上訓練)看 perplexity 是否夠低,再訓練一個 fastText 分類器判斷「是否為數學寫作」;含 LaTeX 者用較低門檻、不含者用較高門檻。最終得到 150 億 token,訓出的模型在數學上勝過用 20 倍未過濾資料訓練的模型。
+- **要數學,就抓數學**:OpenWebMath 用了多步 pipeline:先用規則判斷是否含 LaTeX 指令,再用 KenLM(在已知的數學資料集 proof pile 上訓練)看 perplexity 是否夠低,再訓練一個 fastText 分類器判斷「是否為數學寫作」;含 LaTeX 者用較低門檻、不含者用較高門檻。最終得到約 147 億 token,訓出的模型在數學上勝過用 20 倍未過濾資料訓練的模型。
 - **GPT-3**:正例是 Wikipedia、WebText(高 karma Reddit 貼文外連的頁面)與一些書,負例從一般網路抽樣,訓練線性分類器保留高分文件。
 - **Llama 1**:正例是「被 Wikipedia 引用的頁面」而非 Wikipedia 條目本身。
-- **phi 系列**(逐字稿稱 "51 from Microsoft",判為 phi-1,存疑):這個例子特別能展示框架的彈性。它的 raw 是 the Stack 的 Python 子集;target 不是現成資料,而是**昂貴分類器的輸出**——定義一個 prompt「判斷 educational value」,用 GPT-4 對 raw 的 10 萬份子集分類,把正例當成 target,再訓練一個較便宜的分類器(他們用 random forest,也可用 fastText),最後套用到全體。這是「用貴模型造 target、再蒸餾成便宜過濾器」的典型套路。
+- **phi-1**:這個例子特別能展示框架的彈性。它的 raw 是 the Stack 的 Python 子集;target 不是現成資料,而是**昂貴分類器的輸出**——定義一個 prompt「判斷 educational value」,用 GPT-4 對 raw 的 10 萬份子集分類,把正例當成 target,再訓練一個較便宜的分類器(他們用 random forest,也可用 fastText),最後套用到全體。這是「用貴模型造 target、再蒸餾成便宜過濾器」的典型套路。
 - **毒性過濾**同理:Jigsaw toxic comments 資料集源自一個「幫助人們在線上有更好討論」的專案,資料是 Wikipedia 的 talk page(爭議主題常吵得很兇),標註了哪些留言有毒,據此定義正負例訓練分類器。
 
 小結這一段的 recipe:先弄清楚「好資料長什麼樣」——可以是「我發現一份很喜歡的資料集,想要更多同類」,也可以是「我寫一個 prompt 讓 LLM 幫我初步篩一大池,再用篩出的好料訓練小分類器外推」——然後訓練一個輕量分類器,套遍你的 web crawl。
@@ -115,7 +124,7 @@ flowchart LR
     T --> H["相似度高於閾值<br/>→ 碰撞機率拉到接近 1"]
 ```
 
-兩個旋鈕的作用要記牢:**增大 r** 讓曲線變陡並**右移**(band 內要相符的 hash 更多,更難匹配);**增大 b** 讓曲線**左移**(band 更多、機會更多,更易匹配)。相變點大約落在 `s = (1/b)^(1/r)`,該點碰撞機率約 0.64(講者口述近似)。你可以把 b、r 調到讓相變任意陡,但代價是計算變貴。講者引的一篇去重論文用了 `b = 20、r = 450`(存疑,口述數字)給你一個量級感。這整套方法叫 **MinHash LSH**——LSH 對任何 hash 都適用,而語言模型去重用的是能逼近 Jaccard 的 MinHash。
+兩個旋鈕的作用要記牢:**增大 r** 讓曲線變陡並**右移**(band 內要相符的 hash 更多,更難匹配);**增大 b** 讓曲線**左移**(band 更多、機會更多,更易匹配)。相變點大約落在 `s = (1/b)^(1/r)`,該點碰撞機率約 0.64(講者口述近似)。你可以把 b、r 調到讓相變任意陡,但代價是計算變貴。講者引的去重論文設定用了 `n = 9000, b = 20, r = 450` 給你一個量級感。這整套方法叫 **MinHash LSH**——LSH 對任何 hash 都適用,而語言模型去重用的是能逼近 Jaccard 的 MinHash。
 
 最後一個實務提醒:去重常常只在單一資料集內部做,但**你必須跨整個資料集去重**,因為不同資料源之間常有冗餘。這件事常被忽略,但應該做。
 
@@ -140,7 +149,7 @@ flowchart LR
 
 也就是說,你只是定義了一個分布、然後取樣,卻在不知不覺中對高品質源做了 50 個 epoch。這已經害一些大型訓練 run 出過事。教訓非常直接:**別只盯著資料的品質與分布,一定要回頭看你實際在每個源上跑了幾個 epoch**——最壞是浪費 compute,更糟是過擬合。
 
-這問題很早就被注意到。UniMax(逐字稿轉寫,存疑)在多語言訓練情境下提出解法:過去有人把 proportional 取樣「開個次方」來壓平分布,UniMax 則更明確——**均勻取樣,但對每個源的 epoch 數設硬上限(cap)**。形式上要求 `P(源) × 訓練 token 數 ≤ cap`;跑到上限就「太可惜了,沒得再拿」,換下一個。這等於一張安全網。
+這問題很早就被注意到。UniMax 在多語言訓練情境下提出解法:過去有人把 proportional 取樣「開個次方」來壓平分布,UniMax 則更明確——**均勻取樣,但對每個源的 epoch 數設硬上限(cap)**。形式上要求 `P(源) × 訓練 token 數 ≤ cap`;跑到上限就「太可惜了,沒得再拿」,換下一個。這等於一張安全網。
 
 ### 回歸式混比:用小模型群外推最優配比
 
@@ -176,9 +185,9 @@ flowchart TB
 幾個例子勾勒出這條線的演進:
 
 - **OpenThoughts**:因 o1 帶起的推理熱潮(數學、科學為主)而生,最終約 120 萬 examples。有幾個反直覺發現:**更強的模型不一定是更好的 teacher**——QwQ-32B(如今已算又老又小)竟是比 DeepSeek R1(當時最強開放模型之一)更好的 teacher;**多次 generation**(如每題 16 次)有幫助,而堆更多來源幫助有限;基本的答案過濾也沒幫助。所以 120 萬是 examples 數,除以 16 才是實際題數。
-- **SWE-Smith**(逐字稿轉寫,存疑):瞄準 agentic coding——不只會寫程式,而是能做軟體開發。給定一個 repo,用 LLM agent 自動把它弄到可用(裝依賴等),再生成任務(例如改動程式碼、植入 bug),經驗證後得到任務實例;是合成任務,但約 5 萬個(去年當時算大)。
-- **SWE-zero**(逐字稿轉寫,存疑,NVIDIA):觀察到多數 GitHub repo 根本跑不起來、依賴地獄,尤其回滾到 PR 當時的狀態更糟。他們發現模型已強到**不需執行回饋**也能解不少任務(允許執行約 80 分、不允許約 70 分),於是不必為每個 repo 準備 docker image,就生成了約 30 萬條 agent trajectory,且全是真實 GitHub PR(不像 SWE-Smith 是合成任務)。他們用 OpenHands scaffold,並花不少工夫**防 agent hacking**(例如指示 agent「不能執行 Python,只能用 sed、grep 等基本操作」),再從大 coding 模型蒸餾、過濾掉硬要執行的軌跡;另備 13k 需執行回饋的軌跡,先在 zero 上微調再在後者上微調。
-- **後續擴充**:同一思路可擴到約 1200 萬條 agent trajectory(存疑);因為 zero 不挑「能否執行」,像 rebench(存疑)任務裡只有 32,000 可執行、120 不可執行,zero 兩者都能用,自然易於放大。
+- **SWE-smith**:瞄準 agentic coding——不只會寫程式,而是能做軟體開發。給定一個 repo,用 LLM agent 自動把它弄到可用(裝依賴等),再生成任務(例如改動程式碼、植入 bug),經驗證後得到任務實例;是合成任務,但約 5 萬個(去年當時算大)。
+- **SWE-ZERO / SWE-HERO**:觀察到多數 GitHub repo 根本跑不起來、依賴地獄,尤其回滾到 PR 當時的狀態更糟。他們發現模型已強到**不需執行回饋**也能解不少任務(允許執行約 80 分、不允許約 70 分),於是不必為每個 repo 準備 docker image,就生成了約 30 萬條 agent trajectory,且全是真實 GitHub PR(不像 SWE-smith 是合成任務)。他們用 OpenHands scaffold,並花不少工夫**防 agent hacking**(例如指示 agent「不能執行 Python,只能用 sed、grep 等基本操作」),再從大 coding 模型蒸餾、過濾掉硬要執行的軌跡;另備 13k 需執行回饋的軌跡,先在 zero 上微調再在後者上微調。
+- **後續擴充**:同一思路可擴到更大規模的 agent trajectory；因為 zero 不挑「能否執行」,像 SWE-rebench V2 任務裡有 32,000+ 可執行任務與 120,000+ 帶安裝說明的額外任務,zero 兩者都能用,自然易於放大。
 
 一句話收束:資料集正變得越來越精緻——從 environment-free 的數學,到 coding,再到規模暴增的 agentic coding。共同結構是 prompts(全合成 / 半合成 / 真實環境的取捨)+ 出自強模型且是「好老師」的 responses,而 code 環境本身就是個大麻煩,充滿本講沒時間展開的過濾與細節。
 
@@ -222,3 +231,9 @@ flowchart TB
 - regression-based mixing 用小 proxy 模型群擬合「mixture→loss」再最佳化外推,思路類似 scaling laws,但要警惕外推到分布極端、小到大不轉移、以及用 downstream eval 當 target 的過擬合。
 - 後訓練資料任務導向、以合成為主:定義 environments + tasks,由強 teacher 產生 responses;agentic coding 資料集(OpenThoughts、SWE-Smith、SWE-zero 等)規模快速膨脹,且「更強的模型不必然是更好的 teacher」。
 - 貫穿全章的心智模型:每一步都是 tradeoff、沒有唯一正解;真實資料工作 grungy 且 domain-specific,本章提供的是框架而非全貌。
+
+## 相關作業與材料
+
+- Course material：`data/cs336/lectures material/lecture_14.py`；trace：`data/cs336/lectures material/var/traces/lecture_14.json`。狀態：已核對 lecture README 與程式主流程；trace 未讀。
+- Assignment 關聯：Assignment 4（`data/cs336/code/assignment4-data-main/`）對應 HTML-to-text、language identification、PII masking、toxicity/quality filtering、Gopher quality rules、exact line deduplication、MinHash + LSH document deduplication，以及過濾後資料的 LM training 範圍。狀態：已核對 README、PDF outline、測試介面；handout 未完整閱讀。
+- 本段只整理學習目標與章節關聯，不提供作業解答。

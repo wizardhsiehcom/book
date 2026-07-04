@@ -1,14 +1,16 @@
-# Guest Lecture: Dan Fu
+# 推論系統延伸：Dan Fu 客座講座
 
 ## 導讀
 
 這門課大部分時間在教你怎麼「訓練」一個語言模型——資料、架構、最佳化、flash attention、scaling laws。這場客座講座把鏡頭轉到另一面：當你手上真的有了一個模型之後，要怎麼把它 serve 出去、做 inference，把 GPU 裡的電力變成一個個 token、變成能回話的智慧？講者以自己橫跨學術實驗室與 AI 雲端服務的經驗，帶讀者走過「一個 token 的一生」，再深入兩個由 serving 實務啟發的研究專案。
 
+閱讀定位上，本章不是第 17 章多模態主題的直接續篇，而是回扣[第 10 章推論](10-inference.md)與[第 6 章 kernel](06-kernels-triton-xla.md)的系統延伸。若讀者想先建立背景，應先回看 prefill/decode、KV cache、GPU kernel 與 FlashAttention 的工程脈絡，再讀本章的 serving 與 mega kernel 案例。
+
 講者用一個歷史類比定調：1902 年的曼哈頓有十三萬匹工作用馬，牠們每天製造的糞便嚴重到要開學術會議討論，1898 年那場會議的結論卻是「無解，只能捏著鼻子忍」——然而僅僅十年後，汽車數量就超過了馬。對語言模型而言，那個「1912 時刻」大約發生在最近一兩年。而驅動這場新工業革命的燃料是 GPU，是投入以千億美元計的算力。但石油要有引擎才有用：inference engine 與底層的 GPU kernel，就是把 GPU 這堆「沙子」變成可用智慧的引擎。
 
 因此本章真正的主張只有一句：**如果你深入理解 inference 與底層 kernel，就能打通從演算法到硬體的 full-stack 創新。** 一個 ML 模型本質上只是「存在於以太中的運算 DAG」，真正需要被 programming、被 map 到硬體上的，是 inference engine 與 kernel。本章先建立 inference 系統的全貌與工程直覺，再以 mega kernel 與 loop transformer（Parse）兩個案例，示範這種「由 serving 反推研究問題」的思路。
 
-（關於講者身分：本章逐字稿標題與內容一致指向 Dan Fu，且講座主題與其研究方向相符；課程排程另有一處待主控核對的對應問題，此處一律以逐字稿實際內容為準。部分專有名詞為語音轉寫，疑似誤轉者於文中以「存疑」標註，待後續材料階段核對，不自行修正或編造。）
+（關於講者身分：本章逐字稿標題與內容一致指向 Dan Fu，且講座主題與其研究方向相符；課程排程另有一處待主控核對的對應問題，此處一律以逐字稿實際內容為準。部分專有名詞為語音轉寫，疑似誤轉且尚未查核者於文中以「存疑」標註，不自行修正或編造。）
 
 ## 核心內容
 
@@ -33,7 +35,7 @@ flowchart LR
 
 理解 inference 的關鍵，是分清 prefill 與 decode。**Prefill** 是一次處理整段還沒看過的 prompt——例如一萬個 token 進、一個 token 出。它非常 compute-bound，其實很像訓練時的 forward pass（只是不做 backward），能把 GPU 的 flops 吃滿。**Decode** 則是逐 token 生成：每生一個 token，都得把整個模型權重重新載入一次跑過。它需要的 flops 其實不多，卻極度受記憶體頻寬限制——等於把一台大規模平行機器，硬生生變成「一個華麗的記憶體搬運工」。
 
-兩者在時間上也不對稱：單次 prefill 通常比單一 decode step 久，但一個 prompt 只 prefill 一次，之後每生一個 token 就要 decode 一次，所以 decode step 的數量遠多得多。正因為 compute 特性南轅北轍，實務上會把 prefill 與 decode specialize 到不同的 workers、甚至不同硬體上。這也解釋了硬體市場的一些動作：GPU 之王 Nvidia 收購了做 LPU 的 Groq（逐字稿轉寫為 Grock/Gro，存疑），計畫下一代用 GPU 跑 prefill、用 LPU 跑 decode；OpenAI 與更擅長 decode 的 Cerebras 合作；SambaNova（逐字稿 Sabbonova，存疑）等公司也在這條光譜上各自下注。
+兩者在時間上也不對稱：單次 prefill 通常比單一 decode step 久，但一個 prompt 只 prefill 一次，之後每生一個 token 就要 decode 一次，所以 decode step 的數量遠多得多。正因為 compute 特性南轅北轍，實務上會把 prefill 與 decode specialize 到不同的 workers、甚至不同硬體上。這也解釋了硬體市場的一些動作：GPU 之王 Nvidia 與做 LPU 的 Groq 在 inference 領域產生合作或收購傳聞（具體交易細節待補），計畫下一代用 GPU 跑 prefill、用 LPU 跑 decode；OpenAI 與更擅長 decode 的 Cerebras 合作；SambaNova 等公司也在這條光譜上各自下注。
 
 ### KV cache 與記憶體階層：一個老派的作業系統問題
 
@@ -57,7 +59,7 @@ flowchart LR
 
 Decode 的根本困境前面說過：要跑完整個模型只為生一個 token，把平行機器變成記憶體搬運工。雪上加霜的是我們寫 kernel 的慣常方式——「一個 operation 配一個 kernel」（norm kernel、map kernel、attention kernel……）。這樣好寫，卻在系統裡塞進大量 downtime：kernel launch 與 teardown 的大空檔、tail effect（一批輸入裡有短有長，就得等最長的做完），以及跨多個 kernel 執行時彼此之間會累加的 gap。把 GPU 上一百多個 streaming multiprocessor（H100 約 132 個、B200 約 148 個）的時間軸畫出來，會看到許多在空等的縫隙。
 
-**Mega kernel** 的想法是：不再一個 operation 一個 kernel，而是用單一 kernel 涵蓋多個 operation——這是 flash attention 那種 fusion 的更激進版本，跨越更多運算。它把 GPU 從「一台跑單一 operation 的裝置」，重新想像成「一個大型分散式系統」：我有一大堆工作、彼此有依賴關係，該怎麼排程、怎麼分配才能讓 GPU 利用率最大化。光是把 attention inference kernel 這樣處理，就有 30% 到 70% 的加速；推到整個模型層時，各運算會以奇特的方式 overlap——例如把下一層的 weight load 疊到這一層的 attention 上、在 QKV+rope 還沒算完時就先把 KV cache 載進 attention、在 attention 還沒結束時就先讓 O projection 開始載入權重。這套實作以 CUDA 打造，用 instruction-based 的抽象讓每個 subkernel 各自成檔，再靠一個 virtualized shared memory 系統來 orchestrate，底層 kernel library 叫 **Thunderkittens**（類似 Triton，但更 low-level、控制更細）。成果是逼近「光速」的 decode：在 H100 上達到 72% 的記憶體頻寬利用率，已相當接近該運算的物理極限。這一段的 takeaway 是：對 kernel 與硬體有夠深的控制，就能開啟很不一樣的 compute paradigm，而這些機會只有真正深入玩 inference 才看得見。
+**Mega kernel** 的想法是：不再一個 operation 一個 kernel，而是用單一 kernel 涵蓋多個 operation——這是 flash attention 那種 fusion 的更激進版本，跨越更多運算。它把 GPU 從「一台跑單一 operation 的裝置」，重新想像成「一個大型分散式系統」：我有一大堆工作、彼此有依賴關係，該怎麼排程、怎麼分配才能讓 GPU 利用率最大化。光是把 attention inference kernel 這樣處理，就有 30% 到 70% 的加速；推到整個模型層時，各運算會以奇特的方式 overlap——例如把下一層的 weight load 疊到這一層的 attention 上、在 QKV+rope 還沒算完時就先把 KV cache 載進 attention、在 attention 還沒結束時就先讓 O projection 開始載入權重。這套實作以 CUDA 打造，用 instruction-based 的抽象讓每個 subkernel 各自成檔，再靠一個 virtualized shared memory 系統來 orchestrate，底層 kernel library 叫 **ThunderKittens**（類似 Triton，但更 low-level、控制更細）。成果是逼近「光速」的 decode：在 H100 上達到 72% 的記憶體頻寬利用率，已相當接近該運算的物理極限。這一段的 takeaway 是：對 kernel 與硬體有夠深的控制，就能開啟很不一樣的 compute paradigm，而這些機會只有真正深入玩 inference 才看得見。
 
 ```mermaid
 flowchart TB
@@ -118,3 +120,10 @@ Inference 的每一步幾乎都是取捨，而非唯一正解。**Prefill 與 de
 - Parse 用 loop/recurrent transformer 追求參數效率，並以 SSM 理論分析 residual 的動力系統、約束 A/B 矩陣的 spectral radius 小於 1 來穩定訓練，換到更穩且更好的模型。
 - Parse 的 scaling law 顯示：在參數固定下增加資料時，也應同步增加 recurrence；params、data、recurrence 三者應一起 scale，而今日模型 recurrence 為零，可能還有改進空間。
 - 全講的方法論一以貫之：從真實 serving 的觀察出發，反推出可做的研究問題——無論是新的 routing 演算法、新的 kernel，還是新的架構。
+
+## 相關作業與材料
+
+- Course material：待補。本地 `data/cs336/lectures material/` 未見 `lecture_18.*` 或 Dan Fu guest lecture 專用材料。
+- Assignment 關聯：排程表標示 Assignment 5 due；本章內容實質銜接推論、kernel 與 serving systems，未從本地 A5 README/PDF outline 確認直接作業實作範圍。
+- 待補：若有 guest lecture slides/code、ThunderKittens / mega kernel / Parse 相關本地材料，需使用者提供路徑。
+- 本段只整理學習目標與章節關聯，不提供作業解答。

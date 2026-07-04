@@ -74,3 +74,9 @@ Attention softmax 則常用 QK norm。標準 attention 會把 Q 與 K 做 dot pr
 Lecture 3 給出一個現代 decoder-only language model 的實作基準：使用 residual stream 外的 normalization，通常採 pre-norm；用 RMSNorm 取代完整 LayerNorm；移除不必要 bias；FFN 採 SwiGLU 或其他 GLU 類 activation；用 RoPE 在 Q/K 中加入相對位置；選擇落在共識區間的 FFN ratio、head dimension、depth-width ratio 與 vocabulary size；視需求加入 QK norm、Z-loss 等穩定性技巧；推論導向模型則多半使用 GQA；長上下文模型則常混合 full attention 與 sliding window attention。
 
 這些選擇不是唯一能訓練語言模型的方式，但它們代表目前從零實作時最合理的起點。更重要的是，本講示範了一種讀模型報告的方法：不要只記每個模型用了什麼，而要問哪些選擇反覆出現、哪些選擇仍在變動、哪些改動是為了表徵能力、哪些是為了硬體效率、哪些又是為了訓練穩定與推論成本。
+
+## 相關作業與材料
+
+- Course material：`data/cs336/lectures material/lecture_03.pdf`。狀態：已核對 PDF metadata / outline；投影片未完整閱讀。
+- Assignment 關聯：Assignment 1（`data/cs336/code/assignment1-basics-main/`）對應 Transformer LM、RMSNorm、RoPE、attention、FFN、optimizer 與 training loop 的實作範圍；Assignment 3（`data/cs336/code/assignment3-scaling-main/`）對應把模型設定放入 scaling experiment 的範圍。狀態：已核對 README、PDF outline、測試/API 檔案；handout 未完整閱讀。
+- 本段只整理學習目標與章節關聯，不提供作業解答。

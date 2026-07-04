@@ -9,9 +9,13 @@ CS336 的核心不是「知道 Transformer 是什麼」而已，而是從 tokeni
 1. 先讀[全書地圖](00-plan.md)，掌握課程如何把語言模型拆成可實作的堆疊。
 2. 依章節順序閱讀。每章都會標註對應的完整逐字稿。
 3. 遇到術語時可回到[術語表](appendix-glossary.md)。
-4. 外部資料只會在逐字稿初稿完成後補入，並集中整理於[參考資料](appendix-references.md)。
+4. 想理解 lecture code、slides、trace 與圖表素材時，看[課程材料索引](appendix-materials.md)。
+5. 想知道作業訓練哪些能力時，看[作業與能力檢核](appendix-coursework.md)；該附錄不提供作業解答。
+6. 課務規則、AI policy、late days 與算力提示集中在[課務與算力資訊](appendix-course-admin.md)。
+7. 外部資料只會在逐字稿初稿完成後補入，並集中整理於[參考資料](appendix-references.md)。
 
 ## 目前進度
 
-已完成 Lecture 1 的完整逐字稿閱讀、抽象筆記與第一章初稿。其餘章節先保留為待寫頁，等逐講完整閱讀後再補。
+18 講逐字稿已全部整理成章，並已完成課程材料與 Assignment 1-5 的「關聯層」整理。每章的「相關作業與材料」段落只記錄本地路徑、學習目標、實作範圍與材料狀態，不提供作業解答；完整材料入口集中在三個附錄頁。
 
+目前進入全書整合階段：第 17 章與第 18 章的章節定位、跨章連結、核心 references 與材料索引已完成第一輪；剩餘工作集中在少數 ASR 存疑名詞、Lecture 18 guest lecture 材料，以及圖像授權 / caption 查核。

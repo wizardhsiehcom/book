@@ -69,9 +69,12 @@ nav:
       - Data Pipeline and Quality: 14-data-pipeline-quality.md
       - Mid/Post-Training: 15-mid-post-training.md
       - "Post-Training: RLVR": 16-post-training-rlvr.md
-  - 第六篇：對齊、多模態與延伸:
-      - Alignment and Multimodality: 17-alignment-multimodality.md
-      - "Guest Lecture: Dan Fu": 18-guest-lecture-dan-fu.md
+  - 第六篇：多模態與推論延伸:
+      - 多模態與表示對齊: 17-alignment-multimodality.md
+      - 推論系統延伸：Dan Fu 客座講座: 18-guest-lecture-dan-fu.md
   - 附錄:
       - 術語表: appendix-glossary.md
       - 參考資料: appendix-references.md
+      - 課程材料索引: appendix-materials.md
+      - 作業與能力檢核: appendix-coursework.md
+      - 課務與算力資訊: appendix-course-admin.md
