@@ -3,6 +3,9 @@ book/*/html/
 newbook/book/*/html/
 newbook/site/
 
+# macOS metadata
+.DS_Store
+
 # Local Python environment (uv)
 newbook/.venv/
 
