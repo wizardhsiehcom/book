@@ -1,0 +1,80 @@
+site_name: CS224R Deep Reinforcement Learning (Spring 2025)
+site_description: Stanford CS224R 深度強化學習課程筆記與繁體中文教學
+site_author: Wizard
+repo_name: book
+repo_url: https://github.com/wizardhsieh/book
+
+theme:
+  name: material
+  language: zh-Hant
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: 切換至暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: 切換至亮色模式
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 導讀: README.md
+  - 1. Class Intro: 01-class-intro.md
+  - 2. Imitation Learning: 02-imitation-learning.md
+  - 3. Policy Gradients: 03-policy-gradients.md
+  - 4. Actor-Critic Methods: 04-actor-critic.md
+  - 5. Off-Policy Actor Critic: 05-off-policy-actor-critic.md
+  - 6. Q-Learning: 06-q-learning.md
+  - 7. Offline RL: 07-offline-rl.md
+  - 8. Reward Learning: 08-reward-learning.md
+  - 9. RL for LLMs: 09-rl-for-llms.md
+  - 10. RL for LLM Reasoning: 10-rl-llm-reasoning.md
+  - 11. Model-Based RL: 11-model-based-rl.md
+  - 12. Multi-Task RL: 12-multi-task-rl.md
+  - 13. Meta RL: 13-meta-rl.md
+  - 14. Exploration: 14-exploration.md
+  - 15. Hierarchical RL and IL: 15-hierarchical-rl-il.md
+  - 16. RL for Robots: 16-rl-for-robots.md
+  - 17. Advancing Robot Intelligence: 17-advancing-robot-intelligence.md
+  - 18. Frontiers: 18-frontiers.md
+  - Tutorial — Q-Learning Review: tutorial-q-learning-review.md
+  - 附錄 A — 術語表: glossary.md
+  - 附錄 B — 參考資料: references.md
+
+docs_dir: ../docs/cs224r-deep-rl
+site_dir: ../book/cs224r-deep-rl/html
+use_directory_urls: false
