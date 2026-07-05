@@ -11,6 +11,8 @@ Output: one .txt per video in data/cs336/transcripts/, named NN_title.txt
 import re
 import subprocess
 import sys
+import http.cookiejar
+import requests
 from pathlib import Path
 
 from youtube_transcript_api import YouTubeTranscriptApi  # type: ignore
@@ -19,7 +21,7 @@ from youtube_transcript_api._errors import (  # type: ignore
     TranscriptsDisabled,
 )
 
-OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "cs336" / "transcripts"
+OUT_DIR = Path(__file__).resolve().parent.parent / "data"
 
 
 def playlist_items(url: str) -> list[tuple[str, str]]:
@@ -38,12 +40,18 @@ def playlist_items(url: str) -> list[tuple[str, str]]:
 
 def fetch_text(video_id: str) -> str:
     """Plain transcript text, no timestamps. Handles old + new API shapes."""
-    try:  # youtube-transcript-api >= 1.0 (instance API)
-        snippets = YouTubeTranscriptApi().fetch(video_id, languages=["en"])
-        parts = [s.text for s in snippets]
-    except TypeError:  # older static API
-        parts = [c["text"] for c in
-                 YouTubeTranscriptApi.get_transcript(video_id, languages=["en"])]
+    cookie_jar = http.cookiejar.MozillaCookieJar('cookies.txt')
+    try:
+        cookie_jar.load(ignore_discard=True, ignore_expires=True)
+    except FileNotFoundError:
+        pass
+    
+    session = requests.Session()
+    session.cookies = cookie_jar
+    api = YouTubeTranscriptApi(http_client=session)
+
+    snippets = api.fetch(video_id, languages=["en"])
+    parts = [s.text for s in snippets]
     return "\n".join(p.strip() for p in parts if p.strip())
 
 
