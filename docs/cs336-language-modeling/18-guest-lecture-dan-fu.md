@@ -74,7 +74,7 @@ flowchart TB
 
 ### 研究專案二：Parse，用 recurrence 換取參數效率
 
-第二個專案來自講者的學術實驗室（由 Hayden 主導，Zachary、Taylor 協作），模型名在逐字稿中轉寫不一（PERS/parse/parade，本章記為 **Parse**，存疑）。它想問一個問題：除了不斷 scale 參數與資料，還有沒有別的路徑能換到同等品質？Parse 是他們對 **loop transformer** 的版本——把 transformer 的某些 block 放進一個迴圈重複跑（activation 走到 looped block 時就在同一層跑好幾次）。這麼做的好處是：參數固定不變，卻等於多了一個「增加 flops」的旋鈕；若你相信「更多 flops 帶來更高品質」，這就是不加參數就提升品質的方法。此外，早年的研究也顯示，同樣的參數量下，looped 模型有更高的 expressivity。核心追求是「每個參數能換到多少智慧」。
+第二個專案來自講者的學術實驗室（由 Hayden 主導，Zachary、Taylor 協作），這項研究是 **Parcae**（Parcae: Scaling Laws for Stable Looped Language Models）。它想問一個問題：除了不斷 scale 參數與資料，還有沒有別的路徑能換到同等品質？Parcae 是他們對 **looped transformer** 的版本——把 transformer 的某些 block 放進一個迴圈重複跑（activation 走到 looped block 時就在同一層跑好幾次）。這麼做的好處是：參數固定不變，卻等於多了一個「增加 flops」的旋鈕；若你相信「更多 flops 帶來更高品質」，這就是不加參數就提升品質的方法。此外，早年的研究也顯示，同樣的參數量下，looped 模型有更高的 expressivity。核心追求是「每個參數能換到多少智慧」。
 
 問題在於這類 loop 模型出了名的脆：只要動一點訓練設定（例如把 learning rate 稍微改一下），做一次 sweep 常常十次有九次直接爆掉，出現 NaN 與巨大的 loss spike。過去的做法多是 hack——每層塞 norm，或乾脆規定只准用某個特定 learning rate。但講者主張，loss spike 本身就是「底層有更深問題」的訊號，值得認真對待。
 

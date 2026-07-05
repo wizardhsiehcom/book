@@ -1,0 +1,77 @@
+site_name: CS234 Reinforcement Learning (2024)
+site_description: Stanford CS234 強化學習課程筆記與繁體中文教學
+site_author: Wizard
+repo_name: book
+repo_url: https://github.com/wizardhsieh/book
+
+theme:
+  name: material
+  language: zh-Hant
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切換至暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切換至亮色模式
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 導讀: README.md
+  - 1. Introduction to RL: 01-introduction.md
+  - 2. Tabular MDP Planning: 02-tabular-mdp.md
+  - 3. Policy Evaluation: 03-policy-evaluation.md
+  - 4. Q-learning and Function Approximation: 04-q-learning.md
+  - 5. Policy Search 1: 05-policy-search-1.md
+  - 6. Policy Search 2: 06-policy-search-2.md
+  - 7. Policy Search 3: 07-policy-search-3.md
+  - 8. Offline RL 1: 08-offline-rl-1.md
+  - 9. Guest Lecture DPO: 09-guest-dpo.md
+  - 10. Offline RL 3: 10-offline-rl-3.md
+  - 11. Exploration 1: 11-exploration-1.md
+  - 12. Exploration 2: 12-exploration-2.md
+  - 13. Exploration 3: 13-exploration-3.md
+  - 14. Multi-Agent Game Playing: 14-multi-agent.md
+  - 15. Guest Lecture Brunskill & Webber: 15-guest-brunskill.md
+  - 16. Value Alignment: 16-value-alignment.md
+  - 附錄 A — 術語表: appendix-glossary.md
+  - 附錄 B — 參考資料: appendix-references.md
+
+docs_dir: ../docs/cs234-reinforcement-learning
+site_dir: ../book/cs234-reinforcement-learning/html
+use_directory_urls: false

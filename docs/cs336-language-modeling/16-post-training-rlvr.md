@@ -155,7 +155,7 @@ Qwen 用的是此時已 tried-and-tested 的 RLVR playbook，取 Kimi 與 DeepSe
 
 **thinking mode fusion** 是重點：用 tag 把 thinking 與 non-thinking 混進**同一個模型**——instant response 與 long CoT 共存於一個模型，這在過去常需要兩個模型。還有 **early-exit thinking**：append 一個特殊字串就立刻停止 CoT、逼模型給答案（ChatGPT 介面上「提早結束思考」的功能就是這種 affordance）。隨 thinking budget 變化，效能呈現 **graceful degradation**：即使在很低 budget、CoT 被中途截斷，模型仍能給出相當合理的回應；而且 thinking mode 在數學/程式任務上一致大幅優於 instant response mode。
 
-Qwen 也提供各元件對效能的貢獻拆解：reasoning RL 再接 general RL，在一般任務（如 arena hard、counterfact QA，後者名稱存疑）上靠較正常的 RLHF 有全面提升；因為融合了 non-thinking 元件，math/coding 會有些退化但不嚴重。不過後續某些 Qwen 3.5 已**放棄把 thinking/non-thinking 融進單一模型**（過去稱 hybrid model），因為這個退化被認為不可接受，想在 thinking mode 上榨出全部效能，於是把兩種模型分開。
+Qwen 也提供各元件對效能的貢獻拆解：reasoning RL 再接 general RL，在一般任務（如 arena hard、CounterFact）上靠較正常的 RLHF 有全面提升；因為融合了 non-thinking 元件，math/coding 會有些退化但不嚴重。不過後續某些 Qwen 3.5 已**放棄把 thinking/non-thinking 融進單一模型**（過去稱 hybrid model），因為這個退化被認為不可接受，想在 thinking mode 上榨出全部效能，於是把兩種模型分開。
 
 ### Qwen 3 Coder Next：agentic RLVR
 

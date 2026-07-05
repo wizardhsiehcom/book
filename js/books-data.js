@@ -101,6 +101,42 @@ const BOOKS = [
     accent: "#14b8a6",
     glow: "rgba(20,184,166,0.18)",
   },
+  {
+    icon: "📐",
+    title: "EE364a 凸優化 I",
+    desc: "逐講精讀 Stanford EE364a（Stephen Boyd），從辨識凸集、凸函數、對偶到內點法求解凸優化問題",
+    tags: ["optimization", "math", "AI"],
+    href: "book/ee364a-convex-optimization/html/index.html",
+    accent: "#8b5cf6",
+    glow: "rgba(139,92,246,0.18)",
+  },
+  {
+    icon: "🗜️",
+    title: "EE274 資料壓縮",
+    desc: "逐講精讀 Stanford EE274 (2023)，從前綴碼、霍夫曼編碼、算術編碼到有損壓縮與變換編碼",
+    tags: ["data compression", "math"],
+    href: "book/ee274-data-compression/html/index.html",
+    accent: "#4f46e5",
+    glow: "rgba(79,70,229,0.18)",
+  },
+  {
+    icon: "🛡️",
+    title: "AA228V 安全關鍵系統",
+    desc: "逐講精讀 Stanford AA228V (2025)，從系統建模、可達性分析、偽造測試到重要性採樣",
+    tags: ["safety", "AI", "math"],
+    href: "book/aa228-safety-critical-systems/html/index.html",
+    accent: "#ea580c",
+    glow: "rgba(234,88,12,0.18)",
+  },
+  {
+    icon: "🤖",
+    title: "CS234 強化學習",
+    desc: "逐講精讀 Stanford CS234 (2024)，涵蓋 MDP、Q-learning、策略搜尋、Offline RL、探索與價值對齊",
+    tags: ["RL", "AI", "math"],
+    href: "book/cs234-reinforcement-learning/html/index.html",
+    accent: "#ef4444",
+    glow: "rgba(239,68,68,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

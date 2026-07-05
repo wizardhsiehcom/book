@@ -153,7 +153,7 @@ flowchart LR
 
 ### 回歸式混比:用小模型群外推最優配比
 
-就算解決了 epoch 陷阱,你仍要面對「50 個源就有 50 個數字要填」的問題。proportional 不夠好,那有沒有更有原則的方法?最容易理解機制的是 **regression-based mixing**(RegMix 等;講者另提一篇稱 "Omix",名稱存疑),思路和 scaling laws 很像:用便宜的小實驗,推出大模型該用的答案。
+就算解決了 epoch 陷阱,你仍要面對「50 個源就有 50 個數字要填」的問題。proportional 不夠好,那有沒有更有原則的方法?最容易理解機制的是 **regression-based mixing**(RegMix 等;這其實是 ASR 誤轉，指的應為同一篇 RegMix),思路和 scaling laws 很像:用便宜的小實驗,推出大模型該用的答案。
 
 ```mermaid
 flowchart TB

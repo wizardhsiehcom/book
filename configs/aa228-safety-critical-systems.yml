@@ -1,0 +1,75 @@
+site_name: AA228V Validation of Safety Critical Systems
+site_description: Stanford AA228V 安全關鍵系統的驗證 課程筆記與繁體中文教學
+site_author: Wizard
+repo_name: book
+repo_url: https://github.com/wizardhsieh/book
+
+theme:
+  name: material
+  language: zh-Hant
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep orange
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: 切換至暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: 切換至亮色模式
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 1. Introduction & Overview: README.md
+  - 2. System Modeling: 02-system-modeling.md
+  - 3. Property Specification 1: 03-property-specification-1.md
+  - 4. Property Specification 2: 04-property-specification-2.md
+  - 5. Discrete Reachability: 05-discrete-reachability.md
+  - 6. Reachability for Linear Systems: 06-linear-reachability.md
+  - 7. Reachability for Nonlinear Systems: 07-nonlinear-reachability.md
+  - 8. Falsification through Optimization: 08-falsification-optimization.md
+  - 9. Falsification through Planning: 09-falsification-planning.md
+  - 10. Failure Distribution: 10-failure-distribution.md
+  - 11. Importance Sampling: 11-importance-sampling.md
+  - 12. Adaptive Importance Sampling: 12-adaptive-importance-sampling.md
+  - 13. Runtime Monitoring: 13-runtime-monitoring.md
+  - 14. Explainability 1: 14-explainability-1.md
+  - 15. Explainability 2: 15-explainability-2.md
+  - 16. Guest Lecture Somil Bansal: 16-guest-bansal.md
+  - 17. Guest Lecture Anthony Corso: 17-guest-corso.md
+
+docs_dir: ../docs/aa228-safety-critical-systems
+site_dir: ../book/aa228-safety-critical-systems/html
+use_directory_urls: false

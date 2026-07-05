@@ -1,0 +1,77 @@
+site_name: EE274 Data Compression (2023)
+site_description: Stanford EE274 資料壓縮課程筆記與繁體中文教學
+site_author: Wizard
+repo_name: book
+repo_url: https://github.com/wizardhsieh/book
+
+theme:
+  name: material
+  language: zh-Hant
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切換至暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切換至亮色模式
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 導讀: README.md
+  - 1. 課程簡介與無失真壓縮基礎: 01-intro.md
+  - 2. Prefix Free Codes: 02-prefix-free.md
+  - 3. Kraft Inequality, Entropy: 03-kraft-entropy.md
+  - 4. Huffman Codes: 04-huffman.md
+  - 5. Asymptotic Equipartition Property: 05-aep.md
+  - 6. Arithmetic Coding: 06-arithmetic-coding.md
+  - 7. ANS: 07-ans.md
+  - 8. Conditional Entropy: 08-conditional-entropy.md
+  - 9. Context-based AC & LLM: 09-context-ac-llm.md
+  - 10. LZ and Universal Compression: 10-lz-universal.md
+  - 11. Lossy Compression & Quantization: 11-lossy-quantization.md
+  - 12. Mutual Info & Rate-Distortion: 12-mutual-info-rd.md
+  - 13. Gaussian RD & Water-Filling: 13-gaussian-rd.md
+  - 14. Transform Coding in real-life: 14-transform-coding.md
+  - 15. Image Compression JPEG, BPG: 15-jpeg-bpg.md
+  - 16. Learnt Image Compression: 16-learnt-compression.md
+  - 17. Humans and Compression: 17-humans.md
+  - 18. Video Compression: 18-video.md
+
+docs_dir: ../docs/ee274-data-compression
+site_dir: ../book/ee274-data-compression/html
+use_directory_urls: false
