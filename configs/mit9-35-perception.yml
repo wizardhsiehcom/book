@@ -1,0 +1,81 @@
+site_name: MIT 9.35 Sensation and Perception 感覺與知覺
+site_description: MIT 9.35 感覺與知覺課程筆記與繁體中文教學書稿
+site_author: Wizard
+
+theme:
+  name: material
+  language: zh-Hant
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: 切換至暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: 切換至亮色模式
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 導讀: README.md
+  - 第一章：知覺導論: 01-intro-to-perception.md
+  - 第二章：聽覺（頻率選擇性與非線性）: 02-hearing-frequency-selectivity.md
+  - 第三章：聲音定位、音高、音色、響度與心理物理學方法: 03-sound-localization-pitch-timbre-loudness.md
+  - 第四章：音高知覺與聽覺場景分析: 04-pitch-and-scene-analysis.md
+  - 第五章：聽覺場景分析: 05-auditory-scene-analysis.md
+  - 第六章：聽覺場景分析（續）與語音知覺: 06-auditory-scene-analysis-speech.md
+  - 第七章：眼睛與視網膜: 07-eye-and-retina.md
+  - 第八章：眼睛與視網膜（續）: 08-eye-and-retina-cont.md
+  - 第九章：外側膝狀體與初級視覺皮質: 09-lgn-and-v1.md
+  - 第十章：中階視覺: 10-mid-level-vision.md
+  - 第十一章：中階視覺（續）: 11-mid-level-vision-cont.md
+  - 第十二章：亮度知覺與顏色知覺: 12-lightness-and-color.md
+  - 第十三章：顏色知覺（續）與運動知覺: 13-color-and-motion.md
+  - 第十四章：運動知覺（續）: 14-motion-perception-cont.md
+  - 第十五章：深度知覺: 15-depth-perception.md
+  - 第十六章：深度知覺（續）: 16-depth-perception-cont.md
+  - 第十七章：通用視角假設與物體辨識: 17-generic-viewpoint-object-recognition.md
+  - 第十八章：物體辨識（續）與紋理知覺: 18-object-recognition-texture.md
+  - 第十九章：紋理知覺（續）: 19-texture-perception-cont.md
+  - 第二十章：注意力: 20-attention.md
+  - 第二十一章：注意力（續）: 21-attention-cont.md
+  - 第二十二章：注意力（續）與觸覺: 22-attention-cont-touch.md
+  - 第二十三章：嗅覺與味覺: 23-olfaction-and-gustation.md
+  - 附錄 A — 術語表: glossary.md
+  - 附錄 B — 參考資料: references.md
+
+docs_dir: ../docs/mit9-35-perception
+site_dir: ../book/mit9-35-perception/html
+use_directory_urls: false

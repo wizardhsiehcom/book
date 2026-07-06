@@ -49,6 +49,7 @@ Use the `/mkdocs-create` command, or manually:
 
 - **Language**: all prose in Traditional Chinese (繁體中文) unless the user writes in English.
 - **One concept per page**; cross-link with relative paths.
+- **No notebook references**: never cite notebook filenames or cell numbers (e.g. 「在 Cell 3 中…」); notebooks change often — describe the concept directly.
 - Standard Markdown + Mermaid; inline HTML is allowed when needed.
 - Prefer `flowchart`, `sequenceDiagram`, or `graph` diagram types.
 
@@ -65,6 +66,7 @@ Use the `/mkdocs-create` command, or manually:
 |---------|---------|
 | `/mkdocs-create` | Create a new book (`docs/<name>/`, `configs/<name>.yml`, index card) |
 | `/mkdocs-update` | Update or add pages to an existing book |
+| `/mkdocs-review` | Review a book end to end and write a multi-agent improvement plan to `plan/<name>/` |
 | `/mkdocs-theme` | Change a book's MkDocs theme in `configs/<name>.yml` |
 | `/mkdocs-add-images` | Find Wikimedia Commons images and insert them into book pages with captions and credit entries |
 | `/sync-agent` | Synchronize Claude Code, Codex, and Antigravity project instructions and shared skills |

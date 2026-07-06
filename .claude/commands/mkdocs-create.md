@@ -2,7 +2,7 @@
 
 Create a new standalone MkDocs book under `docs/<folder-name>/` + `configs/<folder-name>.yml`. Read the `Variables`, follow the `Instructions` as guardrails, execute the `Workflow` in order, then report per the `Report` section.
 
-> Shared conventions: Before writing content, read `.claude/commands/mkdocs-update.md` and `CLAUDE.md`. All conventions there apply here too.
+> Shared conventions: content conventions and Mermaid rules live in `CLAUDE.md` (canonical).
 
 ## Variables
 
@@ -15,7 +15,7 @@ From `creation_brief`, extract: book title, folder name, source materials, writi
 
 ## Instructions
 
-- All conventions from `.claude/commands/mkdocs-update.md` and `CLAUDE.md` apply.
+- All conventions from `CLAUDE.md` apply.
 - Write original prose only (no verbatim copyrighted passages).
 - Keep one concept per page and add relative cross-links.
 - Add Mermaid diagrams only where they improve clarity.
