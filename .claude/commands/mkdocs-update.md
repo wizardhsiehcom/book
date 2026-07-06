@@ -1,25 +1,25 @@
 # Update MkDocs Book
 
-Update an existing standalone MkDocs book under `book/`. Read the `Variables`, follow the `Instructions` as guardrails, execute the `Workflow` in order, then report per the `Report` section.
+Update an existing standalone MkDocs book under `docs/<folder>/` + `configs/<folder>.yml`. Read the `Variables`, follow the `Instructions` as guardrails, execute the `Workflow` in order, then report per the `Report` section.
 
 ## Variables
 
 update_request: $ARGUMENTS
-docs_dir: `book/docs/<folder>/`
-config_file: `book/configs/<folder>.yml`
-build_cmd: `cd book && uv run --with mkdocs-material mkdocs build -f configs/<folder>.yml`
-serve_cmd: `cd book && uv run --with mkdocs-material mkdocs serve -f configs/<folder>.yml`
+docs_dir: `docs/<folder>/`
+config_file: `configs/<folder>.yml`
+build_cmd: `uv run mkdocs build -f configs/<folder>.yml`
+serve_cmd: `./serve-book.sh <folder>`
 
 ## Instructions
 
 - All prose in Traditional Chinese (繁體中文) unless the user writes in English.
 - **No notebook references**: never mention specific notebook filenames, cell numbers, or cell indices (e.g. "在 Cell 3 中…", "執行 benchmark.ipynb 第 7 個 cell"). Notebooks are revised frequently; describe concepts and steps directly instead.
 - Diagrams: prefer `flowchart`, `sequenceDiagram`, or `graph` depending on what best represents the concept. Add Mermaid only where it improves clarity.
-- No inline HTML — keep everything in standard Markdown + Mermaid.
+- Inline HTML is allowed when needed, alongside standard Markdown + Mermaid.
 - Keep pages focused: one concept per page, cross-link with relative paths when referencing other pages.
 - Do not edit other books' config or content files unless the user asks.
 
-### Mermaid v11 Rules (strictly enforced)
+### Mermaid Rules (mermaid@10, strictly enforced)
 
 - **Subgraph labels** containing spaces, Chinese characters, parentheses, or commas **must be quoted**: `subgraph "My Label（說明）"` — bare labels cause "Syntax error in text".
 - **Node label line breaks**: use `<br/>` inside bracket syntax, never `\n`. Example: `A["line one<br/>line two"]`.
@@ -29,18 +29,17 @@ serve_cmd: `cd book && uv run --with mkdocs-material mkdocs serve -f configs/<fo
 ## Codebase Structure
 
 ```
-book/
-├── docs/<folder>/        # page content (.md) for this book
-├── configs/<folder>.yml  # this book's dedicated config + nav
-├── book/<folder>/html/   # build output
-└── index.html            # launcher
+docs/<folder>/        # page content (.md) for this book
+configs/<folder>.yml  # this book's dedicated config + nav
+book/<folder>/html/   # build output (git-ignored)
+index.html            # launcher
 ```
 
 ## Workflow
 
 1. **Identify the target book**
-   - If `update_request` names a folder (e.g. `hermes-agent`), use `docs_dir` and `config_file`.
-   - If no folder is given, list `book/configs/*.yml` and ask which one.
+   - If `update_request` names a folder (e.g. `cs224r-deep-rl`), use `docs_dir` and `config_file`.
+   - If no folder is given, list `configs/*.yml` and ask which one.
 2. **Read** `config_file` to understand the nav.
 3. **Interpret the update request**:
    - If it names an existing page, update that page.
@@ -48,7 +47,7 @@ book/
    - If it only names a book with no task detail, ask what to update.
 4. **Edit or create** markdown under `docs_dir`.
 5. If adding a new page, insert it into `config_file` nav under the most relevant section.
-6. **Rebuild** with `build_cmd` (or `bash book/build.sh`). To preview locally, use `serve_cmd`.
+6. **Sync assets** with `./sync-assets.sh` (required before a manual build), then **rebuild** with `build_cmd` (or `./build-books.sh`). To preview locally, use `serve_cmd`.
 
 ## Examples
 

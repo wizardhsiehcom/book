@@ -1,17 +1,17 @@
 # Add Images to MkDocs Book
 
-Add one or more images to pages in an existing MkDocs book under `book/docs/<folder>/`. Read the `Variables`, follow the `Instructions` as guardrails, execute the `Workflow` in order, then report per the `Report` section.
+Add one or more images to pages in an existing MkDocs book under `docs/<folder>/`. Read the `Variables`, follow the `Instructions` as guardrails, execute the `Workflow` in order, then report per the `Report` section.
 
 ## Variables
 
 image_request: $ARGUMENTS
-docs_dir: `book/docs/<folder>/`
-config_file: `book/configs/<folder>.yml`
-credits_page: `book/docs/<folder>/99-image-credits.md`
+docs_dir: `docs/<folder>/`
+config_file: `configs/<folder>.yml`
+credits_page: `docs/<folder>/99-image-credits.md`
 filepath_url: `https://commons.wikimedia.org/wiki/Special:FilePath/<Filename>?width=<W>`
-build_cmd: `cd book && uv run --with mkdocs-material mkdocs build -f configs/<folder>.yml`
+build_cmd: `uv run mkdocs build -f configs/<folder>.yml`
 
-From `image_request`, extract: target book folder (e.g. `hermes-agent`, `gpu`, `tsmc`), target page(s) (specific `.md` files or "all pages"), and topic/keywords. If the folder is missing, list `book/configs/*.yml` and ask which book.
+From `image_request`, extract: target book folder (e.g. `gpu`, `tsmc`, `cs224r-deep-rl`), target page(s) (specific `.md` files or "all pages"), and topic/keywords. If the folder is missing, list `configs/*.yml` and ask which book.
 
 ## Instructions
 

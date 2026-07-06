@@ -1,12 +1,12 @@
 # Change MkDocs Theme
 
-Change the theme settings for one book config under `book/configs/`. Read the `Variables`, follow the `Instructions` as guardrails, execute the `Workflow` in order, then report per the `Report` section.
+Change the theme settings for one book config under `configs/`. Read the `Variables`, follow the `Instructions` as guardrails, execute the `Workflow` in order, then report per the `Report` section.
 
 ## Variables
 
 theme_request: $ARGUMENTS
-config_file: `book/configs/<book>.yml`
-build_cmd: `cd book && uv run --with mkdocs-material mkdocs build -f configs/<book>.yml`
+config_file: `configs/<book>.yml`
+build_cmd: `uv run mkdocs build -f configs/<book>.yml`
 
 Supported themes:
 
@@ -27,8 +27,8 @@ Supported themes:
 ## Workflow
 
 1. **Identify target config**
-   - Use `theme_request` to resolve the book name (e.g. `hermes-agent`) and the target theme.
-   - If either argument is missing, ask the user to provide both.
+   - Use `theme_request` to resolve the book name (e.g. `cs224r-deep-rl`) and the target theme.
+   - If either argument is missing, list `configs/*.yml` and ask the user to provide both.
 2. **Read** `config_file` to inspect the current `theme.name` (keep unrelated settings unchanged).
 3. **Apply theme change** per the Instructions above.
 4. **Rebuild and verify** with `build_cmd`.
