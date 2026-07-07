@@ -22,18 +22,18 @@ flowchart TD
 
 ### AMD（最直接的硬體競爭者）
 
-AMD 的 MI300X GPU 在規格上具有競爭力（HBM 容量更大），且 ROCm 軟體棧持續改善。但 CUDA 生態的切換成本讓大多數用戶維持 NVIDIA。
+AMD 的 MI300X GPU 在規格上具有競爭力（HBM 容量更大），且 ROCm 軟體棧持續改善。但 [CUDA 生態](cuda-ecosystem.md)的切換成本讓大多數用戶維持 NVIDIA。
 
 | 比較面向 | NVIDIA H100 | AMD MI300X |
 |----------|-------------|------------|
 | HBM 容量 | 80 GB | 192 GB |
-| 峰值算力（FP16） | 1,979 TFLOPS | 1,307 TFLOPS |
+| 峰值算力（FP16，稠密） | 989 TFLOPS | 1,307 TFLOPS |
 | 軟體生態 | CUDA（成熟） | ROCm（追趕中） |
 | 市占率 | ~90% | ~5–10% |
 
 ### Google（自研 TPU）
 
-Google 的 TPU（Tensor Processing Unit）是目前最成功的 ASIC AI 加速器，Google 內部大量使用。但 TPU 不對外銷售，也不支援 CUDA，因此不直接威脅 NVIDIA 的外部市場。
+Google 的 TPU（Tensor Processing Unit）是目前最成功的 ASIC AI 加速器，Google 內部大量使用。TPU 不以硬體形式對外銷售，但可透過 GCP 租用，且 Google 已開始向 Anthropic 等外部大客戶擴大供應——它對 NVIDIA 外部市場的壓力正在上升，不宜低估。
 
 ### AWS Trainium / Inferentia
 

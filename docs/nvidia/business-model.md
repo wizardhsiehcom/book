@@ -36,7 +36,7 @@ flowchart TD
     E -->|HBM| D
     D -->|完整 GPU| A
     A -->|伺服器| F
-    B -->|CUDA 軟體授權| F
+    B -->|"CUDA（免費）+<br/>AI Enterprise 訂閱"| F
 ```
 
 ## 定價權與毛利率

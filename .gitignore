@@ -1,7 +1,9 @@
 # mdBook build output
 book/*/html/
+book/*/.build-hash
 newbook/book/*/html/
 newbook/site/
+.claude/settings.local.json
 
 # macOS metadata
 .DS_Store

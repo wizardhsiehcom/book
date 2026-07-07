@@ -23,7 +23,7 @@ flowchart LR
     GPU --> I1
 ```
 
-訓練需要最強的 GPU（H100、B200），推理則有更多選擇（L40S、A10、H100 NVL 等較低規格產品）。
+訓練需要最強的 GPU（H100、B200），推理則有更多選擇（L40S、A10、H100 NVL 等較低規格產品）。各代 GPU 的規格演進見[架構演進](architecture-roadmap.md)。
 
 ## 超大規模雲端（Hyperscaler）客戶
 

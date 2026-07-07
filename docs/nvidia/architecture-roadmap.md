@@ -50,11 +50,12 @@ flowchart TD
 
 | 項目 | H100 SXM | B200 SXM |
 |------|----------|----------|
-| CUDA Cores | 16,896 | 21,760（× 2 Die） |
 | HBM 容量 | 80 GB | 192 GB |
 | 記憶體頻寬 | 3.35 TB/s | 8 TB/s |
-| FP8 算力 | 3,958 TFLOPS | ~9,000 TFLOPS |
+| FP8 算力（含稀疏加速） | 3,958 TFLOPS | ~9,000 TFLOPS |
 | TDP 功耗 | 700 W | 1,000 W |
+
+（B200 的 CUDA core 數 NVIDIA 未正式公布，故不列。）
 
 **FP4 支援**：Blackwell 新增 FP4 精度，在推理（Inference）場景下可達到更高吞吐量。
 
