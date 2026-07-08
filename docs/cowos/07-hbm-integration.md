@@ -42,7 +42,7 @@ flowchart TB
 | HBM2 | 256 GB/s | 8 | 1024-bit | V100 |
 | HBM2e | 460 GB/s | 12 | 1024-bit | A100 |
 | HBM3 | 819 GB/s | 12 | 1024-bit | H100 |
-| HBM3e | 1,200 GB/s | 16 | 1024-bit | H200、MI300X |
+| HBM3e | 1,200 GB/s | 8–12 | 1024-bit | H200、MI325X |
 
 ## 為何 HBM 需要 CoWoS
 
@@ -60,8 +60,9 @@ graph TB
 ## 整體記憶體頻寬計算
 
 以 NVIDIA H100 SXM5 為例：
-- 6 顆 HBM3，每顆 819 GB/s
-- 總計：**6 × 819 = 3,350 GB/s ≈ 3.35 TB/s**
+- 封裝上有 6 個 HBM 位置，**僅啟用 5 顆**（第 6 顆為維持機械平衡的結構填充 die），共 80 GB
+- 每顆啟用的 HBM3 運行約 5.2 Gbps，頻寬約 670 GB/s（819 GB/s 是 HBM3 規格上限 6.4 Gbps，H100 未跑滿）
+- 總計：**5 × ~670 GB/s ≈ 3.35 TB/s**
 
 相比之下，GDDR6X（如 RTX 4090）僅 1 TB/s，而且功耗更高。
 

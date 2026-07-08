@@ -1,6 +1,6 @@
 # CoWoS-S：矽中介板版本
 
-CoWoS-S 是 CoWoS 家族中效能最高、技術最成熟的版本，也是 NVIDIA H100、H200、B100 等 AI 旗艦加速器採用的方案。「S」代表 Silicon（矽中介板）。
+CoWoS-S 是 CoWoS 家族中技術最成熟的版本，也是 NVIDIA H100、H200 等 AI 旗艦加速器採用的方案（Blackwell 世代起改用 [CoWoS-L](06-cowos-r-l.md)）。「S」代表 Silicon（矽中介板）。
 
 ## 技術演進：從第一代到第五代
 

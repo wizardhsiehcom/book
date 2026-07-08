@@ -29,11 +29,11 @@ flowchart LR
 |------|------|------|---------|
 | Via-First | 前段製程前 | 最小 | 邏輯晶片（較少用） |
 | Via-Middle | 前段後、後段前 | 中等 | HBM、3D NAND |
-| Via-Last | 全部製程後 | 最大 | 矽中介板（CoWoS 用此類） |
+| Via-Last | 全部製程後（背面開孔） | 最大 | CIS 影像感測器、部分 3D 堆疊 |
 
 ## CoWoS 中的 TSV 角色
 
-CoWoS 的矽中介板（Silicon Interposer）使用 **Via-Last TSV**：中介板本身不含主動電路，TSV 的功能純粹是垂直導通——讓封裝基板（Substrate）上的電源與訊號穿透中介板，到達放在中介板正面的 GPU Die 與 HBM。
+CoWoS 的矽中介板（Silicon Interposer）不含主動電路（沒有前段製程），因此它的 TSV 流程接近 **via-first／via-middle**：先在空白矽晶圓蝕孔填銅（此時為盲孔），再做正面 RDL，等晶片接合後才從背面薄化把 TSV 露出。TSV 的功能純粹是垂直導通——讓封裝基板（Substrate）上的電源與訊號穿透中介板，到達放在中介板正面的 GPU Die 與 HBM。
 
 ```mermaid
 flowchart TB

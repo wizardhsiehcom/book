@@ -49,9 +49,9 @@ flowchart TB
 - 橋接片只覆蓋 Die 邊緣的互連區
 - 用於 Intel Ponte Vecchio、Sapphire Rapids HBM
 
-## Intel Foveros vs 3D CoWoS
+## Intel Foveros vs TSMC SoIC
 
-| 特性 | Intel Foveros | TSMC SoIC（3D CoWoS） |
+| 特性 | Intel Foveros | TSMC SoIC |
 |------|--------------|---------------------|
 | 技術類型 | 3D 晶片堆疊 | 3D 晶片堆疊 |
 | 接合方式 | Hybrid Bonding | Hybrid Bonding |

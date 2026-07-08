@@ -34,7 +34,7 @@ graph LR
 ```mermaid
 flowchart TD
     P["先進封裝"] --> P1["2D<br/>MCM / Fan-Out"]
-    P --> P2["2.5D<br/>矽中介板<br/>CoWoS / InFO-SoW"]
+    P --> P2["2.5D<br/>矽中介板<br/>CoWoS / 三星 I-Cube"]
     P --> P3["3D<br/>晶片堆疊<br/>HBM / SoIC"]
     P --> P4["2.3D<br/>嵌入式橋接<br/>Intel EMIB"]
 ```

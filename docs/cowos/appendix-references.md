@@ -45,6 +45,12 @@ TSMC 在 **IEEE ECTC** 與 **ISSCC** 持續發表 CoWoS 技術演進論文，描
 - 篩選：ECTC 2018–2024、ISSCC 2022–2024
 - TSMC Research 官網：[research.tsmc.com](https://research.tsmc.com/english/research/interconnect/publish-time-2.html)
 
+### 2026 審閱時追加來源
+
+- NVIDIA Technical Blog，〈NVIDIA Hopper Architecture In-Depth〉——H100 SXM5「80 GB（five stacks）HBM3」的官方出處。
+- Tom's Hardware，〈Nvidia shifts to CoWoS-L packaging for Blackwell GPU production ramp-up〉（查閱 2026-07）——B200 採 CoWoS-L 的來源。
+- Tom's Hardware，〈TSMC "Super Carrier" CoWoS interposer gets bigger... 9-reticle sizes with 12 HBM4 stacks〉（查閱 2026-07）——9.5 倍光罩中介板路線圖。
+
 ### 最新綜述（2025）
 
 - **John H. Lau (2025)**，"Current Advances and Outlook of Advanced Packaging"，*ASME Journal of Electronic Packaging* — 系統性介紹 CoWoS-S/R/L、HBM、玻璃基板與光電 IC 異質整合。
@@ -72,4 +78,4 @@ flowchart TD
 
 ---
 
-*本筆記整理時間：2025 年。所有論文資訊以原始出版品為準。*
+*本筆記整理於 2025 年，2026-07 審閱更新。所有論文資訊以原始出版品為準。*

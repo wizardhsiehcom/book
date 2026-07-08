@@ -60,8 +60,8 @@ sequenceDiagram
 
 | 變體 | 中介板材料 | 線寬 | 定位 |
 |------|----------|------|------|
-| **CoWoS-S** | 矽（Silicon） | 0.4–2 μm | 旗艦效能，H100 / B100 |
+| **CoWoS-S** | 矽（Silicon） | 0.4–2 μm | 全矽旗艦，H100 / H200 |
 | **CoWoS-R** | 有機（Organic RDL） | 2–5 μm | 成本優化版 |
-| **CoWoS-L** | 局部矽嵌入有機板 | 混合 | 兼顧成本與密度 |
+| **CoWoS-L** | 局部矽嵌入有機板 | 混合 | 超大面積旗艦，B200（Blackwell） |
 
 > 各變體的詳細說明見 [CoWoS-S](05-cowos-s.md) 與 [CoWoS-R / CoWoS-L](06-cowos-r-l.md)。

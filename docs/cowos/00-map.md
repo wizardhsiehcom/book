@@ -2,30 +2,30 @@
 
 ```mermaid
 flowchart TD
-    A["基礎觀念"] --> B["CoWoS 核心技術"] --> C["AI 時代應用"]
-
-    subgraph "基礎觀念"
+    subgraph SG1["基礎觀念"]
         A1["為什麼需要先進封裝<br/>Moore's Law 放緩"]
         A2["TSV 矽穿孔技術<br/>via-first / middle / last"]
         A3["矽中介板與 2.5D"]
         A1 --> A2 --> A3
     end
 
-    subgraph "CoWoS 核心技術"
+    subgraph SG2["CoWoS 核心技術"]
         B1["CoWoS 架構總覽<br/>Die + Interposer + Substrate"]
-        B2["CoWoS-S<br/>矽中介板，最高效能"]
-        B3["CoWoS-R / CoWoS-L<br/>有機 / 局部矽，成本優化"]
+        B2["CoWoS-S<br/>矽中介板，技術最成熟"]
+        B3["CoWoS-R / CoWoS-L<br/>有機 RDL / 局部矽橋"]
         B4["HBM 整合<br/>頻寬 × 容量 × 功耗"]
         B1 --> B2
         B1 --> B3
         B2 --> B4
     end
 
-    subgraph "AI 時代應用"
+    subgraph SG3["AI 時代應用"]
         C1["AI 加速器應用<br/>H100 / MI300X / Gaudi"]
         C2["競爭技術比較<br/>I-Cube / EMIB / SoIC"]
         C3["可靠性與製造挑戰"]
     end
+
+    SG1 --> SG2 --> SG3
 ```
 
 ## 各章節一句話摘要

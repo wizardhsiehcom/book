@@ -1,6 +1,6 @@
 # CoWoS-R 與 CoWoS-L：有機與局部矽版本
 
-CoWoS-S 效能卓越但成本高昂。TSMC 推出 CoWoS-R 與 CoWoS-L 以滿足成本敏感市場，同時保留 CoWoS 平台的生態系統優勢。
+CoWoS-S 效能卓越但成本高昂，且全矽中介板的面積放大受良率與晶圓幾何限制。CoWoS-R 瞄準成本敏感市場；CoWoS-L 起初被視為折衷方案，如今已成為**超大面積旗艦的主力**——NVIDIA Blackwell（B100/B200）即採用 CoWoS-L。
 
 ## CoWoS-R（RDL Interposer）
 
@@ -37,9 +37,12 @@ flowchart TB
 
 這個概念類似 Intel 的 EMIB（Embedded Multi-die Interconnect Bridge）。
 
+要注意：CoWoS-L **不是 CoWoS-S 的降級版**。全矽中介板越大、良率越差、且終究受晶圓尺寸限制；「LSI 橋 + 有機 RDL」只在需要極細互連的地方用矽，反而能把封裝面積推得比全矽方案更大。這正是 NVIDIA Blackwell（兩顆近光罩極限的運算 die + 8 顆 HBM3e）選擇 CoWoS-L 的原因。
+
 ```mermaid
 flowchart TB
-    D1["Die A"] & D2["Die B"]
+    D1["Die A"]
+    D2["Die B"]
     subgraph "有機基板"
         BR["局部矽橋接<br/>Local Si Bridge<br/>僅覆蓋互連區域"]
         ORG["其餘區域：有機 RDL"]
@@ -56,17 +59,17 @@ flowchart TB
 | 線寬（最細） | 0.4 μm | 0.4 μm（橋接區） | 2 μm |
 | CTE 匹配 | 優秀 | 良好 | 較差 |
 | 成本（相對） | 高 | 中 | 低 |
-| HBM 支援 | 旗艦（8+ 顆） | 中階 | 基礎（2–4 顆） |
-| 代表產品 | H100、MI300X | 次世代中階 AI 卡 | 成本敏感 AI 推論 |
+| HBM 支援 | 旗艦（8+ 顆） | 旗艦（B200 為 8 顆） | 基礎（2–4 顆） |
+| 代表產品 | H100、MI300X | NVIDIA B200（Blackwell） | 成本敏感 AI 推論 |
 
 ## 選擇邏輯
 
 ```mermaid
 flowchart TD
-    Q1{"需要極高<br/>Die-to-Die 頻寬？"}
-    Q1 -->|"是"| S["CoWoS-S<br/>HPC / AI 旗艦"]
-    Q1 -->|"否"| Q2{"需要部分<br/>高密度互連？"}
-    Q2 -->|"是"| L["CoWoS-L<br/>中階 AI / 網路"]
+    Q1{"封裝面積超過<br/>全矽中介板可行極限？"}
+    Q1 -->|"是"| L["CoWoS-L<br/>LSI 橋 + 有機 RDL<br/>B200 級超大封裝"]
+    Q1 -->|"否"| Q2{"需要全面積<br/>極細線寬互連？"}
+    Q2 -->|"是"| S["CoWoS-S<br/>H100 / MI300X"]
     Q2 -->|"否"| R["CoWoS-R<br/>成本優先"]
 ```
 
