@@ -43,7 +43,7 @@ Use the `/mkdocs-create` command, or manually:
 1. Create `docs/<new-name>/` with a `README.md` and content pages.
 2. Create `configs/<new-name>.yml` by copying an existing config; update `site_name`, `docs_dir`, `site_dir`, and `nav`.
 3. Run `./sync-assets.sh` to populate `docs/<new-name>/assets/`.
-4. Register the book in `index.html` by copying an existing `.card` block before the `<!-- 新增書籍時在此複製一個 .card 區塊 -->` comment.
+4. Register the book in `js/books-data.js` by copying an existing entry in the books array (icon, title, desc, tags, href, accent, glow).
 
 ## Content conventions
 

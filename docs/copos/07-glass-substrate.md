@@ -72,4 +72,4 @@ TGV 也是玻璃「中介板」（glass interposer）與更遠期路線的技術
 
 正因如此，即便玻璃前景看好，台積電高層也公開表示玻璃基板／CoPoS「沒有捷徑」，距離規模量產仍需時間——玻璃核心基板的商業化量產，多數報導估在 2030 年後。這一點在 [TSMC 布局與時程](09-tsmc-roadmap.md) 有更完整的時間軸。
 
-> 相關頁面：[封裝基本流程與術語](02-packaging-basics.md) ｜ [從圓到方：面板尺寸與利用率](06-panel-geometry.md) ｜ [面板級製程挑戰](08-panel-process-challenges.md) ｜ [供應鏈與競爭陣營](10-supply-chain-competition.md)
+> 下一頁：[面板級製程挑戰](08-panel-process-challenges.md)　｜　相關頁面：[封裝基本流程與術語](02-packaging-basics.md) ｜ [從圓到方：面板尺寸與利用率](06-panel-geometry.md) ｜ [供應鏈與競爭陣營](10-supply-chain-competition.md)

@@ -23,6 +23,7 @@
 |------|------|------|------|
 | TSMC Unveils Next-Generation A14 Process at North America Technology Symposium | TSMC 官方新聞（pr.tsmc.com） | 2025 年（查閱 2026-07） | 台積電技術論壇官方口徑，含先進封裝與 wafer-scale 路線。 |
 | C.C. Wei：玻璃基板／CoPoS「沒有捷徑」，距規模量產仍需 2–3 年 | 產業報導引述法說發言 | 2026 年（查閱 2026-07） | 官方對量產時程的保守定調，第[09 章](09-tsmc-roadmap.md)引用。 |
+| TSMC 首度公布玻璃基板驗證數據：翹曲改善 16%（另含 CTE 降 19%、彈性模數增 31%），與 Ibiden、群創三方驗證 | BigGo Finance／TradingKey 報導 | 2026 年（查閱 2026-07） | 第[07 章](07-glass-substrate.md)「翹曲改善約 16%」的數據來源。 |
 | Fueled by AI Demand, TSMC Targets System-on-Wafer to Enter Mass Production in 2027 | TrendForce（News） | 2024-06-04 | SoW-X／System-on-Wafer 2027 量產目標的早期來源，第[11 章](11-copos-vs-alternatives.md)比較用。 |
 
 ## 技術會議與論文方向

@@ -68,4 +68,4 @@ CoPoS 要進高階 AI 封裝，RDL 線寬必須夠細才能提供足夠的 die-t
 
 這正是為什麼 CoPoS 的路線是「先在 310 × 310 mm 把良率學會，再逐代放大到 515 × 510、750 × 620 mm」，也是為什麼台積電高層強調「沒有捷徑」、規模量產仍需二至三年。理論上的幾何紅利是確定的；能不能兌現、什麼時候兌現，取決於這條良率學習曲線爬得多快。實際時程與里程碑，見 [TSMC 布局與時程](09-tsmc-roadmap.md)。
 
-> 相關頁面：[從圓到方：面板尺寸與利用率](06-panel-geometry.md) ｜ [玻璃基板](07-glass-substrate.md) ｜ [TSMC 布局與時程](09-tsmc-roadmap.md) ｜ [供應鏈與競爭陣營](10-supply-chain-competition.md)
+> 下一頁：[TSMC 布局與時程](09-tsmc-roadmap.md)　｜　相關頁面：[從圓到方：面板尺寸與利用率](06-panel-geometry.md) ｜ [玻璃基板](07-glass-substrate.md) ｜ [供應鏈與競爭陣營](10-supply-chain-competition.md)

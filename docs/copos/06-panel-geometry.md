@@ -64,4 +64,4 @@ flowchart LR
 
 必須提醒：把利用率算得漂亮，前提是面板級製程能做到與晶圓相當的良率。面板越大，翹曲、對位、缺陷密度容忍度的挑戰越大——這些會把理論利用率打折扣。幾何上的五倍紅利要真正兌現，得先跨過 [面板級製程挑戰](08-panel-process-challenges.md) 這一關。這也是為什麼 CoPoS 從 310 × 310 mm 起步，而非一步跳到 750 × 620 mm：**先在較小面板上把良率學會，再逐代放大**。
 
-> 相關頁面：[CoPoS 是什麼](05-copos-overview.md) ｜ [玻璃基板](07-glass-substrate.md) ｜ [面板級製程挑戰](08-panel-process-challenges.md)
+> 下一頁：[玻璃基板](07-glass-substrate.md)　｜　相關頁面：[CoPoS 是什麼](05-copos-overview.md) ｜ [面板級製程挑戰](08-panel-process-challenges.md)

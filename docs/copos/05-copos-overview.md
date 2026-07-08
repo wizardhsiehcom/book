@@ -7,7 +7,7 @@
 CoPoS 是台積電（TSMC）把先進封裝的**載體（carrier）從圓形的 12 吋晶圓，換成矩形面板（panel）** 的下一代 2.5D 封裝平台。晶片仍然像 CoWoS 那樣覆晶接合到中介層上、再接到封裝基板，但「中介層」與整個製程流程改在標準 310 × 310 mm 的方形面板上進行。名稱裡的三個字，正好對應三層結構：
 
 - **Chip（晶片）**：運算 die（GPU、AI 加速器）、HBM 記憶體堆疊、I/O chiplet。
-- **Panel（面板）**：面板級的中介層／重佈線層（Redistribution Layer, RDL），常以玻璃作為核心材料，取代 CoWoS 的矽中介板（silicon interposer）。
+- **Panel（面板）**：面板級的中介層／重佈線層（Redistribution Layer, RDL），取代 CoWoS 的矽中介板（silicon interposer）。早期世代以有機 RDL 面板為主，玻璃核心（glass core）是更後面的升級（時程見 [TSMC 布局與時程](09-tsmc-roadmap.md)）。
 - **Substrate（基板）**：對外的封裝基板，提供電源分配與 BGA 接腳，概念與 CoWoS 相同。
 
 ## 從 CoWoS 平移過來的心智模型
@@ -17,7 +17,7 @@ CoPoS 是台積電（TSMC）把先進封裝的**載體（carrier）從圓形的 
 | 概念 | CoWoS | CoPoS | 變化 |
 |------|-------|-------|------|
 | 載體形狀 | 圓形晶圓（直徑 300 mm） | 方形面板（310 × 310 mm 起步） | **根本改變** |
-| 中介層材料 | 矽（silicon） | 玻璃（glass）為主，或有機 RDL | 替換 |
+| 中介層材料 | 矽（silicon） | 有機 RDL 起步，玻璃（glass）為後續升級 | 替換 |
 | 縱向穿孔 | TSV（矽穿孔） | TGV（玻璃穿孔，Through-Glass Via） | 替換 |
 | 橫向互連 | RDL 覆晶接合 | 面板級 RDL 覆晶接合 | 平移 |
 | 封裝基板 | 有機基板 + BGA | 有機基板 + BGA | 平移 |
@@ -37,14 +37,14 @@ flowchart TB
     end
     subgraph "CoPoS（矩形面板載體）"
         CP_C["晶片層<br/>GPU Die + 更多 HBM 堆疊"]
-        CP_I["面板級中介層<br/>Glass Panel<br/>面板 RDL + TGV"]
+        CP_I["面板級中介層<br/>有機 RDL／玻璃核心<br/>面板 RDL + TGV"]
         CP_S["封裝基板<br/>Organic Substrate + BGA"]
         CP_C --> CP_I --> CP_S
     end
-    CW_I -. "矽晶圓 → 玻璃面板" .-> CP_I
+    CW_I -. "矽晶圓 → 矩形面板" .-> CP_I
 ```
 
-兩者疊構層次一模一樣，差別集中在中間那層：**載體從圓形矽晶圓，換成方形玻璃面板**。這一個改變，牽動了本書後面所有的討論。
+兩者疊構層次一模一樣，差別集中在中間那層：**載體從圓形矽晶圓，換成方形面板**（早期為有機 RDL 面板，長期路線指向玻璃核心）。這一個改變，牽動了本書後面所有的討論。
 
 ## 為什麼這個改變重要
 
@@ -66,4 +66,4 @@ flowchart TB
 
 至於這一切「什麼時候會發生」——試產線、量產時程、供應鏈布局——請看 [TSMC 布局與時程](09-tsmc-roadmap.md)。
 
-> 相關頁面：[從圓到方：面板尺寸與利用率](06-panel-geometry.md) ｜ [玻璃基板](07-glass-substrate.md) ｜ [面板級製程挑戰](08-panel-process-challenges.md) ｜ [CoWoS、CoPoS、SoW-X 比較](11-copos-vs-alternatives.md)
+> 下一頁：[從圓到方：面板尺寸與利用率](06-panel-geometry.md)　｜　相關頁面：[玻璃基板](07-glass-substrate.md) ｜ [面板級製程挑戰](08-panel-process-challenges.md) ｜ [CoWoS、CoPoS、SoW-X 比較](11-copos-vs-alternatives.md)
