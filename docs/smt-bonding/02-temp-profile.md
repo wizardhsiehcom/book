@@ -8,21 +8,24 @@
 
 ```mermaid
 flowchart LR
-    A["預熱區\nPreheat\n25→150°C\n1–2°C/s"] --> B["均溫區\nSoak\n150–180°C\n60–120 秒"] --> C["回流區\nReflow\n230–250°C\n無鉛"] --> D["冷卻區\nCooling\n降溫 3–7°C/s"]
+    A["預熱區<br/>Preheat<br/>25→150°C<br/>1–2°C/s"] --> B["均溫區<br/>Soak<br/>150–180°C<br/>60–120 秒"] --> C["回流區<br/>Reflow<br/>230–250°C<br/>無鉛"] --> D["冷卻區<br/>Cooling<br/>降溫 2–4°C/s"]
 ```
 
 ![實際溫度曲線示意](https://commons.wikimedia.org/wiki/Special:FilePath/RSS_Components_of_a_Profile1.svg?width=700)
 *標準回流焊溫度曲線（RSS 型）：橫軸為時間，縱軸為溫度，四段清晰標示。*
 
 ![Ramp-to-Spike 曲線](https://commons.wikimedia.org/wiki/Special:FilePath/Example_Ramp_to_Spike_thermal_profile.png?width=700)
-*Ramp-to-Spike 曲線——跳過長均溫段，直接快速升溫至峰值，常用於對溫度敏感性要求較低的無鉛製程。*
+*Ramp-to-Spike 曲線——以近似線性的緩升溫取代長均溫段，縮短整體高溫暴露時間，常見於無鉛製程。*
+
+!!! tip "RSS vs RTS 怎麼選"
+    RSS（四段均溫型）板溫均勻性好，適合大熱容量、元件密度不均的板子；RTS（線性升溫型）總受熱時間短、助焊劑耗損少。一般先以 RSS 驗證製程，穩定後可評估改 RTS 縮短週期。
 
 | 區段 | 溫度 / 時間 | 目的 | 若失控 |
 |------|-----------|------|--------|
 | 預熱區 | 升溫 1–2°C/s | 揮發溶劑與水分，防錫珠 | 升溫過快 → 錫珠、陶瓷元件裂 |
 | 均溫區 | 150–180°C，60–120 s | 活化助焊劑，均勻板溫 | 時間過短 → 助焊劑失效，冷焊 |
 | 回流區 | 230–250°C（無鉛） | 錫膏熔融，潤濕焊墊 | 峰溫不足 → 冷焊；過高 → 元件損傷 |
-| 冷卻區 | 降溫 3–7°C/s | 快速凝固，防晶粒粗化 | 過慢 → 焊點晶粒粗，強度差 |
+| 冷卻區 | 降溫 2–4°C/s（上限約 6°C/s） | 快速凝固，防晶粒粗化 | 過慢 → 焊點晶粒粗，強度差；過快 → 元件裂、板彎 |
 
 ---
 
@@ -52,7 +55,7 @@ flowchart LR
 
 | 缺陷 | 可能曲線原因 |
 |------|------------|
-| 錫珠（Solder Bead） | 預熱升溫過快，溶劑爆沸 |
+| 錫珠（Solder Ball） | 預熱升溫過快，溶劑爆沸 |
 | 冷焊（Cold Joint） | 峰溫不足或均溫時間過短 |
 | 墓碑效應（Tombstone） | 兩端元件加熱不均 |
 | 橋接（Bridging） | 錫膏塌陷 + 回流溫度過高 |

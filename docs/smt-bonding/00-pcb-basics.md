@@ -18,7 +18,7 @@
 flowchart TB
     subgraph "PCB 截面（示意）"
         Top["頂層銅箔 — 焊墊、走線"]
-        Core["玻璃纖維基材（FR4）\n— 絕緣、支撐"]
+        Core["玻璃纖維基材（FR4）<br/>— 絕緣、支撐"]
         Bot["底層銅箔 — 走線、接地"]
     end
 ```
@@ -44,7 +44,7 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    A["錫膏印刷\nSPI 檢測"] --> B["貼片\n（Pick & Place）"] --> C["回流爐\n熱風焊接"] --> D["AOI 檢測"] --> E["成品"]
+    A["錫膏印刷<br/>SPI 檢測"] --> B["貼片<br/>（Pick & Place）"] --> C["回流爐<br/>熱風焊接"] --> D["AOI 檢測"] --> E["成品"]
 ```
 
 ![SMT 生產線全貌](https://commons.wikimedia.org/wiki/Special:FilePath/Juki_KE-2080L_by_Megger.jpg?width=600)
@@ -93,7 +93,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    Conn["連接器端"] --> FPC["FPC 軟板\n（可彎折）"] --> PCB["主板 PCB"]
+    Conn["連接器端"] --> FPC["FPC 軟板<br/>（可彎折）"] --> PCB["主板 PCB"]
 ```
 
 常見於手機螢幕、相機模組、鍵盤排線。與主板的接合方式包括：熱壓（ACF）或 ZIF 連接器。

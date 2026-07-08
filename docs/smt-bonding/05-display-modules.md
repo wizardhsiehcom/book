@@ -9,9 +9,9 @@
 ```mermaid
 flowchart TD
     Panel["顯示器面板（LCD / OLED）"]
-    Panel --> FOG["FOG\nFilm on Glass\nFPC 壓著於玻璃"]
-    Panel --> COG["COG\nChip on Glass\nIC 直接壓著於玻璃"]
-    Panel --> COF["COF\nChip on Film\nIC 封裝於軟板，折入背面"]
+    Panel --> FOG["FOG<br/>Film on Glass<br/>FPC 壓著於玻璃"]
+    Panel --> COG["COG<br/>Chip on Glass<br/>IC 直接壓著於玻璃"]
+    Panel --> COF["COF<br/>Chip on Film<br/>IC 封裝於軟板，折入背面"]
 ```
 
 ---
@@ -25,7 +25,7 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    FPC["FPC\n（含外部連接器）"] -->|"ACF 壓著"| Glass["LCD / OLED\n玻璃基板端子"]
+    FPC["FPC<br/>（含外部連接器）"] -->|"ACF 壓著"| Glass["LCD / OLED<br/>玻璃基板端子"]
 ```
 
 | 項目 | 說明 |
@@ -44,7 +44,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    IC["裸驅動 IC\n（Bare Die）"] -->|"ACF 壓著"| Glass["玻璃端子區\n（Bump 對齊）"]
+    IC["裸驅動 IC<br/>（Bare Die）"] -->|"ACF 壓著"| Glass["玻璃端子區<br/>（Bump 對齊）"]
 ```
 
 | 項目 | 說明 |
@@ -66,7 +66,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    Film["COF 模組\n（IC 封裝於 PI 薄膜）"] -->|"折彎至背面"| Glass["玻璃背面\nACF 壓著區"]
+    Film["COF 模組<br/>（IC 封裝於 PI 薄膜）"] -->|"折彎至背面"| Glass["玻璃背面<br/>ACF 壓著區"]
 ```
 
 | 項目 | 說明 |

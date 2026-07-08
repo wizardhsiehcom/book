@@ -43,10 +43,10 @@
 
 ```mermaid
 flowchart TD
-    L1["Level 1\n焊錫冶金基礎\nSAC305 / Sn63Pb37\n助焊劑作用"] --> L2["Level 2\n熱風爐溫度曲線\n四段目的與調機"]
-    L2 --> L3["Level 3\n熱壓 / ACF 製程\n導電粒子 / 三要素"]
-    L3 --> L4["Level 4\n缺陷分析\nAOI / X-Ray / 截面\nIPC-A-610"]
-    L4 --> L5["Level 5\n材料規格與設備選型\nDatasheet 解讀\n製程視窗最佳化"]
+    L1["Level 1<br/>焊錫冶金基礎<br/>SAC305 / Sn63Pb37<br/>助焊劑作用"] --> L2["Level 2<br/>熱風爐溫度曲線<br/>四段目的與調機"]
+    L2 --> L3["Level 3<br/>熱壓 / ACF 製程<br/>導電粒子 / 三要素"]
+    L3 --> L4["Level 4<br/>缺陷分析<br/>AOI / X-Ray / 截面<br/>IPC-A-610"]
+    L4 --> L5["Level 5<br/>材料規格與設備選型<br/>Datasheet 解讀<br/>製程視窗最佳化"]
 ```
 
 ---

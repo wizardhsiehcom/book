@@ -8,7 +8,7 @@
 
 ```mermaid
 flowchart TB
-    HP["熱板\n（設定溫度均勻加熱）"]
+    HP["熱板<br/>（設定溫度均勻加熱）"]
     HP -->|"傳導"| PCB["PCB 底面"]
     PCB -->|"再傳導（慢）"| Top["PCB 上表面元件"]
 ```

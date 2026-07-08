@@ -16,20 +16,21 @@
 
 ```mermaid
 flowchart TD
-    A["焊錫冶金基礎\n（合金、助焊劑）"] --> B["熱風回流爐\n原理與溫區"]
-    B --> C["爐溫曲線設定\n四段目的與調整"]
-    A --> D["熱壓接合原理\n刀頭傳導與施壓"]
-    D --> E["ACF 導電膠製程\n溫度×壓力×時間"]
-    E --> F["顯示器模組應用\nFOG / COG / COF"]
-    C --> G["三大工藝比較\n選型決策"]
+    A["PCB 與 SMT 基礎<br/>＋名詞速查"] --> B["熱風回流爐<br/>原理與溫區"]
+    B --> C["爐溫曲線設定<br/>四段目的與調整"]
+    A --> D["熱壓接合原理<br/>刀頭傳導與施壓"]
+    D --> E["ACF 導電膠製程<br/>溫度×壓力×時間"]
+    E --> F["顯示器模組應用<br/>FOG / COG / COF"]
+    C --> G["三大工藝比較<br/>選型決策"]
     F --> G
-    G --> H["缺陷分析方法\nAOI / X-Ray / 截面"]
-    H --> I["材料規格與標準\n錫膏 / ACF / IPC"]
+    G --> H["缺陷分析方法<br/>AOI / X-Ray / 截面"]
+    H --> J["三大工藝的<br/>AOI 檢測重點"]
+    J --> I["材料規格與標準<br/>錫膏 / ACF / IPC"]
 ```
 
 ---
 
-> 📷 **圖片來源**：本書圖片均來自 [Wikimedia Commons](https://commons.wikimedia.org/)，依 CC BY-SA 授權使用。完整版權聲明見 [圖片來源頁](99-image-credits.md)。
+> 📷 **圖片來源**：本書圖片均來自 [Wikimedia Commons](https://commons.wikimedia.org/)，依各自的自由授權（CC BY / CC BY-SA / 公有領域等）使用。完整版權聲明見 [圖片來源頁](99-image-credits.md)。
 
 1. **[熱風回流爐](01-hot-air.md)** — 爐體結構、溫區設計、熱風刀
 2. **[爐溫曲線設定](02-temp-profile.md)** — 四段曲線、無鉛 vs 有鉛、調機實務
@@ -39,8 +40,9 @@ flowchart TD
 6. **[熱板傳導回流](06-hot-plate.md)** — 適用場合與限制
 7. **[三大工藝比較](07-comparison.md)** — 選型矩陣與決策指南
 8. **[缺陷分析方法](08-defect-analysis.md)** — AOI、X-Ray、截面分析、IPC 標準
-9. **[材料規格](09-materials.md)** — 錫膏、ACF、助焊劑 Datasheet 解讀
-10. **[學習資源](10-resources.md)** — 標準文件、白皮書、推薦資料
+9. **[三大工藝的 AOI 檢測重點](08b-aoi.md)** — 三種製程的 AOI 配置與檢測策略
+10. **[材料規格](09-materials.md)** — 錫膏、ACF、助焊劑 Datasheet 解讀
+11. **[學習資源](10-resources.md)** — 標準文件、白皮書、推薦資料
 
 ---
 

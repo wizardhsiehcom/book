@@ -70,7 +70,7 @@
 | **X-Ray** | — | 透視內部焊點，主要用於 BGA |
 | **截面分析** | Cross-Section Analysis | 研磨焊點至截面，觀察微結構 |
 | **冷焊** | Cold Joint | 錫未充分熔融，焊點灰暗粗糙、強度差 |
-| **錫珠** | Solder Bead | 焊墊旁的多餘小錫球 |
+| **錫珠** | Solder Ball / Bead | 焊墊旁的多餘小錫球 |
 | **墓碑效應** | Tombstone / Manhattan Effect | 小元件一端翹起 |
 | **橋接** | Bridging | 相鄰焊點被錫連通，導致短路 |
 | **空洞** | Void | 焊球或焊點內部的氣泡孔洞 |

@@ -12,11 +12,11 @@
 
 ```mermaid
 flowchart LR
-    SP["錫膏印刷"] --> SPI["SPI\n錫量 / 偏移 / 橋接"]
+    SP["錫膏印刷"] --> SPI["SPI<br/>錫量 / 偏移 / 橋接"]
     SPI --> PP["貼片"]
     PP --> RF["熱風回流爐"]
-    RF --> AOI["Post-Reflow AOI ★\n焊點外觀全檢"]
-    AOI --> ICT["ICT / FCT\n電性驗證"]
+    RF --> AOI["Post-Reflow AOI ★<br/>焊點外觀全檢"]
+    AOI --> ICT["ICT / FCT<br/>電性驗證"]
 ```
 
 ### 主要缺陷與 AOI 檢測能力
@@ -51,9 +51,9 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    PRE["對位前\n（CCD 對位機）"] --> BOND["熱壓接合\n（Thermode 刀頭施壓）"]
-    BOND --> AOI["壓著後 AOI\n對位偏移 / 氣泡 / 剝離"]
-    AOI --> ELEC["電氣導通測試\n（4-wire / 自動探針）"]
+    PRE["對位前<br/>（CCD 對位機）"] --> BOND["熱壓接合<br/>（Thermode 刀頭施壓）"]
+    BOND --> AOI["壓著後 AOI<br/>對位偏移 / 氣泡 / 剝離"]
+    AOI --> ELEC["電氣導通測試<br/>（4-wire / 自動探針）"]
 ```
 
 ### 熱壓 AOI 的核心檢測項目
@@ -72,8 +72,8 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    AOI_HB["熱壓後 AOI\n外觀 + 對位（快速）"] --> PASS{"外觀 OK？"}
-    PASS -->|是| ELEC_HB["電氣導通測試\n確認 ACF 粒子壓扁"]
+    AOI_HB["熱壓後 AOI<br/>外觀 + 對位（快速）"] --> PASS{"外觀 OK？"}
+    PASS -->|是| ELEC_HB["電氣導通測試<br/>確認 ACF 粒子壓扁"]
     PASS -->|否| REWORK["返修 / 報廢"]
     ELEC_HB --> FINAL["出貨"]
 ```
@@ -88,15 +88,15 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    HP["熱板回流完成"] --> VIS["目視 / 放大鏡\n人工初步確認"]
-    VIS --> SCOPE["光學顯微鏡\n焊點形狀 / 橋接確認"]
-    SCOPE --> ELEC_HP["電氣測試\n通斷確認"]
+    HP["熱板回流完成"] --> VIS["目視 / 放大鏡<br/>人工初步確認"]
+    VIS --> SCOPE["光學顯微鏡<br/>焊點形狀 / 橋接確認"]
+    SCOPE --> ELEC_HP["電氣測試<br/>通斷確認"]
 ```
 
 | 檢查手段 | 適用情況 | 局限 |
 |---------|---------|------|
 | 肉眼 / 放大鏡（10×） | 快速確認橋接、缺件 | 解析度不足，冷焊難辨 |
-| 工業顯微鏡（30–100×） | 焊點形狀、IMC 確認 | 費時，依賴人員經驗 |
+| 工業顯微鏡（30–100×） | 焊點潤濕形狀確認 | 費時，依賴人員經驗（IMC 需截面分析才能觀察） |
 | 桌上型 AOI（離線） | 若有設備可手動放入檢測 | 非連線，無法即時回饋 |
 | 截面分析 | 焊點根因確認（破壞性） | 僅限樣品確認，不做全檢 |
 
