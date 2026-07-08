@@ -1,0 +1,73 @@
+site_name: MAS.531 Computational Camera and Photography
+site_description: MIT MAS.531 計算相機與攝影課程筆記與繁體中文教學
+site_author: Wizard
+repo_name: book
+repo_url: https://github.com/wizardhsieh/book
+
+theme:
+  name: material
+  language: zh-Hant
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切換至暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切換至亮色模式
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 首頁: README.md
+  - 前言: 00-preface.md
+  - 第 1 章：導論: 01-introduction.md
+  - 第 2 章：現代光學與 Ray-Matrix 運算: 02-modern-optics-ray-matrix.md
+  - 第 3 章：Epsilon Photography 與單張多域相機: 03-epsilon-photography.md
+  - 第 3b 章：單張多域相機: 03-epsilon-photography-part2.md
+  - 第 4 章：計算照明：Dual Photography 與 Relighting: 04-computational-illumination.md
+  - 第 5 章：光場一: 05-lightfields-1.md
+  - 第 6 章：光場二: 06-lightfields-2.md
+  - 第 7 章：感測與互動: 07-sensing-and-interaction.md
+  - 第 8 章：波長與顏色: 08-wavelengths-color-hyperspectral.md
+  - 第 9 章：計算成像綜覽: 09-computational-imaging-survey.md
+  - 第 10 章：編碼成像 (Coded Imaging): 10-coded-imaging.md
+  - 附錄：動物之眼: appendix-lec10.md
+  - 術語表: glossary.md
+  - 參考資料: references.md
+
+docs_dir: ../docs/mas531-computational-photography
+site_dir: ../book/mas531-computational-photography/html
+use_directory_urls: false
