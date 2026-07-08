@@ -2,29 +2,21 @@
 
 本頁記錄 MIT 9.35《Sensation and Perception 感覺與知覺》書稿使用的外部資源。
 
-> **注意**：外部搜尋僅在第 6 階段（全部逐字稿初稿完成後）進行。目前本頁為佔位，待書稿完成後補入正式引用。
-
 ## 課程來源
 
 | 類型 | 內容 | 備註 |
 |---|---|---|
 | 逐字稿 | MIT 9.35 課程 YouTube 影片自動字幕，共 23 講 | 為本書主要來源 |
-| 官方 slides | 待補 | `data/mit9.35/` 目前只有 transcripts |
-| Reading list | 待補 | 使用者若有課程指定 reading list 或教科書，請提供 |
-| OCW 頁面 | 待補 | MIT OpenCourseWare 連結，待第 6 階段確認 |
+| 官方 OCW | [MIT 9.35 Spring 2024 (Perception)](https://ocw.mit.edu/courses/9-35-perception-spring-2024) | 包含 Problem Sets 與考試題型參考 |
+| 官方 slides | 未提供 | 經查 MIT OCW 網站，本課程未釋出授課簡報檔案 |
 
-## 外部補充（待填）
+## 指定教科書與延伸閱讀
 
-外部搜尋完成後，將依章節分類填入以下格式：
+根據 MIT OCW 課程大綱，本課程的學習涵蓋了多本經典知覺教科書：
 
-| 章節 | 來源 | URL | 存取日期 | 補充內容摘要 |
-|---|---|---|---|---|
-| 待補 | 待補 | 待補 | 待補 | 待補 |
+- **Wolfe, J. M. et al.** *Sensation and Perception* (各大版本) — 視覺與綜合知覺的主力教科書
+- **Plack, C. J.** *The Sense of Hearing* — 聽覺系統專門參考
+- **Wandell, B. A.** *Foundations of Vision* — 視覺計算模型與早期視覺
+- **Schnupp, J., Nelken, I., & King, A.** *Auditory Neuroscience* — 聽覺神經科學的進階參考
 
-## 建議延伸閱讀（待補）
-
-以下為課程常見參考教科書，尚未確認是否為本課程指定閱讀：
-
-- Wolfe, J. M. et al. *Sensation and Perception* (多版本) — 待補認確認
-- Goldstein, E. B. *Sensation and Perception* — 待補確認
-- Kandel et al. *Principles of Neural Science* — 相關神經解剖背景
+> 註：由於官方並未釋出投影片，書稿中標記為「待補」的許多視覺錯覺圖表與神經科學實驗數據圖（如 Random Dot Stereograms, Carrasco 的對比度實驗等），讀者皆可於上述教科書（特別是 Wolfe 等人的著作）中找到對應的圖解說明。
