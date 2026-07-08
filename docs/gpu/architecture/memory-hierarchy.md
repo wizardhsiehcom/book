@@ -18,7 +18,7 @@ flowchart TB
 
 傳統 GDDR6X 雖然便宜，但頻寬約 1 TB/s 且容量有限。HBM（High Bandwidth Memory）透過 **3D 堆疊 + 矽中介板（Interposer）** 實現：
 
-- HBM2e：2 TB/s，最多 80 GB（H100 SXM）
+- HBM2e：2 TB/s，最多 80 GB（A100 80GB）
 - HBM3：3.35 TB/s（H100）
 - HBM3e：4.8 TB/s（H200），容量達 141 GB
 

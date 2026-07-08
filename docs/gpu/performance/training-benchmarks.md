@@ -4,13 +4,13 @@
 
 ## 主流 AI 訓練 GPU 規格對比（2024–2025）
 
-| GPU | 架構 | FP8 TFLOPS | HBM 容量 | HBM 頻寬 | NVLink |
+| GPU | 架構 | FP8 TFLOPS（含 sparsity） | HBM 容量 | HBM 頻寬 | GPU 間互連 |
 |-----|------|-----------|---------|---------|-------|
-| NVIDIA H100 SXM | Hopper | 3,958 | 80 GB | 3.35 TB/s | 900 GB/s |
-| NVIDIA H200 SXM | Hopper | 3,958 | 141 GB | 4.8 TB/s | 900 GB/s |
-| NVIDIA B200 SXM | Blackwell | ~18,000 | 192 GB | 8.0 TB/s | 1.8 TB/s |
-| AMD MI300X | CDNA 3 | 5,220 | 192 GB | 5.3 TB/s | 不支援 |
-| AMD MI325X | CDNA 3+ | 5,220 | 288 GB | 6.0 TB/s | 不支援 |
+| NVIDIA H100 SXM | Hopper | 3,958 | 80 GB | 3.35 TB/s | NVLink 900 GB/s |
+| NVIDIA H200 SXM | Hopper | 3,958 | 141 GB | 4.8 TB/s | NVLink 900 GB/s |
+| NVIDIA B200 SXM | Blackwell | ~9,000 | 192 GB | 8.0 TB/s | NVLink 1.8 TB/s |
+| AMD MI300X | CDNA 3 | 5,220 | 192 GB | 5.3 TB/s | Infinity Fabric ~896 GB/s |
+| AMD MI325X | CDNA 3+ | 5,220 | 256 GB | 6.0 TB/s | Infinity Fabric ~896 GB/s |
 
 ## NVIDIA 在訓練場景的領先
 

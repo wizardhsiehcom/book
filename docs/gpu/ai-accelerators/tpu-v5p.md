@@ -27,7 +27,7 @@ TPU 的核心是 **Systolic Array**（脈動陣列）：一種固定資料流方
 | 規格 | TPU v5p | TPU v4 | 備注 |
 |------|---------|--------|------|
 | 架構 | — | — | Google 自研 |
-| BF16 TFLOPS | 918 | 275 | 3.3× 提升 |
+| BF16 TFLOPS | 459 | 275 | 1.7× 提升（INT8 為 918） |
 | HBM 容量 | 95 GB | 32 GB | 3× 提升 |
 | ICI 頻寬 | 4,800 Gbps | 1,200 Gbps | 4× 提升（晶片間） |
 | 雲端可用 | 僅 GCP | 僅 GCP | |
@@ -40,7 +40,7 @@ TPU 的核心是 **Systolic Array**（脈動陣列）：一種固定資料流方
 - ICI 頻寬遠高於 PCIe，接近 NVLink 水準
 - 不需要昂貴的 InfiniBand 網路交換器
 
-Google 可以把 4,096 顆 TPU v5p 串成一個 **TPU Pod**，All-to-All 通訊效率極高。
+Google 可以把 8,960 顆 TPU v5p 串成一個 **TPU Pod**，All-to-All 通訊效率極高。
 
 ## 使用 TPU 的工具鏈
 

@@ -1,5 +1,7 @@
 # GPU 書籍審閱改進計畫
 
+> **狀態（2026-07-08）**：Agent A（A1–A8）、Agent B（B1–B4）、Agent C（C1–C2）全部完成；`learning-map.html` 的 TPU 918 一併修正。Agent D（低優先、選做）未做。建置通過無警告；C1/C2 圖形建議 `./serve-book.sh gpu` 目視覆核。
+
 > 審閱範圍：`docs/gpu/` 全部 23 頁 + `configs/gpu.yml`。
 > 建置狀態：`uv run mkdocs build -f configs/gpu.yml` 通過，無斷鏈、無 nav 警告。
 > 整體評價：結構完整（前提知識 → 架構 → 效能 → 競爭 → 消費級 → 加速器），交叉連結健全，語言風格一致。主要問題集中在**規格數字的準確性**與**少數頁內自相矛盾**。

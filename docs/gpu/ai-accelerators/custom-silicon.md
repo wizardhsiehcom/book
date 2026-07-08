@@ -39,7 +39,7 @@ flowchart TB
 **設計目標**：供 Microsoft Azure 和 OpenAI 使用，降低 NVIDIA 依賴
 
 - 2024 年在 Azure 開始小規模部署
-- 主要用於 GPT-4 系列模型的推論服務
+- 據報導用於 OpenAI 工作負載的推論服務
 - 微軟同時繼續大量採購 NVIDIA GPU，Maia 是補充而非替代
 
 **現況**：未對外開放，細節規格未公開。屬於 Azure 基礎架構投資，不是商業加速器。

@@ -22,7 +22,7 @@ flowchart TB
 | 層次 | 對應硬體 | 共享記憶體 |
 |------|---------|-----------|
 | Thread | 單一 CUDA Core | 私有 Register |
-| Block（含 32 Thread 的 Warp） | 單一 SM | Shared Memory（共用） |
+| Block（由若干 Warp 組成） | 單一 SM | Shared Memory（共用） |
 | Grid | 整個 GPU | Global Memory（HBM） |
 
 ## Warp：真正的排程單位

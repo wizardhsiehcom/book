@@ -62,18 +62,18 @@ Intel 不期待在高階市場競爭，而是從入門市場蠶食。
 
 ```mermaid
 flowchart TB
-    subgraph "旗艦（> \$700）"
+    subgraph "旗艦（> $1,000）"
         R5090["RTX 5090 ✅"]
     end
-    subgraph "高階（\$400–\$700）"
-        RX9070XT["RX 9070 XT ✅"]
+    subgraph "高階（$600–$1,000）"
         R5070T["RTX 5070 Ti（若能買到）"]
     end
-    subgraph "主流（\$200–\$400）"
+    subgraph "主流（$400–$600）"
+        RX9070XT["RX 9070 XT ✅"]
         R5070["RTX 5070"]
         RX9070["RX 9070"]
     end
-    subgraph "入門（< \$200）"
+    subgraph "入門（< $400）"
         ArcB580["Intel Arc B580 ✅"]
     end
 ```
