@@ -137,6 +137,15 @@ const BOOKS = [
     accent: "#ef4444",
     glow: "rgba(239,68,68,0.18)",
   },
+  {
+    icon: "🎲",
+    title: "MIT 14.12 賽局理論的經濟應用",
+    desc: "逐講精讀 MIT 14.12，從個體決策、優勢與 Nash 均衡，到重複賽局、Folk 定理、拍賣、訊號傳遞與共同知識",
+    tags: ["game theory", "economics", "math"],
+    href: "book/mit14-12-game-theory/html/index.html",
+    accent: "#6366f1",
+    glow: "rgba(99,102,241,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

@@ -1,0 +1,83 @@
+site_name: MIT 14.12 Economic Applications of Game Theory 賽局理論的經濟應用
+site_description: MIT 14.12 賽局理論的經濟應用課程筆記與繁體中文教學書稿
+site_author: Wizard
+
+theme:
+  name: material
+  language: zh-Hant
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切換至暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切換至亮色模式
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 導讀: README.md
+  - 第一章：個體決策導論: 01-individual-decision-making.md
+  - 第二章：賽局的表示法: 02-representation-of-games.md
+  - 第三章：優勢: 03-dominance.md
+  - 第四章：可理性化: 04-rationalizability.md
+  - 第五章：Nash 均衡: 05-nash-equilibrium.md
+  - 第六章：不完全競爭: 06-imperfect-competition.md
+  - 第七章：零和賽局: 07-zero-sum-games.md
+  - 第八章：逆向歸納: 08-backward-induction.md
+  - 第九章：談判: 09-negotiation.md
+  - 第十章：子賽局完美均衡: 10-subgame-perfect-equilibrium.md
+  - 第十一章：一次偏離原理與議價: 11-one-shot-deviation-bargaining.md
+  - 第十二章：有限重複賽局: 12-finitely-repeated-games.md
+  - 第十三章：無限重複賽局: 13-infinitely-repeated-games.md
+  - 第十四章：Folk 定理: 14-folk-theorem.md
+  - 第十五章：隱性卡特爾: 15-implicit-cartels.md
+  - 第十六章：貝氏賽局: 16-bayesian-games.md
+  - 第十七章：貝氏 Nash 均衡（應用）: 17-bayesian-nash-applications.md
+  - 第十八章：拍賣: 18-auctions.md
+  - 第十九章：收益等價: 19-revenue-equivalence.md
+  - 第二十章：廣告拍賣: 20-ad-auctions.md
+  - 第二十一章：完美貝氏均衡: 21-perfect-bayesian-equilibrium.md
+  - 第二十二章：訊號傳遞: 22-signaling.md
+  - 第二十三章：不完全訊息下的議價: 23-bargaining-incomplete-information.md
+  - 第二十四章：Cheap Talk（廉價交談）: 24-cheap-talk.md
+  - 第二十五章：共同知識: 25-common-knowledge.md
+  - 附錄 A — 術語表: glossary.md
+  - 附錄 B — 參考資料: references.md
+
+docs_dir: ../docs/mit14-12-game-theory
+site_dir: ../book/mit14-12-game-theory/html
+use_directory_urls: false
