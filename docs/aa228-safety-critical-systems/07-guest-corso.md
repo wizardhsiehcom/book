@@ -1,14 +1,14 @@
-# 第 17 章：訪問講座——Anthony Corso 與 Terra AI
+# 第 7 章：客座講座——Anthony Corso 與 Terra AI (Guest Lecture: Anthony Corso)
 
-> **訪問講者**：Anthony Corso（Stanford SISL 博士、前 Stanford AI 安全中心執行主任、Terra AI 創辦人）
+> **客座講者**：Anthony Corso（Stanford SISL 博士、前 Stanford AI 安全中心執行主任（2021–2024）、Terra AI 共同創辦人兼技術長）
 >
-> 本章涵蓋兩大主題：(1) 強化學習偽造法與自適應壓力測試（Adaptive Stress Testing, AST）在真實交通系統中的應用挑戰與解法；(2) 地球資源決策問題的安全關鍵性。
+> 本章涵蓋兩大主題：(1) 強化學習否證法與自適應壓力測試（Adaptive Stress Testing, AST）在真實交通系統中的應用挑戰與解法；(2) 地球資源決策問題的安全關鍵性。
 
 ---
 
-## 17.1 強化學習作為偽造工具的回顧
+## 7.1 強化學習作為否證工具的回顧
 
-在上一講中，我們討論了以規劃技術（RRT、MCTS）進行偽造的方法。本章一開始先補完最後一塊拼圖：以**強化學習（Reinforcement Learning, RL）**驅動對抗者（adversary），讓它學會如何對系統施加擾動以誘發失效。
+在上一章中，我們探討了以規劃技術（RRT、MCTS）逐步建構軌跡來進行否證的方法。本章一開始先補完最後一塊拼圖：以**強化學習（Reinforcement Learning, RL）**驅動對抗者（adversary），讓它學會如何對系統施加擾動以誘發失效。
 
 ### 對抗者框架
 
@@ -46,11 +46,11 @@ AST 的獎勵函數同時包含：
 1. 失效信號（是否發生碰撞等）
 2. 擾動的**對數似然**（越罕見的擾動，懲罰越重）
 
-此概念由 SISL 校友 **Richie Lee** 提出，最初用於驗證 ACAS X 航空衝突迴避系統。
+此概念由 SISL 長期合作者 **Ritchie Lee**（NASA Ames）等人提出，原始論文發表於 IEEE/AIAA 數位航空電子系統會議（DASC）2015，最初用於驗證 ACAS X 航空防撞系統。
 
 ---
 
-## 17.2 選擇偽造方法的準則
+## 7.2 選擇否證方法的準則
 
 模擬器的類型是決定可用方法的首要限制：
 
@@ -75,7 +75,7 @@ flowchart TD
 
 ---
 
-## 17.3 真實世界 AST 的三大挑戰
+## 7.3 真實世界 AST 的三大挑戰
 
 Anthony Corso 在演講中將實際部署 AST 的困難歸納為三個方向：
 
@@ -93,7 +93,7 @@ graph TD
 
 ---
 
-## 17.4 挑戰一：目標規格設計
+## 7.4 挑戰一：目標規格設計
 
 ### 自動駕駛行人場景
 
@@ -116,13 +116,13 @@ $$r = r_\text{failure} + r_\text{closeness} + r_\text{likelihood}$$
 
 > 只搜尋**自駕車應負責的失效**情境。
 
-結果：AST 找到了更具代表性的失效——行人以斜向步態穿越，感測器雜訊偏移導致車輛誤判行人仍在人行道上，最終發生碰撞。此情境與 2018 年 Uber ATG 事故高度相似。
+結果：AST 找到了更具代表性的失效——行人以斜向步態穿越，感測器雜訊偏移導致車輛誤判行人仍在人行道上，最終發生碰撞。此情境與 2018 年 Uber ATG 事故高度相似：NTSB 調查指出，該事故中感測器其實早已偵測到行人，但**感知分類軟體**反覆在車輛、自行車與其他物體之間重新分類、從未將她辨識為行人，且原廠自動緊急煞車功能被停用，最終釀成憾事。
 
 ```mermaid
 sequenceDiagram
-    participant "行人" as P
-    participant "感測器" as S
-    participant "自駕車" as V
+    participant P as 行人
+    participant S as 感測器
+    participant V as 自駕車
 
     P ->> S: "斜向行走（非直線）"
     Note over S: "雜訊偏移導致定位錯誤"
@@ -135,7 +135,7 @@ sequenceDiagram
 
 ---
 
-## 17.5 挑戰二：環境建模
+## 7.5 挑戰二：環境建模
 
 ### 建模困難來源
 
@@ -156,11 +156,11 @@ GAN 在本脈絡中的兩種應用：
 | **多代理行為模型** | 學習高速公路上多輛車的聯合行為（煞車傳遞、變換車道等） |
 | **感測器外觀模型** | 生成特定場景（如跑道）下攝影機所見影像，用於模擬器 |
 
-> 實務上，環境建模所耗費的工程資源往往遠超偽造演算法本身。
+> 實務上，環境建模所耗費的工程資源往往遠超否證演算法本身。
 
 ---
 
-## 17.6 挑戰三：高效優化——TaxiNet 案例
+## 7.6 挑戰三：高效優化——TaxiNet 案例
 
 ### 系統描述
 
@@ -188,7 +188,7 @@ $$\max_{\delta \in \mathcal{B}_\epsilon} \text{steering\_error}(x + \delta)$$
 
 其中 $\mathcal{B}_\epsilon$ 為像素擾動的 $\epsilon$-球。
 
-結果：即使每步都施加同方向最壞擾動，飛機仍能保持安全（神經網路具備魯棒性）。
+結果：即使每步都施加同方向最壞擾動，飛機仍能保持安全（神經網路具備強健性）。
 
 **步驟 2：MCTS 序列搜尋**
 
@@ -196,9 +196,9 @@ $$\max_{\delta \in \mathcal{B}_\epsilon} \text{steering\_error}(x + \delta)$$
 
 ```mermaid
 sequenceDiagram
-    participant "MCTS" as M
-    participant "飛機" as A
-    participant "神經網路" as NN
+    participant M as MCTS
+    participant A as 飛機
+    participant NN as 神經網路
 
     M ->> A: "持續向左偏移（多步）"
     A ->> NN: "飛機已偏至跑道邊緣"
@@ -216,9 +216,9 @@ sequenceDiagram
 
 ---
 
-## 17.7 DIFFS：基於擴散模型的失效採樣
+## 7.7 DiFS：基於擴散模型的失效採樣
 
-Harrison（SISL）開發的 **DIFFS（Diffusion-based Failure Sampling）** 方法，針對高維自主系統的失效發現問題。
+**Harrison Delecki**（SISL）等人開發的 **DiFS（Diffusion-Based Failure Sampling）** 方法（發表於 IEEE ERAS 2025），針對高維自主系統的失效發現問題。
 
 ### 核心思想
 
@@ -246,13 +246,13 @@ flowchart TD
 
 | 系統 | 說明 |
 |---|---|
-| **2D 玩具問題** | 擾動來自二維高斯分佈；失效區域在左上/右上角；DIFFS 樣本與 MC 真實分佈高度吻合 |
+| **2D 玩具問題** | 擾動來自二維高斯分佈；失效區域在左上/右上角；DiFS 樣本與 MC 真實分佈高度吻合 |
 | **倒立擺** | 擾動施加於扭矩；迭代過程可視化顯示逐步收斂至高失效區 |
-| **F-16 模型** | 高自由度飛行動力學；DIFFS 找到高似然失效軌跡（飛機觸地）；傳統優化器難以解決 |
+| **F-16 模型** | 高自由度飛行動力學；DiFS 找到高似然失效軌跡（飛機觸地）；傳統優化器難以解決 |
 
 ---
 
-## 17.8 安全驗證的整體性
+## 7.8 安全驗證的整體性
 
 Corso 強調，AST 只是安全工程完整循環中的一個環節：
 
@@ -274,15 +274,15 @@ flowchart LR
 
 ---
 
-## 17.9 地球資源問題與安全關鍵性
+## 7.9 地球資源問題與安全關鍵性
 
 ### 氣候背景
 
-全球暖化路徑取決於政策選擇：
+全球暖化路徑取決於政策選擇（以下數字依 Climate Action Tracker 2025 年 11 月更新與 IPCC AR6，2021）：
 
-- 現有政策：約 2.7°C 升溫
-- 無作為：超過 4°C 升溫
-- 積極減排：可控制在 1.5–2°C
+- 現有政策路徑：約 2.6°C 升溫（CAT 2025-11 評估）
+- 極高排放情境（IPCC AR6 SSP5-8.5）：本世紀末最佳估計約 4.4°C
+- 積極減排：若各國淨零承諾全數兌現，約可壓至 1.9°C；要控制在 1.5–2°C，仍需超出現有承諾的額外行動
 
 應對挑戰需要：再生能源、碳儲存、電氣化，以及大量關鍵礦產（銅、鎳、鋰）。
 
@@ -318,7 +318,7 @@ graph TD
 
 | 風險類型 | 說明 | 案例 |
 |---|---|---|
-| **誘發地震** | 高壓注入液體可重新激活斷層 | 南韓地熱廠導致地震 |
+| **誘發地震** | 高壓注入液體可重新激活斷層 | 2017 年南韓浦項地震（Mw 5.4，政府調查認定由 EGS 地熱注水觸發） |
 | **CO₂ 洩漏** | CO₂ 沿斷層遷移回地表，可能窒息人畜 | 1986 年喀麥隆尼奧斯湖事件 |
 
 ### 未來研究方向
@@ -329,27 +329,31 @@ graph TD
 
 ---
 
-## 17.10 章節摘要
+## 7.10 本章小結
 
 | 主題 | 核心要點 |
 |---|---|
-| **RL 偽造** | 對抗者 = RL 代理；可泛化至多初始狀態 |
+| **RL 否證** | 對抗者 = RL 代理；可泛化至多初始狀態 |
 | **AST** | 最可能失效 = 似然加權獎勵；MCTS 或深度 RL 搜尋 |
 | **模擬器選擇準則** | 黑箱→零階；逐步→RL/樹搜；可微→梯度法 |
 | **目標規格（RSS）** | 需編碼責任歸屬，不能只追蹤接觸 |
 | **環境建模（GAN）** | 從數據學習代理行為與感測器外觀 |
 | **TaxiNet** | 單步最壞分析不夠；MCTS 揭露序列失效 |
-| **DIFFS** | 條件擴散模型迭代逼近失效分佈 |
+| **DiFS** | 條件擴散模型迭代逼近失效分佈 |
 | **安全整體性** | AST 僅為完整安全工程循環的一部分 |
 | **地下資源** | POMDP 框架；代理模型；安全風險（地震、洩漏） |
 
+至此，「否證」主軸告一段落：我們已能找到單一（甚至最可能的）失效。下一章將更進一步，探討如何刻畫**完整的失效分佈**——系統失效時究竟會呈現哪些不同的行為模式。
+
 ---
 
-## 延伸閱讀
+## 7.11 延伸閱讀
 
-- Lee, R. et al. (2020) — *Adaptive Stress Testing for Autonomous Vehicles*（AST 原始論文）
-- Responsibility-Sensitive Safety（Mobileye RSS 白皮書）
-- Harrison — DIFFS 論文（擴散模型失效採樣）
-- Robert 的多場景 AST 框架
-- 神經網路驗證工具（詳見本課程後續講次）
-- Kochenderfer — *Algorithms for Decision Making*（POMDP 背景）
+- Lee, R. et al. (2015) — *Adaptive Stress Testing of Airborne Collision Avoidance Systems*, IEEE/AIAA DASC 2015（AST 原始論文）；另可參考 Lee 等人 2020 年於 JAIR 發表的 AST 回顧論文
+- Shalev-Shwartz, S. et al. — *Responsibility-Sensitive Safety*（Mobileye RSS 白皮書）
+- Delecki, H. et al. — *Diffusion-Based Failure Sampling for Evaluating Safety-Critical Autonomous Systems*, IEEE ERAS 2025（DiFS）
+- Moss, R. J. 的 AST 工具與框架 — *POMDPStressTesting.jl: Adaptive Stress Testing for Black-Box Systems*, JOSS, 2021
+- 神經網路驗證：課程另有未公開之神經網路驗證客座講座（Min Wu），可參考教科書《Algorithms for Validation》§9.7
+- Kochenderfer, M. J. et al. — *Algorithms for Decision Making*（POMDP 背景）
+
+完整參考資料見[附錄：參考資料](appendix-references.md)。

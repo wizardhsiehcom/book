@@ -1,8 +1,8 @@
-# Lecture 11: 重要性採樣 (Importance Sampling)
+# 第 9 章：重要性採樣 (Importance Sampling)
 
-## 1. 核心概念 (Core Concepts)
+## 9.1 核心概念 (Core Concepts)
 
-在上一講中，我們討論了如何尋找與分析失效模式，但我們還有一個終極目標：**估計系統發生失效的機率 (Probability of Failure)**。
+在上一章中，我們探討了如何從失效分佈中取樣、全面認識系統的失效模式，但我們還有一個終極目標：**估計系統發生失效的機率 (Probability of Failure)**。
 
 失效機率的數學定義為：
 $$p_{\text{fail}} = \mathbb{E}_{p(\tau)}[\mathbf{1}[\tau \in \text{failure}]] = \int p(\tau)\,\mathbf{1}[\tau \in \text{failure}]\,d\tau$$
@@ -23,7 +23,7 @@ $$\hat{p}_{\text{fail}} = \frac{n_{\text{fail}}}{m}$$
 
 ---
 
-## 2. 深入解析 (Deep Dive)：重要性採樣 (Importance Sampling)
+## 9.2 深入解析：重要性採樣 (Importance Sampling)
 
 為了解決罕見事件的抽樣問題，我們引入了**重要性採樣 (Importance Sampling, IS)**。
 
@@ -47,15 +47,36 @@ $$\hat{p}_{\text{fail}} = \frac{1}{m} \sum_{i=1}^m w_i \cdot \mathbf{1}[\tau^{(i
 - 因此，實務上的目標是：**找到一個盡可能接近失效分佈，且容易抽樣的提案分佈 $q(\tau)$**。
 
 ### 尋找提案分佈的步驟
-1. 利用上一講介紹的 MCMC 等方法，先收集一批**失效樣本**。
+1. 利用上一章介紹的 MCMC 等方法，先收集一批**失效樣本**。
 2. 將這些失效樣本配適 (Fit) 到一個容易處理的分佈上（例如高斯分佈）。
 3. 將這個配適後的分佈作為 $q(\tau)$ 來進行重要性採樣。
 
 ---
 
-## 3. Julia 實作與範例 (Julia Implementation & Examples)
+## 9.3 有效樣本數 (Effective Sample Size, ESS)
 
-在 `failure_prob.jl` 中，我們可以看到如何實作重要性採樣。我們需要能計算 $p$ 和 $q$ 的機率密度函數 (PDF)。
+重要性採樣的名目樣本數 $m$ 並不能直接反映估計品質。當提案分佈 $q(\tau)$ 與目標分佈相差甚遠時，重要性權重會變得**極度不均**：絕大多數樣本的權重趨近於零，只有少數樣本擁有極大的權重——此時估計值實質上只由那少數幾個樣本決定，真正有效的資訊量遠低於 $m$。
+
+**有效樣本數 (Effective Sample Size, ESS)** 就是量化這件事的診斷指標。標準的自正規化公式為：
+
+$$
+\text{ESS} = \frac{\left(\sum_{i=1}^{m} w_i\right)^2}{\sum_{i=1}^{m} w_i^2}
+$$
+
+其行為的兩個極端情況：
+
+- **所有權重相等**（提案分佈與目標分佈完美匹配）：$\text{ESS} = m$，每個樣本都貢獻等量的資訊。
+- **權重全部集中在單一樣本**：$\text{ESS} = 1$，等同於只有一個有效樣本。
+
+因此 $\text{ESS} \in [1, m]$，可以解讀為「這批加權樣本大約相當於多少個從目標分佈直接抽取的獨立樣本」。
+
+> **實務意義**：ESS 遠低於 $m$ 是**提案分佈品質差**的警訊——大多數樣本落在與失效無關的區域，估計的變異數會很大。此時增加樣本數的邊際效益有限，更根本的解法是改善提案分佈本身，這正是下一章自適應方法的出發點。
+
+---
+
+## 9.4 Julia 實作與範例 (Julia Implementation & Examples)
+
+以下程式碼展示如何實作重要性採樣。我們需要能計算 $p$ 和 $q$ 的機率密度函數 (PDF)。
 
 ```julia
 struct ImportanceSamplingEstimation
@@ -93,7 +114,7 @@ fit_proposal = SimpleGaussianTrajectoryDistribution(dist_fit.μ, dist_fit.σ)
 
 ---
 
-## 4. 關鍵圖表與視覺化 (Key Diagrams & Visualizations)
+## 9.5 關鍵圖表與視覺化 (Key Diagrams & Visualizations)
 
 ### 估計方法比較 (Comparison of Estimation Methods)
 
@@ -115,9 +136,11 @@ graph TD
 
 ---
 
-## 5. 待釐清與外部連結 (Open Questions & References)
+## 9.6 本章小結
 
-- **待確認的課程內容**：有效樣本數 (Effective Sample Size, ESS) 的計算。當重要性權重極度不均時，即使抽了很多樣本，真正有效的資訊量可能很低。
-- **關聯 Notebook**：
-  - `failure_prob.jl`（重要性採樣實作）
-  - `smc.jl`（平滑化分佈與 MCMC 取樣）
+- **失效機率** $p_{\text{fail}}$ 是失效分佈的正規化常數；直接蒙地卡羅估計雖然不偏且一致，但在失效為罕見事件時（如 $p_{\text{fail}} \approx 10^{-9}$）計算上不可行。
+- **重要性採樣**改從提案分佈 $q(\tau)$ 抽樣，以權重 $w_i = p(\tau_i)/q(\tau_i)$ 修正，維持不偏與一致性。
+- **最佳提案分佈**恰為失效分佈本身（變異數為零），但它需要已知 $p_{\text{fail}}$——形成循環困境；實務上以 MCMC 失效樣本擬合一個接近失效分佈、又易於抽樣的 $q(\tau)$。
+- **有效樣本數 (ESS)** 是提案品質的診斷指標：權重越不均，ESS 越低，估計越不可靠。
+
+一次性擬合的提案分佈未必足夠好——若 ESS 偏低或失效存在多個模式，我們需要**迭代地改進提案分佈**。下一章（第 10 章）將介紹自適應重要性採樣：交叉熵方法、多重重要性採樣、族群蒙地卡羅與循序蒙地卡羅。

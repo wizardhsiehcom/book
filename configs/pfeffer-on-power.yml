@@ -1,0 +1,68 @@
+site_name: Pfeffer on Power 權力、影響力與組織現實
+site_description: Jeffrey Pfeffer 權力與組織現實逐字稿整理的繁體中文書稿
+site_author: Wizard
+
+theme:
+  name: material
+  language: zh-Hant
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切換至暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切換至亮色模式
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 導讀: README.md
+  - 第一章：權力不是選修課: 01-why-power-matters.md
+  - 第二章：七條規則的底層邏輯: 02-rules-of-power.md
+  - 第三章：權力是一種演出能力: 03-acting-with-power.md
+  - 第四章：溝通是權力的傳輸方式: 04-communicating-with-power.md
+  - 第五章：職場也是公共健康問題: 05-workplace-health.md
+  - 第六章：把能見度變成資源: 06-visibility-to-resources.md
+  - 第七章：敢開口，才有權力: 07-ask-for-power.md
+  - 第八章：別擋自己的路: 08-get-out-of-your-own-way.md
+  - 第九章：領導者就是訊息: 09-leader-as-message.md
+  - 第十章：把位置變成槓桿: 10-position-as-leverage.md
+  - 附錄 A — 術語表: appendix-glossary.md
+  - 附錄 B — 參考資料: appendix-references.md
+
+docs_dir: ../docs/pfeffer-on-power
+site_dir: ../book/pfeffer-on-power/html
+use_directory_urls: false

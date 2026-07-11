@@ -1,6 +1,6 @@
-# 第十二章：自適應重要性採樣 (Adaptive Importance Sampling)
+# 第 10 章：自適應重要性採樣 (Adaptive Importance Sampling)
 
-## 12.1 前情提要：重要性採樣回顧
+## 10.1 前情提要：重要性採樣回顧
 
 在上一章中，我們介紹了**重要性採樣（Importance Sampling, IS）**的核心思想。本章是失效機率估計的第二部分，將進一步探討如何**自適應地**選取更好的提案分佈，使估計結果更準確、更有效率。
 
@@ -23,15 +23,15 @@ flowchart LR
     C -->|"乘以權重 w = p/q"| B
 ```
 
-### 最優提案分佈
+### 最佳提案分佈
 
-可以證明，使IS估計器達到**零變異數**的最優提案分佈，恰好是**失效分佈（Failure Distribution）** 本身：
+可以證明，使IS估計器達到**零變異數**的最佳提案分佈，恰好是**失效分佈（Failure Distribution）** 本身：
 
 $$q^*(\tau) = \frac{p(\tau) \cdot \mathbf{1}[\tau \text{ 為失效}]}{p_{\text{fail}}}$$
 
 但這正是一個循環困境：要使用此分佈，必須知道正規化常數 $p_{\text{fail}}$——而那正是我們想要估計的量！
 
-因此，本章的核心目標是：**在不知道最優提案的前提下，盡可能地靠近它。**
+因此，本章的核心目標是：**在不知道最佳提案的前提下，盡可能地靠近它。**
 
 ### 提案的覆蓋條件
 
@@ -45,7 +45,7 @@ $$q^*(\tau) > 0 \Rightarrow q(\tau) > 0$$
 
 ---
 
-## 12.2 交叉熵方法 (Cross-Entropy Method, CEM)
+## 10.2 交叉熵方法 (Cross-Entropy Method, CEM)
 
 交叉熵方法（CEM）是一種**自適應重要性採樣**演算法，由 Reuven Rubinstein 提出，是本章介紹的第一個自適應演算法。
 
@@ -105,7 +105,7 @@ flowchart TD
 
 ---
 
-## 12.3 多重重要性採樣 (Multiple Importance Sampling, MIS)
+## 10.3 多重重要性採樣 (Multiple Importance Sampling, MIS)
 
 ### 動機
 
@@ -144,7 +144,7 @@ $$w_i = \frac{p(\tau_i)}{q_{\text{mix}}(\tau_i)} = \frac{p(\tau_i)}{\frac{1}{K}\
 
 ---
 
-## 12.4 族群蒙地卡羅 (Population Monte Carlo, PMC)
+## 10.4 族群蒙地卡羅 (Population Monte Carlo, PMC)
 
 ### 動機
 
@@ -173,7 +173,7 @@ flowchart TD
 
 ---
 
-## 12.5 序貫蒙地卡羅 (Sequential Monte Carlo, SMC)
+## 10.5 循序蒙地卡羅 (Sequential Monte Carlo, SMC)
 
 SMC 是本章介紹的最強大演算法，也是最接近非參數化（Non-parametric）的方法。
 
@@ -236,7 +236,7 @@ $$w_i^{(k)} = w_i^{(k-1)} \cdot \frac{G_k(\tau_i^{(k-1)})}{G_{k-1}(\tau_i^{(k-1)
 3. 最終的失效機率估計：
 $$\hat{p}_{\text{fail}} = \frac{1}{M} \sum_{i=1}^{M} w_i^{(N)}$$
 
-此結果**不顯然成立**，其數學推導涉及正規化常數之比（Ratio of Normalizing Constants）的理論，詳見書中引用的參考文獻。
+此結果**不顯然成立**，其數學推導涉及正規化常數之比（Ratio of Normalizing Constants）的理論（見 10.6 節），詳見書中引用的參考文獻。
 
 ### SMC 的優勢：非參數化
 
@@ -256,7 +256,7 @@ $$\hat{p}_{\text{fail}} = \frac{1}{M} \sum_{i=1}^{M} w_i^{(N)}$$
 
 ---
 
-## 12.6 正規化常數之比（進階：Ratio of Normalizing Constants）
+## 10.6 正規化常數之比（進階：Ratio of Normalizing Constants）
 
 > **注意**：此主題屬於進階內容，不列入考試範圍。
 
@@ -270,11 +270,11 @@ $$\hat{p}_{\text{fail}} = \frac{1}{M} \sum_{i=1}^{M} w_i^{(N)}$$
 | 橋接採樣（Bridge Sampling） | 使用兩個分佈之間的橋接分佈 |
 | 傘形採樣（Umbrella Sampling） | 使用覆蓋多個感興趣區域的傘形分佈 |
 
-書中第 7.12 圖（自正規化IS的最優提案分佈）也是一段小趣事的主角——它出現在授課教授的婚禮邀請函上，成為極少數印有 PGF Plots 圖形的婚禮邀請卡之一。
+書中第 7.12 圖（自正規化IS的最佳提案分佈）也是一段小趣事的主角——它出現在授課教授的婚禮邀請函上，成為極少數印有 PGF Plots 圖形的婚禮邀請卡之一。
 
 ---
 
-## 12.7 各演算法比較
+## 10.7 各演算法比較
 
 ```mermaid
 flowchart TD
@@ -285,7 +285,7 @@ flowchart TD
     Q2 -->|"不清楚"| Q3{"問題維度<br/>與複雜度如何？"}
     Q3 -->|"低維、單模態"| CEM2["交叉熵方法<br/>CEM"]
     Q3 -->|"多失效模式"| MIS2["多重重要性採樣<br/>MIS / PMC"]
-    Q3 -->|"高維、多模態"| SMC2["序貫蒙地卡羅<br/>SMC"]
+    Q3 -->|"高維、多模態"| SMC2["循序蒙地卡羅<br/>SMC"]
 ```
 
 | 演算法 | 提案類型 | 自適應 | 非參數 | 適用場景 |
@@ -298,7 +298,7 @@ flowchart TD
 
 ---
 
-## 12.8 關鍵公式整理
+## 10.8 關鍵公式整理
 
 $$
 \text{IS 估計器：} \quad \hat{p}_{\text{fail}} = \frac{1}{m}\sum_{i=1}^{m} \frac{p(\tau_i)}{q(\tau_i)} \cdot \mathbf{1}[\tau_i \text{ 為失效}]
@@ -322,10 +322,12 @@ $$
 
 ---
 
-## 12.9 相關 Julia 筆記本
+## 10.9 本章小結
 
-| 筆記本 | 主要內容 |
-|--------|---------|
-| [`failure_prob.jl`](../../data/aa228/lectures_material/notebooks/failure_prob.jl) | 直接估計、IS 提案擬合、自適應IS區段 |
-| [`failure_dist.jl`](../../data/aa228/lectures_material/notebooks/failure_dist.jl) | 拒絕採樣、MCMC、失效分佈的平滑化 |
-| [`smc.jl`](../../data/aa228/lectures_material/notebooks/smc.jl) | 1D 與 2D 的中間分佈視覺化、MCMC 過渡動畫 |
+- 重要性採樣的成敗取決於提案分佈的品質；**自適應**方法透過迭代改進提案，逼近零變異數的最佳提案（即失效分佈本身）。
+- **交叉熵方法（CEM）**：以菁英樣本與鬆弛門檻迭代擬合參數化提案，適合單模態、中等維度的失效。
+- **多重重要性採樣（MIS）**：同時使用多個提案分散風險；DM-MIS 以混合分佈計算權重，變異數更低。
+- **族群蒙地卡羅（PMC）**：MIS 的自適應版本，迭代地重新採樣並更新整個提案族群。
+- **循序蒙地卡羅（SMC）**：不維護參數化提案，直接把一批樣本經由一系列中間分佈從標稱分佈推向失效分佈，並以權重乘積估計 $\hat{p}_{\text{fail}}$——最適合高維、多模態的複雜失效分佈。
+
+到此為止，本書的**失效分析**方法（第 5–10 章）告一段落：我們先用否證尋找失效案例（第 5–7 章），再從失效分佈中取樣（第 8 章），最後估計失效機率（第 9–10 章）。這些方法都建立在抽樣與模擬之上，能提供統計上的證據，卻**無法證明系統絕對不會失效**。接下來三章（第 11–13 章）將轉向**形式化方法 (Formal Methods)**：透過**可達性分析 (Reachability Analysis)**，在給定假設下嚴格證明系統永遠不會進入失效狀態——從線性系統（第 11 章）出發，延伸到非線性系統（第 12 章）與離散系統（第 13 章）。

@@ -51,23 +51,26 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - 1. Introduction & Overview: README.md
-  - 2. System Modeling: 02-system-modeling.md
-  - 3. Property Specification 1: 03-property-specification-1.md
-  - 4. Property Specification 2: 04-property-specification-2.md
-  - 5. Discrete Reachability: 05-discrete-reachability.md
-  - 6. Reachability for Linear Systems: 06-linear-reachability.md
-  - 7. Reachability for Nonlinear Systems: 07-nonlinear-reachability.md
-  - 8. Falsification through Optimization: 08-falsification-optimization.md
-  - 9. Falsification through Planning: 09-falsification-planning.md
-  - 10. Failure Distribution: 10-failure-distribution.md
-  - 11. Importance Sampling: 11-importance-sampling.md
-  - 12. Adaptive Importance Sampling: 12-adaptive-importance-sampling.md
-  - 13. Runtime Monitoring: 13-runtime-monitoring.md
-  - 14. Explainability 1: 14-explainability-1.md
-  - 15. Explainability 2: 15-explainability-2.md
-  - 16. Guest Lecture Somil Bansal: 16-guest-bansal.md
-  - 17. Guest Lecture Anthony Corso: 17-guest-corso.md
+  - 導讀 Preface: 00-preface.md
+  - 1. 課程簡介 Introduction: README.md
+  - 2. 系統建模 System Modeling: 02-system-modeling.md
+  - 3. 屬性規範（一）Property Specification 1: 03-property-specification-1.md
+  - 4. 屬性規範（二）Property Specification 2: 04-property-specification-2.md
+  - 5. 基於最佳化的否證 Falsification via Optimization: 05-falsification-optimization.md
+  - 6. 基於規劃的否證 Falsification via Planning: 06-falsification-planning.md
+  - 7. 客座講座 Anthony Corso（自適應壓力測試）: 07-guest-corso.md
+  - 8. 失效分佈 Failure Distribution: 08-failure-distribution.md
+  - 9. 重要性採樣 Importance Sampling: 09-importance-sampling.md
+  - 10. 自適應重要性採樣 Adaptive IS: 10-adaptive-importance-sampling.md
+  - 11. 線性系統可達性 Linear Reachability: 11-linear-reachability.md
+  - 12. 非線性系統可達性 Nonlinear Reachability: 12-nonlinear-reachability.md
+  - 13. 離散系統可達性 Discrete Reachability: 13-discrete-reachability.md
+  - 14. 可解釋性（一）Explainability 1: 14-explainability-1.md
+  - 15. 可解釋性（二）Explainability 2: 15-explainability-2.md
+  - 16. 客座講座 Somil Bansal（HJ 可達性）: 16-guest-bansal.md
+  - 17. 執行時期監控 Runtime Monitoring: 17-runtime-monitoring.md
+  - 附錄：術語對照表 Glossary: appendix-glossary.md
+  - 附錄：參考資料 References: appendix-references.md
 
 docs_dir: ../docs/aa228-safety-critical-systems
 site_dir: ../book/aa228-safety-critical-systems/html
