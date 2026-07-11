@@ -30,6 +30,44 @@
 | S022 | `data/PfefferOnPower/transcripts/Ep 20 – Tadia James, Managing Partner, Aligned Generation [6I84HyGetf0].txt` |
 | S023 | `data/PfefferOnPower/transcripts/Ep 21 – Nick Binkley, Singer-Songwriter, Former Banking Executive [wnNU4kKAA9s].txt` |
 | S024 | `data/PfefferOnPower/transcripts/Ep 22 – Dafina Toncheva, General Partner, USVP [x6l27rtPpPg].txt` |
+| S025 | `data/PfefferOnPower/transcripts/Ep 23 – Michael Gruen, Co-Founder & CSO, DominateX [V6D7wMNnugg].txt` |
+| S026 | `data/PfefferOnPower/transcripts/Ep 24 – Tosin Joel, Founder, GTBOOL [u78VL12_SVI].txt` |
+| S027 | `data/PfefferOnPower/transcripts/Ep 25 – Dana Carney, Prof & Dir of Institute for Personality and Social Research at UC Berkeley Haas [87KtxurWtLE].txt` |
+| S028 | `data/PfefferOnPower/transcripts/Ep 3 – Jon Levy,  Founder of Influencers and author of You're Invited [4ET90fPsBGo].txt` |
+| S029 | `data/PfefferOnPower/transcripts/Ep 4 – Dr. Sarah Buchner, Serial Entrepreneur [Q2GPEuozgCo].txt` |
+| S030 | `data/PfefferOnPower/transcripts/Ep 5 – Jason Calacanis, Entrepreneur, Angel Investor, Author [QN_Ovaw_0v0].txt` |
+| S031 | `data/PfefferOnPower/transcripts/Ep 6 – Rukaiyah Adams, Chief Investment Officer [1eXlnuX2re8].txt` |
+| S032 | `data/PfefferOnPower/transcripts/Ep 7 – Sadiq Gillani, Senior Advisor, Attestor Capital [ojQ0GIe_rWw].txt` |
+| S033 | `data/PfefferOnPower/transcripts/Ep 8 – Valerie Shen, Partner⧸COO, G2 Venture Partners [yMgFI1qdsyg].txt` |
+| S034 | `data/PfefferOnPower/transcripts/Ep 9 – Daryn Dodson, Managing Partner, Illumen Capital [TbKbYR82ZBA].txt` |
+| S035 | `data/PfefferOnPower/transcripts/Future of Work： Dr Jeffrey Pfeffer Keynote [PRBUYx5xYKQ].txt` |
+| S036 | `data/PfefferOnPower/transcripts/How to Fix the Workplace--for Real--with Jeffrey Pfeffer [gwq6f4sGo1Y].txt` |
+| S037 | `data/PfefferOnPower/transcripts/If You Want to Change the World, You Need Power： Part 1 [-5SWvaKGULo].txt` |
+| S038 | `data/PfefferOnPower/transcripts/If You Want to Change the World, You Need Power： Part 2 [JYZx_tosDP8].txt` |
+| S039 | `data/PfefferOnPower/transcripts/Jeffery Pfeffer： Power： How to Get It, Use It, and Keep It [jk4m-S73Ijc].txt` |
+| S040 | `data/PfefferOnPower/transcripts/Jeffrey Pfeffer - How To Gain Power, Break The Rules, & Advance Your Career [qKe54C2C0II].txt` |
+| S041 | `data/PfefferOnPower/transcripts/Jeffrey Pfeffer： Coaching the Seven Rules of Power [ENaH2DZdGWA].txt` |
+| S042 | `data/PfefferOnPower/transcripts/Jeffrey Pfeffer： The Rules of Getting and Keeping Power [gJwsTL2V5sw].txt` |
+| S043 | `data/PfefferOnPower/transcripts/Jeffrey Pfeffer： Why Cultivating Power is the Secret to Success [AozJ4AkgAMw].txt` |
+| S044 | `data/PfefferOnPower/transcripts/Leadership BS ｜ Jeffrey Pfeffer ｜ Talks at Google [pFXcqSUi3EI].txt` |
+| S045 | `data/PfefferOnPower/transcripts/Lessons Learned from Losing Power and Keeping Power with Tony Levitan of eGreetings [KGRcsNoQrRg].txt` |
+| S046 | `data/PfefferOnPower/transcripts/Live Q&A with Jeffrey Pfeffer on Crowdcast and LinkedIn [X-av0UuZPME].txt` |
+| S047 | `data/PfefferOnPower/transcripts/Path To Power and Influence - With Professor Jeffrey Pfeffer [1rtIQiNugZ8].txt` |
+| S048 | `data/PfefferOnPower/transcripts/Pfeffer on Power Season 2 Trailer [y-OuPcRGvNE].txt` |
+| S049 | `data/PfefferOnPower/transcripts/Pfeffer on Power – What's it all about？ [1UCcxJ-_B2Y].txt` |
+| S050 | `data/PfefferOnPower/transcripts/Power Plays in Business and Politics with Steve Westly [0mjxmj7zbbk].txt` |
+| S051 | `data/PfefferOnPower/transcripts/Power： Why Some People Have It and Others Don't [0eFln_mdXGY].txt` |
+| S052 | `data/PfefferOnPower/transcripts/Scaling AI Startups and the Power of Networking with Omar Shaya [FmSGZh1Fcmo].txt` |
+| S053 | `data/PfefferOnPower/transcripts/Stanford Biz School's Jeffrey Pfeffer on the toxic ＂Leadership BS＂ that stifles innovation [0bDyVECU2u8].txt` |
+| S054 | `data/PfefferOnPower/transcripts/Stanford's Power Expert： Why You Should Be Feared Over Loved (The 7 Rules of Power) -Jeffrey Pfeffer [Rb4fKodARRs].txt` |
+| S055 | `data/PfefferOnPower/transcripts/The 7 Rules of Power with Dr. Jeffrey Pfeffer (Video) [diYk7qNM5Uk].txt` |
+| S056 | `data/PfefferOnPower/transcripts/The Blueprint E1： Branding yourself, + Jeffrey Pfeffer on the 7 Rules of Power ｜ E1507 [7BHdaE9sDtA].txt` |
+| S057 | `data/PfefferOnPower/transcripts/The Power Behind the Amazon Way with John Rossman [LUGCvdhtRkw].txt` |
+| S058 | `data/PfefferOnPower/transcripts/The Power of Persuasive Leadership with Gina Bianchini [4EOtrGlPn_o].txt` |
+| S059 | `data/PfefferOnPower/transcripts/The Price of Power with Dr. Rudy Crew [2hj0SZN-VtQ].txt` |
+| S060 | `data/PfefferOnPower/transcripts/The Rules of Power ｜ Jeffrey Pfeffer ｜ Forward with Andrew Yang [UuNLjvybxj8].txt` |
+| S061 | `data/PfefferOnPower/transcripts/The paths to power： How to grow your influence and advance your career ｜ Jeffrey Pfeffer (Stanford) [etVCBDRXUH8].txt` |
+| S062 | `data/PfefferOnPower/transcripts/“Power” Fireside Chat： Professor Jeff Pfeffer and Dean Jon Levin [QXtVfrzPYqE].txt` |
 
 ## 待補
 
