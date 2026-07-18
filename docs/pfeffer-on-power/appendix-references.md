@@ -1,6 +1,6 @@
 # 附錄 B：參考資料
 
-本書目前只使用本地逐字稿。外部資料會在 transcript-first 初稿完成後補入。
+本書以本地逐字稿為主；官方影片 URL、發布日期與驗證日期已依 YouTube metadata 回填。書籍頁碼與逐集 show notes 尚未逐條整理。
 
 ## 本地來源
 
@@ -69,8 +69,69 @@
 | S061 | `data/PfefferOnPower/transcripts/The paths to power： How to grow your influence and advance your career ｜ Jeffrey Pfeffer (Stanford) [etVCBDRXUH8].txt` |
 | S062 | `data/PfefferOnPower/transcripts/“Power” Fireside Chat： Professor Jeff Pfeffer and Dean Jon Levin [QXtVfrzPYqE].txt` |
 
-## 待補
+## 官方來源元資料
 
-- 官方影片或 Podcast URL。
-- 發布日期。
-- Jeffrey Pfeffer 書籍版本、章節與頁碼。
+| 來源編號 | 官方 URL | 發布日期 | 頻道 | 驗證日期 |
+|---|---|---|---|---|
+| S001 | <https://www.youtube.com/watch?v=bFZdbL_Ooio> | 2022-06-03 | unSILOed Podcast with Greg LaBlanc | 2026-07-11 |
+| S002 | <https://www.youtube.com/watch?v=52Dkjhd947s> | 2025-06-19 | The Being Human Podcast with Richard Atherton | 2026-07-11 |
+| S003 | <https://www.youtube.com/watch?v=6pBOJQY87zQ> | 2025-01-11 | Mahmoud Khodor | 2026-07-11 |
+| S004 | <https://www.youtube.com/watch?v=F3OEf0cJ7NU> | 2022-08-17 | Jan Rutherford | 2026-07-11 |
+| S005 | <https://www.youtube.com/watch?v=1pYUQQ_HeBk> | 2013-10-04 | ChurchillClub | 2026-07-11 |
+| S006 | <https://www.youtube.com/watch?v=NU3sCpurdrI> | 2024-03-27 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S007 | <https://www.youtube.com/watch?v=j-FOpdvuxFU> | 2023-01-03 | McKinsey & Company | 2026-07-11 |
+| S008 | <https://www.youtube.com/watch?v=7lJTOnCd2tY> | 2024-02-29 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S009 | <https://www.youtube.com/watch?v=95rsEWNrdYc> | 2018-06-05 | This Week in Startups | 2026-07-11 |
+| S010 | <https://www.youtube.com/watch?v=prWBG5Ufdmc> | 2022-09-12 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S011 | <https://www.youtube.com/watch?v=G5PGZs-r_Xg> | 2022-12-20 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S012 | <https://www.youtube.com/watch?v=0wk3MaJ8zmE> | 2023-01-03 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S013 | <https://www.youtube.com/watch?v=oBtvugsYQYo> | 2023-01-17 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S014 | <https://www.youtube.com/watch?v=EtYaMhoTUeg> | 2023-01-31 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S015 | <https://www.youtube.com/watch?v=jCsbUVFWSXE> | 2023-02-14 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S016 | <https://www.youtube.com/watch?v=MggIlG2nCTo> | 2023-02-28 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S017 | <https://www.youtube.com/watch?v=_mtltt3ulJY> | 2023-03-14 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S018 | <https://www.youtube.com/watch?v=9ZhymcfR4gI> | 2023-03-28 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S019 | <https://www.youtube.com/watch?v=uv4OzqMAkTo> | 2023-04-11 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S020 | <https://www.youtube.com/watch?v=L2TbSwVnako> | 2023-04-25 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S021 | <https://www.youtube.com/watch?v=u4aVpvIOWsg> | 2022-09-12 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S022 | <https://www.youtube.com/watch?v=6I84HyGetf0> | 2023-05-09 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S023 | <https://www.youtube.com/watch?v=wnNU4kKAA9s> | 2023-05-23 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S024 | <https://www.youtube.com/watch?v=x6l27rtPpPg> | 2023-06-06 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S025 | <https://www.youtube.com/watch?v=V6D7wMNnugg> | 2023-06-20 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S026 | <https://www.youtube.com/watch?v=u78VL12_SVI> | 2023-07-11 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S027 | <https://www.youtube.com/watch?v=87KtxurWtLE> | 2023-07-25 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S028 | <https://www.youtube.com/watch?v=4ET90fPsBGo> | 2022-09-12 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S029 | <https://www.youtube.com/watch?v=Q2GPEuozgCo> | 2022-09-27 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S030 | <https://www.youtube.com/watch?v=QN_Ovaw_0v0> | 2022-10-11 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S031 | <https://www.youtube.com/watch?v=1eXlnuX2re8> | 2022-10-25 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S032 | <https://www.youtube.com/watch?v=ojQ0GIe_rWw> | 2022-11-08 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S033 | <https://www.youtube.com/watch?v=yMgFI1qdsyg> | 2022-11-22 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S034 | <https://www.youtube.com/watch?v=TbKbYR82ZBA> | 2022-12-06 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S035 | <https://www.youtube.com/watch?v=PRBUYx5xYKQ> | 2018-01-02 | The University of Melbourne | 2026-07-11 |
+| S036 | <https://www.youtube.com/watch?v=gwq6f4sGo1Y> | 2022-07-20 | The New Human Movement | 2026-07-11 |
+| S037 | <https://www.youtube.com/watch?v=-5SWvaKGULo> | 2020-10-12 | Stanford Graduate School of Business | 2026-07-11 |
+| S038 | <https://www.youtube.com/watch?v=JYZx_tosDP8> | 2020-10-12 | Stanford Graduate School of Business | 2026-07-11 |
+| S039 | <https://www.youtube.com/watch?v=jk4m-S73Ijc> | 2014-07-31 | UTexasLaw | 2026-07-11 |
+| S040 | <https://www.youtube.com/watch?v=qKe54C2C0II> | 2022-05-29 | Ryan Hawk | 2026-07-11 |
+| S041 | <https://www.youtube.com/watch?v=ENaH2DZdGWA> | 2022-09-13 | Institute of Coaching | 2026-07-11 |
+| S042 | <https://www.youtube.com/watch?v=gJwsTL2V5sw> | 2022-09-07 | The Political Orphanage | 2026-07-11 |
+| S043 | <https://www.youtube.com/watch?v=AozJ4AkgAMw> | 2015-03-13 | Stanford Graduate School of Business | 2026-07-11 |
+| S044 | <https://www.youtube.com/watch?v=pFXcqSUi3EI> | 2015-11-09 | Talks at Google | 2026-07-11 |
+| S045 | <https://www.youtube.com/watch?v=KGRcsNoQrRg> | 2024-02-14 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S046 | <https://www.youtube.com/watch?v=X-av0UuZPME> | 2024-08-14 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S047 | <https://www.youtube.com/watch?v=1rtIQiNugZ8> | 2023-10-04 | Chris Hornick | 2026-07-11 |
+| S048 | <https://www.youtube.com/watch?v=y-OuPcRGvNE> | 2024-01-25 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S049 | <https://www.youtube.com/watch?v=1UCcxJ-_B2Y> | 2022-09-12 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S050 | <https://www.youtube.com/watch?v=0mjxmj7zbbk> | 2024-03-13 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S051 | <https://www.youtube.com/watch?v=0eFln_mdXGY> | 2010-11-04 | Stanford Graduate School of Business | 2026-07-11 |
+| S052 | <https://www.youtube.com/watch?v=FmSGZh1Fcmo> | 2024-09-11 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S053 | <https://www.youtube.com/watch?v=0bDyVECU2u8> | 2015-10-06 | This Week in Startups | 2026-07-11 |
+| S054 | <https://www.youtube.com/watch?v=Rb4fKodARRs> | 2025-11-10 | Jacob J. Watson-Howland | 2026-07-11 |
+| S055 | <https://www.youtube.com/watch?v=diYk7qNM5Uk> | 2025-11-01 | From the Green Notebook | 2026-07-11 |
+| S056 | <https://www.youtube.com/watch?v=7BHdaE9sDtA> | 2022-07-13 | This Week in Startups | 2026-07-11 |
+| S057 | <https://www.youtube.com/watch?v=LUGCvdhtRkw> | 2024-04-10 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S058 | <https://www.youtube.com/watch?v=4EOtrGlPn_o> | 2024-08-28 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S059 | <https://www.youtube.com/watch?v=2hj0SZN-VtQ> | 2024-01-31 | Pfeffer on Power - Accelerating Your Career | 2026-07-11 |
+| S060 | <https://www.youtube.com/watch?v=UuNLjvybxj8> | 2022-12-19 | Andrew Yang Podcast | 2026-07-11 |
+| S061 | <https://www.youtube.com/watch?v=etVCBDRXUH8> | 2024-06-13 | Lenny's Podcast | 2026-07-11 |
+| S062 | <https://www.youtube.com/watch?v=QXtVfrzPYqE> | 2023-05-18 | Stanford Graduate School of Business | 2026-07-11 |

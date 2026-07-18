@@ -1,8 +1,14 @@
 # S055 筆記：The 7 Rules of Power with Dr. Jeffrey Pfeffer
 
-## 來源
+## Metadata
 
-`data/PfefferOnPower/transcripts/The 7 Rules of Power with Dr. Jeffrey Pfeffer (Video) [diYk7qNM5Uk].txt`
+- 來源路徑：`data/PfefferOnPower/transcripts/The 7 Rules of Power with Dr. Jeffrey Pfeffer (Video) [diYk7qNM5Uk].txt`
+- 檔案大小：45199 bytes
+- 閱讀範圍：0 bytes 到檔案結尾
+- 完整閱讀日期：2026-07-11（依 tracker 紀錄，2026-07-11 前已完整閱讀並成章）
+- 閱讀確認：是（依 tracker 紀錄回填）
+- 外部資料使用：否
+- 狀態：已整合進 `docs/pfeffer-on-power/16-practice-and-keep-power.md`
 
 ## 核心內容
 

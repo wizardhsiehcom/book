@@ -146,6 +146,15 @@ const BOOKS = [
     accent: "#6366f1",
     glow: "rgba(99,102,241,0.18)",
   },
+  {
+    icon: "👑",
+    title: "Pfeffer on Power 權力、影響力與組織現實",
+    desc: "Jeffrey Pfeffer 訪談與演講逐字稿整理：七條權力規則、能見度、人脈、職場健康與權力的代價",
+    tags: ["career", "power"],
+    href: "book/pfeffer-on-power/html/index.html",
+    accent: "#8b5cf6",
+    glow: "rgba(139,92,246,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

@@ -1,8 +1,14 @@
 # S059 筆記：The Price of Power with Dr. Rudy Crew
 
-## 來源
+## Metadata
 
-`data/PfefferOnPower/transcripts/The Price of Power with Dr. Rudy Crew [2hj0SZN-VtQ].txt`
+- 來源路徑：`data/PfefferOnPower/transcripts/The Price of Power with Dr. Rudy Crew [2hj0SZN-VtQ].txt`
+- 檔案大小：20326 bytes
+- 閱讀範圍：0 bytes 到檔案結尾
+- 完整閱讀日期：2026-07-11（依 tracker 紀錄，2026-07-11 前已完整閱讀並成章）
+- 閱讀確認：是（依 tracker 紀錄回填）
+- 外部資料使用：否
+- 狀態：已整合進 `docs/pfeffer-on-power/19-operating-system-and-price.md`
 
 ## 核心內容
 

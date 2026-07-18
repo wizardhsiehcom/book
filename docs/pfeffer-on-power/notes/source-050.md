@@ -1,8 +1,14 @@
 # S050 筆記：Power Plays in Business and Politics with Steve Westly
 
-## 來源
+## Metadata
 
-`data/PfefferOnPower/transcripts/Power Plays in Business and Politics with Steve Westly [0mjxmj7zbbk].txt`
+- 來源路徑：`data/PfefferOnPower/transcripts/Power Plays in Business and Politics with Steve Westly [0mjxmj7zbbk].txt`
+- 檔案大小：22108 bytes
+- 閱讀範圍：0 bytes 到檔案結尾
+- 完整閱讀日期：2026-07-11（依 tracker 紀錄，2026-07-11 前已完整閱讀並成章）
+- 閱讀確認：是（依 tracker 紀錄回填）
+- 外部資料使用：否
+- 狀態：已整合進 `docs/pfeffer-on-power/18-public-service-and-startup-ecosystems.md`
 
 ## 核心內容
 
