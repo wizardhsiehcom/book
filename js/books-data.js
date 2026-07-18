@@ -155,6 +155,15 @@ const BOOKS = [
     accent: "#8b5cf6",
     glow: "rgba(139,92,246,0.18)",
   },
+  {
+    icon: "📷",
+    title: "MIT MAS.531 計算相機與攝影",
+    desc: "逐講精讀 MIT MAS.531：計算照明、光場相機、編碼孔徑與快門、高光譜成像、感測互動與醫學/科學成像",
+    tags: ["computational photography", "optics"],
+    href: "book/mas531-computational-photography/html/index.html",
+    accent: "#0ea5e9",
+    glow: "rgba(14,165,233,0.18)",
+  },
 ];
 
 const TAG_COLOR = {
