@@ -33,25 +33,25 @@ graph LR
 
 | 講次 | 主題 | 狀態 |
 |---:|---|---|
-| 1 | Class Intro — RL 基本框架 | 撰寫中 |
-| 2 | Imitation Learning | 待補 |
-| 3 | Policy Gradients | 待補 |
-| 4 | Actor-Critic Methods | 待補 |
-| 5 | Off-Policy Actor Critic | 待補 |
-| 6 | Q-Learning | 待補 |
-| 7 | Offline RL | 待補 |
-| 8 | Reward Learning | 待補 |
-| 9 | RL for LLMs | 待補 |
-| 10 | RL for LLM Reasoning | 待補 |
-| 11 | Model-Based RL | 待補 |
-| 12 | Multi-Task RL | 待補 |
-| 13 | Meta RL | 待補 |
-| 14 | Exploration | 待補 |
-| 15 | Hierarchical RL and IL | 待補 |
-| 16 | RL for Robots | 待補 |
-| 17 | Advancing Robot Intelligence | 待補 |
-| 18 | Frontiers | 待補 |
-| Tutorial | Q-Learning Review | 待補 |
+| 1 | Class Intro — RL 基本框架 | 完成 |
+| 2 | Imitation Learning | 完成 |
+| 3 | Policy Gradients | 完成 |
+| 4 | Actor-Critic Methods | 完成 |
+| 5 | Off-Policy Actor Critic | 完成 |
+| 6 | Q-Learning | 完成 |
+| 7 | Offline RL | 完成 |
+| 8 | Reward Learning | 完成 |
+| 9 | RL for LLMs | 完成 |
+| 10 | RL for LLM Reasoning | 完成 |
+| 11 | Model-Based RL | 完成 |
+| 12 | Multi-Task RL | 完成 |
+| 13 | Meta RL | 完成 |
+| 14 | Exploration | 完成 |
+| 15 | Hierarchical RL and IL | 完成 |
+| 16 | RL for Robots | 完成 |
+| 17 | Advancing Robot Intelligence | 完成 |
+| 18 | Frontiers | 完成 |
+| Tutorial | Q-Learning Review | 完成 |
 
 ## 參考資料
 

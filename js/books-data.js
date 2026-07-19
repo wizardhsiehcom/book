@@ -164,6 +164,15 @@ const BOOKS = [
     accent: "#0ea5e9",
     glow: "rgba(14,165,233,0.18)",
   },
+  {
+    icon: "🤖",
+    title: "CS224R 深度強化學習",
+    desc: "Stanford CS224R 逐講精讀：模仿學習、策略梯度、Actor-Critic、Q-Learning、離線 RL、RLHF、LLM 推理、Model-Based/Meta RL 到機器人自主學習",
+    tags: ["reinforcement learning", "deep RL", "LLM"],
+    href: "book/cs224r-deep-rl/html/index.html",
+    accent: "#7c3aed",
+    glow: "rgba(124,58,237,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

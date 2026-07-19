@@ -3,7 +3,6 @@
 ## 教科書：Sutton & Barto 章節對照
 
 主教科書：Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction* (2nd ed.). MIT Press.
-- 本地路徑：`data/cs224r/reference/RLbook2020.pdf`
 
 | 書中章節 | 主題 | 對應本書章節 |
 |---|---|---|
@@ -37,7 +36,7 @@
 | 論文 | 引用 | 主題 | 對應章節 |
 |---|---|---|---|
 | REINFORCE | Williams, 1992. *Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning*. Machine Learning. | 對數導數技巧、基線 | 第三章 |
-| PPO | Schulman et al., 2017. *Proximal Policy Optimization Algorithms*. arXiv. | Clipped 目標函數 | 第三章 |
+| PPO | Schulman et al., 2017. *Proximal Policy Optimization Algorithms*. arXiv. | Clipped 目標函數 | 第三章、第五章 |
 | A3C | Mnih et al., 2016. *Asynchronous Methods for Deep Reinforcement Learning*. ICML. | 非同步 Actor-Critic | 第四章 |
 | GAE | Schulman et al., 2016. *High-Dimensional Continuous Control Using Generalized Advantage Estimation*. ICLR. | 廣義優勢估計 | 第四章 |
 
@@ -65,6 +64,7 @@
 | IQL | Kostrikov et al., 2022. *Offline Reinforcement Learning with Implicit Q-Learning*. ICLR. | 不需要 OOD 動作的 offline RL | 第七章 |
 | CQL | Kumar et al., 2020. *Conservative Q-Learning for Offline Reinforcement Learning*. NeurIPS. | 保守 Q 值懲罰 | 第七章 |
 | TD3+BC | Fujimoto & Gu, 2021. *A Minimalist Approach to Offline Reinforcement Learning*. NeurIPS. | 最小化行為克隆懲罰 | 第七章 |
+| RLPD | Ball, Smith, Kostrikov & Levine, 2023. *Efficient Online Reinforcement Learning with Offline Data*. ICML. arXiv:2303.02948. | 只初始化 replay buffer 勝過預訓練權重 | 第十八章 |
 
 ### 獎勵學習
 
@@ -85,9 +85,10 @@
 
 | 論文 | 引用 | 主題 | 對應章節 |
 |---|---|---|---|
-| DeepSeek-R1 | DeepSeek-AI, 2025. *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*. arXiv. | GRPO、稀疏驗證獎勵、思維模型 | 第十章 |
-| GRPO | Shao et al., 2024. *DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*. arXiv. | Group-relative advantage，無 V 函數 | 第十章 |
-| PAV | Setlur et al., 2024. *Rewarding Progress: Scaling Automated Process Verifiers for LLM Reasoning*. arXiv. | 逐步 DPO，效率 8×+5-6% | 第十章 |
+| DeepSeek-R1 | DeepSeek-AI, 2025. *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*. arXiv:2501.12948（2025-01）. | GRPO、稀疏驗證獎勵、思維模型 | 第十章 |
+| GRPO | Shao et al., 2024. *DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*. arXiv:2402.03300（2024-02）. | Group-relative advantage，無 V 函數 | 第十章 |
+| PAV | Setlur et al., 2024. *Rewarding Progress: Scaling Automated Process Verifiers for LLM Reasoning*. arXiv:2410.08146. | 過程優勢驗證器，5–6× 樣本效率、>6% 準確率提升 | 第十章 |
+| Setlur et al., 2024（Eight-Fold） | Setlur et al., 2024. *RL on Incorrect Synthetic Data Scales the Efficiency of LLM Reasoning by Eight-Fold*. arXiv:2406.14532. | RFT ≈2×、Per-step DPO ≈8× 資料效率 | 第十章 |
 | RFT | Yuan et al., 2023. *Scaling Relationship on Learning Mathematical Reasoning with Large Language Models*. arXiv. | 拒絕採樣微調 | 第十章 |
 
 ### Model-Based RL
@@ -129,13 +130,15 @@
 | RMA | Kumar et al., 2021. *RMA: Rapid Motor Adaptation for Legged Robots*. RSS. | Phase 1 特權資訊 + Phase 2 DAgger 蒸餾 | 第十七章 |
 | Extreme Parkour | Zhuang et al., 2023. *Robot Parkour Learning*. CoRL. | 視覺直接整合，無地圖 | 第十七章 |
 | Forward-Backward RL | Eysenbach et al., 2017. *Leave No Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning*. arXiv. | 前向-後向自主學習 | 第十六章 |
-| MEDAL | Sharma et al., 2021. *Autonomous Reinforcement Learning via Subgoal Curriculum*. arXiv. | Metal 算法，回到示範狀態分佈 | 第十六章 |
+| MEDAL | Sharma, Ahmad & Finn, 2022. *A State-Distribution Matching Approach to Non-Episodic Reinforcement Learning*. arXiv:2205.05212. | MEDAL 算法，重置到專家狀態分佈 | 第十六章 |
+| HIL-SERL | Luo et al., 2024. *Precise and Dexterous Robotic Manipulation via Human-in-the-Loop RL*. arXiv:2410.21845（Science Robotics 2025）. | 真實機器人 100/100 可靠性 | 第十八章 |
 | AlphaGo | Silver et al., 2016. *Mastering the game of Go with deep neural networks and tree search*. Nature. | MCTS + RL，超越人類水平 | 第十七章、第十八章 |
 
 ---
 
 ## 課程資源
 
-- 逐字稿來源目錄：`data/cs224r/transcripts/`
-- 作業 handout：待補（`data/cs224r/assignments/` 目前為空）
-- 課程官網：待補
+- 課程官網（每年更新，指向最新學期）：<https://cs224r.stanford.edu/>
+- Spring 2025 講座影片：Stanford Online YouTube 播放清單 <https://www.youtube.com/playlist?list=PLoROMvodv4rPwxE0ONYRa_itZFdaKCylL>
+- 逐字稿：整理自課程官方講座影片
+- 作業 handout：以課程官網為準
