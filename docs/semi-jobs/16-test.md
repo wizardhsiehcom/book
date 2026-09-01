@@ -1,53 +1,79 @@
 # 測試工程師
 
-測試工程師（Test Engineer / Product Engineer）確保每一顆出廠的晶片都通過規格驗證。他們在製造端是最後一道品管閘門。
+測試工程師（Test Engineer）把設計規格轉成可在量產中執行的測試方法，目標是在 coverage、quality、test time、throughput 與 cost-of-test 間取得平衡。工作不只寫程式，也包含 ATE instrument、probe card／load board／socket、handler/prober、thermal control、資料分析與量產導入。
 
-## 兩大測試類型
+## 測試流程不只 CP 與 FT
 
 ```mermaid
 flowchart LR
-    WAF["晶圓測試<br/>Wafer Sort / CP<br/>還在晶圓上就測"] --> DIE["已知良品晶粒<br/>Known Good Die"]
-    DIE --> PKG["封裝"] --> FT["最終測試<br/>Final Test<br/>封裝後測試"] --> SHIP["出貨"]
+    CHAR["Characterization<br/>corner、margin、correlation"] --> WS["Wafer Sort／CP"]
+    WS --> KGD["Known Good Die"]
+    KGD --> ASM["Assembly／Stacking"]
+    ASM --> FT["Final Test"]
+    FT --> BI["Burn-In／Stress Screen<br/>依產品需求"]
+    BI --> SLT["System-Level Test<br/>依產品風險與策略"]
+    SLT --> SHIP["出貨與 field feedback"]
 ```
+
+不同產品不一定經過所有階段。HBM 更有 base-die wafer test、memory-core test、pre-singulated known-good-stack-die、Chip-on-Wafer、post-singulated stack 與 burn-in；logic base die 與 DRAM dies 也需要不同測試內容。
 
 ## 核心工作
 
-**每天在做什麼：**
-- **ATE 程式開發**：用 C/C++/Python 或 ATE 專屬語言（Advantest V93000 IJTG）撰寫測試程式
-- **測試項目定義**：確定哪些規格需要測試（Vmin/Vmax、時序、IDDQ、RF 參數）
-- **Load Board 設計**：設計連接 ATE 和晶片的 PCB 測試板
-- **測試時間縮短（TTR）**：最佳化測試程式，每秒多測幾顆 = 降低每顆成本
-- **Yield 資料分析**：找出測試逃逸（Test Escape）；分析不良品分布
+- 開發與維護 test flow、pattern、timing、level、measurement 與 limit。
+- 做 characterization、guardband、correlation、Gage R&R 與量產 release。
+- 設計或規格化 probe card、DUT/load board、socket、handler/prober 與 thermal solution。
+- 降低 test time、提高 multisite/parallel efficiency，同時守住 coverage 與逃逸風險。
+- 分析 bin/yield、site、touchdown、temperature、tester/interface 與 lot signature。
+- 與 DFT、design validation、product、yield、OSAT 與設備商合作處理量產問題。
 
-## 探針工程師（Probe Engineer）
+## Test、Product、DFT 與 Validation 的邊界
 
-晶圓測試需要探針卡（Probe Card）：
+| 角色 | 主要 ownership |
+|---|---|
+| Test Engineer | ATE method/program、interface、coverage、throughput、cost |
+| Product Engineer | NPI/ramp、產品 WAT/CP/yield、process window、客戶協作 |
+| DFT Engineer | scan、BIST、boundary scan、test access 與 design-for-test architecture |
+| Silicon/System Validation | bring-up、功能／情境驗證、margin 與 system behavior |
 
-- 設計並規格化探針卡（懸臂式 / 垂直式 / MEMS 探針）
-- 最佳化探針落點（Probe Mark）品質
-- 管理探針卡清洗 / 更換週期
-- 分析探針良率與最終測試良率的相關性
+這些角色高度合作，但不能互相當同義詞。測試工程師會使用 C/C++、Java、Python、pattern language 或平台工具；實際語言依 ATE 與公司環境而定。以 V93000 為例，現行 SmarTEST 8 官方說明為 Java-based interface；IJTAG 是 IEEE 1687 的 embedded-instrument access 標準，不是 ATE 程式語言。
 
-## ATE 平台知識
+## AI/HPC 與先進封裝的新難題
 
-台灣主流 ATE 設備：
+- scan data 與 pin count 增加，interface bandwidth 和 vector memory 成為瓶頸。
+- 高功率與低電壓要求更高的供電動態、針卡保護、散熱與量測準確度。
+- HBM 需要 memory＋logic、KGD/KGSD、high parallelism 與多階段 correlation。
+- chiplet/package 使 die-level、package-level 與 SLT coverage 必須共同規劃。
+- 測試資料要更快回饋 product/yield/fab，不能等到 final test 才發現系統性問題。
 
-| 設備 | 廠商 | 應用 |
-|------|------|------|
-| V93000 | Advantest | 數位 SoC、記憶體（台灣最普及）|
-| UltraFLEX | Teradyne | 高速串行介面、混合訊號 |
-| J750 | Teradyne | 中低端 IC |
+## 適合誰／工作型態
 
-## 主要雇主
+適合喜歡硬體、軟體、量測與統計交界，且願意追查「是真的壞、接觸不好、測試程式錯，還是 guardband 不合理」的人。電機、電子、資工、物理與相關背景常見。
 
-ASE 日月光、Powertech 力成、MediaTek（內部測試部門）、TSMC（CP 晶圓探測）、Advantest Taiwan、Teradyne Taiwan
+研發／NPI 多為日班專案，量產支援可能輪班或 on-call；OSAT、fabless、foundry 與 ATE vendor 的工作內容不同。設備商 application/test engineer 可能常駐客戶端或出差。
 
-## 薪資（2024 估計）
+## 核心技能
 
-| 職級 | 年總酬勞（TWD）|
-|------|-------------|
-| 新鮮人（學士 / 碩士） | NT$700K – NT$1.0M |
-| 資深（5–8 年） | NT$1.0M – NT$1.8M |
-| Senior / Lead | NT$1.8M – NT$3.0M |
+- digital/analog/mixed-signal/RF 或 memory test 中至少一項基礎。
+- ATE architecture、timing/level、measurement uncertainty 與 contact/interface。
+- DFT/scan/BIST 概念、CP/FT/SLT 流程與基本 device knowledge。
+- C/C++、Java 或 Python 中至少一種，以及資料分析／debug 能力。
+- test coverage、escape、overkill、guardband、throughput 與成本的取捨。
 
-> 測試工程師薪資通常低於設計工程師，但對工程師進入半導體業是很好的入門路徑，可轉往 DFT、ATE 工具開發等
+## 職涯與轉換
+
+可往 senior test methodology、product engineering、DFT、silicon validation、SLT、probe/interface、ATE application 或 test management 發展。轉 Product Engineer 要補製程、WAT 與客戶 ramp；轉 DFT 則要補 RTL、scan architecture 與 ATPG。
+
+## 面試準備
+
+準備一個 yield drop 或 test escape 案例：如何確認 tester correlation、contact、site、temperature、program revision 與真正 device failure。也要能解釋為何縮短 test time 可能犧牲 coverage，以及會用什麼實驗量化風險。
+
+薪資請見[薪資比較附錄](appendix-salary.md)。
+
+## 資料來源
+
+- [Advantest V93000 EXA Scale](https://www.advantest.com/en/products/semiconductor-test-system/soc/v93000/)，現行產品頁（HPC/AI、high power、scan volume、multisite 與 SmarTEST 8；查證：2026-08-31）
+- [Teradyne Magnum 7H](https://investors.teradyne.com/news-events/press-releases/detail/419/teradyne-unveils-magnum-7h---the-next-generation-memory-tester-for-high-bandwidth-memory-devices)，2025-08-04（HBM 多階段測試與 KGSD；查證：2026-08-31）
+- [ASE 高階封裝與測試新廠](https://ase.aseglobal.com/press-room/ase-breaks-ground-on-new-high-tech-facility-in-kaohsiung/)，2026-03-11（高頻、高功率、高平行度與 system validation；查證：2026-08-31）
+- [TSMC Product Engineer](https://careers.tsmc.com/de_DE/careers/JobDetail/2025-Campus-Recruitment-Product-Engineer-PE/15386)，2025-02-10（Product 與 Test 的職務邊界；查證：2026-08-31）
+
+相關：[良率與產品工程](10-yield-product.md)｜[DFT 工程師](04-dft.md)｜[封裝工程師](15-packaging.md)

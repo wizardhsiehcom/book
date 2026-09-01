@@ -1,98 +1,55 @@
-# 產業全貌地圖
+# 產業全貌與職務地圖
 
-## 台灣半導體產業生態系
-
-```mermaid
-flowchart TD
-    subgraph "客戶端 Customer"
-        APP["Apple / NVIDIA / AMD<br/>Qualcomm / Google"]
-    end
-
-    subgraph "IC 設計 Fabless"
-        MTK["MediaTek 聯發科<br/>手機 SoC / AI / 5G"]
-        NVT["Novatek 聯詠<br/>顯示驅動 IC"]
-        RTK["Realtek 瑞昱<br/>網路 / 音訊 IC"]
-    end
-
-    subgraph "晶圓代工 Foundry"
-        TSMC["TSMC 台積電<br/>N3 / N5 / N7 / N28"]
-        UMC["UMC 聯電<br/>N28 / N40 成熟製程"]
-    end
-
-    subgraph "先進封裝"
-        PKG["TSMC CoWoS / InFO<br/>ASE 日月光<br/>Powertech 力成"]
-    end
-
-    subgraph "設備 & 材料"
-        ASML["ASML EUV/DUV 掃描機"]
-        AMAT["Applied Materials<br/>Lam / KLA / TEL"]
-    end
-
-    APP --> MTK & NVT & RTK
-    MTK & NVT & RTK -->|"Tape-out GDS"| TSMC & UMC
-    TSMC -->|"晶圓"| PKG
-    ASML & AMAT -->|"設備 + 製程支援"| TSMC & UMC
-```
-
-## 職務分布與人數（估計）
-
-| 環節 | 代表公司 | 主要職務 | 人數規模 |
-|------|---------|---------|---------|
-| Fabless 設計 | MediaTek、Novatek、Realtek | IC Design、Verification、DFT | ~3–5 萬 |
-| 晶圓代工 | TSMC（83,825人）、UMC | Process、Equipment、Integration、Yield | ~10 萬+ |
-| OSAT 封測 | ASE（65,695人）、Powertech | Package、Test、QA | ~8 萬+ |
-| 設備商 | ASML、AMAT、Lam、KLA | AE、FAE、Field Service | ~1–2 萬 |
-| EDA/IP | Synopsys、Cadence、ARM | EDA Engineer、PDK | ~3,000 |
-
-## 職務技能樹
+## 從規格到量產
 
 ```mermaid
 flowchart LR
-    subgraph "設計類"
-        IC["IC Design<br/>RTL / 電路"]
-        VER["Verification<br/>UVM / 功能驗證"]
-        DFT["DFT<br/>可測試性設計"]
-        LAY["Layout<br/>實體設計"]
-        EDA["EDA / CAD / PDK"]
-    end
-
-    subgraph "製程類"
-        PHO["Photo<br/>微影"]
-        ETC["Etch<br/>蝕刻"]
-        DEP["Deposition<br/>薄膜"]
-        CMP["CMP<br/>化學機械研磨"]
-        INT["Integration<br/>製程整合"]
-    end
-
-    subgraph "設備"
-        EQP["Equipment<br/>設備工程師"]
-        FAC["Facilities<br/>廠務"]
-    end
-
-    subgraph "品質 & 封測"
-        QA["QA / Reliability<br/>FA"]
-        PKG2["Package / Test"]
-    end
-
-    subgraph "其他"
-        FAE2["FAE / AE"]
-        IE["IE 工業工程"]
-        AI["AI / Software"]
-    end
+    REQ["產品 / 客戶需求"] --> ARCH["架構與 IC 設計"]
+    ARCH --> DV["驗證 / DFT / 實體實作"]
+    DV --> FAB["晶圓製造"]
+    FAB --> YIELD["量測 / 良率 / 產品工程"]
+    YIELD --> PKG["封裝 / 測試"]
+    PKG --> SHIP["系統驗證 / 出貨 / FAE"]
+    EDA["EDA / IP / PDK"] --> ARCH
+    TOOL["設備 / 材料 / 廠務"] --> FAB
+    AUTO["智慧製造 / 自動化"] --> FAB
+    MEMORY["記憶體設計 / 製程 / 測試"] --> PKG
+    SHIP --> REQ
 ```
 
-## 薪資排名速覽（2024，年總酬勞 TWD）
+這是一張責任地圖，不是公司組織圖。大型公司會把每個框拆成多個團隊，小型公司可能由同一人跨多個交付物。
 
-| 排名 | 職務 | 新鮮人 | 資深（5–8 年） |
-|-----|------|--------|-------------|
-| 🥇 | IC Design（NVIDIA/Qualcomm TW） | 180–250萬 | 400–700萬 |
-| 🥇 | IC Design（MediaTek） | 140–180萬 | 350–500萬 |
-| 🥈 | ASML Application Engineer | 150–250萬 | 300–500萬 |
-| 🥈 | EDA/CAD（MediaTek DM） | 120–150萬 | 200–400萬 |
-| 🥉 | TSMC 先進封裝工程師 | 100–150萬 | 200–450萬 |
-| 🥉 | Verification / DFT | 100–160萬 | 200–400萬 |
-| — | TSMC 製程工程師 | 80–110萬 | 150–250萬 |
-| — | 設備工程師（TSMC） | 70–100萬 | 120–200萬 |
-| — | 封裝測試（ASE） | 70–100萬 | 120–200萬 |
+## 依交付物找職務
 
-> 職務之間如何合作？見 [職務合作關係圖](20-collaboration.md)
+| 你想負責的交付物 | 常見角色 | 本書章節 |
+|---|---|---|
+| 架構、RTL、類比／RF 電路 | IC Design | [IC 設計](01-ic-design.md) |
+| Custom layout、P&R、sign-off | Layout / Physical Design | [Layout／實體設計](02-layout.md) |
+| 驗證計畫、testbench、coverage、formal | Verification | [驗證工程師](03-verification.md) |
+| Scan、ATPG、MBIST、測試存取 | DFT | [DFT 工程師](04-dft.md) |
+| Design flow、PDK、rule deck、tool enablement | EDA / CAD / PDK | [EDA／CAD／PDK](05-eda-cad.md) |
+| 製程配方與模組控制 | Process Engineer | [製程總覽](06-process-overview.md) |
+| 跨模組製程、WAT 與量產導入 | Integration Engineer | [製程整合](09-integration.md) |
+| 機台可用率、保養與異常排除 | Equipment Engineer | [設備工程](10-equipment.md) |
+| 缺陷、良率、NPI 與產品量產 | Yield / Product Engineer | [良率與產品工程](10-yield-product.md) |
+| 水、電、氣、化學品與廠務系統 | Facilities Engineer | [廠務工程](11-facilities.md) |
+| 封裝結構、組裝、測試與可靠度 | Package / Test / Reliability | [封裝工程](15-packaging.md)／[測試工程](16-test.md)／[可靠度](13-reliability.md) |
+| 客戶導入、應用與現場技術支援 | FAE / AE / Field Service | [FAE／AE／Field Service](17-fae.md) |
+| 排程、MES、AMHS、資料與自動化 | IE / MFG / CIM / Smart Manufacturing | [智慧製造](18-smart-manufacturing.md) |
+| 模型、compiler、runtime 與製造 AI | AI / Software | [AI／軟體](19-ai-software.md) |
+| DRAM、NAND、HBM 的設計、製程與測試 | Memory roles | [記憶體產業與職務](22-memory-industry.md) |
+
+## 看職稱不如看責任
+
+Frontend、Backend、Integration、Validation、Product 等名稱沒有跨公司統一定義。讀 JD 時先找：
+
+1. 最終要交付什麼檔案、數據、機台狀態或量產結果？
+2. Scope 是 IP、subsystem、full chip、單一模組、整條產線還是客戶系統？
+3. 誰做 sign-off，誰在異常時 on-call？
+4. Tape-out 或量產後是否繼續負責 bring-up、良率、客訴與版本維護？
+
+各職務如何交換規格、資料與樣品，見[職務合作關係圖](20-collaboration.md)。縮寫定義見[術語表](glossary.md)。
+
+## 人數資料的限制
+
+目前公開官方表可穩定取得的是較寬的產業分類，不足以把 IC 設計、晶圓代工、封測、設備商與 EDA 人數用同一口徑相加。因此本頁不提供環節人數估計；需要市場規模時，請查看[資料來源](references.md)並保留原始分類。

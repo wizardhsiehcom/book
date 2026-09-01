@@ -61,6 +61,7 @@ nav:
       - 微影工程師: 07-photo.md
       - 蝕刻 / 薄膜 / CMP 工程師: 08-etch-dep-cmp.md
       - 整合工程師: 09-integration.md
+      - 良率 / 產品工程師: 10-yield-product.md
   - 三、設備與廠務:
       - 設備工程師: 10-equipment.md
       - 廠務工程師: 11-facilities.md
@@ -75,9 +76,14 @@ nav:
       - FAE 現場應用工程師: 17-fae.md
   - 七、製造與 AI:
       - 工業工程師（IE）: 18-ie.md
+      - 智慧製造 / CIM / AMHS: 18-smart-manufacturing.md
       - AI / 軟體工程師: 19-ai-software.md
+  - 八、記憶體:
+      - 記憶體產業與職務: 22-memory-industry.md
   - 附錄:
-      - 薪資全覽比較: appendix-salary.md
+      - 薪酬資料與比較方法: appendix-salary.md
       - 入職門檻與學歷規劃: appendix-entry.md
-      - 2024–2025 趨勢與熱門職缺: appendix-trends.md
+      - 2025–2026 產業趨勢: appendix-trends.md
       - 學習資源與求職平台: appendix-resources.md
+      - 術語表: glossary.md
+      - 資料來源: references.md

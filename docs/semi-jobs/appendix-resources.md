@@ -1,62 +1,50 @@
-# 學習資源與求職平台
+# 學習資源與求職查證
 
-## 求職平台
+資源的用途不同：公司職缺用來確認責任，標準與工具文件用來確認技術，統計資料用來理解市場，匿名社群只用來產生追問清單。
 
-| 平台 | 特色 | 建議用法 |
-|------|------|---------|
-| **104.com.tw** | 台灣最大，半導體職缺最完整 | 搜尋職稱 + 台積電 / 聯發科 / 日月光；看「職務說明」了解實際工作 |
-| **1111.com.tw** | 補充覆蓋 | 可做薪資調查 |
-| **LinkedIn** | 國際大廠（ASML、AMAT、Qualcomm）職缺 | 可直接聯繫 Recruiter |
-| **CakeResume** | 台灣科技業，附薪資揭露 | 半導體新創 / 外商 |
-| **各公司官網 Career 頁** | 內容最完整 | TSMC：[tsmc.com/careers](https://tsmc.com/careers)、MediaTek Careers |
+## 求職資料的優先順序
 
-## 了解公司的好資源
+1. **公司招募頁**：確認職稱、地點、學歷、班別、工作內容與更新日期。
+2. **公司年報／財報／技術論壇**：確認產品、投資、風險與組織整體資訊。
+3. **政府人才調查與勞動統計**：確認調查母體、產業分類、月份與指標定義。
+4. **104、1111、LinkedIn 等平台**：觀察平台當下的職缺結構；搜尋條件與樣本會影響結果。
+5. **PTT、Dcard、Blind 等匿名社群**：蒐集面試、分紅、值班與文化問題；不得把個案推成全公司制度。
 
-| 公司 | 公開資料 |
-|------|---------|
-| **台積電** | 年報（揭露部門架構）；TSMC Technology Symposium（技術方向）|
-| **MediaTek** | 年報；MediaTek Labs Blog |
-| **ASML** | 技術白皮書；ASML 官網有非常好的技術教育內容 |
-| **TSMC Research** | [research.tsmc.com](https://research.tsmc.com)（先進製程論文）|
+主要官方連結已按主題整理在[資料來源](references.md)。
 
-## 半導體技術學習
+## 技術學習入口
 
-### 線上課程
-- **Coursera / edX**：UC San Diego「Semiconductor Devices」、MIT OCW 6.012
-- **Udemy**：VLSI / Verilog / SystemVerilog 課程
-- **Cadence / Synopsys 官方培訓**：工具操作，部分有免費版本
+| 主題 | 優先入口 | 建議產出 |
+|---|---|---|
+| IC 設計／驗證 | IEEE 標準、UCIe、EDA 原廠文件、開源 ISA／工具文件 | 小型 RTL、testbench、coverage 或 formal 報告 |
+| Layout／Physical Design | PDK 教材、EDA 原廠流程、BSIM 模型 | DRC/LVS/PEX、STA 或 P&R 結果與取捨說明 |
+| 製程／設備 | 公司技術論壇、設備商年報與技術頁、學校製程課 | 製程流程圖、DOE／SPC、故障樹或 RCA |
+| 封裝／測試／可靠度 | IEEE／JEDEC／AEC、ATE 原廠、封裝廠技術頁 | 測試流程、熱機分析、qualification 或 FA 證據鏈 |
+| 智慧製造 | SEMI、MES／自動化文件、資料工程實作 | 可重現的 pipeline、監控指標與部署限制 |
 
-### 書籍
-| 書名 | 作者 | 適合 |
-|------|------|------|
-| *CMOS VLSI Design* | Weste & Harris | IC Design 基礎 |
-| *Semiconductor Manufacturing Technology* | Quirk & Serda | 製程入門 |
-| *Semiconductor Advanced Packaging* | John H. Lau | 先進封裝（CoWoS 相關）|
-| *The Art of Electronics* | Horowitz & Hill | 類比電路基礎 |
+課程與證照可以建立基礎，但面試更容易驗證的是你做過什麼、如何量測、失敗時怎麼定位，以及結果的限制。
 
-### 社群討論
-| 社群 | 特色 |
-|------|------|
-| **PTT Tech_Job 版** | 台灣半導體薪資討論最真實的地方（「台積電心得」等）|
-| **PTT Semiconductor 版** | 業界人士職涯討論 |
-| **Dcard 理工版** | 面試心得、選公司討論 |
-| **LinkedIn 半導體社群** | 國際視野；可看各職位的人如何描述自己的工作 |
+## 建立職缺研究表
+
+每份 JD 至少記錄：
+
+- 擷取日期、公司原始網址、地點與職級。
+- 必要與加分條件，不把 preferred 誤讀成硬門檻。
+- 交付物、工具、合作對象、sign-off 責任。
+- 班別、on-call、出差、客戶現場與加班制度。
+- 固定現金、變動獎金、股權、遞延與福利。
+- 職缺頁失效時，保留職缺編號與頁面標題，不自行補寫條件。
+
+## 使用論壇的方式
+
+匿名心得最適合轉成面試問題，例如：「分紅何時發？」「夜班輪多久？」「值班如何補休？」「這個職稱實際 owner 什麼？」若貼文缺公司、部門、職級、年份或薪酬定義，就不要引用精確數字。
 
 ## 面試準備
 
-### 設計類（IC Design / Verification）
-- 數位：CMOS 電路、時序分析、Verilog RTL 設計題
-- 類比：運算放大器設計、PLL 分析、CMOS 基本電路
-- Verification：UVM 方法論、Coverage 收斂策略
-- 演算法題（部分公司考）：LeetCode Medium 等級
+- 設計類：用規格、架構、驗證、PPA／sign-off 與 debug 的鏈條回答。
+- 製造類：用現象、資料、假設、實驗、根因、矯正與監控回答。
+- 封測／品質類：說清楚 sample、test condition、失效機制與證據鏈。
+- 客戶支援類：準備資訊不完整、跨時區、版本控管與升級路徑的案例。
+- 所有職務：用 STAR 組織行為題，但保留可量測的結果與自己的責任邊界。
 
-### 製程 / 設備類
-- 半導體製程流程（FEOL/BEOL）問答
-- 元件物理（MOSFET I-V 特性、短通道效應）
-- 統計製程控制概念（SPC、Cpk）
-- TSMC 特有：對公司技術方向的了解（看 TSMC Symposium 投影片）
-
-### 通用準備
-- **星座法**（STAR Method）：行為面試問答格式
-- **英文能力**：工程師職位大多需要能看英文文件；外商 / ASML 需要口說能力
-- **了解公司產品**：面試前研究公司主力產品和技術方向
+本頁連結與市場資料查證日為 2026-08-31；應徵前仍須回到原始頁面重查。

@@ -1,53 +1,64 @@
 # 失效分析工程師
 
-失效分析工程師（Failure Analysis Engineer / FA Engineer）是半導體業的「法醫」——他們接到一顆壞掉的晶片，用各種高端分析儀器找出哪裡壞了、為什麼壞，並給出根本原因。
+失效分析工程師（Failure Analysis, FA）從「可重現的症狀」建立假設，再用電性、影像、材料與截面證據定位失效機制。高價儀器只是工具；真正的交付物是能讓設計、製程、封裝或供應商採取行動的根因證據鏈。
 
-## FA 的工作流程
+## FA 不是固定流水線
+
+不同失效可能只需電性分析，也可能要做到 FIB／TEM。破壞樣品前必須保存證據，因此較可靠的決策流程是：
 
 ```mermaid
 flowchart TD
-    RECV["接收失效樣品<br/>客訴品 / 可靠度測試品 / 良率異常"]
-    EA["電性分析<br/>Electrical Analysis<br/>縮小失效範圍"]
-    DP["去封裝<br/>Decapsulation<br/>露出晶片"]
-    LOC["失效定位<br/>EMMI / OBIRCH / PVC"]
-    SECT["截面分析<br/>FIB 切開 + SEM 觀察"]
-    ROOT["根本原因判定<br/>撰寫 FA 報告"]
-    RECV --> EA --> DP --> LOC --> SECT --> ROOT
+    RECV["樣品、歷史、批次與症狀"] --> REPRO["重現失效<br/>建立 good／bad 對照"]
+    REPRO --> HYP["建立可能根因與分析計畫"]
+    HYP --> ND["非破壞分析<br/>X-ray／SAM／電性／熱或光定位"]
+    ND --> DECIDE{"證據足夠？"}
+    DECIDE -->|"否"| DESTRUCT["選擇性破壞分析<br/>deprocess／FIB／SEM／TEM／材料分析"]
+    DESTRUCT --> CORR["跨樣品與製程資料關聯"]
+    DECIDE -->|"是"| CORR
+    CORR --> RCA["根因、圍堵與改善驗證"]
 ```
 
-## 主要分析工具
+「先 decap、再 EMMI、再 FIB」並不是通用順序。封裝分層、開路、漏電、時序弱點、污染與製程缺陷需要不同的 sample preparation 與工具組合。
 
-| 工具 | 全名 | 用途 |
-|------|------|------|
-| **SEM** | Scanning Electron Microscope | 奈米等級缺陷成像 |
-| **TEM** | Transmission Electron Microscope | 原子解析度截面分析 |
-| **FIB** | Focused Ion Beam | 定點切面 + 電路修改（Circuit Edit）|
-| **EMMI** | Emission Microscopy | 偵測漏電點（光子發射）|
-| **OBIRCH** | Optical Beam Induced Resistance Change | 定位高阻路徑 |
-| **EDS / SIMS / XPS** | 各類能譜分析 | 元素分析（找污染物）|
+## 工具回答什麼問題
 
-## 為什麼 FA 工程師珍貴
+| 工具族 | 典型用途 | 限制意識 |
+|---|---|---|
+| Electrical characterization | 重現規格失效、縮小條件與節點 | 相關性不等於物理根因 |
+| X-ray／SAM | 封裝內部、空洞、分層與組裝異常 | 解析度與材料對比有限 |
+| EMMI／OBIRCH／熱成像 | 定位漏電、發熱或高阻區域 | 需要偏壓條件與 good/bad 對照 |
+| SEM／FIB | 表面／截面觀察、局部切割與 circuit edit | 會破壞樣品，也可能引入 artifact |
+| TEM／EDS／SIMS／XPS | 奈米結構、元素或化學資訊 | 樣品製備與結果解讀門檻高 |
 
-1. **儀器昂貴**：一台 TEM 要價 300–500 萬美元，FIB-SEM 組合也要 100–200 萬美元
-2. **技術複雜**：需同時懂半導體製程、電性分析、材料科學、儀器操作
-3. **缺乏人才**：會操作 TEM 做 FA 的工程師供不應求
-4. **TSMC 的戰略角色**：TSMC 的 FA 工程師直接支援客戶（Apple、NVIDIA）的晶片失效問題，是維繫客戶關係的關鍵
+## 與良率和品質的閉環
+
+FA 不只處理客訴退貨。量產中也會把 wafer map、inspection defect、CP／FT bin、設備與製程 history 串起來：
+
+`異常 signature → 定位 defect／failure mechanism → 製程或設計假設 → 改善批驗證 → 監控 recurrence`
+
+QA 負責客戶與改善閉環，可靠度負責 stress plan 與風險外推，良率／Product 負責量產 signature 與批次關聯；FA 提供物理與電性證據。四者不能互相替代。
+
+## 適合誰與工作型態
+
+適合有耐心保留證據、能在資訊不完整時管理假設、也願意操作實驗與寫報告的人。實驗室工作比例高；緊急程度取決於量產停線、重大客訴或 qualification failure。儀器訓練時間沒有通用年限，取決於工具與案件複雜度。
 
 ## 核心技能
 
-- MSEE / 材料科學 / 物理碩士
-- SEM、TEM、FIB 操作（通常需要 1–2 年培訓才能獨當一面）
-- 半導體製程流程全貌理解：能看 TEM 截面圖判斷是哪道製程出問題
-- 技術寫作（FA 報告需清晰傳達給客戶）
+- 半導體製程、元件、封裝與基本電路量測
+- hypothesis-driven debugging、DOE 與 good/bad correlation
+- 一至數種 localization／sample-prep／microscopy 專長
+- chain of custody、artifact 判讀與實驗室安全
+- 技術報告：清楚分開觀察、推論、根因與建議行動
 
-## 主要雇主
+## 職涯與面試準備
 
-TSMC（最大 FA 團隊）、UMC、ASE、ITRI（工研院）、各 Fabless 公司的後端分析部門
+常見方向包括 electrical FA、physical／materials FA、package FA、yield diagnostics、lab／methodology lead。面試可準備一個「第一個假設錯了」的除錯案例，說明如何保存樣品、選下一個工具、排除 artifact，最後如何證明改善有效。
 
-## 薪資（2024 估計）
+薪資比較見[薪資資料怎麼看](appendix-salary.md)；儀器專長不等於可直接推導固定薪資溢價。
 
-| 職級 | 年總酬勞（TWD）|
-|------|-------------|
-| 新鮮人 | NT$900K – NT$1.2M |
-| 資深（5–8 年） | NT$1.5M – NT$2.5M |
-| 高階 TEM / FIB 專家 | NT$3M – NT$5M（稀缺溢價）|
+## 資料來源
+
+- [SEMI ASMC 2026 topics](https://www.semi.org/sites/semi.org/files/2025-08/ASMC26_CFA_Topics.pdf)（defect-to-yield correlation、volume diagnostics 與 yield enhancement；查證：2026-08-31）
+- [KLA 2025 Annual Report](https://ir.kla.com/sec-filings/all-sec-filings/content/0001193125-25-213412/0001193125-25-213412.pdf)（process control、inspection 與 metrology；查證：2026-08-31）
+
+相關：[良率與產品工程師](10-yield-product.md)｜[可靠度工程師](13-reliability.md)｜[QA／品質工程師](12-qa.md)

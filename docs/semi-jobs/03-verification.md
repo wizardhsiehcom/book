@@ -89,6 +89,7 @@ DV 轉 formal、emulation 或 performance verification，通常可沿用規格�
 
 ## 資料來源
 
+- [Cadence：SoC Verification](https://www.cadence.com/en_US/home/explore/soc-verification.html)（「平均超過 70%」為供應商說法；查證：2026-08-31）
 - [MediaTek：IC Design Verification Engineer](https://careers.mediatek.com/zh-tw/jobs/MTK120260223002)（2026 職缺；查證：2026-08-31）
 - [MediaTek：AI Processor Design Verification Engineer](https://careers.mediatek.com/zh-tw/jobs/MTK120250704008)（2025 職缺；查證：2026-08-31）
 - [NVIDIA：Padring Verification Engineer](https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Padring-Verification-Engineer_JR2022688-1)（2026 職缺；查證：2026-08-31）

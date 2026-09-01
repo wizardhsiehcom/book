@@ -1,71 +1,69 @@
-# 蝕刻 / 薄膜沉積 / CMP 工程師
+# 蝕刻、薄膜與 CMP 工程師
 
-這三個專長涵蓋晶圓製造中圖案成形（蝕刻）、材料添加（沉積）與表面平坦化（CMP）的核心工序，是晶圓廠人力需求量最大的製程類別。
+蝕刻負責移除材料，薄膜負責形成材料，CMP 負責把表面磨回可繼續堆疊的平坦度。三者各有獨立製程窗口，卻必須一起看：一層薄膜的組成與應力會改變後續蝕刻，蝕刻 profile 會影響填孔，而填孔與圖案密度又會反映在 CMP dishing、erosion 與缺陷上。
 
-## 蝕刻工程師（Etch Engineer）
-
-### 原理
-電漿蝕刻用帶能量的離子和自由基，選擇性地去除晶圓上的特定材料（矽、氧化物、金屬等），把光罩上的圖案轉移到下方材料。
-
-**每天在做什麼：**
-- 調整電漿配方（Gas Flow、RF Power、壓力、溫度）達到目標 CD（Critical Dimension）
-- 控制蝕刻選擇比（Selectivity）：只蝕刻目標層，不傷害遮罩層
-- 監控均勻性（Within-Wafer Uniformity）；分析 SPC 資料
-- 主要設備：**Lam Research** Kiyo、Flex 系列；**Applied Materials** Centura
-
-### 3nm / 2nm 挑戰
-- 高深寬比（HAR）蝕刻：接觸孔（Contact Hole）深寬比 >10:1，要求極高各向異性
-- Atomic Layer Etch（ALE）：原子層精度蝕刻，用於最先進節點
-
-## 薄膜沉積工程師（Deposition Engineer）
-
-### 三種沉積方式
-
-```mermaid
-graph LR
-    DEP["薄膜沉積"] --> CVD["CVD<br/>化學氣相沉積<br/>LPCVD / PECVD"]
-    DEP --> ALD["ALD<br/>原子層沉積<br/>最薄、最均勻"]
-    DEP --> PVD["PVD<br/>物理氣相沉積<br/>金屬濺射"]
-```
-
-| 方式 | 特點 | 應用 |
-|------|------|------|
-| CVD / PECVD | 速率快、覆蓋性好 | 介電層（SiO₂、SiN、Low-k ILD）|
-| ALD | 原子層精度、共形覆蓋 | High-k Gate（HfO₂）、Ru/Co 金屬 |
-| PVD / Sputter | 金屬薄膜 | 阻障層（TaN）、銅種子層、鋁 |
-
-**主要設備商：** Applied Materials（AMAT）、Lam Research、Tokyo Electron（TEL）
-
-**每天在做什麼：**
-- 最佳化膜厚均勻性（Within-Wafer, Wafer-to-Wafer）
-- 監控薄膜應力（Compressive / Tensile）：會影響元件特性和翹曲
-- 電性特性量測（介電常數 k、漏電流、崩潰電壓）
-- 缺陷（Particle）管理，尤其對 ALD 薄膜的針孔（Pinhole）缺陷
-
-## CMP 工程師（Chemical Mechanical Planarization）
-
-CMP 是用化學漿料（Slurry）加上機械研磨墊，把晶圓表面磨平，為下一道光刻層提供平坦表面。
-
-**每天在做什麼：**
-- 最佳化研磨速率（Removal Rate）與均勻性
-- 控制 Dishing（金屬線凹陷）與 Erosion（絕緣層過度研磨）
-- 管理研磨墊（Pad）更換週期；調劑漿料濃度與流量
-- 主要設備：Applied Materials Reflexion GTn、Ebara
-
-### CMP 關鍵應用點
+## 三個模組如何銜接
 
 ```mermaid
 flowchart LR
-    STI["STI CMP<br/>淺溝槽隔離<br/>（FEOL 第一道）"] --> GATE["閘極 CMP<br/>多晶矽研磨"]
-    GATE --> W_CMP["鎢 CMP<br/>接觸孔填充"]
-    W_CMP --> Cu_CMP["銅 CMP<br/>大馬士革後段<br/>（BEOL 每層都有）"]
+    DEP["沉積／磊晶<br/>建立材料與界面"] --> PAT["圖案化"]
+    PAT --> ETC["蝕刻<br/>控制 CD 與三維形貌"]
+    ETC --> FILL["ALD／CVD／PVD／ECD<br/>liner、barrier、seed、fill"]
+    FILL --> CMP["CMP<br/>平坦化與材料停止"]
+    CMP --> MET["膜厚、profile、缺陷與電性量測"]
+    MET -->|"回饋製程窗口"| DEP
 ```
 
-## 薪資與雇主
+## 蝕刻工程師
 
-| 職位 | 雇主 | 新鮮人年薪 | 資深年薪 |
-|------|------|----------|---------|
-| 蝕刻工程師 | TSMC、UMC | NT$800K–1.1M | NT$1.5M–2.5M |
-| 薄膜沉積工程師 | TSMC、UMC | NT$800K–1.1M | NT$1.5M–2.5M |
-| CMP 工程師 | TSMC、UMC | NT$700K–1.0M | NT$1.3M–2.2M |
-| Etch AE（Lam / AMAT） | Lam Research TW、AMAT TW | NT$1.2M–2.0M | NT$2.5M–4M |
+蝕刻不是單純把孔挖深，而是同時控制 anisotropy、selectivity、CD bias、sidewall、microloading、notching、殘留物與 plasma damage。recipe 會調整 gas chemistry、pressure、RF/bias、temperature 與 endpoint。
+
+先進邏輯的挑戰包括 GAA nanosheet 的形貌與 release、angstrom-level profile control；記憶體則常面對高深寬比結構；先進封裝也有 TSV、RDL 與 bonding surface 的相關製程。Atomic Layer Etch 是工具之一，不代表所有先進蝕刻都採同一方法。
+
+## 薄膜與表面工程師
+
+| 方法 | 擅長之處 | 常見工程問題 |
+|---|---|---|
+| CVD／PECVD | 量產速率、介電層與 gap fill | step coverage、應力、組成、particle |
+| ALD | 原子級厚度與高共形性 | nucleation、cycle time、雜質與界面 |
+| PVD | 金屬與 seed/barrier | sidewall coverage、方向性、應力 |
+| Epitaxy | 選擇性晶體成長 | defect、selectivity、摻雜與 strain |
+| Electrochemical deposition | Cu 與封裝互連填充 | void、seam、uniformity、additive control |
+| Clean／surface treatment | 去除污染並設定表面狀態 | material loss、roughness、recontamination |
+
+N2/A16 等技術使薄膜工作延伸到奈米片、背面供電與新接觸材料。混合鍵合則要求清洗、表面活化、薄膜性質、CMP 與 overlay 共同達標，前段與封裝製程的界線正在變得模糊。
+
+## CMP 工程師
+
+CMP 用 pad、slurry、pressure、rotation 與 conditioning 同時作用，目標不是「越平越好」，而是在 removal rate、selectivity、within-wafer uniformity、dishing、erosion、scratch、residue 與 defectivity 間取得可量產的窗口。
+
+除了 STI、contact 與 Cu interconnect，CMP 也直接影響 hybrid bonding surface：極小的 topography、particle 或 queue-time variation 都可能降低接合品質與良率。
+
+## 適合誰／工作型態
+
+蝕刻偏 plasma、vacuum 與反應工程；薄膜偏材料、表面、化學與熱力學；CMP 偏 tribology、化學、流體與缺陷。共同點是需要大量實驗、量測與設備協作。量產職位可能值班或 on-call，研發與設備商 application 工作則依專案節奏運作。
+
+## 核心技能
+
+- transport、surface reaction、plasma／vacuum、材料分析或 tribology 的相應基礎。
+- DOE、SPC、tool/chamber matching、equipment trace 與 wafer map 分析。
+- SEM/TEM、ellipsometry、profilometry、XPS/EDS 等結果的正確解讀。
+- 能分辨 recipe、hardware、incoming material、upstream pattern 與 metrology 的影響。
+
+## 職涯與轉換
+
+可往模組專家、process integration、yield/defect、equipment/application、materials supplier、先進封裝製程或 reliability/FA 發展。跨模組的關鍵不是多背設備，而是能說明材料與形貌如何一路影響電性、良率及可靠度。
+
+## 面試準備
+
+準備回答「uniformity 變差」「particle 突增」「etch profile 傾斜」「膜應力漂移」或「CMP scratch」時，如何先確認量測，再切 tool/chamber/time/material/pattern。若提出調 recipe，也要交代副作用與 qualification 指標。
+
+薪資請見[薪資比較附錄](appendix-salary.md)。
+
+## 資料來源
+
+- [Applied Materials：2nm 以下電晶體與互連設備](https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-unveils-transistor-and-wiring-innovations)，2026-02-10（GAA、angstrom-level etch、ALD 與新接觸材料；查證：2026-08-31）
+- [Applied Materials：Kinex hybrid bonding system](https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-unveils-next-gen-chipmaking-products/)，2025-10-07（清洗、鍵合、inline metrology 與 drift detection；查證：2026-08-31）
+- [Tokyo Electron：3DI manufacturing equipment](https://www.tel.com/blog/all/20250930_001.html)，2025-09-30（CMP、clean、surface activation 與 bonding；查證：2026-08-31）
+
+相關：[製程工程師總覽](06-process-overview.md)｜[整合工程師](09-integration.md)

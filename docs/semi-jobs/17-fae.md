@@ -1,57 +1,61 @@
-# FAE 現場應用工程師
+# FAE 與設備商客戶支援職務
 
-FAE（Field Application Engineer，現場應用工程師）是半導體公司與客戶之間的技術橋樑。他們同時要懂技術和會與人溝通，是少數能兼顧技術深度與業務影響力的職位。
+FAE（Field Application Engineer）常被泛稱為「技術與客戶的橋樑」，但半導體產品 FAE、設備 application engineer 與 field service engineer 的工作並不相同。求職時先看 ownership、支援對象與交付物，不要只看職稱。
 
-## 兩種 FAE 類型
+## 三類角色
 
-### 晶片公司 FAE（如 MediaTek、Qualcomm FAE）
+| 角色 | 支援對象 | 主要工作 | 常見現場 |
+|---|---|---|---|
+| 產品／系統 FAE | OEM、ODM、系統客戶 | bring-up、integration、validation、debug、spec/requirement、issue closure | 客戶實驗室、系統與開發板 |
+| 設備 Application／Process Engineer | Fab 的 PE/PIE、製程開發 | process qualification、recipe/application、performance demo、技術升級 | 無塵室、process lab、客戶會議 |
+| Field Service／Customer Support Engineer | Fab 的 EE、設備 owner | install、PM、repair、upgrade、diagnostics、uptime | 無塵室與設備現場 |
 
-**每天在做什麼：**
-- **售前支援**：拜訪客戶（手機廠、TV 廠）R&D 實驗室，做技術簡報和 Demo
-- 幫客戶審查原理圖（Schematic Review）；建議參考設計（Reference Design）
-- **售後支援**：客戶在量產中遇到晶片相關問題時 debug（例如：為什麼藍牙連線不穩定？）
-- 撰寫 Application Note；製作 FAQ；更新開發板 BOM
-- 把客戶的 Bug 和功能需求反饋給 IC 設計團隊（Voice of Customer）
+同一設備商可能讓 application 與 service 一起處理 escalation，但 application 通常對製程結果與應用能力更深，service 通常對 hardware availability、維修程序與 installed base 更深。
 
-### 設備商 FAE / AE（如 ASML、AMAT、Lam AE）
+## 產品／系統 FAE
 
-**完全不同性質**——這類 AE 是進駐到台積電、聯電廠區的技術支援：
-- 在客戶無塵室內工作，支援製程建立和最佳化
-- 新機安裝後的 Process Qualification（製程認證）
-- 高端技術問題的升級支援（Escalation）
-- ASML AE 需要深厚光學、光機電整合知識，是薪資最高的 FAE 類型
+- 支援 customer platform bring-up、HW/FW/SDK integration 與 system validation。
+- 重現問題，收集 log/register/telemetry/measurement，先做 root-cause isolation。
+- 使用示波器、邏輯分析儀、protocol analyzer 等工具驗證介面與 margin。
+- 把可重現步驟與證據交給 design/firmware/validation 團隊並追到 closure。
+- 整理 application note、reference design、debug procedure、FAQ 與客戶 training。
+- 在售前 evaluation 與售後量產間傳遞需求，但不等於業務。
 
-## FAE 技能要求
+## 設備 Application 與 Field Service
 
-```mermaid
-flowchart LR
-    FAE_SKILL["FAE 必備能力"] --> TECH["技術能力<br/>產品知識 / 協定 / 量測"]
-    FAE_SKILL --> COMM["溝通能力<br/>中英文 / 客戶簡報"]
-    FAE_SKILL --> LAB["實驗室技能<br/>示波器 / 邏輯分析儀<br/>頻譜分析儀"]
-    FAE_SKILL --> PD["產品感知<br/>能快速吸收新產品知識"]
-```
+Application／Process Engineer 會參與新機或新 capability 的 process qualification、tool matching、recipe window 與客戶技術評估；Field Service／Customer Support 則負責 install、maintenance、repair、upgrade、parts 與 downtime recovery。
 
-**語言要求：** 中英文雙語是台灣市場的基本門檻
+AI 已用於 predictive maintenance、reactive diagnostics、知識搜尋與 RCA 輔助，但複雜工具仍需工程師用物理與現場證據驗證輸出。客戶資料、recipe、log 與 export-control information 也有嚴格邊界。
 
-## 職涯發展
+## 適合誰／工作型態
 
-```mermaid
-flowchart LR
-    FAE0["FAE<br/>0–3 年"] --> FAE1["Senior FAE<br/>3–7 年"]
-    FAE1 --> FAE_MGR["FAE Manager<br/>技術行銷"]
-    FAE1 --> PM["Product Manager<br/>轉型 PM"]
-    FAE1 --> BD["Business Development<br/>業務拓展"]
-```
+適合技術基礎紮實、能在客戶壓力下保持結構化溝通，也願意對「問題是否真的關閉」負責的人。產品 FAE 的背景隨 SoC、RF、connectivity、power、automotive 或 software 而變；設備 application/service 則偏製程、材料、光機電、真空、電漿與設備診斷。
 
-FAE 是從工程技術轉向業務或 PM 的主要跳板職位。
+工作通常需要出差、客戶現場、跨時區會議或 on-call。產品 FAE 的節奏跟 customer milestone；設備 service 跟 tool uptime；application 跟 install/qualification 與技術導入。三者不能用同一套生活型態概括。
 
-## 薪資（2024 估計）
+## 核心技能
 
-| 類型 | 年總酬勞（TWD）|
-|------|-------------|
-| 晶片公司 FAE（新鮮人） | NT$1.0M – NT$1.5M |
-| 晶片公司 Senior FAE | NT$2.0M – NT$3.5M |
-| **ASML Application Engineer** | NT$2.5M – NT$5M |
-| Lam / AMAT / KLA AE | NT$1.5M – NT$4M |
+- 對應產品、協定、製程或設備平台的實質深度。
+- structured debug：reproduce、isolate、collect evidence、escalate、verify fix。
+- 客戶溝通、英文文件、簡報、issue tracker 與 expectation management。
+- 實驗室或無塵室工具操作，以及安全、保密與變更程序。
+- 能分清 workaround、root cause、corrective action 與正式 release。
 
-> ASML AE 是台灣薪資最高的工程師類別之一，但錄取門檻極高（需深厚製程知識 + ASML 原廠培訓認可）
+## 職涯與轉換
+
+產品 FAE 可往 system/application architect、customer engineering、product management、technical marketing 或 business development；設備 application 可往 process/product specialist、technology program；field service 可往 technical support、install/upgrade、equipment management。跨線可行，但須補相應的製程、系統或硬體深度。
+
+## 面試準備
+
+準備一個客戶 issue 案例，說明如何取得可重現條件、縮小 HW/FW/SW 或 process/equipment 邊界、管理 escalation，並在資訊不完整時回報進度。避免只說「把問題丟回 RD」；FAE 的價值正是讓內外部團隊拿到可行動的證據。
+
+薪資請見[薪資比較附錄](appendix-salary.md)。
+
+## 資料來源
+
+- [MediaTek System/Application Engineer](https://careers.mediatek.com/en/jobs/MUS120260408000)，2026（customer bring-up、validation、HW/FW/SDK debug 與 issue closure；查證：2026-09-01）
+- [MediaTek Firmware FAE](https://careers.mediatek.com/en/jobs/MTK120260108004)，2026（客戶產品開發、現場協作與功能問題排查；查證：2026-09-01）
+- [ASML 2025 Annual Report — Strategy & Stories](https://www.asml.com/en/investors/annual-report/2025/strategy-and-stories)，2026（installed-base diagnostics、predictive maintenance 與 human validation；查證：2026-08-31）
+- [Advantest V93000 Product Support](https://www.advantest.com/cn/products/semiconductor-test-system/soc/v93000/v93000ps/)，現行產品頁（technical documentation、training、maintenance 與 customer support；查證：2026-08-31）
+
+相關：[設備工程師](10-equipment.md)｜[測試工程師](16-test.md)

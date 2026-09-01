@@ -1,233 +1,156 @@
-# CoWoS 專案的跨職務合作
+# CoWoS、HBM 與 3DIC 的跨職務合作
 
-CoWoS 封裝是目前半導體業最複雜的跨職務協作場景之一。一個 NVIDIA H100 等級的 CoWoS-S 專案，需要來自**設計、製程、設備、封裝、測試、可靠度**至少六大類工程師長期協作，而且很多工作必須同時進行。
+先進 AI/HPC 封裝不是把一顆邏輯 die 和幾顆 HBM「放上中介板」就完成。從 architecture、base die、interposer/RDL、bonding、substrate、power/thermal、test、yield 到量產供應，每個決策都會改變其他團隊的窗口。
 
-## 誰參與了一個 CoWoS 專案？
+本頁用匿名的「accelerator＋多顆 HBM」說明合作，不綁定特定產品 SKU。線寬、pitch、interposer 尺寸、overlay 與可靠度條件都應以該世代平台 PDK、產品規格與 qualification plan 為準，不自行填入網路流傳數字。
 
-```mermaid
-flowchart TD
-    subgraph "客戶端（如 NVIDIA）"
-        ICD["IC Design<br/>GPU Die 設計<br/>Bump Map / PHY"]
-        PKG_CUST["封裝工程師<br/>系統級封裝規格"]
-        FAE2["FAE<br/>TSMC 介面"]
-    end
+## 先辨認不同平台
 
-    subgraph "TSMC CoWoS 團隊"
-        PKG_TSMC["先進封裝工程師<br/>中介板 RDL 設計<br/>TSV 規格"]
-        PHO["微影工程師<br/>RDL 曝光 / 光罩拼接"]
-        ETC["蝕刻工程師<br/>TSV via 蝕刻"]
-        DEP["薄膜工程師<br/>TSV 填銅 / RDL 金屬"]
-        CMP2["CMP 工程師<br/>中介板平坦化"]
-        EQP["設備工程師<br/>機台保養維護"]
-        INT["整合工程師<br/>全流程製程整合"]
-    end
+| 平台方向 | 核心結構 | 工程取捨 |
+|---|---|---|
+| CoWoS-S | silicon interposer | 高 routing density、TSV／interposer 製造、面積與成本 |
+| CoWoS-R | RDL interposer | 大面積 routing、polymer/RDL、翹曲與製造性 |
+| CoWoS-L | RDL interposer＋local silicon interconnect | local high-density link、embedded device、整合與良率 |
+| SoIC | wafer/die-level 3D stacking、hybrid bonding | 極細互連、bonding surface、KGD、熱與測試 |
+| CPO／COUPE | photonic＋electrical integration | optical coupling、fiber attach、thermal、test 與 system architecture |
 
-    subgraph "品質與驗證"
-        REL["可靠度工程師<br/>HTOL / HAST / TC 測試"]
-        FA["失效分析工程師<br/>Bump 裂縫 / TSV 失效"]
-        QA2["QA 工程師<br/>客戶認證管理"]
-        TST["測試工程師<br/>Known Good Die / 封裝後測試"]
-    end
+TSMC 2025 年報顯示 CoWoS-L 正往更大 interposer 發展；2025 技術論壇規劃 2027 年量產 9.5-reticle-size CoWoS、整合 12 顆以上 HBM。這是 roadmap，不代表所有產品採相同尺寸或組合。
 
-    subgraph "HBM 供應商（SK Hynix / Samsung）"
-        HBM_PKG["HBM 封裝工程師<br/>Base Die TSV / Micro Bump"]
-    end
-
-    ICD <-->|"Bump Map + PHY 規格"| PKG_TSMC
-    PKG_TSMC <-->|"RDL 佈線規則 / TSV 位置"| PHO & ETC & DEP & CMP2
-    PHO & ETC & DEP & CMP2 <-->|"製程狀態"| EQP
-    INT <-->|"跨模組整合診斷"| PHO & ETC & DEP & CMP2
-    PKG_TSMC <-->|"Micro Bump 規格協調"| HBM_PKG
-    TST -->|"KGD 良品篩選"| PKG_TSMC
-    PKG_TSMC --> REL
-    REL <-->|"失效樣品"| FA
-    QA2 <-->|"認證審核"| REL
-    FAE2 <-->|"客戶技術溝通"| PKG_TSMC
-```
-
----
-
-## 1. GPU Die 設計 ↔ CoWoS 封裝工程師：協同設計
-
-這是 CoWoS 專案最重要的上游合作，必須從晶片設計階段就開始。
-
-```mermaid
-sequenceDiagram
-    participant D as IC Design（NVIDIA GPU）
-    participant P as CoWoS 封裝工程師（TSMC）
-
-    D->>P: 提供 Die 尺寸、Bump Map（Pitch / 位置）
-    P->>D: 反饋 RDL 繞線可行性<br/>（最小 Pitch 能做到多少？）
-    D->>P: 調整 HBM PHY 的 Bump 佈局
-    P->>D: 提供封裝寄生模型（RL / C）
-    D->>D: 用封裝寄生模型做訊號完整性模擬
-    D->>P: 確認 Bump Map 定案
-    P->>P: 設計矽中介板 RDL（0.4–2 μm）
-    P->>D: 大面積光罩拼接（>830 mm²）的<br/>設計規則限制
-    D->>P: 晶片角落的 Bump 規格調整
-    P->>P: Tape-out 中介板光罩
-```
-
-**關鍵協商點：**
-
-| 議題 | GPU Die 端需求 | CoWoS 封裝端限制 |
-|------|--------------|----------------|
-| Bump Pitch | 越小越好（更多 I/O）| 最小 ~45–55 μm（製程下限）|
-| HBM 距離 | 越近越好（訊號延遲低）| 中介板面積 / 光罩拼接影響可用空間 |
-| 電源分配 | PDN 阻抗要求 | TSV 密度 / RDL 銅厚影響電阻 |
-| 熱管理 | 晶片發熱要散出去 | 封裝材料 / TIM 選擇需配合 |
-
----
-
-## 2. 微影工程師 × 光罩拼接：CoWoS-S 的製程核心
-
-CoWoS-S Gen 5（~2500 mm²）中介板遠超單一光罩面積（~830 mm²），需要多片光罩拼接（Mask Stitching）。
-
-```mermaid
-flowchart LR
-    subgraph "光罩拼接流程"
-        M1["光罩 1<br/>區域 A（830 mm²）"]
-        M2["光罩 2<br/>區域 B（830 mm²）"]
-        M3["光罩 3<br/>區域 C（830 mm²）"]
-        STITCH["拼接區域<br/>對準精度 < 10 nm"]
-    end
-
-    PHO2["微影工程師"] <-->|"拼接對準策略"| EDA2["EDA / PDK 工程師<br/>（光罩設計規則）"]
-    PHO2 <-->|"ASML 覆蓋對準參數調整"| ASML2["ASML AE<br/>（EUV / DUV 支援）"]
-    PHO2 <-->|"拼接區域良率分析"| INT2["整合工程師<br/>（拼接缺陷診斷）"]
-
-    M1 & M2 & M3 --> STITCH
-```
-
-**微影工程師在 CoWoS 的特殊挑戰：**
-- 拼接處的 RDL 導線必須完美連續——任何對準偏移 >10 nm 都可能造成斷線
-- RDL 的線寬（~0.4 μm）需要 DUV ArF 沉浸式或 EUV 曝光
-- 大面積晶圓的翹曲（Warpage）影響焦距均勻性，需特殊補償演算法
-
----
-
-## 3. TSV 製程的跨部門合作
-
-```mermaid
-flowchart LR
-    subgraph "TSV 製程（Via-Last）"
-        THIN["晶圓薄化<br/>研磨至 ~100 μm"]
-        VIA["Via 蝕刻<br/>深孔蝕刻（蝕刻工程師）"]
-        ISO["絕緣層沉積<br/>SiO₂ ALD（薄膜工程師）"]
-        SEED["銅種子層<br/>PVD（薄膜工程師）"]
-        FILL["銅填充<br/>電化學電鍍 ECP"]
-        CMP3["TSV CMP 平坦化<br/>（CMP 工程師）"]
-    end
-
-    ETC2["蝕刻工程師"] -->|"高深寬比蝕刻<br/>深度 100 μm / 直徑 10 μm"| VIA
-    DEP2["薄膜工程師"] -->|"ALD 共形覆蓋<br/>確保孔壁均勻"| ISO & SEED
-    CMP4["CMP 工程師"] -->|"TSV 露頭後平坦化"| CMP3
-    INT3["整合工程師"] <-->|"TSV 電阻 / 絕緣性整合確認"| ETC2 & DEP2 & CMP4
-    REL2["可靠度工程師"] <-->|"TSV 熱循環應力測試"| INT3
-```
-
----
-
-## 4. 封裝工程師 ↔ 可靠度工程師：CoWoS 的壽命挑戰
-
-CoWoS 封裝中材料 CTE 差異極大，是可靠度工程師的主要戰場。
+## 完整合作地圖
 
 ```mermaid
 flowchart TD
-    subgraph "CTE 不匹配問題（ppm/°C）"
-        SI["矽 Die / 中介板：2.6"]
-        CU["銅 TSV / RDL：17"]
-        SUB["有機基板：15–20"]
-    end
+    ARCH["System／Package Architect<br/>performance、power、cost、schedule"]
+    LOGIC["Logic／Chiplet Design<br/>PHY、bump map、DFT"]
+    HBM["HBM Team<br/>DRAM、logic base die、stack、KGSD"]
+    PKG["3DIC／Package Integration<br/>platform、flow、assembly"]
+    EDA["EDA／PDK／Methodology<br/>co-design、signoff、3Dblox"]
+    PROC["Process／Equipment<br/>RDL、TSV、CMP、bonding、thinning"]
+    SUB["Substrate／OSAT／Assembly<br/>build-up、TCB、underfill、molding"]
+    PI["SI／PI／Thermal／Mechanical<br/>channel、PDN、cooling、warpage"]
+    TEST["DFT／Test／SLT<br/>KGD、KGSD、package、system"]
+    YLD["Yield／Metrology／FA／Reliability<br/>defect、evidence、qualification"]
+    MFG["MFG／IE／Supply<br/>capacity、cycle time、traceability"]
 
-    PKG3["封裝工程師"] <-->|"Underfill 材料選擇<br/>應力模擬（ANSYS）"| REL3["可靠度工程師"]
-    REL3 -->|"溫度循環測試<br/>-55°C ↔ 125°C × 1000 次"| FA3["失效分析工程師"]
-    FA3 -->|"Micro Bump 裂縫<br/>TSV 剝離分析（TEM / FIB）"| PKG3
-    PKG3 <-->|"翹曲量測 / 補償方案"| INT4["整合工程師"]
-
-    subgraph "主要可靠度測試"
-        TC["溫度循環 TC<br/>焊點疲勞"]
-        HAST2["HAST<br/>高溫高濕"]
-        DROP["落下測試<br/>機械衝擊"]
-    end
+    ARCH <--> LOGIC
+    ARCH <--> PKG
+    LOGIC <--> HBM
+    LOGIC <--> EDA
+    HBM <--> TEST
+    PKG <--> EDA
+    PKG <--> PROC
+    PKG <--> SUB
+    PKG <--> PI
+    PROC <--> YLD
+    SUB <--> YLD
+    TEST <--> YLD
+    PKG <--> MFG
 ```
 
-**失效分析工程師在 CoWoS 的核心工具：**
+## 1. 架構與協同設計
 
-| 失效模式 | 分析工具 | 分析內容 |
-|---------|---------|---------|
-| Micro Bump 裂縫 | FIB + TEM | 介金屬化合物（IMC）成長、裂縫延伸路徑 |
-| TSV 剝離 | FIB 截面 + EDS | 銅 / 氧化矽介面剝離、污染元素 |
-| RDL 斷線 | EMMI + FIB | 拼接處電阻異常、高阻路徑定位 |
-| 封裝分層 | SAT（聲學掃描）+ SEM | 分層位置 / 範圍 |
+System/package architect 先定義 bandwidth、latency、power、memory capacity、form factor、cooling、reliability 與成本目標。Logic、HBM、package、substrate 與 EDA 團隊再共同收斂 die placement、bump map、PHY、RDL/interposer routing、PDN 與 test access。
 
----
-
-## 5. Known Good Die（KGD）：測試工程師的關鍵角色
-
-在 CoWoS 中，把一個有缺陷的 Die 放進中介板，整個封裝就會報廢。因此在封裝前確認每顆 Die 的品質（KGD）至關重要。
-
-```mermaid
-flowchart LR
-    WAFER["晶圓（GPU Die）"]
-    CP["Wafer Sort / CP<br/>（測試工程師）"]
-    KGD["Known Good Die<br/>已知良品晶粒"]
-    COWOS_ASM["CoWoS 組裝<br/>（封裝工程師）"]
-    FT["封裝後最終測試<br/>（測試工程師）"]
-    SHIP["出貨"]
-
-    WAFER --> CP
-    CP -->|"良品"| KGD
-    CP -->|"不良品 → 丟棄"| SCRAP["報廢<br/>避免浪費中介板"]
-    KGD --> COWOS_ASM --> FT --> SHIP
-
-    DFT2["DFT 工程師"] <-->|"Die-to-Die 測試向量<br/>Chiplet 邊界掃描"| CP
-    DFT2 <-->|"封裝後測試策略"| FT
-```
-
-**CoWoS KGD 的特殊挑戰：**
-- 中介板面積大、成本高，任何 Die 缺陷都會導致巨額損失
-- 測試需要 KGD 探針卡（Probe Card），測試點極細（Bump Pitch ~55 μm）
-- AI 晶片的 GPU Die 面積大（~800 mm²），良率本身就低，KGD 篩選尤為重要
-
----
-
-## 6. ASML AE ↔ TSMC 微影工程師：EUV 合作的特殊關係
+這是一個反覆迭代的 loop：
 
 ```mermaid
 sequenceDiagram
-    participant ASML as ASML AE（駐廠）
-    participant PHO3 as TSMC 微影工程師
-    participant EQP2 as TSMC 設備工程師
+    participant S as System／Package Architect
+    participant D as Logic／HBM Design
+    participant P as Package／3DIC Integration
+    participant A as SI／PI／Thermal／Mechanical
+    participant T as DFT／Test
 
-    PHO3->>ASML: EUV 機台出現焦距偏移（Focus Drift）
-    ASML->>ASML: 診斷：光源功率波動？<br/>反射鏡污染？溫控問題？
-    ASML->>EQP2: 建議更換特定光學元件
-    EQP2->>EQP2: 執行 PM（需 ASML 工具 / 認證）
-    ASML->>PHO3: 提供新的曝光補償參數
-    PHO3->>PHO3: 跑資格確認晶圓
-    PHO3->>ASML: 製程恢復確認
-    Note over ASML,PHO3: CoWoS RDL 光罩拼接精度<br/>需要 ASML 和 TSMC 持續協作調整
+    S->>D: bandwidth、power、capacity、use condition
+    D->>P: die、bump、PHY、DFT 與 power map
+    P->>A: stack-up、routing、materials、geometry
+    A->>S: SI／PI／thermal／warpage 結果
+    P->>T: die／stack／package test access
+    T->>D: coverage、KGD／KGSD 與 repair feedback
+    S->>P: 收斂 architecture、risk 與 qualification plan
 ```
 
----
+ASE 2025 IDE 2.0 把 electrical、thermal、mechanical、manufacturing data 與 AI risk prediction 放入同一協同設計 loop，反映封裝工程已不能只在設計完成後被動接圖。
 
-## CoWoS 專案職務合作強度
+## 2. HBM 不只是外部零件
 
-| 職務 | CoWoS 合作強度 | 主要合作對象 |
-|------|-------------|------------|
-| 先進封裝工程師（TSMC） | 🔴 核心 | IC Design、微影、蝕刻、薄膜、整合、可靠度 |
-| IC Design（GPU Die） | 🔴 核心 | 封裝工程師（Bump Map 協同設計）|
-| 微影工程師 | 🔴 核心 | ASML AE、封裝工程師、整合工程師 |
-| 整合工程師 | 🔴 核心 | 所有製程模組（跨模組診斷）|
-| 蝕刻工程師 | 🟡 重要 | 封裝工程師、整合工程師（TSV 蝕刻）|
-| 薄膜工程師 | 🟡 重要 | 封裝工程師（TSV 絕緣 / 銅種子層）|
-| CMP 工程師 | 🟡 重要 | 封裝工程師（TSV / RDL 平坦化）|
-| 可靠度工程師 | 🟡 重要 | 封裝工程師、FA 工程師 |
-| 失效分析工程師 | 🟡 重要 | 可靠度工程師（TSV / Bump 失效）|
-| 測試工程師 | 🟡 重要 | DFT 工程師（KGD 篩選策略）|
-| ASML AE | 🟡 重要 | 微影工程師（RDL EUV/DUV 支援）|
-| 設備工程師 | ⚪ 支援 | 微影 / 蝕刻 / 薄膜工程師 |
-| FAE | ⚪ 支援 | 客戶（NVIDIA 等）技術窗口 |
+HBM stack 包含多層 DRAM、TSV/interconnect 與 logic base die。HBM4 世代增加 I/O、bandwidth 與客製 base-die 協作，也加重 power、thermal、yield、test 與供應協調。
 
-> 想深入了解 CoWoS 技術本身？參見書庫中的《[CoWoS 技術精讀筆記](../../cowos/html/index.html)》
+HBM 相關角色至少包括：
+
+- DRAM process/design/yield、logic base-die design/foundry interface。
+- thinning、TSV、microbump/TCB 或未來 hybrid bonding 的 process/equipment。
+- memory test、logic test、repair、burn-in、KGSD 與 package-level correlation。
+- thermal/mechanical、stack warpage、material、reliability 與 FA。
+- capacity、known-good inventory、traceability 與 supplier quality。
+
+## 3. Process、設備與量測共同決定 bonding yield
+
+RDL、TSV、Cu plating、CMP、temporary bond/debond、wafer/die thinning、TCB/hybrid bonding 與 molding 都有獨立窗口。Hybrid bonding 特別要求 surface clean/activation、planarity、alignment、controlled queue time、die tracing 與 inline metrology；不能只畫成「兩片晶圓壓在一起」。
+
+先進封裝圖案化也不應直接等同 EUV。工具與設計規則依平台而異；沒有官方依據時，不應宣稱 CoWoS RDL 必須使用 ArF immersion/EUV、固定線寬或固定 stitching overlay。
+
+## 4. Power、thermal 與 mechanical 是架構問題
+
+高功率 accelerator、多顆 HBM、大型 interposer/substrate 與不同材料 CTE 會共同造成 PDN、hotspot、warpage、bump stress、delamination 與 cooling 挑戰。
+
+imec 2025 的 3D HBM-on-GPU 研究顯示，直接垂直堆疊會產生嚴重熱瓶頸，必須同時調整 stack/material、雙面冷卻與 system operating point。這說明 thermal engineer、package architect、reliability 與 system team 必須在早期共同設計，而不是等 TC/HAST 失敗後才處理。
+
+## 5. KGD、KGSD 與多階段測試
+
+```mermaid
+flowchart LR
+    LD["Logic／Base-Die Wafer Test"] --> KGD["Known Good Die"]
+    MD["DRAM Wafer Test"] --> STACK["HBM Stacking／Assembly"]
+    STACK --> KGSD["Known Good Stack Die<br/>pre／post singulation test"]
+    KGD --> PKG["Interposer／RDL／Package Assembly"]
+    KGSD --> PKG
+    PKG --> FT["Package Final Test"]
+    FT --> SLT["System-Level Validation／Test"]
+    SLT --> FEED["Yield、FA、repair 與設計回饋"]
+```
+
+2025 Teradyne HBM 平台把 base-die wafer、memory core、burn-in、pre-singulated KGSD/Chip-on-Wafer 與 post-singulated HBM 都列入 coverage。測試策略必須在 package architecture 前期參與，否則 bonding 後才發現不可測或 coverage 缺口，代價很高。
+
+## 6. Reliability、FA 與 quality 的閉環
+
+qualification 條件應依產品 use condition、材料、package、客戶與適用標準制定，不能把固定的溫度循環範圍、次數或 drop test 套給所有 CoWoS。
+
+失效後先保存證據並從 electrical、X-ray/SAM、thermal/optical localization 到 cross-section 逐步縮小；再把 bump/TSV/RDL/substrate/thermal failure 對回 lot、tool、material、assembly 與 design。Quality team 負責 change control、traceability、supplier/customer communication 與 corrective-action closure。
+
+## 7. 從開發到量產：IE、MFG 與供應鏈
+
+大型先進封裝的 bottleneck 可能在 interposer、HBM、substrate、bonding、test、inspection 或特定材料。IE/capacity team 建模，MFG/dispatch 控制 WIP 與交期，CIM/MES 維護 genealogy 與 route，供應鏈管理 known-good inventory 與跨廠運輸。設備產能增加不代表整體 package output 等比例增加。
+
+## 適合誰／工作型態
+
+這類專案適合能在單一專業保持深度，又願意理解相鄰團隊限制的人。工作多為跨公司、跨國與長週期協作；NPI/ramp、qualification failure 或 supply issue 可能帶來短期高強度與跨時區會議。製程／設備／MFG 可能輪班或 on-call，設計與整合職則多為專案節奏。
+
+## 核心技能
+
+- 至少一項深度：package/3DIC、HBM、RDL/TSV/bonding、SI/PI/thermal、test、yield/FA 或 manufacturing。
+- 能讀 stack-up、bump map、power map、test flow、cross-section、wafer/package map 與 qualification result。
+- 系統化 trade-off、interface specification、change control、risk register 與 evidence-based RCA。
+- 能分清 roadmap、qualified platform、production-ready 與特定產品採用，不把傳聞當事實。
+
+## 職涯與轉換
+
+可往 package/system architect、3DIC integration、HBM interface、SI/PI/thermal、advanced packaging process/equipment、test/SLT、yield/reliability、customer technology service 或 program management 發展。跨域轉換時，先補相鄰 interface，而不是試圖一次學完整條供應鏈。
+
+## 面試準備
+
+拿一個「package yield 下跌」題目，先問發生階段、產品／lot 範圍、electrical signature、inspection/FA evidence 與最近變更，再分 design、die quality、RDL/interposer、bonding、substrate、test、thermal/mechanical 與 material 假設。能提出最小可辨識實驗，比背誦 CoWoS 世代名稱更有價值。
+
+薪資請見[薪資比較附錄](appendix-salary.md)。
+
+## 資料來源
+
+- [TSMC 2025 Annual Report](https://investor.tsmc.com/static/annualReports/2025/english/index.html)，2026（CoWoS-S/R/L、SoIC、COUPE 與量產進展；查證：2026-08-31）
+- [TSMC 2025 North America Technology Symposium](https://pr.tsmc.com/chinese/news/3228)，2025-04-23（9.5-reticle-size CoWoS、12+ HBM、base die、IVR 與 CPO roadmap；查證：2026-08-31）
+- [ASE IDE 2.0](https://ase.aseglobal.com/press-room/ide2/)，2025-11-04（chip-package interaction 與 multi-physics co-design；查證：2026-08-31）
+- [ASE FOCoS-Bridge with TSV](https://ase.aseglobal.com/press-room/ase-announces-focos-bridge-with-tsv/)，2025-05-28（HBM、TSV、power、thermal 與 bridge integration；查證：2026-08-31）
+- [Applied Materials：Kinex hybrid bonding system](https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-unveils-next-gen-chipmaking-products/)，2025-10-07（bonding、clean、die tracing 與 inline metrology；查證：2026-08-31）
+- [Teradyne Magnum 7H](https://investors.teradyne.com/news-events/press-releases/detail/419/teradyne-unveils-magnum-7h---the-next-generation-memory-tester-for-high-bandwidth-memory-devices)，2025-08-04（HBM 多階段測試與 KGSD；查證：2026-08-31）
+- [imec：3D HBM-on-GPU thermal STCO](https://www.imec-int.com/en/press/imec-mitigates-thermal-bottleneck-3d-hbm-gpu-architectures-using-system-technology-co)，2025-12-08（3D thermal bottleneck 與 system-technology co-optimization；查證：2026-08-31）
+
+相關：[封裝工程師](15-packaging.md)｜[測試工程師](16-test.md)｜[可靠度工程師](13-reliability.md)｜[智慧製造](18-smart-manufacturing.md)

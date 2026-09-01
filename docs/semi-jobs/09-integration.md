@@ -1,65 +1,68 @@
-# 整合工程師
+# 製程整合工程師
 
-整合工程師（Integration Engineer）是製程類職務中技術層次最高的角色，通常是博士或資深碩士工程師擔任。他們不擁有單一製程步驟，而是負責「全局」——確保所有製程步驟組合在一起後，元件特性能達到規格。
+製程整合工程師（Process Integration Engineer, PIE）對一段完整 process flow、元件與產品結果負責。他們不只看單一 recipe，而是追蹤不同模組如何共同影響 WAT、元件電性、良率、可靠度、成本與客戶規格。
 
-## 與其他製程工程師的差異
+PIE 可以由校園招募直接進入，也可由製程、元件、良率或產品工程轉入；「一定先做多年 PE」「只有博士適合」都不是通則。
+
+## PIE 在流程中的位置
 
 ```mermaid
 flowchart TB
-    subgraph "各製程模組工程師（Module PE）"
-        PH["Photo PE<br/>負責微影"]
-        ET["Etch PE<br/>負責蝕刻"]
-        DP["Dep PE<br/>負責薄膜"]
-        CM["CMP PE<br/>負責研磨"]
-    end
-    subgraph "整合工程師（Integration Engineer）"
-        INT["看整個流程<br/>診斷跨模組問題<br/>優化元件特性"]
-    end
-    PH & ET & DP & CM --> INT
+    MOD["各製程模組<br/>Photo／Etch／Film／CMP／Clean"] --> PIE["Process Integration<br/>flow、window、WAT、yield、reliability"]
+    DEV["元件與模型"] --> PIE
+    YLD["良率、缺陷與 FA"] --> PIE
+    PROD["產品、CP 與客戶需求"] --> PIE
+    PIE --> NPI["新技術／新產品 qualification 與 ramp"]
+    PIE --> FIX["跨模組問題修正與 change control"]
 ```
-
-單一製程工程師只看自己那一道工序。整合工程師必須跨越所有工序，找出「A 工序的改變如何影響 C 工序的元件特性」。
 
 ## 核心工作
 
-**每天在做什麼：**
-- 診斷跨製程模組的良率問題（例如：Vt 偏移，但哪道製程造成的？）
-- 分析元件特性：Vt（閾值電壓）、DIBL、GIDL、次閾值斜率、漏電流、驅動電流
-- 設計整合實驗（Integration DOE）：改變多個製程參數，觀察元件特性變化
-- 橋接製程工程師和元件工程師 / 良率工程師
-- 在新製程節點（如 N2）開發中，整合工程師是核心 R&D 人員
+- 建立、維護與變更 process flow，確保各 module 的窗口能一起工作。
+- 監控 WAT 與元件參數，如 Vt、leakage、drive current、contact/interconnect resistance。
+- 把良率、inline defect、wafer map、CP bin 與製程歷史連起來，找出跨模組根因。
+- 規劃 split、short-loop 或 integration DOE，驗證改善是否真的作用在目標機制。
+- 支援 NPI 與 technology transfer，協調 module、equipment、yield、product、reliability 與客戶。
+- 管理 change qualification：一項改善不能用新的可靠度、成本或製造風險交換而不自知。
 
-## 所需背景
+## 量產 PIE、研發整合與封裝整合
 
-- **博士學位**（電機、物理、材料）是台積電整合工程師的實際主流
-- 深厚的半導體元件物理（MOSFET 特性、短通道效應）
-- 熟悉 TCAD 模擬工具（Sentaurus、Silvaco）：用模擬預測製程改變的影響
-- 統計分析能力（多變量分析、DOE 設計）
+| 類型 | 主要焦點 |
+|---|---|
+| 量產 PIE | flow control、WAT/yield、客戶產品、異常與持續改善 |
+| 技術研發整合 | 新元件架構、新材料、process window、design-technology co-optimization |
+| 先進封裝／系統整合 | chiplet、RDL/interposer、bonding、thermal/PI/SI、test 與 package yield |
 
-## 職涯路徑
+先進節點的 N2 奈米片與 A16 背面供電，使 frontside、backside、元件與互連間的耦合更強；CoWoS、SoIC 與 hybrid bonding 則讓 integration 延伸到 chip-package-system。只熟 TCAD 並不足以描述所有 PIE 工作。
 
-整合工程師通常是技術路線中的高階職位，不是剛入職的起點：
+## 適合誰／工作型態
 
-```mermaid
-flowchart LR
-    PE["製程工程師<br/>3–6 年"] --> INT["整合工程師<br/>6–12 年"]
-    INT --> SM["Section Manager<br/>技術 / 管理"]
-    INT --> RD["R&D 先進節點<br/>開發主力"]
-    INT --> IP["元件 / IP 工程師"]
-```
+適合喜歡看全局、能在不同專業間翻譯問題，也願意為模糊的跨模組結果負責的人。電機、物理、材料、化工等碩士可直接應徵量產或研發 PIE；博士在前瞻元件與技術研發有優勢，但不是全職類的必要條件。
 
-## 主要雇主
+PIE 以跨團隊分析與會議為多，仍會進實驗室或無塵室。量產單位可能有值班／on-call；研發與 pathfinding 則較受實驗與里程碑驅動。
 
-- **台積電**：整合工程師是推進每個新製程節點（N3/N2/A16）的核心人才
-- **聯電**：28nm/22nm 製程整合
-- 偶爾：ITRI（工研院）、各大學半導體研究室（偏學術）
+## 核心技能
 
-## 薪資（2024 估計）
+- CMOS 元件、製程 flow、WAT 與基本 circuit/layout 知識。
+- multivariate analysis、DOE、SPC、wafer map 與 yield correlation。
+- 能讀懂 module data、electrical data、FA evidence 並建立可驗證假設。
+- 專案推進、change control、風險溝通與跨團隊決策紀錄。
+- TCAD 是部分職缺的加分工具，不是 PIE 的通用定義。
 
-| 職級 | 年總酬勞（TWD）|
-|------|-------------|
-| Junior Integration（博士直招） | NT$1.5M – NT$2.0M |
-| Senior Integration | NT$2.5M – NT$4.0M |
-| Section Manager | NT$3.5M – NT$6M |
+## 職涯與轉換
 
-> 整合工程師的薪資顯著高於同年資的其他製程工程師，反映其稀缺性
+可往技術平台／pathfinding、產品工程、良率、元件、先進封裝整合、客戶技術服務或技術管理發展。PIE 也常成為跨部門 program owner，因為它最接近「技術是否能穩定變成產品」的交界。
+
+## 面試準備
+
+練習把一個 WAT 或 yield shift 拆成 measurement、design/product、process module、equipment 與 material 五類假設，並說明最便宜、最快且能區分假設的實驗。面試官通常更在意推理順序與協作方式，而不是猜中唯一 recipe。
+
+薪資請見[薪資比較附錄](appendix-salary.md)。
+
+## 資料來源
+
+- [UMC 製程整合工程師職缺](https://careers.umc.com/jobin.php?mid=67)，更新：2026-07-23（process flow、WAT、良率、客戶與新製程；查證：2026-08-31）
+- [TSMC 2025 Campus Recruitment](https://www.tsmc.com/static/english/careers/campus_recruitment_2025/index.html)，2025（PIE、system integration 與 advanced packaging 職務；查證：2026-08-31）
+- [TSMC 2025 Annual Report](https://investor.tsmc.com/static/annualReports/2025/english/index.html)，2026（N2、A16、CoWoS、SoIC 與 COUPE；查證：2026-08-31）
+
+相關：[製程工程師總覽](06-process-overview.md)｜[良率與產品工程](10-yield-product.md)

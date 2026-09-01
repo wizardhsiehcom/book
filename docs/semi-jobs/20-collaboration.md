@@ -21,6 +21,10 @@ flowchart TD
         CMP2["CMP"]
         INT["整合 Integration"]
         EQP["設備 Equipment"]
+        YLD["良率 Yield"]
+        PROD["產品 Product"]
+        FAC["廠務 Facilities"]
+        MFG["IE / MFG / CIM / AMHS"]
     end
 
     subgraph "品質 & 封測"
@@ -29,20 +33,25 @@ flowchart TD
         REL["可靠度 Reliability"]
         QA2["QA"]
         FA["失效分析 FA"]
+        VAL["Silicon / System Validation"]
     end
 
     subgraph "外部介面"
-        FAE2["FAE / AE"]
-        ASML_AE["ASML AE"]
+        FAE2["產品 FAE"]
+        VENDOR["設備商 Application / Service"]
+        MEM["Memory / HBM"]
         CUST["客戶 Customer"]
     end
+
+    AISW["AI / Software / Firmware"]
 
     ICD <-->|"RTL → Testbench"| VER
     ICD <-->|"電路圖 → Layout"| LAY
     ICD <-->|"RTL → Scan 插入"| DFT
     ICD <-->|"使用工具 / 流程"| EDA
     DFT <-->|"測試向量 → ATE 程式"| TST
-    VER <-->|"Silicon Bring-up"| TST
+    VER <-->|"Pre / Post-silicon correlation"| VAL
+    TST <-->|"測試資料 / Lab correlation"| VAL
     PKG <-->|"Bump 規格 / 訊號完整性"| ICD
     REL <-->|"失效樣品"| FA
     QA2 <-->|"客訴根因"| FA
@@ -50,7 +59,13 @@ flowchart TD
     ETC <-->|"製程配方 / 設備狀態"| EQP
     DEP <-->|"製程配方 / 設備狀態"| EQP
     INT <-->|"跨製程診斷"| PHO & ETC & DEP & CMP2
-    ASML_AE <-->|"EUV 技術支援"| PHO
+    YLD <-->|"缺陷 / 電性 / 根因"| INT & PROD & FA
+    PROD <-->|"NPI / WAT / CP"| TST & ICD
+    FAC -->|"水電氣與化學品"| EQP
+    MFG -->|"WIP / 系統 / 搬送"| EQP & INT
+    VENDOR <-->|"應用、維修與升級"| EQP & PHO & ETC & DEP
+    MEM <-->|"Die / Stack / Test"| PKG & TST
+    AISW <-->|"Bring-up / Data / Automation"| VAL & MFG & ICD
     FAE2 <-->|"客戶 Bug / 需求"| ICD
     FAE2 <-->|"客戶介面"| CUST
     TST <-->|"出貨品質"| QA2
@@ -78,8 +93,8 @@ sequenceDiagram
 
 **合作介面：**
 - IC Design 提供 RTL + 規格文件；Verification 根據規格設計測試環境
-- Verification 回報的 Bug 通常佔設計修改工時 40–60%
-- Coverage 收斂標準需雙方事先議定（通常 >98%）
+- Verification 回報 Bug 時，應附可重現條件、波形或 log，並和設計端確認規格解讀
+- Coverage 與 sign-off 標準由雙方依驗證計畫、風險與產品要求事先議定
 
 ---
 
@@ -235,25 +250,19 @@ sequenceDiagram
 
 ---
 
-## 職務合作強度熱力圖
+## 用交付物判斷合作介面
 
-| | IC Design | Verification | DFT | Layout | 製程 PE | 設備 EE | 整合 | 封裝 | 測試 | 可靠度 | FA | QA | FAE |
-|--|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| **IC Design** | — | 🔴 | 🔴 | 🔴 | ⚪ | ⚪ | ⚪ | 🟡 | 🟡 | ⚪ | 🟡 | ⚪ | 🟡 |
-| **Verification** | 🔴 | — | 🟡 | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | 🟡 | ⚪ | ⚪ | ⚪ | ⚪ |
-| **DFT** | 🔴 | 🟡 | — | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | 🔴 | ⚪ | ⚪ | ⚪ | ⚪ |
-| **Layout** | 🔴 | ⚪ | ⚪ | — | 🟡 | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ |
-| **製程 PE** | ⚪ | ⚪ | ⚪ | 🟡 | — | 🔴 | 🔴 | ⚪ | ⚪ | ⚪ | 🟡 | 🟡 | ⚪ |
-| **設備 EE** | ⚪ | ⚪ | ⚪ | ⚪ | 🔴 | — | 🟡 | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ |
-| **整合工程師** | ⚪ | ⚪ | ⚪ | ⚪ | 🔴 | 🟡 | — | ⚪ | ⚪ | ⚪ | 🟡 | ⚪ | ⚪ |
-| **封裝** | 🟡 | ⚪ | ⚪ | 🟡 | ⚪ | ⚪ | ⚪ | — | 🟡 | 🔴 | 🟡 | 🟡 | ⚪ |
-| **測試** | 🟡 | 🟡 | 🔴 | ⚪ | ⚪ | ⚪ | ⚪ | 🟡 | — | 🟡 | 🟡 | 🟡 | ⚪ |
-| **可靠度** | ⚪ | ⚪ | ⚪ | ⚪ | 🟡 | ⚪ | ⚪ | 🔴 | 🟡 | — | 🔴 | 🔴 | ⚪ |
-| **FA** | 🟡 | ⚪ | ⚪ | ⚪ | 🟡 | ⚪ | 🟡 | 🟡 | 🟡 | 🔴 | — | 🔴 | ⚪ |
-| **QA** | ⚪ | ⚪ | ⚪ | ⚪ | 🟡 | ⚪ | ⚪ | 🟡 | 🟡 | 🔴 | 🔴 | — | 🔴 |
-| **FAE** | 🟡 | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | 🟡 | — |
+合作頻率會隨公司組織與產品階段改變，不適合做成固定熱力圖。判斷一份職缺的協作範圍時，直接找它交換的交付物：
 
-🔴 高頻繁合作 　🟡 中等合作 　⚪ 較少直接合作
+| 交付物 | 主要產生者 | 主要使用者 |
+|---|---|---|
+| 規格、RTL、constraints | Architect／IC Design | DV、DFT、PD、Firmware |
+| Verification sign-off 與 errata | DV／Formal／Validation | Design、Product、Firmware |
+| GDS、PDK 與 sign-off report | PD／Layout／EDA／PDK | Foundry、Package、Product |
+| SPC、inspection、WAT 與 wafer map | PE／Equipment／Metrology | PIE、Yield、Product、FA |
+| WIP、route、tool state 與 genealogy | IE／MFG／CIM／AMHS | 製程、設備、品質、供應鏈 |
+| KGD／KGSD、ATE 與 SLT 結果 | DFT／Test／Memory／Validation | Product、Package、Yield、QA |
+| Qualification、FA 與 8D 證據 | Reliability／FA／QA | Design、製造、供應商、客戶 |
 
 ---
 
@@ -264,20 +273,19 @@ flowchart LR
     SPEC["客戶需求<br/>（FAE 整理）"]
     ARCH["晶片架構設計<br/>（IC Design）"]
     RTL["RTL 開發<br/>（IC Design）"]
-    VER2["功能驗證<br/>（Verification）"]
-    DFT2["DFT 插入<br/>（DFT）"]
-    LAY3["實體設計<br/>（Layout）"]
-    TAPE["Tape-out<br/>送交台積電"]
+    SIGN["並行 Sign-off<br/>DV / DFT / PD / Package"]
+    TAPE["Tape-out<br/>送交 Foundry"]
     PROC["晶圓製程<br/>（製程 / 設備 / 整合）"]
     PKG3["封裝<br/>（封裝工程師）"]
     TEST2["出廠測試<br/>（測試工程師）"]
-    QA4["品質稽核<br/>（QA）"]
-    REL4["可靠度認證<br/>（可靠度工程師）"]
+    QUAL["Qualification / Quality<br/>可靠度、FA、QA"]
+    VAL2["Silicon / System Validation"]
     SHIP["出貨給客戶<br/>（FAE 後續支援）"]
 
-    SPEC --> ARCH --> RTL --> VER2
-    VER2 -->|"Sign-off"| DFT2 --> LAY3 --> TAPE
-    TAPE --> PROC --> PKG3 --> TEST2 --> QA4
-    QA4 & REL4 -->|"通過認證"| SHIP
+    SPEC --> ARCH --> RTL --> SIGN --> TAPE
+    TAPE --> PROC --> PKG3 --> TEST2
+    QUAL -.->|"依產品與階段執行"| PROC & PKG3 & TEST2
+    TEST2 --> VAL2 --> SHIP
+    QUAL -->|"Release evidence"| SHIP
     SHIP --> SPEC
 ```

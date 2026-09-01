@@ -1,52 +1,69 @@
 # 微影工程師
 
-微影工程師（Photo Engineer / Lithography Engineer）負責半導體製造中最關鍵、技術門檻最高的一道工序——把電路圖案「投影」到晶圓上。在 3nm/2nm 先進製程中，EUV 微影是台積電最核心的競爭壁壘之一。
+微影工程師（Lithography / Photo Process Engineer）把光罩圖案穩定地轉移到晶圓上，核心任務是控制 critical dimension（CD）、overlay、focus、dose 與缺陷。工作橫跨 scanner、coat/develop track、光阻材料、光罩、量測與計算微影，不是只操作曝光機。
 
-## 微影的原理
+## 微影模組如何運作
 
 ```mermaid
 flowchart LR
-    MSK["光罩<br/>Photomask"] --> SCAN["ASML EUV<br/>掃描機"]
-    SCAN -->|"光線投影"| WAF["晶圓<br/>塗有光阻"]
-    WAF --> DEV["顯影<br/>TEL Track"]
-    DEV --> PAT["形成電路圖案<br/>CD ~幾 nm"]
+    PRE["表面處理與底層材料"] --> COAT["塗佈光阻與烘烤"]
+    COAT --> EXP["DUV／EUV 曝光"]
+    MSK["光罩、OPC 與曝光資料"] --> EXP
+    EXP --> PEB["曝光後烘烤與顯影"]
+    PEB --> MET["CD、overlay 與缺陷量測"]
+    MET -->|"符合規格"| ETC["圖案轉移至蝕刻／佈植"]
+    MET -->|"偏移"| TUNE["調整 scanner、track、材料或模型"]
+    TUNE --> COAT
 ```
 
-## 核心工作
+## EUV、High-NA 與 DUV 的正確關係
 
-**每天在做什麼：**
-- 操作和最佳化 ASML EUV / DUV 掃描機及 TEL 塗佈顯影機台
-- 最佳化曝光劑量（Dose）、焦距（Focus）、對準（Overlay Alignment）
-- 管理光阻製程：塗佈（Coating）→ 曝光（Exposure）→ 軟烤（PEB）→ 顯影（Develop）
-- **EUV 特有挑戰**：隨機缺陷（Stochastic Defects）管理——EUV 光子數少，統計波動導致 CD 變異
-- 用計算微影（Computational Lithography / OPC）工具做光學鄰近效應修正
+EUV 使用 13.5 nm 波長，0.33 NA EUV 已用於部分先進節點 critical layers；0.55 NA High-NA EUV 正在導入更細圖案。DUV 並未因此消失：先進晶片仍有大量層使用 193 nm immersion 或其他 DUV 工具，成熟與特殊製程也持續依賴 DUV。
 
-## EUV vs DUV
+因此不應把技術簡化成「7 nm 以下全用 EUV、28 nm 以上才用 DUV」。工程師會按 layer 的解析度、overlay、defectivity、throughput、製程複雜度與成本共同選擇方案。
 
-| 特性 | EUV（極紫外光） | DUV（深紫外光） |
-|------|--------------|--------------|
-| 波長 | 13.5 nm | 193 nm（ArF 沉浸式）|
-| 應用節點 | 7nm 以下（5nm/3nm/2nm） | 28nm 以上（部分 14nm/10nm）|
-| 功率需求 | ~250W 光源，耗電量極大 | 相對較低 |
-| 光罩 | 反射式光罩（無法直接碰觸）| 透射式光罩 |
-| 設備廠商 | 只有 ASML | ASML、Nikon、Canon |
-| 對準精度 | < 1 nm Overlay | ~2–5 nm Overlay |
+| 面向 | DUV | EUV／High-NA EUV |
+|---|---|---|
+| 光學 | 透射式光學與光罩 | 真空中的反射式光學與光罩 |
+| 量產角色 | 成熟、特殊及先進節點的廣泛層次 | 先進節點的部分關鍵層 |
+| 主要難題 | 多重圖案化、overlay、成本與週期 | 光源、反射鏡／光罩、隨機缺陷、resist、pellicle |
+| 共通工作 | focus/dose、CD、overlay、track、缺陷與模型校正 | 同左，且更依賴 scanner-track-material-mask 協同最佳化 |
 
-## 為什麼微影工程師珍貴
+## 日常工作
 
-1. **ASML 機台極貴**：一台 ASML High-NA EUV 機台售價超過 **4 億美元**，全台灣只有台積電能買
-2. **知識壁壘高**：需同時懂光學、光阻化學、精密機械、統計製程控制
-3. **需要 ASML 原廠培訓**：與 ASML FAE 深度協作，部分人才在 ASML 和台積電間流通
-4. **最先進節點的核心**：N3/N2/A16 製程的良率高低，Photo 工程師是關鍵決定者
+- 維護 focus-exposure process window，追蹤 CD uniformity、overlay 與 defectivity。
+- 分析 scanner、track、resist lot、reticle、wafer history 與 metrology 的關聯。
+- 與 OPC／computational lithography、mask、etch 與 integration 團隊修正 patterning hotspot。
+- 處理 stochastic defect、resist collapse、scum、bridge、missing contact、overlay excursion 等問題。
+- 新材料、新光罩或設備升級後做 qualification、matching 與量產 release。
 
-## 薪資（2024 估計）
+## 適合誰／工作型態
 
-| 職級 | 年總酬勞（TWD）|
-|------|-------------|
-| TSMC Photo Engineer（新鮮人） | NT$800K – NT$1.1M |
-| TSMC Photo Engineer（資深） | NT$1.5M – NT$2.5M |
-| ASML Application Engineer（合作方） | NT$2.5M – NT$5M+ |
+適合對光學、材料化學、精密控制與統計都感興趣，且能接受問題常跨越多個系統的人。光電、物理、化學、材料、化工、電機與機械背景都有切入點。
 
-> ASML AE 支援台積電微影製程，薪資為台灣工程師頂端
+量產支援可能值班或 on-call；技術開發、計算微影、光罩與設備商應用工作的型態不同。設備商的 application/process engineer 與 field service/customer support 也不是同一角色，求職時要看清 ownership。
 
-相關：[ASML FAE 職務說明](17-fae.md) | [製程工程師總覽](06-process-overview.md)
+## 核心技能
+
+- Fourier optics、成像、resist chemistry 與 pattern transfer 基礎。
+- CD/overlay metrology、process window、SPC、DOE 與 defect classification。
+- 能把 wafer map 與 scanner field、reticle、track module、時間序列對齊。
+- 基本資料分析與自動化；先進職缺可能需要 OPC、source-mask optimization 或模型經驗。
+
+## 職涯與轉換
+
+可往資深 lithography module、patterning integration、computational lithography、mask technology、metrology、yield/defect 或設備商 application/customer support 發展。跨到先進封裝圖案化時，需重新理解 RDL、翹曲、厚光阻與封裝基材，不能把前段 EUV 經驗原封不動套用。
+
+## 面試準備
+
+要能解釋 resolution、depth of focus、NA、dose 與 resist 的取捨，並用一個 overlay 或 CD excursion 案例展示分層排查。若題目只給 wafer map，先問量測可信度，再區分 reticle/field、wafer radial、track module、tool/chamber 與 lot/material signature。
+
+薪資請見[薪資比較附錄](appendix-salary.md)。
+
+## 資料來源
+
+- [ASML 2025 Annual Report — Strategy & Stories](https://www.asml.com/en/investors/annual-report/2025/strategy-and-stories)，2026（DUV、0.33 NA EUV、0.55 NA EUV 與 holistic lithography；查證：2026-08-31）
+- [Tokyo Electron and imec extend beyond-2nm partnership](https://www.tel.com/news/topics/2025/20250616_001.html)，2025-06-16（High-NA patterning、材料與 defectivity control；查證：2026-08-31）
+- [TSMC 2025 Annual Report](https://investor.tsmc.com/static/annualReports/2025/english/index.html)，2026（N2、A16 與先進製程量產時程；查證：2026-08-31）
+
+相關：[製程工程師總覽](06-process-overview.md)｜[設備工程師](10-equipment.md)
