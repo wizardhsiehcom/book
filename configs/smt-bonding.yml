@@ -52,11 +52,14 @@ nav:
       - 名詞解釋速查表: 00-glossary.md
   - 一、熱風回流焊:
       - 熱風回流爐原理: 01-hot-air.md
+      - SMT 整線：從上板到檢測: 01b-smt-line.md
       - 爐溫曲線設定: 02-temp-profile.md
+      - 量產控制：Recipe、換線與追溯: 02b-production-control.md
   - 二、熱壓接合:
       - 熱壓接合原理: 03-hot-bar.md
       - ACF 導電膠製程: 04-acf.md
       - 顯示器模組應用（FOG/COG/COF）: 05-display-modules.md
+      - ACF／熱壓量產線: 05b-acf-line.md
   - 三、熱板傳導回流:
       - 熱板適用場合與限制: 06-hot-plate.md
   - 四、比較與選型:
@@ -65,5 +68,8 @@ nav:
       - 缺陷分析方法: 08-defect-analysis.md
       - 三大工藝的 AOI 檢測重點: 08b-aoi.md
       - 材料規格解讀: 09-materials.md
+  - 六、量產營運與團隊:
+      - 設備導入、保養與復線: 11-equipment-lifecycle.md
+      - 機台團隊與人力配置: 12-staffing.md
   - 學習資源: 10-resources.md
   - 圖片來源與版權聲明: 99-image-credits.md
