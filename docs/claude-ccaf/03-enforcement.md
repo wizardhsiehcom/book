@@ -34,6 +34,33 @@ def authorize_change(verified_user, ticket, requested_event):
 
 目前 hooks 文件提供結果替換欄位；`PostToolUse` 的額外 context 與「替換輸出」不是同一件事。更重要的是，Post hook 執行時工具已跑完。若要避免變更票券，必須在 Pre 或後端執行層阻擋。SDK 與 CLI 的 callback／回傳格式應各自查閱，不能互貼設定。[Hooks reference：PostToolUse](https://code.claude.com/docs/en/hooks#posttooluse-decision-control)
 
+```mermaid
+sequenceDiagram
+    accTitle: 執行前檢查與執行後處理
+    accDescr: Claude 提出請求，執行前檢查不通過便拒絕；通過才執行工具，再處理結果，執行後處理不會撤銷已發生的副作用。
+    autonumber
+    participant M as Claude
+    participant G as 執行邊界與 Hooks
+    participant T as 業務工具
+    M->>G: 提出改期請求
+    G->>G: Pre：檢查可信身分、所有權與政策
+    alt 前置條件不符
+        G-->>M: 回傳拒絕原因與下一步
+        Note over G,T: 不呼叫業務工具，沒有本次改期副作用
+    else 前置條件通過
+        G->>T: 執行改期
+        T->>T: 寫入時再檢查條件，確認操作結果
+        T-->>G: 回傳成功或失敗
+        G->>G: Post：正規化結果，保留錯誤與來源
+        G-->>M: 回傳可判斷的工具結果
+        Note over G,T: 若已寫入，Post 不會自動撤銷
+    end
+```
+
+*圖 F03｜沿時間往下看：能阻擋本次操作的位置在呼叫工具之前。工具仍須在寫入時檢查業務條件；Post 處理的是已執行後的結果。*
+
+這是執行順序的概念圖，把 hook 與後端 gate 放在同一條檢查路徑上；實際系統可以由不同元件負責。通過 Pre 只表示可嘗試執行，不保證工具必定成功。
+
 ## 中途轉人工也要完成交接
 
 使用者同時問「換場次」與「補寄收據」。可先拆成兩個 issue，獨立調查；但最終回覆應合併呈現各自狀態。需要人工覈准的只有換場次時，不應把已可處理的收據問題丟掉。

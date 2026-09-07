@@ -16,6 +16,27 @@ MCP 把 AI 應用程式與外部能力以共通協定連接。Host 是承載互�
 
 Tool 也可以是唯讀查詢；不能用「讀取一定是 resource」來分類。比較實用的問題是：讀者需要瀏覽已知內容，還是由模型決定參數並發起操作？考綱特別強調用 resource 曝露內容目錄，減少為了知道有哪些資料而做的探索性呼叫。[官方考綱 §6，2.4](appendix-sources.md)
 
+```mermaid
+flowchart TD
+    accTitle: MCP 元件與能力關係
+    accDescr: Host 內有兩個 client，分別連接票券與政策 server；server 可提供 tools、resources 或 prompts。
+    subgraph H["Host：承載模型互動的應用程式"]
+        A["協調模型、上下文與權限"]
+        C1["MCP Client A"]
+        C2["MCP Client B"]
+        A <--> C1
+        A <--> C2
+    end
+    C1 <-->|MCP| S1["票券 Server<br/>提供票券查詢工具"]
+    C2 <-->|MCP| S2["政策 Server<br/>提供政策內容與互動模板"]
+    S1 --- T["Tools<br/>例如依 ID 查票券"]
+    S2 --- R["Resources 與 Prompts<br/>例如政策目錄、審查模板"]
+```
+
+*圖 F04｜先看元件邊界：Host 內的 client 各自連接 server；再看能力：server 可以提供 tools、resources 或 prompts。圖中的雙向箭頭代表請求與回應，無箭頭線只表示提供的能力。*
+
+這裡把票券與政策分成兩個 server，方便辨認連線關係，並非要求每種能力各建一個 server。同一個 server 可以同時提供多種能力；查詢工具也可以是唯讀。模型不會因為看見 server，就取得超出 Host 與後端允許範圍的權限。
+
 ## 共享設定與個人設定
 
 團隊共用 MCP server 設在專案 `.mcp.json`；個人實驗 server 用使用者 scope。Claude Code 的 user scope 設定存於 `~/.claude.json`，不要誤寫成 `~/.claude/.mcp.json`。另有 local scope，使用時要分清與 user scope 的影響範圍。[Claude Code MCP 設定](https://code.claude.com/docs/en/mcp)
