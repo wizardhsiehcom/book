@@ -1,0 +1,68 @@
+site_name: Claude 架構師認證：CCAF 備考學習指南
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+  - media: '(prefers-color-scheme: dark)'
+    scheme: slate
+    toggle:
+      icon: material/weather-sunny
+      name: 切換為亮色模式
+  - media: '(prefers-color-scheme: light)'
+    scheme: default
+    toggle:
+      icon: material/weather-night
+      name: 切換為深色模式
+  features:
+  - navigation.sections
+  - navigation.expand
+  - navigation.top
+  - content.code.copy
+docs_dir: ../docs/claude-ccaf
+site_dir: ../book/claude-ccaf/html
+use_directory_urls: false
+extra:
+  bookshelf_url: ../../../index.html
+extra_javascript:
+- https://unpkg.com/mermaid@10/dist/mermaid.min.js
+- assets/mermaid-init.js
+- assets/font-init.js
+markdown_extensions:
+- admonition
+- tables
+- toc:
+    permalink: true
+- pymdownx.details
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_div_format
+nav:
+- 導讀: README.md
+- 考試範圍與任務地圖: 00-exam-map.md
+- 一、架構與工具:
+  - Agent 迴圈: 01-agent-loop.md
+  - 任務編排與交接: 02-orchestration.md
+  - 執行約束與 Hooks: 03-enforcement.md
+  - 工具契約與錯誤: 04-tool-contracts.md
+  - MCP 整合: 05-mcp.md
+- 二、開發與輸出:
+  - Claude Code 團隊設定: 06-claude-code.md
+  - CI 與審查品質: 07-ci-review.md
+  - 結構化輸出與驗證: 08-structured-output.md
+- 三、可靠性與規模:
+  - 上下文與可靠性: 09-context-reliability.md
+  - 批次與人工審查: 10-batch-human-review.md
+- 四、備考練習:
+  - 實作工作坊: 11-labs.md
+  - 18 題原創情境題: 12-practice.md
+- 附錄:
+  - 英中術語: appendix-glossary.md
+  - 官方來源與版本: appendix-sources.md
+  - 圖表出處: 99-image-credits.md
+site_description: 依 CCAR-F 2026 年 7 月考綱編寫，涵蓋五大領域、30 項任務、實作與原創情境題。
+site_author: Edison Hsieh
+extra_css:
+- assets/custom.css

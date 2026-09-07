@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block footer %}
+  {{ super() }}
+  {% if config.extra.bookshelf_url %}
+    {% set bookshelf_href = config.extra.bookshelf_url | url if page else config.extra.bookshelf_url %}
+    <nav class="md-footer md-typeset" aria-label="書庫">
+      <div class="md-grid">
+        <p>
+          <a class="book-return-link" href="{{ bookshelf_href | e }}">← 回到書庫</a>
+        </p>
+      </div>
+    </nav>
+  {% endif %}
+{% endblock %}

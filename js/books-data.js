@@ -3,6 +3,19 @@
 // ═══════════════════════════════════════════════════════
 const BOOKS = [
   {
+    "icon": "🎓",
+    "title": "Claude 架構師認證：CCAF 備考學習指南",
+    "desc": "依 CCAR-F 官方考綱，掌握 Agent、MCP、Claude Code、結構化輸出與可靠性，搭配實作與 18 題情境練習",
+    "tags": [
+      "Claude",
+      "certification",
+      "AI"
+    ],
+    "href": "book/claude-ccaf/html/index.html",
+    "accent": "#d97757",
+    "glow": "rgba(217,119,87,0.18)"
+  },
+  {
     icon: "⚙️",
     title: "Binary Hacks 精讀筆記",
     desc: "AI 時代的底層觀念 — 格式、執行期、浮點數、Profiling、並行",
