@@ -8,24 +8,40 @@
 
 [Claude Certified Architect – Foundations Exam Guide，官方 PDF](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6nizmqk8tpzpfjvt6qmmav7rh%2Fpublic%2F1783542750%2FClaude+Certified+Architect+%E2%80%93+Foundations+Exam+Guide.pdf)
 
-- 版本 1.0；生效 2026 年 7 月；代碼 CCAR-F。文件未列精確發布日。
+- 版本 1.0；生效 2026 年 7 月；代碼 CCAR-F。文件未列精確發布日；§18 版本紀錄顯示 0.1 初稿 2026 年 2 月、0.2 修訂 2026 年 6 月、1.0 為排版更新。
 - 全檔 39 頁；下列頁碼為 PDF 的 1-based 頁碼。
 - 本書讀取 pp.1–26 與 pp.33–39；官方範例題不作題目素材。
 
 | 頁碼／節 | 本書用來支持什麼 |
 |---|---|
-| pp.1–2，§1–3 | 名稱、對象、題型、題數與時間 |
-| pp.3–4，§4–5 | 五領域權重、六種情境 |
+| pp.1–2，§1–3 | 名稱、對象與經驗年資、題型、題數與時間、交付方式、費用、效期、成績報告 |
+| pp.3–4，§4–5 | 五領域權重、六個情境的完整設定與主要領域 |
 | pp.5–9，§6，1.1–1.7 | 迴圈、編排、hooks、狀態 |
 | pp.9–12，§6，2.1–2.5 | 工具、錯誤、MCP、內建工具 |
 | pp.12–16，§6，3.1–3.6 | Claude Code 與 CI |
 | pp.16–19，§6，4.1–4.6 | Prompt、schema、驗證、批次、審查 |
 | pp.19–23，§6，5.1–5.6 | 上下文、升級、來源、人工校準 |
 | pp.23–26，§7–8 | 備考能力與實作方向 |
-| p.33，§10 | Scaled score 的意義 |
+| p.33，§10 | Scaled score 與 criterion-referenced 的意義、成績報告的領域百分比不計入判定 |
+| pp.33–34，§11 | 報考流程：Partner Academy 與 Pearson VUE 兩段式、24 小時取消改期期限 |
+| pp.34–35，§12–14 | 身分證件、特殊需求、重考等待與次數、缺考、閉卷應考規則、保密協定 |
+| pp.35–36，§15–16 | 效期 12 個月、準時續證與逾期重考、申訴期限 |
 | pp.36–39，§17–18 | 技術清單、範圍內外、版本紀錄 |
 
 網頁擷取工具曾回覆 403；本次已由官方入口直接下載 PDF 並抽取本文確認，並非只讀搜尋摘要。網址日後失效時，從官方入口重新找最新版，不默認第三方鏡像最新。
+
+**本書未讀取的官方文件：** 認證頁另提供 Certification Terms and Conditions 與 Anthropic Certification Exam Policy 兩份 PDF，本書未取得。因此本書關於政策的敘述**只以 Exam Guide §11–16 為依據**；若兩者有出入，以官方政策文件為準。
+
+**報考資格未經證實。** 本版 Exam Guide 沒有記載一般大眾能否報名，只在 §11 提到結帳金額反映「你所屬合作夥伴層級」的折扣。多份第三方指南稱 CCAR-F 限 Claude Partner Network 成員企業員工、須用企業信箱網域，本書**未能在官方文件中證實這項限制**，因此[考綱地圖](00-exam-map.md#報考流程)以待查方式呈現，請讀者自行向官方入口確認。
+
+### 認證計畫的其他官方頁面
+
+| ID | 第一手來源 | 用途 |
+|---|---|---|
+| S01a | [Pearson VUE：Claude Certification Program](https://www.pearsonvue.com/us/en/anthropic.html) | 四張證照的代碼、排程流程、線上監考與考場選項 |
+| S01b | [CCAR-F prep courses，Partner Academy](https://anthropic-partners.skilljar.com/page/claude-certified-architect-foundations-prep-courses) | 七門官方 prep 課程清單 |
+
+兩頁均於 2026-09-07 查覈。重考等待期與次數在 S01a 與 Exam Guide §12 一致。
 
 ## 產品文件與架構補充
 

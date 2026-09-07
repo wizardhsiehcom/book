@@ -33,6 +33,7 @@ markdown_extensions:
 - tables
 - toc:
     permalink: true
+    slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
 - pymdownx.details
 - pymdownx.superfences:
     custom_fences:
@@ -58,6 +59,7 @@ nav:
 - 四、備考練習:
   - 實作工作坊: 11-labs.md
   - 18 題原創情境題: 12-practice.md
+  - "情境包：12 題連續作答": 13-scenario-set.md
 - 附錄:
   - 英中術語: appendix-glossary.md
   - 官方來源與版本: appendix-sources.md
