@@ -173,6 +173,15 @@ const BOOKS = [
     accent: "#7c3aed",
     glow: "rgba(124,58,237,0.18)",
   },
+  {
+    icon: "👁️",
+    title: "YOLO 工程實務指南",
+    desc: "從任務選擇、資料標註、訓練評估到即時部署、排錯與維運，原理為工程決策打底",
+    tags: ["computer vision", "AI", "deployment"],
+    href: "book/yolo/html/index.html",
+    accent: "#14b8a6",
+    glow: "rgba(20,184,166,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

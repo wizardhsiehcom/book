@@ -1,0 +1,156 @@
+site_name: YOLO 工程實務指南
+site_description: 從資料、訓練、評估到即時部署與維運，建立可驗收的 YOLO 視覺系統
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/yolo
+site_dir: ../book/yolo/html
+use_directory_urls: false
+
+extra_css:
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  bookshelf_url: ../../../index.html
+
+
+nav:
+  - 導讀與閱讀路線: README.md
+  - "一、從需求到可信基線":
+    - "01 任務與驗收":
+      - "導讀": 01/index.md
+      - "模型能力不等於系統功能": 01/model-vs-system.md
+      - "從需求到驗收條件": 01/requirements-and-acceptance.md
+      - "任務的輸入輸出契約": 01/task-io.md
+    - "02 環境與第一次推論":
+      - "導讀": 02/index.md
+      - "環境與權重": 02/environment.md
+      - "第一次 predict": 02/predict.md
+    - "03 影像與座標":
+      - "導讀": 03/index.md
+      - "影像張量契約：RGB／BGR、HWC／CHW、dtype 與數值範圍": 03/image-contract.md
+      - "Letterbox 與框座標往返": 03/letterbox.md
+    - "04 資料設計":
+      - "導讀": 04/index.md
+      - "場景覆蓋、負樣本、長尾與類別契約": 04/coverage.md
+      - "切分、洩漏與版本凍結": 04/split-and-version.md
+    - "05 標註與檢查":
+      - "導讀": 05/index.md
+      - "標註政策：遮擋、截斷、漏標與空標籤": 05/annotation-policy.md
+      - "YOLO 格式、目錄樹、data.yaml 與檢查腳本": 05/format-and-check.md
+    - "06 評估與門檻":
+      - "導讀": 06/index.md
+      - "AP 量的是排序，不是你要上線的那個點": 06/ap-map.md
+      - "用驗證成本或召回約束選部署信心截止點": 06/confidence-cutoff.md
+      - "從影格指標換成每小時事件": 06/event-rate.md
+      - "把 IoU、信心門檻與 NMS 拆成三套規則": 06/iou-three-roles.md
+      - "精確率、召回率、F1 與成本": 06/precision-recall.md
+      - "單頁 TP／FP／FN 框匹配：分數排序貪婪最高未配對 IoU": 06/tp-fp-fn.md
+      - "Validation 選閾值，Test 只准看最後一次": 06/validation-test.md
+    - "07 訓練基線":
+      - "導讀": 07/index.md
+      - "Baseline 訓練：健檢、smoke、命令與停止條件": 07/baseline.md
+      - "Checkpoint 與實驗紀錄：best／last、resume 與雜湊": 07/checkpoints-and-records.md
+  - "二、排錯與改善":
+    - "13 錯誤分析":
+      - "導讀": 13/index.md
+    - "14 實驗與改善":
+      - "導讀": 14/index.md
+  - "三、任務能力與選型":
+    - "15 多任務使用":
+      - "導讀": 15/index.md
+      - "Ultralytics 標註契約：分類、實例遮罩、姿態與旋轉框": 15/task-contracts.md
+      - "YOLO26 四任務實務：分類、實例分割、姿態、旋轉框": 15/usage.md
+    - "16 追蹤與計數":
+      - "導讀": 16/index.md
+      - "從軌跡到穿越事件：影格數不能當每小時事件": 16/event-counting.md
+    - "17 開放詞彙與稠密任務":
+      - "導讀": 17/index.md
+      - "YOLO26 語意分割與單目深度：像素標籤與公尺估計": 17/semantic-depth.md
+    - "18 模型選型":
+      - "導讀": 18/index.md
+  - "四、部署、維運與專案":
+    - "19 效能量測":
+      - "導讀": 19/index.md
+      - "比較契約": 19/comparison-contract.md
+      - "吞吐、延遲、新鮮度：佇列會把「即時」吃掉": 19/latency-vs-throughput.md
+      - "測的是檔案進 `predict` 到 `Results` 出來，不是鏡頭到警報": 19/timing-protocol.md
+    - "20 匯出與量化":
+      - "導讀": 20/index.md
+      - "ONNX FP32：從權重到可跑的匯出與對照": 20/onnx-baseline.md
+      - "匯出後數值診斷：同一影像、同一前處理、同一門檻": 20/output-consistency.md
+      - "FP16與INT8：校正資料與精度驗收": 20/quantization.md
+      - "YOLO 匯出目標：ONNX Runtime、TensorRT、OpenVINO、CoreML": 20/runtime-selection.md
+    - "21 即時系統":
+      - "導讀": 21/index.md
+      - "即時最新幀佇列與離線全量稽核": 21/backpressure.md
+      - "多鏡頭公平排程、健康訊號與故障手冊": 21/operations.md
+      - "兩條互不混用的攝入路徑：Ultralytics 代管串流 vs 自管 RTSP 重連": 21/stream-ingestion.md
+    - "22 維運與授權":
+      - "導讀": 22/index.md
+      - "預測失敗診斷：光學、像素、門檻與模式": 22/field-failures.md
+      - "採購與資料處理（非法律判決）": 22/licensing-data.md
+      - "監控與回滾": 22/monitoring-rollback.md
+    - "23 完整專案":
+      - "導讀": 23/index.md
+      - "兩類專案：紙箱與棧板（可跟做）": 23/custom-detection.md
+      - "CPU 上的 ONNX 自訂偵測交付": 23/edge-deployment.md
+      - "有限長度影片的穿越計數": 23/video-counting.md
+  - "五、支撐工程判斷的原理（選讀）":
+    - "08 卷積與尺度":
+      - "導讀": 08/index.md
+    - "09 模型架構":
+      - "導讀": 09/index.md
+    - "10 訓練機制":
+      - "導讀": 10/index.md
+    - "11 解碼與 NMS":
+      - "導讀": 11/index.md
+    - "12 模型演進":
+      - "導讀": 12/index.md
+  - "六、查閱與延伸":
+    - "24 查閱與延伸":
+      - "導讀": 24/index.md
+      - "詞彙": 24/glossary.md
+      - "來源": 24/references.md
+      - "排錯": 24/troubleshooting.md
