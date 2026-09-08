@@ -6,6 +6,7 @@
   <title>書庫</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/samurai.css">
+  <link rel="stylesheet" href="docs/assets/book-transition.css">
   <style>
     @font-face {
       font-family: 'GenWanMin2';
@@ -29,167 +30,89 @@
     /* ── 字型套用（套在 .page 而非 body，縮小 reflow 範圍） ── */
     .page.font-mingti       { font-family: 'GenWanMin2', 'Noto Serif TC', serif; }
     .page.font-pixel        { font-family: 'Cubic-11', monospace; }
-    .page { will-change: font-family; }
 
-    /* ── 共用控制欄樣式 ── */
-    .top-controls {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.45rem;
-    }
-
-    .ctrl-bar {
-      display: flex;
-      gap: 0.35rem;
-      background: rgba(18, 20, 40, 0.75);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 100px;
-      padding: 0.3rem 0.45rem;
-      backdrop-filter: blur(12px);
-    }
-
-    .ctrl-label {
-      font-size: 0.6rem;
-      color: #334155;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0 0.4rem;
-      align-self: center;
-      user-select: none;
-    }
-
-    .ctrl-btn {
-      font-size: 0.7rem;
-      padding: 0.28rem 0.75rem;
-      border-radius: 100px;
-      border: 1px solid transparent;
-      background: transparent;
-      color: #64748b;
-      cursor: pointer;
-      transition: all 0.18s
-      ;
-      line-height: 1.4;
-    }
-    .ctrl-btn:hover { color: #c7d2fe; background: rgba(99,102,241,0.12); }
-    .ctrl-btn.active {
-      background: rgba(99,102,241,0.22);
-      border-color: rgba(99,102,241,0.4);
-      color: #a5b4fc;
-    }
-
-    /* ── PNG 補光 ── */
-    body.variant-png .samurai-wrap {
-      filter:
-        drop-shadow(0 0 12px rgba(99, 130, 255, 0.35))
-        drop-shadow(0 0 32px rgba(56, 100, 220, 0.20))
-        drop-shadow(0 22px 48px rgba(2, 6, 23, 0.82));
-    }
-    body.variant-png .samurai-wrap::after {
-      content: '';
-      position: absolute;
-      inset: -15% -25%;
-      background: radial-gradient(
-        ellipse at 48% 55%,
-        rgba(80, 120, 255, 0.14) 0%,
-        rgba(56, 90, 210, 0.07) 45%,
-        transparent 72%
-      );
-      filter: blur(18px);
-      pointer-events: none;
-      z-index: -1;
-    }
-    body.variant-png .samurai-fallback {
-      filter: brightness(1.04) contrast(1.06);
-    }
   </style>
-  <link rel="preload" as="image" href="docs/assets/characters/female-samurai-back-chibi-v2.svg">
-  <link rel="preload" as="image" href="docs/assets/characters/raster/samurai-nbg.png">
 </head>
 <body>
 
-  <div class="top-controls">
-    <!-- 角色切換 -->
-    <nav class="ctrl-bar" aria-label="角色版本">
+  <details class="top-controls">
+    <summary>顯示設定</summary>
+    <nav class="ctrl-bar" aria-label="角色顯示">
       <span class="ctrl-label">角色</span>
-      <button class="ctrl-btn" data-variant="none">無</button>
-      <button class="ctrl-btn" data-variant="svg">SVG</button>
-      <button class="ctrl-btn" data-variant="png">PNG</button>
+      <button class="ctrl-btn" data-variant="svg">顯示</button>
+      <button class="ctrl-btn" data-variant="none">隱藏</button>
     </nav>
-    <!-- 字型切換 -->
     <nav class="ctrl-bar" aria-label="字型">
       <span class="ctrl-label">字型</span>
       <button class="ctrl-btn" data-font="system">系統</button>
       <button class="ctrl-btn" data-font="mingti">明體</button>
       <button class="ctrl-btn" data-font="pixel">像素</button>
     </nav>
-  </div>
-
-  <div id="aurora" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
-  </div>
-
-  <div id="spotlight" aria-hidden="true"></div>
+  </details>
 
   <div class="samurai-stage" id="samuraiStage" aria-hidden="true">
-    <div class="slash-trail"></div>
-    <div class="slash-arc"></div>
     <div class="samurai-wrap" id="samuraiWrap">
-      <!-- 兩張圖預先放入 DOM，切換只改 display，不觸發重新載入 -->
-      <img class="samurai-fallback" id="imgSvg"
-           src="docs/assets/characters/female-samurai-back-chibi-v2.svg" alt="" style="display:none">
-      <img class="samurai-fallback" id="imgPng"
-           src="docs/assets/characters/raster/samurai-nbg.png" alt="" style="display:none">
-      <div class="katana-glint"></div>
+      <img id="imgSvg" data-src="docs/assets/characters/raster/archivist-scarlet.png"
+           width="1024" height="1536" alt="" fetchpriority="high">
     </div>
   </div>
 
+  <div id="blade" aria-hidden="true"></div>
+
   <div class="page">
-    <header>
-      <div class="badge">Personal Knowledge Base</div>
-      <h1>書庫</h1>
-      <p class="subtitle">點選書籍直接開啟 · MkDocs 版</p>
+    <header class="poster">
+      <p class="eyebrow">私人藏書室 <span>／ 閱讀筆記</span></p>
+      <h1>書<span>庫</span><sup>藏</sup></h1>
+      <p class="subtitle">字裡，行間。<br>剖開知識的紋理。</p>
+      <div class="poster-foot" aria-hidden="true">記錄 · 拆解 · 重讀</div>
     </header>
 
-    <div class="stats" id="stats"></div>
-
-    <div class="search-wrap">
-      <span class="search-icon">⌕</span>
-      <input id="search" type="search" placeholder="搜尋書名、描述、標籤…" autocomplete="off" spellcheck="false">
-    </div>
-
-    <div class="filters" id="filters"></div>
-    <div class="grid" id="grid"></div>
-    <footer id="footer">先執行 build-books.sh 建置後開啟</footer>
+    <main class="catalog">
+      <div class="catalog-heading"><div><p class="eyebrow">閱讀索引</p><h2>選一冊，入內。</h2></div><span class="edition" aria-hidden="true">冊<br>錄</span></div>
+      <div class="stats" id="stats"></div>
+      <div class="search-tools">
+        <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="搜尋書籍" placeholder="搜尋書名、內容、主題" autocomplete="off" spellcheck="false"></div>
+        <select id="filters" aria-label="篩選主題"></select>
+      </div>
+      <div class="index-heading"><span>編號 ／ 書名</span><span id="result-count" role="status"></span></div>
+      <div class="grid" id="grid"></div>
+      <footer id="footer">閱讀未完，筆記待續。</footer>
+    </main>
   </div>
 
   <script src="js/books-data.js"></script>
   <script src="js/books-app.js"></script>
+  <script src="js/book-transition.js"></script>
   <script>
-    /* ── 角色切換（display 切換，不動 src） ── */
+    // 儲存偏好失敗不影響入口（例如瀏覽器限制本機檔案儲存）。
+    function readPreference(key, fallback) {
+      try { return localStorage.getItem(key) || fallback; } catch { return fallback; }
+    }
+    function savePreference(key, value) {
+      try { localStorage.setItem(key, value); } catch { /* 本次選擇仍生效。 */ }
+    }
+
+    /* ── 角色切換 ── */
     function applyVariant(v) {
+      if (v !== 'none') v = 'svg';
+      resetBookTransition();
       const stage  = document.getElementById('samuraiStage');
       const imgSvg = document.getElementById('imgSvg');
-      const imgPng = document.getElementById('imgPng');
 
       document.body.classList.remove('variant-none', 'variant-svg', 'variant-png');
       document.body.classList.add('variant-' + v);
 
+      const selectedImage = v === 'svg' ? imgSvg : null;
+      if (selectedImage && !selectedImage.hasAttribute('src')) selectedImage.src = selectedImage.dataset.src;
+
       stage.style.display  = v === 'none' ? 'none' : '';
       imgSvg.style.display = v === 'svg'  ? ''     : 'none';
-      imgPng.style.display = v === 'png'  ? ''     : 'none';
 
-      document.querySelectorAll('[data-variant]').forEach(btn =>
-        btn.classList.toggle('active', btn.dataset.variant === v)
-      );
-      localStorage.setItem('bookVariant', v);
+      document.querySelectorAll('[data-variant]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.variant === v);
+        btn.setAttribute('aria-pressed', btn.dataset.variant === v);
+      });
+      savePreference('bookVariant', v);
     }
 
     /* ── 字型切換（套在 .page 縮小 reflow 範圍） ── */
@@ -197,13 +120,15 @@
     const pageEl = document.querySelector('.page');
 
     function applyFont(f) {
+      if (!Object.hasOwn(FONTS, f)) f = 'system';
       Object.values(FONTS).filter(c => c).forEach(c => pageEl.classList.remove(c));
       if (FONTS[f]) pageEl.classList.add(FONTS[f]);
 
-      document.querySelectorAll('[data-font]').forEach(btn =>
-        btn.classList.toggle('active', btn.dataset.font === f)
-      );
-      localStorage.setItem('bookFont', f);
+      document.querySelectorAll('[data-font]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.font === f);
+        btn.setAttribute('aria-pressed', btn.dataset.font === f);
+      });
+      savePreference('bookFont', f);
     }
 
     /* ── 事件綁定 ── */
@@ -215,8 +140,8 @@
     );
 
     /* ── 讀取上次選擇 ── */
-    applyVariant(localStorage.getItem('bookVariant') || 'svg');
-    applyFont(localStorage.getItem('bookFont') || 'system');
+    applyVariant(readPreference('bookVariant', 'svg'));
+    applyFont(readPreference('bookFont', 'system'));
   </script>
 </body>
 </html>

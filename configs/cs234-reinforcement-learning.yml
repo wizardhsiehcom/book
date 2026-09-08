@@ -74,3 +74,6 @@ nav:
 docs_dir: ../docs/cs234-reinforcement-learning
 site_dir: ../book/cs234-reinforcement-learning/html
 use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css

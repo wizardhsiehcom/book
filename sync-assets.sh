@@ -138,6 +138,7 @@ for config in "${configs[@]}"; do
   mkdir -p "$target/fonts"
 
   cp "$src_assets/custom.css"    "$target/custom.css"
+  cp "$src_assets/book-transition.css" "$target/book-transition.css"
   cp "$src_assets/mermaid-init.js" "$target/mermaid-init.js"
   cp "$src_assets/font-init.js"  "$target/font-init.js"
 

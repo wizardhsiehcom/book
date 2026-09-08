@@ -81,3 +81,6 @@ nav:
 docs_dir: ../docs/mit14-12-game-theory
 site_dir: ../book/mit14-12-game-theory/html
 use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css

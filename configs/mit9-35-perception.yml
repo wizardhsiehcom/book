@@ -79,3 +79,6 @@ nav:
 docs_dir: ../docs/mit9-35-perception
 site_dir: ../book/mit9-35-perception/html
 use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css

@@ -75,3 +75,6 @@ nav:
 docs_dir: ../docs/aa228-safety-critical-systems
 site_dir: ../book/aa228-safety-critical-systems/html
 use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
