@@ -62,6 +62,14 @@ nav:
       - CoWoS 在 AI 加速器中的角色: 08-cowos-ai-hpc.md
       - 競爭技術比較: 09-competing-technologies.md
       - 可靠性與製造挑戰: 10-reliability-manufacturing.md
+  - 四、工程深水區:
+      - Die-to-Die 互連與供電: 11-die-to-die-and-power.md
+      - 熱管理：功率密度的天花板: 12-thermal-management.md
+      - 測試與已知良品（KGD）: 13-test-and-kgd.md
+      - SoIC 與 3D 堆疊: 14-soic-3d-stacking.md
+  - 五、產業與展望:
+      - 封裝路線圖、產能與經濟學: 15-capacity-and-economics.md
+      - CPO 與下一步: 16-cpo-and-next-steps.md
   - 附錄:
       - 學習資源與論文導讀: appendix-references.md
       - 術語表: appendix-glossary.md
