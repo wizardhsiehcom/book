@@ -1,0 +1,81 @@
+site_name: 從先進封裝看懂均豪：製程、設備、良率與客戶需求
+site_description: 以 CoWoS 為主線，從封裝結構走到製程站點、缺陷與量測、設備需求，最後對照均豪的公開證據
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/gpm
+site_dir: ../book/gpm/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、建立封裝地圖:
+      - "01 AI 晶片為什麼需要先進封裝": 01-why-advanced-packaging.md
+      - "02 一次看懂 MCM、Fan-Out、2.5D 與 3D": 02-packaging-taxonomy.md
+      - "03 封裝材料與互連的共同語言": 03-materials-interconnect.md
+  - 二、看懂實際製程:
+      - "04 從晶圓到封裝成品": 04-workpiece-flow.md
+      - "05 Fan-Out 製程全解析": 05-fan-out.md
+      - "06 CoWoS-S：矽中介層": 06-cowos-s.md
+      - "07 CoWoS-R、L 與 I-Cube": 07-cowos-r-l-icube.md
+      - "08 HBM：從 DRAM 晶粒到記憶體堆疊": 08-hbm.md
+      - "09 SoIC 與混合鍵合": 09-soic-hybrid-bonding.md
+      - "10 EMIB 與局部橋接": 10-emib-bridge.md
+  - 三、從製程走向設備:
+      - "11 缺陷、AOI 與量測": 11-defect-aoi-metrology.md
+      - "12 研磨、薄化與表面品質": 12-grinding-thinning.md
+      - "13 濕製程、清洗與製程整合": 13-wet-process.md
+      - "14 良率、產能與設備採購": 14-yield-capacity-capex.md
+  - 四、回到均豪與公司消息:
+      - "15 均豪的產品與客戶需求地圖": 15-gpm-product-map.md
+      - "16 如何讀懂一則先進封裝消息": 16-reading-news.md
+  - 附錄:
+      - "A 來源索引": appendix-sources.md
+      - "B 術語表": appendix-glossary.md
+      - "C 待查事項總表": appendix-open-questions.md
+      - "D 圖片來源與版權聲明": 99-image-credits.md

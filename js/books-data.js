@@ -195,6 +195,15 @@ const BOOKS = [
     accent: "#14b8a6",
     glow: "rgba(20,184,166,0.18)",
   },
+  {
+    icon: "🔍",
+    title: "從先進封裝看懂均豪",
+    desc: "以 CoWoS 為主線，從封裝結構走到製程站點、缺陷與量測、設備需求，最後對照公開證據",
+    tags: ["advanced packaging", "equipment", "semiconductor"],
+    href: "book/gpm/html/index.html",
+    accent: "#14b8a6",
+    glow: "rgba(20,184,166,0.18)",
+  },
 ];
 
 const TAG_COLOR = {
@@ -211,6 +220,7 @@ const TAG_COLOR = {
   "AI":                 { tc: "#c4b5fd", tb: "rgba(196,181,253,0.08)", te: "rgba(196,181,253,0.2)" },
   "LLM":                { tc: "#5eead4", tb: "rgba(94,234,212,0.08)",  te: "rgba(94,234,212,0.2)" },
   "SMT":                { tc: "#fb923c", tb: "rgba(251,146,60,0.08)",  te: "rgba(251,146,60,0.2)" },
+  "equipment":          { tc: "#2dd4bf", tb: "rgba(45,212,191,0.08)",  te: "rgba(45,212,191,0.2)" },
   "electronics manufacturing": { tc: "#fca5a5", tb: "rgba(252,165,165,0.08)", te: "rgba(252,165,165,0.2)" },
 };
 const TAG_DEFAULT = { tc: "#a5b4fc", tb: "rgba(99,102,241,0.08)", te: "rgba(99,102,241,0.2)" };
