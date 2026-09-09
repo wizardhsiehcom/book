@@ -1,0 +1,43 @@
+/* 同源 HTTP(S) 導覽漸進增強；不支援時維持原生跳頁。 */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+
+  ::view-transition { pointer-events: none; }
+  ::view-transition-group(*) { animation-duration: 300ms; }
+  ::view-transition-old(root) { animation: book-leave 180ms ease-out both; }
+  ::view-transition-new(root) { animation: book-enter 300ms ease-out both; }
+
+  ::view-transition-group(book-samurai),
+  ::view-transition-group(book-blade) { z-index: 1; }
+  ::view-transition-old(book-samurai) {
+    transform-origin: 44% 88%;
+    animation: book-draw 260ms ease-out both;
+  }
+  ::view-transition-old(book-blade) {
+    transform-origin: left center;
+    animation: book-cut 260ms ease-out both;
+  }
+}
+
+@keyframes book-leave { to { opacity: 0; } }
+@keyframes book-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes book-draw {
+  0% { opacity: 1; transform: rotate(0deg); }
+  30% { opacity: 1; transform: translateX(6px) skewX(-1deg); }
+  100% { opacity: 0; transform: translateX(9px); }
+}
+@keyframes book-cut {
+  0% { opacity: 0; transform: scaleX(0.05); }
+  25% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(1); }
+}
+
+/* 透明定位框的快照上畫直線，只有進入目的頁後才出現。 */
+::view-transition-old(book-blade), #blade.blade-local {
+  background: linear-gradient(180deg, transparent 15%, #b72b30 40%, #eee4d2 48%, #eee4d2 52%, #b72b30 60%, transparent 85%);
+  clip-path: polygon(0 50%, 92% 0, 100% 50%, 92% 100%);
+}
+#blade.blade-local { animation: book-cut 260ms ease-out both; }
