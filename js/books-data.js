@@ -204,6 +204,15 @@ const BOOKS = [
     accent: "#14b8a6",
     glow: "rgba(20,184,166,0.18)",
   },
+  {
+    icon: "🎯",
+    title: "從晶粒分選到精密接合看懂均華",
+    desc: "八章拆解薄晶粒、分選追溯、取放翻面、對位誤差與接合責任，再對照均華機型與公開證據",
+    tags: ["advanced packaging", "equipment", "semiconductor"],
+    href: "book/gmm/html/index.html",
+    accent: "#0ea5e9",
+    glow: "rgba(14,165,233,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

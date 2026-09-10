@@ -1,0 +1,44 @@
+.md-typeset .gmm-mermaid {
+  padding: 1rem;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 0.25rem;
+}
+
+.md-typeset .gmm-mermaid svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.md-typeset .external-image {
+  width: 100%;
+  max-width: 36rem;
+  margin: 1.5rem auto;
+}
+
+.md-typeset .external-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+}
+
+.md-typeset .external-image figcaption {
+  max-width: none;
+  text-align: left;
+  font-style: normal;
+  overflow-wrap: anywhere;
+}
+
+.md-typeset table:has(th:nth-child(12)) th,
+.md-typeset table:has(th:nth-child(12)) td {
+  min-width: 7rem;
+}
+
+.md-typeset table:has(th:nth-child(12)) :is(th, td):is(:nth-child(5), :nth-child(7), :nth-child(12)) {
+  min-width: 13rem;
+}

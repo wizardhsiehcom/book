@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" role="img" aria-labelledby="title desc">
+  <title id="title">頂出式取料的支撐與作用方向</title>
+  <desc id="desc">上方吸嘴吸持晶粒，下方頂出機構透過膠膜協助分離；兩側尚未剝離的界面形成分離阻力。不按比例，也非特定機台設計。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="900" height="380" rx="12" fill="#f8fafc"/>
+  <g font-family="sans-serif" font-size="19" fill="#0f172a">
+    <text x="30" y="36" font-weight="bold">支撐從膠膜轉交給吸嘴：接觸與分離需協調</text>
+    <rect x="355" y="65" width="190" height="60" rx="6" fill="#94a3b8" stroke="#334155"/>
+    <text x="390" y="101">吸嘴／取放頭</text>
+    <rect x="250" y="165" width="400" height="25" fill="#7dd3fc" stroke="#0369a1" stroke-width="2"/>
+    <text x="680" y="187">晶粒</text>
+    <rect x="90" y="196" width="720" height="14" fill="#fcd34d" stroke="#92400e"/>
+    <text x="665" y="278">膠膜與未剝離界面</text>
+    <path d="M 815 265 L 820 205" stroke="#64748b" fill="none"/>
+    <rect x="90" y="214" width="180" height="32" fill="#cbd5e1" stroke="#64748b"/>
+    <rect x="630" y="214" width="180" height="32" fill="#cbd5e1" stroke="#64748b"/>
+    <text x="91" y="278">周邊支撐</text>
+    <path d="M 365 305 L 365 265 L 380 225 L 395 265 L 395 305 M 505 305 L 505 265 L 520 225 L 535 265 L 535 305" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+    <text x="343" y="335">頂出機構（形狀僅示意）</text>
+    <g stroke="#334155" stroke-width="3" marker-end="url(#arrow)" fill="none">
+      <path d="M 450 158 L 450 130"/>
+      <path d="M 450 286 L 450 220"/>
+      <path d="M 295 175 L 295 233"/>
+      <path d="M 605 175 L 605 233"/>
+    </g>
+    <text x="470" y="151">向上吸持</text>
+    <text x="465" y="270">協助頂升</text>
+    <text x="105" y="148">分離阻力</text>
+    <path d="M 209 145 L 284 204" stroke="#64748b" fill="none"/>
+    <text x="30" y="366" font-size="16">教學示意，不按比例；箭頭非實測力。實際工具、膜材與受力歷程須另行驗證。</text>
+  </g>
+</svg>

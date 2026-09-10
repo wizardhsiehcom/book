@@ -1,0 +1,73 @@
+site_name: 從晶粒分選到精密接合看懂均華
+site_description: 從薄晶粒、分選追溯、取放翻面、對位誤差與接合責任，到均華產品證據與公司消息判讀
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/gmm
+site_dir: ../book/gmm/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+  - stylesheets/reading.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/diagrams.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: gmm-mermaid
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、晶粒與資料如何交接:
+      - "01 薄晶粒為什麼難拿": 01-die-handling.md
+      - "02 分選、方向與追溯": 02-sorter-traceability.md
+      - "03 取放、翻面與轉移": 03-pick-place-flip.md
+  - 二、從放準到穩定產出:
+      - "04 對位誤差預算": 04-alignment-error-budget.md
+      - "05 接合設備的責任邊界": 05-bonder-process-boundaries.md
+      - "06 節拍、並行與品質": 06-throughput-quality.md
+  - 三、回到均華的公開證據:
+      - "07 均華產品證據矩陣": 07-gmm-product-evidence.md
+      - "08 如何判讀公司消息": 08-reading-news.md
+  - 附錄:
+      - "A 來源索引": appendix-sources.md
+      - "B 術語表": appendix-glossary.md
+      - "C 待查事項與翻案條件": appendix-open-questions.md
+      - "D 圖表來源與使用說明": 99-image-credits.md
