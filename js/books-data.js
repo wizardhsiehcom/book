@@ -213,6 +213,15 @@ const BOOKS = [
     accent: "#0ea5e9",
     glow: "rgba(14,165,233,0.18)",
   },
+  {
+    icon: "☀️",
+    title: "從光、熱與材料控制看懂志聖",
+    desc: "從熱均勻性、UV、壓膜與表面處理，走到十二筆產品證據、型錄差異與新聞判讀",
+    tags: ["advanced packaging", "equipment", "semiconductor"],
+    href: "book/csun/html/index.html",
+    accent: "#f59e0b",
+    glow: "rgba(245,158,11,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

@@ -1,0 +1,43 @@
+.md-typeset .csun-mermaid {
+  padding: 1rem;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 0.25rem;
+}
+
+.md-typeset .csun-mermaid svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.md-typeset .external-image {
+  width: 100%;
+  max-width: 36rem;
+  margin: 1.5rem auto;
+}
+
+.md-typeset .external-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+}
+
+.md-typeset .external-image figcaption {
+  max-width: none;
+  text-align: left;
+  font-style: normal;
+  overflow-wrap: anywhere;
+}
+
+.md-typeset .external-image .image-scroll {
+  overflow-x: auto;
+}
+
+.md-typeset .external-image .image-scroll img {
+  min-width: 560px;
+}

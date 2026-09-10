@@ -1,0 +1,72 @@
+site_name: 從光、熱與材料控制看懂志聖
+site_description: 從材料狀態、熱均勻性、UV、壓膜與表面處理，走到志聖產品證據及新聞判讀
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/csun
+site_dir: ../book/csun/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+  - stylesheets/reading.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/diagrams.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: csun-mermaid
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、材料與製程控制:
+      - "01 材料狀態": 01-material-state.md
+      - "02 熱歷程與均勻性": 02-thermal-uniformity.md
+      - "03 曝光與 UV 固化": 03-uv-process.md
+      - "04 壓膜與空隙": 04-lamination-voids.md
+      - "05 清洗與表面處理": 05-surface-treatment.md
+      - "06 跨尺寸與量產資格": 06-scale-and-qualification.md
+  - 二、志聖與公開證據:
+      - "07 產品證據矩陣": 07-csun-product-evidence.md
+      - "08 新聞判讀案例": 08-reading-news.md
+  - 附錄:
+      - "A 來源索引": appendix-sources.md
+      - "B 術語表": appendix-glossary.md
+      - "C 待查事項": appendix-open-questions.md
+      - "D 圖表來源": 99-image-credits.md
