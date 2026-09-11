@@ -3,6 +3,24 @@
 // ═══════════════════════════════════════════════════════
 const BOOKS = [
   {
+    icon: "🔧",
+    title: "從設備整合到量產交付看懂東捷",
+    desc: "由玻璃加工、RDL 檢量測與搬運能力，追到接口驗收、G2C+ 聯盟責任及產品交付證據",
+    tags: ["advanced packaging", "equipment", "Contrel"],
+    href: "book/contrel/html/index.html",
+    accent: "#0d9488",
+    glow: "rgba(13,148,136,0.18)",
+  },
+  {
+    icon: "🔎",
+    title: "先進封裝設備競爭地圖",
+    desc: "從工件、製程站點與驗收條件，比較 V5、易發及各家檢量測、分選接合與材料處理方案",
+    tags: ["advanced packaging", "equipment", "competition"],
+    href: "book/packaging-equipment-competition/html/index.html",
+    accent: "#0891b2",
+    glow: "rgba(8,145,178,0.18)",
+  },
+  {
     "icon": "🎓",
     "title": "Claude 架構師認證：CCAF 備考學習指南",
     "desc": "依 CCAR-F 官方考綱，掌握 Agent、MCP、Claude Code、結構化輸出與可靠性，搭配實作與 18 題情境練習",

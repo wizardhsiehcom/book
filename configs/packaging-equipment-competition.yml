@@ -1,0 +1,77 @@
+site_name: 先進封裝設備競爭地圖：從製程站點看供應商與替代方案
+site_description: 從工件、缺陷與驗收比較檢量測、分選接合及材料處理，辨別 V5、易發與各供應商的競爭及互補證據
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/packaging-equipment-competition
+site_dir: ../book/packaging-equipment-competition/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+  - stylesheets/external-images.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、建立比較方法:
+      - "01 比較的單位": 01-competition-unit.md
+      - "02 可比規格與驗收": 02-comparable-specs.md
+      - "03 表面檢測候選：示範章": 03-inspection-alternatives.md
+  - 二、逐站看差異:
+      - "04 量測任務與邊界": 04-metrology-boundaries.md
+      - "05 嵌入式檢測與 AI": 05-inline-and-ai.md
+      - "06 分選與接合": 06-sorting-bonding.md
+      - "07 材料處理": 07-material-process.md
+      - "08 整合、驗收與切換成本": 08-integration-switching.md
+  - 三、公司與競爭主張:
+      - "09 V5／倍利產品地圖": 09-v5-product-map.md
+      - "10 易發產品地圖": 10-efc-product-map.md
+      - "11 如何讀競爭消息": 11-reading-competitive-claims.md
+  - 附錄:
+      - "A 供應商與產品矩陣": appendix-vendor-matrix.md
+      - "B 來源索引": appendix-sources.md
+      - "C 新增術語": appendix-glossary.md
+      - "D 待查與更新觸發": appendix-open-questions.md
+      - "E 圖表來源與使用邊界": 99-image-credits.md
