@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="580" viewBox="0 0 1080 580" role="img" aria-labelledby="title desc">
+  <title id="title">電探針接觸與光纖耦合的幾何差異</title>
+  <desc id="desc">左側電探針接觸金屬焊墊，右側光纖以傾角對準晶片表面的光柵耦合器，光經耦合後沿波導傳播。光纖位置與角度須控制；圖非按比例，僅示範表面光柵耦合。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker></defs>
+  <rect width="1080" height="580" rx="20" fill="#f8fafc"/>
+  <g font-family="'Microsoft JhengHei','Noto Sans TC',sans-serif" fill="#172554">
+    <text x="40" y="49" font-size="27" font-weight="700">電接觸與光耦合：兩種不同的介面</text>
+    <rect x="30" y="77" width="495" height="410" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+    <rect x="545" y="77" width="505" height="410" rx="14" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="55" y="117" font-size="23" font-weight="700">電探針 → 金屬焊墊（pad）</text>
+    <text x="570" y="117" font-size="23" font-weight="700">光纖 → 表面光柵 → 波導</text>
+    <rect x="65" y="319" width="425" height="67" rx="4" fill="#cbd5e1"/>
+    <rect x="228" y="307" width="100" height="12" fill="#d69e2e"/>
+    <path d="M 115 166 L 190 220 L 278 307" stroke="#475569" stroke-width="13" fill="none" stroke-linecap="round"/>
+    <circle cx="278" cy="307" r="7" fill="#2563eb"/>
+    <text x="310" y="220" font-size="20">金屬探針</text>
+    <path d="M 303 224 L 224 251" stroke="#64748b" fill="none"/>
+    <text x="344" y="283" font-size="19">焊墊</text>
+    <path d="M 351 290 L 309 311" stroke="#64748b" fill="none"/>
+    <text x="88" y="360" font-size="20">晶片</text>
+    <text x="55" y="425" font-size="20">接觸後建立電氣通路</text>
+    <text x="55" y="458" font-size="18">仍須控制施力、接觸電阻與針痕</text>
+    <rect x="575" y="319" width="440" height="67" rx="4" fill="#cbd5e1"/>
+    <path d="M 690 155 L 748 270" stroke="#0f766e" stroke-width="28" stroke-linecap="butt"/>
+    <path d="M 690 155 L 748 270" stroke="#99f6e4" stroke-width="6"/>
+    <path d="M 748 270 L 770 314" stroke="#b45309" stroke-width="4" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+    <path d="M 760 314 L 981 314" stroke="#b45309" stroke-width="5" marker-end="url(#arrow)"/>
+    <path d="M 748 304 v16 M 758 304 v16 M 768 304 v16 M 778 304 v16 M 788 304 v16 M 798 304 v16" stroke="#7c3aed" stroke-width="4"/>
+    <text x="798" y="177" font-size="20">光纖</text>
+    <path d="M 786 181 L 717 206" stroke="#64748b" fill="none"/>
+    <text x="822" y="258" font-size="19">位置、角度都影響耦合</text>
+    <path d="M 818 267 L 771 288" stroke="#64748b" fill="none"/>
+    <text x="607" y="360" font-size="19">晶片</text>
+    <text x="730" y="360" font-size="19">光柵</text>
+    <text x="885" y="360" font-size="19">波導 →</text>
+    <text x="570" y="425" font-size="20">光纖端面不靠金屬接觸導通</text>
+    <text x="570" y="458" font-size="18">對位誤差會混入量到的光路損耗</text>
+    <text x="40" y="525" font-size="18">剖面概念圖，非按比例；光纖傾角、尺寸與容差依設計而定。</text>
+    <text x="40" y="553" font-size="18">右圖僅示範表面光柵耦合；邊緣耦合由晶片側面進光，並非此配置。</text>
+  </g>
+</svg>

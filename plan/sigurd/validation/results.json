@@ -1,0 +1,29 @@
+{
+  "pages": [
+    {
+      "chapter": "02-test-cost-model",
+      "images_decoded": 1,
+      "widths_checked": [
+        390,
+        1365
+      ]
+    },
+    {
+      "chapter": "03-test-cell",
+      "images_decoded": 2,
+      "widths_checked": [
+        390,
+        1365
+      ]
+    },
+    {
+      "chapter": "06-silicon-photonics-test",
+      "images_decoded": 1,
+      "widths_checked": [
+        390,
+        1365
+      ]
+    }
+  ],
+  "local_link_failures": []
+}
