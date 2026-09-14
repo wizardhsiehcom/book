@@ -1,0 +1,83 @@
+site_name: 從半導體檢測看懂倍利科技（V5）：光學、量測、AI 與產線導入
+site_description: 從工件、光學與品質分母走到檢量測、ADC、產線驗收與倍利公開證據
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/v5
+site_dir: ../book/v5/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+  - stylesheets/v5.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/v5-diagrams.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: v5-mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、建立檢測的共同語言:
+      - "01 製程做完了，為什麼還要檢測？": 01-why-inspection.md
+      - "02 晶圓、重佈線、凸塊與載具，在檢查什麼？": 02-workpieces-and-stations.md
+      - "03 檢出、量測、複判與分類，各自交付什麼？": 03-detection-metrology-review.md
+      - "04 漏檢、假警報與誤殺，分母究竟是誰？": 04-defects-and-quality.md
+  - 二、從光學走到 AI:
+      - "05 缺陷如何變成一張可判讀的影像？": 05-optics-and-imaging.md
+      - "06 AOI 如何用 recipe 把影像變成缺陷候選？": 06-aoi-and-recipes.md
+      - "07 看見缺陷與量準尺寸，相差什麼？": 07-metrology-and-3d.md
+      - "08 ADC 如何接手分類，又把哪些工作留給人？": 08-adc-and-human-review.md
+  - 三、把能力放進產線:
+      - "09 全自動檢測整機，究竟整合了什麼？": 09-standalone-inspection.md
+      - "10 何時升級既有 OM，比新購整機更合適？": 10-om-upgrade.md
+      - "11 把 AOI 放進製程設備，難題改變在哪裡？": 11-inline-aoi.md
+      - "12 缺陷座標如何變成產線可用的資料？": 12-data-and-traceability.md
+      - "13 規格達標，為何仍不等於量產驗收？": 13-throughput-and-acceptance.md
+  - 四、回到倍利科技:
+      - "14 倍利四類產品，各自交付什麼、證據到哪裡？": 14-v5-product-evidence.md
+      - "15 誰是同任務候選，誰又可能與倍利互補？": 15-competition-and-business.md
+      - "16 如何讀懂認證、AI 效益、新產品與擴產消息？": 16-reading-company-news.md
+  - 附錄:
+      - A 來源索引與證據邊界: appendix-sources.md
+      - B 術語表: appendix-glossary.md
+      - C 待查事項: appendix-open-questions.md
+      - D 圖片來源與聲明: 99-image-credits.md
