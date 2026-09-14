@@ -30,7 +30,7 @@ flowchart TB
 GPU 不以單一 Thread 為排程單位，而是以 **Warp（32 個 Thread）** 為最小調度單位。
 
 - 同一 Warp 內的 32 個 Thread **同時執行相同指令**（SIMT）
-- 若有條件分支（if/else），不同 Thread 走不同路徑時會發生 **Warp Divergence**，效率下降
+- 若有條件分支（if/else）會發生 **Warp Divergence**，效率下降（原理見 [平行計算概念](../prerequisites/parallel-concepts.md)）
 - 記憶體存取最好是**合併存取（Coalesced Access）**，否則多次 Transaction 拖慢速度
 
 ## Occupancy：決定效能的關鍵
@@ -64,3 +64,4 @@ CUDA 不只是程式語言擴充，它背後是一整個生態：
 
 - [記憶體層次結構](memory-hierarchy.md) — Global Memory 的延遲如何被 Warp 切換隱藏
 - [NVIDIA 生態系護城河](../competitive/nvidia-moat.md) — 為何軟體才是真正的護城河
+- [平行計算概念](../prerequisites/parallel-concepts.md) — SIMT 與 Warp Divergence 的直覺解釋

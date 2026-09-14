@@ -61,8 +61,8 @@ flowchart LR
 
 **概念**：驅動 IC 先封裝於撓性薄膜（PI 基板），再將薄膜末端折至玻璃背面，以 ACF 接合。
 
-![COF 模組類比——IC 封裝於薄膜](https://commons.wikimedia.org/wiki/Special:FilePath/FPC_PANEL.pdf?width=500)
-*COF 薄膜面板示意——IC 封裝在中央區域，兩側端子區折彎後壓著於玻璃背面，實現窄邊框設計。*
+![IC 接合於 35mm 捏帶的 TAB 實物](https://commons.wikimedia.org/wiki/Special:FilePath/A%20silicon%20IC%20as%20tape%20automated%20bonded%20(TAB)%20on%20the%2035mm%20tape.%20Upper%20picture%20shows%20IC%20front%20side%20as%20glob%20topped%20and%20lower%20picture%20backside%20of%20the%20IC.png?width=500)
+*IC 接合在 35mm 捏帶上的實物（上：正面，已點膠封止；下：背面）。此為 TAB／TCP 製程，COF 沿用相同的「IC 先接合於捼性薄膜」結構，改用無裝載孔的 PI 基板並支援更細的端子間距。*
 
 ```mermaid
 flowchart LR

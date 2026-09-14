@@ -1,6 +1,6 @@
 # GPU 書籍審閱改進計畫
 
-> **狀態（2026-07-08）**：Agent A（A1–A8）、Agent B（B1–B4）、Agent C（C1–C2）全部完成；`learning-map.html` 的 TPU 918 一併修正。Agent D（低優先、選做）未做。建置通過無警告；C1/C2 圖形建議 `./serve-book.sh gpu` 目視覆核。
+> **狀態（2026-07-08）**：Agent A（A1–A8）、Agent B（B1–B4）、Agent C（C1–C2）全部完成；`learning-map.html` 的 TPU 918 一併修正。Agent D（D1–D3）2026-09-14 補完：D1 在 cost-analysis、market-shift、rx9070xt 三頁加上「數字寫於 2025 年」註記；D2 gpu-fundamentals 的 Blackwell 段落縮為兩行並回連 b200.md；D3 cuda-model 的 Warp Divergence 縮寫並回連 parallel-concepts.md。建置通過無警告；C1/C2 圖形建議 `./serve-book.sh gpu` 目視覆核。
 
 > 審閱範圍：`docs/gpu/` 全部 23 頁 + `configs/gpu.yml`。
 > 建置狀態：`uv run mkdocs build -f configs/gpu.yml` 通過，無斷鏈、無 nav 警告。

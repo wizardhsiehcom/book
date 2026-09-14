@@ -1,6 +1,7 @@
 # SMT Bonding 書籍審閱改進計畫
 
-> **狀態（2026-07-08）**：Agent A（A1–A8）、B（B1–B6）、C（C1–C2）、D（D1–D3）全部完成；E1、E2 完成，E3（COF 換圖）未做。建置通過無警告。
+> **狀態（2026-07-08）**：Agent A（A1–A8）、B（B1–B6）、C（C1–C2）、D（D1–D3）全部完成；E1、E2 完成；E3 2026-09-14 補完。建置通過無警告。
+> - E3：05-display-modules.md 的 COF 圖改用 Commons 的 TAB on 35mm tape 實物照（Khpsoi，CC BY-SA 4.0），圖說明示為 TAB／TCP 並說明與 COF 的結構差異；FPC_PANEL.pdf 保留於熱壓接合原理頁。
 > - C1：全書 13 檔 94 處 `\n` → `<br/>`，建議 `./serve-book.sh smt-bonding` 目視覆核 mermaid 圖。
 > - D1：實測 `Special:FilePath/FPC_PANEL.pdf?width=500` 回傳 `image/jpeg`（Wikimedia 自動轉第一頁縮圖），圖片正常，**無需修改**。
 > - D3：以 Commons API 逐一核對 23 檔，原表全標 CC BY-SA 3.0 有 12 檔錯誤；已改為實際授權（含 CC BY-SA 4.0 / CC BY 2.0・3.0 / 2.0 de / FAL / Public domain / Attribution）並新增作者欄。
