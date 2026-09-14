@@ -1,0 +1,402 @@
+{
+  "book": "psi",
+  "checked_date": "2026-09-14",
+  "image_type": "original Mermaid, teaching tables, local SVG and remote Wikimedia Commons photos",
+  "external_images": [
+    {
+      "id": "photo-03",
+      "page": "03-quality-and-qualification.md",
+      "anchor": "## 結構：厚度均勻與整片彎曲是不同問題",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Silicon_wafer_with_mirror_finish.jpg",
+      "title": "Silicon wafer with mirror finish.jpg",
+      "author": "NASA Glenn Research Center",
+      "source": "https://commons.wikimedia.org/wiki/File:Silicon_wafer_with_mirror_finish.jpg",
+      "license": "Public domain（美國，PD-USGov-NASA）",
+      "license_url": "https://commons.wikimedia.org/wiki/Template:PD-USGov-NASA",
+      "changes": "使用 Commons 現行版本（原站已裁去原圖說）；本書未再裁切或改色",
+      "width": 305,
+      "alt": "鏡面矽晶圓反射上方物體，旁邊有公分刻度",
+      "caption": "照片 03-A：鏡面反射能幫助觀察外觀，但照片無法提供 TTV、金屬殘留或顆粒檢出限；看起來明亮不能代替允收報告。此為 NASA 圖片，並非昇陽產品。",
+      "body_sha256": "e5f1cd994970c5fea29a32aebcc8f8160c6430f31940269ef3b0e93741f249cd",
+      "status": "已驗收",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    },
+    {
+      "id": "photo-01",
+      "page": "01-wafer-roles.md",
+      "anchor": "## 工件分類有兩個軸",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Wafer_with_multiple_Microprocessor_dies_on_it.jpg?width=1280",
+      "title": "Wafer with multiple Microprocessor dies on it.jpg",
+      "author": "Dualmodem Bytton",
+      "source": "https://commons.wikimedia.org/wiki/File:Wafer_with_multiple_Microprocessor_dies_on_it.jpg",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "changes": "使用 Commons 1280 px 縮圖；未裁切或改色",
+      "width": 500,
+      "alt": "未切割的矽晶圓上排列大量重複的微處理器晶粒區塊",
+      "caption": "照片 01-A：整片圓形工件是晶圓，重複的小區塊是尚未切割分離的晶粒。照片可幫助辨認兩者，卻不能從外觀判定一片晶圓此次是產品片、監控片或再生片；此圖不是昇陽或其客戶產品的證據。",
+      "body_sha256": "deaab9bd653b32b96f4a4bb47aa758b8c5c8f1985bfeb03d312146cf9c5c1c30",
+      "status": "已驗收",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    },
+    {
+      "id": "photo-02",
+      "page": "02-reclaim-loop.md",
+      "anchor": "## 量測與控制：每一輪都會改變可用餘裕",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Front_opening_shipping_box_%28bottom_side%29.jpg?width=960",
+      "title": "Front opening shipping box (bottom side).jpg",
+      "author": "Cepheiden",
+      "source": "https://commons.wikimedia.org/wiki/File:Front_opening_shipping_box_(bottom_side).jpg",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "使用 Commons 縮圖；未裁切或改色",
+      "width": 420,
+      "alt": "前開式晶圓運輸盒中的槽位分隔並承載多片晶圓",
+      "caption": "照片 02-A：前開式運輸盒（FOSB）將晶圓分隔在槽位中。交付還要考慮包裝與搬運能否維持加工後狀態；照片本身不能證明盒內潔淨度，也不代表昇陽使用的載具。",
+      "body_sha256": "9b3553aa603c1744cb5705cfe4e7109f6a9fd69edee84b7d022efca439c62a0d",
+      "status": "已驗收",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    },
+    {
+      "id": "photo-02-bench",
+      "page": "02-reclaim-loop.md",
+      "anchor": "設備原廠對去膜、清洗與殘留移除的功能說明",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/WetEtchBench.jpg?width=960",
+      "title": "WetEtchBench.jpg",
+      "author": "Kristian Mølhave",
+      "source": "https://commons.wikimedia.org/wiki/File:WetEtchBench.jpg",
+      "license": "CC BY 2.5",
+      "license_url": "https://creativecommons.org/licenses/by/2.5/",
+      "changes": "使用 Commons 縮圖；未裁切或改色",
+      "width": 640,
+      "alt": "Danchip 潔淨室的濕式蝕刻工作台及晶圓載具",
+      "caption": "照片 02-B：Danchip 潔淨室的濕式蝕刻工作台，讓「去除膜層」對應到實際設備環境。它不是完整再生產線；不同膜種與來料仍須選擇相容程序，不能照照片推定配方或昇陽設備。",
+      "body_sha256": "9b3553aa603c1744cb5705cfe4e7109f6a9fd69edee84b7d022efca439c62a0d",
+      "status": "已驗收",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    }
+  ],
+  "pages": [
+    {
+      "file": "docs/psi/00-map.md",
+      "body_sha256": "ee7db6ae78b4fbf3535d510fa185db72c0d29d2a448d749db1e96023f5f795f4",
+      "diagrams": [
+        {
+          "id": "00-map-mermaid-1",
+          "insertion_heading": "全書地圖：把一片工件追到一筆可解釋的收入",
+          "source_line": 5,
+          "diagram_sha256": "960de6655d88b99fcf9dbf60802961cb2809bf89f5ac7e13d74ddb31edb26df3",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: unchanged diagram; prior desktop/mobile acceptance retained",
+          "validation_report": "plan/psi/browser-validation.json"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/01-wafer-roles.md",
+      "body_sha256": "deaab9bd653b32b96f4a4bb47aa758b8c5c8f1985bfeb03d312146cf9c5c1c30",
+      "diagrams": [
+        {
+          "id": "01-wafer-roles-mermaid-1",
+          "insertion_heading": "工件分類有兩個軸",
+          "source_line": 27,
+          "diagram_sha256": "70784ee99d85029e62f66c5434bd513de53de68329a411d22efd0ef868ab53d3",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: 1440x1000 and 390x844; visible SVG, no error nodes, labels >=12px after image additions",
+          "validation_report": "plan/psi/image-update-validation.json"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/02-reclaim-loop.md",
+      "body_sha256": "9b3553aa603c1744cb5705cfe4e7109f6a9fd69edee84b7d022efca439c62a0d",
+      "diagrams": [
+        {
+          "id": "02-reclaim-loop-mermaid-1",
+          "insertion_heading": "輸入、操作與輸出：閉環有不回來的出口",
+          "source_line": 15,
+          "diagram_sha256": "5eade20951fd44e84bd3b903c2958b8efd320fb405c50ca1121dc3d36caad2ea",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: 1440x1000 and 390x844; visible SVG, no error nodes, labels >=12px after image additions",
+          "validation_report": "plan/psi/image-update-validation.json"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/03-quality-and-qualification.md",
+      "body_sha256": "e5f1cd994970c5fea29a32aebcc8f8160c6430f31940269ef3b0e93741f249cd",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/04-reuse-economics.md",
+      "body_sha256": "aec604e0b8aa03ba87bf09500576fd577a431b72693cc780c6045ef3aed85f90",
+      "diagrams": [
+        {
+          "id": "04-reuse-economics-mermaid-1",
+          "insertion_heading": "輸入、操作與輸出：費用在嘗試時發生",
+          "source_line": 34,
+          "diagram_sha256": "5d6cfd532300fcb31c5bdaa2f748e0f36064c8a47c5c97d9c68916147d75cfb9",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: unchanged diagram; prior desktop/mobile acceptance retained",
+          "validation_report": "plan/psi/browser-validation.json"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/05-demand-and-new-test-wafers.md",
+      "body_sha256": "b06d3f80c354afd988fc47aa720191d83f4058d11702b9b9dc9a0f3a7ce3955e",
+      "diagrams": [
+        {
+          "id": "05-demand-and-new-test-wafers-mermaid-1",
+          "insertion_heading": "工件與流量：新片補充，回用延長服役",
+          "source_line": 11,
+          "diagram_sha256": "28255d05096142d7c8d777a8fbe46b7c04a4711125ca3b1c1b13c9b8e10c613f",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: unchanged diagram; prior desktop/mobile acceptance retained",
+          "validation_report": "plan/psi/browser-validation.json"
+        },
+        {
+          "id": "05-demand-and-new-test-wafers-mermaid-2",
+          "insertion_heading": "輸入、操作與輸出：需求模型先定分母",
+          "source_line": 37,
+          "diagram_sha256": "ff6b150258475fc8059c09058773bf1f0b54a656b5a01a7b21dd8e36c7db1465",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: unchanged diagram; prior desktop/mobile acceptance retained",
+          "validation_report": "plan/psi/browser-validation.json"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/06-thinning-services.md",
+      "body_sha256": "b35ecc22bf230d0e544c92d917305996649dbc7098ac74d052035a9c0a057a25",
+      "diagrams": [
+        {
+          "id": "06-thinning-services-mermaid-1",
+          "insertion_heading": "工件結構：加工面與保護面",
+          "source_line": 9,
+          "diagram_sha256": "d59331bcbe27667d0fcff6d0a6d30afef1b4841c2844082709c7374f60720b34",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: 1440x1000 and 390x844; visible SVG, no error nodes, labels >=12px after image additions",
+          "validation_report": "plan/psi/image-update-validation.json"
+        },
+        {
+          "id": "06-thinning-services-mermaid-2",
+          "insertion_heading": "輸入、操作與輸出：一般背磨與 TAIKO",
+          "source_line": 34,
+          "diagram_sha256": "1a0466b698fcc2533603a74cda728f2dd9e1413e1827c0911fdd3e2940b513c3",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: 1440x1000 and 390x844; visible SVG, no error nodes, labels >=12px after image additions",
+          "validation_report": "plan/psi/image-update-validation.json"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/07-advanced-materials.md",
+      "body_sha256": "56cc7bd4ea368ab8ffd044f5e7c950bec3349ea913f3fd7de4003dea52b6a0a0",
+      "diagrams": [
+        {
+          "id": "07-advanced-materials-mermaid-1",
+          "insertion_heading": "工件與結構：先分功能，再看材料",
+          "source_line": 20,
+          "diagram_sha256": "8675fa1cd8a5b8b17a65919041e473cbf34a44eebba3299f0cb98cb4e846632d",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: unchanged diagram; prior desktop/mobile acceptance retained",
+          "validation_report": "plan/psi/browser-validation.json"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/08-capacity-and-cashflow.md",
+      "body_sha256": "46feaf4f88cd15ee6e49da2d8bae281ae20eb4687f030079a23b5221c1656516",
+      "diagrams": [
+        {
+          "id": "08-capacity-and-cashflow-mermaid-1",
+          "insertion_heading": "結構：四種產能不要共用一個分母",
+          "source_line": 18,
+          "diagram_sha256": "79c2c281a59f22fecc8122b2091c556105e02647000cd6d43a0f23853eba1093",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: unchanged diagram; prior desktop/mobile acceptance retained",
+          "validation_report": "plan/psi/browser-validation.json"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/09-psi-evidence-map.md",
+      "body_sha256": "3e89109fc36f4a76a4c31e4f97d463dc734480f1cb3edbc2f6931401e2356c47",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/10-reading-news.md",
+      "body_sha256": "05458c3c62effff89a4579c2131cc7d62c8f64c506d45f5f3761431f1a6db00d",
+      "diagrams": [
+        {
+          "id": "10-reading-news-mermaid-1",
+          "insertion_heading": "結構：投資、能力與收入有不同證據",
+          "source_line": 9,
+          "diagram_sha256": "9ac969e50707d441b7cbba08b0e9fc73d96ba0ab78dec19cd56b3cac8056e6e4",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "PASS: unchanged diagram; prior desktop/mobile acceptance retained",
+          "validation_report": "plan/psi/browser-validation.json"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/99-image-credits.md",
+      "body_sha256": "907cd0e2245f78734d28039832ebf40fc3db82d267de6d0153cf6f4b21fe1329",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/appendix-glossary.md",
+      "body_sha256": "2517d2165caef98395b4d0e4e4a3fb73f1f3cd2e16677b4718be96cfa6df5b0a",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/appendix-open-questions.md",
+      "body_sha256": "31184c08b4f96108f0c7cfd88f509d861605be5ce22af7597d84f85280ace7cd",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/appendix-sources.md",
+      "body_sha256": "f7214523ba9039cc2e7d8f17fefc0a655207ca2b2147dce603a1e8dfbbed7d0b",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/README.md",
+      "body_sha256": "63cab3b632cad79d6f699032c4f08aa668474c661982e8ccd340fd56fa864a31",
+      "diagrams": []
+    }
+  ],
+  "supplemental_images": [
+    {
+      "id": "photo-03",
+      "page": "03-quality-and-qualification.md",
+      "anchor": "## 結構：厚度均勻與整片彎曲是不同問題",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Silicon_wafer_with_mirror_finish.jpg",
+      "title": "Silicon wafer with mirror finish.jpg",
+      "author": "NASA Glenn Research Center",
+      "source": "https://commons.wikimedia.org/wiki/File:Silicon_wafer_with_mirror_finish.jpg",
+      "license": "Public domain（美國，PD-USGov-NASA）",
+      "license_url": "https://commons.wikimedia.org/wiki/Template:PD-USGov-NASA",
+      "changes": "使用 Commons 現行版本（原站已裁去原圖說）；本書未再裁切或改色",
+      "width": 305,
+      "alt": "鏡面矽晶圓反射上方物體，旁邊有公分刻度",
+      "caption": "照片 03-A：鏡面反射能幫助觀察外觀，但照片無法提供 TTV、金屬殘留或顆粒檢出限；看起來明亮不能代替允收報告。此為 NASA 圖片，並非昇陽產品。",
+      "body_sha256": "e5f1cd994970c5fea29a32aebcc8f8160c6430f31940269ef3b0e93741f249cd",
+      "status": "已驗收",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    },
+    {
+      "id": "svg-03",
+      "page": "03-quality-and-qualification.md",
+      "anchor": "| 指標 | 要回答的問題 | 不能混成什麼 |",
+      "src": "images/thickness-vs-shape.svg",
+      "title": "厚度差與整片彎曲",
+      "author": "本書編寫者",
+      "source": "https://www.kobelcokaken.co.jp/leo/en/item/sbw/",
+      "license": "原創教學 SVG，未重製來源圖像",
+      "license_url": "",
+      "changes": "依量測概念自行繪製",
+      "width": 360,
+      "alt": "上方剖面厚薄不均，下方薄片整體彎曲但厚度近似一致",
+      "caption": "圖 03-B：兩面間距與整片形貌是兩種資訊。下圖只表示彎曲概念，沒有畫出 bow／warp 的參考面、支撐及邊緣排除條件，不能據此讀取量測值。",
+      "body_sha256": "e5f1cd994970c5fea29a32aebcc8f8160c6430f31940269ef3b0e93741f249cd",
+      "status": "已驗收",
+      "image_sha256": "49a4c029f200c085fb7c41f861eff90f1b3accce19db089c16ceb5200ee115ca",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    },
+    {
+      "id": "svg-06",
+      "page": "06-thinning-services.md",
+      "anchor": "```mermaid\nflowchart TD\n    A[\"正面已有元件的進料\"]",
+      "src": "images/thinning-cross-sections.svg",
+      "title": "一般薄化與 TAIKO 剖面比較",
+      "author": "本書編寫者",
+      "source": "https://www.disco.co.jp/eg/solution/library/grinder/taiko_process.html",
+      "license": "原創教學 SVG，未重製來源圖像",
+      "license_url": "",
+      "changes": "依文字所述幾何原理自行繪製",
+      "width": 360,
+      "alt": "一般薄化整體變薄；TAIKO 內側薄化並保留外周厚環，正面元件側位於下方",
+      "caption": "圖 06-C：A、B 是兩種加工結果的比較，並非先做 A 再做 B。TAIKO 兩端較厚的部分是同一外環在剖面上的交點；外環寬度與厚度未按比例，保護／暫時支撐和後續去環步驟亦省略。TAIKO 為 DISCO 註冊商標。",
+      "body_sha256": "b35ecc22bf230d0e544c92d917305996649dbc7098ac74d052035a9c0a057a25",
+      "status": "已驗收",
+      "image_sha256": "e0f6f12fc86d2f7ae2934adf1e3fde4b98756f78ac3918733b4bcb85e015ba6c",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    },
+    {
+      "id": "photo-01",
+      "page": "01-wafer-roles.md",
+      "anchor": "## 工件分類有兩個軸",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Wafer_with_multiple_Microprocessor_dies_on_it.jpg?width=1280",
+      "title": "Wafer with multiple Microprocessor dies on it.jpg",
+      "author": "Dualmodem Bytton",
+      "source": "https://commons.wikimedia.org/wiki/File:Wafer_with_multiple_Microprocessor_dies_on_it.jpg",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "changes": "使用 Commons 1280 px 縮圖；未裁切或改色",
+      "width": 500,
+      "alt": "未切割的矽晶圓上排列大量重複的微處理器晶粒區塊",
+      "caption": "照片 01-A：整片圓形工件是晶圓，重複的小區塊是尚未切割分離的晶粒。照片可幫助辨認兩者，卻不能從外觀判定一片晶圓此次是產品片、監控片或再生片；此圖不是昇陽或其客戶產品的證據。",
+      "body_sha256": "deaab9bd653b32b96f4a4bb47aa758b8c5c8f1985bfeb03d312146cf9c5c1c30",
+      "status": "已驗收",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    },
+    {
+      "id": "photo-02",
+      "page": "02-reclaim-loop.md",
+      "anchor": "## 量測與控制：每一輪都會改變可用餘裕",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Front_opening_shipping_box_%28bottom_side%29.jpg?width=960",
+      "title": "Front opening shipping box (bottom side).jpg",
+      "author": "Cepheiden",
+      "source": "https://commons.wikimedia.org/wiki/File:Front_opening_shipping_box_(bottom_side).jpg",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "使用 Commons 縮圖；未裁切或改色",
+      "width": 420,
+      "alt": "前開式晶圓運輸盒中的槽位分隔並承載多片晶圓",
+      "caption": "照片 02-A：前開式運輸盒（FOSB）將晶圓分隔在槽位中。交付還要考慮包裝與搬運能否維持加工後狀態；照片本身不能證明盒內潔淨度，也不代表昇陽使用的載具。",
+      "body_sha256": "9b3553aa603c1744cb5705cfe4e7109f6a9fd69edee84b7d022efca439c62a0d",
+      "status": "已驗收",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    },
+    {
+      "id": "photo-02-bench",
+      "page": "02-reclaim-loop.md",
+      "anchor": "設備原廠對去膜、清洗與殘留移除的功能說明",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/WetEtchBench.jpg?width=960",
+      "title": "WetEtchBench.jpg",
+      "author": "Kristian Mølhave",
+      "source": "https://commons.wikimedia.org/wiki/File:WetEtchBench.jpg",
+      "license": "CC BY 2.5",
+      "license_url": "https://creativecommons.org/licenses/by/2.5/",
+      "changes": "使用 Commons 縮圖；未裁切或改色",
+      "width": 640,
+      "alt": "Danchip 潔淨室的濕式蝕刻工作台及晶圓載具",
+      "caption": "照片 02-B：Danchip 潔淨室的濕式蝕刻工作台，讓「去除膜層」對應到實際設備環境。它不是完整再生產線；不同膜種與來料仍須選擇相容程序，不能照照片推定配方或昇陽設備。",
+      "body_sha256": "9b3553aa603c1744cb5705cfe4e7109f6a9fd69edee84b7d022efca439c62a0d",
+      "status": "已驗收",
+      "validation_report": "plan/psi/image-update-validation.json",
+      "visual_review": "主編核對照片內容與剖面關係；瀏覽器確認桌機／手機解碼、尺寸及無頁面溢出"
+    }
+  ]
+}

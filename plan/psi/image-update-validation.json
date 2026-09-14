@@ -1,0 +1,264 @@
+{
+  "checked_at": "2026-09-14T03:58:44.694402+00:00",
+  "pages": [
+    {
+      "page": "01-wafer-roles.html",
+      "mode": "desktop",
+      "overflow": false,
+      "footer": true,
+      "images": [
+        {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Wafer_with_multiple_Microprocessor_dies_on_it.jpg?width=1280",
+          "naturalWidth": 1280,
+          "naturalHeight": 1282,
+          "width": 500,
+          "height": 500.78125,
+          "complete": true,
+          "alt": "未切割的矽晶圓上排列大量重複的微處理器晶粒區塊"
+        }
+      ],
+      "diagrams": [
+        {
+          "visible": true,
+          "errors": 0,
+          "labelPx": 16
+        }
+      ],
+      "page_errors": []
+    },
+    {
+      "page": "02-reclaim-loop.html",
+      "mode": "desktop",
+      "overflow": false,
+      "footer": true,
+      "images": [
+        {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/WetEtchBench.jpg?width=960",
+          "naturalWidth": 960,
+          "naturalHeight": 536,
+          "width": 640,
+          "height": 357.328125,
+          "complete": true,
+          "alt": "Danchip 潔淨室的濕式蝕刻工作台及晶圓載具"
+        },
+        {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Front_opening_shipping_box_%28bottom_side%29.jpg?width=960",
+          "naturalWidth": 960,
+          "naturalHeight": 1280,
+          "width": 420,
+          "height": 560,
+          "complete": true,
+          "alt": "前開式晶圓運輸盒中的槽位分隔並承載多片晶圓"
+        }
+      ],
+      "diagrams": [
+        {
+          "visible": true,
+          "errors": 0,
+          "labelPx": 16
+        }
+      ],
+      "page_errors": []
+    },
+    {
+      "page": "03-quality-and-qualification.html",
+      "mode": "desktop",
+      "overflow": false,
+      "footer": true,
+      "images": [
+        {
+          "src": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Silicon_wafer_with_mirror_finish.jpg",
+          "naturalWidth": 305,
+          "naturalHeight": 357,
+          "width": 305,
+          "height": 357,
+          "complete": true,
+          "alt": "鏡面矽晶圓反射上方物體，旁邊有公分刻度"
+        },
+        {
+          "src": "images/thickness-vs-shape.svg",
+          "naturalWidth": 360,
+          "naturalHeight": 350,
+          "width": 360,
+          "height": 350,
+          "complete": true,
+          "alt": "上方剖面厚薄不均，下方薄片整體彎曲但厚度近似一致"
+        }
+      ],
+      "diagrams": [],
+      "page_errors": []
+    },
+    {
+      "page": "06-thinning-services.html",
+      "mode": "desktop",
+      "overflow": false,
+      "footer": true,
+      "images": [
+        {
+          "src": "images/thinning-cross-sections.svg",
+          "naturalWidth": 360,
+          "naturalHeight": 500,
+          "width": 360,
+          "height": 500,
+          "complete": true,
+          "alt": "一般薄化整體變薄；TAIKO 內側薄化並保留外周厚環，正面元件側位於下方"
+        }
+      ],
+      "diagrams": [
+        {
+          "visible": true,
+          "errors": 0,
+          "labelPx": 16
+        },
+        {
+          "visible": true,
+          "errors": 0,
+          "labelPx": 16
+        }
+      ],
+      "page_errors": []
+    },
+    {
+      "page": "99-image-credits.html",
+      "mode": "desktop",
+      "overflow": false,
+      "footer": true,
+      "images": [],
+      "diagrams": [],
+      "page_errors": []
+    },
+    {
+      "page": "01-wafer-roles.html",
+      "mode": "mobile",
+      "overflow": false,
+      "footer": true,
+      "images": [
+        {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Wafer_with_multiple_Microprocessor_dies_on_it.jpg?width=1280",
+          "naturalWidth": 1280,
+          "naturalHeight": 1282,
+          "width": 358,
+          "height": 358.546875,
+          "complete": true,
+          "alt": "未切割的矽晶圓上排列大量重複的微處理器晶粒區塊"
+        }
+      ],
+      "diagrams": [
+        {
+          "visible": true,
+          "errors": 0,
+          "labelPx": 16
+        }
+      ],
+      "page_errors": []
+    },
+    {
+      "page": "02-reclaim-loop.html",
+      "mode": "mobile",
+      "overflow": false,
+      "footer": true,
+      "images": [
+        {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/WetEtchBench.jpg?width=960",
+          "naturalWidth": 960,
+          "naturalHeight": 536,
+          "width": 358,
+          "height": 199.875,
+          "complete": true,
+          "alt": "Danchip 潔淨室的濕式蝕刻工作台及晶圓載具"
+        },
+        {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Front_opening_shipping_box_%28bottom_side%29.jpg?width=960",
+          "naturalWidth": 960,
+          "naturalHeight": 1280,
+          "width": 358,
+          "height": 477.328125,
+          "complete": true,
+          "alt": "前開式晶圓運輸盒中的槽位分隔並承載多片晶圓"
+        }
+      ],
+      "diagrams": [
+        {
+          "visible": true,
+          "errors": 0,
+          "labelPx": 12.298443370907139
+        }
+      ],
+      "page_errors": []
+    },
+    {
+      "page": "03-quality-and-qualification.html",
+      "mode": "mobile",
+      "overflow": false,
+      "footer": true,
+      "images": [
+        {
+          "src": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Silicon_wafer_with_mirror_finish.jpg",
+          "naturalWidth": 305,
+          "naturalHeight": 357,
+          "width": 305,
+          "height": 357,
+          "complete": true,
+          "alt": "鏡面矽晶圓反射上方物體，旁邊有公分刻度"
+        },
+        {
+          "src": "images/thickness-vs-shape.svg",
+          "naturalWidth": 360,
+          "naturalHeight": 350,
+          "width": 358,
+          "height": 348.046875,
+          "complete": true,
+          "alt": "上方剖面厚薄不均，下方薄片整體彎曲但厚度近似一致"
+        }
+      ],
+      "diagrams": [],
+      "page_errors": []
+    },
+    {
+      "page": "06-thinning-services.html",
+      "mode": "mobile",
+      "overflow": false,
+      "footer": true,
+      "images": [
+        {
+          "src": "images/thinning-cross-sections.svg",
+          "naturalWidth": 360,
+          "naturalHeight": 500,
+          "width": 358,
+          "height": 497.21875,
+          "complete": true,
+          "alt": "一般薄化整體變薄；TAIKO 內側薄化並保留外周厚環，正面元件側位於下方"
+        }
+      ],
+      "diagrams": [
+        {
+          "visible": true,
+          "errors": 0,
+          "labelPx": 16
+        },
+        {
+          "visible": true,
+          "errors": 0,
+          "labelPx": 16
+        }
+      ],
+      "page_errors": []
+    },
+    {
+      "page": "99-image-credits.html",
+      "mode": "mobile",
+      "overflow": false,
+      "footer": true,
+      "images": [],
+      "diagrams": [],
+      "page_errors": []
+    }
+  ],
+  "failures": [],
+  "summary": {
+    "page_checks": 10,
+    "image_checks": 12,
+    "mermaid_checks": 8,
+    "failures": 0
+  }
+}

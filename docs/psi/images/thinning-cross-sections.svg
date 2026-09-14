@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="500" viewBox="0 0 360 500" role="img" aria-labelledby="title desc">
+<title id="title">一般薄化與 TAIKO 的工件剖面比較</title>
+<desc id="desc">相同來料可比較兩種加工後幾何：一般薄化整體變薄；TAIKO 內側變薄，外周保留厚環。兩側厚區為同一外環的剖面，正面元件位於下方。</desc>
+<rect width="360" height="500" rx="12" fill="#f4f7fb"/>
+<g font-family="sans-serif" font-size="16" fill="#172b4d">
+<text x="20" y="30" font-weight="bold">來料｜從背面移除矽基材</text>
+<text x="150" y="61">背面</text>
+<rect x="30" y="74" width="300" height="54" fill="#bdd8ed" stroke="#275b82" stroke-width="2"/>
+<path d="M30 133 H330" stroke="#b25419" stroke-width="6"/>
+<text x="76" y="161">正面元件側（橘線）</text>
+<text x="20" y="208" font-weight="bold">A｜一般薄化後</text>
+<rect x="30" y="237" width="300" height="16" fill="#bdd8ed" stroke="#275b82" stroke-width="2"/>
+<path d="M30 258 H330" stroke="#b25419" stroke-width="6"/>
+<text x="20" y="292">整體厚度降低，需配合搬運支撐。</text>
+<text x="20" y="340" font-weight="bold">B｜TAIKO 薄化後</text>
+<path d="M30 366 H62 V404 H298 V366 H330 V420 H30 Z" fill="#bdd8ed" stroke="#275b82" stroke-width="2"/>
+<path d="M30 425 H330" stroke="#b25419" stroke-width="6"/>
+<text x="114" y="385">內側變薄</text>
+<text x="20" y="458">兩側厚區＝同一外周厚環的剖面。</text>
+<text x="20" y="483">非比例；省略保護層與後續去環。</text>
+</g></svg>

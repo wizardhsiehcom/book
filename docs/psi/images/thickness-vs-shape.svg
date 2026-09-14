@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="350" viewBox="0 0 360 350" role="img" aria-labelledby="title desc">
+<title id="title">厚度差與整片彎曲是不同問題</title>
+<desc id="desc">上圖的兩面間距由左到右增加；下圖的薄片整體彎曲，但兩面近似等距。只示意概念，不定義 bow 或 warp 的量測方法。</desc>
+<rect width="360" height="350" rx="12" fill="#f4f7fb"/>
+<g font-family="sans-serif" font-size="16" fill="#172b4d">
+<text x="20" y="32" font-weight="bold">A｜厚度不均：兩面間距不同</text>
+<path d="M30 88 L330 62 L330 114 L30 114 Z" fill="#bdd8ed" stroke="#275b82" stroke-width="2"/>
+<path d="M60 85 V114 M55 85 H65 M55 114 H65 M296 65 V114 M291 65 H301 M291 114 H301" fill="none" stroke="#ae4518" stroke-width="2"/>
+<text x="46" y="144">較薄</text><text x="276" y="144">較厚</text>
+<text x="20" y="191" font-weight="bold">B｜整片彎曲：厚度可近似一致</text>
+<path d="M30 258 Q180 184 330 258 L330 277 Q180 203 30 277 Z" fill="#bdd8ed" stroke="#275b82" stroke-width="2"/>
+<text x="20" y="311">厚度差與形貌要分開量測。</text>
+<text x="20" y="335">非比例剖面；不表示允收門檻。</text>
+</g></svg>
