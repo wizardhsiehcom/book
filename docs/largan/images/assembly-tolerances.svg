@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 590" role="img" aria-labelledby="title desc">
+<title id="title">偏心、傾斜與間距誤差</title><desc id="desc">四列共用水平機械基準軸。理想組件中心重合；偏心列中央鏡片向上；傾斜列中央鏡片旋轉；間距列右方鏡片沿軸移動。虛線為理想位置，橘色為偏移後。非特定公司產品、非按比例。</desc>
+<rect width="740" height="590" fill="#f8fafc"/>
+<g font-family="sans-serif" font-size="20" fill="#172554">
+<text x="25" y="36">同一條機械基準軸，三種不同的位置誤差</text>
+<g stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 6"><path d="M 210 120 H 700 M 210 240 H 700 M 210 360 H 700 M 210 480 H 700"/></g>
+<g stroke="#0369a1" stroke-width="5"><path d="M 290 80 V 160 M 440 80 V 160 M 590 80 V 160 M 290 200 V 280 M 590 200 V 280 M 290 320 V 400 M 590 320 V 400 M 290 440 V 520 M 440 440 V 520"/></g>
+<g stroke="#94a3b8" stroke-width="3" stroke-dasharray="5 5"><path d="M 440 200 V 280 M 440 320 V 400 M 590 440 V 520"/></g>
+<g stroke="#c2410c" stroke-width="6"><path d="M 440 170 V 250 M 420 324 L 460 396 M 635 440 V 520"/></g>
+<text x="25" y="125">理想定位</text><text x="25" y="245">偏心 δ：橫向移動</text><text x="25" y="365">傾斜 θ：方向旋轉</text><text x="25" y="485">間距 Δd：沿軸移動</text>
+<text x="25" y="555">藍色為鏡片位置；橘色為偏移；虛線為基準。</text><text x="25" y="581" font-size="17">非特定公司產品、非按比例；誤差刻意放大，不代表公差數值或波前。</text></g></svg>

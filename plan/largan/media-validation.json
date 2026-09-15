@@ -1,0 +1,62 @@
+[
+  {
+    "chapter": "02-optical-tradeoffs",
+    "width": 1440,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lens_and_wavefronts.gif",
+    "loaded": true
+  },
+  {
+    "chapter": "02-optical-tradeoffs",
+    "width": 1440,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Aperture-Lens.gif",
+    "loaded": true
+  },
+  {
+    "chapter": "03-image-quality",
+    "width": 1440,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/0/02/Focal_plane.gif",
+    "loaded": true
+  },
+  {
+    "chapter": "04-lens-design-materials",
+    "width": 1440,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Lens-sphericalaberration.png",
+    "loaded": true
+  },
+  {
+    "chapter": "07-telephoto-actuation",
+    "width": 1440,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Zoom_prinzip.gif",
+    "loaded": true
+  },
+  {
+    "chapter": "02-optical-tradeoffs",
+    "width": 390,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lens_and_wavefronts.gif",
+    "loaded": true
+  },
+  {
+    "chapter": "02-optical-tradeoffs",
+    "width": 390,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Aperture-Lens.gif",
+    "loaded": true
+  },
+  {
+    "chapter": "03-image-quality",
+    "width": 390,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/0/02/Focal_plane.gif",
+    "loaded": true
+  },
+  {
+    "chapter": "04-lens-design-materials",
+    "width": 390,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Lens-sphericalaberration.png",
+    "loaded": true
+  },
+  {
+    "chapter": "07-telephoto-actuation",
+    "width": 390,
+    "src": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Zoom_prinzip.gif",
+    "loaded": true
+  }
+]

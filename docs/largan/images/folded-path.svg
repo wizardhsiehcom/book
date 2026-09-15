@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" role="img" aria-labelledby="title desc">
+<title id="title">直立與折疊光路的方向比較</title><desc id="desc">左側光線沿手機厚度穿過鏡組抵達感測器；右側光線先向下再由反射面轉向右側。折疊交換佔用方向，不表示焦距等於總長。非特定公司產品、非按比例。</desc>
+<rect width="780" height="470" fill="#f8fafc"/>
+<g font-family="sans-serif" fill="#172554" font-size="20">
+<text x="30" y="38">直立：鏡組沿厚度排列</text><text x="365" y="38">折疊：鏡組沿機身平面排列</text>
+<rect x="45" y="92" width="250" height="282" rx="12" fill="#e2e8f0"/>
+<rect x="365" y="92" width="380" height="282" rx="12" fill="#e2e8f0"/>
+<g stroke="#0369a1" stroke-width="4" fill="#bae6fd"><ellipse cx="169" cy="180" rx="66" ry="14"/><ellipse cx="169" cy="230" rx="55" ry="14"/><ellipse cx="565" cy="220" rx="13" ry="53"/><ellipse cx="610" cy="220" rx="13" ry="53"/></g>
+<path d="M 169 66 V 325 M 438 66 V 220 H 685" fill="none" stroke="#c2410c" stroke-width="5"/>
+<path d="M 160 310 L 169 325 L 178 310 M 670 211 L 685 220 L 670 229" fill="none" stroke="#c2410c" stroke-width="4"/>
+<path d="M 405 187 L 471 253" stroke="#475569" stroke-width="9"/>
+<path d="M 106 334 H 232 M 695 163 V 277" stroke="#172554" stroke-width="10"/>
+<text x="93" y="286">鏡片組</text><text x="520" y="305">鏡片組</text><text x="105" y="364">感測器</text><text x="655" y="326">感測器</text><text x="381" y="155">轉折面</text>
+<text x="30" y="414">橘線：光線前進方向；藍色：教學鏡片；深色：感測面</text>
+<text x="30" y="450" font-size="18">非特定公司產品、非按比例；不表示片數、曲率、光程或入瞳尺寸。</text></g></svg>

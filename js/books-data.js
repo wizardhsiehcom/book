@@ -3,6 +3,15 @@
 // ═══════════════════════════════════════════════════════
 const BOOKS = [
   {
+    icon: "📷",
+    title: "從手機鏡頭看懂大立光",
+    desc: "從光學取捨、非球面成形與組裝良率，走到產品組合、財務口徑與大立光的公開證據",
+    tags: ["optics", "lens", "Largan"],
+    href: "book/largan/html/index.html",
+    accent: "#7c3aed",
+    glow: "rgba(124,58,237,0.18)",
+  },
+  {
     icon: "🔬",
     title: "從半導體檢測看懂倍利科技（V5）",
     desc: "從光學、量測與 AI 分類，走到整機、OM 升級、Inline 導入與倍利產品證據",

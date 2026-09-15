@@ -1,0 +1,237 @@
+{
+  "book": "largan",
+  "checked_date": "2026-09-15",
+  "image_type": "original Mermaid, SVG diagrams and teaching tables",
+  "external_images": [],
+  "svg_assets": [
+    {
+      "file": "docs/largan/images/assembly-tolerances.svg",
+      "sha256": "dfb4d0ddcd1fdedeace58f28401a6528cfad85fba9d40120f3a998c96e781d5f"
+    },
+    {
+      "file": "docs/largan/images/folded-path.svg",
+      "sha256": "cd5634f1e48c17eedcf2a046cc320a4244f28d628eec5ac199c469c4ba27e66c"
+    }
+  ],
+  "pages": [
+    {
+      "file": "docs/largan/00-map.md",
+      "body_sha256": "5bb2a31750f078f48164dc3488d6d4dd7de4f2e121f8ac06b79d225fc9a03d90",
+      "diagrams": [
+        {
+          "id": "00-map-mermaid-1",
+          "insertion_heading": "全書地圖：把一顆鏡頭追到一筆可解釋的收入",
+          "source_line": 5,
+          "diagram_sha256": "21c2404035d3d5626d0871cadb97c9a676fd3f277333c8c55261d20215365cb0",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/01-camera-value-chain.md",
+      "body_sha256": "e7c242c17963d754a89b1e883158e5de17bfef94dadb1d5a650b144254e18470",
+      "diagrams": [
+        {
+          "id": "01-camera-value-chain-mermaid-1",
+          "insertion_heading": "結構與角色：把一顆相機拆到零件層",
+          "source_line": 26,
+          "diagram_sha256": "701606755c22101c44646f5482b646e76074c9d9125f1aa38605db6bbf8db172",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/02-optical-tradeoffs.md",
+      "body_sha256": "0892dd77665b90a19cc4bd7876bdf8d5131c1f1b1c61332eba04f1e263e28fd0",
+      "diagrams": [
+        {
+          "id": "02-optical-tradeoffs-mermaid-1",
+          "insertion_heading": "作用機制三：F 數是比值，長焦要維持 F 數就得放大口徑",
+          "source_line": 89,
+          "diagram_sha256": "910ac3cc346f36ec21bf62b58e5bd8b9b39f862f2188b37f36ef928f7924bf1a",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/03-image-quality.md",
+      "body_sha256": "c14687b21e5de36fd858f5835df6d7c8ee0f6a11b1eca024eb02b028151664a8",
+      "diagrams": [
+        {
+          "id": "03-image-quality-mermaid-1",
+          "insertion_heading": "結構與角色：解析力是一條鏈，不是一個數字",
+          "source_line": 15,
+          "diagram_sha256": "a55850ef1b022da3659f623b16bc306157e4f0ed132b5132ef67d1961baaa262",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/04-lens-design-materials.md",
+      "body_sha256": "d5e9ac3107b5492a463d2f4bdb9ab28340bf9a0324b5205b70c37b759daceb9f",
+      "diagrams": [
+        {
+          "id": "04-lens-design-materials-mermaid-1",
+          "insertion_heading": "結構與角色：一顆鏡頭裡有哪些可調的東西",
+          "source_line": 20,
+          "diagram_sha256": "1f870d922694b72409a1ea9e508eb5cdf224e99c20ec993d083bf4987280acc5",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/05-molding-process.md",
+      "body_sha256": "90aef7e6ea477d4559c682acafaca723881795d39a94cde70d833f51ebbe3ef0",
+      "diagrams": [
+        {
+          "id": "05-molding-process-mermaid-1",
+          "insertion_heading": "結構與角色：四個站點，各自定義不同的東西",
+          "source_line": 21,
+          "diagram_sha256": "2e189a16602e072fb691986a05d68d6bbacb7019b0b12982eab48e2e0f17ec91",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/06-assembly-yield-cost.md",
+      "body_sha256": "be2c27fa05e701dc5639a22856dd500b21a3d2b7b7ba12bc505ef2037222a1f0",
+      "diagrams": [
+        {
+          "id": "06-assembly-yield-cost-mermaid-1",
+          "insertion_heading": "作用機制：三種幾何誤差，三種影像徵狀",
+          "source_line": 61,
+          "diagram_sha256": "7cafa65a5cc78cf75846a41e3d43fe3591b4854528bf4f844df5f6ff46ab932e",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        },
+        {
+          "id": "06-assembly-yield-cost-mermaid-2",
+          "insertion_heading": "量測與控制：把良率變成一筆可以重算的成本",
+          "source_line": 102,
+          "diagram_sha256": "46e1645e14c3b4925473e423b9cf94fbd34e0777cb9b26459d5bfecc04e40b7f",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/07-telephoto-actuation.md",
+      "body_sha256": "a8e4f96801acbcc5a0b0fd9beff21f540843292744637dff6f51633a25295e02",
+      "diagrams": []
+    },
+    {
+      "file": "docs/largan/08-qualification-competition.md",
+      "body_sha256": "7e92b614c3b42acecfe886bc3a17a105d9a096e83e7f0d6c257c31a54d116828",
+      "diagrams": [
+        {
+          "id": "08-qualification-competition-mermaid-1",
+          "insertion_heading": "結構與角色：從設計協作到認列收入的證據階梯",
+          "source_line": 13,
+          "diagram_sha256": "a9e1ded7cc5252dd7e137bf4266c9ca7fe8d7f28be0a141d83c4575e6ebe52e1",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/09-business-economics.md",
+      "body_sha256": "2652b24235e75fedb75a7c381a08286cfd38761c9896bb06f3dee26018e03ba8",
+      "diagrams": [
+        {
+          "id": "09-business-economics-mermaid-1",
+          "insertion_heading": "結構與角色：把營收拆成兩個可查的因子",
+          "source_line": 37,
+          "diagram_sha256": "be2a78e5a9278258d817982d564ca3aded4b7a0be2c81ef2e347ec7606f974b4",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/10-new-applications.md",
+      "body_sha256": "cc5952f02902001730042ef1e90343d7758014f2754d45cbe42298ffc5a32610",
+      "diagrams": [
+        {
+          "id": "10-new-applications-mermaid-1",
+          "insertion_heading": "結構與角色：三種不同距離的遷移",
+          "source_line": 27,
+          "diagram_sha256": "ee9f6747c38b5fbe70275b758e58e1129fafff7caade9e09b9c63d80ed49344a",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/11-largan-evidence-map.md",
+      "body_sha256": "d188e4bc8d1686ac6ae648272dde9176349bf844159d1d549c2b2b3b0293a9ff",
+      "diagrams": [
+        {
+          "id": "11-largan-evidence-map-mermaid-1",
+          "insertion_heading": "結構與角色：兩把尺，不能合成一個分數",
+          "source_line": 30,
+          "diagram_sha256": "276405965bea193e94973684f52bd036d8349cd78eddaef1a368397ce5cbb98c",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/12-reading-news.md",
+      "body_sha256": "60f7b7320ebfa3a1b71779120a9716e39bd4efd2f23f080474c6be4d8ddcf763",
+      "diagrams": [
+        {
+          "id": "12-reading-news-mermaid-1",
+          "insertion_heading": "作用機制：從技術機會走到收款，中間有多個條件",
+          "source_line": 30,
+          "diagram_sha256": "b9b9decea1cb8844f7406da5fcc881a28e683c612079d2c6d357b1e366cf7ac7",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/largan/99-image-credits.md",
+      "body_sha256": "8422a343269c6702310fa47497cbbd7d2a96c25565d03b930ffd5e6b807867dd",
+      "diagrams": []
+    },
+    {
+      "file": "docs/largan/README.md",
+      "body_sha256": "548a22a1eb38d592056d589ebd1a0e55ee2d0d5e65dbe819a95e71cdc743be09",
+      "diagrams": []
+    },
+    {
+      "file": "docs/largan/appendix-glossary.md",
+      "body_sha256": "62d957da54283ec6574bd01393e3877c4d1ea355474cf6b789542c5c1fd5d053",
+      "diagrams": []
+    },
+    {
+      "file": "docs/largan/appendix-open-questions.md",
+      "body_sha256": "ede4df1d06bc3f25b699cd6830d7d57570b3147a1a5d03a722859a2b1b721fb4",
+      "diagrams": []
+    },
+    {
+      "file": "docs/largan/appendix-sources.md",
+      "body_sha256": "144ef48ee9164e7255fa746f3db2958435016fdb0820b54e28607c778ea9e1be",
+      "diagrams": []
+    }
+  ]
+}

@@ -1,0 +1,745 @@
+{
+  "checked_at": "2026-09-14T16:47:11.381006+00:00",
+  "pages": [
+    {
+      "page": "00-map.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 323.15625,
+          "viewBoxWidth": 323.16796875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 15.999419806360374
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "01-camera-value-chain.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 515.75,
+          "viewBoxWidth": 515.75,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "02-optical-tradeoffs.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 423.921875,
+          "viewBoxWidth": 423.921875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "03-image-quality.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 496.5,
+          "viewBoxWidth": 496.5,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "04-lens-design-materials.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 161.6875,
+          "viewBoxWidth": 161.6875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "05-molding-process.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 546.21875,
+          "viewBoxWidth": 546.23046875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 15.99965673829871
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "06-assembly-yield-cost.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [
+        {
+          "src": "images/assembly-tolerances.svg",
+          "loaded": true
+        }
+      ],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 688,
+          "viewBoxWidth": 753,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 14.618857901726427
+        },
+        {
+          "width": 653.90625,
+          "viewBoxWidth": 653.91796875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 15.999713266787333
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "07-telephoto-actuation.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [
+        {
+          "src": "images/folded-path.svg",
+          "loaded": true
+        }
+      ],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "08-qualification-competition.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 314.359375,
+          "viewBoxWidth": 314.359375,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "09-business-economics.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 688,
+          "viewBoxWidth": 857.03125,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 12.844339106654513
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "10-new-applications.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 688,
+          "viewBoxWidth": 741.9453125,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 14.836673019616928
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "11-largan-evidence-map.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 127,
+          "viewBoxWidth": 127,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "12-reading-news.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 191,
+          "viewBoxWidth": 191,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "99-image-credits.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "appendix-glossary.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "appendix-open-questions.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "appendix-sources.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "index.html",
+      "viewport": "desktop",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "00-map.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 323.15625,
+          "viewBoxWidth": 323.16796875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 15.999419806360374
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "01-camera-value-chain.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 480,
+          "viewBoxWidth": 515.75,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 14.890935530780418
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "02-optical-tradeoffs.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 358,
+          "viewBoxWidth": 423.921875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 13.511923629796174
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "03-image-quality.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 480,
+          "viewBoxWidth": 496.5,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 15.468277945619336
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "04-lens-design-materials.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 161.6875,
+          "viewBoxWidth": 161.6875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "05-molding-process.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 480,
+          "viewBoxWidth": 546.23046875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 14.059999284871456
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "06-assembly-yield-cost.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [
+        {
+          "src": "images/assembly-tolerances.svg",
+          "loaded": true
+        }
+      ],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 640,
+          "viewBoxWidth": 753,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 13.598937583001328
+        },
+        {
+          "width": 640,
+          "viewBoxWidth": 653.91796875,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 15.659456521089826
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "07-telephoto-actuation.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [
+        {
+          "src": "images/folded-path.svg",
+          "loaded": true
+        }
+      ],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "08-qualification-competition.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 314.359375,
+          "viewBoxWidth": 314.359375,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "09-business-economics.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 680,
+          "viewBoxWidth": 857.03125,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 12.694986326344576
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "10-new-applications.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 640,
+          "viewBoxWidth": 741.9453125,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 13.801556297318072
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "11-largan-evidence-map.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 127,
+          "viewBoxWidth": 127,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "12-reading-news.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [
+        {
+          "width": 191,
+          "viewBoxWidth": 191,
+          "visible": true,
+          "errors": 0,
+          "effective_font_px": 16
+        }
+      ],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "99-image-credits.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "appendix-glossary.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "appendix-open-questions.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "appendix-sources.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    },
+    {
+      "page": "index.html",
+      "viewport": "mobile",
+      "overflow": false,
+      "images": [],
+      "footer": "../../../index.html",
+      "diagrams": [],
+      "page_errors": [],
+      "warnings": [
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-R.woff2",
+        "Failed to decode downloaded font: http://127.0.0.1:59093/book/largan/html/assets/fonts/GenWanMin2-SB.woff2",
+        "OTS parsing error: maxp: Bad maxZones: 0\ncmap: Failed to read segment 1609\ncmap: Failed to parse format 4 cmap subtable 0\ncmap: Failed to parse table"
+      ]
+    }
+  ],
+  "inspection_note": "Shadow roots exposed only in test browser; no production patch.",
+  "failures": [],
+  "small_diagram_labels": [],
+  "summary": {
+    "page_checks": 36,
+    "unique_pages": 18,
+    "svg_checks": 26,
+    "failures": 0,
+    "small_labels": 0
+  }
+}

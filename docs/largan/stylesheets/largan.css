@@ -1,0 +1,42 @@
+/* Keep evidence columns readable inside Material's horizontal table scroller. */
+.md-typeset table:not([class]):has(th:nth-child(8)) {
+  min-width: 1280px;
+}
+.md-typeset img[src$=".svg"] {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  background: #fff;
+}
+.md-typeset p:has(> img[src$=".svg"]) {
+  overflow-x: auto;
+}
+.md-typeset p > img[src$=".svg"] {
+  width: 100%;
+  min-width: 640px;
+  max-width: none;
+}
+.md-typeset .diagram-scroll {
+  overflow-x: auto;
+  margin: 1em 0;
+}
+.md-typeset .diagram-scroll .mermaid {
+  min-width: var(--diagram-width, 640px);
+}
+
+/* Commons media loads directly from the online source. */
+.md-typeset .wiki-media {
+  margin: 1.5em 0 .75em;
+  padding: .75em;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .5rem;
+  background: #fff;
+  text-align: center;
+}
+.md-typeset .wiki-media img {
+  display: block;
+  max-width: 100%;
+  max-height: 420px;
+  height: auto;
+  margin: auto;
+}
