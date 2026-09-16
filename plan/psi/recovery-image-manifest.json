@@ -1,0 +1,229 @@
+{
+  "book": "psi",
+  "checked_date": "2026-09-16",
+  "image_type": "original Mermaid diagrams and tables; existing photos and SVG retained",
+  "external_images": "unchanged; see docs/psi/99-image-credits.md and plan/psi/image-additions.json",
+  "pages": [
+    {
+      "file": "docs/psi/00-map.md",
+      "body_sha256": "68230c71e7ec2c33b20fa02fdc875f50b8bdebe4894dcaeef440583d9fc572cb",
+      "diagrams": [
+        {
+          "id": "00-map-mermaid-1",
+          "insertion_heading": "全書地圖：把一片工件追到一筆可解釋的收入",
+          "source_line": 5,
+          "diagram_sha256": "20758b56059ab61f791d4b4079dca270606af76ba56b29ea4d234af4dc0b689d",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/01-wafer-roles.md",
+      "body_sha256": "4418e0f33b9750982ac1894a961993c2c04c5a7a3274e94978f11a1c30df909e",
+      "diagrams": [
+        {
+          "id": "01-wafer-roles-mermaid-1",
+          "insertion_heading": "工件分類有兩個軸",
+          "source_line": 27,
+          "diagram_sha256": "70784ee99d85029e62f66c5434bd513de53de68329a411d22efd0ef868ab53d3",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/02-reclaim-loop.md",
+      "body_sha256": "a2fd220ace55f18ec70c5bba393092abda877540fbc2e38155f81b738a548082",
+      "diagrams": [
+        {
+          "id": "02-reclaim-loop-mermaid-1",
+          "insertion_heading": "輸入、操作與輸出：閉環有不回來的出口",
+          "source_line": 15,
+          "diagram_sha256": "01431986d1aa31501268be303487a9b100c3ea6337d0718e58eca3ba3b91e42f",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/03-quality-and-qualification.md",
+      "body_sha256": "cfb286bac3095263f476daaa7ea3f9b5c781d392d9abb2f786040cd2c828a317",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/04-reuse-economics.md",
+      "body_sha256": "06fcf6ded5a2d483a7c021a26fb581ef06b9ad7478169b279eefef1db40b2a36",
+      "diagrams": [
+        {
+          "id": "04-reuse-economics-mermaid-1",
+          "insertion_heading": "輸入、操作與輸出：費用在嘗試時發生",
+          "source_line": 34,
+          "diagram_sha256": "5d6cfd532300fcb31c5bdaa2f748e0f36064c8a47c5c97d9c68916147d75cfb9",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/05-demand-and-new-test-wafers.md",
+      "body_sha256": "b06d3f80c354afd988fc47aa720191d83f4058d11702b9b9dc9a0f3a7ce3955e",
+      "diagrams": [
+        {
+          "id": "05-demand-and-new-test-wafers-mermaid-1",
+          "insertion_heading": "工件與流量：新片補充，回用延長服役",
+          "source_line": 11,
+          "diagram_sha256": "28255d05096142d7c8d777a8fbe46b7c04a4711125ca3b1c1b13c9b8e10c613f",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        },
+        {
+          "id": "05-demand-and-new-test-wafers-mermaid-2",
+          "insertion_heading": "輸入、操作與輸出：需求模型先定分母",
+          "source_line": 37,
+          "diagram_sha256": "ff6b150258475fc8059c09058773bf1f0b54a656b5a01a7b21dd8e36c7db1465",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/06-thinning-services.md",
+      "body_sha256": "4d7701ab34da361a099bec440643efcca2ed5a6addcc33fa8c74c3bc038b9b7a",
+      "diagrams": [
+        {
+          "id": "06-thinning-services-mermaid-1",
+          "insertion_heading": "工件結構：加工面與保護面",
+          "source_line": 9,
+          "diagram_sha256": "d59331bcbe27667d0fcff6d0a6d30afef1b4841c2844082709c7374f60720b34",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        },
+        {
+          "id": "06-thinning-services-mermaid-2",
+          "insertion_heading": "輸入、操作與輸出：一般背磨與 TAIKO",
+          "source_line": 34,
+          "diagram_sha256": "1a0466b698fcc2533603a74cda728f2dd9e1413e1827c0911fdd3e2940b513c3",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/07-advanced-materials.md",
+      "body_sha256": "56cc7bd4ea368ab8ffd044f5e7c950bec3349ea913f3fd7de4003dea52b6a0a0",
+      "diagrams": [
+        {
+          "id": "07-advanced-materials-mermaid-1",
+          "insertion_heading": "工件與結構：先分功能，再看材料",
+          "source_line": 20,
+          "diagram_sha256": "8675fa1cd8a5b8b17a65919041e473cbf34a44eebba3299f0cb98cb4e846632d",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/08-capacity-and-cashflow.md",
+      "body_sha256": "46feaf4f88cd15ee6e49da2d8bae281ae20eb4687f030079a23b5221c1656516",
+      "diagrams": [
+        {
+          "id": "08-capacity-and-cashflow-mermaid-1",
+          "insertion_heading": "結構：四種產能不要共用一個分母",
+          "source_line": 18,
+          "diagram_sha256": "79c2c281a59f22fecc8122b2091c556105e02647000cd6d43a0f23853eba1093",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/09-psi-evidence-map.md",
+      "body_sha256": "adb92c4d1bee82a1257d90dd0b020667b49b5de1286b5c4f7b8133b57170b337",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/10-reading-news.md",
+      "body_sha256": "2bff6ff87e234ae36532011c7bc0821495c193fbf3432b3d0443f8f966b0ca0c",
+      "diagrams": [
+        {
+          "id": "10-reading-news-mermaid-1",
+          "insertion_heading": "結構：投資、能力與收入有不同證據",
+          "source_line": 9,
+          "diagram_sha256": "9ac969e50707d441b7cbba08b0e9fc73d96ba0ab78dec19cd56b3cac8056e6e4",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/11-disposition-cases.md",
+      "body_sha256": "e48f9937e20ad6971b7ede16aa28863a3e25ba5d4804fb567ee51147b20c0a97",
+      "diagrams": [
+        {
+          "id": "11-disposition-cases-mermaid-1",
+          "insertion_heading": "案例一：履歷不明的來料 {#case-1}",
+          "source_line": 21,
+          "diagram_sha256": "90925340b2cb289fc262f31263193684df22335aa09c224fc32c794f3b137055",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        },
+        {
+          "id": "11-disposition-cases-mermaid-2",
+          "insertion_heading": "案例二：加工後仍不合格 {#case-2}",
+          "source_line": 46,
+          "diagram_sha256": "c508e5434288069e55eb860ca24fe00aa02a71096f23fb835599ae4f8dbd57b5",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        },
+        {
+          "id": "11-disposition-cases-mermaid-3",
+          "insertion_heading": "案例三：供應商通過，客戶卻退回 {#case-3}",
+          "source_line": 72,
+          "diagram_sha256": "aee9430a8c71e1d6bbc90642386e0ec37220fb24b6499eeadcda27c283ebb7f2",
+          "origin": "original teaching synthesis; see chapter sources and 99-image-credits.md",
+          "license": "no external image reproduced",
+          "render_result": "see browser-validation.json generated separately"
+        }
+      ]
+    },
+    {
+      "file": "docs/psi/99-image-credits.md",
+      "body_sha256": "e27c2e1ae80823fb5018195f10e9d6c527729e2606a61ec0717f406480d9149d",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/appendix-glossary.md",
+      "body_sha256": "043c0963bfa6b052c4cafef9e7aed84001ac6507e1f5a011da310f9127b4f124",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/appendix-open-questions.md",
+      "body_sha256": "6834af67d9f4d656e4b8a5a053204787bc5d311e2468d3541da8262bc7fdaccd",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/appendix-sources.md",
+      "body_sha256": "f15a874da250e63fa36557397ba5a3fca80e0512b888510cbd472bbf54302364",
+      "diagrams": []
+    },
+    {
+      "file": "docs/psi/README.md",
+      "body_sha256": "06e3d3645478b618dcd879a0be7b8ec9ad5c7f869adad2cdf8f8753153635883",
+      "diagrams": []
+    }
+  ]
+}
