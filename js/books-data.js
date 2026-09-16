@@ -3,6 +3,15 @@
 // ═══════════════════════════════════════════════════════
 const BOOKS = [
   {
+    icon: "📦",
+    title: "從封裝測試看懂日月光",
+    desc: "從裸晶到可出貨封裝，走到 VIPack 平台、集團分工、營運口徑與日月光的公開證據",
+    tags: ["advanced packaging", "OSAT", "ASE"],
+    href: "book/ase/html/index.html",
+    accent: "#16a34a",
+    glow: "rgba(22,163,74,0.18)",
+  },
+  {
     icon: "📷",
     title: "從手機鏡頭看懂大立光",
     desc: "從光學取捨、非球面成形與組裝良率，走到產品組合、財務口徑與大立光的公開證據",
