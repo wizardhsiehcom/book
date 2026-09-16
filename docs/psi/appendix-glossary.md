@@ -7,6 +7,13 @@
 | test／monitor wafer | 測試或監控製程的工件；廠別命名不同 | [01](01-wafer-roles.md) |
 | dummy wafer | 擋片、陪片等製程輔助角色，依站點定義 | [01](01-wafer-roles.md) |
 | reclaimed wafer | 使用後經加工恢復指定使用條件；描述歷史 | [02](02-reclaim-loop.md) |
+| 處置 disposition | 對異常工件決定暫停、複驗、重工、退回、轉用途或退出等路徑；須有證據與權責 | [11](11-disposition-cases.md) |
+| 複驗 retest | 重新量測以確認判定；本身不修復工件，也不能抹去原始失敗紀錄 | [03](03-quality-and-qualification.md) |
+| 重工 rework | 對不合格工件追加或重做相容加工，再按指定用途驗收 | [02](02-reclaim-loop.md) |
+| 再生 reclaim | 對使用後晶圓加工，使其重新符合指定使用條件；不等於恢復原產品電路 | [02](02-reclaim-loop.md) |
+| 轉用途 | 退出原使用條件後，取得另一用途的允收與放行；不是改名便合格 | [11](11-disposition-cases.md) |
+| 終止原用途／報廢 | 前者停止原用途資格；後者是依權責作出的最終處置，不由單次不合格自動推出 | [11](11-disposition-cases.md) |
+| 材料回收 recycling | 後續取回材料價值的路徑；與恢復原工件用途不同，本書未確認昇陽承接此服務 | [11](11-disposition-cases.md) |
 | 回貨合格機率 q | 模型中送出加工後可供下一次合格使用的條件機率 | [04](04-reuse-economics.md) |
 | 片／片次 | 實體個數／累計處理事件；同一片可貢獻多片次 | [05](05-demand-and-new-test-wafers.md) |
 | TTV | 指定範圍與方法下的最大厚度減最小厚度 | [03](03-quality-and-qualification.md) |

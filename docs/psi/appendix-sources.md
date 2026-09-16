@@ -1,6 +1,6 @@
 # 來源索引：每份資料能證明到哪裡
 
-查閱日統一為 **2026-09-14**。發布日不明就寫未標示，不拿查閱日代替。公司來源是第一手陳述，仍不表示每個市場預測或性能主張都已被獨立驗證；技術供應商的案例也不能移植成昇陽實績。
+原版來源查閱日為 **2026-09-14**；失效處置增修另列 **2026-09-16** 的查閱範圍，未重查的原資料保留舊日期。發布日不明就寫未標示，不拿查閱日代替。公司來源是第一手陳述，仍不表示每個市場預測或性能主張都已被獨立驗證；技術供應商的案例也不能移植成昇陽實績。
 
 ## 公司來源
 
@@ -72,6 +72,21 @@
 [SEMI 3D4-0924 官方摘要](https://store-us.semi.org/products/3d00400-semi-3d4-guide-for-metrology-for-measuring-thickness-total-thickness-variation-ttv-bow-warp-sori-and-flatness-of-bonded-wafer-stacks)僅作量測方法範圍的入口；完整標準未取得，不宣稱本書工件符合該標準。[SEMI Document 6091](https://downloads.semi.org/web/wstdsbal.nsf/0/ca03ccbf4225ad42882580c700369d87/$FILE/6091.pdf)為 2017-02-09 的公開草案，頁 27 用途分類只作歷史用語參照，並非正式採用標準。
 
 既有均豪與矽格書只作教學銜接，不是公司事實的一手證據。搜尋結果摘要、未取得的公告原文、未讀的 PDF 區段，不列為已核對論點。
+
+## 失效處置增修來源（2026-09-16） {#recovery-update}
+
+以下為本次實際重查或新讀來源，網頁均未標統一發布日。此輪未全面更新年報、法說與財務；原版的歷史定位仍保留。
+
+| ID | 一手來源與定位 | 本次採用範圍 | 不支持的推論 |
+|---|---|---|---|
+| R1 | [昇陽晶圓加工](https://www.psi.com.tw/wafer.asp)，服務介紹與主要應用；重查 C1 | 01、02、09–11：監控用途及再生／新測試晶圓的服務邊界 | 不公開逐批拒收、重工授權或客訴規則 |
+| R2 | [昇陽薄化](https://www.psi.com.tw/wafer2.asp?set=a)，加工服務；重查 C2 | 06：薄化與相關加工範圍 | 不能由服務清單補出異常放行條件 |
+| R3 | [SVM Polishing & Reclaim](https://svmi.com/service/polishing-and-reclaim/)，流程與處理選項；重查 T1b | 02、11：依來料分類選路徑，處理程度可以不同 | 不等於每種殘留都可重工；不是昇陽配方 |
+| R4 | [NanoSILICON](https://nanosiliconinc.com/)，Reclaim Wafer Process Flow／Quality Assurance | 02：其公開說明單片失敗會觸發全批 QC 複核，必要時再做全批重工 | 不是昇陽政策，也沒揭露必要時的觸發表與次數上限 |
+| R5 | [KOBELCO LEO](https://www.kobelcokaken.co.jp/leo/en/item/sbw/)，Bow/Warp and Flatness；重查 T3b | 03、11：幾何指標與量測狀態必須一起比較 | 不能僅憑指標同名就認定兩份報告可比 |
+| R6 | [DISCO Ultra-Thin Grinding](https://www.disco.co.jp/eg/solution/library/grinder/thin.html)，薄化、強度與後處理；重查 T4b | 06：材料移除與損傷風險；再拋光不能補回已移除厚度是工程推論 | 不等於所有薄化異常只能報廢 |
+
+三個處置案例與跨章排查表是依上述範圍建立的教學推理，不是公開真實案件；沒有將未取得的內部規格填成數字。研究曾查看的其他業者、歷史資料及候選來源，不因被蒐集就自動成為正文證據。
 
 ## 教學模型
 

@@ -23,7 +23,7 @@ const BOOKS = [
   {
     icon: "♻️",
     title: "從晶圓再生與薄化看懂昇陽",
-    desc: "由監控晶圓回用、品質驗收與薄化交付，走到單次使用成本、產能現金流及昇陽服務證據",
+    desc: "由監控晶圓回用、失效處置與薄化交付，理解重工界線、合格使用成本及昇陽服務證據",
     tags: ["wafer reclaim", "thinning", "PSI"],
     href: "book/psi/html/index.html",
     accent: "#0284c7",
