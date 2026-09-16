@@ -25,6 +25,8 @@
 
 2026-09-16 增修更新 00-1 的閱讀依賴、02-1 的重工條件，新增 11-1 至 11-3；各章新增處置表為原創教學整理，未重製外部圖像。新圖表不新增第三方圖片授權，既有照片與 SVG 來源保持原紀錄。
 
+2026-09-16 補圖：04、05、07、08、11 章各新增一張 Wikimedia Commons 照片（photo-04、photo-05、photo-07、photo-08、photo-11），署名與授權見下節；原創圖表與既有照片紀錄不變。
+
 技術與公司來源連結見[來源索引](appendix-sources.md)。既有流程圖與表格為原創整理；本次補入照片及 SVG 的來源、授權與修改情況分列如下。圖表版本、正文 SHA-256 與實際渲染驗收結果保留於儲存庫 `plan/psi/`；它們是編輯紀錄，不是讀者理解正文的先備。
 
 ## 補充圖片與剖面圖
@@ -78,3 +80,43 @@
 - 原始檔案頁或原理來源：[WetEtchBench.jpg](https://commons.wikimedia.org/wiki/File:WetEtchBench.jpg)。
 - 授權／圖像來源：[CC BY 2.5](https://creativecommons.org/licenses/by/2.5/)。
 - 修改情況：使用 Commons 縮圖；未裁切或改色。
+
+### photo-04：Chemical-mechanical polishing (CMP-108, conditioner).jpg { #photo-04 }
+
+- 使用位置：[04 章](04-reuse-economics.md#photo-04)。
+- 作者／來源方式：cpxmn。
+- 原始檔案頁或原理來源：[Chemical-mechanical polishing (CMP-108, conditioner).jpg](https://commons.wikimedia.org/wiki/File:Chemical-mechanical_polishing_(CMP-108,_conditioner).jpg)。
+- 授權／圖像來源：[CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/)。
+- 修改情況：使用 Commons 960 px 縮圖；未裁切或改色。照片為拋光墊整修器，不代表本章假設的去除率。
+
+### photo-05：Monocrystalline silicon ingot.jpg { #photo-05 }
+
+- 使用位置：[05 章](05-demand-and-new-test-wafers.md#photo-05)。
+- 作者／來源方式：ArticCynda。
+- 原始檔案頁或原理來源：[Monocrystalline silicon ingot.jpg](https://commons.wikimedia.org/wiki/File:Monocrystalline_silicon_ingot.jpg)。
+- 授權／圖像來源：[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.zh_TW)。
+- 修改情況：使用 Commons 720 px 縮圖；未裁切或改色。拍攝對象為慕尼黑礦物博物館展示品。
+
+### photo-07：SiC wafers 6inch.jpg { #photo-07 }
+
+- 使用位置：[07 章](07-advanced-materials.md#photo-07)。
+- 作者／來源方式：FDominec。
+- 原始檔案頁或原理來源：[SiC wafers 6inch.jpg](https://commons.wikimedia.org/wiki/File:SiC_wafers_6inch.jpg)。
+- 授權／圖像來源：[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)。
+- 修改情況：使用 Commons 現行版本（886 px）；未裁切或改色。原始說明為 MOVPE 磊晶用基板，不是昇陽 carrier 產品。
+
+### photo-08：200mm Wafer Fertigungslinie.JPG { #photo-08 }
+
+- 使用位置：[08 章](08-capacity-and-cashflow.md#photo-08)。
+- 作者／來源方式：austriamicrosystems AG。
+- 原始檔案頁或原理來源：[200mm Wafer Fertigungslinie.JPG](https://commons.wikimedia.org/wiki/File:200mm_Wafer_Fertigungslinie.JPG)。
+- 授權／圖像來源：[Attribution（自由使用，須署名）](https://commons.wikimedia.org/wiki/Template:Attribution)。
+- 修改情況：使用 Commons 1280 px 縮圖；未裁切或改色。拍攝對象為 austriamicrosystems 廠房，非昇陽廠區。
+
+### photo-11：Panasonic 8 inch wafer surface 1.JPG { #photo-11 }
+
+- 使用位置：[11 章案例三](11-disposition-cases.md#photo-11)。
+- 作者／來源方式：BrokenSphere。
+- 原始檔案頁或原理來源：[Panasonic 8 inch wafer surface 1.JPG](https://commons.wikimedia.org/wiki/File:Panasonic_8_inch_wafer_surface_1.JPG)。
+- 授權／圖像來源：[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)。
+- 修改情況：使用 Commons 1280 px 縮圖；未裁切或改色。原始說明指出淡黃色條紋為反射光，非缺陷判定。
