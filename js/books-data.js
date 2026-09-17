@@ -285,6 +285,15 @@ const BOOKS = [
     accent: "#f59e0b",
     glow: "rgba(245,158,11,0.18)",
   },
+  {
+    icon: "🩺",
+    title: "從失效分析與電路修補看懂閎康",
+    desc: "由症狀確認、電性定位、物理證據到 FIB 電路編修，分清工程驗證與量產修復，再讀閎康公開證據",
+    tags: ["failure analysis", "semiconductor", "MA-tek"],
+    href: "book/matek/html/index.html",
+    accent: "#e11d48",
+    glow: "rgba(225,29,72,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

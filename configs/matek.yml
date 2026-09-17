@@ -1,0 +1,76 @@
+site_name: 從失效分析與電路修補看懂閎康
+site_description: 由症狀定位、物理證據與 FIB 電路編修，理解失效分析的證據鏈、驗證邊界與閎康的公開服務證據
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/matek
+site_dir: ../book/matek/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、從症狀到根因:
+      - "01 失效之後的三種去向": 01-failure-and-disposition.md
+      - "02 晶片的層次與接近方式": 02-chip-access.md
+      - "03 症狀可不可信": 03-trust-the-symptom.md
+      - "04 定位方法與盲點": 04-localization.md
+      - "05 樣品製備與證據保存": 05-sample-preparation.md
+      - "06 物理證據與因果判定": 06-physical-evidence.md
+  - 二、修改、驗證與改版:
+      - "07 電路編修能證明什麼": 07-circuit-edit.md
+      - "08 編修的可達性與副作用": 08-editing-limits.md
+      - "09 從樣品驗證到重新投片": 09-validation-and-respin.md
+      - "10 分析的資訊價值與停止條件": 10-analysis-economics.md
+  - 三、從服務讀懂公司:
+      - "11 閎康服務證據矩陣": 11-matek-evidence-map.md
+      - "12 消息判讀與改判條件": 12-reading-company-news.md
+  - 附錄:
+      - "A 來源索引": appendix-sources.md
+      - "B 術語表": appendix-glossary.md
+      - "C 待查問題": appendix-open-questions.md
+      - "D 圖表來源": 99-image-credits.md
