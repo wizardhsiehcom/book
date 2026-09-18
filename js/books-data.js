@@ -294,6 +294,15 @@ const BOOKS = [
     accent: "#e11d48",
     glow: "rgba(225,29,72,0.18)",
   },
+  {
+    icon: "💧",
+    title: "從晶圓清洗、去膜與重工邊界看懂辛耘",
+    desc: "由目標層與保留層、光阻重工到薄晶圓支撐及再驗證，分辨自製設備、代理與再生服務的公開證據",
+    tags: ["wet process", "equipment", "semiconductor"],
+    href: "book/scientech/html/index.html",
+    accent: "#0284c7",
+    glow: "rgba(2,132,199,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

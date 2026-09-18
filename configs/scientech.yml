@@ -1,0 +1,78 @@
+site_name: 從晶圓清洗、去膜與重工邊界看懂辛耘
+site_description: 從材料選擇性、光阻重工到薄晶圓支撐及再驗證，分辨辛耘自製設備、代理與再生服務的公開證據
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/scientech
+site_dir: ../book/scientech/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+  - stylesheets/reading.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、工件與材料移除:
+      - "01 晶圓的加工狀態": 01-wafer-states.md
+      - "02 正常加工、重工與再生": 02-rework-vs-process.md
+      - "03 目標層與保留層": 03-removal-selectivity.md
+      - "04 光阻重工的窗口": 04-photoresist-window.md
+      - "05 殘留、污染與清洗損傷": 05-cleaning-and-residue.md
+      - "06 去膜與不可逆變化": 06-film-removal.md
+  - 二、支撐、再驗證與成本:
+      - "07 暫時接合與解鍵合": 07-bonding-and-debonding.md
+      - "08 薄晶圓的機械邊界": 08-thin-wafer-handling.md
+      - "09 重做後的再驗證": 09-requalification.md
+      - "10 重工的設備時間與成本": 10-equipment-economics.md
+  - 三、從設備讀懂公司:
+      - "11 辛耘業務證據矩陣": 11-scientech-evidence-map.md
+      - "12 公司消息的證據階段": 12-reading-company-news.md
+  - 附錄:
+      - "A 來源索引": appendix-sources.md
+      - "B 術語表": appendix-glossary.md
+      - "C 待查問題": appendix-open-questions.md
+      - "D 圖表來源": 99-image-credits.md

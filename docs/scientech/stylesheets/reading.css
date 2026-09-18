@@ -1,0 +1,17 @@
+.md-typeset .mermaid {
+  background: #fff;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.md-typeset img.wiki-image {
+  background: #fff;
+  height: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 59.99em) {
+  .md-typeset .mermaid svg {
+    min-width: 720px;
+  }
+}
