@@ -1,0 +1,78 @@
+site_name: 台灣出發去日本：旅遊規定指南
+site_description: 從行前證件、行李、入境、在日規則、免稅購物到返台通關，台灣旅客赴日的官方規定查核指南
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/japan-travel
+site_dir: ../book/japan-travel/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 第一篇 出發前:
+      - "01 一趟旅程，要通過哪些規則？": 01-rules-map.md
+      - "02 護照、免簽與入境資格": 02-passport-visa.md
+      - "03 役男、未成年與特殊同行": 03-special-travelers.md
+      - "04 行李、液體與行動電源": 04-baggage-batteries.md
+      - "05 藥品與醫療準備": 05-medicines.md
+      - "06 食品、植物、現金與其他攜帶品": 06-food-cash-goods.md
+  - 第二篇 抵達日本:
+      - "07 Visit Japan Web 與機場入境": 07-vjw-arrival.md
+      - "08 住宿與交通的證件和條款": 08-stay-transport.md
+      - "09 當地法律、設施規則與禮貌": 09-local-rules.md
+      - "10 自駕選讀：台灣駕照與日本道路": 10-driving.md
+  - 第三篇 購物與意外:
+      - "11 日本免稅購物到離境查驗": 11-tax-free.md
+      - "12 生病、遺失、停飛與災害": 12-emergencies.md
+  - 第四篇 回到台灣:
+      - "13 返台海關、食品檢疫與申報": 13-return-customs.md
+      - "14 把規定變成自己的出發清單": 14-checklist.md
+  - 附錄:
+      - "A 台灣旅客四張清單": appendix-a-checklists.md
+      - "B 離線求助卡": appendix-b-emergency-card.md
+      - "C 中日英關鍵詞與官方入口": appendix-c-glossary.md
+      - "D 來源索引與版本紀錄": appendix-d-sources.md

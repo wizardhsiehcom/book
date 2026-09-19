@@ -303,6 +303,15 @@ const BOOKS = [
     accent: "#0284c7",
     glow: "rgba(2,132,199,0.18)",
   },
+  {
+    icon: "🗾",
+    title: "台灣出發去日本：旅遊規定指南",
+    desc: "從護照免簽、行李電池、藥品食品、VJW 入境、免稅新制到返台海關檢疫，依官方來源整理的往返核對手冊",
+    tags: ["travel", "Japan", "regulations"],
+    href: "book/japan-travel/html/index.html",
+    accent: "#dc2626",
+    glow: "rgba(220,38,38,0.18)",
+  },
 ];
 
 const TAG_COLOR = {
