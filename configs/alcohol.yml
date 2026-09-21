@@ -1,0 +1,78 @@
+site_name: 理解酒：從發酵、風味到文化與身體
+site_description: 從原料、發酵、蒸餾與熟成，到風味感知、價格期待、歷史文化與酒精健康研究的非商業酒類入門
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/alcohol
+site_dir: ../book/alcohol/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 第一部 先理解杯中的東西:
+      - "01 我們談酒時，究竟在談什麼？": 01-what-is-alcohol.md
+      - "02 糖、微生物與發酵": 02-fermentation.md
+      - "03 蒸餾、熟成與調和改變了什麼？": 03-distill-age-blend.md
+  - 第二部 用共同原理認識酒類:
+      - "04 啤酒：穀物、麥芽與啤酒花": 04-beer.md
+      - "05 葡萄酒與其他果實酒": 05-wine-fruit.md
+      - "06 米與麴的世界：清酒、黃酒與台灣的酒": 06-rice-koji-taiwan.md
+      - "07 蒸餾酒：從原料走向風味": 07-spirits.md
+      - "08 調酒、香味酒與無酒精選擇": 08-mixed-nonalcoholic.md
+  - 第三部 理解自己的感覺:
+      - "09 怎麼描述風味，又不假裝有標準答案？": 09-describing-flavour.md
+      - "10 價格、標籤與期待如何介入品飲？": 10-price-labels-expectation.md
+      - "11 保存、溫度與餐桌搭配": 11-storage-temperature-pairing.md
+  - 第四部 把酒放回人的生活:
+      - "12 酒的歷史：勞動、儀式與權力": 12-history.md
+      - "13 酒精與身體：劑量、風險與研究怎麼讀": 13-body-health.md
+      - "14 知道之後，如何自行選擇？": 14-choosing.md
+  - 附錄:
+      - "A 術語表": appendix-a-glossary.md
+      - "B 風味觀察單": appendix-b-tasting-sheet.md
+      - "C 酒標與酒精量": appendix-c-labels-units.md
+      - "D 證據與延伸閱讀": appendix-d-evidence.md

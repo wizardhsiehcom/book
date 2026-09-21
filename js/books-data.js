@@ -312,6 +312,15 @@ const BOOKS = [
     accent: "#dc2626",
     glow: "rgba(220,38,38,0.18)",
   },
+  {
+    icon: "🍶",
+    title: "理解酒：從發酵、風味到文化與身體",
+    desc: "由糖化、發酵、蒸餾與熟成理解各類酒，分開感官與期待，拆解酒標、歷史敘事與健康宣稱的證據",
+    tags: ["food science", "culture", "health"],
+    href: "book/alcohol/html/index.html",
+    accent: "#b45309",
+    glow: "rgba(180,83,9,0.18)",
+  },
 ];
 
 const TAG_COLOR = {
