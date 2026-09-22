@@ -3,6 +3,15 @@
 // ═══════════════════════════════════════════════════════
 const BOOKS = [
   {
+    icon: "🛠️",
+    title: "C++ 接上 SQL 之後：現場工程技巧",
+    desc: "固定入口、test_mode、ODBC 邊界、交易與重播，17 章銜接資深工程師的開發判斷",
+    tags: ["C++", "SQL", "現場技巧"],
+    href: "book/cpp-sql-field-tricks/html/index.html",
+    accent: "#d97706",
+    glow: "rgba(217,119,6,0.18)",
+  },
+  {
     icon: "🐳",
     title: "Docker 現場招式：卡住時，先動這一小處",
     desc: "13 個已在 Desktop 實測的小招式，從掛載、入口與日誌，查到建置、就緒與停止訊號",

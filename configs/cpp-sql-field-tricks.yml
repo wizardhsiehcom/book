@@ -1,0 +1,74 @@
+site_name: C++ 接上 SQL 之後：現場工程技巧
+site_description: 固定一筆工作、test_mode、ODBC 邊界與交易小實驗，銜接資深工程師的開發判斷
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: {icon: material/weather-sunny, name: 切換為亮色模式}
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle: {icon: material/weather-night, name: 切換為深色模式}
+  features: [navigation.sections, navigation.expand, navigation.top, content.code.copy]
+docs_dir: ../docs/cpp-sql-field-tricks
+site_dir: ../book/cpp-sql-field-tricks/html
+use_directory_urls: false
+exclude_docs: |
+  examples/build/
+  examples/run-*/
+  examples/__pycache__/
+extra:
+  bookshelf_url: ../../../index.html
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+  - styles/diagrams.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          # The shared mermaid@10 initializer reads the container's HTML.
+          # Emit a bare div; pre/code would feed a literal <code> tag to its parser.
+          format: !!python/name:pymdownx.superfences.fence_div_format
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、控制一次工作:
+      - 01 確認正在跑的產物: 01-artifact.md
+      - 02 單筆入口: 02-one-job.md
+      - 03 test_mode 留住核心: 03-test-mode.md
+      - 04 保存入口值: 04-snapshot.md
+  - 二、讓邊界差異現形:
+      - 05 不只一個 false: 05-diagnostics.md
+      - 06 NULL 與截斷: 06-data-contract.md
+      - 07 batch 的結果序列: 07-results.md
+      - 08 bind 的讀取時點: 08-bind.md
+      - 09 有限的固定 SQL: 09-fixed-sql.md
+  - 三、敢寫也能收回:
+      - 10 API 成功與業務完成: 10-write-result.md
+      - 11 rollback 的範圍: 11-rollback.md
+      - 12 故意等一次鎖: 12-lock-wait.md
+  - 四、拆開時間與失敗:
+      - 13 分段計時: 13-timing.md
+      - 14 工具與程式的條件: 14-tool-context.md
+      - 15 先別再按一次: 15-retry.md
+  - 五、留下省工的方法:
+      - 16 uv 比對小工具: 16-uv-diff.md
+      - 17 候選產物與交付: 17-delivery.md
+  - 附錄:
+      - 實驗準備與下載: appendix-lab.md
+      - 來源與證據: appendix-sources.md
+      - 實測與出版驗證: appendix-validation.md
+      - 圖表出處: 99-image-credits.md

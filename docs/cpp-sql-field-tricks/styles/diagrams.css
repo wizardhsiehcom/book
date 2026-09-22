@@ -1,0 +1,13 @@
+/* The shared Mermaid 10 initializer uses its light theme in both book palettes. */
+.md-typeset .mermaid {
+  background: #fff;
+  color: #172033;
+  border: 1px solid #d6dae3;
+  border-radius: 0.4rem;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  overflow-x: auto;
+}
+.md-typeset .mermaid svg {
+  min-width: 32rem;
+}

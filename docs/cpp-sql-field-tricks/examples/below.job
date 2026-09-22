@@ -1,0 +1,5 @@
+schema=1
+rule=double-v1
+job_id=1
+input_value=9
+note=null
