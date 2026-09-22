@@ -1,0 +1,77 @@
+site_name: 五台機台也用得上的 Linux 現場招式
+site_description: Windows 接 Linux：用小實驗固定入口、保存現場、縮小網路與應用問題
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/linux-lan-field-tricks
+site_dir: ../book/linux-lan-field-tricks/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀與第一個成果: README.md
+  - 全書地圖: 00-map.md
+  - 一、先把入口固定:
+      - "01 五台先留一台": 01-one-client.md
+      - "02 ping 通卻進不去": 02-port-and-bind.md
+      - "03 名字先別修": 03-one-request.md
+  - 二、拿掉真的，先看假的:
+      - "04 把服務換成小檔案": 04-tiny-server.md
+      - "05 現場先錄下來": 05-save-the-scene.md
+      - "06 保存那一次輸入": 06-replay-input.md
+  - 三、讓失敗有形狀:
+      - "07 上傳、下載分開測": 07-two-directions.md
+      - "08 找出尺寸門檻（選讀）": 08-size-threshold.md
+      - "09 故意慢半秒": 09-make-it-slow.md
+  - 四、五台規模的補位:
+      - "10 先拉一條隧道": 10-local-tunnel.md
+      - "11 先比帳號與版本": 11-one-client-smb.md
+  - 附錄:
+      - 五台表、實驗紀錄與術語: appendix-records.md
+      - 來源與版本索引: appendix-sources.md
+      - 實測與出版驗證: appendix-validation.md
+      - 圖表出處: 99-image-credits.md

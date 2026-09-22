@@ -12,6 +12,16 @@ const BOOKS = [
     glow: "rgba(2,132,199,0.18)",
   },
   {
+    icon: "🔌",
+    title: "五台機台也用得上的 Linux 現場招式",
+    desc: "Windows 接 Linux：固定入口、保存現場、故意變慢，用 11 個小實驗縮小問題",
+    tags: ["Linux", "Windows", "現場排錯"],
+    href: "book/linux-lan-field-tricks/html/index.html",
+    accent: "#0891b2",
+    glow: "rgba(8,145,178,0.18)",
+  },
+
+  {
     icon: "📦",
     title: "從封裝測試看懂日月光",
     desc: "從裸晶到可出貨封裝，走到 VIPack 平台、集團分工、營運口徑與日月光的公開證據",
