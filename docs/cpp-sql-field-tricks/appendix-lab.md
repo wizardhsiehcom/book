@@ -1,4 +1,4 @@
-# 實驗準備：兩個小程式、一個可丟棄的庫
+# 實驗準備：先跑小程式，之後才接資料庫
 
 本版以 Windows x64、Visual Studio 2022 C++ 工具、Windows SDK、ODBC Driver 17、Docker Desktop 的 Linux containers 為實測組合。**不要把範例的 SQL 改指向現有專案資料庫。** 範例帳號只用合成教學表，資料庫與正式專案沒有連線關係。
 
@@ -8,7 +8,8 @@
 
 | 檔案 | 用途 |
 |---|---|
-| [job_core.h](examples/job_core.h) | 兩個程式共用的計算 |
+| [job_core.h](examples/job_core.h) | 三個程式共用的計算 |
+| [first_job.cpp](examples/first_job.cpp) | 第 02–03 章親手改入口的小程式 |
 | [field_lab.cpp](examples/field_lab.cpp) | fixed／cli／fixture 到 preview |
 | [sql_lab.cpp](examples/sql_lab.cpp) | 固定目標的同步 ODBC 實驗 |
 | [build.cmd](examples/build.cmd) | 找既有 VS C++ 工具並編譯，不安裝工具 |
@@ -21,23 +22,50 @@
 
 網頁若直接顯示原始碼，另存檔時保留副檔名，不要變成 `.cpp.txt`。這些是本書新增程式與開關，不是 driver 內建命令。
 
-## 第一層：不用 DB 就能看到結果
+## 第一層：不用 DB 就能看到結果 {#first-run}
 
-確認已安裝 Visual Studio 的 C++ x64 工具，再執行：
+只做前四章時，先下載 `job_core.h`、`first_job.cpp`、`field_lab.cpp`、`sql_lab.cpp`、`build.cmd`、`baseline.job`、`below.job` 即可。`sql_lab.cpp` 先用來建置，不代表現在要連資料庫。Python 與 Docker 都可以稍後再準備。
+
+打開 PowerShell，先切到你存放檔案的位置。以下目錄是例子，請換成自己的；章節裡的 `build` 和 `run-*` 都相對於這個位置。
+
+```powershell
+Set-Location D:\scratch\cpp-sql-lab
+Get-ChildItem -Name
+```
+
+此時應直接看見 `first_job.cpp`、`job_core.h` 和 `build.cmd`，不是只看到包住它們的另一層資料夾。若位置不符，先修正工作目錄。命令裡的 `.\` 指「目前目錄」，不是「這本書所在的網站目錄」。
+
+確認已安裝 Visual Studio 的 C++ x64 工具與 Windows SDK，再執行：
 
 ```powershell
 .\build.cmd
 ```
 
-它在目前目錄的 `build` 建立兩份 exe；編譯使用 C++17、`/W4 /WX`、debug 資訊。若找不到工具，先處理編譯器，而不是啟動 DB 碰運氣。已有 x64 Developer Command Prompt 也可使用；不要用 x86 shell 配 64-bit driver。
+它在目前目錄的 `build` 建立三份 exe；編譯使用 C++17、`/W4 /WX`、debug 資訊。若找不到工具，先處理編譯器，而不是啟動 DB 碰運氣。已有 x64 Developer Command Prompt 也可使用；不要用 x86 shell 配 64-bit driver。前兩個程式執行時不需要 ODBC Driver；第三個到第二層才需要。
+
+只編譯前段的小程式，也可以執行 `.\build.cmd first`。這只產生 `first_job.exe`，不會更新另兩份 exe；第 01、04 章使用 `field_lab.exe`，仍需要先完成一次完整建置。
+
+先執行最小程式：
+
+```powershell
+.\build\first_job.exe
+```
+
+看到 `input_value?` 時，輸入 `10` 再按 Enter。此時程序才繼續，應印出 `job_id=1 score=20 accepted=true` 和帶有 `NOT EXECUTED` 的寫入意圖。這裡「等待輸入」就是接下來要省掉的重跑步驟；沒有資料庫會被改動。
+
+再確認後面要用的檔案重播工具也能啟動：
 
 ```powershell
 .\build\field_lab.exe --input fixed --effect preview --out run-first
 ```
 
-先得到 score 20，再回正文。程式拒絕覆蓋已存在的 run 目錄，錯誤可能留下未完成的新目錄；它是失敗證據，不要混當成功結果。
+先得到 score 20，再回[第 01 章](01-artifact.md)。這個程式和剛才不同：不等鍵盤，而是依參數選擇輸入，並把結果存到 `run-first`。`--input fixed` 選內建輸入；`--effect preview` 表示只留本地結果與意圖；`--out run-first` 指定一個新目錄。這三個參數都是本書程式自己定義的，不是 PowerShell 或 SQL 的語法。
 
-## 第二層：建立隔離 SQL Server
+程式拒絕覆蓋已存在的 run 目錄，再跑請換名字。錯誤可能留下未完成的新目錄；它是失敗證據，不要混當成功結果。如果只有 `first_job.exe` 可執行，先不要猜測資料庫問題：檢查完整建置的第一個錯誤，確認 `field_lab.exe` 是否真的有更新。
+
+## 第二層：建立隔離 SQL Server {#sql-lab}
+
+讀完第 04 章再回來。現在才需要安裝 ODBC Driver 17，以及能執行 Linux containers 的 Docker Desktop；前者讓 Windows 的 C++ 程式和 SQL Server 溝通，後者承載獨立的 SQL Server 程序。SQL Server 不會因為你成功編譯 exe 就自動出現。
 
 先看 `docker ps -a`，確認自己知道哪些容器是既有系統。此書只操作 `book-cpp-sql-lab`，不停止其他容器、不掛載主機資料、不用現有備份。啟動會占用最多 3 GB 記憶體、2 CPU，以及本機 port 15439；資源不夠先停在純 C++ 實驗。
 

@@ -1,60 +1,100 @@
 # 01｜你改的那份 code，真的有跑到嗎？
 
-你把門檻改成 20，按了 build，結果卻沒有變。最容易浪費一個下午的動作，是直接往 SQL 或核心演算法查。更便宜的第一步是問：剛剛啟動的是哪一個檔案？
+在[開場](00-workday.md)，我們接到「算完卻沒寫回」的問題。你準備加輸出追查，第一個麻煩卻是：改了程式、按了 build，畫面沒有任何變化。
 
-## source、產物、程序是三件事
+現在先不查 SQL。若根本沒跑到剛改的程式，後面每一次觀察都可能是在查另一個版本。本章只做一件事：建立一個你看得見的「修改 → 建置 → 啟動」對照。
 
-編輯器顯示 source；編譯器產出 exe；捷徑、服務或 IDE 再把某份 exe 啟動成程序。中間每一段都可能指向不同目錄。Debug 與 Release 同名，部署目錄還有一份，更不稀奇。
+## 你熟悉的三件事，可能沒有接在同一條路上
 
-先完成[實驗準備](appendix-lab.md)。本章不需 DB，只使用本書新增的啟動資訊；加入自己的程式時需要重建。
+編輯器裡是 .cpp 原始碼。編譯後，磁碟上多出一份 exe。執行 exe 之後，才有一個正在跑的程序。
+
+問題常出在路徑：編譯器更新 build，捷徑卻啟動 deploy；你看 Debug 的原碼，服務仍使用昨天的 Release。檔名都叫同一個名字，看畫面分不出來。因此我們先讓程式自己印出身分，而不是從 IDE 的專案名稱猜。
+
+先完成[準備頁第一層](appendix-lab.md#first-run)。以下都在下載範例的目錄用 PowerShell 執行。本章使用剛建置的 `field_lab.exe`，網站只提供原碼，不提供 exe；它不連資料庫，只寫本地結果。
+
+## 第一步：先保留沒有修改的結果
 
 ```powershell
-.\build\field_lab.exe --input fixed --effect preview --out run-identity
+.\build\field_lab.exe --input fixed --effect preview --out run-identity-v1
 ```
 
-先看 `exe=`，再看 `build=field-lab-v1 test_mode=on`。本版從程序內用 `GetModuleFileNameW(nullptr, ...)` 取得自身路徑；不是拿 `argv[0]` 猜。API 的 buffer 不夠時要擴充，範例已處理，不能悄悄拿截短路徑當完整身分。
+先看前兩行，而不是最後的 `score`：
 
-## 留住舊檔，做一次會讓你記住的對照
+```text
+exe=你的範例目錄\build\field_lab.exe
+build=field-lab-v1 test_mode=on input=fixed effect=preview
+```
 
-在 `build` 目錄把 exe 複製成 `field_lab-old.exe`。接著只改 `field_lab.cpp` 的 `build_id` 為 `field-lab-v2`，重新執行 `build.cmd`。
+第一行實際會是你的絕對路徑。第二行是程式內寫好的標記。`test_mode` 的細節等第 03 章；現在只需確認它印出目前建置中的值。如果輸出目錄已存在，換一個新名字，不要刪掉上一輪結果來假裝第一次執行。
+
+打開 [field_lab.cpp](examples/field_lab.cpp)，搜尋 `build_id`：
+
+```cpp
+constexpr const char* build_id = "field-lab-v1";
+```
+
+我們故意先改這個不影響計算的字串。若同時改規則與標記，數字變了時就多了一件要解釋的事。
+
+## 第二步：保留舊 exe，再只改一行
+
+先複製，這一步必須在重新建置之前：
 
 ```powershell
 Copy-Item .\build\field_lab.exe .\build\field_lab-old.exe
 ```
 
-上面的複製要在改動與重建之前做；若已有同名備份，換名字，不覆蓋。改完、重建後，分別啟動新舊檔，`--out` 也分開。預測哪一個會印 v2，再實際看 banner。
+若同名備份已存在，先換備份名稱，不覆蓋。接著在編輯器把剛才的字串改成 `field-lab-v2`，存檔。先不要 build，執行：
 
-如果舊檔仍印 v1、新檔印 v2，你證明的是「這條 build 與啟動路徑確實能區分產物」。不是證明 v2 的邏輯正確。本版驗證也做了同類的 test_mode on/off 產物對照，見[紀錄](appendix-validation.md)。
+```powershell
+.\build\field_lab.exe --input fixed --effect preview --out run-source-only
+```
 
-## banner 也不是萬能收據
+預測它會印 v1 還是 v2？答案應是 v1：exe 不會執行到一半回頭讀 .cpp。這次觀察讓「我已經改了」拆成兩件事：原碼改了，產物還沒有。
 
-`build_id` 是人寫的字串，忘記改就會相同。需要核對交付檔時再加檔案 hash：
+## 第三步：建置，再分別執行兩份產物
+
+```powershell
+.\build.cmd
+```
+
+先看有沒有編譯錯誤。失敗時不要接著執行舊檔並拿它判斷這次修改；修好第一個編譯錯誤再往下走。
+
+```powershell
+.\build\field_lab.exe --input fixed --effect preview --out run-identity-v2
+```
+
+現在應是 v2，路徑仍是 build\`field_lab.exe`。再跑備份：
+
+```powershell
+.\build\field_lab-old.exe --input fixed --effect preview --out run-old-copy
+```
+
+它應印 v1，且路徑末尾是 `field_lab-old.exe`。兩份 `score` 都是 20；這恰好說明「計算結果一樣」不能替你確認版本。
+
+若兩份都印 v1，先檢查檔案是否存檔、build 是否成功、修改的是否為同目錄的 `field_lab.cpp`。若執行路徑不是預期位置，先修啟動方式。此時繼續改 SQL 沒有幫助，因為還沒建立「修改確實生效」的證據。
+
+## 把這個動作搬回原專案
+
+範例的 `executable_path()` 用 Windows 的 `GetModuleFileNameW(nullptr, ...)` 查目前程序的執行檔路徑。這不是從 `argv[0]` 猜測；完整函式也處理了路徑 buffer 不夠的情況。你現在不用背 API，先知道該把哪個問題問清楚：**正在跑的程序，實際來自哪個檔案？**
+
+手寫的 `build_id` 很便宜，但也可能忘記更新。當你要把同一份包交給另一台機器，才再核對檔案內容：
 
 ```powershell
 Get-FileHash .\build\field_lab.exe -Algorithm SHA256
 ```
 
-hash 回答「兩份檔案內容是否相同」，不回答「連到哪個 DB」或「從哪個目錄讀設定」。在真正專案至少分開記：
+在兩邊對同一個候選檔案執行。hash 相同可以支持兩份檔案內容相同，卻不能支持它們讀到同一份設定、相同輸入或同一個資料庫。遇到「同檔不同結果」，下一步才是列出工作目錄、設定來源和輸入差異。
 
-| 要排除的歧義 | 看哪裡 |
-|---|---|
-| 起了另一份 exe | 程序自身路徑、產物 hash |
-| 設定檔解析位置不同 | 啟動工作目錄、實際載入設定路徑 |
-| 開關有兩個來源 | 生效值與來源，而非只印預設值 |
-| DLL 與 exe 不配套 | debugger 的 Modules／模組實際路徑 |
-
-此表後三列是帶回專案的檢查，不是宣稱本書小程式有設定載入器與 plugin 系統。這就是小招的邊界：先補眼前歧義，別先做整套資產追蹤平台。
-
-確認身分後，恢復 v1 並重建，再到[下一章](02-one-job.md)縮短入口。若身分不符，先修啟動路徑；繼續改核心只會累積更多不知道有沒有生效的修改。
+本章實驗後，把 `build_id` 恢復 `field-lab-v1` 並重新執行 `build.cmd`。備份與 run 目錄先留著，它們是這次對照。接著到[第 02 章](02-one-job.md)，我們終於可以放心改入口：改完後知道該看哪個產物。
 
 ## 換個情境想一次
 
-兩台機器 exe hash 一樣，一台成功、一台失敗。這能排除環境問題嗎？
+你在新的 .cpp 加了一行輸出，但 build 失敗。按執行後程式仍正常結束，卻沒印那行。下一步先查什麼？
 
 <details><summary>核對判準</summary>
 
-不能。下一步列出設定來源、工作目錄、driver／DLL、DB 目標與輸入。每次對齊一個差異；hash 只縮小產物差異，不等於完整執行條件相同。
+先查建置失敗與啟動檔路徑，而不是條件分支。正常結束的是磁碟上原有的 exe，不代表這份新原碼已成功建置。修好建置、核對新標記後，才有理由問新輸出是否走到。
 
 </details>
 
-機制來源：[GetModuleFileNameW](https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulefilenamew)。啟動核對流程是本書的工程設計。
+機制來源：[GetModuleFileNameW](https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulefilenamew)。標記與備份對照是本書設計的練習，不是 Windows 內建的版本追蹤系統。

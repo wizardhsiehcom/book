@@ -2,9 +2,22 @@
 
 你把 SQL 貼到工具，有資料；程式說沒有。先別升級 driver。拿一份直接 SELECT 的成功案例，和一份保留 INSERT＋SELECT 的失敗形狀，看看差在哪個結果位置。
 
-## 一次 execute，可能不是一張表
+## 接著上一章：先有資料列，才談得上取欄位
 
-多句 SQL 合成的 batch 可以回傳受影響列數，也可以回傳真正的 result set。你的程式若只看第一個結果，有可能看見「一列被插入」，卻還沒走到「那一列的值」。
+[第 06 章](06-data-contract.md)的查詢只回一張資料表，所以可以 execute 後直接 fetch。這次保留一段多句 SQL 一起送出的 **batch**。它可能依序回傳「修改了幾列」的計數結果，以及有欄位、可逐列讀取的 **result set**；兩者不能都當成資料表讀。
+
+打開 `sql_lab.cpp` 的 `batch()`。其中 `s.exec(...)` 的固定 SQL 拆行後如下；這是閱讀用的 SQL，不必另外在工具執行，程式已會送出：
+
+```sql
+SET NOCOUNT OFF;
+CREATE TABLE #batch(v int);
+INSERT #batch VALUES(7);
+SELECT v FROM #batch;
+```
+
+`SET NOCOUNT OFF` 保留受影響列數訊息；`#batch` 是這條連線工作階段內的臨時表，欄位 `v` 存整數。後兩句先插入 7，再把它讀出來。它不改 `Jobs`，也不需要你先建立另一張永久表。
+
+問題就在這裡：execute 完後，你可能先站在「插入了一列」的結果上，還沒站在「那一列的值」上。
 
 ```mermaid
 flowchart LR
@@ -19,9 +32,10 @@ flowchart LR
 
 ## 保留造成差異的那一小段
 
-範例在自己的 session 建立 `#batch` 臨時表，插入 7 再 SELECT；不改正式表。執行前先預測第一格是不是資料：
+本章不改原碼或重建，先觀察現成迴圈。執行前預測：第一個結果可能沒有欄位，但不代表整個 batch 沒資料；應繼續前進，最後讀到 7。在[第二層環境](appendix-lab.md#sql-lab)就緒後，從範例目錄執行：
 
 ```powershell
+Set-Location D:\scratch\cpp-sql-lab
 .\run-sql-case.ps1 batch
 ```
 
@@ -33,7 +47,44 @@ result=1 columns=1 row_count=-1
 value=7
 ```
 
-`-1` 不是「負一列」，更不是零列；此處 SELECT 的 row count 不可得，卻確實 fetch 到一列。因此要用 `SQLNumResultCols` 辨認有無欄位，再依契約讀完資料、前進到下一個結果。
+腳本一次跑完；以下三個原碼片段說明輸出的來處，不是讓你重複貼上三段程式。
+
+## 外層看結果，內層才看資料列
+
+外層 `for (int index = 0;; ++index)` 每輪站在一個 result，先問它長什麼樣：
+
+```cpp
+SQLSMALLINT cols = 0; SQLLEN rows = -1;
+check(SQLNumResultCols(s.h, &cols), SQL_HANDLE_STMT, s.h, "num-cols");
+check(SQLRowCount(s.h, &rows), SQL_HANDLE_STMT, s.h, "row-count");
+std::cout << "result=" << index << " columns=" << cols << " row_count=" << rows << '\n';
+```
+
+`columns=0` 表示目前不是可取欄位的資料結果。第一格的 `row_count=1` 是 INSERT 的受影響列數，不是已 fetch 一列。第二格 `columns=1` 才有 `v` 欄位；其 `row_count=-1` 表示此處 SELECT 列數不可得，不是「負一列」或「零列」。
+
+只有 `cols > 0` 才進內層。下面將原碼迴圈拆行排版：
+
+```cpp
+for (;;) {
+    const auto rc = SQLFetch(s.h);
+    if (rc == SQL_NO_DATA) break;
+    check(rc, SQL_HANDLE_STMT, s.h, "batch-fetch");
+    std::cout << "value=" << s.integer(1) << '\n';
+    ++total;
+}
+```
+
+`SQLFetch` 每次移到一列；`s.integer(1)` 再以 `SQLGetData` 讀第一欄。這個迴圈才印出 `value=7` 並累計實際資料列數。這裡的 `SQL_NO_DATA` 只代表**目前這個 result** 的列讀完，外層還沒結束。
+
+不論當前結果有沒有欄位，外層最後都做：
+
+```cpp
+const auto rc = SQLMoreResults(s.h);
+if (rc == SQL_NO_DATA) break;
+check(rc, SQL_HANDLE_STMT, s.h, "more-results");
+```
+
+`SQLMoreResults` 把位置移到下一個 result；它回 `SQL_NO_DATA` 才表示沒有更多結果。最後 `expect(total == 1, ...)` 核對總共讀到一列，因此 `PASS` 不只是「第一個 API 沒失敗」。目前程式印出 7 供你比對，但最後的斷言只核對列數，不是任意 batch 的內容正確性測試。
 
 ## 縮小，不是把觸發條件刪掉
 
@@ -57,4 +108,4 @@ value=7
 
 </details>
 
-研究入口是 [nanodbc #247](https://github.com/nanodbc/nanodbc/issues/247)，但本書自造案例不宣稱重現該 issue 根因或修補。機制核對：[Multiple Results](https://learn.microsoft.com/en-us/sql/odbc/reference/develop-app/multiple-results)；[驗證紀錄](appendix-validation.md)。
+下一章把焦點從「讀哪個結果」移到[送出的參數何時被讀取](08-bind.md)。研究入口是 [nanodbc/nanodbc#247](https://github.com/nanodbc/nanodbc/issues/247)，但本書自造案例不宣稱重現該 issue 根因或修補。機制核對：[Multiple Results](https://learn.microsoft.com/en-us/sql/odbc/reference/develop-app/multiple-results)；[驗證紀錄](appendix-validation.md)。

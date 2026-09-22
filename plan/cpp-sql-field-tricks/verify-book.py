@@ -2,6 +2,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import json
 import re
+import markdown
 from urllib.parse import urlsplit, unquote
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -56,20 +57,23 @@ for file in DOCS.glob("*.md"):
     content = file.read_text(encoding="utf-8")
     if len(re.findall(r"^```", content, re.M)) % 2:
         errors.append(f"{file.name}: unbalanced fence")
-    for match in re.finditer(r"\]\(([^)]+)\)", content):
-        url = urlsplit(match[1])
+    # Parse Markdown links rather than mistaking C++ lambdas [](args) for links.
+    source_page = Page()
+    source_page.feed(markdown.markdown(content, extensions=["fenced_code", "tables", "attr_list"]))
+    for link in source_page.links:
+        url = urlsplit(link)
         if url.scheme or url.netloc or not url.path:
             continue
         if not (file.parent / unquote(url.path)).exists():
-            errors.append(f"{file.name}: missing source {match[1]}")
+            errors.append(f"{file.name}: missing source {link}")
 search = json.loads((SITE / "search/search_index.json").read_text(encoding="utf-8"))
 if any("source-audit" in doc["location"] or "book-plan" in doc["location"] for doc in search["docs"]):
     errors.append("private work notes in search index")
 if list(SITE.rglob("*.exe")) or list(SITE.rglob("*.pdb")):
     errors.append("build artifacts accidentally published")
-if len(pages) != 24 or diagrams != 9 or answers != 17:
+if len(pages) != 25 or diagrams != 10 or answers != 17:
     errors.append("unexpected page/diagram/exercise count")
 print(json.dumps({"html_including_404": len(pages), "mermaid": diagrams,
-                  "exercises": answers, "normal_pages_resource_check": 23,
+                  "exercises": answers, "normal_pages_resource_check": len(pages) - 1,
                   "404_resources": "server routing not validated", "errors": errors}, ensure_ascii=False, indent=2))
 raise SystemExit(bool(errors))

@@ -1,97 +1,158 @@
-# 03｜加一個 test_mode，但別把真正要查的邏輯也跳過
+# 03｜親手加一個 test_mode，留下要查的那段邏輯
 
-你只想知道「輸入 10 為什麼被判成不通過」，但正式入口要等設備送資料；每跑一次，又會改狀態、寫結果、發通知。老手常做的第一件事不是架測試框架，而是在入口塞一筆固定資料。
+上一章用一行固定輸入，省掉了每次手動輸入。現在你想在「固定案例」與「原來的鍵盤入口」之間切換，卻不想每次註解三行、再貼回三行。這正是加一個 bool 就能省事的時候。
 
-這招的關鍵不是 `if (test_mode)`，而是：**省掉等待之後，你查的還是不是同一段程式？**
+先別談設定平台。本章先在 `first_job.cpp` 寫一個最普通的 if，觀察它控制哪一段；之後才認識已整理好的 field_lab 工具。
 
-本章使用已附上的新增範例；需要 C++17、重新建置，不需要資料庫。先依[實驗準備](appendix-lab.md)完成 `field_lab.exe`。所有命令從你下載範例的目錄執行，使用 PowerShell；每次 `--out` 都用尚不存在的目錄。
+## 第一步：在入口放開關，不放在計算裡
 
-## 先得到結果，不先碰寫庫
-
-看 `job_core.h`：`input_value` 乘二得到 `score`；輸入至少 10 才通過。這是刻意簡單的業務規則，好讓你分得清「控制路徑的問題」和「演算法的問題」。
-
-先預測固定的 `{job_id=1, input_value=10, note=NULL}` 會得到什麼，再執行：
-
-```powershell
-.\build\field_lab.exe --input fixed --effect preview --out run-fixed
-Get-Content .\run-fixed\result.jsonl
-```
-
-本版實測的結果檔是一列：
-
-```json
-{"schema":1,"rule":"double-v1","job_id":1,"score":20,"accepted":true}
-```
-
-終端還會印實際 exe 路徑，以及 `test_mode=on input=fixed effect=preview`。先確認這些，再看數字。若目錄已存在而被拒絕，不是計算失敗；換一個 run 名稱，保留上一輪證據。
-
-這個 target 沒有 ODBC 連線或網路通知實作。`intent.txt` 只記「原本打算做什麼」，不是已寫入的收據。預覽仍寫本地檔案，因此我們只說「沒有 DB／通知路徑」，不說「完全沒有副作用」。
-
-## 開關放在哪裡，決定你到底測到什麼
-
-`field_lab.cpp` 的開頭有真正會編進產物的開關：
+接續第 02 章的固定輸入版。在 `first_job.cpp` 的 include 之後、`main` 之前，新增：
 
 ```cpp
 constexpr bool test_mode = true;
 ```
 
-它只決定是否允許 `--input fixed`。它不偷偷縮短 timeout、不吞掉錯誤，也不另外換一份永遠成功的計算。輸出端則獨立要求 `--effect preview`；目前任何其他效果模式都會被拒絕。
+再把第 02 章留下的 `row.input_value` = 10; 這一行，替換成下面這段：
+
+```cpp
+if (test_mode) {
+    row.input_value = 10;
+    std::cout << "input=fixed\n";
+} else {
+    std::cout << "input_value? ";
+    if (!(std::cin >> row.input_value))
+        throw std::runtime_error("expected an integer");
+}
+```
+
+保留原來的 `JobRow` 宣告，以及區塊後面的這一行：
+
+```cpp
+const Result result = process_job(row);
+```
+
+現在請先用眼睛走一次：true 只跳過鍵盤讀取，填入 10；false 則等你輸入。不管哪一邊，都會離開 if，往下呼叫同一個 `process_job`。這就是開關的位置為什麼重要。
+
+在範例目錄重新建置：
+
+```powershell
+.\build.cmd first
+```
+
+再執行：
+
+```powershell
+.\build\first_job.exe
+```
+
+預期先印 input=`fixed`，再得到 `score` 20。若你把 `process_job` 也放進 else，固定模式就不會走到它；先檢查大括號範圍，不要只盯著 bool 的值。
+
+## 第二步：不重建一次，親眼看見開關的生效時點
+
+把 `test_mode` 改成 false，存檔，但刻意先不要 build。再執行同一份 exe。它應仍印 input=`fixed`，因為這個 constexpr 是編進產物的值，不是執行時讀取的設定檔。
+
+現在執行 `build.cmd` first，成功後再啟動。這次才應停在 `input_value?`。輸入 9，應得到 `score` 18、`accepted` false。
+
+這裡有兩個不同問題：**原碼的開關是多少？正在執行的產物，實際走哪條路？** 老手說「上線前記得關掉」時，至少要核對第二個問題。只截一張編輯器裡 false 的畫面，不足以證明交出去的 exe 是這一版。
+
+先把這個練習版保持 false 並重建，恢復手動輸入。接下來換用另一支已附的工具，不用把下面的命令列解析硬塞進這支短程式。
+
+## 固定輸入，為什麼還不等於可以安全重跑？
+
+first_job 只印文字，所以你剛才反覆跑不會改庫。但原專案可能長這樣。以下是示意，函式名稱不是本書已實作功能：
+
+```cpp
+auto row = test_mode ? make_sample() : read_job();
+auto result = process_job(row);
+save_result(result);
+send_notification(result);
+```
+
+即使 `test_mode` 是 true，最後兩行仍會執行。你只控制「資料怎麼進來」，沒有控制「結果往哪裡去」。
+
+最小的調查方案可能是暫時把最後兩行改成印出寫入意圖。但要先確認更早的 `read_job` 或初始化沒有先做 reset；如果第一個寫入藏在讀取之前，只註解最後的 `UPDATE` 仍會改資料。找不到時，用 debugger 追蹤呼叫，在隔離合成環境核對前後值，不拿正式資料試運氣。
+
+這些會留下外部改變的操作，常被叫做「副作用」：寫資料庫、建立檔案、發通知都算。不是說它們不好，而是重跑前要知道它們會不會一起再做一次。
+
+## 第三步：把已經理解的小招，接到現成的重跑工具
+
+開啟 [field_lab.cpp](examples/field_lab.cpp)。不要從第一行一路讀所有 helper，先在 `main` 找下面這個順序：
+
+1. 依 --input 選擇來源，準備 `row`。
+2. 呼叫一次 `process_job(row)`。
+3. 在新目錄保存結果、輸入和寫入意圖。
+
+這是前面手工改法的一種整理方式。field_lab 的 `test_mode` 只控制能不能選 `fixed`；`cli` 和 `fixture` 不受這個開關禁止。這和 first_job 的 true／false 切換鍵盤入口不同，**同名開關的意思是程式作者定的，不是 C++ 的內建約定。**
 
 ```mermaid
 flowchart LR
-    A["fixed：合成 JobRow"] --> D["同一個 process_job"]
-    B["cli：解析 job-id 與 value"] --> D
-    C["fixture：讀 snapshot.job"] --> D
+    A["fixed：程式內的 JobRow"] --> D["同一個 process_job"]
+    B["cli：命令列提供值"] --> D
+    C["fixture：檔案提供值"] --> D
     D --> E["Result"]
-    E --> F["preview：結果與意圖檔"]
-    F -.-> G["不呼叫 DB／通知"]
+    E --> F["preview：存本地結果與意圖"]
 ```
 
-讀圖時找三條線匯合的位置。那個匯合點才是這個小招留下的證據：你換入口，但沒有換掉要查的核心。虛線不是一條已實作的通知通道。
+這次三條路真的同時存在於 field_lab。它完全沒有資料庫或通知實作，因此圖的最後一格就是結束，沒有藏著一條正式寫庫路徑。`preview` 仍會建立本地檔案。
 
-如果你在自己的專案只把最末端 `UPDATE` 註解掉，卻在 SELECT 前就有 `reset_status()`，還是會改資料。因此移植這招前，沿一次工作把第一個寫入圈出來：初始化、stored procedure、另一條連線、檔案和通知都算。找不到邊界時，先用 breakpoint 唯讀追蹤，不拿正式資料「跑一次看看」。
+先確認 `field_lab.cpp` 預設 `test_mode` 為 true；若前面只有建置 first 版本，執行一次完整的 `build.cmd`。接著跑固定入口：
 
-## 改一個值，證明沒有繞過核心
+```powershell
+.\build\field_lab.exe --input fixed --effect preview --out run-fixed
+```
 
-固定模式先不改。換成另一條入口，傳同樣的值：
+`--out` 指定的新目錄不存在才會成功。若已存在，換成 `run-fixed-2`，後面讀檔命令也要跟著換。成功後看結果檔：
+
+```powershell
+Get-Content .\run-fixed\result.jsonl
+```
+
+```json
+{"schema":1,"rule":"double-v1","job_id":1,"score":20,"accepted":true}
+```
+
+先只看最後三欄，它們就是剛才的 `Result`。`schema` 是輸出格式版本，`rule` 標記計算規則；第 04 章會解釋為什麼一起保存。JSONL 是「一行一筆 JSON」，這裡只有一筆，先不用學序列化函式庫。
+
+再看另一個檔案：
+
+```powershell
+Get-Content .\run-fixed\intent.txt
+```
+
+裡面寫 would update、would notify 和 NOT EXECUTED。這是在問「如果把結果往外送，準備送什麼」，不是已寫入的證明。若你要查的是 SQL 是否真的執行，得等資料庫實驗，不能在這裡拿意圖檔當收據。
+
+## 第四步：不用改碼，改一個輸入
+
+現在改用命令列提供同一個值：
 
 ```powershell
 .\build\field_lab.exe --input cli --job-id 1 --value 10 --effect preview --out run-cli
 ```
 
-結果應仍是 score 20、accepted true。接著只把 value 換成 9：
+結果應和 `fixed` 一樣。再只改 value：
 
 ```powershell
 .\build\field_lab.exe --input cli --job-id 1 --value 9 --effect preview --out run-nine
 ```
 
-本版得到 score 18、accepted false。你剛驗的是門檻兩側的核心路徑，不只是「程式沒有 crash」。在 debugger 對 `process_job` 下 breakpoint，兩次都應進這個函式；先看呼叫堆疊與輸入，不急著逐行走完整個 main。
+應是 `score` 18、`accepted` false。這次不用重新建置，因為改的是執行時的引數，不是原碼中的 constexpr。你剛得到兩種控制方式的實際差別：硬編碼省設計，命令列省日常重建。
 
-若兩次都 true，下一步是核對傳進核心的 `input_value`，不是先換資料庫。若 CLI 與固定入口同值卻不同結果，先找入口預設值、規則版本或隱藏狀態。
+如果同值卻不同結果，先在 `process_job` 入口看 `row`，查兩種入口是否準備了同樣的值。若 `row` 相同才往核心的設定或隱藏狀態查；不要因為故事涉及 SQL，就直接從資料庫開始。
 
-## source 關掉，不代表正在跑的檔案已關掉
+## 留下哪一種，不必一次決定永久架構
 
-把 `test_mode` 手動改成 false，但先不要 build。再執行舊 exe 的固定入口：它仍允許，因為它不會回頭讀你的 `.cpp`。接著重新建置，改用完整路徑執行新 exe；固定入口會以 exit code 2 拒絕，CLI 仍可使用。
+一次調查，用 first_job 那樣的幾行修改可能已足夠。反覆要查門檻，就留下命令列入口；要讓同事明天重現，才需要把輸入存起來。這是[下一章](04-snapshot.md)的理由。
 
-這個差異把常見的口頭叮嚀「上線前記得關」變成可查的證據：核對候選包的實際行為、模式與檔案 hash。**關掉 fixed 不會讓本範例變成正式寫库模式**；preview-only 的能力範圍也要一併核對。
-
-實驗後將 source 恢復 true 並重新建置，讓後續章節沿用相同基準。不要覆寫留作對照的舊產物。
-
-## 這次結果能證明多少？
-
-能支持：這三個教學入口匯入同一個核心，preview target 只產生本地檔案。不能支持：你的正式專案已沒有漏出的 reset、ODBC 轉換正確、交易可撤回或通知只送一次。這些必須在真正的接縫另驗；下一章先[把核心吃到的值存下來](04-snapshot.md)。
-
-一次調查可以只保留 fixture 與紀錄；每週都要用，才值得把入口留下。不要為了一個 bool 先打造設定平台，也不要讓沒人知道的全域開關活在交付包裡。
+今天你驗到了「不同入口能進同一個核心」，還沒驗資料庫轉換與寫回。這不是失敗，而是把原本一大團「好像沒寫回」拆出了一小塊已知正常的部分。
 
 ## 換個情境想一次
 
-你在自己的專案記到 UPDATE 計數為零，但 preview 後資料仍變了。下一步在哪裡放觀察？什麼證據能推翻你的猜測？
+某個專案的 `test_mode` 只讓 `read_job` 回傳固定 `row`。後面仍呼叫 `save_result`。你能只因為看到 `test_mode`=on，就拿正式工作編號重跑嗎？
 
-<details>
-<summary>核對判準</summary>
+<details><summary>核對判準</summary>
 
-先核對實際 exe、DB 目標與第一個外部效果，尤其 SELECT 前的 reset、SP、第二條連線與其他 writer。用獨占合成資料的前後值和呼叫紀錄找首次改變；不要先假設多包一層 rollback 就能控制不同連線與通知。
+不能。要沿本次路徑找到第一次外部寫入，確認是否被隔離或改為觀察。開關名稱不是安全保證；先核對它控制哪一個 if、共用哪個核心、還會執行哪些效果。
 
 </details>
 
-來源界線：入口與模式由本書設計；[ODBC 交易文件](https://learn.microsoft.com/en-us/sql/odbc/reference/develop-app/committing-and-rolling-back-transactions)只支持資料庫交易機制，不替應用的 preview 背書。[完整實測範圍](appendix-validation.md)。
+本章兩種開關語意都是本書新增程式的設計，不是 ODBC 內建能力。[驗證紀錄](appendix-validation.md)分開記錄編譯練習與既有 DB 實驗。

@@ -44,6 +44,7 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_div_format
 nav:
   - 導讀: README.md
+  - 開場：接手這支程式: 00-workday.md
   - 全書地圖: 00-map.md
   - 一、控制一次工作:
       - 01 確認正在跑的產物: 01-artifact.md

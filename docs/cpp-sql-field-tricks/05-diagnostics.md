@@ -2,36 +2,74 @@
 
 上層收到 `false`，你不知道連線失敗、SQL 欄位錯了，還是取值被截斷。這時先不用換 logging 框架：把失敗發生在哪個 API，以及那個物件上的診斷保存下來。
 
-## 為什麼要緊貼呼叫？
+## 從檔案重播，走到 SQL 的第一個失敗點
 
-ODBC 的 environment 管理環境，connection 管理連線，statement 執行 SQL 與讀取結果。各有自己的 handle，也各有診斷。它不是一個永久保留的全域 `last_error`；後續使用同一 handle 的 API 可能覆蓋上一批訊息。
+[上一章](04-snapshot.md)已把核心輸入存成檔案。接上 DB 以後，在 `JobRow` 出現以前，還多了一段「連線 → 送出 SQL → 讀取欄位」。如果這段只回傳 `false`，你連要停在哪裡都不知道。
 
-因此順序是：保存原始回傳碼 → 讀對應 handle 的診斷 → 再前進或清理。這就像 debugger 停住後先看還在作用域內的變數，別等堆疊都離開才問當時是多少。
+先完成[準備頁第二層](appendix-lab.md#sql-lab)的建置、隔離庫與 `mapping` 對照。以下只讀現成的 `sql_lab.cpp` 並執行 `diag`，**不必先修改或重建程式**；日後把診斷搬回自己的原始碼時，才要重建自己的 exe。
 
-## 先故意查一個不存在的欄位
+打開 `sql_lab.cpp`，先認出三個物件，不用背完 ODBC：
 
-依[準備頁](appendix-lab.md)啟動專用庫並編譯；此章是新增觀測程式，需要重建。
+| 原碼位置 | 本章用途 | handle 是什麼 |
+|---|---|---|
+| `Connection::env` | environment：設定這個 ODBC 使用環境，例如 API 版本 | `SQLHENV` 是交給 API 辨識環境的代號 |
+| `Connection::dbc` | connection：連到一個資料庫工作階段 | `SQLHDBC` 辨識這條連線 |
+| `Statement::h` | statement：在連線上執行 SQL、保存讀取結果的位置 | `SQLHSTMT` 辨識這次敘述的物件 |
+
+這些 handle 不是 SQL 文字，也不是查出的 row。你可以先把它們想成需要正確型別與生命週期的資源代號；失敗訊息也附在對應資源上，不是一份全域 `last_error`。
+
+## 只把查詢換成一個必定錯的欄位
+
+在 `main` 的 `diag` 分支，現成程式已做了以下四件事。這是將原碼同一行拆開排版的實際片段，不是要另貼進 `main` 的新功能：
+
+```cpp
+Statement s(c);
+const auto rc = s.exec_raw("SELECT no_such_column FROM dbo.Jobs");
+diagnostics(SQL_HANDLE_STMT, s.h);
+expect(rc == SQL_ERROR, "expected missing-column failure");
+```
+
+第一行在已連線的 `c` 上建立 statement。第二行的 `SELECT` 要求讀取 `Jobs` 的 `no_such_column` 欄位；這個合成表刻意沒有它。`exec_raw` 呼叫 `SQLExecDirectA`，把 SQL 送出執行（execute），但不先把錯誤轉成 exception，因此呼叫端還能檢查原始回傳碼 `rc`。
+
+第三行立刻讀 **statement** 的診斷，因為失敗的是這份 SQL，不是建立連線。第四行則反過來要求「這次必須失敗」：如果查詢意外成功，實驗才算失敗。這裡不會取得 row，也不會呼叫核心或寫回 score。
+
+執行前先預測：連線應成功；查詢應因不存在的欄位失敗；最後應是案例 `PASS`，而不是「查詢成功」。從存有範例檔案與 `build` 的 PowerShell 工作目錄執行；若你用的是別處，請替換第一行：
 
 ```powershell
+Set-Location D:\scratch\cpp-sql-lab
 .\run-sql-case.ps1 diag
 ```
 
-本版對 `SELECT no_such_column FROM dbo.Jobs` 得到 SQLSTATE `42S22`、native code `207`。這些是指定組合的實測，不保證所有語言設定會有同一段文字。先核對 target 與 case，再看錯誤；不要把連錯 DB 的「欄位不存在」當成 schema 應該立刻修改的證據。
+腳本會核對專用容器與連接埠，再啟動 `sql_lab.exe diag`；不是逐行暫停的 debugger。以下按程式先後拆解整次輸出。
 
-## 不只一筆，也不只失敗才有
+## 先分清連線資訊，再讀查詢錯誤
 
-注意連線成功時，本版仍有 `rc=1`，並附兩筆資訊：資料庫 context 與語言已設定。`SQL_SUCCESS_WITH_INFO` 不是一律失敗，也不是一律可忽略。到了[下一章](06-data-contract.md)，同樣的成功帶資訊可能表示值被截斷。
+| 輸出線索 | 哪裡印的 | 看到它代表什麼 |
+|---|---|---|
+| `stage=connect rc=1` 與隨後診斷（本版曾出現） | `Connection` 裡的 `check()` | 連線成功但附帶資訊；不是查詢失敗 |
+| `target=localhost:15439/FieldTricksLab user=book_lab case=diag` | `main` | 已連上指定合成庫，即將跑 diag |
+| `diag=1 state=42S22 native=207 ...` | `diag` 分支的 `diagnostics()` | 本版 driver／SQL Server 回報欄位不存在 |
+| `PASS` | `main` 結尾 | 收到預期的 `SQL_ERROR`，不是證明 SQL 可用 |
 
-`diagnostics()` 從 record 1 讀到 `SQL_NO_DATA`，保留 state、native、text；文字 buffer 不夠就擴大重讀同筆。範例用寬字 API 再轉 UTF-8，避免本機語系訊息在 log 變亂碼。你真正需要的不是更多行，而是還原失敗的階段。
+`SQLSTATE` 是五字元分類碼；`native` 是資料庫或 driver 的原生代碼；`text` 是人讀的說明。同一個分類不代表所有環境的文字都相同。程式目前只斷言 `SQL_ERROR`，**沒有**把 `42S22`／`207` 寫成自動驗收條件；讀者仍要核對診斷是不是預期的欄位錯誤。
+
+若沒看到 target，先查連線或腳本檢查；若 target 不符，就停止。不要看到「欄位不存在」便立即修改 schema，因為連錯資料庫也可能有同樣症狀。
+
+## 為什麼必須立刻讀，而且要讀多筆？
+
+`diagnostics()` 裡真正取出一筆紀錄的是這個原碼片段；`type`、`handle` 來自呼叫端，`index` 從 1 開始：
 
 ```cpp
-const auto rc = SQLExecDirectA(stmt, sql, SQL_NTS);
-// 在其他會碰 stmt 的 ODBC API 之前：
-if (rc == SQL_ERROR || rc == SQL_SUCCESS_WITH_INFO)
-    diagnostics(SQL_HANDLE_STMT, stmt);
+SQLRETURN rc = SQLGetDiagRecW(type, handle, index, state, &native,
+    message.data(), static_cast<SQLSMALLINT>(message.size()), &length);
+if (rc == SQL_NO_DATA) break;
 ```
 
-這是位置示意，不是完整回傳碼處理。execute 的 `SQL_NO_DATA`、fetch 的 `SQL_NO_DATA` 有不同意思，第 10 章會用實際踩坑接上；不要把所有 API 套同一張「非零就是失敗」表。
+這裡的 `SQL_NO_DATA` 表示「沒有下一筆診斷」，不是「查詢沒有資料」。外層迴圈逐筆增加 `index`，所以不只讀第一筆。範例用寬字 API 取得訊息，再轉 UTF-8；訊息 buffer 不夠且長度在可處理範圍內時，擴大後重讀同筆。極長訊息仍有上限，不是通用無損日誌框架。
+
+`diag_rc` 是**讀取診斷這個動作**的回傳碼，不是原本執行 SQL 的 `rc`。後續會操作同一 handle 的其他 ODBC API 可能換掉診斷，因此保留順序必須是：存原始 `rc` → 讀對應 handle 訊息 → 再清理或前進。
+
+本版連線成功時曾附資料庫 context 與語言設定兩筆資訊。這就是 `SQL_SUCCESS_WITH_INFO`（數值 1）：不是一律失敗，也不能一律忽略。[下一章](06-data-contract.md)會看到它也可能表示字串沒讀完整。不要用「非零就是失敗」取代各 API 的契約；execute 與 fetch 的 `SQL_NO_DATA` 也有不同意思，第 10 章再接上。
 
 ## 有訊息之後，下一步更小
 
