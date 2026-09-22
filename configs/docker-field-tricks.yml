@@ -1,0 +1,76 @@
+site_name: Docker 現場招式：卡住時，先動這一小處
+site_description: 以可撤回的小動作定位 Docker 的掛載、設定、日誌、建置、網路與停止問題
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/docker-field-tricks
+site_dir: ../book/docker-field-tricks/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀與版本狀態: README.md
+  - 第一部 先把現場看見:
+      - '01 明明 COPY 了，先把掛載拿掉': 01-remove-mount.md
+      - '02 改了設定沒用？先印出真正吃到的值': 02-effective-config.md
+      - '03 容器死了，先把檔案拿出來': 03-copy-after-exit.md
+      - '04 一啟動就退出，先別讓它跑主程式': 04-bypass-entrypoint.md
+      - '05 裡面沒有 curl，從旁邊借一套': 05-borrow-network-tools.md
+      - '06 logs 沒字，先讓程式把字吐出來': 06-unbuffer-logs.md
+  - 第二部 固定輸入，縮小重跑:
+      - '07 不走介面，餵同一份輸入再跑一次': 07-replay-stdin.md
+      - '08 找不到檔案，先換 build 的那個點': 08-build-context.md
+      - '09 不必跑到最後，建到上一站就停': 09-stop-at-stage.md
+      - '10 懷疑快取，只讓那一段重跑': 10-invalidate-one-stage.md
+  - 第三部 把慢與偶發變成對照:
+      - '11 不是程式慢？把小檔暫搬進去試一次': 11-move-small-files.md
+      - '12 偶爾才壞，故意讓依賴慢一點': 12-delay-readiness.md
+      - '13 stop 總等滿？看誰擋在 PID 1': 13-forward-stop-signal.md
+  - 附錄:
+      - 'A 症狀到下一個小動作': appendix-a-symptoms.md
+      - 'B 實驗紀錄卡': appendix-b-record.md
+      - 'C 臨時改動怎麼收回': appendix-c-rollback.md
+      - 'D 證據、版本與延伸閱讀': appendix-d-evidence.md

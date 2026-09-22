@@ -3,6 +3,15 @@
 // ═══════════════════════════════════════════════════════
 const BOOKS = [
   {
+    icon: "🐳",
+    title: "Docker 現場招式：卡住時，先動這一小處",
+    desc: "13 個已在 Desktop 實測的小招式，從掛載、入口與日誌，查到建置、就緒與停止訊號",
+    tags: ["Docker", "debugging", "field tricks"],
+    href: "book/docker-field-tricks/html/index.html",
+    accent: "#0284c7",
+    glow: "rgba(2,132,199,0.18)",
+  },
+  {
     icon: "📦",
     title: "從封裝測試看懂日月光",
     desc: "從裸晶到可出貨封裝，走到 VIPack 平台、集團分工、營運口徑與日月光的公開證據",
