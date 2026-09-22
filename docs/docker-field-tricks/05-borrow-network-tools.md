@@ -2,6 +2,30 @@
 
 **現有網路功能；新增 HTTP fixture。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：`localhost` 屬於 network namespace
+
+容器的網路不是只有一條「Docker 網路」；每個容器通常有自己的 network namespace，裡面各自有介面、路由和 loopback。`127.0.0.1` 指的是目前這個 namespace 的自己，所以工具容器裡的 localhost，不是服務容器裡的 localhost。兩個容器加入同一個 bridge，只代表它們能透過各自的容器 IP 通訊，不會合併 loopback。
+
+工具容器的價值是提供診斷程式，而不是修改正式 image。`--network container:<target>` 只共享目標的網路堆疊；它不共享檔案系統、程序或環境變數。於是本章會比較兩條明確路徑：同 bridge 連目標 IP，以及共用 namespace 後連目標的 `127.0.0.1`。先知道共享的是哪一層，才不會把「沒有 curl」誤解成「只能改正式映像」。
+
+```mermaid
+flowchart LR
+    subgraph "同一個 bridge"
+        S1["服務 namespace<br/>listen 127.0.0.1:8000"]
+        T1["工具 namespace<br/>自己的 127.0.0.1"]
+        T1 -->|"連服務 IP"| S1
+        T1 -. "連 localhost<br/>打不到服務" .-> S1
+    end
+    subgraph "共用 network namespace"
+        S2["服務與工具<br/>同一個 loopback"]
+        T2["工具請求"] -->|"127.0.0.1:8000"| S2
+    end
+```
+
+## 這一招其實在教什麼：借觀測能力，不改被測對象
+
+工具容器的價值類似從 debugger、sidecar 或獨立診斷程式觀察一個 C++ service：把工具帶到現場，但盡量不改原服務的 image。真正要固定的是 network namespace、路徑、憑證與環境；否則借來的工具只證明「工具容器能連」，不代表應用本身能連。
+
 ## 現場症狀：極簡映像沒有工具，不代表服務不能測
 
 正式映像可能只有執行檔和必要的憑證，沒有 shell、curl，甚至沒有套件管理器。看到 localhost 要測時，直覺做法往往是把 curl 安裝進正式映像再重新發布。這會改變映像內容，也把診斷工具和服務的生命週期綁在一起。
@@ -213,6 +237,10 @@ printf '容器與 network 已清理；證據目錄保留：%s\n' "$field05_dir"
 --network container:目標 不是更強的 bridge。target 停止後沒有服務程序可供請求，不能把工具退出解讀成 bind 行為；而且某些網路選項被禁止，不能一邊共用 namespace 一邊期待獨立 publish port。若要測對外發布、DNS 解析或不同網路間的路由，應回到各自網路的測試，而不是硬套 localhost。
 
 一次性工具會增加程序和測試流量，也可能觸發服務的 rate limit 或認證紀錄。若工具映像不符合主機架構，失敗原因是 image／平台，不是服務網路。不要為了 curl 加 --privileged；需要封包擷取時，那是另一個有權限邊界的實驗。
+
+## 從土招到正式工程
+
+若某條診斷命令常用，就固定工具 image digest、namespace 方式與必要參數，收進版本化 script；把它定位成觀測工具，不要偷偷變成服務的依賴。正式的健康檢查仍應從應用真正使用的協定、憑證與設定出發。
 
 ## 收尾與撤回
 

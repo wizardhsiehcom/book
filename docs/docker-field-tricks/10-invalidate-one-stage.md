@@ -2,6 +2,23 @@
 
 **現有局部快取功能；自訂 nonce；需重新建置。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：快取記住的是建置邊界，不是所有檔案內容
+
+BuildKit 會嘗試重用先前的 layer，但它必須依建置指令與已知輸入判斷是否可重用；它不會執行每個 `RUN`，再讀容器裡任意檔案來猜結果。Build secret 的內容刻意不放進 cache key，因此「secret 檔案換了」不一定會讓讀取它的 `RUN` 重跑。這是安全與可重現性邊界，不是把 secret 當普通 `COPY` 輸入。
+
+stage 名稱則提供一個比較清楚的失效邊界。`--no-cache-filter secret-step` 會讓指定 stage 重新執行，依賴它的下游再跟著重算；它和全域 `--no-cache`、base image 更新、`RUN --mount=type=cache` 都是不同狀態。本章先用假的 A／B secret 看見「輸入變、輸出沒變」，再只刷新那一段，避免一開始就把整個 builder 清空。
+
+```mermaid
+flowchart LR
+    A["第一次<br/>secret A"] --> S1["secret-step<br/>執行"] --> M1["marker A"]
+    B["第二次<br/>secret B"] --> S2["secret-step<br/>可能命中 cache"] --> M2["marker A"]
+    C["第三次<br/>secret B + --no-cache-filter"] --> S3["secret-step<br/>重跑"] --> M3["marker B"]
+```
+
+## 這一招其實在教什麼：理解增量建置的失效邊界
+
+BuildKit cache 和 C++ incremental build 的 stale object 很像：問題不一定是「快取壞了」，而是你以為某個輸入會影響 target，實際上它沒有進入那個步驟的 key。局部停用 cache 是診斷 probe，用來確認疑點，不是日常的清 cache 儀式。
+
 ## 現場症狀
 
 你改了建置時會讀取的值，產物卻仍是舊的。第一個反應往往是 `--no-cache`，甚至直接 `docker builder prune`。前者讓所有 stage 都失去 layer cache，後者還會影響同一 builder 上別的專案；它們可以讓結果改變，卻不告訴你是哪個邊界有問題。
@@ -142,6 +159,10 @@ base digest 仍固定為第一次 pull 得到的 `BASE_REF`。局部失效沒有
 也不要用 `--no-cache` 或 `docker builder prune` 當第一步。全域失效會讓依賴下載、無關 stage 與其他專案一起重跑，結果改變後反而難以判斷原因。外部下載若沒有版本鎖定，即使 stage 重跑也可能拿到漂移內容；cache 定位和供應鏈固定是兩個工作。
 
 最後，`RUN --mount=type=cache` 的套件索引或編譯快取不等於 layer cache。局部 stage 失效可以再次執行命令，但不代表掛載內資料被清空；若命令依賴暖快取，A/B 還可能在不同狀態下產生差異。這是延伸實驗，不在本章假裝已量到速度。
+
+## 從土招到正式工程
+
+若輸入版本、依賴或 secret 的變動需要穩定觸發重建，應把它們變成可見的 build input，或在腳本中明確記錄版本與 cache policy；不要靠每次 `--no-cache` 來掩蓋 build graph 不完整。診斷成功後，優先修正邊界，再移除局部失效開關。
 
 ## 收尾與撤回
 

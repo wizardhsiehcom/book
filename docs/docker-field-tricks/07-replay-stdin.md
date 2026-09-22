@@ -2,6 +2,25 @@
 
 **現有 stdin 入口；新增測試解析器與 JSON。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：stdin 是輸入通道，不是「重做按鈕」
+
+程式從 stdin 讀到的是一串 bytes；它是否能重現一次操作，還取決於 parser、EOF、互動提示和輸入當下的環境。TTY 會改變一些程式對終端的判斷，但 `-T` 只是不配置 pseudo-TTY，不等於把 stdin 關掉。把檔案重導進去，仍要確認程式真的從 stdin 讀取、知道何時遇到 EOF，而且這份資料不會觸發真實副作用。
+
+`docker compose run` 會依 service 設定建立一個一次性 container；它沿用 image、環境與其他設定，但命令可以被覆蓋，也不等於重新進入原本正在跑的 service。這使它適合做小型重播，卻不保證重建整個真實請求環境。本章先固定輸入 bytes，再把「能餵進去」和「語意上等同原操作」分成兩個判斷。
+
+```mermaid
+flowchart LR
+    J["固定 JSON fixture"] --> I["stdin bytes<br/>固定輸入"]
+    I --> R["docker compose run -T<br/>一次性 container"]
+    R --> P["parser"]
+    P --> O["語意結果<br/>接受或拒絕"]
+    E["EOF"] --> P
+```
+
+## 這一招其實在教什麼：建立可重現的輸入 seam
+
+固定 stdin 就像把 C++ 的互動入口切成 fixture 或 replay harness：它能保留輸入 bytes 與解析結果，卻不會自動保留網路時序、外部服務、環境變數或競態。重播的價值是縮小變因，不是宣稱已重現整個 production。
+
 ## 現場症狀
 
 一次失敗只能從 UI 點出來，重跑整批又要等很久；你把看似相同的請求存下來，重導給 Compose，卻遇到「input device is not a TTY」，或者腳本的後半段沒有執行。這裡其實有兩個問題：資料有沒有真的從 stdin 送進容器，以及程式把資料解析後是否得到正確語意。只看到命令結束，不能證明兩件事都成立。
@@ -169,6 +188,10 @@ semantic-error 以 3 結束，代表 bytes 到達且 JSON 可以解析，但必�
 第二個反例是把預設 TTY 行為當成固定規則。Compose CLI 會依終端狀態自動判斷，舊版 `docker-compose` 的案例也可能和現在不同；腳本與檔案重導應明確寫 `-T`。第三個反例是以為 `--no-deps` 阻止網路；它只限制啟動相依服務，本章的 network none 才是隔離條件。
 
 固定輸入把真實時間、併發、重試、外部回應和 volume 狀態拿掉；好處是重跑快，代價是代表性變窄。保留失敗 fixture 會增加維護與去敏責任，重要案例才收進回歸資料，不要把每次臨時輸出都永久保存。
+
+## 從土招到正式工程
+
+若同一份輸入反覆有用，把它去敏後收進版本庫，補上版本、設定、退出碼與副作用的驗收。再往前才判斷是否需要錄製事件時間線、建立 fake service 或加入整合測試；先用 fixture 找到 seam，通常比一開始打造完整重播系統更便宜。
 
 ## 收尾與撤回
 

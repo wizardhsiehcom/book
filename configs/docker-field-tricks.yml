@@ -1,5 +1,5 @@
-site_name: Docker 現場招式：卡住時，先動這一小處
-site_description: 以可撤回的小動作定位 Docker 的掛載、設定、日誌、建置、網路與停止問題
+site_name: Docker 現場招式：接手陌生系統時，先建立證據
+site_description: 以可撤回的診斷探針，接回 C++ 工程師熟悉的建置、程序、觀測、輸入與生命週期概念
 site_author: Edison Hsieh
 
 theme:

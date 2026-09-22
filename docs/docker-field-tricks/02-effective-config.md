@@ -2,6 +2,26 @@
 
 **現有 Compose 功能；需重建測試容器。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：Compose 檔、渲染結果和既有容器是三件事
+
+Compose 檔描述的是「希望服務怎麼建立」；它不是正在執行的程序，也不是一份會自動回寫到既有容器的設定。執行指令時，Compose CLI 先讀 YAML、環境變數與 `--env-file`，把 `${...}` 渲染成模型，再把模型交給 Docker Engine。這一步成功，只表示設定能被解析，不表示應用真的讀到了你想要的值。
+
+因此本章要分開觀察三個結果：第一，CLI 最後渲染出的值；第二，已經存在的 container 當初建立時拿到的值；第三，程式在 container 內實際看到的環境。`restart` 只會重啟第二個物件，不會用新 YAML 重做它；通常要由 `up` 判斷變更並重建，或明確使用 `--force-recreate`。先把這條時間線分開，才不會把 `.env` 優先序和「為什麼舊值還在」混成同一個問題。
+
+```mermaid
+flowchart LR
+    Y["Compose YAML"] --> R["CLI 渲染<br/>合併與變數插值"]
+    E["shell<br/>--env-file<br/>.env"] --> R
+    R --> U["docker compose up<br/>建立或重建"]
+    U --> C["container<br/>應用實際看到的值"]
+    R -. "restart 不會重建既有 container" .-> O["既有 container<br/>仍保留舊值"]
+    O --> C
+```
+
+## 這一招其實在教什麼：追設定的 provenance
+
+這章對應 C++ 專案裡的 `argv`、環境變數、ini／yaml 與啟動設定：來源檔、渲染後的模型、程序建立時的 snapshot 不是同一件事。你要練的是問「值從哪裡來、何時被固定、最後哪個程序看見它」，而不是背一張優先序表。
+
 ## 現場症狀
 
 改了 `.env`，反覆 `restart`，程式仍讀到舊值。先不要猜哪個檔案「應該」優先；把流程拆成 Compose 渲染模型、建立容器、應用讀值三層。這章只要看見 A → A → C：模型可以變，既有 container 仍留在 A，明確重建後才吃 C。
@@ -93,6 +113,10 @@ printf 'created=%s\nrestart=%s\nrecreated=%s\nold_id=%s\nnew_id=%s\n' \
 ## 失效反例與代價
 
 掛載檔案的應用可能在 `restart` 後自行重讀，所以某次看起來值有變；那是應用行為，不是 Compose 重新建立 environment。歷史 issue 也記錄過 `config --no-interpolate` 的美元轉義差異；這是舊版案例，不能宣稱現版必壞，更不能把渲染檔當無損模板回餵。`config` 通過不等於服務健康，也不等於秘密沒有出現在輸出。重建會短暫中斷並可能丟可寫層，不能對正式服務試刀。
+
+## 從土招到正式工程
+
+若這種差異反覆發生，把有效配置輸出、版本與重建命令收進可審查的部署腳本或 CI 檢查；讓啟動時印出的敏感資料維持遮罩。正式化的目標是讓「這個程序最後吃到什麼」可被重現與驗證，而不是要求每個人記住該按 `restart` 還是 `up`。
 
 ## 收尾與撤回
 

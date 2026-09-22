@@ -2,6 +2,26 @@
 
 **Python 現有開關；新增輸出 fixture；主機需 Python 3。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：`docker logs` 不是程式輸出的同義詞
+
+從程式呼叫 `print` 到你在 `docker logs` 看到文字，中間至少有幾段：程式可能先把資料留在自己的 stdout 緩衝區，接著才交給容器的 stdout/stderr；Docker 再交給 logging driver 保存或轉送，CLI 最後從可讀的端點取回。任何一段沒有輸出、延遲或不支援讀取，都可能呈現成「logs 沒字」。
+
+所以這章的 `-u` 只是在 Python 那一段關掉或縮短緩衝，不能修正「程式其實寫檔案」、遠端 driver 或收集端的問題。先把輸出路徑想成一條管線，再用普通啟動、`-u` 和檔案輸出做對照；看到差異時，才知道縮小的是哪一段，而不是把 `-u` 當成通用日誌修復。
+
+```mermaid
+flowchart LR
+    P["程式 print"] --> B["Python stdout<br/>緩衝"]
+    B --> O["容器 STDOUT / STDERR"]
+    O --> L["logging driver"]
+    L --> D["docker logs"]
+    F["程式寫檔案<br/>/tmp/app.log"] -. "不會自動進 logs" .-> D
+    U["python -u"] -. "只影響 stdout/stderr<br/>這一段" .-> B
+```
+
+## 這一招其實在教什麼：把觀測管線拆開
+
+這章對應 C++ logger、`stdout`、buffer、collector 與 trace sink 的分工。程式有輸出，不代表你正在看的 `docker logs` 一定能即時看到；先定位資料卡在哪一段，再決定要改程式 buffering、logging driver，還是收集端。
+
 ## 現場症狀：程式活著，logs 卻像空的
 
 容器仍在跑，docker logs 沒有新行，等到程序結束才一次出現。最容易浪費的下一步是立刻懷疑 logging driver、網路或 Docker daemon，然後重建整個映像。Python 的 stdout 在非互動管線可能先留在應用程式的緩衝區；這時先做一個局部對照：同一個程式、同一個 image，一組普通啟動，一組加 -u。
@@ -171,6 +191,10 @@ printf '容器已清理；證據目錄保留：%s\n' "$field06_dir"
 本章明確不加 -t。若改成互動 TTY，Python 的 stdout buffering 條件可能改變，A/B 差異就不再只剩 -u；若用遠端 driver，docker logs 也可能受 driver 讀取能力與本機 cache 影響。這些都是另一次對照，不要在本輪中途混入。
 
 同樣地，docker logs 看到最後四行，不表示中途每行都即時可見；只能搭配首筆 polling 記錄判斷延遲。dual logging 是 Docker 為部分遠端 driver 提供的讀取 cache，官方也列出 cache 關閉或寫入失敗時的限制，不能把它寫成可靠離線備援。
+
+## 從土招到正式工程
+
+若即時輸出是正式需求，應在應用 logger、flush policy 與收集 driver 間寫出明確契約，並用小測試驗證「何時可見」；不要把一次診斷用的 `-u` 當成所有效能與可靠性的答案。正式日誌仍要處理格式、敏感資料、rotation 與丟失邊界。
 
 ## 收尾與撤回
 

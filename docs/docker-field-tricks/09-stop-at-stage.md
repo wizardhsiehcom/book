@@ -2,6 +2,23 @@
 
 **現有 target 功能；需重新建置。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：多階段 build 是一串可觀察的檔案狀態
+
+多階段 Dockerfile 不是一次把所有命令直接堆進 final image；每個 `FROM ... AS name` 都可以視為一個中間檔案系統狀態，後面的 stage 用 `COPY --from` 選擇性拿走產物。某個 build 命令成功，只代表它走過的命令沒有失敗，不代表 final stage 一定收到了你以為的檔案。
+
+`--target` 讓 build 停在指定 stage，產生一個可 inspect 的中間 image。它特別適合問「產物在哪一站消失」：若 build stage 的契約已成立、release stage 的契約失敗，問題就在 stage 之間的複製或路徑，而不必先等待完整發布流程。中間 image 只是診斷材料，不是正式交付物；本章會為每一站先寫出可檢查的檔案契約。
+
+```mermaid
+flowchart LR
+    B["build stage<br/>產出 app + config"] -->|"COPY --from=build"| R["release stage"]
+    R --> F["final image"]
+    B -. "--target build<br/>先停在這裡" .-> X["中間 image<br/>可檢查產物"]
+```
+
+## 這一招其實在教什麼：把中間產物變成檢查點
+
+多階段 build 的 stage 就像 C++ 編譯流程中的中間 target：它不是只有最後 executable 才有意義。`--target` 讓你停在產物剛生成的位置，先確認檔案、權限與設定，再追最後一段交付；這比只看 final image 缺什麼更容易定位責任邊界。
+
 ## 現場症狀
 
 多階段 Dockerfile 的最後映像少了一個檔案。你重新跑完整 build，它可能很快命中前面的 cache，也可能又等完編譯、測試與打包，最後才看到同一個缺檔。此時真正要問的是：「檔案在哪個 stage 還存在？」而不是「整個 build 有沒有成功」。
@@ -129,6 +146,10 @@ test "$(docker run --rm field09:release-fixed sh -c 'cat /etc/field09/config')" 
 也不要把 debug stage 直接發布。它可能含 shell、編譯器、測試資料或中間憑證；這些工具對定位有用，卻不應隨正式 image 出貨。stage 名稱不是安全邊界，`COPY --from` 也不會替你審查產物內容。實驗 fixture 用假文字檔，正式專案仍要核對權限、所有者與機密清理。
 
 若 final 有 bind mount 或 volume，`docker run` 看到的內容還會受到執行期掛載遮蔽；本章刻意不加掛載，避免把 build 邊界和執行期遮蔽混成一件事。遇到相同症狀時，可先回看 [08-build-context.md](08-build-context.md) 確認輸入，再回到本章查 stage 交付邊界。
+
+## 從土招到正式工程
+
+若某個 stage 的產物是交付契約，就把檔案清單、版本資訊與最小 smoke test 收進 CI；`--target` 可以保留成診斷入口，但不應讓工程師靠手動進中間 image 才知道 release 少了什麼。正式修法是讓交付邊界可被自動檢查。
 
 ## 收尾與撤回
 

@@ -2,6 +2,25 @@
 
 **現有 Compose 條件；自訂 delay 與探針。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：容器啟動、開始 listen、可以服務不是同一刻
+
+服務程序開始執行，只代表它拿到 CPU；它可能還在讀設定、建立資料表或等待 socket。port 開始 listen，又只代表某種連線能進來；HTTP 回 `503` 甚至表示它能回應，但還沒準備好做真正的工作。readiness 是應用或探針定義的一個更高門檻，不是 Docker 自動知道的事。
+
+Compose 的啟動條件只能根據你提供的訊號做排序：`service_started` 看容器是否開始，`service_healthy` 等 healthcheck 通過。固定 `sleep 5` 是故障注入或暫時觀察工具，不是可靠的 readiness 機制。本章故意讓同一個服務晚一點才回 ready，再比較兩種門檻，讓「第二次剛好成功」變成可重現的時間問題。
+
+```mermaid
+flowchart LR
+    S["container started<br/>程序開始"] -->|"service_started"| C["client 可以啟動"]
+    C --> X["可能先收到 503"]
+    S --> H["healthcheck"]
+    H -->|"service_healthy"| R["client 等 ready 後啟動"]
+    R --> O["更接近可服務"]
+```
+
+## 這一招其實在教什麼：把時間條件寫成契約
+
+程序啟動、開始 listen、健康檢查通過與真正能服務，對應 C++ service 的初始化狀態與依賴握手。刻意延遲不是修復 readiness，而是把 race window 拉長，讓你看見 client 到底在等什麼、錯誤由誰處理。
+
 ## 現場症狀：第二次成功，把第一次的線索蓋掉了
 
 第一次 `up`，client 說連線失敗；再執行一次就好了。你在啟動腳本加 `sleep 5`，本機似乎再也沒出事。到了 CI，磁碟較忙，五秒又不夠。
@@ -158,6 +177,10 @@ docker compose -p field12 down
 這份錯誤探針只能留在練習副本，完成後還原原來那一行。另一個邊界是運行中故障：即使啟動時等到 healthy，依賴之後也可能重啟或斷線。單次啟動 gate 不會替應用提供永久連線保證。
 
 代價也很具體：啟動等候增加，探針有負載和維護成本，錯誤探針可能讓部署卡住。值得正式化的是有意義且有上限的條件，不能只把固定 sleep 改名叫健康檢查。
+
+## 從土招到正式工程
+
+若延遲對照確認了啟動契約缺口，正式方向是明確定義 healthcheck、readiness、client retry／backoff 與依賴失敗時的行為。不要把較長的 sleep 或 `service_started` 當成 ready；診斷用等待應在契約寫清後刪除。
 
 ## 收尾與撤回
 

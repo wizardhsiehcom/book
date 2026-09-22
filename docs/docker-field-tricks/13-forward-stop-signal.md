@@ -2,6 +2,35 @@
 
 **修改 wrapper；測試用唯讀掛載，正式映像通常需重建。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：Docker stop 先找 PID 1，再等待它收尾
+
+容器裡的程序樹和主機上的程序樹一樣有父子關係，但 Docker 送停止訊號時，首先找的是容器的 PID 1。一般流程是先送 `SIGTERM`，等待設定的寬限時間，逾時再送 `SIGKILL`。如果 PID 1 是一個沒有轉送訊號的 shell，真正需要清理的 child 可能一直沒收到通知；把 timeout 調短只會更早進入強殺。
+
+`exec` 不是「多跑一個命令」，而是讓 wrapper 用主程式取代自己，於是主程式留在 PID 1 的位置。這通常能改善訊號抵達，但不會替應用補上清理程式，也不會讓一個故意忽略 `SIGTERM` 的程序突然變合作。這章同時留下 cleanup marker，因為 stop 的秒數只能說明等待多久，不能單獨證明收尾真的完成。
+
+```mermaid
+flowchart TB
+    subgraph "A：shell 是 PID 1"
+        A1["docker stop"] --> A2["PID 1 shell 收 SIGTERM"]
+        A2 -. "沒有轉送給 child" .-> A3["cleanup 未完成"]
+        A3 --> A4["逾時後 SIGKILL"]
+    end
+    subgraph "B：wrapper 使用 exec"
+        B1["docker stop"] --> B2["PID 1 = 應用程式"]
+        B2 --> B3["SIGTERM → cleanup"]
+        B3 --> B4["cleanup-done"]
+    end
+    subgraph "C：應用忽略 SIGTERM"
+        C1["docker stop"] --> C2["PID 1 收到 SIGTERM"]
+        C2 --> C3["繼續等待"]
+        C3 --> C4["逾時後 SIGKILL"]
+    end
+```
+
+## 這一招其實在教什麼：確認程序的 shutdown ownership
+
+PID 1、wrapper 與 child process 的關係，對應 C++ 應用、啟動 shell 與 supervisor 誰擁有 signal 和 cleanup 責任。把 timeout 調短只會更早得到 SIGKILL；真正要驗的是 SIGTERM 是否送到正確的程序，以及清理完成是否留下可觀察證據。
+
 ## 現場症狀：縮短 timeout，只是提早強殺
 
 每次停止服務都等到寬限時間用完，部署因此慢了一截。你把 timeout 改短，畫面很快回到提示符號，卻發現最後一筆工作沒有寫完。這個改善可能只代表強殺提早發生。
@@ -154,6 +183,10 @@ C 就是本章的反例：訊號交到應用，應用仍可忽略它。還有更
 多子程序時也不能直接套單程序解法。你可能需要轉送到程序群組、等待子程序退出及處理孤兒程序；Tini 預設轉送給直接 child，`-g` 是額外的群組模式，不能假設 Docker 的 `--init` 自動包含你的所有需求。值得把這些需求留到真的有多程序時再設計。
 
 這次改法省掉等滿 timeout 的時間，成本轉移到應用必須正確處理自己的生命週期。成功標記只是教學替身；真實服務要查工作是否重送、資料是否落盤及最後回應是否完成。
+
+## 從土招到正式工程
+
+若 `exec` 對照證明 wrapper 吃掉了停止責任，正式修法是讓入口鏈明確使用 `exec`、補上 termination integration test，並為重要 cleanup 定義可觀察的完成條件。只有在應用確實需要更長時間時才調整 timeout；不要用更長的等待掩蓋 signal ownership 錯誤。
 
 ## 收尾與撤回
 

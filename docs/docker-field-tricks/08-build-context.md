@@ -2,6 +2,25 @@
 
 **現有 build 功能；需重新建置。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：build 命令同時指定了幾個不同的路徑
+
+一條 `docker build` 命令至少有三個概念：`-f` 選哪一份 Dockerfile、最後一個參數指定 build context、`-t` 只替產出的 image 命名。`COPY` 和 `ADD` 看到的是 context 裡的檔案集合，不是「Dockerfile 所在資料夾的全部內容」。因此 Dockerfile 搬到別處時，真正需要重新確認的可能是 context，而不只是 `-f` 路徑。
+
+Docker daemon 只會收到 context 允許的檔案；`.dockerignore` 還會在送出前把符合規則的檔案排除。這裡的「找不到」可能是路徑寫錯、context 沒包含，或 ignore 把它拿掉，三者修法不同。本章先讓 A／B 只換 context，其餘 Dockerfile 和輸入檔保持不變，讓這幾個概念不要在第一個命令裡混在一起。
+
+```mermaid
+flowchart LR
+    F["-f Dockerfile<br/>選哪一份"] --> B["build request"]
+    C["context 目錄"] --> G[".dockerignore<br/>篩選檔案"]
+    G --> B
+    B --> V["builder 可見的<br/>檔案集合"]
+    V --> X["COPY / ADD"]
+```
+
+## 這一招其實在教什麼：畫出 build graph 的輸入邊界
+
+`-f` 選的是 Dockerfile，最後一個路徑才是 context；這和 C++ 編譯器的工作目錄、include 搜尋路徑與實際送進 build 的檔案集合很像。遇到 `COPY` 失敗時，先問 builder 看得到什麼，比在 Dockerfile 裡盲改路徑更接近根因。
+
 ## 現場症狀
 
 你把 Dockerfile 放進 `docker/`，從那裡執行 build，`COPY marker.txt /marker.txt` 卻說檔案不存在。直覺通常是把 `../marker.txt` 填進 Dockerfile，或把所有檔案搬到 Dockerfile 旁邊。先停一下：命令最後那個位置參數是 build context；`-f` 或 `--file` 才是 Dockerfile 的位置。兩者可以是不同目錄。
@@ -128,6 +147,10 @@ docker image inspect field08:context-restored --format 'restored={{.Id}}'
 若把 context 放在 repo 根目錄，可能不必要地送入大型 `node_modules`、測試輸出或機密設定；這會放大傳輸、掃描與誤帶檔案的成本。此時 `.dockerignore` 是縮小輸入的工具，不是用來掩蓋缺檔的修補。規則寫得太寬，會讓必要的 lockfile 或 marker 消失；規則寫得太窄，則把不該進 build 的資料交給 builder。
 
 另一個常見誤判是把 Dockerfile 裡的相對路徑當成主機 shell 的相對路徑。`COPY marker.txt` 是相對於 context 根，不是相對於 Dockerfile 所在的 `docker/`。若需求是同時使用多個來源，後續可查 named context；本章不把它混進第一個診斷動作。
+
+## 從土招到正式工程
+
+若 context 混淆反覆出現，把 Dockerfile、context、ignore 規則與 build 參數收進一條版本化命令，並在 CI 檢查必要檔案是否真的進入 builder。這相當於把 C++ 專案裡「從哪個目錄、用哪組 include 與來源編譯」的隱含約定寫出來。
 
 ## 收尾與撤回
 

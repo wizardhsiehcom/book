@@ -2,6 +2,24 @@
 
 **現有入口覆寫；需建置診斷映像。** 已完成本版 Desktop Linux／arm64 核心實驗；適用環境與未驗邊界見[證據附錄](appendix-d-evidence.md)。
 
+## 先把背景補齊：容器啟動時有一條入口鏈
+
+`docker run` 不會直接「跑 image」；它會建立 container，接著依 image 的 `ENTRYPOINT` 和 `CMD` 組出要啟動的程序。`ENTRYPOINT` 通常是固定入口或 wrapper，`CMD` 可以提供預設參數；wrapper 若在檢查環境、準備檔案或轉交主程式前就失敗，主程式甚至還沒有開始工作。
+
+`--entrypoint` 是在建立一個新的診斷 container 時換掉這條入口，不是把已退出的原容器復活，也不會自動還原原入口做過的初始化。因此有用的對照是：保留同一個 image、掛載、使用者、工作目錄與環境，只把入口暫時換成 image 裡已存在的等待程式。這樣看到的差異才比較能歸因於入口，而不是一口氣換了整個執行環境。
+
+```mermaid
+flowchart LR
+    I["image<br/>ENTRYPOINT + CMD"] --> N["正常啟動<br/>wrapper / 初始化"]
+    N --> A["主程式"]
+    I --> D["--entrypoint /bin/sleep<br/>診斷副本"]
+    D --> O["保留觀察窗口<br/>再手動執行原入口"]
+```
+
+## 這一招其實在教什麼：找出控制邊界
+
+`ENTRYPOINT`、wrapper、初始化與主程式的關係，對應 C++ 裡的 `main`、啟動 adapter、測試 harness 與真正的工作函式。暫時換入口不是正式修法，而是把一層控制拿掉，確認問題發生在 wrapper、環境，還是主程式本身。
+
 ## 現場症狀
 
 容器一啟動就退出，log 只留下同一句錯誤；你還沒來得及看工作目錄、掛載、環境或可執行檔，程序已經結束。這時反覆 `docker run` 只能反覆得到同一個表面症狀。重建正式映像也沒有幫助，因為你還不知道失敗發生在入口 wrapper、初始化條件，還是主程式本身。
@@ -115,6 +133,10 @@ docker exec "$DEBUG_NAME" sh -c 'pwd; id; ls -la /work; command -v sleep'
 第三個反例是 scratch／distroless。沒有 `/bin/sleep` 或 shell 時，這章的最小招式沒有工具可用；不要為了診斷就把工具硬塞進正式映像。要取停止後的一般檔案，轉到第 03 章用 `docker cp`；要測網路路徑，轉到第 05 章用明確的工具容器。這些替代招式都有自己的前提，不能宣稱保留原程序記憶體或共享 rootfs。
 
 代價是多一個 image tag、container 和人工步驟；診斷窗口中也可能錯過只在第一次啟動出現的競態。只在隔離副本使用，記錄唯一改動，並在結果無法支持假設時停止擴大範圍。
+
+## 從土招到正式工程
+
+若團隊反覆需要繞過同一層，應把診斷入口命名並版本化，例如獨立 debug stage、明確的 diagnostic command 或測試 harness；同時保留正常入口的整合測試。臨時 `--entrypoint` 的價值是定位控制邊界，不是讓所有人永遠手動啟動內層程序。
 
 ## 收尾與撤回
 
