@@ -12,6 +12,15 @@ const BOOKS = [
     glow: "rgba(217,119,6,0.18)",
   },
   {
+    icon: "🧺",
+    title: "衣物照護：從材質、洗滌到去污與保養",
+    desc: "讀懂材質與洗標，建立日常洗衣、污漬判斷、特殊衣物照護與換季收納流程",
+    tags: ["衣物材質", "洗滌去污", "日常保養"],
+    href: "book/clothing-care/html/index.html",
+    accent: "#0d9488",
+    glow: "rgba(13,148,136,0.18)",
+  },
+  {
     icon: "🐳",
     title: "Docker 現場招式：卡住時，先動這一小處",
     desc: "13 個已在 Desktop 實測的小招式，從掛載、入口與日誌，查到建置、就緒與停止訊號",
@@ -29,7 +38,6 @@ const BOOKS = [
     accent: "#0891b2",
     glow: "rgba(8,145,178,0.18)",
   },
-
   {
     icon: "📦",
     title: "從封裝測試看懂日月光",

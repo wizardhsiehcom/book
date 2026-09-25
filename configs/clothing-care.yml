@@ -1,0 +1,96 @@
+site_name: 衣物照護：從材質、洗滌到去污與保養
+site_description: 辨識衣物材質與洗標，建立洗滌、去污、乾燥、維護與收納的家庭照護流程
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 切換為深色模式
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/clothing-care
+site_dir: ../book/clothing-care/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 第一部 認識衣物:
+      - "01 照護從觀察開始": 01-care-decisions.md
+      - "02 成分、洗標與整件衣物": 02-labels-and-construction.md
+      - "03 棉與麻：耐用不等於沒有條件": 03-cotton-and-linen.md
+      - "04 羊毛與羊絨：把形狀也當成要保護的東西": 04-wool-and-cashmere.md
+      - "05 蠶絲、嫘縈與萊賽爾：相似觸感，不同材料": 05-silk-and-regenerated-fibers.md
+      - "06 合成纖維與混紡：不要用占比投票": 06-synthetics-and-blends.md
+  - 第二部 建立清潔流程:
+      - "07 清潔如何發生：不是把力量全開": 07-how-cleaning-works.md
+      - "08 洗衣產品：先讀用途，再看名稱": 08-detergents-and-products.md
+      - "09 把一籃衣服變成可執行的批次": 09-washing-workflow.md
+      - "10 乾燥與整燙：洗完還沒有完成": 10-drying-and-pressing.md
+  - 第三部 處理污漬:
+      - "11 污漬判斷：先決定能不能動手": 11-stain-triage.md
+      - "12 食物與身體污漬：先拆成不同線索": 12-food-and-body-stains.md
+      - "13 油脂與化妝品：油影和色料分開觀察": 13-oil-and-cosmetics.md
+      - "14 飲料、墨水、泥土與染色轉移：按來源找案例": 14-drinks-ink-and-transfer.md
+      - "飲料：茶、咖啡、酒與果汁": stains/drinks.md
+      - "墨水：先找筆，再找去污方法": stains/ink.md
+      - "泥土：先移除顆粒，再處理殘痕": stains/mud.md
+      - "鐵鏽：不要先拿含氯漂白劑": stains/rust.md
+      - "染色轉移：先分清多了顏色還是少了顏色": stains/dye-transfer.md
+      - "15 異味、泛黃與霉斑：追查問題出現的時點": 15-odor-yellowing-and-mildew.md
+  - 第四部 整合照護:
+      - "16 從材料走回整件衣物": 16-garment-scenarios.md
+      - "運動機能衣：洗乾淨，也保留原本功能": garments/sportswear.md
+      - "牛仔衣褲：先決定你要保留什麼": garments/denim.md
+      - "羽絨外套：清洗與乾燥要一起規劃": garments/down.md
+      - "防水外套：表面潑水與防水層分開看": garments/waterproof.md
+      - "內衣與胸罩：保護貼身結構": garments/underwear.md
+      - "西裝與結構外套：送洗也是一種需要準備的操作": garments/tailoring.md
+      - "皮革與麂皮：先辨認表面，再決定交給誰": garments/leather.md
+      - "17 磨耗與損傷：哪些問題不是洗衣問題": 17-wear-damage-and-repair.md
+      - "18 日常與換季：讓照護做得下去": 18-storage-and-routines.md
+  - 附錄:
+      - "A01 材質與詞彙索引": appendices/material-index.md
+      - "A02 洗護符號：文字查閱與官方入口": appendices/care-symbols.md
+      - "A03 污漬與症狀索引、送洗交接表": appendices/stain-index.md
+      - "A04 來源、適用範圍與編輯說明": appendices/sources.md
+      - "圖片來源與授權": 99-image-credits.md
