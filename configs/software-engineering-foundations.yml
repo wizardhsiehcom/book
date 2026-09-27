@@ -1,0 +1,68 @@
+site_name: 從讀懂程式到能修改系統：工程基礎
+site_description: C++ 值、資源、契約、容器、測試、除錯與交付，配套 AOI 離線檢查器漸進課程
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: {icon: material/weather-sunny, name: 切換為亮色模式}
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle: {icon: material/weather-night, name: 切換為深色模式}
+  features: [navigation.sections, navigation.expand, navigation.top, content.code.copy]
+docs_dir: ../docs/software-engineering-foundations
+site_dir: ../book/software-engineering-foundations/html
+use_directory_urls: false
+exclude_docs: |
+  examples/build/
+  examples/run-*/
+  examples/__pycache__/
+extra:
+  bookshelf_url: ../../../index.html
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          # The shared mermaid@10 initializer reads the container's HTML.
+          # Emit a bare div; pre/code would feed a literal <code> tag to its parser.
+          format: !!python/name:pymdownx.superfences.fence_div_format
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、讀懂資料與資源:
+      - 01 原始碼與產物: 01-build.md
+      - 02 值與參照: 02-values.md
+      - 03 生命週期與 RAII: 03-lifetime.md
+      - 04 容器與資料語意: 04-containers.md
+      - 05 複雜度與規模: 05-complexity.md
+  - 二、讓修改有邊界:
+      - 06 輸入契約: 06-contracts.md
+      - 07 錯誤傳遞: 07-errors.md
+      - 08 模組與重構: 08-modules.md
+      - 09 測試證據: 09-tests.md
+  - 三、獨立排錯與交付:
+      - 10 除錯: 10-debugging.md
+      - 11 效能量測: 11-performance.md
+      - 12 Git: 12-git.md
+      - 13 CI 與交付: 13-delivery.md
+  - 附錄:
+      - Python 工程遷移: 14-python.md
+      - 實驗與 C00 下載: labs.md
+      - 自我檢查答案: answers.md
+      - 來源: sources.md
+      - 驗證紀錄: verification.md

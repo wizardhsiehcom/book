@@ -3,6 +3,15 @@
 // ═══════════════════════════════════════════════════════
 const BOOKS = [
   {
+    icon: "🧱",
+    title: "從讀懂程式到能修改系統",
+    desc: "C++ 值、資源、契約、測試與除錯的工程基礎，配套 AOI 清單檢查器漸進課程",
+    tags: ["C++", "software engineering", "systems"],
+    href: "book/software-engineering-foundations/html/index.html",
+    accent: "#0f766e",
+    glow: "rgba(15,118,110,0.18)",
+  },
+  {
     icon: "🛠️",
     title: "C++ 接上 SQL 之後：現場工程技巧",
     desc: "固定入口、test_mode、ODBC 邊界、交易與重播，17 章銜接資深工程師的開發判斷",
