@@ -1,0 +1,77 @@
+site_name: 資料庫與資料正確性：從一筆紀錄到可靠恢復
+site_description: 從資料模型、SQL 查詢與交易，走到並行、重送、提交未知與恢復
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: {icon: material/weather-sunny, name: 切換為亮色模式}
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle: {icon: material/weather-night, name: 切換為深色模式}
+  features: [navigation.sections, navigation.expand, navigation.top, content.code.copy]
+docs_dir: ../docs/database-correctness
+site_dir: ../book/database-correctness/html
+use_directory_urls: false
+exclude_docs: |
+  examples/build/
+  examples/run-*/
+  examples/__pycache__/
+extra:
+  bookshelf_url: ../../../index.html
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          # The shared mermaid@10 initializer reads the container's HTML.
+          # Emit a bare div; pre/code would feed a literal <code> tag to its parser.
+          format: !!python/name:pymdownx.superfences.fence_div_format
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、表示與查詢:
+      - 01 資料身分: 01-identity.md
+      - 02 正規化: 02-normalization.md
+      - 03 查詢: 03-query.md
+      - 04 NULL: 04-null.md
+      - 05 JOIN: 05-joins.md
+      - 06 聚合與粒度: 06-aggregation.md
+      - 07 約束: 07-constraints.md
+  - 二、交易與競爭:
+      - 08 交易: 08-transactions.md
+      - 09 提交與持久性: 09-commit-durability.md
+      - 10 並行更新: 10-concurrent-updates.md
+      - 11 隔離層級: 11-isolation.md
+      - 12 鎖與死鎖: 12-locks-deadlocks.md
+  - 三、查詢成本:
+      - 13 索引: 13-indexes.md
+      - 14 查詢計畫: 14-query-plans.md
+  - 四、失敗與恢復:
+      - 15 操作身分: 15-operation-identity.md
+      - 16 結果未知: 16-unknown-outcome.md
+      - 17 Outbox: 17-outbox.md
+      - 18 升版: 18-migrations.md
+      - 19 還原: 19-restore.md
+      - 20 追溯: 20-provenance.md
+      - 21 保留期: 21-retention.md
+  - 實作與附錄:
+      - 實驗與下載: labs.md
+      - 獨立練習: exercises.md
+      - 練習答案: answers.md
+      - 來源: sources.md
+      - 驗證紀錄: verification.md

@@ -3,6 +3,15 @@
 // ═══════════════════════════════════════════════════════
 const BOOKS = [
   {
+    icon: "🗃️",
+    title: "資料庫與資料正確性",
+    desc: "從資料身分、SQL 與交易，走到並行、重送、未知提交及恢復；21 章搭配 SQL 實驗",
+    tags: ["SQL Server", "database", "data correctness"],
+    href: "book/database-correctness/html/index.html",
+    accent: "#0369a1",
+    glow: "rgba(3,105,161,0.18)",
+  },
+  {
     icon: "🧱",
     title: "從讀懂程式到能修改系統",
     desc: "C++ 值、資源、契約、測試與除錯的工程基礎，配套 AOI 清單檢查器漸進課程",
