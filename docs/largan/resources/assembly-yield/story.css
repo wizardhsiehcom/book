@@ -36,7 +36,6 @@
 .asy-legend{margin:14px 0 0;padding-left:1.6em;font-size:16px;line-height:1.6;columns:2 280px;column-gap:28px}
 .asy-legend li{break-inside:avoid;margin-bottom:6px;color:var(--muted)}
 .asy-legend b{color:var(--ink);font-weight:650;margin-right:.5em}
-.asy-legend li:last-child{list-style:none}
 
 /* 三種自由度 */
 .asy-dof{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:var(--card)}
@@ -95,8 +94,8 @@
 /* 虛線圈＝規格；實心圓＝模糊圈；容器固定高度讓五欄對齊 */
 .asy-ring{position:relative;display:block;width:52px;height:52px;margin-bottom:4px}
 .asy-ring i{position:absolute;left:50%;top:50%;width:var(--d);height:var(--d);border-radius:50%;transform:translate(-50%,-50%)}
-.asy-ring i{background:var(--ink);opacity:.8}
-.asy-field.asy-bad .asy-ring i{background:var(--accent);opacity:.9}
+.asy-ring i{background:var(--ink);opacity:.45}
+.asy-field.asy-bad .asy-ring i{background:var(--accent);opacity:.6}
 .asy-ring::after{content:'';position:absolute;left:50%;top:50%;width:var(--d);height:var(--d);border-radius:50%;border:1.5px dashed var(--ink);transform:translate(-50%,-50%);z-index:1}
 
 /* 表格 */
@@ -125,7 +124,7 @@
 /* 配對：誤差相加 */
 .asy-pairs{margin:0}
 .asy-big{margin:0 0 12px;font-size:17px}.asy-big b{font-size:28px;font-weight:650;margin-right:6px}
-.asy-pair{display:grid;grid-template-columns:11em minmax(0,1fr) 6em;gap:12px;align-items:center;padding:6px 0;font-size:15px;font-variant-numeric:tabular-nums}
+.asy-pair{display:grid;grid-template-columns:170px minmax(0,1fr) 90px;gap:12px;align-items:center;padding:6px 0;font-size:15px;font-variant-numeric:tabular-nums}
 .asy-pair-head{color:var(--muted);font-size:13px;padding-bottom:22px}
 .asy-track{position:relative;height:18px;border-left:1px solid var(--line);border-right:1px solid var(--line);background:linear-gradient(var(--line),var(--line)) center/1px 100% no-repeat}
 .asy-track i{position:absolute;top:3px;height:12px}
@@ -172,7 +171,7 @@
   .asy-tr{grid-template-columns:1fr;gap:2px}
   .asy-th{display:none}
   .asy-tr span:first-child{font-weight:650}
-  .asy-params div{grid-template-columns:1fr;gap:0}
+  .asy-params div,.asy-sum div{grid-template-columns:1fr;gap:0}
   .asy-pair{grid-template-columns:1fr auto;gap:2px 10px}
   .asy-pair .asy-track{grid-column:1/-1;grid-row:2}
   .asy-pair-head .asy-pair-name,.asy-pair-head .asy-pair-sum{display:none}

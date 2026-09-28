@@ -1,0 +1,134 @@
+/* A 紙本圖解：只用 reader.css 的 token。朱紅只標「選中／轉向／和基準不同」。窄版用 container query，縮圖（1000px）維持桌面版。 */
+.gvi-fig,.gvi-live{margin:0;min-width:0;color:var(--ink);container-type:inline-size}
+.gvi-fig *,.gvi-live *{box-sizing:border-box;min-width:0}
+.gvi-fig figcaption{border-top:1px solid var(--line);padding-top:12px;margin-top:18px;color:var(--muted);font-size:15px;line-height:1.7}
+.gvi-fig h3,.gvi-live h3{margin:0 0 10px;font-size:16px;font-weight:650;line-height:1.4}
+.gvi-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+.gvi-key i{display:inline-block;width:1.2em;height:.9em;margin-right:6px;vertical-align:-1px}
+.gvi-note{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+
+/* 格子 */
+.gvi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink);max-width:440px;background:var(--card)}
+.gvi-cell{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1/.82;padding:0;margin:0;border:0;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);border-radius:0;font:inherit;color:var(--ink);
+  background:color-mix(in srgb,var(--ink) calc(var(--v,0) * 14%),var(--card))}
+button.gvi-cell{cursor:pointer}
+button.gvi-cell:hover{background:color-mix(in srgb,var(--ink) calc(var(--v,0) * 14%),var(--tint))}
+button.gvi-cell:focus-visible{outline:3px solid var(--accent);outline-offset:-4px;z-index:2}
+.gvi-id{position:absolute;left:5px;top:3px;font-size:12px;color:var(--muted);line-height:1.2}
+.gvi-tag{white-space:nowrap;position:absolute;right:5px;top:3px;font-size:12px;font-style:normal;font-weight:650;line-height:1.2;text-align:right}
+.gvi-v{font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+.gvi-tie{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:11px;color:var(--muted)}
+.gvi-near{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--tint) 55%,transparent)}
+.gvi-sel{box-shadow:inset 0 0 0 3px var(--accent)}
+.gvi-mark .gvi-ar{background:var(--accent)}
+.gvi-mark .gvi-v{color:var(--accent)}
+/* 箭頭：貼在格子邊緣的三角形，指向該方向 */
+.gvi-ar{position:absolute;width:14px;height:9px;background:var(--ink);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.gvi-ar-U{top:4px;left:50%;transform:translateX(-50%)}
+.gvi-ar-D{bottom:4px;left:50%;transform:translateX(-50%) rotate(180deg)}
+.gvi-ar-L{left:3px;top:50%;transform:translateY(-50%) rotate(-90deg)}
+.gvi-ar-R{right:3px;top:50%;transform:translateY(-50%) rotate(90deg)}
+.gvi-map .gvi-cell{aspect-ratio:1/.7}
+.gvi-small{max-width:380px}
+.gvi-small .gvi-v{font-size:14px}
+.gvi-small .gvi-id{font-size:10px}
+.gvi-sw-shade{background:color-mix(in srgb,var(--ink) 14%,var(--card));border:1px solid var(--line)}
+.gvi-sw-arrow{width:14px!important;height:9px!important;background:var(--ink);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.gvi-sw-sel{border:3px solid var(--accent)}
+.gvi-sw-near{background:var(--tint);border:1px solid var(--line)}
+.gvi-sw-text{color:var(--accent);margin-right:6px}
+.gvi-sw-mark{width:14px!important;height:9px!important;background:var(--accent);clip-path:polygon(50% 0,100% 100%,0 100%)}
+
+/* 版面 */
+.gvi-split{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:28px;align-items:start}
+.gvi-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.gvi-four{display:grid;grid-template-columns:repeat(2,minmax(0,380px));gap:18px 28px;margin-bottom:18px}
+.gvi-four .gvi-cell{aspect-ratio:1/.9}
+.gvi-four .gvi-ar{width:10px;height:7px}
+.gvi-pair{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:start}
+.gvi-ref .gvi-grid{max-width:320px}
+.gvi-ref .gvi-v{font-size:14px}
+
+/* 參數表 */
+.gvi-params{margin:0;border:1px solid var(--line);background:var(--card)}
+.gvi-params div{display:grid;grid-template-columns:7.5em 1fr;gap:12px;padding:9px 14px;border-top:1px solid var(--line);font-size:16px;line-height:1.55}
+.gvi-params div:first-child{border-top:0}
+.gvi-params dt{color:var(--muted)}
+.gvi-params dd{margin:0;font-weight:550}
+
+/* 備份展開式 */
+.gvi-backup{font-size:15px;line-height:1.55;font-variant-numeric:tabular-nums}
+.gvi-eqhead{margin:0 0 6px;font-size:16px;font-weight:650}
+.gvi-eqnote{margin:0 0 10px;color:var(--muted);font-size:14px}
+.gvi-rows{border-top:1px solid var(--line)}
+.gvi-row{display:grid;grid-template-columns:4.2em minmax(0,1fr) auto;gap:2px 12px;padding:7px 4px;border-bottom:1px solid var(--line)}
+.gvi-act{font-weight:650;grid-row:span 2}
+.gvi-to{color:var(--muted);font-size:14px;grid-column:2/4}
+.gvi-calc{grid-column:2}
+.gvi-q{grid-column:3;text-align:right;white-space:nowrap}
+.gvi-q small{display:block;font-size:12px;color:var(--accent);font-weight:650}
+.gvi-best{background:var(--tint)}
+.gvi-best .gvi-q{font-weight:700}
+.gvi-result{margin:10px 0 0;font-size:16px}
+.gvi-result b{font-size:19px}
+
+/* 互動 */
+.gvi-live{display:grid;gap:14px}
+.gvi-buttons{display:flex;flex-wrap:wrap;gap:8px}
+.gvi-groups{display:flex;flex-wrap:wrap;gap:10px 24px}
+.gvi-buttons button{font-size:15px;padding:9px 13px;white-space:normal}
+.gvi-buttons button[aria-pressed=true]{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+.gvi-control{display:grid;gap:2px;font-size:16px;font-weight:650;font-variant-numeric:tabular-nums}
+.gvi-control input{width:100%;min-height:36px;accent-color:var(--ink)}
+.gvi-control input:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.gvi-verdict{margin:0;font-size:16px;font-weight:600;line-height:1.6;font-variant-numeric:tabular-nums}
+
+/* 收斂圖 */
+.gvi-chart{display:block;width:100%;max-width:720px;height:auto;margin:0 auto 14px}
+.gvi-grid-line{stroke:var(--line);stroke-width:1}
+.gvi-line{fill:none;stroke:var(--ink);stroke-width:2.5}
+.gvi-dot{fill:var(--ink)}
+.gvi-eps{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:6 4}
+.gvi-stable{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 4}
+.gvi-t{font-size:15px;fill:var(--muted);text-anchor:middle;font-variant-numeric:tabular-nums}
+.gvi-t-end{text-anchor:end}.gvi-t-start{text-anchor:start;fill:var(--ink)}
+.gvi-t-accent{fill:var(--accent);font-weight:650}
+.gvi-t-small{font-size:14px}
+
+/* 表格 */
+.gvi-table{border:1px solid var(--line);background:var(--card);font-size:15px;line-height:1.55;font-variant-numeric:tabular-nums}
+.gvi-tr{display:grid;grid-template-columns:11em 1fr 1.6fr;gap:0 16px;padding:9px 14px;border-top:1px solid var(--line)}
+.gvi-table-2 .gvi-tr{grid-template-columns:1fr 1.5fr}
+.gvi-th{border-top:0;color:var(--muted);font-size:14px}
+.gvi-tr b{font-weight:700}
+
+.gvi-rounds{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);grid-template-areas:"ctrl ctrl" "verdict verdict" "grid backup" "key backup";gap:14px 28px;align-items:start}
+.gvi-r-out{display:contents}
+.gvi-r-ctrl{grid-area:ctrl;display:grid;gap:10px}.gvi-r-verdict{grid-area:verdict}.gvi-r-grid{grid-area:grid}.gvi-r-backup{grid-area:backup}.gvi-r-key{grid-area:key}
+@container (max-width:760px){
+  .gvi-rounds{grid-template-columns:minmax(0,1fr);grid-template-areas:"verdict" "grid" "ctrl" "backup" "key";gap:12px}
+  .gvi-r-ctrl .gvi-buttons button{padding:8px 10px;font-size:14px}
+  .gvi-split,.gvi-pair{grid-template-columns:1fr;gap:18px}
+  .gvi-three{grid-template-columns:1fr;gap:18px}
+  .gvi-grid{max-width:none}
+  .gvi-ref .gvi-grid{max-width:none}
+}
+@container (max-width:520px){
+  .gvi-four{grid-template-columns:1fr}
+  .gvi-small{max-width:none}
+  .gvi-cell,.gvi-map .gvi-cell,.gvi-four .gvi-cell{aspect-ratio:auto;min-height:3.6em;padding:1.25em 2px .7em;font-size:13px}
+  .gvi-v,.gvi-small .gvi-v,.gvi-ref .gvi-v{font-size:12.5px;letter-spacing:-.02em}
+  .gvi-id{font-size:10px;left:3px;top:2px}
+  .gvi-tag{font-size:10px;right:3px;top:2px}
+  .gvi-t{font-size:26px}.gvi-t-minor{display:none}
+  .gvi-line{stroke-width:4}
+  .gvi-tie{font-size:9px;bottom:2px}
+  .gvi-ar,.gvi-four .gvi-ar{width:9px;height:6px}
+  .gvi-ar-L{left:1px}.gvi-ar-R{right:1px}
+  .gvi-row{grid-template-columns:3.4em minmax(0,1fr) auto;padding:6px 2px}
+  .gvi-backup{font-size:14px}
+  .gvi-tr,.gvi-table-2 .gvi-tr{grid-template-columns:1fr;gap:2px}
+  .gvi-th{display:none}
+  .gvi-tr span:first-child{font-weight:650}
+  .gvi-params div{grid-template-columns:1fr;gap:0}
+}

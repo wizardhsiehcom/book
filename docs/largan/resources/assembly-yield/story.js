@@ -15,7 +15,7 @@ function asyFocusView(dz, edge) {
   }).join('');
   const cells = asyFields.map(([x, name]) => {
     const c = asyBlur(dz, edge, x), bad = c > asySpec;
-    return `<div class="asy-field${bad ? ' asy-bad' : ''}"><span class="asy-ring" style="--d:${asySpec * asyPx}px"><i style="--d:${Math.max(c * asyPx, 3)}px"></i></span><b>${name}</b><span>${asyFmt(c)} µm</span><em>${bad ? '超出規格' : '通過'}</em></div>`;
+    return `<div class="asy-field${bad ? ' asy-bad' : ''}"><span class="asy-ring" style="--d:${asySpec * asyPx}px"><i style="--d:${Math.max(c * asyPx, 3)}px"></i></span><b>${name}</b><span>${asyFmt(c)} µm</span><em>${bad ? '超出' : '通過'}</em></div>`;
   }).join('');
   const label = asyFields.map(([x, n]) => `${n} ${asyFmt(asyBlur(dz, edge, x))} µm`).join('，');
   return `<figure class="asy-focus" role="img" aria-label="整體焦點偏移 ${asyFmt(dz)} µm、邊緣焦點差 ${asyFmt(edge)} µm；各場點模糊圈直徑：${label}；規格 ${asySpec} µm">
@@ -36,7 +36,7 @@ function mountFocus(root, state) {
     dz.setAttribute('aria-valuetext', `${asyFmt(state.dz)} 微米`); edge.setAttribute('aria-valuetext', `${asyFmt(state.edge)} 微米`);
     const fails = asyFields.filter(([x]) => asyBlur(state.dz, state.edge, x) > asySpec).map(([, n]) => n);
     const shape = state.edge === 0 ? (state.dz === 0 ? '全場對焦。' : '左右完全對稱：全場一起變差，中心也不例外。') : '左右不對稱：一側離焦變大，另一側變小。';
-    out.innerHTML = asyFocusView(state.dz, state.edge) + `<p class="asy-verdict">${shape}${fails.length ? `超出規格：${fails.join('、')}。` : '五個場點都在規格內。'}</p>`;
+    out.innerHTML = `<p class="asy-verdict">${shape}${fails.length ? `超出規格：${fails.join('、')}。` : '五個場點都在規格內。'}</p>` + asyFocusView(state.dz, state.edge);
   };
   const input = () => { state.dz = Number(dz.value); state.edge = Number(edge.value); render(); };
   const preset = e => { const p = asyPresets[e.target.dataset.preset]; if (p) { [state.dz, state.edge] = p; render(); } };
@@ -103,7 +103,7 @@ function asyCostBar(c) {
 function asyCostView(p) {
   const c = asyCost(p), b = asyCost(), d = c.total - b.total, dk = c.K - b.K;
   const sign = n => n > 0 ? `＋${asyNum(n)}` : n < 0 ? `−${asyNum(-n)}` : '不變';
-  return `<div class="asy-costview"><section><h3>套數怎麼流</h3>${asyFlow(c)}</section>
+  return `<p class="asy-verdict">總成本 ${asyNum(c.total)} 元（${d ? '比基準 ' + sign(d) : '與基準相同'}）· 合格 ${asyNum(c.good)} 套 · K ${c.K.toFixed(2)} 元／套</p><div class="asy-costview"><section><h3>套數怎麼流</h3>${asyFlow(c)}</section>
     <section><h3>錢花在哪</h3>${asyCostBar(c)}<dl class="asy-sum"><div><dt>總成本</dt><dd>${asyNum(c.total)} 元<small>比基準 ${sign(d)}</small></dd></div><div><dt>合格交付</dt><dd>${asyNum(c.good)} 套<small>比基準 ${sign(c.good - b.good)}</small></dd></div><div class="asy-k"><dt>合格單位成本 K</dt><dd>${c.K.toFixed(2)} 元／套<small>比基準 ${dk ? (dk > 0 ? '＋' : '−') + Math.abs(dk).toFixed(2) : '不變'}；單套變動成本只有 127</small></dd></div></dl></section></div>`;
 }
 function mountCost(root, state) {
@@ -134,10 +134,10 @@ const asyBarrel = `<figure class="asy-fig"><svg class="asy-barrel" viewBox="0 0 
   <g class="asy-lens"><path d="M130 78 Q150 150 130 222 H150 Q160 150 150 78 Z"/><path d="M215 78 Q200 150 215 222 H240 Q255 150 240 78 Z"/><path d="M310 78 Q325 150 310 222 H330 Q320 150 330 78 Z"/><path d="M405 78 Q390 150 405 222 H425 Q445 150 425 78 Z"/><path d="M505 78 Q520 150 505 222 H530 Q515 150 530 78 Z"/></g>
   <g class="asy-spacer"><rect x="152" y="70" width="62" height="12"/><rect x="152" y="218" width="62" height="12"/><rect x="242" y="70" width="66" height="12"/><rect x="242" y="218" width="66" height="12"/><rect x="332" y="70" width="72" height="12"/><rect x="332" y="218" width="72" height="12"/><rect x="427" y="70" width="76" height="12"/><rect x="427" y="218" width="76" height="12"/></g>
   <rect x="96" y="70" width="30" height="40" class="asy-retainer"/><rect x="96" y="190" width="30" height="40" class="asy-retainer"/>
-  <g class="asy-num"><circle cx="330" cy="18" r="15"/><text x="330" y="25">1</text><circle cx="275" cy="112" r="15"/><text x="275" y="119">2</text><circle cx="111" cy="150" r="15"/><text x="111" y="157">3</text></g>
-  <path d="M330 34 V40" class="asy-lead"/><path d="M275 97 V82" class="asy-lead"/>
+  <g class="asy-num"><circle cx="330" cy="18" r="15"/><text x="330" y="25">1</text><circle cx="275" cy="112" r="15"/><text x="275" y="119">2</text><circle cx="111" cy="18" r="15"/><text x="111" y="25">3</text></g>
+  <path d="M330 34 V40" class="asy-lead"/><path d="M275 97 V82" class="asy-lead"/><path d="M111 34 V72" class="asy-lead"/>
 </svg>
-<ol class="asy-legend"><li><b>鏡筒</b>所有鏡片共同的定位基準；同軸度誤差 → 整體偏心、傾斜</li><li><b>間隔環</b>維持相鄰兩片的空氣間距；厚度與平行度誤差 → 間距、傾斜</li><li><b>壓環</b>軸向鎖固；施力不均 → 傾斜</li><li><b>五片鏡片</b>（淺色曲面）各自已通過單片檢驗</li></ol>
+<ol class="asy-legend"><li><b>鏡筒</b>所有鏡片共同的定位基準；同軸度誤差 → 整體偏心、傾斜</li><li><b>間隔環</b>維持相鄰兩片的空氣間距；厚度與平行度誤差 → 間距、傾斜</li><li><b>壓環</b>軸向鎖固；施力不均 → 傾斜</li></ol><p class="asy-note">淺色曲面是五片鏡片，各自已通過單片檢驗。</p>
 <figcaption>結構示意 · 不按比例。遮光片與膠材省略。真實手機鏡頭常是 5–8 片。</figcaption></figure>`;
 
 // 三種自由度：同一個基準軸，誤差刻意放大
@@ -158,7 +158,7 @@ const asyCone = `<figure class="asy-fig"><div class="asy-cone-wrap"><svg class="
   <line x1="420" y1="20" x2="420" y2="240" class="asy-plane-ghost"/><line x1="520" y1="20" x2="520" y2="240" class="asy-plane"/>
   <line x1="520" y1="100" x2="520" y2="160" class="asy-c"/>
   <path d="M420 212 H520" class="asy-dim"/><path d="M420 204 V220 M520 204 V220" class="asy-dim"/>
-  <text x="470" y="244" class="asy-t">Δz</text><text x="538" y="138" class="asy-t asy-t-accent">c</text>
+  <text x="470" y="244" class="asy-t">Δz</text><text x="548" y="140" class="asy-t asy-t-accent">c</text>
   <text x="420" y="16" class="asy-t asy-t-small">焦點</text><text x="520" y="16" class="asy-t asy-t-small">感測面</text><text x="70" y="256" class="asy-t asy-t-small">鏡頭</text>
 </svg>
 <div class="asy-formula"><p>光錐的張角由 f 數 N 決定：N 越小，錐越胖。</p><p class="asy-eq">c = |Δz| / N</p><p>例：N = ${asyN}、Δz = 4 µm → c = 2 µm。</p><p>焦點在感測面前或後都一樣，只看距離。</p></div></div>
@@ -172,7 +172,7 @@ const story = {
   back: {href: asyBack, label: '返回第 06 章'},
   pages: [
     {id: 'open', section: '01 / 開場', title: '零件全過，成品卻掉一成',
-      lead: '鏡片檢驗站逐項量測，每一項合格率都在九成五以上。同一批鏡片組成鏡頭，送到光學驗收，卻約每十顆退一顆。',
+      lead: '鏡片檢驗站逐項量測，超出圖面公差的都已剔除，送去組裝的每一片都合格。同一批鏡片組成鏡頭，送到光學驗收，卻約每十顆退一顆。',
       art: `<figure class="asy-fig"><div class="asy-compare"><section><h3>零件站：對自己的圖面</h3><ul class="asy-checks"><li>面形誤差<span>全數在公差內</span></li><li>中心厚度<span>全數在公差內</span></li><li>單片偏心<span>全數在公差內</span></li></ul><p class="asy-note">判定對象：每片鏡片</p></section><section><h3>成品站：對成像規格</h3><div class="asy-dots" aria-label="十顆鏡頭，一顆被判退">${'<i></i>'.repeat(9)}<i class="asy-bad"></i></div><p class="asy-note">判定對象：疊起來的整顆鏡頭</p></section></div><figcaption>示意情境，數字不是任何公司的良率。</figcaption></figure>`,
       point: '零件規格與系統規格是兩套判定條件；零件合格不蘊含成品合格。',
       detail: '「一成」是章節開場的想像情境。本篇所有數字都是教學假設。'},

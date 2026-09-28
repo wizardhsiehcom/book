@@ -1,0 +1,93 @@
+/* A 紙本圖解。刺激（灰塊、背景、白塊）的顏色只由 story.js 的 inline style 給定，這裡不設背景、透明度或濾鏡。
+   沒有 transition／animation：切換即時替換，不閃爍。窄版用 container query，縮圖（1000px）維持桌面版。 */
+.sg-live,.sg-fig{margin:0;min-width:0;color:var(--ink);container-type:inline-size}
+.sg-live *,.sg-fig *{box-sizing:border-box;min-width:0}
+.sg-live{display:grid;gap:18px}
+.sg-fig figcaption,.sg-bars figcaption{border-top:1px solid var(--line);padding-top:12px;margin-top:18px;color:var(--muted);font-size:15px;line-height:1.7}
+.sg-fig h3,.sg-frame h3{margin:0 0 10px;font-size:18px;font-weight:650}
+.sg-out{display:grid;gap:16px}
+.sg-verdict{margin:0;font-size:17px;font-weight:600;line-height:1.6}
+
+/* 刺激：兩格並排、無縫 */
+.sg-scene-wrap{width:100%;max-width:520px;margin:0 auto}
+.sg-scene{position:relative;display:grid;grid-template-columns:1fr 1fr}
+.sg-panel{position:relative;aspect-ratio:1/1}
+.sg-off{outline:1px dashed var(--line);outline-offset:-1px}
+.sg-target{position:absolute;left:30%;top:30%;width:40%;height:40%}
+.sg-bridge{position:absolute;left:25%;width:50%;top:45%;height:10%}
+.sg-patch{position:absolute;left:8%;top:8%;width:18%;height:18%}
+.sg-rf-c,.sg-rf-s{position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+.sg-rf-c{width:46%;height:46%;border:2px solid var(--accent)}
+.sg-rf-s{width:88%;height:88%;border:2px dashed var(--accent)}
+.sg-names{display:grid;grid-template-columns:1fr 1fr;margin-top:8px;text-align:center;color:var(--muted);font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums}
+.sg-chip{margin:0;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;line-height:1.6}
+.sg-chip i{flex:0 0 22px;height:22px;border:1px solid var(--ink)}
+
+/* 控制 */
+.sg-buttons{display:flex;flex-wrap:wrap;gap:8px}
+.sg-buttons button{font-size:16px;padding:10px 16px}
+.sg-buttons button[aria-pressed=true]{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+.sg-control{display:grid;gap:4px;font-size:17px;font-weight:650;line-height:1.5;font-variant-numeric:tabular-nums}
+.sg-control input{width:100%;min-height:40px;accent-color:var(--ink)}
+.sg-control input:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+
+/* 頁 03：刺激＋中心減周圍 */
+.sg-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center;margin-top:14px}
+.sg-bars{margin:0}
+.sg-bar{display:grid;grid-template-columns:7.5em minmax(0,1fr) 3.2em;gap:10px;align-items:center;padding:8px 0;font-size:15px;font-variant-numeric:tabular-nums}
+.sg-bar-head{color:var(--muted);font-size:13px;padding-bottom:22px}
+.sg-track{position:relative;height:18px;border-left:1px solid var(--line);border-right:1px solid var(--line);background:linear-gradient(var(--line),var(--line)) center/1px 100% no-repeat}
+.sg-track i{position:absolute;top:3px;height:12px;background:var(--accent)}
+.sg-axis{height:0;border:0;background:none;border-top:1px solid var(--ink)}
+.sg-axis em{position:absolute;top:4px;transform:translateX(-50%);font-style:normal;white-space:nowrap}
+.sg-axis em:first-child{transform:none}.sg-axis em:last-child{transform:translateX(-100%)}
+.sg-bar-val{text-align:right;font-weight:650}
+
+/* 對照 */
+.sg-compare{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);background:var(--card)}
+.sg-compare>section{padding:18px 20px}
+.sg-compare>section+section{border-left:1px solid var(--line)}
+.sg-list{list-style:none;margin:0;padding:0;font-size:16px;line-height:1.6}
+.sg-list li{padding:8px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.sg-list li:last-child{border-bottom:0}
+.sg-list b{display:block;color:var(--ink);font-weight:650}
+.sg-join{margin:14px 0 0;padding:12px 16px;border:1px solid var(--ink);background:var(--card);font-size:16px;line-height:1.6}
+
+/* 頁 04：L、I、R 長條 */
+.sg-row{display:grid;grid-template-columns:9.5em minmax(0,1fr) 2.6em;gap:10px;align-items:center;padding:7px 0;font-size:15px;line-height:1.4;font-variant-numeric:tabular-nums}
+.sg-len{height:14px;background:var(--tint);border-left:1px solid var(--ink)}
+.sg-len i{display:block;height:100%;background:var(--muted)}
+.sg-row>span:first-child{white-space:nowrap}
+.sg-row b{text-align:right;font-weight:650}
+.sg-row-r{border-top:1px solid var(--line);margin-top:4px;padding-top:10px}
+.sg-row-r .sg-len i{background:var(--accent)}
+.sg-why{margin:2px 0 4px;color:var(--muted);font-size:14px;line-height:1.5}
+
+/* 頁 06：框架刻度 */
+.sg-frames{display:grid;gap:6px}
+.sg-frame{padding:0 2.2em}
+.sg-scale{position:relative;height:84px;margin-top:4px;border-bottom:1.5px solid var(--ink)}
+.sg-mark{position:absolute;bottom:-11px;transform:translateX(-50%)}
+.sg-mark i,.sg-legend i{display:block;width:20px;height:20px;border:1px solid var(--ink)}
+.sg-legend{display:flex;flex-wrap:wrap;gap:4px 20px;margin:6px 0 0;font-size:15px;line-height:1.5;color:var(--muted);font-variant-numeric:tabular-nums}
+.sg-legend i{display:inline-block;width:16px;height:16px;margin-right:8px;vertical-align:-2px}
+.sg-legend .sg-leg-target{color:var(--ink);font-weight:650}
+.sg-legend b{color:var(--accent);font-weight:650}
+.sg-anchor{position:absolute;top:0;transform:translateX(-50%);color:var(--accent);font-size:14px;font-weight:650;white-space:nowrap}
+.sg-anchor::after{content:'';display:block;width:0;height:30px;margin:2px auto 0;border-left:2px solid var(--accent)}
+.sg-ends{display:flex;justify-content:space-between;margin-top:14px;color:var(--muted);font-size:13px}
+.sg-read{margin:6px 2.2em 14px;font-size:16px;line-height:1.6}
+
+@container (max-width:620px){
+  .sg-split{grid-template-columns:1fr;gap:16px}
+  .sg-compare{grid-template-columns:1fr}
+  .sg-compare>section+section{border-left:0;border-top:1px solid var(--line)}
+  .sg-compare>section{padding:14px 14px}
+  .sg-bar{grid-template-columns:minmax(0,1fr) auto;gap:2px 10px}
+  .sg-bar .sg-track{grid-column:1/-1;grid-row:2}
+  .sg-bar-head .sg-bar-name{grid-column:1/-1}
+  .sg-bar-head{padding-top:4px}
+  .sg-row{grid-template-columns:minmax(0,1fr) auto;gap:2px 10px}
+  .sg-row .sg-len{grid-column:1/-1;grid-row:2}
+  .sg-frame{padding:0 1.6em}.sg-read{margin:6px 0 14px}
+}

@@ -1,5 +1,7 @@
 # 第 13 講：數值線性代數與無約束最小化 (Numerical Linear Algebra and Unconstrained Minimization)
 
+[開啟視覺解說：梯度下降與牛頓法的路徑](resources/descent-newton/index.html)
+
 ## 導讀
 
 本講是求解器的基礎。在設計和實作凸優化求解器時，最底層的核心運算是求解線性方程組 $Ax=b$。理解數值線性代數（特別是稀疏矩陣與特殊結構矩陣的分解）能幫助我們判斷哪些問題在實務上可以被極快地求解。接著，課程進入無約束最小化（unconstrained minimization）的主題，介紹了迭代下降法與線搜尋技術，並分析了梯度下降法（Gradient Descent Method）在面對條件數不佳的問題時為何會遇到嚴重的 zigzagging 現象。
