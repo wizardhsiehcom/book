@@ -102,6 +102,8 @@ python manifest.py verify releases/r001
 
 ## 例：三十分鐘持續驗收（本頁不執行）
 
+上面的切換還需要核對服務實際載入的版本與 session，才能判定完成。詳細查核及中斷恢復見 [發布與載入一致性](../22/release-consistency.md)；模型更新整條鏈的驗收見 [C04 路線](model-update.md)。
+
 以下是讀者在目標設備執行的驗收清單：
 
 | 觀察 | 做法 | 失敗長相（定性） |

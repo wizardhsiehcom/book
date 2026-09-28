@@ -32,5 +32,7 @@ flowchart TD
 | --- | --- |
 | [Baseline 訓練：健檢、smoke、CLI／Python 與停止條件](baseline.md) | 第一次 `train` 該用什麼命令、何時停、哪些故障先排 |
 | [Checkpoint 與實驗紀錄：best／last、resume 與雜湊](checkpoints-and-records.md) | 權重怎麼接續、什麼必須寫進實驗紀錄才算 baseline |
+| [生命週期追溯](lifecycle-lineage.md) | 從發布版本如何找回資料、訓練、設定與評估 |
+| [持久化任務與恢復](persistent-tasks.md) | 重送或中斷後，如何靠完成證據決定接續或重跑 |
 
 資料切分見 [第 04 章](../04/index.md)，標註格式見 [第 05 章](../05/index.md)，評估見 [第 06 章](../06/index.md)；環境與套件鎖定見 [第 02 章](../02/index.md)。本章命令皆標示**未實跑**，不捏造版本號或指標成績。

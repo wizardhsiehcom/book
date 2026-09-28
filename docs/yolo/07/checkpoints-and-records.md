@@ -165,3 +165,5 @@ cost: <牆鐘、裝置、人時>
 - [Val](https://docs.ultralytics.com/modes/val/)：確認評估時 `model=` 應指向你要交付的那份權重（通常是 `best.pt`），且 `split` 在調參期為 `val`。Val 不會幫你更新 best／last；選模是 train 期間的工作，val 是事後複核。
 
 完成紀錄封存後，第 07 章的 baseline 才算結束；之後任何改動都必須新 `name`，並在 [第 07 章目錄](index.md) 的決策順序上從「凍結的對照組」往前加一個變因。
+
+工作台要串接資料、評估與發布時，接著讀 [生命週期追溯](lifecycle-lineage.md)；程序中斷後的任務查核見 [持久化任務](persistent-tasks.md)。

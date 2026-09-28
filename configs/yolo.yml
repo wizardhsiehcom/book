@@ -93,6 +93,8 @@ nav:
       - "導讀": 07/index.md
       - "Baseline 訓練：健檢、smoke、命令與停止條件": 07/baseline.md
       - "Checkpoint 與實驗紀錄：best／last、resume 與雜湊": 07/checkpoints-and-records.md
+      - "生命週期追溯：從發布版本找回資料與訓練": 07/lifecycle-lineage.md
+      - "持久化任務：中斷後先查證，再決定重跑": 07/persistent-tasks.md
   - "二、排錯與改善":
     - "13 錯誤分析":
       - "導讀": 13/index.md
@@ -133,11 +135,13 @@ nav:
       - "預測失敗診斷：光學、像素、門檻與模式": 22/field-failures.md
       - "採購與資料處理（非法律判決）": 22/licensing-data.md
       - "監控與回滾": 22/monitoring-rollback.md
+      - "發布與載入一致性：服務真的換到哪一版？": 22/release-consistency.md
     - "23 完整專案":
       - "導讀": 23/index.md
       - "兩類專案：紙箱與棧板（可跟做）": 23/custom-detection.md
       - "CPU 上的 ONNX 自訂偵測交付": 23/edge-deployment.md
       - "有限長度影片的穿越計數": 23/video-counting.md
+      - "C04 配套：模型更新的閱讀與驗收路線": 23/model-update.md
   - "五、支撐工程判斷的原理（選讀）":
     - "08 卷積與尺度":
       - "導讀": 08/index.md
