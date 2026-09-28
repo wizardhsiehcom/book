@@ -20,7 +20,7 @@ try {
   write('sync-assets.sh', '#!/usr/bin/env bash\nexit 0\n');
   write('configs/demo.yml', 'site_name: Demo\n');
   write('docs/demo/index.md', '# Demo\n');
-  write('js/books-data.js', 'const BOOKS = [{href:"book/demo/html/index.html"}];');
+  write('js/books-data.js', 'const CATEGORIES = ["甲"]; const BOOKS = [{href:"book/demo/html/index.html", category:"甲"}];');
   write('overrides/main.html', 'old theme');
   write('uv.lock', 'old toolchain');
   write('bin/uv', `#!/usr/bin/env node

@@ -66,7 +66,7 @@ Use the `/mkdocs-create` command, or manually:
 1. Create `docs/<new-name>/` with a `README.md` and content pages.
 2. Create `configs/<new-name>.yml` by copying an existing config; update `site_name`, `docs_dir`, `site_dir`, and `nav`.
 3. Run `./sync-assets.sh` to populate `docs/<new-name>/assets/`.
-4. Register the book in `js/books-data.js` by copying an existing entry in the books array (icon, title, desc, tags, href, accent, glow).
+4. Register the book in `js/books-data.js` by copying an existing entry in the books array (icon, title, desc, tags, category, href, accent, glow); `category` must be one of `CATEGORIES` at the top of that file.
 5. Run `node tools/check-books.cjs`. Invalid/duplicate card paths and missing config/docs targets are errors; a config without a homepage card is only a warning (draft/hidden books are allowed). Do not add a second manifest.
 
 ## Content conventions
