@@ -169,3 +169,7 @@ uv run mkdocs build --strict -f configs/systems-network-foundations.yml
 ## 10. 教學目的補強
 
 依使用者確認補強五篇既有故事及模板驗收門檻；改動、能力對照與本輪驗收見 [教學補強](teaching-improvements.md)。讀者試讀仍未完成。
+
+## 決定：不做統一的故事檢查（2026-09-29）
+
+故事契約以 `reader.js` 為唯一標準；各 `tools/check-*-story.cjs` 的契約片段比它寬鬆，但不再統一，也不加總入口或外殼比對。原因：契約不符時 reader 一開頁就拋錯（整頁空白），而每篇故事都會人工打開驗收，壞掉不會悄悄混過。架構檢視別再提同一建議，除非故事改成無人看過就發布。

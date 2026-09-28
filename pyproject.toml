@@ -1,7 +1,7 @@
 [project]
-name = "newbook"
+name = "book"
 version = "0.1.0"
-description = "MkDocs migration preview for cowos"
+description = "Reading-notes books built with MkDocs"
 requires-python = ">=3.10"
 dependencies = [
   "mkdocs>=1.6",
