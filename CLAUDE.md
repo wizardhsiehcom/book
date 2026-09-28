@@ -10,10 +10,11 @@ A personal reading-notes knowledge base made of independent [MkDocs](https://www
 ## Commands
 
 ```bash
-# Build all books (also runs sync-assets.sh first)
+# Build all books (validates registry, syncs assets, then fully rebuilds)
 ./build-books.sh
 
-# Build a single book
+# Build a single book (sync first)
+./sync-assets.sh
 uv run mkdocs build -f configs/<name>.yml
 
 # Serve a single book locally (hot-reload)
@@ -21,9 +22,16 @@ uv run mkdocs build -f configs/<name>.yml
 
 # Sync shared assets into per-book dirs (required before manual build)
 ./sync-assets.sh
+
+# Registry and build-entry checks
+node tools/check-books.cjs
+node tools/check-books.cjs --self-test
+node tools/check-build-books.cjs
 ```
 
-**Prerequisites**: Python + `uv` installed. Run `uv sync` once to install dependencies.
+**Prerequisites**: Python + `uv` installed. Run `uv sync` once to install dependencies. Node.js is required for the all-books wrapper's registry check and JS checks, not for standalone MkDocs builds or reading output.
+
+The all-books wrapper always rebuilds; legacy `.build-hash` files are ignored and no longer updated. Do not restore a partial-input cache. A failed build exits nonzero but may leave partial output; do not publish it as a completed build.
 
 ## Structure
 
@@ -41,11 +49,15 @@ uv run mkdocs build -f configs/<name>.yml
 ## Interactive chapter resources
 
 - Read `templates/visual-story/README.md` before creating an interactive story.
+- Copy only `index.html`, `story.js`, and `story.css`; replace both template reader URLs with book-local URLs. Do not copy authoring docs into the published topic.
 - Put topic HTML / JS / CSS under `docs/<book>/resources/<topic>/`; keep Markdown independently readable.
 - Topic HTML loads `../../assets/story-reader/reader.css` and `reader.js`. Never link a published book to `playground/`, `templates/`, or repo-level shared assets.
 - Keep topic dependencies (e.g. Three.js) out of the shared reader. CDN dependencies require network unless explicitly bundled locally.
+- Load the reader only from the standalone topic HTML, not MkDocs `extra_javascript`. Preserve the documented script order and supply static `previewArt` plus cleanup for interactive pages.
+- Return links in topic HTML / JS must target built chapter URLs; MkDocs does not rewrite these `.md` references. Verify links after building.
 - Run `./sync-assets.sh` before manual builds. Build/serve wrappers already sync; after editing shared assets during serve, sync again.
 - Checks: `node tools/check-story-reader.cjs` and `uv run python tools/check-story-package.py`.
+- Deliver the entire `book/<book>/html/` directory. Portability is not a claim of offline support: audit CDN dependencies and external bookshelf links separately. Automated checks do not replace browser visual QA.
 
 ## Adding a new book
 
@@ -55,6 +67,7 @@ Use the `/mkdocs-create` command, or manually:
 2. Create `configs/<new-name>.yml` by copying an existing config; update `site_name`, `docs_dir`, `site_dir`, and `nav`.
 3. Run `./sync-assets.sh` to populate `docs/<new-name>/assets/`.
 4. Register the book in `js/books-data.js` by copying an existing entry in the books array (icon, title, desc, tags, href, accent, glow).
+5. Run `node tools/check-books.cjs`. Invalid/duplicate card paths and missing config/docs targets are errors; a config without a homepage card is only a warning (draft/hidden books are allowed). Do not add a second manifest.
 
 ## Content conventions
 

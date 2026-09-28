@@ -45,6 +45,26 @@ TCP 與 Three.js 實驗保留在 repo 的 `playground/`，直接引用正式閱�
 
 不需要固定十頁、每頁相同圖表或每個主題都有測驗。內容變長就多拆一頁，不要一味縮小字體。
 
+### 路徑範例
+
+假設章節是 `docs/<book>/08-tcp-stream.md`、主題是 `resources/tcp-stream/`，且 `use_directory_urls: false`：
+
+| 引用位置 | 填入內容 |
+| --- | --- |
+| 章節 Markdown | `[開啟逐步解說](resources/tcp-stream/index.html)` |
+| 主題 HTML 的 CSS | `../../assets/story-reader/reader.css` |
+| 主題 HTML 的 JS | `../../assets/story-reader/reader.js` |
+| `story.back.href` | `../../08-tcp-stream.html` |
+
+章節位於子目錄時，Markdown 連結需依章節位置調整。不要把主題 HTML 加進 MkDocs `nav` 當成 Markdown 章節，也不要用 `extra_javascript` 在全書每一頁載入 reader。
+
+### 預覽方式
+
+- repo 內的原始範本可直接開啟 `templates/visual-story/index.html`。
+- 書籍主題用 `./serve-book.sh <book>` 預覽，或建置後以 `python3 -m http.server 8765 --bind 127.0.0.1 --directory book/<book>/html` 單獨提供該本書。
+- 測試返回本章時使用建置後的頁面；測試 Three.js 等動態依賴時使用 HTTP，並檢查載入失敗時的靜態替代。
+- `<book>`、`<topic>` 是佔位符，執行指令前需換成真實名稱。
+
 ## 分鏡資料契約
 
 ```js
@@ -108,11 +128,15 @@ const story = {
 
 多主題共用該書的 `assets/story-reader/`。只修改 `docs/assets/story-reader/`，由 `sync-assets.sh` 複製兩個執行期檔案到每本書；不要改生成副本，下次同步會覆蓋。不複製範本、說明或實驗。
 
-`build-books.sh` 與 `serve-book.sh` 已先同步。手動 MkDocs build 前須同步；serve 期間修改共用來源後也須重新同步。同步後的閱讀器納入原有 build hash，變更會使書籍重建。
+`build-books.sh` 與 `serve-book.sh` 已先同步。手動 MkDocs build 前須同步；serve 期間修改共用來源後也須重新同步。全書建置不再使用 build hash，會完整重建，避免共用版型與工具版本變更漏掉更新。
 
 交付整份 `book/<book>/html/`。若只交付單一主題，另帶上兩個 reader 檔案並調整引用路徑，不能依賴 repo 外部或 symlink。
 
 閱讀器本身可離線；書籍其他部分仍可能引用 CDN 或外部書架。單本離線交付須另查這些依賴；本次搬遷不自動下載 Three.js、Mermaid 或修改書架連結。
+
+需要離線依賴時，可放在該書的 `resources/vendor/`，讓同書主題相對引用同一份；固定版本、保留授權並帶齊 module 的轉接依賴。不把第三方套件寫進共用 reader。另在主題說明中記錄依賴版本、網路需求和靜態替代方式。
+
+若頁面空白，先檢查兩個閱讀器路徑、是否執行同步，以及 story JS 是否在 reader JS 之前載入。若更新後沒有變化，確認改的是共用來源而非生成副本，重新同步後再建置。若只有返回失敗，對照實際 `.html` 或目錄型章節網址，不改成 repo 的原稿路徑。
 
 Git 追蹤 HTML、CSS、JS 與必要來源資產；不提交 node_modules、書籍建置結果、逐頁截圖或重複的大型套件。縮圖從靜態內容渲染，無須存一套 PNG。只有主題真的需要時才加入圖片、模型或影片，並記錄來源、授權與大小。
 
@@ -126,4 +150,4 @@ Git 追蹤 HTML、CSS、JS 與必要來源資產；不提交 node_modules、書�
 - 互動離頁後沒有殘留動畫或事件；返回恢復預期狀態；沒有 WebGL 也有文字資訊。
 - 原始資料夾與書籍建置後的所有本地資產、章節連結都有效。
 
-repo 根目錄執行 `node tools/check-story-reader.cjs`，檢查三頁範本的導覽、題目、釘選、連結及互動清理（DOM stub）。執行 `uv run python tools/check-story-package.py`，用暫存書籍實際建置兩個主題、搬移輸出並驗證引用仍位於交付目錄。兩者不依賴 playground，也不代表瀏覽器視覺驗收。
+repo 根目錄執行 `node tools/check-story-reader.cjs`，依真實範本標記建立 DOM stub，檢查必要外殼、重複 ID、導覽、題目點擊、釘選、連結及互動清理；包含在記憶體中刪除必要節點的反向測試，不會改動範本。執行 `uv run python tools/check-story-package.py`，用暫存書籍實際建置兩個主題、搬移輸出並驗證引用仍位於交付目錄。兩者不依賴 playground，也不代表瀏覽器視覺驗收。
