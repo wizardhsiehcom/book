@@ -1,0 +1,137 @@
+/* A 紙本圖解：分流條與對照尺度；填色表參考判定，朱紅只留給送複判與超出容量。只作用於此主題。 */
+.rev-fig{margin:0;min-width:0;color:var(--ink)}
+.rev-fig *,.rev-livebox *,.rev-bands *{box-sizing:border-box;min-width:0}
+.rev-fig figcaption{border-top:1px solid var(--line);padding-top:14px;margin-top:22px;color:var(--muted);font-size:15px;line-height:1.7}
+.rev-kicker{margin:0 0 16px;color:var(--muted);font-size:15px;line-height:1.6;letter-spacing:.03em}
+.rev-total{margin:0 0 14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.rev-total b{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.rev-total span{color:var(--muted);font-size:16px}
+
+/* 分流條：每段 flex 等於個數 */
+.rev-strip{display:flex;height:30px;background:var(--tint);border:1px solid var(--ink)}
+.rev-seg{display:block;min-width:0;height:100%}
+.rev-seg+.rev-seg{box-shadow:inset 1px 0 0 var(--card)}
+.rev-seg.rev-defect,.rev-sw-defect{background:var(--orange)}
+.rev-seg.rev-good,.rev-sw-good{background:#cfc6ae}
+.rev-route-bar{display:flex;height:12px;margin-top:4px}
+.rev-route-bar span{display:block;min-width:0}
+/* 用 inset 陰影畫括號線，不佔寬度，才不會扭曲 flex 比例 */
+.rev-route-review{box-shadow:inset 0 4px 0 var(--accent),inset 1px 0 0 var(--accent),inset -1px 0 0 var(--accent)}
+.rev-route-pass{box-shadow:inset 0 1px 0 var(--muted),inset 1px 0 0 var(--muted),inset -1px 0 0 var(--muted);margin-top:3px}
+.rev-sw{display:inline-block;width:.9em;height:.9em;margin-right:6px;vertical-align:-1px;border:1px solid #26282033}
+.rev-sw-review{background:transparent;border:0;border-top:4px solid var(--accent);height:.5em}
+.rev-key{display:flex;flex-wrap:wrap;gap:6px 20px;margin:12px 0 0;color:var(--muted);font-size:15px;line-height:1.6}
+
+/* 節點與分支（流程、分流下方的說明格） */
+.rev-branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+.rev-node{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--line);background:var(--card);font-size:17px;line-height:1.6;overflow-wrap:anywhere}
+.rev-node b{font-size:19px;font-weight:600}
+.rev-node span{color:var(--muted)}
+.rev-node strong{color:var(--ink);font-variant-numeric:tabular-nums}
+.rev-node-review{border-color:var(--accent);box-shadow:inset 0 3px 0 var(--accent)}
+.rev-flow{max-width:680px;margin:auto}
+.rev-flow>.rev-node{text-align:center;align-items:center}
+.rev-decision{border-radius:28px;padding:16px 26px}
+.rev-flow .rev-branches{margin-top:0}
+.rev-flow .rev-branches .rev-node{height:calc(100% - 46px)}
+.rev-arrow{text-align:center;color:var(--muted);padding:10px;font-size:16px;line-height:1.6}
+.rev-branches .rev-arrow{padding:10px 0}
+
+/* 分數帶：良好向左、缺陷向右，同一尺度 */
+.rev-bands{display:grid;gap:3px}
+.rev-band{display:grid;grid-template-columns:3em minmax(0,1fr) minmax(0,1fr) 3.4em;align-items:center;gap:0 10px;font-size:17px;line-height:1.5;font-variant-numeric:tabular-nums}
+.rev-band>strong{text-align:right;font-weight:600;padding-right:4px}
+.rev-band-head{font-size:14px;color:var(--muted);padding-bottom:4px;border-bottom:1px solid var(--line);white-space:nowrap}
+.rev-band-head span:nth-child(2){text-align:right}.rev-band-head span:first-child{text-align:right;padding-right:4px}
+.rev-hbar{display:flex;align-items:center;gap:6px;height:26px}
+.rev-hbar i{display:block;height:18px;width:calc((100% - 2.2em) * var(--r))}
+.rev-hbar b{font-weight:500;font-size:15px;min-width:1.6em}
+.rev-hbar.rev-good{flex-direction:row-reverse;border-right:1px solid var(--ink)}
+.rev-hbar.rev-good b{text-align:right}
+.rev-hbar.rev-good i{background:#cfc6ae}
+.rev-hbar.rev-defect i{background:var(--orange)}
+.rev-route{font-size:15px;color:var(--muted);text-align:center;padding:1px 0}
+.rev-in .rev-route{color:var(--accent);font-weight:650}
+.rev-cut{border-top:2px solid var(--accent);margin:6px 0 2px;padding-top:4px;font-size:14px;line-height:1.5;color:var(--accent)}
+.rev-scale{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.6;border-top:1px solid var(--line);padding-top:8px}
+
+/* 區間：分數軸上的送複判範圍 */
+.rev-ticks{position:relative;height:1.6em;margin:0 0 4px;border-bottom:1px solid var(--ink);font-size:13px;color:var(--muted)}
+.rev-ticks i{position:absolute;bottom:2px;transform:translateX(-50%);font-style:normal;font-variant-numeric:tabular-nums}
+.rev-ticks i.rev-tick-new{color:var(--accent);font-weight:700}
+.rev-range{margin:18px 0}
+.rev-range p{margin:0 0 6px;font-size:16px;line-height:1.6;color:var(--muted)}
+.rev-range p b{display:inline-block;min-width:6.5em;color:var(--ink);font-weight:600}
+.rev-track{position:relative;height:26px;background:var(--tint);border-left:1px solid var(--ink);border-right:1px solid var(--ink)}
+.rev-track span{position:absolute;top:0;bottom:0;background:#8f8b78}
+.rev-track span.rev-added{background:var(--accent)}
+
+/* 互動頁 */
+.rev-control{display:grid;gap:14px;font-size:22px;line-height:1.6;font-weight:650;margin:0}
+.rev-control input{width:100%;min-width:0;min-height:44px;accent-color:var(--ink)}
+.rev-control input:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.rev-control-static{margin:0;font-size:22px;line-height:1.6;font-weight:650}.rev-control-static span{display:block;padding-bottom:18px;border-bottom:4px solid var(--line)}
+.rev-output{display:grid;gap:18px}
+.rev-livebox{padding:18px 0 4px;border-top:1px solid var(--line)}
+.rev-livebox p{margin:0}
+.rev-split-text{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2px 16px;margin-top:8px!important;font-size:16px;line-height:1.6;color:var(--muted)}
+.rev-split-text b{color:var(--accent);font-weight:650}
+.rev-split-text span:last-child{text-align:right;margin-left:auto}
+.rev-load{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:18px!important;font-size:17px;line-height:1.6}
+.rev-load span{color:var(--muted);font-size:15px}
+.rev-verdict{font-size:16px;line-height:1.6;color:var(--muted);margin-top:6px!important}
+.rev-over .rev-verdict{color:var(--accent);font-weight:650}
+.rev-output details{font-size:17px}
+.rev-output summary{cursor:pointer;padding:10px 0;color:var(--ink)}
+.rev-output details .rev-branches{margin:6px 0 20px}
+
+/* 工時尺：滿格 = 全部送複判，直線 = 容量 */
+.rev-meter-wrap{margin-top:8px}
+.rev-meter{position:relative;display:flex;height:22px;background:var(--tint)}
+.rev-meter span{display:block;height:100%}
+.rev-meter-in{background:#6f6c5c}
+.rev-meter-over{background:var(--accent)}
+.rev-cap{position:absolute;top:-6px;bottom:-6px;border-left:2px solid var(--ink)}
+.rev-axis{position:relative;display:flex;justify-content:space-between;margin-top:6px;font-size:13px;line-height:1.5;color:var(--muted);font-variant-numeric:tabular-nums}
+.rev-axis-cap{position:absolute;transform:translateX(-50%);color:var(--ink);white-space:nowrap}
+
+/* 對照：共同起點、兩欄中線 */
+.rev-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.rev-col{padding:0 28px 0 0}
+.rev-col+.rev-col{padding:0 0 0 28px;border-left:1px solid var(--line)}
+.rev-col h3{margin:0 0 6px;font-size:19px;font-weight:600}
+.rev-number{margin:6px 0 0;font-size:clamp(40px,6vw,58px);font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums}
+.rev-number small{font-size:16px;font-weight:400;color:var(--muted)}
+.rev-over .rev-number{color:var(--accent)}
+.rev-sub{margin:4px 0 14px;color:var(--muted);font-size:16px}
+.rev-col .rev-verdict{margin-top:14px!important}
+.rev-metrics{margin:0}
+.rev-metric{padding:10px 0;border-top:1px solid var(--line)}
+.rev-metric:first-child{border-top:0}
+.rev-metric dt{font-size:15px;line-height:1.6;color:var(--muted)}
+.rev-metric dd{margin:4px 0 0;font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.rev-ratio{display:block;height:8px;margin:4px 0 6px;background:var(--tint)}
+.rev-ratio i{display:block;height:100%;background:var(--ink)}
+
+@media(max-width:700px){
+  .rev-branches{grid-template-columns:1fr;gap:12px}
+  .rev-flow .rev-branches{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .rev-flow .rev-node{padding:12px 10px;font-size:15px}.rev-flow .rev-node b{font-size:16px}
+  .rev-decision{padding:12px 16px}
+  .rev-band{grid-template-columns:2.2em minmax(0,1fr) minmax(0,1fr) 2.8em;gap:0 6px;font-size:15px}
+  .rev-band-head{font-size:13px}.rev-hbar b{font-size:14px}.rev-route{font-size:14px}
+  .rev-compare{grid-template-columns:1fr}
+  .rev-col,.rev-col+.rev-col{padding:14px 0}
+  .rev-col+.rev-col{border-left:0;border-top:1px solid var(--line)}
+  .rev-control{font-size:19px;gap:8px}
+  .rev-total b{font-size:22px}
+}
+/* 縮圖用固定桌面構圖，避免套用目前視窗的手機斷點。 */
+.mini-page .rev-branches{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.mini-page .rev-flow .rev-node{padding:16px 18px;font-size:17px}
+.mini-page .rev-band{grid-template-columns:3em minmax(0,1fr) minmax(0,1fr) 3.4em;gap:0 10px;font-size:17px}
+.mini-page .rev-compare{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mini-page .rev-col{padding:0 28px 0 0}
+.mini-page .rev-col+.rev-col{padding:0 0 0 28px;border-left:1px solid var(--line);border-top:0}
+.mini-page .rev-control{font-size:22px}
+.mini-page .rev-total b{font-size:26px}

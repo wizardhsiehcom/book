@@ -1,5 +1,7 @@
 # HBM 整合與記憶體頻寬
 
+[開啟逐步視覺解說：GPU 到 HBM 經過哪些層？](resources/package-path/index.html)
+
 HBM（High Bandwidth Memory，高頻寬記憶體）是 CoWoS 存在最重要的理由。理解 HBM 為什麼需要 CoWoS，就理解了整個 2.5D 封裝的價值主張。
 
 ## 記憶體牆：問題的本質

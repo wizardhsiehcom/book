@@ -1,0 +1,117 @@
+/* A 紙本圖解：共同數線、細線與少量朱紅；只作用於此主題。
+   A／B／C 用三種低彩暖色並附字母；朱紅只標目前選取的區間與 z。 */
+.ac-stack{display:grid;gap:22px;min-width:0}
+.ac-card{min-width:0;color:var(--ink);overflow-wrap:anywhere}
+.ac-stack>.ac-card+.ac-card,.ac-stack>.ac-card+details,.ac-more .ac-card{padding-top:20px;border-top:1px solid var(--line)}
+.ac-card+.ac-card{padding-top:20px;border-top:1px solid var(--line)}
+.ac-card h2{margin:0 0 14px;font-size:15px;font-weight:700;letter-spacing:.08em;color:var(--accent)}
+.ac-card p{margin:10px 0 0;font-size:16px;line-height:1.7}
+.ac-note{font-size:14px!important;color:var(--muted)}
+
+/* 三種符號填色 */
+.ac-a,.ac-range.ac-a{background:#e8dcbf}
+.ac-b,.ac-range.ac-b{background:#c9cfb4}
+.ac-c,.ac-range.ac-c{background:#e0bfae}
+.ac-chip{display:inline-block;width:.8em;height:.8em;border:1px solid #8b8672;vertical-align:-.05em;margin-right:.45em}
+
+/* 放大切分：上方整條定位 → 漏斗 → 放大後的 A／B／C */
+.ac-zoom{min-width:0}
+.ac-context-label{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ac-track{position:relative;height:26px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.ac-track.ac-thin{height:12px;margin-top:4px}
+.ac-funnel{height:34px;background:var(--tint);border-bottom:0}
+.ac-bar{position:relative;height:64px;background:var(--card)}
+.ac-part{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:1px solid #8b8672;font:600 22px/1 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--ink)}
+.ac-part+.ac-part{border-left:0}
+.ac-selected{box-shadow:inset 0 0 0 3px var(--accent);color:var(--accent)}
+
+/* 共同座標 */
+.ac-axis{min-width:0}
+.ac-axis-head{margin:0 0 6px!important;font-size:14px!important;color:var(--muted);font-variant-numeric:tabular-nums}
+.ac-rows{position:relative}
+.ac-axis-row{position:relative;padding:8px 0 12px}
+.ac-row-label{display:flex;flex-wrap:wrap;gap:0 12px;margin:0 0 6px!important;font-size:15px!important;line-height:1.5!important;font-variant-numeric:tabular-nums}
+.ac-row-label span{color:var(--muted)}
+/* 標籤蓋住穿過的格線與 z 線，保持可讀 */
+.ac-row-label strong,.ac-row-label span{position:relative;z-index:3;background:var(--card);padding-right:4px}
+.ac-current .ac-row-label strong{color:var(--accent)}
+.ac-range,.ac-over{position:absolute;top:0;bottom:0;box-sizing:border-box;min-width:2px}
+.ac-range{border:1px solid #8b8672}
+.ac-range.ac-start{background:var(--tint)}
+.ac-range.ac-parent{background:var(--ink);border-color:var(--ink)}
+.ac-range.ac-fit{background:#d8d2c2}
+.ac-current .ac-range{box-shadow:0 0 0 2px var(--accent);border-color:var(--accent)}
+.ac-over{background:repeating-linear-gradient(135deg,transparent 0 4px,var(--accent) 4px 6px);border:1px solid var(--accent)}
+/* 半開區間：實心點＝包含左端，空心點＝不含右端 */
+.ac-axis-row .ac-range::before,.ac-axis-row .ac-range::after,.ac-selected::before,.ac-selected::after{content:'';position:absolute;bottom:-5px;width:8px;height:8px;border-radius:50%;border:2px solid var(--ink);box-sizing:border-box;z-index:1}
+.ac-axis-row .ac-range::before,.ac-selected::before{left:-5px;background:var(--ink)}
+.ac-axis-row .ac-range::after,.ac-selected::after{right:-5px;background:var(--card)}
+.ac-selected::before,.ac-selected::after{border-color:var(--accent)}
+.ac-selected::before{background:var(--accent)}
+.ac-grid,.ac-guide{position:absolute;top:0;bottom:0;border-left:1px dotted var(--line);pointer-events:none}
+.ac-guide{border-left:1px dashed var(--ink);opacity:.55}
+.ac-marker{position:absolute;top:-6px;bottom:-4px;border-left:2px solid var(--accent);transform:translateX(-1px);z-index:2;pointer-events:none}
+.ac-marker b{position:absolute;top:-14px;left:4px;font:italic 700 14px/1 Georgia,serif;color:var(--accent)}
+.ac-rows:has(>.ac-marker){padding-top:18px}
+.ac-rows .ac-marker{top:0;bottom:4px}
+.ac-rows .ac-marker b{top:1px}
+
+/* 刻度 */
+.ac-ticks{position:relative;height:26px;margin-top:4px;border-top:1px solid var(--ink);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ac-ticks span{position:absolute;top:4px;transform:translateX(-50%);white-space:nowrap}
+.ac-ticks span::before{content:'';position:absolute;top:-9px;left:50%;height:5px;border-left:1px solid var(--ink)}
+.ac-ticks .ac-tick-first{transform:none}
+.ac-ticks .ac-tick-first::before{left:0}
+.ac-ticks .ac-tick-last{transform:translateX(-100%)}
+.ac-ticks .ac-tick-last::before{left:auto;right:0}
+.ac-ticks small{font-size:11px}
+
+/* 圖例與結果 */
+.ac-legend{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.ac-legend li{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;align-items:center;padding:4px 14px;border-left:1px solid var(--line);font-variant-numeric:tabular-nums}
+.ac-legend li:first-child{border-left:0;padding-left:0}
+.ac-legend .ac-chip{margin:0}
+.ac-legend span{grid-column:2;font-size:14px;color:var(--muted)}
+.ac-result{display:flex;flex-wrap:wrap;gap:4px 18px;border-left:3px solid var(--accent);padding-left:12px;font-variant-numeric:tabular-nums}
+.ac-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.ac-pair .ac-card{padding-right:24px}
+.ac-pair .ac-card+.ac-card{margin:0;padding:0 0 0 24px;border-top:0;border-left:1px solid var(--line)}
+.ac-pair+.ac-card{padding-top:20px;border-top:1px solid var(--line)}
+.ac-big{font-size:clamp(36px,5vw,52px)!important;font-weight:600;line-height:1.2!important;font-variant-numeric:tabular-nums}
+
+/* 互動 */
+.ac-controls{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.ac-controls button{padding:8px 14px;font-size:16px;border-radius:5px}
+.ac-controls button[data-ac="undo"]{margin-left:auto}
+.ac-number{display:flex;align-items:baseline;gap:12px;margin:0 0 12px;font-size:17px;font-variant-numeric:tabular-nums}
+.ac-number b{font:700 24px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;color:var(--accent)}
+.ac-number i{font-style:normal;color:var(--muted)}
+.ac-number span{margin-left:auto;color:var(--muted);font-size:15px}
+.ac-more summary{cursor:pointer;padding:6px 0;font-size:16px;color:var(--ink)}
+.ac-more summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.ac-more>.ac-stack{margin-top:12px}
+
+@media(max-width:600px){
+  .ac-legend{grid-template-columns:1fr}
+  .ac-legend li,.ac-legend li:first-child{border-left:0;padding:6px 0;border-top:1px solid var(--line)}
+  .ac-legend li:first-child{border-top:0}
+  .ac-pair{grid-template-columns:1fr}
+  .ac-pair .ac-card{padding:0}
+  .ac-pair .ac-card+.ac-card{padding:14px 0 0;margin-top:14px;border-left:0;border-top:1px solid var(--line)}
+  .ac-bar{height:52px}
+  .ac-funnel{height:24px}
+  .ac-controls button{padding:8px 11px}
+  .ac-controls button[data-ac="undo"]{margin-left:0}
+}
+/* 縮圖用固定桌面構圖，避免套用目前視窗的手機斷點。 */
+.mini-page .ac-legend{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mini-page .ac-legend li{border-top:0;border-left:1px solid var(--line);padding:4px 14px}
+.mini-page .ac-legend li:first-child{border-left:0;padding-left:0}
+.mini-page .ac-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mini-page .ac-pair .ac-card{padding-right:24px}
+.mini-page .ac-pair .ac-card+.ac-card{margin:0;padding:0 0 0 24px;border-top:0;border-left:1px solid var(--line)}
+.mini-page .ac-bar{height:64px}
+.mini-page .ac-funnel{height:34px}
+.ac-bar+.ac-ticks{margin-top:-1px}
+@media(max-width:600px){.ac-ticks small{display:none}.ac-ticks:has(.ac-tick-alt){height:44px}.ac-ticks .ac-tick-alt{top:22px}.ac-ticks .ac-tick-alt::before{top:-27px;height:23px}}
+.mini-page .ac-ticks small{display:inline}

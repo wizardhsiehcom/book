@@ -1,5 +1,7 @@
 # CoWoS-R 與 CoWoS-L：有機與局部矽版本
 
+[開啟逐步視覺解說：GPU 到 HBM 經過哪些層？](resources/package-path/index.html)
+
 > **一句話結論**：CoWoS-L 已經不是「折衷方案」，它是 **2026 年的旗艦主力**。NVIDIA Blackwell、Rubin、AMD MI400、AWS Trainium3 全部採用它。
 
 CoWoS-S 效能卓越但成本高昂，且全矽中介板的面積放大同時受良率與晶圓幾何限制。CoWoS-R 瞄準成本敏感市場；CoWoS-L 則在 2024 年之後接手了所有超大封裝。
@@ -88,12 +90,14 @@ CoWoS-L 並非一開始就順利。2024 年下半有報導指出 Blackwell 遇�
 |------|---------|---------|---------|
 | 中介層類型 | 全矽 | 局部矽橋嵌入有機 RDL | 全有機 RDL |
 | 最細線寬 | 0.4–2 μm | 矽橋區最細，有機區約 2 μm | 約 2 μm |
-| TSV | 有 | 矽橋含 TSV，有機區無 | 無 |
+| 中介層 TSV | 矽中介板含 TSV | 依實作；LSI 的核心用途是局部高密度互連，不能一概視為下行 TSV | 無整片矽中介板的 TSV；RDL 仍有垂直連接 |
 | 實務面積上限 | 約 3.3–3.5 倍光罩（約 2,700 mm²） | **5.5 倍光罩量產中，路線圖指向 14 倍以上** | 較小 |
 | CTE 匹配 | 最佳（同為矽） | 材料界面多，需精細管控 | 較差 |
 | 成本（相對） | 高 | 中高 | 低 |
 | 成熟度 | 最成熟 | 2024 起量產，已是旗艦主力 | 2023 起量產 |
 | 代表產品 | H100/H200、MI300X–MI355X、Maia 100 | **B200/B300、Rubin、MI400、Trainium3** | 成本敏感推論加速器 |
+
+中介層結構以 [TSMC 官方 CoWoS 說明](https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm) 為準；此處 TSV 指中介層，不包含上方 HBM 堆疊內的 TSV。
 
 ## 選擇邏輯
 

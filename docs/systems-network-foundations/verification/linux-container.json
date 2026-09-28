@@ -1,0 +1,91 @@
+{
+  "python": "3.13.15 (main, Sep 17 2026, 21:52:38) [GCC 15.2.0]",
+  "platform": "Linux-6.12.67-linuxkit-aarch64-with",
+  "machine": "aarch64",
+  "rows": [
+    {
+      "script": "l01_process.py",
+      "returncode": 0,
+      "stdout": "L01 PASS",
+      "stderr": ""
+    },
+    {
+      "script": "l02_address.py",
+      "returncode": 0,
+      "stdout": "L02 PASS {\"rows\": [{\"pid\": 14, \"n\": 10, \"id\": 281473517531328}, {\"pid\": 15, \"n\": 20, \"id\": 281472901853376}]}",
+      "stderr": ""
+    },
+    {
+      "script": "l03_publish.py",
+      "returncode": 0,
+      "stdout": "L03 PASS dir_fsync=ok",
+      "stderr": ""
+    },
+    {
+      "script": "l04_layers.py",
+      "returncode": 0,
+      "stdout": "L04 PASS ['127.0.0.1', '::1']",
+      "stderr": ""
+    },
+    {
+      "script": "l05_framing.py",
+      "returncode": 0,
+      "stdout": "L05 PASS",
+      "stderr": ""
+    },
+    {
+      "script": "l06_sync.py",
+      "returncode": 0,
+      "stdout": "L06 PASS block_wall=0.211 block_cpu=0.000 async_wall=0.203 async_cpu=0.002 gil_enabled=True to_thread_wall=0.106 serial_wall=0.079",
+      "stderr": ""
+    },
+    {
+      "script": "l07_queue.py",
+      "returncode": 0,
+      "stdout": "L07 PASS {'capacity': 2, 'queued': 0, 'inflight': 0, 'submitted': 5, 'accepted': 2, 'rejected': 3, 'completed': 2, 'cancelled': 0, 'unfinished': 0}",
+      "stderr": ""
+    },
+    {
+      "script": "l08_deadline.py",
+      "returncode": 0,
+      "stdout": "L08 PASS shared=0.201 naive=0.454 tolerance=0.12",
+      "stderr": ""
+    },
+    {
+      "script": "l09_lifecycle.py",
+      "returncode": 0,
+      "stdout": "L09 PASS",
+      "stderr": ""
+    },
+    {
+      "script": "l10_observe.py",
+      "returncode": 0,
+      "stdout": "L10 PASS job=AOI-SYN-OBS n=7 cpu_median_s=0.0500 quantile=nearest-rank classes={'cpu': 'cpu', 'io': 'io', 'queue': 'queue', 'lock': 'lock'} samples=l10-cpu-samples-linux.json",
+      "stderr": ""
+    },
+    {
+      "script": "station_skeleton.py",
+      "returncode": 0,
+      "stdout": "STATION PASS [{\"id\": \"M-1\", \"accepted\": \"yes\", \"worker\": \"completed\", \"client\": \"received\"}, {\"id\": \"M-2\", \"accepted\": \"yes\", \"worker\": \"completed\", \"client\": \"received\"}, {\"id\": \"M-3\", \"accepted\": \"no\", \"worker\": \"none\", \"client\": \"rejected-partial\"}, {\"id\": \"M-4\", \"accepted\": \"yes\", \"worker\": \"completed\", \"client\": \"unknown\"}, {\"id\": \"M-5\", \"accepted\": \"yes\", \"worker\": \"incomplete\", \"client\": \"incomplete\"}, {\"id\": \"M-6\", \"accepted\": \"no\", \"worker\": \"none\", \"client\": \"rejected-stopped\"}]",
+      "stderr": ""
+    },
+    {
+      "script": "l02_copy.cpp",
+      "returncode": 0,
+      "stdout": "SKIP 這次環境沒有 clang++",
+      "stderr": ""
+    },
+    {
+      "script": "l06_logic_race.cpp",
+      "returncode": 0,
+      "stdout": "SKIP 這次環境沒有 clang++",
+      "stderr": ""
+    },
+    {
+      "script": "l11_host.py",
+      "returncode": 0,
+      "stdout": "SKIP 這次環境沒有 Docker，容器實驗留在有 Engine 的那一欄",
+      "stderr": ""
+    }
+  ]
+}

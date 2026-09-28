@@ -1,0 +1,12 @@
+{
+  "capacity": 2,
+  "drain_s": 0.05,
+  "jobs": [
+    {"id": "M-1", "file": "M-1.bin", "delay_s": 0.0, "drop_reply": false, "arrive": "before-stop"},
+    {"id": "M-2", "file": "M-2.bin", "delay_s": 0.0, "drop_reply": false, "arrive": "before-stop"},
+    {"id": "M-3", "file": "M-3.bin", "delay_s": 0.0, "drop_reply": false, "arrive": "before-stop"},
+    {"id": "M-4", "file": "M-4.bin", "delay_s": 0.0, "drop_reply": true, "arrive": "before-stop"},
+    {"id": "M-5", "file": "M-5.bin", "delay_s": 2.0, "drop_reply": false, "arrive": "before-stop"},
+    {"id": "M-6", "file": "M-6.bin", "delay_s": 0.0, "drop_reply": false, "arrive": "during-stop"}
+  ]
+}

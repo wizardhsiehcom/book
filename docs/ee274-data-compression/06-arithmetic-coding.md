@@ -1,5 +1,7 @@
 # 第 6 章：算術編碼 (Arithmetic Coding)
 
+[開啟逐步視覺解說：算術編碼如何縮小區間？](resources/arithmetic-interval/index.html)
+
 ## 6.1 前言與動機
 
 在先前的章節中，我們探討了 **Huffman 編碼** 等符號編碼 (Symbol Codes) 的限制。這類編碼演算法必須為每個符號分配整數個位元，當某個符號的最佳資訊量 $\log_2(1/p)$ 不是整數時，就會產生無可避免的額外開銷 (overhead)。對於單一符號的編碼，這個開銷最多可達 1 bit/symbol。

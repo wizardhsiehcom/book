@@ -38,7 +38,7 @@ function pageMarkup(p, preview = false) {
   const q = p.question;
   const question = q ? `<p class="question">${q.prompt}</p><div class="choices">${q.choices.map(c => preview
     ? `<span class="choice-copy">${c.label}</span>`
-    : `<button data-answer="${c.value}">${c.label}</button>`).join('')}</div><div class="feedback" ${preview ? '' : 'id="feedback"'}>選一個答案，或直接下一步看解說。</div>` : '';
+    : `<button data-answer="${c.value}">${c.label}</button>`).join('')}</div><div class="feedback" ${preview ? '' : 'id="feedback"'}>選一個答案，查看解說。</div>` : '';
   return `<div class="chapter">${p.section}</div><h1>${p.title}</h1><p class="lead">${p.lead}</p><section class="stage" aria-label="圖解">${preview ? (p.previewArt ?? p.art) : p.art}${question}</section><p class="point">${p.point}</p>${p.detail ? `<p class="detail">${p.detail}</p>` : ''}`;
 }
 function previewMarkup(p) {

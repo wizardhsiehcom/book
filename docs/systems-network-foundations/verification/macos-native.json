@@ -1,0 +1,91 @@
+{
+  "python": "3.13.12 (main, Feb 12 2026, 01:06:02) [Clang 21.1.4 ]",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "rows": [
+    {
+      "script": "l01_process.py",
+      "returncode": 0,
+      "stdout": "L01 PASS",
+      "stderr": ""
+    },
+    {
+      "script": "l02_address.py",
+      "returncode": 0,
+      "stdout": "L02 PASS {\"rows\": [{\"pid\": 3760, \"n\": 10, \"id\": 4384696192}, {\"pid\": 3761, \"n\": 20, \"id\": 4389512960}]}",
+      "stderr": ""
+    },
+    {
+      "script": "l03_publish.py",
+      "returncode": 0,
+      "stdout": "L03 PASS dir_fsync=ok",
+      "stderr": ""
+    },
+    {
+      "script": "l04_layers.py",
+      "returncode": 0,
+      "stdout": "L04 PASS ['127.0.0.1', '::1']",
+      "stderr": ""
+    },
+    {
+      "script": "l05_framing.py",
+      "returncode": 0,
+      "stdout": "L05 PASS",
+      "stderr": ""
+    },
+    {
+      "script": "l06_sync.py",
+      "returncode": 0,
+      "stdout": "L06 PASS block_wall=0.206 block_cpu=0.000 async_wall=0.210 async_cpu=0.001 gil_enabled=True to_thread_wall=0.085 serial_wall=0.056",
+      "stderr": ""
+    },
+    {
+      "script": "l07_queue.py",
+      "returncode": 0,
+      "stdout": "L07 PASS {'capacity': 2, 'queued': 0, 'inflight': 0, 'submitted': 5, 'accepted': 2, 'rejected': 3, 'completed': 2, 'cancelled': 0, 'unfinished': 0}",
+      "stderr": ""
+    },
+    {
+      "script": "l08_deadline.py",
+      "returncode": 0,
+      "stdout": "L08 PASS shared=0.207 naive=0.464 tolerance=0.12",
+      "stderr": ""
+    },
+    {
+      "script": "l09_lifecycle.py",
+      "returncode": 0,
+      "stdout": "L09 PASS",
+      "stderr": ""
+    },
+    {
+      "script": "l10_observe.py",
+      "returncode": 0,
+      "stdout": "L10 PASS job=AOI-SYN-OBS n=7 cpu_median_s=0.0500 quantile=nearest-rank classes={'cpu': 'cpu', 'io': 'io', 'queue': 'queue', 'lock': 'lock'} samples=l10-cpu-samples-macos.json",
+      "stderr": ""
+    },
+    {
+      "script": "station_skeleton.py",
+      "returncode": 0,
+      "stdout": "STATION PASS [{\"id\": \"M-1\", \"accepted\": \"yes\", \"worker\": \"completed\", \"client\": \"received\"}, {\"id\": \"M-2\", \"accepted\": \"yes\", \"worker\": \"completed\", \"client\": \"received\"}, {\"id\": \"M-3\", \"accepted\": \"no\", \"worker\": \"none\", \"client\": \"rejected-partial\"}, {\"id\": \"M-4\", \"accepted\": \"yes\", \"worker\": \"completed\", \"client\": \"unknown\"}, {\"id\": \"M-5\", \"accepted\": \"yes\", \"worker\": \"incomplete\", \"client\": \"incomplete\"}, {\"id\": \"M-6\", \"accepted\": \"no\", \"worker\": \"none\", \"client\": \"rejected-stopped\"}]",
+      "stderr": ""
+    },
+    {
+      "script": "l02_copy.cpp",
+      "returncode": 0,
+      "stdout": "bytes 2000000 copy_us 502 borrow_us 344 checksum 6000000",
+      "stderr": ""
+    },
+    {
+      "script": "l06_logic_race.cpp",
+      "returncode": 0,
+      "stdout": "split 1 whole 2",
+      "stderr": ""
+    },
+    {
+      "script": "l11_host.py",
+      "returncode": 0,
+      "stdout": "L11 PASS {\"image_id\": \"sha256:1a63a53928ce53d2b0baf08092a703f4840ac5dfbd61fd48802dbf48e08c801e\", \"container\": \"068d8a930c35\", \"guest\": {\"pid\": 1, \"ppid\": 0, \"hostname\": \"068d8a930c35\", \"bind\": [\"127.0.0.1\", 46021], \"ready\": true}, \"host_hostname\": \"xieweizhedeMacBook-Air.local\"}",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+site_name: 程式如何在機器與網路上運作
+site_description: 程序、位址、檔案、串流與停止：用合成圖片交接看每一層承諾
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: {icon: material/weather-sunny, name: 切換為亮色模式}
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle: {icon: material/weather-night, name: 切換為深色模式}
+  features: [navigation.sections, navigation.expand, navigation.top, content.code.copy]
+docs_dir: ../docs/systems-network-foundations
+site_dir: ../book/systems-network-foundations/html
+use_directory_urls: false
+exclude_docs: |
+  examples/**/__pycache__/
+  examples/**/*.bin
+extra:
+  bookshelf_url: ../../../index.html
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、程序與資料:
+      - 01 程序: 01-process.md
+      - 02 執行緒與排程: 02-thread-scheduling.md
+      - 03 位址空間: 03-address-space.md
+      - 04 資料搬移: 04-data-movement.md
+      - 05 檔案: 05-files-io.md
+      - 06 完成的層次: 06-completion-durability.md
+  - 二、通訊:
+      - 07 名稱、位址與 port: 07-address-port-dns.md
+      - 08 TCP 串流: 08-tcp-stream.md
+      - 09 訊息契約: 09-message-contract.md
+      - 10 HTTP: 10-http.md
+  - 三、容量與等待:
+      - 11 同步與非同步: 11-sync-async.md
+      - 12 共享狀態: 12-shared-state.md
+      - 13 佇列與背壓: 13-queue-backpressure.md
+  - 四、故障與生命週期:
+      - 14 逾時與預算: 14-timeout-deadline.md
+      - 15 取消與未知: 15-cancellation-unknown.md
+      - 16 就緒: 16-readiness.md
+      - 17 停止: 17-shutdown.md
+  - 五、觀察與邊界:
+      - 18 觀察: 18-observability.md
+      - 19 容器: 19-containers.md
+  - 練習與附錄:
+      - 終點題: exercises.md
+      - 提示: hints.md
+      - 解答: answers.md
+      - 實驗: labs.md
+      - 詞彙表: glossary.md
+      - 來源: sources.md
+      - 驗證紀錄: verification.md

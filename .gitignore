@@ -28,3 +28,5 @@ data/
 # Vendor JS bundled into each book (tracked in template only)
 book/*/mermaid.min.js
 !book/template/mermaid.min.js
+
+playground/

@@ -375,6 +375,15 @@ const BOOKS = [
     accent: "#b45309",
     glow: "rgba(180,83,9,0.18)",
   },
+  {
+    icon: "🧭",
+    title: "程式如何在機器與網路上運作",
+    desc: "從程序、位址與檔案，走到串流、容量、未知結果與停止；用合成圖片交接把每一層承諾分開",
+    tags: ["systems", "networking", "Python"],
+    href: "book/systems-network-foundations/html/index.html",
+    accent: "#4f46e5",
+    glow: "rgba(79,70,229,0.18)",
+  },
 ];
 
 const TAG_COLOR = {

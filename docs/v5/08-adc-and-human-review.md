@@ -1,5 +1,7 @@
 # 08　ADC 如何接手分類，又把哪些工作留給人？
 
+[開啟視覺解說：門檻更敏感，為什麼複判更忙？](resources/threshold-review/index.html)
+
 檢測站每小時送來成千上萬張候選影像，工程師逐張開圖、分類與排除，可能成為整條流程的瓶頸。ADC，automatic defect classification，自動缺陷分類，將這部分工作交給規則或模型。它的價值要在「收到哪些候選、做了哪些決策、留下多少人工工作」的脈絡裡評估。
 
 先備是[品質分母](04-defects-and-quality.md)與[AOI 流程](06-aoi-and-recipes.md)。本章聚焦學習式 ADC 的資料生命週期；流程是教學設計，不是倍利公開的專有架構。

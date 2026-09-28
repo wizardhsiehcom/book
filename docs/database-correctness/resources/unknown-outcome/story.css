@@ -1,0 +1,121 @@
+/* A 紙本圖解：暖白底、1px 細線、朱紅只標「未知／危險」的關鍵狀態；只作用於此主題。 */
+/* 對照：左右兩欄以細線分隔；右欄為全知視角，以虛線分隔表示客戶端看不到。 */
+.outcome-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.outcome-card{min-width:0;padding:4px 28px 4px 0;overflow-wrap:anywhere}
+.outcome-card+.outcome-card{padding:4px 0 4px 28px;border-left:1px solid var(--line)}
+.outcome-omniscient{border-left-style:dashed!important}
+.outcome-label{display:block;color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.1em;line-height:1.6;margin-bottom:12px}
+.outcome-card h2{font-size:24px;line-height:1.5;margin:0;color:var(--ink);font-weight:650}
+.outcome-card.outcome-key .outcome-label,.outcome-warning .outcome-label{color:var(--accent)}
+.outcome-card.outcome-key>h2,.outcome-warning h2{color:var(--accent)}
+.outcome-card p,.outcome-card li{font-size:18px;line-height:1.8}
+.outcome-card p{margin:10px 0 0;color:var(--muted)}
+.outcome-card strong{font-size:20px;line-height:1.6}
+.outcome-number{margin:18px 0 0!important;padding-top:12px;border-top:1px solid var(--line);font-size:clamp(36px,5vw,52px)!important;line-height:1.2!important;font-weight:600;color:var(--ink)!important;font-variant-numeric:tabular-nums}
+.outcome-number small{font-size:17px;font-weight:400;color:var(--muted)}
+.outcome-warning .outcome-number{color:var(--accent)!important;border-top-color:var(--accent)}
+.outcome-caption{margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+.outcome-seqpair+.outcome-caption{padding-top:12px;border-top:1px solid var(--line)}
+
+/* 意圖紀錄：一張有細線分格的表，expected_version 以朱紅左線標示。 */
+.outcome-intent{max-width:640px;width:100%;margin:0 auto;overflow-wrap:anywhere}
+.outcome-intent>strong{display:block;font:650 26px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--ink);padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.outcome-intent dl{margin:0;display:grid}
+.outcome-intent dl>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;border-bottom:1px solid var(--line);padding:12px 0 12px 12px;font-size:20px;border-left:3px solid transparent}
+.outcome-intent dl>div.outcome-key{border-left-color:var(--accent)}
+.outcome-intent dt{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted)}
+.outcome-intent dd{margin:0;font-weight:650;font-variant-numeric:tabular-nums}
+.outcome-key dd{color:var(--accent)}
+
+/* 流程：同 ID 重入後的三個分支。 */
+.outcome-flow{max-width:860px;width:100%;margin:0 auto}
+.outcome-node{border:1px solid var(--line);border-radius:2px;background:var(--card);padding:14px 16px;text-align:center;font-size:18px;line-height:1.6;overflow-wrap:anywhere}
+.outcome-decision{border-color:var(--ink);border-radius:28px;font-weight:700}
+.outcome-node.outcome-key{border-color:var(--accent);color:var(--accent)}
+.outcome-arrow{text-align:center;color:var(--muted);padding:8px;margin:0;font-size:16px;line-height:1.6}
+.outcome-branches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.outcome-branches>div{min-width:0;display:flex;flex-direction:column}
+.outcome-branches .outcome-node{flex:1}
+
+/* 帳本：①② 為先後兩個操作。 */
+.outcome-ledger{display:grid;border-top:1px solid var(--ink)}
+.outcome-ledger>div{display:grid;grid-template-columns:2em minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);font-size:18px;line-height:1.6;overflow-wrap:anywhere}
+.outcome-ledger b{color:var(--muted)}
+.outcome-ledger span{color:var(--muted)}
+
+/* 時序：客戶端 | 訊息 | 伺服器。訊息欄左右框線即兩方生命線。 */
+.outcome-timeline{display:grid;gap:10px;min-width:0}
+.outcome-seq{container-type:inline-size;min-width:0}
+.outcome-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr);align-items:stretch;font-size:17px;line-height:1.6}
+.outcome-row>*{min-width:0;overflow-wrap:anywhere}
+.outcome-head{border-bottom:1px solid var(--ink)}
+.outcome-head strong{padding:0 12px 8px;font-size:15px;color:var(--muted);letter-spacing:.06em}
+.outcome-head strong:first-child{text-align:right}
+.outcome-c,.outcome-s{padding:14px 12px}
+.outcome-c{text-align:right}
+.outcome-c small{display:block;color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.outcome-c.outcome-key{color:var(--accent);font-weight:700}
+.outcome-msg,.outcome-head>span{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.outcome-msg{display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px 0;text-align:center;font-size:15px;color:var(--ink)}
+.outcome-msg>span:first-child{padding:0 8px}
+.outcome-line{position:relative;display:block;height:0;border-top:1.5px solid var(--ink);margin:4px 0}
+.outcome-r .outcome-line{margin-right:2px}
+.outcome-r .outcome-line::after,.outcome-l .outcome-line::after{content:'';position:absolute;top:-6px;border:5px solid transparent}
+.outcome-r .outcome-line::after{right:-2px;border-left:9px solid var(--ink);border-right:0}
+.outcome-l .outcome-line{margin-left:2px}
+.outcome-l .outcome-line::after{left:-2px;border-right:9px solid var(--ink);border-left:0}
+.outcome-lost,.outcome-cut{color:var(--accent)}
+.outcome-lost .outcome-line{border-top:1.5px dashed var(--accent);margin-left:38%}
+.outcome-lost .outcome-line::after{content:'×';position:absolute;left:-.7em;top:-.85em;font-weight:700;font-size:17px}
+.outcome-cut .outcome-line{border-top:1.5px dashed var(--accent);margin:4px 22%}
+.outcome-cut .outcome-line::after{content:'×';position:absolute;left:50%;top:-.85em;transform:translateX(-50%);background:var(--card);padding:0 4px;font-weight:700;font-size:17px}
+.outcome-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* 窄容器：兩方並列，訊息改成列首整行，生命線以背景細線保留在 25% 與 75%。 */
+@container (max-width:560px){
+  .outcome-row{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"m m" "c s";background:linear-gradient(90deg,transparent calc(25% - .5px),var(--line) calc(25% - .5px),var(--line) calc(25% + .5px),transparent calc(25% + .5px),transparent calc(75% - .5px),var(--line) calc(75% - .5px),var(--line) calc(75% + .5px),transparent calc(75% + .5px))}
+  .outcome-head{background:none;grid-template-areas:"c s"}
+  .outcome-head>span{display:none}
+  .outcome-head strong:first-child,.outcome-c{text-align:center}
+  .outcome-head strong{padding:0 4px 8px}
+  .outcome-c{grid-area:c}.outcome-s{grid-area:s;text-align:center}
+  .outcome-c,.outcome-s{padding:8px 6px;background:var(--card);margin:0 6px;align-self:center}
+  .outcome-msg{grid-area:m;border:0;padding:10px 0 0}
+  .outcome-msg>span:first-child{background:var(--card);justify-self:center;margin:0 auto}
+  .outcome-none{display:none}
+  .outcome-line{margin:4px 25%!important}
+  .outcome-lost .outcome-line{margin-left:40%!important}
+  .outcome-cut .outcome-line{margin:4px 35%!important}
+}
+
+/* 互動控制 */
+.outcome-controls{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px}
+.outcome-controls label{display:grid;gap:8px;font-size:16px;max-width:100%;min-width:0;color:var(--muted)}
+.outcome-controls select{font:inherit;width:100%;min-width:0;max-width:100%;padding:10px 8px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:3px}
+.outcome-controls button{font-size:16px;white-space:normal}
+.outcome-controls select:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.outcome-result{display:grid;gap:16px}
+.outcome-note{font-size:18px;line-height:1.8;margin:0}
+.outcome-result>.outcome-note:first-child strong{font-size:13px;letter-spacing:.1em;color:var(--muted)}
+.outcome-result>.outcome-note:nth-child(2) strong{font-size:22px;color:var(--accent);border-left:3px solid var(--accent);padding-left:12px;display:block}
+.outcome-timeline+.outcome-note{padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.outcome-step{font-size:15px;line-height:1.7;color:var(--muted);margin:0;font-variant-numeric:tabular-nums}
+
+@media(max-width:700px){
+  .outcome-pair{grid-template-columns:1fr}
+  .outcome-card,.outcome-card+.outcome-card{padding:14px 0}
+  .outcome-card+.outcome-card{border-left:0!important;border-top:1px solid var(--line)}
+  .outcome-omniscient{border-top-style:dashed!important}
+  .outcome-intent dl>div{grid-template-columns:1fr;gap:4px}
+  .outcome-branches{grid-template-columns:1fr;gap:6px}
+  .outcome-ledger>div{grid-template-columns:2em minmax(0,1fr)}
+  .outcome-ledger span{grid-column:2}
+}
+/* 縮圖用固定桌面構圖，避免套用目前視窗的手機斷點。 */
+.mini-page .outcome-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mini-page .outcome-card{padding:4px 28px 4px 0}
+.mini-page .outcome-card+.outcome-card{padding:4px 0 4px 28px;border-left:1px solid var(--line)!important;border-top:0}
+.mini-page .outcome-omniscient{border-left-style:dashed!important}
+.mini-page .outcome-intent dl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.mini-page .outcome-branches{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.mini-page .outcome-ledger>div{grid-template-columns:2em minmax(0,1fr) minmax(0,1fr)}
+.mini-page .outcome-ledger span{grid-column:auto}

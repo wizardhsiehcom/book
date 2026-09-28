@@ -1,5 +1,7 @@
 # 矽中介板與 2.5D 整合
 
+[開啟逐步視覺解說：GPU 到 HBM 經過哪些層？](resources/package-path/index.html)
+
 ## 什麼是矽中介板
 
 矽中介板（Silicon Interposer）是一片「被動」的矽晶片——上面沒有電晶體，只有多層細間距的金屬再分佈層（RDL, Redistribution Layer）。它扮演「橋接板」的角色，讓多個 Die 能以極細的線寬互連，同時透過 TSV 連接到下方的有機封裝基板。

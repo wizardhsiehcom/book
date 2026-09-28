@@ -1,0 +1,184 @@
+/* A 紙本圖解：朱紅只標「超出規格／實際位置／判退」。窄版用 container query，縮圖（1000px）自然維持桌面版。 */
+.asy-fig,.asy-live{margin:0;min-width:0;color:var(--ink);container-type:inline-size}
+.asy-fig *,.asy-live *{box-sizing:border-box;min-width:0}
+.asy-fig figcaption,.asy-focus figcaption,.asy-pairs figcaption{border-top:1px solid var(--line);padding-top:12px;margin-top:18px;color:var(--muted);font-size:15px;line-height:1.7}
+.asy-fig h3,.asy-costview h3{margin:0 0 12px;font-size:18px;font-weight:650}
+.asy-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+.asy-key i{display:inline-block;width:1.2em;height:.8em;margin-right:6px;vertical-align:-1px}
+.asy-scale{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+.asy-eq{font-size:26px;font-weight:600;margin:6px 0 12px;font-variant-numeric:tabular-nums}
+.asy-note{margin:14px 0 0;color:var(--muted);font-size:15px}
+
+/* 對照：兩欄，細線分隔 */
+.asy-compare{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);background:var(--card)}
+.asy-compare>section{padding:18px 20px}
+.asy-compare>section+section{border-left:1px solid var(--line)}
+.asy-checks{list-style:none;margin:0;padding:0;font-size:17px;line-height:1.6}
+.asy-checks li{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2px 12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.asy-checks li span{color:var(--muted);font-size:15px}
+.asy-checks li span::before{content:'✓ ';color:var(--ink)}
+.asy-plain li{display:block}
+.asy-plain li b{display:block;font-weight:650}
+.asy-dots{display:grid;grid-template-columns:repeat(5,34px);gap:10px}
+.asy-dots i{display:block;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);background:var(--tint)}
+.asy-dots i.asy-bad{border-color:var(--accent);background:var(--accent)}
+
+/* 鏡筒剖面 */
+.asy-barrel{display:block;width:100%;max-width:640px;height:auto;margin:auto}
+.asy-axis-line{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:6 5;fill:none}
+.asy-barrel-wall{fill:var(--pane);stroke:var(--ink);stroke-width:1.5}
+.asy-lens path,.asy-lens-fill{fill:#dfe3d6;stroke:var(--ink);stroke-width:1.5}
+.asy-spacer rect{fill:var(--card);stroke:var(--ink);stroke-width:1.2}
+.asy-retainer{fill:var(--muted);stroke:var(--ink);stroke-width:1.2}
+.asy-num circle{fill:var(--card);stroke:var(--ink);stroke-width:1.5}
+.asy-num text{font-size:20px;font-weight:700;text-anchor:middle;fill:var(--ink)}
+.asy-lead{stroke:var(--ink);stroke-width:1.5}
+.asy-legend{margin:14px 0 0;padding-left:1.6em;font-size:16px;line-height:1.6;columns:2 280px;column-gap:28px}
+.asy-legend li{break-inside:avoid;margin-bottom:6px;color:var(--muted)}
+.asy-legend b{color:var(--ink);font-weight:650;margin-right:.5em}
+.asy-legend li:last-child{list-style:none}
+
+/* 三種自由度 */
+.asy-dof{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:var(--card)}
+.asy-dof>section{padding:14px 16px;text-align:center}
+.asy-dof>section+section{border-left:1px solid var(--line)}
+.asy-dof svg{display:block;width:100%;max-width:220px;margin:auto}
+.asy-dof p{margin:6px 0 0;color:var(--muted);font-size:15px;line-height:1.5}
+.asy-ghost{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 4}
+.asy-moved{fill:#dfe3d6;stroke:var(--accent);stroke-width:2.5}
+.asy-sw-ghost{border:1.5px dashed var(--muted)}
+.asy-sw-moved{border:2.5px solid var(--accent);background:#dfe3d6}
+.asy-sw-axis{border-top:1.5px dashed var(--muted);height:0!important;vertical-align:4px!important}
+
+/* 光錐 */
+.asy-cone-wrap{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:24px;align-items:center}
+.asy-cone{display:block;width:100%;height:auto}
+.asy-ray{fill:none;stroke:var(--ink);stroke-width:1.5}
+.asy-plane{stroke:var(--ink);stroke-width:3}
+.asy-plane-ghost{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 5}
+.asy-c{stroke:var(--accent);stroke-width:6}
+.asy-dim{stroke:var(--muted);stroke-width:1.5;fill:none}
+.asy-t{font-size:24px;font-weight:650;fill:var(--ink);text-anchor:middle}
+.asy-t-small{font-size:20px;font-weight:500;fill:var(--muted)}
+.asy-t-accent{fill:var(--accent)}
+.asy-formula{font-size:16px;line-height:1.65}
+.asy-formula p{margin:0 0 8px}
+
+/* 互動控制 */
+.asy-live{display:grid;gap:18px}
+.asy-buttons{display:flex;flex-wrap:wrap;gap:8px}
+.asy-buttons button{font-size:16px;padding:10px 14px;white-space:normal}
+.asy-buttons button[aria-pressed=true]{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+.asy-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 28px}
+.asy-control{display:grid;gap:4px;font-size:17px;font-weight:650;line-height:1.5;font-variant-numeric:tabular-nums}
+.asy-control input{width:100%;min-height:40px;accent-color:var(--ink)}
+.asy-control input:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.asy-verdict{margin:0;font-size:17px;font-weight:600;line-height:1.6}
+
+/* 像面側視與模糊圈 */
+.asy-focus{margin:0}
+.asy-plot{position:relative;height:190px;border:1px solid var(--line);background:var(--card);margin-left:4.6em}
+.asy-plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.asy-tick{position:absolute;right:100%;margin-right:8px;font-size:13px;color:var(--muted);white-space:nowrap;transform:translateY(-50%);font-variant-numeric:tabular-nums}
+.asy-top{top:5%}.asy-mid{top:50%}.asy-bot{top:95%}
+.asy-sensor{stroke:var(--ink);stroke-width:2.5}
+.asy-best{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:6 4}
+.asy-gap{stroke:var(--muted);stroke-width:3}
+.asy-gap.asy-bad{stroke:var(--accent)}
+.asy-sw-sensor{border-top:2.5px solid var(--ink);height:0!important;vertical-align:4px!important}
+.asy-sw-best{border-top:1.5px dashed var(--ink);height:0!important;vertical-align:4px!important}
+.asy-fields{display:grid;grid-template-columns:repeat(5,1fr);margin:12px 0 0 4.6em}
+.asy-field{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:14px;line-height:1.4;text-align:center;font-variant-numeric:tabular-nums}
+.asy-field b{font-weight:650;font-size:15px}
+.asy-field em{font-style:normal;color:var(--muted);font-size:13px}
+.asy-field.asy-bad em{color:var(--accent);font-weight:650}
+/* 虛線圈＝規格；實心圓＝模糊圈；容器固定高度讓五欄對齊 */
+.asy-ring{position:relative;display:block;width:52px;height:52px;margin-bottom:4px}
+.asy-ring i{position:absolute;left:50%;top:50%;width:var(--d);height:var(--d);border-radius:50%;transform:translate(-50%,-50%)}
+.asy-ring i{background:var(--ink);opacity:.8}
+.asy-field.asy-bad .asy-ring i{background:var(--accent);opacity:.9}
+.asy-ring::after{content:'';position:absolute;left:50%;top:50%;width:var(--d);height:var(--d);border-radius:50%;border:1.5px dashed var(--ink);transform:translate(-50%,-50%);z-index:1}
+
+/* 表格 */
+.asy-table{border:1px solid var(--line);background:var(--card);font-size:16px;line-height:1.55}
+.asy-tr{display:grid;grid-template-columns:8em 1fr 11em;gap:0 16px;padding:10px 16px;border-top:1px solid var(--line)}
+.asy-th{border-top:0;color:var(--muted);font-size:14px}
+.asy-tr b{font-weight:650}
+.asy-tr-limit span:last-child{color:var(--accent);font-weight:650}
+
+/* 流程 */
+.asy-chain{display:grid;gap:0;max-width:760px;margin:auto}
+.asy-srcs,.asy-outs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.asy-outs{grid-template-columns:repeat(2,1fr)}
+.asy-node{padding:12px 14px;border:1px solid var(--line);background:var(--card);font-size:15px;line-height:1.55;color:var(--muted);text-align:center}
+.asy-node b{display:block;color:var(--ink);font-size:17px;font-weight:650}
+.asy-node-key{border-color:var(--ink)}
+.asy-arrow{text-align:center;color:var(--muted);font-size:20px;line-height:1.6}
+
+/* 參數卡 */
+.asy-params{margin:0;border:1px solid var(--line);background:var(--card)}
+.asy-params div{display:grid;grid-template-columns:10em 1fr;gap:12px;padding:10px 16px;border-top:1px solid var(--line);font-size:17px;line-height:1.55}
+.asy-params div:first-child{border-top:0}
+.asy-params dt{color:var(--muted)}
+.asy-params dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* 配對：誤差相加 */
+.asy-pairs{margin:0}
+.asy-big{margin:0 0 12px;font-size:17px}.asy-big b{font-size:28px;font-weight:650;margin-right:6px}
+.asy-pair{display:grid;grid-template-columns:11em minmax(0,1fr) 6em;gap:12px;align-items:center;padding:6px 0;font-size:15px;font-variant-numeric:tabular-nums}
+.asy-pair-head{color:var(--muted);font-size:13px;padding-bottom:22px}
+.asy-track{position:relative;height:18px;border-left:1px solid var(--line);border-right:1px solid var(--line);background:linear-gradient(var(--line),var(--line)) center/1px 100% no-repeat}
+.asy-track i{position:absolute;top:3px;height:12px}
+.asy-track b{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%)}
+.asy-seg-a,.asy-sw-a{background:var(--muted)}
+.asy-seg-b,.asy-sw-b{background:#cfc6ae}
+.asy-pair.asy-bad .asy-track b{background:var(--accent)}
+.asy-pair.asy-bad .asy-pair-sum{color:var(--accent);font-weight:650}
+.asy-axis{height:0;border:0;background:none;border-top:1px solid var(--ink)}
+.asy-axis i{top:-10px;height:10px;background:var(--tint);border:1px dashed var(--ink);border-bottom:0}
+.asy-axis em{position:absolute;top:4px;transform:translateX(-50%);font-style:normal}
+.asy-sw-band{background:var(--tint);border:1px dashed var(--ink)}
+.asy-pair-sum{white-space:nowrap}
+
+/* 成本 */
+.asy-costview{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.asy-flow{display:grid;gap:10px}
+.asy-flow-row{display:grid;gap:4px}
+.asy-flow-name{font-size:14px;color:var(--muted)}
+.asy-flow-bar{display:flex;height:22px;border-left:1px solid var(--ink)}
+.asy-flow-bar i{display:block;background:var(--ink);opacity:.75}
+.asy-flow-bar s{display:block;border:1.5px dashed var(--accent);border-left:0}
+.asy-flow-note{font-size:15px;line-height:1.5;font-variant-numeric:tabular-nums}
+.asy-flow-note b{font-weight:650}
+.asy-costbar{display:flex;height:26px;border-left:1px solid var(--ink);background:linear-gradient(90deg,transparent calc(100% - 1px),var(--line) 0)}
+.asy-costbar i{display:block;height:100%}
+.asy-costbar i+i{box-shadow:inset 1px 0 0 var(--card)}
+.asy-c-mat{background:#8f8a78}.asy-c-asm{background:#b8b19c}.asy-c-opt{background:#dcd5c0}.asy-c-fixed{background:var(--pane);outline:1px solid var(--muted);outline-offset:-1px}
+.asy-sum{margin:14px 0 0;display:grid;gap:0}
+.asy-sum div{display:grid;grid-template-columns:8em 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:16px;line-height:1.5;font-variant-numeric:tabular-nums}
+.asy-sum dt{color:var(--muted)}
+.asy-sum dd{margin:0;font-weight:650}
+.asy-sum small{display:block;font-weight:400;color:var(--muted);font-size:14px}
+.asy-k dd{font-size:20px}
+
+@container (max-width:620px){
+  .asy-compare,.asy-costview{grid-template-columns:1fr}
+  .asy-compare>section+section{border-left:0;border-top:1px solid var(--line)}
+  .asy-cone-wrap{grid-template-columns:1fr}
+  .asy-dof{grid-template-columns:1fr}
+  .asy-dof>section+section{border-left:0;border-top:1px solid var(--line)}
+  .asy-dof svg{max-width:170px}
+  .asy-srcs,.asy-outs{grid-template-columns:1fr;gap:8px}
+  .asy-tr{grid-template-columns:1fr;gap:2px}
+  .asy-th{display:none}
+  .asy-tr span:first-child{font-weight:650}
+  .asy-params div{grid-template-columns:1fr;gap:0}
+  .asy-pair{grid-template-columns:1fr auto;gap:2px 10px}
+  .asy-pair .asy-track{grid-column:1/-1;grid-row:2}
+  .asy-pair-head .asy-pair-name,.asy-pair-head .asy-pair-sum{display:none}
+  .asy-pair-head{padding-top:10px}
+  .asy-plot,.asy-fields{margin-left:3.8em}
+  .asy-plot{height:150px}
+  .asy-ring{width:44px;height:52px}
+  .asy-field{font-size:12px}.asy-field b{font-size:13px}.asy-field em{font-size:12px}
+}

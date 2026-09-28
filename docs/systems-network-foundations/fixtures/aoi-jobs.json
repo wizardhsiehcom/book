@@ -1,0 +1,8 @@
+{
+  "jobs": [
+    {"id": "AOI-SYN-001", "mode": "ok"},
+    {"id": "AOI-SYN-002", "mode": "fail"},
+    {"id": "AOI-SYN-003", "mode": "nope"},
+    {"id": "AOI-SYN-004", "mode": "hang"}
+  ]
+}

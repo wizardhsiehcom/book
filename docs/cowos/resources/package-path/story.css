@@ -1,0 +1,119 @@
+/* A 紙本圖解：物理剖面。材料以少量暖色與紋理區分，朱紅只畫目前追蹤的路徑；只作用於此主題。 */
+/* 材料填色：晶片、矽、RDL、有機基板；縮圖與本文共用。 */
+:root{--pkg-die:#e2dccb;--pkg-si:#e6e2d6;--pkg-rdl:#f1e7d2;--pkg-sub:#ddd0b3;--pkg-bump:#6f6c5f;
+  --pkg-si-fill:repeating-linear-gradient(135deg,transparent 0 7px,#26282014 7px 8px),var(--pkg-si);
+  --pkg-rdl-fill:repeating-linear-gradient(180deg,transparent 0 9px,#8a5a1e40 9px 10px),var(--pkg-rdl);
+  --pkg-sub-fill:repeating-linear-gradient(180deg,transparent 0 12px,#26282014 12px 13px),var(--pkg-sub)}
+.pkg-section{width:100%;max-width:760px;margin:0 auto;display:grid;gap:0;color:var(--ink);font-size:20px;line-height:1.5}
+.pkg-chips{display:grid;grid-template-columns:1fr 1fr;gap:16%;align-items:end;padding:0 5%}
+.pkg-gpu,.pkg-hbm{border:1px solid var(--ink);padding:18px 8px;text-align:center;background:var(--pkg-die);font-weight:650;overflow-wrap:anywhere}
+/* HBM：細線分出多層 DRAM，底部色帶是底部 die（與第 05 頁放大圖同色）。 */
+.pkg-hbm{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 0 0;background:repeating-linear-gradient(180deg,var(--card) 0 13px,var(--ink) 13px 14px)}
+.pkg-hbm b,.pkg-hbm span{background:var(--card);padding:0 6px;font-weight:650}
+.pkg-hbm span{font-size:15px;font-weight:400;color:var(--muted)}
+.pkg-hbm-base{align-self:stretch;height:14px;margin-top:8px;border-top:1px solid var(--ink);background:var(--pkg-die)}
+/* 凸塊以背景重複繪製，窄螢幕不會撐出水平溢出。 */
+.pkg-bumps{display:block;height:14px;background:radial-gradient(circle at 50% 50%,var(--pkg-bump) 0 4px,transparent 4.5px) 0 0/16px 14px space no-repeat}
+.pkg-contacts{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16%;padding:4px 5%}
+.pkg-contacts .pkg-row-tag{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.pkg-row-tag{font-size:13px;line-height:1.3;color:var(--muted);letter-spacing:.04em;white-space:nowrap;background:var(--card);padding:0 4px;position:relative;z-index:1}
+.pkg-interposer{position:relative;min-height:112px;padding:50px 12px 12px;border:1px solid var(--ink);background:var(--pkg-si-fill);text-align:center;overflow-wrap:anywhere}
+.pkg-R .pkg-interposer,.pkg-L .pkg-interposer{background:var(--pkg-rdl-fill)}
+/* S 的上表面布線層：細密橫向金屬線。 */
+.pkg-wiring{position:absolute;left:0;right:0;top:0;height:14px;background:repeating-linear-gradient(180deg,transparent 0 3px,#8a5a1e66 3px 4px);border-bottom:1px solid var(--line)}
+.pkg-R .pkg-wiring,.pkg-L .pkg-wiring{display:none}
+.pkg-layer-name{position:relative;z-index:1;font-weight:650;background:var(--card);padding:0 8px}
+.pkg-bridge{position:absolute;left:30%;right:30%;top:6px;z-index:1;border:1px solid var(--ink);background:var(--pkg-si-fill);padding:4px;font-size:16px;font-weight:650;line-height:1.4;overflow-wrap:anywhere}
+.pkg-L .pkg-interposer{padding-top:62px}
+/* 橫向路徑：GPU 接點下到布線層、橫走、再上到 HBM 接點；端點對準兩顆晶片中央。 */
+.pkg-route{display:none;position:absolute;left:24%;right:24%;top:-1px;height:12px;border:3px solid var(--accent);border-top:0}
+.pkg-path-across .pkg-route{display:block}
+.pkg-path-across .pkg-contacts::before,.pkg-path-across .pkg-contacts::after{content:"";position:absolute;top:0;bottom:0;border-left:3px solid var(--accent)}
+.pkg-path-across .pkg-contacts::before{left:24%}.pkg-path-across .pkg-contacts::after{right:24%;border-left:0;border-right:3px solid var(--accent)}
+/* S 的 TSV：數根垂直通道，第一根在往下路徑中以朱紅強調。 */
+.pkg-via{position:absolute;top:14px;bottom:0;border-left:3px solid #6f6c5f}
+.pkg-via:nth-child(2){left:12%}.pkg-via:nth-child(3){left:34%}.pkg-via:nth-child(4){left:50%}.pkg-via:nth-child(5){left:66%}.pkg-via:nth-child(6){left:88%}
+.pkg-tsv-tag{position:absolute;left:calc(12% + 8px);bottom:6px;font-size:13px;color:var(--muted);letter-spacing:.04em}
+.pkg-path-down .pkg-via-main{top:0;border-left-color:var(--accent)}
+.pkg-path-down .pkg-tsv-tag{color:var(--accent);font-weight:700}
+.pkg-lower-contacts,.pkg-balls{position:relative;display:flex;align-items:center;gap:10px;padding:0 0 0 6px;overflow:hidden}
+.pkg-dots{flex:1;align-self:stretch}
+.pkg-lower-contacts{height:22px}.pkg-lower-contacts .pkg-dots{background:radial-gradient(circle at 50% 50%,var(--pkg-bump) 0 5px,transparent 5.5px) 0 0/28px 22px space no-repeat}
+.pkg-balls{height:28px;margin:0 3%}.pkg-balls .pkg-dots{background:radial-gradient(circle at 50% 50%,var(--pkg-bump) 0 8px,transparent 8.5px) 0 0/44px 28px space no-repeat}
+.pkg-lower-contacts .pkg-row-tag,.pkg-balls .pkg-row-tag{background:none;padding:0}
+.pkg-substrate{position:relative;background:var(--pkg-sub-fill);border:1px solid var(--ink);padding:16px 8px;text-align:center;font-weight:650}
+.pkg-substrate::before{content:"";display:none}
+.pkg-path-down .pkg-lower-contacts::before,.pkg-path-down .pkg-substrate::before,.pkg-path-down .pkg-balls::before{content:"";display:block;position:absolute;left:12%;top:0;bottom:0;border-left:3px solid var(--accent)}
+.pkg-path-down .pkg-substrate::before{top:-1px;bottom:-1px}
+.pkg-path-down .pkg-balls::before{left:9.6%}
+/* 路徑經過的凸塊與焊球另以朱紅圓點標出。 */
+.pkg-path-down .pkg-lower-contacts::after,.pkg-path-down .pkg-balls::after{content:"";position:absolute;z-index:1;border-radius:50%;background:var(--accent)}
+.pkg-path-down .pkg-lower-contacts::after{left:calc(12% - 4px);top:5px;width:12px;height:12px}
+.pkg-path-down .pkg-balls::after{left:calc(9.6% - 7px);top:5px;width:18px;height:18px}
+.pkg-board{background:var(--tint);border-top:1px solid var(--ink);padding:8px;text-align:center;font-size:16px;color:var(--muted)}
+.pkg-legend{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;margin-top:14px;padding-top:10px;border-top:1px solid var(--line);font-size:14px;line-height:1.5;color:var(--muted)}
+.pkg-key{display:inline-flex;align-items:center;gap:6px}
+.pkg-key::before{content:"";width:18px;height:12px;border:1px solid var(--ink);flex:none}
+.pkg-key-si::before{background:var(--pkg-si-fill)}.pkg-key-rdl::before{background:var(--pkg-rdl-fill)}.pkg-key-sub::before{background:var(--pkg-sub-fill)}
+.pkg-key-path{color:var(--accent);font-weight:650}.pkg-key-path::before{height:0;border:0;border-top:3px solid var(--accent)}
+.pkg-scale{margin-left:auto;font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:700}
+
+/* 分層說明：左側材料色塊對應剖面填色，層與層以細線分隔。 */
+.pkg-stack{display:grid;gap:0}
+.pkg-layer{display:grid;grid-template-columns:44px minmax(0,1fr);gap:20px;align-items:start;padding:18px 0;border-top:1px solid var(--line);min-width:0;overflow-wrap:anywhere}
+.pkg-layer:first-child{border-top:0}
+.pkg-swatch{display:block;height:44px;border:1px solid var(--ink)}
+.pkg-swatch-die{background:var(--pkg-die)}.pkg-swatch-si{background:var(--pkg-si-fill)}.pkg-swatch-sub{background:var(--pkg-sub-fill)}
+.pkg-layer h2,.pkg-card h2{font-size:22px;line-height:1.5;margin:0;color:var(--ink)}
+.pkg-layer p,.pkg-card p{font-size:17px;line-height:1.7;margin:8px 0 0;color:var(--muted)}
+.pkg-kicker,.pkg-caption{display:block;font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.1em;line-height:1.6;margin-bottom:8px}
+.pkg-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;padding-top:18px;border-top:1px solid var(--line)}
+.pkg-card{padding:4px 28px 4px 0;min-width:0;overflow-wrap:anywhere}
+.pkg-card+.pkg-card{padding:4px 0 4px 28px;border-left:1px solid var(--line)}
+.pkg-card+.pkg-card .pkg-caption{color:var(--muted)}
+
+/* 路徑文字：沿剖面同一順序列出，朱紅底線表示正在追蹤的段落。 */
+.pkg-route-text{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 12px;font-size:18px;line-height:1.7;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.pkg-route-text strong{font-weight:650;padding:2px 2px;border-bottom:2px solid var(--accent)}
+.pkg-route-text span{color:var(--accent)}
+.pkg-note{font-size:17px;line-height:1.8;margin:0;color:var(--muted);overflow-wrap:anywhere}
+.pkg-title{font-size:22px;line-height:1.5;margin:0}
+.pkg-controls{display:flex;flex-wrap:wrap;gap:12px}
+.pkg-controls button{font-size:17px;white-space:normal}
+.pkg-controls button[aria-pressed=true],.pkg-chip-btn.pkg-on{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+.pkg-chip-btn{font-size:17px;border:1px solid var(--line);border-radius:7px;padding:12px 18px;background:var(--card)}
+.pkg-output{display:grid;gap:18px}
+.pkg-output .pkg-note{padding-top:12px;border-top:1px solid var(--line)}
+
+/* HBM 放大：DRAM 以細線分層，堆疊內 TSV 為朱紅直線。 */
+.pkg-hbm-detail{position:relative;width:100%;max-width:500px;margin:auto;display:grid;gap:6px;padding:0 12px}
+.pkg-dram,.pkg-base{padding:18px 50px;background:var(--card);border:1px solid var(--ink);text-align:center;font-size:22px;line-height:1.5;overflow-wrap:anywhere}
+.pkg-base{background:var(--pkg-die)}
+.pkg-hbm-via{position:absolute;top:0;bottom:0;left:calc(12px + 8%);border-left:3px solid var(--accent)}
+.pkg-hbm-foot{width:100%;max-width:500px;margin:4px auto 0;padding:0 12px;box-sizing:border-box}
+.pkg-hbm-ip{display:block;padding:6px;border:1px solid var(--ink);background:var(--tint);text-align:center;font-size:15px;color:var(--muted)}
+.pkg-hbm-foot+.pkg-note{margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+
+@media(max-width:700px){
+  .pkg-section{font-size:18px}
+  .pkg-chips,.pkg-contacts{gap:10%}
+  .pkg-pair{grid-template-columns:1fr}
+  .pkg-card,.pkg-card+.pkg-card{padding:14px 0}
+  .pkg-card+.pkg-card{border-left:0;border-top:1px solid var(--line)}
+  .pkg-layer{grid-template-columns:28px minmax(0,1fr);gap:14px}
+  .pkg-swatch{height:28px}
+  .pkg-bridge{left:22%;right:22%;font-size:14px}
+  .pkg-scale{margin-left:0}
+  .pkg-dram,.pkg-base{padding:14px 12px 14px 40px}
+}
+/* 縮圖用固定桌面構圖，避免套用目前視窗的手機斷點。 */
+.mini-page .pkg-section{font-size:20px}
+.mini-page .pkg-chips,.mini-page .pkg-contacts{gap:16%}
+.mini-page .pkg-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mini-page .pkg-card{padding:4px 28px 4px 0}
+.mini-page .pkg-card+.pkg-card{padding:4px 0 4px 28px;border-left:1px solid var(--line);border-top:0}
+.mini-page .pkg-layer{grid-template-columns:44px minmax(0,1fr);gap:20px}
+.mini-page .pkg-swatch{height:44px}
+.mini-page .pkg-bridge{left:30%;right:30%;font-size:16px}
+.mini-page .pkg-scale{margin-left:auto}
+.mini-page .pkg-dram,.mini-page .pkg-base{padding:18px 50px}
