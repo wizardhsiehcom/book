@@ -7,7 +7,8 @@
 - `index.html`: 根入口頁（卡片式書籍清單）
 - `configs/*.yml`: 每本書一份 MkDocs 設定
 - `docs/<book>/`: 各書 Markdown 內容
-- `docs/assets/`: 共用資產來源（CSS / Mermaid / 字型）
+- `docs/assets/`: 共用資產來源（CSS / Mermaid / 字型 / 互動閱讀器）
+- `templates/visual-story/`: 互動解說編寫範本與規則，不隨書發布
 - `build-books.sh`: 一鍵建置所有書
 - `serve-book.sh`: 單本即時預覽
 - `sync-assets.sh`: 建置前同步共用資產到各書
@@ -46,8 +47,17 @@ python3 -m http.server 8765 --bind 127.0.0.1
 ### 建置單一本
 
 ```bash
+bash sync-assets.sh
 uv run mkdocs build -f configs/cowos.yml
 ```
+
+## 章節互動解說
+
+從 [視覺解說範本](templates/visual-story/README.md) 建立 `docs/<book>/resources/<topic>/`，只放主題的 HTML、JS、CSS 與必要媒體。共用閱讀器的唯一來源是 `docs/assets/story-reader/`，由既有 `sync-assets.sh` 複製到每本書的 `assets/story-reader/`；不要從正式書籍引用 playground 或 templates。
+
+建置後 `book/<book>/html/` 同時包含主題與閱讀器，整個資料夾可搬走，書內多個主題共用同一份閱讀器。CDN 依賴不會自動下載，若需離線使用須另外本地化。
+
+檢查：`node tools/check-story-reader.cjs`；打包檢查：`uv run python tools/check-story-package.py`（暫存兩個主題、實際 MkDocs 建置，驗證搬移後資源不依賴 repo）。
 
 ## 輸出位置
 

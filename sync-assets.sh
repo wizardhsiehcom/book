@@ -135,12 +135,15 @@ for w in cfg['weights'].values():
 for config in "${configs[@]}"; do
   book="$(basename "$config" .yml)"
   target="docs/$book/assets"
-  mkdir -p "$target/fonts"
+  mkdir -p "$target/fonts" "$target/story-reader"
 
   cp "$src_assets/custom.css"    "$target/custom.css"
   cp "$src_assets/book-transition.css" "$target/book-transition.css"
   cp "$src_assets/mermaid-init.js" "$target/mermaid-init.js"
   cp "$src_assets/font-init.js"  "$target/font-init.js"
+  # 每本書各帶一份閱讀器；主題範本與 playground 不屬於執行期資產。
+  cp "$src_assets/story-reader/reader.js" "$target/story-reader/reader.js"
+  cp "$src_assets/story-reader/reader.css" "$target/story-reader/reader.css"
 
   for font_file in $font_files; do
     cp "$src_assets/fonts/$font_file" "$target/fonts/$font_file"
