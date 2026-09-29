@@ -14,6 +14,14 @@ button, summary { cursor: pointer; }
 .library-wordmark img { display: block; width: 100%; height: auto; }
 .library-wordmark .wordmark-ku { position: absolute; inset: 0; transform: translateX(60px); }
 .library-wordmark sup { position: absolute; font-family: 'Songti TC', 'Noto Serif TC', serif; font-weight: 400; font-size: 15px; border: 1px solid #80674a; color: #bca47c; padding: 8px 5px; top: 4px; right: 2px; line-height: 1; }
+.library-wordmark .glitch-slice { position: absolute; inset: 0; pointer-events: none; visibility: hidden; }
+.library-wordmark .glitch-slice img:first-child { position: absolute; inset: 0; }
+/* 殘訊：js/wordmark-glitch.js 不定時加上 .glitch，色偏、切片、掃描線都很輕 */
+.library-wordmark.glitch > img { filter: drop-shadow(var(--gx, 2px) 0 rgba(255,40,70,.45)) drop-shadow(calc(var(--gx, 2px) * -1) 0 rgba(60,220,255,.35)) brightness(var(--gb, 1.1)); transform: translateX(var(--jx, 0)); }
+.library-wordmark.glitch > img.wordmark-ku { transform: translateX(calc(60px + var(--jx, 0))); }
+.library-wordmark.glitch .glitch-slice { visibility: visible; filter: drop-shadow(-2px 0 rgba(60,220,255,.4)) brightness(1.2); }
+.library-wordmark.glitch::after { content: ''; position: absolute; inset: -6% -4%; pointer-events: none; mix-blend-mode: overlay;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.08) 0 1px, transparent 1px 3px), linear-gradient(transparent var(--band, 40%), rgba(255,255,255,.1) 0 calc(var(--band, 40%) + 5%), transparent 0); }
 .subtitle { position: relative; z-index: 3; font-size: 12px; letter-spacing: .22em; line-height: 2.1; margin-top: 24px; }
 .poster-foot { position: absolute; bottom: 26px; left: 28px; writing-mode: vertical-rl; font-size: 10px; letter-spacing: .3em; color: var(--muted); }
 .catalog { position: relative; margin-left: 36%; padding: 74px clamp(24px, 4vw, 72px) 24px; }
@@ -81,6 +89,7 @@ footer { color: var(--muted); font-size: 10px; letter-spacing: .14em; padding: 2
   .poster .eyebrow span { display: none; }
   .library-wordmark { width: clamp(180px, 48vw, 230px); margin-top: 32px; }
   .library-wordmark .wordmark-ku { transform: translateX(48px); }
+  .library-wordmark.glitch > img.wordmark-ku { transform: translateX(calc(48px + var(--jx, 0))); }
   .library-wordmark sup { right: 0; font-size: 12px; padding: 6px 4px; }
   .subtitle { margin-top: 20px; font-size: 11px; }
   .poster-foot { writing-mode: horizontal-tb; bottom: 20px; left: 22px; }

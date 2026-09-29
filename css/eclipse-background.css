@@ -2,9 +2,20 @@
 body:not([data-background="off"]) { background: #101113; }
 body:not([data-background="off"]) .poster { background: linear-gradient(90deg, #10100f14, #10100f40); }
 body:not([data-background="off"]) .poster::after { opacity: .45; }
-body:not([data-background="off"]) .catalog {
-  min-height: 100vh;
-  background: linear-gradient(90deg, #141413b8, #141413d6 16%, #141413cc);
+body:not([data-background="off"]) .catalog { min-height: 100vh; background: transparent; isolation: isolate; }
+/* 書籍側的網代紋霧面玻璃：透出月蝕光並抹開，左緣一道細亮邊。
+   紋路磁磚 38px、每塊 3 條、亮線 .05／暗線 .16（右下偏 1px）、線寬 1.25；
+   參數來源與調整面板見 playground/liquid-glass/build.cjs 的網代候選。 */
+body:not([data-background="off"]) .catalog::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2238%22%20height%3D%2238%22%3E%3Cpath%20d%3D%22M0%204.75H19M23.75%200V19M4.75%2019V38M19%2023.75H38M0%209.5H19M28.5%200V19M9.5%2019V38M19%2028.5H38M0%2014.25H19M33.25%200V19M14.25%2019V38M19%2033.25H38M0%2019H38M19%200V38M0%20.5H38M.5%200V38%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-opacity%3D%220.16%22%20stroke-width%3D%221.25%22%20transform%3D%22translate(1%201)%22%2F%3E%3Cpath%20d%3D%22M0%204.75H19M23.75%200V19M4.75%2019V38M19%2023.75H38M0%209.5H19M28.5%200V19M9.5%2019V38M19%2028.5H38M0%2014.25H19M33.25%200V19M14.25%2019V38M19%2033.25H38M0%2019H38M19%200V38M0%20.5H38M.5%200V38%22%20fill%3D%22none%22%20stroke%3D%22%23fff0e4%22%20stroke-opacity%3D%220.05%22%20stroke-width%3D%221.25%22%2F%3E%3C%2Fsvg%3E") 0 0 / 38px 38px, linear-gradient(90deg, #14141380, #141413a3 30%, #14141394);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  backdrop-filter: blur(22px) saturate(170%);
+  box-shadow: inset 1px 0 #ffd6c438, inset 2px 0 18px #ffbeaa0f, -24px 0 60px #00000059;
 }
 .eclipse-background {
   position: fixed;
@@ -89,7 +100,6 @@ body:not([data-background="off"]) .catalog {
 .eclipse-background[data-suspended="true"] * { animation-play-state: paused; }
 @media (max-width: 760px) {
   body:not([data-background="off"]) .poster { background: #10100f22; }
-  body:not([data-background="off"]) .catalog { background: #141413d9; }
   .eclipse-orbit { width: 100vw; left: -20vw; top: 8vh; }
   .eclipse-aura { width: 150vw; left: -42vw; top: -5vh; }
   .eclipse-reading-glow { inset: 25% 0 0; }
