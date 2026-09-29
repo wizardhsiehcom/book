@@ -1,0 +1,99 @@
+.page { position: relative; z-index: 1; }
+body:not([data-background="off"]) { background: #101113; }
+body:not([data-background="off"]) .poster { background: linear-gradient(90deg, #10100f14, #10100f40); }
+body:not([data-background="off"]) .poster::after { opacity: .45; }
+body:not([data-background="off"]) .catalog {
+  min-height: 100vh;
+  background: linear-gradient(90deg, #141413b8, #141413d6 16%, #141413cc);
+}
+.eclipse-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: .85;
+  background: radial-gradient(ellipse at 22% 43%, #3c1c26, #1c121a 48%, #0e1015);
+}
+.eclipse-aura {
+  position: absolute;
+  width: 105vmin;
+  aspect-ratio: 1;
+  left: calc(20vw - 52vmin);
+  top: calc(44vh - 52vmin);
+  background: radial-gradient(circle, transparent 28%, #bc3d3a32 39%, #a326293d 46%, transparent 65%);
+  animation: eclipse-breathe 18s ease-in-out infinite alternate;
+}
+.eclipse-orbit {
+  position: absolute;
+  width: min(62vw, 740px);
+  aspect-ratio: 1;
+  left: -12vw;
+  top: 11vh;
+  border-radius: 50%;
+  box-shadow: 0 0 80px #a0333038;
+}
+.eclipse-corona {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(from 20deg, #ef9d6947, #7b222a30 70deg, #fa9365a6 140deg, #7b222a30 240deg, #e9997480);
+  filter: blur(2px);
+  animation: eclipse-turn 100s linear infinite;
+}
+.eclipse-disc {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 68% 42%, #111118, #090b11 73%);
+  box-shadow: inset -6px 0 14px #be535030, 0 0 34px #af363738;
+}
+.eclipse-reading-glow {
+  position: absolute;
+  inset: 0 0 0 36%;
+  background:
+    radial-gradient(ellipse 65% 38% at 92% 20%, #97465052, transparent 85%),
+    radial-gradient(ellipse 55% 36% at 12% 76%, #75303642, transparent 85%);
+  animation: eclipse-reading-breathe 24s ease-in-out infinite alternate;
+}
+.eclipse-contours { position: absolute; width: 100%; height: 100%; opacity: .38; animation: eclipse-contour-drift 42s ease-in-out infinite alternate; }
+.eclipse-dust {
+  position: absolute;
+  inset: 0;
+  opacity: .55;
+  background-image:
+    radial-gradient(circle at 16% 17%, #deb28c 0 1px, transparent 1.7px),
+    radial-gradient(circle at 32% 61%, #cf8883 0 1px, transparent 1.6px),
+    radial-gradient(circle at 7% 78%, #cf8883 0 1px, transparent 1.6px),
+    radial-gradient(circle at 42% 39%, #cf8883 0 1px, transparent 1.6px),
+    radial-gradient(circle at 68% 14%, #d9a786 0 .8px, transparent 1.6px),
+    radial-gradient(circle at 84% 37%, #c98580 0 1px, transparent 1.8px),
+    radial-gradient(circle at 94% 74%, #d9a786 0 1px, transparent 1.7px),
+    radial-gradient(circle at 61% 86%, #c98580 0 .8px, transparent 1.6px);
+  animation: eclipse-ember-rise 32s ease-in-out infinite alternate;
+}
+.eclipse-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at 29% 47%, transparent 20%, #08090b52 80%, #08090bb3); }
+@keyframes eclipse-breathe {
+  from { opacity: .6; transform: scale(.98); }
+  to { opacity: 1; transform: scale(1.05); }
+}
+@keyframes eclipse-turn { to { transform: rotate(360deg); } }
+@keyframes eclipse-reading-breathe {
+  from { opacity: .65; }
+  to { opacity: 1; }
+}
+@keyframes eclipse-contour-drift { to { transform: translateY(-18px); } }
+@keyframes eclipse-ember-rise { to { transform: translate(8px, -35px); opacity: .75; } }
+[data-background="static"] .eclipse-background * { animation: none; }
+[data-background="off"] .eclipse-background { display: none; }
+.eclipse-background[data-suspended="true"] * { animation-play-state: paused; }
+@media (max-width: 760px) {
+  body:not([data-background="off"]) .poster { background: #10100f22; }
+  body:not([data-background="off"]) .catalog { background: #141413d9; }
+  .eclipse-orbit { width: 100vw; left: -20vw; top: 8vh; }
+  .eclipse-aura { width: 150vw; left: -42vw; top: -5vh; }
+  .eclipse-reading-glow { inset: 25% 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eclipse-background * { animation: none !important; }
+}

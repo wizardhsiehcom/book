@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/book-hover.css">
   <link rel="stylesheet" href="css/catalog-glass.css">
   <link rel="stylesheet" href="css/samurai.css">
+  <link rel="stylesheet" href="css/eclipse-background.css">
   <link rel="stylesheet" href="docs/assets/book-transition.css">
   <style id="book-transition-opt-out" media="not all">
     @view-transition { navigation: none; }
@@ -38,7 +39,7 @@
 
   </style>
 </head>
-<body>
+<body data-background="animated">
 
   <details class="top-controls">
     <summary>顯示設定</summary>
@@ -53,7 +54,33 @@
       <button class="ctrl-btn" data-font="mingti">明體</button>
       <button class="ctrl-btn" data-font="pixel">像素</button>
     </nav>
+    <nav class="ctrl-bar" aria-label="背景">
+      <span class="ctrl-label">背景</span>
+      <button class="ctrl-btn" data-background-choice="animated">動態</button>
+      <button class="ctrl-btn" data-background-choice="static">靜態</button>
+      <button class="ctrl-btn" data-background-choice="off">關閉</button>
+    </nav>
   </details>
+
+  <div class="eclipse-background" aria-hidden="true">
+    <div class="eclipse-aura"></div>
+    <div class="eclipse-orbit">
+      <div class="eclipse-corona"></div>
+      <div class="eclipse-disc"></div>
+    </div>
+    <div class="eclipse-reading-glow"></div>
+    <svg class="eclipse-contours" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <g fill="none" stroke="#ad5855" stroke-width=".7">
+        <path d="M-100 770Q210 440 630 690T1700 470"/>
+        <path d="M-100 792Q210 458 630 714T1700 486"/>
+        <path d="M-100 838Q210 496 630 757T1700 517"/>
+        <path d="M-100 894Q210 554 630 812T1700 548"/>
+        <path d="M-100 961Q210 612 630 864T1700 584"/>
+      </g>
+    </svg>
+    <div class="eclipse-dust"></div>
+    <div class="eclipse-vignette"></div>
+  </div>
 
   <div id="blade" aria-hidden="true"></div>
 
@@ -155,5 +182,6 @@
     applyVariant(readPreference('bookVariant', 'svg'));
     applyFont(readPreference('bookFont', 'system'));
   </script>
+  <script src="js/eclipse-background.js"></script>
 </body>
 </html>
