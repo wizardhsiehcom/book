@@ -11,14 +11,19 @@ const queries = {};
 const frames = new Map();
 let nextFrame = 1;
 let gridChanged;
+let intersectionChanged;
 const grid = {};
+const categories = { dataset: {} };
 const document = {
   hidden: false,
   querySelector: selector => {
     assert.equal(selector, '.catalog');
     return { addEventListener: (name, fn) => { catalogListeners[name] = fn; } };
   },
-  getElementById: id => { assert.equal(id, 'grid'); return grid; },
+  getElementById: id => {
+    assert.ok(['grid', 'categories'].includes(id));
+    return id === 'grid' ? grid : categories;
+  },
   addEventListener: (name, fn) => { documentListeners[name] = fn; },
 };
 runInNewContext(readFileSync(join(__dirname, '../js/catalog-glass.js'), 'utf8'), {
@@ -34,6 +39,10 @@ runInNewContext(readFileSync(join(__dirname, '../js/catalog-glass.js'), 'utf8'),
   MutationObserver: class {
     constructor(fn) { gridChanged = fn; }
     observe(target) { assert.equal(target, grid); }
+  },
+  IntersectionObserver: class {
+    constructor(fn) { intersectionChanged = fn; }
+    observe(target) { assert.equal(target, categories); }
   },
 });
 function element() {
@@ -106,4 +115,20 @@ move(null); flush();
 assert.equal(frames.size, 0);
 assert.equal(catalogListeners.click, undefined, '追光不得接管點擊');
 assert.equal(catalogListeners.keydown, undefined, '追光不得接管鍵盤導覽');
-console.log('PASS：共用追光、畫格合併、分類與書目重繪、清理、減少動態與觸控');
+assert.equal(categories.dataset.rimVisible, 'false');
+intersectionChanged([{ isIntersecting: true }]);
+assert.equal(categories.dataset.rimVisible, 'true');
+intersectionChanged([{ isIntersecting: false }]);
+assert.equal(categories.dataset.rimVisible, 'false');
+document.hidden = false;
+documentListeners.visibilitychange();
+assert.equal(categories.dataset.rimHidden, 'false');
+document.hidden = true;
+documentListeners.visibilitychange();
+assert.equal(categories.dataset.rimHidden, 'true');
+document.hidden = false;
+windowListeners.pagehide();
+assert.equal(categories.dataset.rimHidden, 'true');
+windowListeners.pageshow();
+assert.equal(categories.dataset.rimHidden, 'false');
+console.log('PASS：共用追光、畫格合併、重繪清理、減少動態、觸控與光邊暫停／恢復');

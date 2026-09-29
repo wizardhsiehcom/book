@@ -65,6 +65,7 @@ input::placeholder { color: var(--muted); }
 .card-arrow { color: var(--red); font-size: 22px; }
 .card-hover-art { display: none; }
 .catalog-glass { display: none; }
+.category-edge { display: none; }
 .empty { padding: 50px 0; font-size: 14px; color: var(--muted); }
 footer { color: var(--muted); font-size: 10px; letter-spacing: .14em; padding: 25px 0; }
 .top-controls { position: absolute; right: 4vw; top: 22px; z-index: 20; font-size: 11px; color: var(--muted); }

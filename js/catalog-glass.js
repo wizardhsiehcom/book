@@ -2,6 +2,7 @@
   'use strict';
   const catalog = document.querySelector('.catalog');
   const grid = document.getElementById('grid');
+  const categories = document.getElementById('categories');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
   const properties = ['--glass-x', '--glass-y', '--glass-opposite-x', '--glass-angle'];
@@ -55,14 +56,29 @@
   new MutationObserver(() => {
     if (active && !active.isConnected) reset();
   }).observe(grid, { childList: true });
+  categories.dataset.rimVisible = 'false';
+  new IntersectionObserver(([entry]) => {
+    categories.dataset.rimVisible = String(entry.isIntersecting);
+  }).observe(categories);
+  function syncVisibility() {
+    categories.dataset.rimHidden = String(document.hidden);
+  }
   window.addEventListener('scroll', reset, { passive: true });
   window.addEventListener('resize', reset);
   window.addEventListener('blur', reset);
-  window.addEventListener('pagehide', reset);
-  window.addEventListener('pageshow', reset);
+  window.addEventListener('pagehide', () => {
+    reset();
+    categories.dataset.rimHidden = 'true';
+  });
+  window.addEventListener('pageshow', () => {
+    reset();
+    syncVisibility();
+  });
   document.addEventListener('visibilitychange', () => {
+    syncVisibility();
     if (document.hidden) reset();
   });
   reduced.addEventListener('change', reset);
   fine.addEventListener('change', reset);
+  syncVisibility();
 })();
