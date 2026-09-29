@@ -13,6 +13,7 @@ function renderFilters() {
   const all = document.getElementById("category-all");
   all.innerHTML = `全部<span>${BOOKS.length}</span>`;
   el.innerHTML = CATEGORIES.map((c, i) => `<button type="button" class="category" data-category="${c}" aria-pressed="false">
+    <span class="catalog-glass" aria-hidden="true"><span class="catalog-glint"></span></span>
     <span class="cat-no">${NUMERALS[i] ?? i + 1}</span><span class="cat-count">${BOOKS.filter(b => b.category === c).length}<small>冊</small></span>
     <span class="cat-name">${c}</span></button>`).join('');
   const select = value => {
@@ -46,6 +47,8 @@ function renderGrid() {
   }
 
   const card = b => `<a class="card" href="${b.href}">
+    <span class="catalog-glass" aria-hidden="true"></span>
+    <span class="card-hover-art" aria-hidden="true"></span>
     <span class="card-number">${String(BOOKS.indexOf(b) + 1).padStart(2, '0')}</span>
     <div class="card-body"><h3 class="card-title">${b.title}</h3>
       <p class="card-desc">${b.desc}</p>

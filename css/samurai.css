@@ -1,5 +1,5 @@
 /* 人物與海報共用固定欄位；窄螢幕捲動後保留小型出刀角色。 */
-.samurai-stage { position: fixed; left: 4%; bottom: 12px; width: 30%; z-index: 2; pointer-events: none; }
+.samurai-stage { position: fixed; left: 4%; bottom: 12px; width: 30%; z-index: 4; pointer-events: none; }
 .samurai-wrap { position: relative; width: min(100%, 41vh); margin: auto; transform-origin: 64% 35%; }
 .samurai-wrap img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
 #blade { position: fixed; z-index: 101; pointer-events: none; height: 10px; transform-origin: left center; }

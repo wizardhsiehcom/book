@@ -28,6 +28,12 @@ F01–F06 都是來源作者的案例，本書沒有取得其完整環境與原�
 
 已以專案共用資源同步流程及 `uv run mkdocs build --strict -f configs/linux-lan-field-tricks.yml` 建置成功。Markdown 內部連結、出版頁面／nav 範圍、HTML 本地資源、每頁唯一「回到書庫」連結與實際根入口路徑已做靜態核對。研究卡與計畫未放入出版目錄；公開範例僅含接收器、檢查程式與虛構 JSON。
 
-**瀏覽器視覺驗收尚未完成。** 已嘗試瀏覽器與原生 Chrome 預覽：沒有可用 browser connector，原生控制回報 Computer Use permissions are not granted。因此目前只確認 Mermaid 容器與腳本存在，未宣稱兩張圖在瀏覽器成功渲染；桌面／手機排版、CDN 載入及 file URL 操作仍待人工預覽。這個限制不影響 HTML 已生成，但本書不能標為完成視覺出版驗收。
+**瀏覽器視覺驗收尚未完成。** 初稿驗證曾嘗試瀏覽器與原生 Chrome 預覽：沒有可用 browser connector，原生控制回報 Computer Use permissions are not granted。本輪新增圖表後，全書共九張 Mermaid；目前只確認容器與腳本存在，未宣稱九張圖在瀏覽器成功渲染。桌面／手機排版、CDN 載入及 file URL 操作仍待人工預覽。這個限制不影響 HTML 已生成，但本書不能標為完成視覺出版驗收。
 
 Material 預設 `404.html` 的部分資源與導覽使用根絕對 URL；若部署在網站子路徑，錯誤頁需由部署端另外設定。一般 17 頁已通過本地相對路徑檢查；本輪沒有修改全書庫共用錯誤頁模板。
+
+## 開發流與閱讀節奏修訂
+
+2026-09-22 在 Windows 編修：導讀改以銜接資深工程師工作流為目標，11 章加入背景、操作推理與可展開答案的判斷練習；拆開部分長命令區塊，新增七張關係／時序圖，保留原本的實驗命令與範例程式。
+
+本輪將共用 CSS、JS 與設定使用的字型同步到此書，使用既有虛擬環境執行 `uv run --no-sync mkdocs build --strict -f configs/linux-lan-field-tricks.yml` 通過；uv 快取改指暫存目錄，以避開原快取路徑的存取限制。另檢查 Markdown 圍欄配對、11 章練習與 HTML 輸出。未重跑接收器、跨機 LAN 或故障注入實驗，前述 macOS 檢查屬初稿既有紀錄，不是本輪新增成果。

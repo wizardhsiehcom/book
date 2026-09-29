@@ -8,6 +8,19 @@ Linux 本機瀏覽器能開，Windows 卻逾時；或有人以為「ping 通」�
 
 ## 小招式
 
+### 「程式活著」到「遠端能用」中間還有幾關
+
+對 C++ 程式來說，process 出現在工作管理員裡，不代表初始化、開 socket、接受要求都已成功。bind 是把接收入口放到某個本機位址；listen 是開始等 TCP 連線。本章用 `ss` 看這個實際入口，再從 Windows 敲同一個位址與埠，最後才讀 HTTP 內容。
+
+```mermaid
+flowchart LR
+  P["程序已啟動"] --> L["ss：在哪個位址與埠監聽"]
+  L --> T["Windows：TCP 能否建立"]
+  T --> H["curl：HTTP 與內容是否正確"]
+```
+
+沿圖從左往右看，每一格都需要自己的證據。`ss` 有輸出只回答第二格，不能直接跳到最後一格。
+
 本章建立自己的 `probe_dir`，不使用 04 章的 shell 變數。`192.168.50.10` 必須是 Linux 已擁有的 LAN 位址，8080 必須未占用。
 
 ```bash
@@ -17,6 +30,8 @@ python3 -m http.server 8080 --bind 127.0.0.1 --directory "$probe_dir"
 ```
 
 另開 Linux shell：
+
+先不要碰 Windows。啟動服務的終端應持續被占用；在第二個終端確認 `ss` 有 `127.0.0.1:8080`，本機 curl 有固定內容，才建立了「服務至少在 Linux 本機可用」的起點。若這裡就失敗，先處理本機服務，不把錯誤算到跨機網路上。
 
 ```bash
 ss -lntp 'sport = :8080'
@@ -67,6 +82,16 @@ curl.exe --noproxy "*" --connect-timeout 3 --max-time 5 --fail --show-error http
 小服務成功只證明這個 IP、TCP 埠和簡單 HTTP 路徑當下可走；HTTPS、SMB、UDP、用戶端憑證與正式埠仍未測。若 8080 已有人使用，換一個固定高埠，不能殺掉不明程序。若 IP 不在 Linux 上，先查 `ip -br addr`，不要在本章偷偷配址。若正式服務由容器或不同 namespace 執行，host 上看到的 listener 也未必是 client 要找的那個。若本機成功、LAN 失敗，即使 ping 同樣失敗，也不要把兩個結果合併成一句「網路壞了」。
 
 ## 收尾與撤回
+
+### 換個現場，下一步怎麼選？
+
+Windows 顯示 TCP 成功，但 HTTP 回 404。現在該改 bind 嗎？
+
+??? note "參考思路"
+
+    先查 URL 路徑、服務目錄與回應的程序。404 表示有 HTTP 服務回答，改 bind 並不是這個結果所指出的下一步；也要核對是不是預期的服務，而非占用同一埠的另一個程序。
+
+### 恢復現場
 
 按 Ctrl-C 停掉最後一個 server，確認沒有本章 socket；回建立目錄的 Linux shell 清理：
 

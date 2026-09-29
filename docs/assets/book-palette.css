@@ -1,0 +1,165 @@
+/* 保留 Material 的 slate/default 名稱，讓既有深淺偏好繼續有效。 */
+[data-md-color-scheme="slate"] {
+  color-scheme: dark;
+  --book-bg: #141413;
+  --book-surface: #1e1c19;
+  --book-text: #e4ded1;
+  --book-muted: #b0a79a;
+  --book-line: #484138;
+  --book-accent: #e58a83;
+  --book-hover: #ffc2ad;
+  --book-wash: #352423;
+  --book-code: #1b1917;
+  --book-gold: #cbb38a;
+  --book-info: #94bacb;
+  --book-success: #adbd91;
+  --book-warning: #e0ba75;
+  --book-danger: #ee9392;
+  --book-keyword: #e5a0a0;
+  --book-string: #b9c697;
+  --book-number: #e5bd86;
+}
+
+[data-md-color-scheme="default"] {
+  color-scheme: light;
+  --book-bg: #f2ede3;
+  --book-surface: #e9e2d6;
+  --book-text: #292622;
+  --book-muted: #6d6256;
+  --book-line: #c9bdab;
+  --book-accent: #9e3438;
+  --book-hover: #76262b;
+  --book-wash: #e9d9cf;
+  --book-code: #e8e0d3;
+  --book-gold: #79603b;
+  --book-info: #356378;
+  --book-success: #48643c;
+  --book-warning: #865a1c;
+  --book-danger: #9e3438;
+  --book-keyword: #943d57;
+  --book-string: #4b653b;
+  --book-number: #82511d;
+}
+
+:is([data-md-color-scheme="slate"], [data-md-color-scheme="default"]) {
+  --md-default-bg-color: var(--book-bg);
+  --md-default-bg-color--light: var(--book-surface);
+  --md-default-bg-color--lighter: var(--book-surface);
+  --md-default-bg-color--lightest: var(--book-surface);
+  --md-default-fg-color: var(--book-text);
+  --md-default-fg-color--light: var(--book-muted);
+  --md-default-fg-color--lighter: var(--book-muted);
+  --md-default-fg-color--lightest: var(--book-line);
+  --md-primary-fg-color: #141413;
+  --md-primary-fg-color--light: #24211d;
+  --md-primary-fg-color--dark: #10100f;
+  --md-primary-bg-color: #e4ded1;
+  --md-primary-bg-color--light: #b0a79a;
+  --md-accent-fg-color: var(--book-accent);
+  --md-accent-fg-color--transparent: var(--book-wash);
+  --md-accent-bg-color: var(--book-bg);
+  --md-accent-bg-color--light: var(--book-bg);
+  --md-typeset-color: var(--book-text);
+  --md-typeset-a-color: var(--book-accent);
+  --md-typeset-mark-color: var(--book-wash);
+  --md-typeset-del-color: var(--book-wash);
+  --md-typeset-ins-color: var(--book-surface);
+  --md-typeset-table-color: var(--book-line);
+  --md-typeset-table-color--light: var(--book-surface);
+  --md-code-fg-color: var(--book-text);
+  --md-code-bg-color: var(--book-code);
+  --md-code-hl-color: var(--book-wash);
+  --md-code-hl-color--light: var(--book-wash);
+  --md-code-hl-number-color: var(--book-number);
+  --md-code-hl-special-color: var(--book-danger);
+  --md-code-hl-function-color: var(--book-gold);
+  --md-code-hl-constant-color: var(--book-number);
+  --md-code-hl-keyword-color: var(--book-keyword);
+  --md-code-hl-string-color: var(--book-string);
+  --md-code-hl-name-color: var(--book-text);
+  --md-code-hl-operator-color: var(--book-muted);
+  --md-code-hl-punctuation-color: var(--book-muted);
+  --md-code-hl-comment-color: var(--book-muted);
+  --md-code-hl-generic-color: var(--book-info);
+  --md-code-hl-variable-color: var(--book-text);
+  --md-footer-bg-color: #141413;
+  --md-footer-bg-color--dark: #10100f;
+  --md-footer-fg-color: #e4ded1;
+  --md-footer-fg-color--light: #b0a79a;
+  --md-footer-fg-color--lighter: #b0a79a;
+}
+
+.md-header {
+  border-top: 2px solid #c63d40;
+  border-bottom: 1px solid #484138;
+  box-shadow: none;
+}
+.md-typeset h1, .md-typeset h2, .md-typeset h3 { color: var(--book-text); }
+.md-typeset h1 { font-weight: 600; letter-spacing: .025em; }
+.md-typeset h2 { border-bottom: 1px solid var(--book-line); padding-bottom: .4em; }
+.md-typeset a:not(.md-button) { text-decoration: underline; text-underline-offset: .2em; }
+.md-typeset a:hover { color: var(--book-hover); }
+.md-nav__link--active, .md-nav__link:hover { color: var(--book-accent); }
+.md-nav__link--active { font-weight: 700; }
+[data-md-color-scheme] .md-typeset blockquote {
+  color: var(--book-muted);
+  border-inline-start-color: var(--book-accent);
+  background: var(--book-surface);
+  padding: .6em 1em;
+}
+.md-typeset table:not([class]) { background: var(--book-bg); }
+.md-typeset table:not([class]) th { background: var(--book-surface); }
+.md-typeset table:not([class]) tr:hover { background: var(--book-surface); }
+.md-typeset .highlight pre { border: 1px solid var(--book-line); }
+[data-md-color-scheme] .md-typeset :is(.admonition, details) {
+  --book-semantic: var(--book-info);
+  background: var(--book-surface);
+  border-color: var(--book-semantic);
+  box-shadow: none;
+}
+.md-typeset :is(.admonition, details):is(.tip, .success, .check, .done) {
+  --book-semantic: var(--book-success);
+}
+.md-typeset :is(.admonition, details):is(.warning, .caution, .attention) {
+  --book-semantic: var(--book-warning);
+}
+.md-typeset :is(.admonition, details):is(.danger, .failure, .fail, .missing, .error, .bug) {
+  --book-semantic: var(--book-danger);
+}
+[data-md-color-scheme] .md-typeset :is(.admonition-title, summary) {
+  background: var(--book-code);
+  color: var(--book-text);
+}
+[data-md-color-scheme] .md-typeset :is(.admonition-title, summary)::before {
+  background-color: var(--book-semantic);
+}
+[data-md-color-scheme] .md-typeset summary::after { background-color: var(--book-semantic); }
+.md-typeset .tabbed-set { --md-primary-fg-color: var(--book-accent); }
+.md-typeset .md-clipboard { color: var(--book-muted); }
+.md-typeset .tabbed-labels { border-color: var(--book-line); }
+.md-typeset .tabbed-labels > label { color: var(--book-muted); }
+.md-typeset .tabbed-labels > label:hover { color: var(--book-accent); }
+.md-search__form { background-color: #24211d; }
+.md-search__input, .md-search__input::placeholder { color: #e4ded1; }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  background: var(--book-surface);
+}
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input,
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input::placeholder {
+  color: var(--book-text);
+}
+.md-search-result__meta { background: var(--book-surface); color: var(--book-muted); }
+.md-search-result mark { color: var(--book-accent); }
+.md-search-result__link:hover { background: var(--book-wash); }
+.md-top { background: var(--book-surface); color: var(--book-text); }
+.md-footer { --md-typeset-a-color: #e58a83; --book-hover: #ffc2ad; }
+::selection { background: var(--book-accent); color: var(--book-bg); }
+:focus-visible { outline: 2px solid var(--book-accent); outline-offset: 3px; }
+.md-header :focus-visible, .md-footer :focus-visible { outline-color: #e4ded1; }
+
+@media screen and (max-width: 76.234375em) {
+  .md-nav--primary .md-nav__title {
+    background: #141413;
+    color: #e4ded1;
+  }
+}

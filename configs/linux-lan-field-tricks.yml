@@ -1,5 +1,5 @@
 site_name: 五台機台也用得上的 Linux 現場招式
-site_description: Windows 接 Linux：用小實驗固定入口、保存現場、縮小網路與應用問題
+site_description: 從 Windows 接 Linux 的現場小招，銜接資深工程師接手系統、縮短重跑與判讀結果的開發流
 site_author: Edison Hsieh
 
 theme:
@@ -9,14 +9,18 @@ theme:
   palette:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
-        name: 切換為亮色模式
+        name: 切換為和紙朱印（淺色）
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
-        name: 切換為深色模式
+        name: 切換為墨朱（深色）
   features:
     - navigation.sections
     - navigation.expand
@@ -30,6 +34,7 @@ use_directory_urls: false
 extra_css:
   - assets/book-transition.css
   - assets/custom.css
+  - assets/book-palette.css
 extra_javascript:
   - https://unpkg.com/mermaid@10/dist/mermaid.min.js
   - assets/mermaid-init.js

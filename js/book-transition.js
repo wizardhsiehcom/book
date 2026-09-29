@@ -68,7 +68,7 @@ document.getElementById('grid').addEventListener('click', event => {
 
 // 只捕捉透明的刀光定位框；刀光由目的頁快照的背景繪製，載入時不會凍結。
 window.addEventListener('pageswap', event => {
-  if (!event.viewTransition || !selectedBook || motionPreference.matches ||
+  if (!selectedBook || motionPreference.matches || !event.viewTransition ||
       event.activation?.entry?.url !== selectedBook.href) return;
   for (const element of [samurai, blade]) {
     element.getAnimations().forEach(animation => animation.cancel());

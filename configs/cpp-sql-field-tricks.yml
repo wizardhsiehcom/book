@@ -7,10 +7,18 @@ theme:
   palette:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      toggle: {icon: material/weather-sunny, name: 切換為亮色模式}
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為和紙朱印（淺色）
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      toggle: {icon: material/weather-night, name: 切換為深色模式}
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切換為墨朱（深色）
   features: [navigation.sections, navigation.expand, navigation.top, content.code.copy]
 docs_dir: ../docs/cpp-sql-field-tricks
 site_dir: ../book/cpp-sql-field-tricks/html
@@ -24,6 +32,7 @@ extra:
 extra_css:
   - assets/book-transition.css
   - assets/custom.css
+  - assets/book-palette.css
   - styles/diagrams.css
 extra_javascript:
   - https://unpkg.com/mermaid@10/dist/mermaid.min.js

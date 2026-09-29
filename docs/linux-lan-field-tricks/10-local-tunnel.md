@@ -10,6 +10,23 @@ Linux 管理頁只聽 `127.0.0.1:8080`，Windows 維護人員看不到，於是�
 
 ## 小招式
 
+### 換入口，可以是正常的維護工作流
+
+服務只供本機管理，不一定是設定錯誤。若維護者已經有核准的 SSH 權限與轉送權限，透過它存取管理頁可以是一種日常方式；不需要為了看頁面，連帶改變服務對整個 LAN 的暴露範圍。
+
+```mermaid
+flowchart LR
+  subgraph W["Windows"]
+    C["curl／瀏覽器"] --> P["SSH client 監聽<br/>127.0.0.1:18080"]
+  end
+  subgraph L["Linux host"]
+    S["SSH server"] --> H["HTTP 服務<br/>127.0.0.1:8080"]
+  end
+  P -->|"SSH 連線"| S
+```
+
+沿三條箭頭讀：Windows 應用先找 Windows 自己，SSH 搬到 Linux，再由 Linux 連自己的 HTTP 服務。兩個 `127.0.0.1` 分屬不同機器，不能因為字串一樣就當成同一個位置。圖中也沒有要求 Linux 的 8080 開放給 LAN。
+
 Linux shell 建立本章自己的 fixture：
 
 ```bash
@@ -25,6 +42,8 @@ ssh -o ExitOnForwardFailure=yes -N -L 127.0.0.1:18080:127.0.0.1:8080 user@192.16
 ```
 
 第一次見到主機金鑰指紋，要用已知管道核對；不要加 `StrictHostKeyChecking=no`。保持 SSH 視窗，再開另一個 PowerShell：
+
+`-N` 不開遠端 shell，所以沒有遠端提示符號可以是正常狀態。`ExitOnForwardFailure` 幫你發現轉送入口建立失敗，但 SSH 留著不代表右側 HTTP 已可用；下一條 curl 才會真正走完圖上的路徑。[OpenSSH 選項說明](https://man.openbsd.org/ssh_config#ExitOnForwardFailure)
 
 ```powershell
 curl.exe --noproxy "*" --connect-timeout 3 --max-time 5 --fail --show-error http://127.0.0.1:18080/probe.txt
@@ -65,6 +84,16 @@ SSH 若只能從管理網段進入，隧道不會繞過它。右側 loopback 也
 不要用 `-L 0.0.0.0:18080:...` 擴大 Windows 的接受範圍，也不要關主機金鑰或 HTTPS 憑證驗證。要測 LAN bind，回到 [02：敲埠，再看它聽哪裡](02-port-and-bind.md)；要測假回應，回到 [04：小檔案服務](04-tiny-server.md)。
 
 ## 收尾與撤回
+
+### 換個現場，下一步怎麼選？
+
+SSH 視窗還在，但本機 curl 連不到頁面。要先把服務改成 `0.0.0.0` 嗎？
+
+??? note "參考思路"
+
+    依圖分段核對本機 18080、SSH 轉送錯誤與 Linux 本機 8080。SSH session 存在不證明目的服務在監聽；本章路徑本來就使用 Linux loopback，先確認右側端點與 namespace，不必先擴大 bind。
+
+### 結束這次 session，保留核准的工作方式
 
 Windows 按 Ctrl-C，確認 18080 消失：
 

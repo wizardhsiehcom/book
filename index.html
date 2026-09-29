@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>書庫</title>
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/book-hover.css">
+  <link rel="stylesheet" href="css/catalog-glass.css">
   <link rel="stylesheet" href="css/samurai.css">
   <link rel="stylesheet" href="docs/assets/book-transition.css">
+  <style id="book-transition-opt-out" media="not all">
+    @view-transition { navigation: none; }
+  </style>
   <style>
     @font-face {
       font-family: 'GenWanMin2';
@@ -50,19 +55,22 @@
     </nav>
   </details>
 
-  <div class="samurai-stage" id="samuraiStage" aria-hidden="true">
-    <div class="samurai-wrap" id="samuraiWrap">
-      <img id="imgSvg" data-src="docs/assets/characters/raster/archivist-scarlet.png"
-           width="1024" height="1536" alt="" fetchpriority="high">
-    </div>
-  </div>
-
   <div id="blade" aria-hidden="true"></div>
 
   <div class="page">
     <header class="poster">
+      <div class="samurai-stage" id="samuraiStage" aria-hidden="true">
+        <div class="samurai-wrap" id="samuraiWrap">
+          <img id="imgSvg" data-src="docs/assets/characters/raster/archivist-scarlet.png"
+               width="1024" height="1536" alt="" fetchpriority="high">
+        </div>
+      </div>
       <p class="eyebrow">私人藏書室 <span>／ 閱讀筆記</span></p>
-      <h1>書<span>庫</span><sup>藏</sup></h1>
+      <h1 class="library-wordmark">
+        <img src="docs/assets/wordmarks/library-shu.png" width="1088" height="920" alt="書庫" fetchpriority="high">
+        <img class="wordmark-ku" src="docs/assets/wordmarks/library-ku.png" width="1088" height="920" alt="" aria-hidden="true" fetchpriority="high">
+        <sup aria-hidden="true">藏</sup>
+      </h1>
       <p class="subtitle">字裡，行間。<br>剖開知識的紋理。</p>
       <div class="poster-foot" aria-hidden="true">記錄 · 拆解 · 重讀</div>
     </header>
@@ -83,6 +91,7 @@
 
   <script src="js/books-data.js"></script>
   <script src="js/books-app.js"></script>
+  <script src="js/catalog-glass.js"></script>
   <script src="js/book-transition.js"></script>
   <script>
     // 儲存偏好失敗不影響入口（例如瀏覽器限制本機檔案儲存）。
@@ -102,6 +111,8 @@
 
       document.body.classList.remove('variant-none', 'variant-svg', 'variant-png');
       document.body.classList.add('variant-' + v);
+      // 隱藏角色時連跨頁快照也停用，直接進書，不播放淡入淡出。
+      document.getElementById('book-transition-opt-out').media = v === 'none' ? 'all' : 'not all';
 
       const selectedImage = v === 'svg' ? imgSvg : null;
       if (selectedImage && !selectedImage.hasAttribute('src')) selectedImage.src = selectedImage.dataset.src;

@@ -57,6 +57,9 @@ card.target = '_blank'; click(); assertIdle(); card.target = '';
 card.hasAttribute = () => true; click(); assertIdle(); card.hasAttribute = () => false;
 motion.matches = true; click(); assertIdle(); motion.matches = false;
 noCharacter = true; click(); assertIdle(); noCharacter = false;
+listeners.pageswap({ get viewTransition() {
+  assert.fail('未選書時不應取得已停用的跨頁轉場');
+} });
 
 click(); click(); // 重複點擊會取消舊動畫，且不鎖住導覽。
 assert.equal(elements.samuraiWrap.getAnimations().length, 1);
@@ -115,4 +118,35 @@ click(); motion.matches = true; listeners.motion(); assertIdle();
 motion.matches = false; context.location.protocol = 'file:';
 click(); assert.equal(elements.blade.classList.contains('blade-local'), true);
 listeners.pageshow(); assert.equal(elements.blade.classList.contains('blade-local'), false);
+// 執行首頁真正的角色切換函式，確保隱藏不只是略過出刀，也退出跨頁轉場。
+const homepage = readFileSync(join(__dirname, '../index.html'), 'utf8');
+assert.match(homepage, /<style id="book-transition-opt-out" media="not all">\s*@view-transition\s*\{\s*navigation:\s*none;\s*\}/);
+const variantFunction = homepage.match(/function applyVariant\(v\) \{[\s\S]*?\n    \}/)?.[0];
+assert.ok(variantFunction);
+const optOut = { media: 'not all' };
+const stage = { style: {} };
+const image = { style: {}, hasAttribute: () => true };
+const bodyClasses = new Set();
+let storedVariant;
+const variantContext = {
+  resetBookTransition: listeners.pageshow,
+  savePreference: (key, value) => { storedVariant = value; },
+  document: {
+    getElementById: id => ({ 'book-transition-opt-out': optOut, samuraiStage: stage, imgSvg: image })[id],
+    querySelectorAll: () => [],
+    body: { classList: {
+      remove: (...names) => names.forEach(name => bodyClasses.delete(name)),
+      add: name => bodyClasses.add(name),
+    } },
+  },
+};
+runInNewContext(variantFunction, variantContext);
+for (const variant of ['none', 'svg', 'none', 'invalid']) {
+  variantContext.applyVariant(variant);
+  const hidden = variant === 'none';
+  assert.equal(optOut.media, hidden ? 'all' : 'not all');
+  assert.equal(stage.style.display, hidden ? 'none' : '');
+  assert.equal(bodyClasses.has('variant-none'), hidden);
+  assert.equal(storedVariant, hidden ? 'none' : 'svg');
+}
 console.log('PASS：原生導覽、修飾鍵、減少動畫、無角色、連點、快照與返回清理');

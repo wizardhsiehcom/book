@@ -1,0 +1,114 @@
+.card {
+  --hover-opacity: 0;
+  --hover-frame: scale(.97, .9);
+  --hover-stamp: scale(1.45) rotate(9deg);
+  --hover-sweep: none;
+  --hover-title: var(--paper);
+  --hover-arrow: var(--red);
+  --hover-shift: 0px;
+  isolation: isolate;
+  padding: 25px 16px;
+  gap: 18px;
+}
+.card:hover { background: transparent; }
+.card::before {
+  inset: 8px 0;
+  width: auto;
+  height: auto;
+  background: linear-gradient(110deg, #78292b3b, #321d1b66);
+  clip-path: polygon(0 0, 80% 0, 67% 100%, 0 100%);
+  opacity: var(--hover-opacity);
+  pointer-events: none;
+  transition: opacity 180ms;
+}
+.card:hover::before, .card:focus-visible::before { height: auto; }
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 8px 0;
+  border: 1px solid #92754ba6;
+  background:
+    linear-gradient(#d8bb84, #d8bb84) left top / 22px 2px,
+    linear-gradient(#d8bb84, #d8bb84) left top / 2px 22px,
+    linear-gradient(#d8bb84, #d8bb84) right bottom / 22px 2px,
+    linear-gradient(#d8bb84, #d8bb84) right bottom / 2px 22px;
+  background-repeat: no-repeat;
+  opacity: var(--hover-opacity);
+  transform: var(--hover-frame);
+  pointer-events: none;
+  transition: opacity 200ms, transform 300ms;
+}
+.card-number, .card-body, .card-arrow { position: relative; z-index: 2; }
+.card-number { min-width: 24px; }
+.card .card-title, .card:hover .card-title, .card:focus-visible .card-title { color: var(--hover-title); transition: color 180ms; }
+.card .card-arrow {
+  color: var(--hover-arrow);
+  transform: translate(var(--hover-shift), calc(-1 * var(--hover-shift)));
+  transition: color 180ms, transform 220ms;
+}
+.card:focus-visible { z-index: 3; }
+.card-hover-art { display: block; position: absolute; inset: 8px 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.card-hover-art::before {
+  content: '';
+  position: absolute;
+  top: -65%;
+  left: -35%;
+  width: 18%;
+  height: 230%;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, #eebb9626 44%, #edbaad99 49%, #c63d402e 53%, transparent);
+  transform: skewX(-28deg);
+  animation: var(--hover-sweep);
+}
+.card-hover-art::after {
+  content: '藏書';
+  position: absolute;
+  left: 13px;
+  bottom: 12px;
+  padding: 5px 4px;
+  border: 1px solid #d5917f;
+  outline: 1px solid #d5917f;
+  outline-offset: -4px;
+  color: #efb6a2;
+  font: 14px/1.2 'GenWanMin2', 'Songti TC', serif;
+  writing-mode: vertical-rl;
+  letter-spacing: .12em;
+  opacity: var(--hover-opacity);
+  transform: var(--hover-stamp);
+  transition: opacity 180ms, transform 320ms cubic-bezier(.2, .8, .25, 1);
+}
+.card:focus-visible {
+  --hover-opacity: 1;
+  --hover-frame: scale(1);
+  --hover-stamp: scale(1) rotate(-7deg);
+  --hover-sweep: card-hover-slash 560ms cubic-bezier(.2, .65, .3, 1) both;
+  --hover-title: #edd4a5;
+  --hover-arrow: #edd4a5;
+  --hover-shift: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    --hover-opacity: 1;
+    --hover-frame: scale(1);
+    --hover-stamp: scale(1) rotate(-7deg);
+    --hover-sweep: card-hover-slash 560ms cubic-bezier(.2, .65, .3, 1) both;
+    --hover-title: #edd4a5;
+    --hover-arrow: #edd4a5;
+    --hover-shift: 3px;
+  }
+}
+@keyframes card-hover-slash {
+  0% { transform: translateX(0) skewX(-28deg); opacity: 0; }
+  12% { opacity: 1; }
+  78% { opacity: .8; }
+  100% { transform: translateX(860%) skewX(-28deg); opacity: 0; }
+}
+@media (max-width: 760px) {
+  .card { padding: 23px 10px; gap: 12px; }
+  .card-hover-art::after { left: 9px; font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .card *, .card::before, .card::after, .card-hover-art::after { transition: none !important; }
+  .card-hover-art::before { display: none; animation: none; }
+  .card .card-arrow { transform: none; }
+}

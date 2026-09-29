@@ -15,18 +15,18 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/weather-sunny
-        name: 切換至暗色模式
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
-        name: 切換至亮色模式
+        name: 切換為墨朱（深色）
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為和紙朱印（淺色）
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -77,4 +77,5 @@ site_dir: ../book/cs234-reinforcement-learning/html
 use_directory_urls: false
 
 extra_css:
+  - assets/book-palette.css
   - assets/book-transition.css

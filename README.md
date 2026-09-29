@@ -32,7 +32,15 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 共用轉場樣式為 `docs/assets/book-transition.css`，由 `sync-assets.sh` 複製到各書；新書設定的 `extra_css` 需包含 `assets/book-transition.css`。
 
+首頁選擇角色「隱藏」時，同時停用首頁的跨頁轉場：不出刀、不淡入淡出，也不等待動畫；只保留正常頁面載入時間。重新顯示角色便恢復切割效果。
+
+書籍卡片採 A「朱砂薄璃」：紅色追光、薄玻璃亮邊，整合移入時掃過一次的刀光與藏印。分類／卷目按鈕採 B「琥珀液鏡」：暖金追光、雙層圓角亮邊與掃光，選中後保留琥珀底、朱紅卷號印與頂線；再點同一分類仍回到全部。玻璃只模糊背景，不扭曲文字，首頁保留純墨底，不帶入預覽用的折射襯景。
+
+鍵盤聚焦也有回饋，觸控裝置輕點直接操作；減少動態模式只保留靜態高亮，不追光、不掃光。效果獨立於角色顯示，不攔截點擊、不等待動畫。刀光藏印樣式位於 `css/book-hover.css`，玻璃樣式與共用追光邏輯位於 `css/catalog-glass.css`、`js/catalog-glass.js`；裝飾由 `js/books-app.js` 隨卡片與分類產生，不依賴 playground 或外部套件。未懸停／聚焦時不啟用背景濾鏡，不支援背景模糊時使用墨色底。
+
 導覽邏輯檢查：`node tools/check-book-transition.cjs`。手動驗收：一般點擊、Command／Ctrl 點擊、Enter 開書、返回後再點、搜尋後開書，以及角色「隱藏」和系統減少動畫模式。
+
+追光邏輯檢查：`node tools/check-catalog-glass.cjs`。視覺驗收另檢查卡片與分類移入／移出、分類選中後移開滑鼠、再次點擊取消、鍵盤聚焦、搜尋重繪與手機輕點。
 
 ### 預覽單一本書
 
@@ -113,8 +121,14 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory book/cowos/html
 
 開啟 <http://127.0.0.1:8765/>，確認不依賴書籍目錄之外的資源；離線交付再斷網測試。圖片、影片與 3D 模型按需加入，不保存逐頁縮圖或重複的套件副本。
 
-## Dark Mode 重用
+## 書籍配色與深淺模式
 
-所有 `configs/*.yml` 已內建 Material 的亮暗切換按鈕（預設依系統深色偏好），新書可直接沿用同一段 `theme.palette` 設定。
+所有正式書籍採用 **墨朱（深色）／和紙朱印（淺色）**，以墨黑頁首與朱紅細線銜接書庫首頁。首次開啟依系統偏好選擇，之後保留 Material 原有的手動切換與記憶功能。
+
+共用來源是 `docs/assets/book-palette.css`，由 `sync-assets.sh` 同步到每本書；不要修改各書的資產副本或生成的 `custom.css`。新書的 `extra_css` 加入 `assets/book-palette.css`（放在 `assets/custom.css` 之後、書籍專用樣式之前），並沿用現有書籍的 `theme.palette`：`primary`、`accent` 均為 `custom`，深色 `scheme: slate`、淺色 `scheme: default`。保留這兩個 Material 名稱與各書原有的排列順序，是為了相容已儲存的閱讀偏好；「墨朱／和紙朱印」是顯示名稱。
+
+配色涵蓋導覽、正文、表格、程式碼、提示框、搜尋與 Material 原生 Mermaid 圖表；保留各書既有字型與版型。圖片、獨立互動資源，以及使用專用渲染器的白底圖表仍保留自己的色彩，不做全頁反色。
+
+修改共用配色後重新同步並建置；檢查設定與文字對比：`node tools/check-book-palettes.cjs`。
 
 入口視覺採煤黑、猩紅與暖白的編號書目，角色素材由內建 imagegen 生成，提示詞與來源見 [素材說明](docs/assets/characters/raster/archivist-scarlet.md)。顯示設定可切換角色與字型；手機海報捲離後縮小角色。

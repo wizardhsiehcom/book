@@ -21,3 +21,7 @@ docs/assets/fonts/GenWanMin2-ttc/
 data/
 
 playground/
+# Vendor JS bundled into each book (tracked in template only)
+book/*/mermaid.min.js
+!book/template/mermaid.min.js
+demos/

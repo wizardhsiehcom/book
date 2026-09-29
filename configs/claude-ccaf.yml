@@ -4,16 +4,20 @@ theme:
   custom_dir: ../overrides
   language: zh-TW
   palette:
-  - media: '(prefers-color-scheme: dark)'
-    scheme: slate
-    toggle:
-      icon: material/weather-sunny
-      name: 切換為亮色模式
-  - media: '(prefers-color-scheme: light)'
-    scheme: default
-    toggle:
-      icon: material/weather-night
-      name: 切換為深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為和紙朱印（淺色）
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切換為墨朱（深色）
   features:
   - navigation.sections
   - navigation.expand
@@ -68,3 +72,4 @@ site_description: 依 CCAR-F 2026 年 7 月考綱編寫，涵蓋五大領域、3
 site_author: Edison Hsieh
 extra_css:
 - assets/custom.css
+- assets/book-palette.css

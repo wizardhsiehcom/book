@@ -10,6 +10,12 @@ IP 可以用，名稱卻不行。有人提議改 hosts，有人叫你清快取�
 
 ## 小招式
 
+### 名稱、位址與代理是不同的選擇
+
+URL 裡的名稱像你在程式中使用的邏輯識別；最後連到的 IP 則是本次實際目的地。中間若還有代理，要求可能先交給另一個服務處理。直接把 URL 改成 IP，會同時改掉名稱條件，於是無法知道究竟是哪個改動奏效。
+
+這一招像替單次執行傳入設定參數：影響範圍小，撤回容易。它可以是日常比對後端的工具；保存命令時，務必把覆寫的名稱、埠與 IP 寫清楚，否則過幾週自己也會忘記為何跳過正常入口。
+
 先啟動 [04 的固定檔案服務](04-tiny-server.md)。下列 `machine.example` 是保留的教學名稱，不是現場已有的 DNS 記錄。它很適合練習覆寫解析；若要診斷真實事故，則須換成原本出錯的名稱、埠、路徑。
 
 在 Windows PowerShell 依序執行，三次分開記錄輸出與退出碼：
@@ -17,8 +23,18 @@ IP 可以用，名稱卻不行。有人提議改 hosts，有人叫你清快取�
 ```powershell
 curl.exe --connect-timeout 3 --max-time 5 --verbose http://machine.example:8080/probe.txt
 $LASTEXITCODE
+```
+
+這是 A：先看 verbose 的實際連線目標與代理訊息，留下原路徑結果。接著只拿掉本次代理；先預測連線目標會不會改變，再跑 B：
+
+```powershell
 curl.exe --noproxy "*" --connect-timeout 3 --max-time 5 --verbose http://machine.example:8080/probe.txt
 $LASTEXITCODE
+```
+
+若 B 和 A 一樣，不必補改系統設定。下一步在 B 的條件上固定解析，得到 C；此時才比較指定 IP 是否造成差異：
+
+```powershell
 curl.exe --noproxy "*" --resolve machine.example:8080:192.168.50.10 --connect-timeout 3 --max-time 5 --verbose http://machine.example:8080/probe.txt
 $LASTEXITCODE
 ```
@@ -62,6 +78,16 @@ B 失敗而 C 成功，支持「固定這個位址後可用」，值得比對原
 省下的是修改整台 client 的成本，轉移的代價是這次要求不再涵蓋真實入口。越是方便的覆寫，越不能長期藏在腳本裡而沒有註記。
 
 ## 收尾與撤回
+
+### 換個現場，下一步怎麼選？
+
+固定到 IP甲成功、IP乙失敗，能說 DNS 壞了嗎？
+
+??? note "參考思路"
+
+    先保留同名稱、不同位址的兩份結果，查兩個後端及各自路徑。名稱若本來就合法地對應多個後端，解析未必錯；固定 IP 可能只是避開其中一個有問題的服務。
+
+### 恢復入口
 
 拿掉 `--resolve` 和 `--noproxy`，用原 client 回原路徑複測；本章沒有改 hosts，也不需要清全機快取。確定是哪個正式設定有問題後再修它。停止 04 的測試服務並刪除假檔。
 

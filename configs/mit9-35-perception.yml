@@ -13,18 +13,18 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
-      accent: teal
-      toggle:
-        icon: material/weather-sunny
-        name: 切換至暗色模式
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: teal
-      accent: teal
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
-        name: 切換至亮色模式
+        name: 切換為墨朱（深色）
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為和紙朱印（淺色）
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -82,4 +82,5 @@ site_dir: ../book/mit9-35-perception/html
 use_directory_urls: false
 
 extra_css:
+  - assets/book-palette.css
   - assets/book-transition.css

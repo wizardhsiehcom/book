@@ -10,6 +10,23 @@
 
 ## 小招式
 
+### 把等待變成你能調整的條件
+
+在 C++ 除錯時暫加等待，常是為了讓平常太快的順序差異浮出來。本章改的是網路送出時序，並沒有讓 server 的處理函式停在某行；要先分清你拖慢的位置，才知道結果能說什麼。
+
+```mermaid
+sequenceDiagram
+  participant C as Windows client
+  participant S as Linux server
+  C->>S: 送出無副作用 GET
+  S->>S: 收到並處理要求
+  Note over S,C: 回應路徑受延遲影響
+  C->>C: 等待上限到，回報 timeout
+  Note over C,S: client 放棄等待，不表示 server 沒做事
+```
+
+這是可能的事件順序，不是本書測得時間線。讀圖時注意「server 已處理」可以早於「client 報 timeout」；因此把這招換到真實 C++ client 時，必須先弄清楚重試會不會重複執行業務動作。
+
 先用 [04 的固定檔案](04-tiny-server.md)確認基線成功。在 Linux **本機 console** 或另一條管理路徑操作。`LAB_IF` 只是 shell 變數，其值要替換成已查清楚、專供本次測試的介面名。
 
 ```bash
@@ -60,7 +77,17 @@ sudo ip netns exec fielddelay python3 -m http.server 8080 --bind 127.0.0.1 --dir
 
 ```bash
 sudo ip netns exec fielddelay curl --noproxy '*' --max-time 0.3 http://127.0.0.1:8080/probe.txt
+```
+
+先確認沒有注入延遲時能拿到 `delay-probe-v1`。若基線本來就失敗，停在這裡查 server，不能把下一次失敗歸因於延遲。接著只新增延遲：
+
+```bash
 sudo ip netns exec fielddelay tc qdisc add dev lo root netem delay 500ms
+```
+
+新增成功才往下。保持原本 0.3 秒等待上限不變，預測這次能否及時完成，再重跑並查看 qdisc：
+
+```bash
 sudo ip netns exec fielddelay curl --noproxy '*' --max-time 0.3 http://127.0.0.1:8080/probe.txt
 sudo ip netns exec fielddelay tc qdisc show dev lo
 ```
@@ -119,6 +146,16 @@ sudo tc qdisc change dev "$LAB_IF" root netem delay 500ms
 若沒有合適的隔離介面，本章的前提不成立。硬把參數降到很小不會讓共享管理介面變成獨立介面。
 
 ## 收尾與撤回
+
+### 換個現場，下一步怎麼選？
+
+加延遲後 UI 報錯，server 卻有成功處理的紀錄。可以直接加三次自動重試嗎？
+
+??? note "參考思路"
+
+    先查一個動作對應幾次要求、server 是否已完成，以及重送同一工作如何處理。client 不知道結果，不等於工作失敗；對有副作用的操作，重試可能造成重複執行。先用無副作用讀取釐清時序。
+
+### 確認回到原來的等待條件
 
 刪除本章新增的 netem，重新讀 `tc qdisc show`，再用同一個 client 命令確認基線回來。停 probe 服務、清測試檔，記錄撤回前後輸出。若常需要測這種故障，才將它整理成有操作者、介面與撤回紀錄的版本驗收步驟。
 
