@@ -1,0 +1,52 @@
+site_name: 設備 AI 工程師的 LinkedIn 寫作
+site_description: 從半導體設備與視覺 AI 出發，累積軟體 RD、LLM 與 Agent 的公開作品與同行交流
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為和紙朱印（淺色）
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切換為墨朱（深色）
+  features: [navigation.sections, navigation.expand, navigation.top, content.code.copy]
+docs_dir: ../docs/linkedin-posting
+site_dir: ../book/linkedin-posting/html
+use_directory_urls: false
+extra:
+  bookshelf_url: ../../../index.html
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+  - assets/book-palette.css
+extra_javascript:
+  - assets/font-init.js
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.superfences
+nav:
+  - 導讀: README.md
+  - 01 讀者與目標: 01-reader-and-goal.md
+  - 02 平台與證據: 02-platform-and-evidence.md
+  - 03 材料與題目: 03-material-and-topics.md
+  - 04 六種發文模式: 04-post-patterns.md
+  - 05 開頭與改寫: 05-opening-and-editing.md
+  - 06 媒介與發布: 06-format-and-publishing.md
+  - 07 對話與延伸: 07-conversation-and-reuse.md
+  - 08 四週工作流程: 08-sustainable-workflow.md
+  - 09 成效與學習: 09-measure-and-learn.md
+  - 附錄：來源與工作模板: appendix-source-checklist.md

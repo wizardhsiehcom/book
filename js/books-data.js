@@ -6,6 +6,16 @@ const CATEGORIES = ["半導體公司","半導體技術與產業","AI 與機器�
 
 const BOOKS = [
   {
+    icon: "✍️",
+    title: "設備 AI 工程師的 LinkedIn 寫作",
+    desc: "從半導體設備與視覺 AI 取材，用六種發文模式累積軟體、LLM 與 Agent 的作品與同行交流",
+    tags: ["LinkedIn", "工程寫作", "職涯作品"],
+    category: "生活與職場",
+    href: "book/linkedin-posting/html/index.html",
+    accent: "#0369a1",
+    glow: "rgba(3,105,161,0.18)",
+  },
+  {
     icon: "🗃️",
     title: "資料庫與資料正確性",
     desc: "從資料身分、SQL 與交易，走到並行、重送、未知提交及恢復；21 章搭配 SQL 實驗",
