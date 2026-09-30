@@ -124,35 +124,24 @@ if [[ ${#configs[@]} -eq 0 ]]; then
   exit 1
 fi
 
-# 收集 font.yml 中所有字型檔名
-font_files=$(uv run python -c "
-import yaml, pathlib
-cfg = yaml.safe_load(pathlib.Path('font.yml').read_text(encoding='utf-8'))
-for w in cfg['weights'].values():
-    print(w['file'])
-" | tr -d '\r')
+# 單一 Python 行程複製全部檔案：Windows 上每個 cp 行程約 250ms，逐本 cp 會拖到數十秒。
+uv run python - "${configs[@]}" <<'PYEOF'
+import shutil, sys, yaml, pathlib
 
-for config in "${configs[@]}"; do
-  book="$(basename "$config" .yml)"
-  target="docs/$book/assets"
-  mkdir -p "$target/fonts" "$target/story-reader"
+src = pathlib.Path("docs/assets")
+cfg = yaml.safe_load(pathlib.Path("font.yml").read_text(encoding="utf-8"))
+files = ["custom.css", "book-palette.css", "book-transition.css", "mermaid-init.js", "font-init.js",
+         # 每本書各帶一份閱讀器；主題範本與 playground 不屬於執行期資產。
+         "story-reader/reader.js", "story-reader/reader.css"]
+files += [f"fonts/{w['file']}" for w in cfg["weights"].values()]
+# Cubic-11 永遠複製（pixel 模式需要）
+files += ["fonts/Cubic_11.woff2", "fonts/Cubic_11.woff"]
 
-  cp "$src_assets/custom.css"    "$target/custom.css"
-  cp "$src_assets/book-palette.css" "$target/book-palette.css"
-  cp "$src_assets/book-transition.css" "$target/book-transition.css"
-  cp "$src_assets/mermaid-init.js" "$target/mermaid-init.js"
-  cp "$src_assets/font-init.js"  "$target/font-init.js"
-  # 每本書各帶一份閱讀器；主題範本與 playground 不屬於執行期資產。
-  cp "$src_assets/story-reader/reader.js" "$target/story-reader/reader.js"
-  cp "$src_assets/story-reader/reader.css" "$target/story-reader/reader.css"
-
-  for font_file in $font_files; do
-    cp "$src_assets/fonts/$font_file" "$target/fonts/$font_file"
-  done
-
-  # Cubic-11 永遠複製（pixel 模式需要）
-  cp "$src_assets/fonts/Cubic_11.woff2" "$target/fonts/Cubic_11.woff2"
-  cp "$src_assets/fonts/Cubic_11.woff"  "$target/fonts/Cubic_11.woff"
-done
+for config in sys.argv[1:]:
+    target = pathlib.Path("docs") / pathlib.Path(config).stem / "assets"
+    for f in files:
+        (target / f).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(src / f, target / f)
+PYEOF
 
 echo "Synced shared assets into docs/<book>/assets"
