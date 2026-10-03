@@ -40,10 +40,21 @@ markdown_extensions:
   - pymdownx.superfences
 nav:
   - 導讀: README.md
+  - 研究與作者案例:
+      - 統整分析與你的寫作方向: integrated-analysis.md
+      - 流量、內容與個人魅力: reach-content-persona.md
+      - 發文模式與語氣方向: tone-and-voice.md
+      - 中英文知名作者選讀: notable-authors.md
+      - 不同角色如何選模式: role-pattern-guide.md
+      - 作者職涯與寫作歷程: author-journeys.md
+      - 軟體工程貼文與反應數: engineering-study.md
+      - 既有研究的可用洞察: research-insights.md
+      - 案例與數據判讀方法: research-method.md
+      - 參考書與 AI 寫作流程: reading-and-ai-workflow.md
   - 01 讀者與目標: 01-reader-and-goal.md
   - 02 平台與證據: 02-platform-and-evidence.md
   - 03 材料與題目: 03-material-and-topics.md
-  - 04 六種發文模式: 04-post-patterns.md
+  - 04 基本與延伸發文模式: 04-post-patterns.md
   - 05 開頭與改寫: 05-opening-and-editing.md
   - 06 媒介與發布: 06-format-and-publishing.md
   - 07 對話與延伸: 07-conversation-and-reuse.md

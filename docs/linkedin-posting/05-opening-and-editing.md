@@ -79,3 +79,5 @@ CTA 是選配，不是收尾裝飾。想交換技術經驗時，可問同行在�
 **主要來源日期與查核日：** [LinkedIn 官方寫作指南](https://www.linkedin.com/business/talent/blog/talent-acquisition/how-to-write-engaging-post-in-linkedin-feed)，Jen Dewar，2024-11-26；查核 2026-09-30。指南提供編輯建議，沒有排名因果比較。
 
 [上一章：六種發文模式](04-post-patterns.md) · [下一章：媒介與發布](06-format-and-publishing.md)
+
+要進一步選擇說話方式，讀[發文語氣：作者樣本、同題改寫與角色選擇](tone-and-voice.md)。
