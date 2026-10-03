@@ -6,6 +6,8 @@
 
 ## 先定義指標和觀察窗
 
+想先看真實公開數字，可讀[20篇LinkedIn反應快照](browser-reaction-cases.md)。另有[兩位作者各12篇比較](eugene-fred-comparison.md)與[留言品質記錄](comment-quality.md)。這些數字是舊文當日累積數，與下文建議的發布後七日觀測窗不同。
+
 LinkedIn Help 將 impressions 定義為貼文在 LinkedIn 顯示的次數；members reached 是看過貼文的不重複會員／專頁估計值，同一會員／專頁重複觀看不再增加此觸及數字。兩個數字都是估值，並不完全精確。[LinkedIn Help：Post analytics for your content](https://www.linkedin.com/help/linkedin/answer/a523040)
 
 該頁也把 reactions、comments、reposts、saves、sends 列為社交互動；外部連結訪問會計入重複點擊。分析資料只對發文者本人可見，而且本人自己的瀏覽和互動也會計入。彙總分析頁可選 7–365 天區間，並分開顯示 impressions 或 engagements；它定義 engagements 為 reactions、comments、saves、sends 和 reposts 的合計。[LinkedIn Help：Combined post analytics](https://www.linkedin.com/help/linkedin/answer/a701208)

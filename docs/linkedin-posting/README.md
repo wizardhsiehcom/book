@@ -28,6 +28,10 @@
 | 有哪些中英文知名作者值得選讀，各自能學什麼？ | [知名作者地圖](notable-authors.md) |
 | 設備、軟體 RD、LLM、Agent 的材料如何選模式？ | [角色與模式選擇](role-pattern-guide.md) |
 | 別人的職涯與受眾，如何影響可以借鏡的做法？ | [作者歷程](author-journeys.md) |
+| 同一作者不同年份的作品，材料與寫法有什麼差別？ | [原站作品跨期比較](longitudinal-comparison.md) |
+| 實際LinkedIn反應數是多少，同作者不同貼文怎麼看？ | [20篇瀏覽器實讀快照](browser-reaction-cases.md) |
+| 留言帶來的是認同、異議，還是工程條件？ | [留言品質與記錄方法](comment-quality.md) |
+| 同一作者如何把問題延伸成導讀、解說與系列？ | [Eugene與Fred各12篇比較](eugene-fred-comparison.md) |
 | 有沒有包含普通反應、而不只熱門貼文的資料？ | [軟體工程貼文研究](engineering-study.md) |
 | 大型報告和作者經驗，哪些能用在自己身上？ | [既有研究的洞察](research-insights.md) |
 | 讚數、總反應、時間軸該如何判讀？ | [研究方法](research-method.md) |
