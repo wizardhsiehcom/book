@@ -1,0 +1,85 @@
+site_name: Coding Agent 的運作原理
+site_description: 從工作迴圈、工具、上下文與權限，到多 agent 分工及平台責任；以論文為基礎的繁體中文教學書。
+site_author: Edison Hsieh
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為和紙朱印（淺色）
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切換為墨朱（深色）
+  features:
+  - navigation.sections
+  - navigation.expand
+  - navigation.top
+  - content.code.copy
+docs_dir: ../docs/harness-engineering
+site_dir: ../book/harness-engineering/html
+use_directory_urls: false
+extra:
+  bookshelf_url: ../../../index.html
+extra_javascript:
+- https://unpkg.com/mermaid@10/dist/mermaid.min.js
+- assets/mermaid-init.js
+- assets/font-init.js
+markdown_extensions:
+- admonition
+- tables
+- toc:
+    permalink: true
+    slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+- pymdownx.details
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_div_format
+nav:
+- 導讀: README.md
+- 一、建立全貌:
+  - 01 模型與 Harness: 01-model-and-harness.md
+  - 02 讀懂研究證據: 02-reading-evidence.md
+- 二、讓工作可靠前進:
+  - 03 工作迴圈: 03-agent-loop.md
+  - 04 停止條件: 04-stop-conditions.md
+  - 05 模型整合: 05-model-integration.md
+  - 06 工具契約: 06-tool-contracts.md
+  - 07 檔案編輯: 07-file-editing.md
+- 三、找資料與保留狀態:
+  - 08 程式查找: 08-code-retrieval.md
+  - 09 上下文壓縮: 09-context-compaction.md
+  - 10 長期記憶: 10-persistent-memory.md
+- 四、限制與擴充:
+  - 11 權限與隔離: 11-permissions.md
+  - 12 多 agent 分工: 12-multi-agent.md
+  - 13 擴充機制: 13-extensibility.md
+- 五、做出設計選擇:
+  - 進階：組合架構模式: advanced-patterns.md
+  - 14 比較設計: 14-compare-designs.md
+  - 15 平台責任: 15-platform-turn.md
+  - 16 最小設計: 16-design-your-harness.md
+- 實驗與解答:
+  - 三組小實驗: examples/README.md
+  - 練習解答: exercises-and-answers.md
+- 查閱資料:
+  - 術語表: glossary.md
+  - 系統查閱卡: system-cards.md
+  - 論文對照索引: paper-map.md
+  - 來源說明: sources.md
+  - 驗證紀錄: verification.md
+extra_css:
+- assets/custom.css
+- assets/book-palette.css
+- stylesheets/book.css

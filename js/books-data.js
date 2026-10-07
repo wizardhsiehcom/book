@@ -6,6 +6,16 @@ const CATEGORIES = ["半導體公司","半導體技術與產業","AI 與機器�
 
 const BOOKS = [
   {
+    icon: "🔧",
+    title: "Coding Agent 的運作原理",
+    desc: "從模型到可控的工作系統：16 章理解迴圈、工具、上下文與權限，搭配三組 Python 小實驗",
+    tags: ["Harness", "coding agents", "系統設計"],
+    category: "AI 與機器學習",
+    href: "book/harness-engineering/html/index.html",
+    accent: "#0f766e",
+    glow: "rgba(15,118,110,0.18)",
+  },
+  {
     icon: "✍️",
     title: "設備 AI 工程師的 LinkedIn 寫作",
     desc: "從半導體設備與視覺 AI 取材，用六種發文模式累積軟體、LLM 與 Agent 的作品與同行交流",
