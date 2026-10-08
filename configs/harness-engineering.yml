@@ -1,5 +1,5 @@
-site_name: Coding Agent 的運作原理
-site_description: 從工作迴圈、工具、上下文與權限，到多 agent 分工及平台責任；以論文為基礎的繁體中文教學書。
+site_name: 程式開發代理的運作原理
+site_description: 從工作迴圈、工具、上下文與權限，到多代理分工及平台責任；以論文為基礎的繁體中文教學書。
 site_author: Edison Hsieh
 theme:
   name: material
@@ -49,27 +49,27 @@ markdown_extensions:
 nav:
 - 導讀: README.md
 - 一、建立全貌:
-  - 01 模型與 Harness: 01-model-and-harness.md
-  - 02 讀懂研究證據: 02-reading-evidence.md
+  - 01 模型如何接上實際工作: 01-model-and-harness.md
+  - 02 研究能證明什麼: 02-reading-evidence.md
 - 二、讓工作可靠前進:
-  - 03 工作迴圈: 03-agent-loop.md
-  - 04 停止條件: 04-stop-conditions.md
-  - 05 模型整合: 05-model-integration.md
-  - 06 工具契約: 06-tool-contracts.md
-  - 07 檔案編輯: 07-file-editing.md
+  - 03 用工具結果決定下一步: 03-agent-loop.md
+  - 04 何時停止，何時算完成: 04-stop-conditions.md
+  - 05 接好模型與工具: 05-model-integration.md
+  - 06 寫清工具的輸入與結果: 06-tool-contracts.md
+  - 07 確認位置再修改檔案: 07-file-editing.md
 - 三、找資料與保留狀態:
-  - 08 程式查找: 08-code-retrieval.md
-  - 09 上下文壓縮: 09-context-compaction.md
-  - 10 長期記憶: 10-persistent-memory.md
+  - 08 找出需要的程式碼: 08-code-retrieval.md
+  - 09 對話放不下時保留什麼: 09-context-compaction.md
+  - 10 哪些知識留到下次: 10-persistent-memory.md
 - 四、限制與擴充:
-  - 11 權限與隔離: 11-permissions.md
-  - 12 多 agent 分工: 12-multi-agent.md
-  - 13 擴充機制: 13-extensibility.md
+  - 11 限制工具能做什麼: 11-permissions.md
+  - 12 什麼工作值得分工: 12-multi-agent.md
+  - 13 缺少的能力接在哪裡: 13-extensibility.md
 - 五、做出設計選擇:
-  - 進階：組合架構模式: advanced-patterns.md
-  - 14 比較設計: 14-compare-designs.md
-  - 15 平台責任: 15-platform-turn.md
-  - 16 最小設計: 16-design-your-harness.md
+  - 進階：依問題組合設計做法: advanced-patterns.md
+  - 14 用相同任務比較設計: 14-compare-designs.md
+  - 15 別人依賴系統後的責任: 15-platform-turn.md
+  - 16 填寫自己的設計卡: 16-design-your-harness.md
 - 實驗與解答:
   - 三組小實驗: examples/README.md
   - 練習解答: exercises-and-answers.md

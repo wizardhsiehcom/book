@@ -1,5 +1,7 @@
 # 來源與使用方式
 
+本書以一篇指定版本的論文為主要來源。產品描述只代表研究快照；運費案例、練習與實驗是本書新增的教學材料。
+
 ## 主要來源
 
 Paul Barbaste、Tristan Darrigol、Germain Vu、Tom Wiltberger，*Harness Engineering: Anatomy, Architecture, and Evolution of Coding Agents — A Source-Code Study of Eleven Systems*，arXiv:2609.00006v1，分類 cs.SE。作者與題名見[論文 HTML](https://arxiv.org/html/2609.00006v1)；論文入口見[arXiv 紀錄](https://arxiv.org/abs/2609.00006)。頁面標示 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 授權。
@@ -14,9 +16,9 @@ Paul Barbaste、Tristan Darrigol、Germain Vu、Tom Wiltberger，*Harness Engine
 
 ## 證據範圍
 
-論文是特定版本的原始碼研究，研究對象為 11 個系統，另把 Omnigent 當作上層 meta-harness 對照。研究並非本書作者重新稽核各專案，也不是使用同一模型、任務和設定進行的效能排名。作者指出，程式碼量與定性評分都受語言、統計方式和判斷影響；論文也刻意不提供行號，因為程式碼會持續變動。詳細限制見[§15.6](https://arxiv.org/html/2609.00006v1#S15.SS6)。
+論文是特定版本的原始碼研究，研究對象為 11 個系統，另把 Omnigent 當作上層協調系統的對照。研究並非本書作者重新稽核各專案，也不是使用同一模型、任務和設定進行的效能排名。作者指出，程式碼量與定性評分都受語言、統計方式和判斷影響；論文也刻意不提供行號，因為程式碼會持續變動。詳細限制見[§15.6](https://arxiv.org/html/2609.00006v1#S15.SS6)。
 
-表 3 的版本是研究快照。Claude Code 使用 2026 年 3 月原始碼；表 4 和其他 2026 年 7 月表格所列的 Claude Code 二進位版本為 2.1.206，作者沒有核實兩者完全相同。OpenClaw 是多通道個人助理閘道，不是 coding agent；作者將它納入樣本比較通用 agent 平台特徵，並建議 coding harness 的採用數字也看排除 OpenClaw 後的 10 個系統。Omnigent 不實作自己的編輯迴圈，因此只作上層對照，不算第 12 個同類樣本。詳見[§4.1 與表 3](https://arxiv.org/html/2609.00006v1#S4.SS1)。
+表 3 的版本是研究快照。Claude Code 使用 2026 年 3 月原始碼；表 4 和其他 2026 年 7 月表格所列的 Claude Code 二進位版本為 2.1.206，作者沒有核實兩者完全相同。OpenClaw 是多通道個人助理閘道，不是程式開發代理；作者將它納入樣本比較通用代理平台特徵，並建議程式開發執行系統的採用數字也看排除 OpenClaw 後的 10 個系統。Omnigent 不實作自己的編輯迴圈，因此只作上層對照，不算第 12 個同類樣本。詳見[§4.1 與表 3](https://arxiv.org/html/2609.00006v1#S4.SS1)。
 
 ## 日期記錄
 
