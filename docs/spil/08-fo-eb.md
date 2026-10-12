@@ -1,4 +1,4 @@
-# 第 8 章：為什麼要在扇出裡埋一小塊矽橋
+# 第 8 章：為什麼要在扇出裡埋一小塊矽橋？
 
 ## 開場問題
 
@@ -57,11 +57,11 @@ flowchart TB
 
 ### 和 EMIB、CoWoS-L 只比結構
 
-Intel 的 EMIB、台積電的 CoWoS-L，別的書有各自的定義。底稿支持得了的差異只有這一條：FO-EB 是**局部矽橋**，不是**整片 TSV 中介層**；供電用銅柱。[論文] [媒體報導]
+Intel 的 EMIB、台積電的 CoWoS-L，別的書有各自的定義。公開資料支持得了的差異只有這一條：FO-EB 是**局部矽橋**，不是**整片 TSV 中介層**；供電用銅柱。[論文] [媒體報導]
 
-EMIB 在結構分類上也不是整片矽中介層。橋到底埋在載板還是埋在扇出模組裡，站點並不一樣。那張對照留在 [EMIB 與局部橋接](../../gpm/html/10-emib-bridge.html)。3D InCites 提到簡報裡有 FO-EB 與 EMIB 的比較圖，圖上的數字沒有進入本書底稿，這裡不補，也不裁判誰的電性贏。
+EMIB 在結構分類上也不是整片矽中介層。橋到底埋在載板還是埋在扇出模組裡，站點並不一樣。那張對照留在 [EMIB 與局部橋接](../../gpm/html/10-emib-bridge.html)。3D InCites 提到簡報裡有 FO-EB 與 EMIB 的比較圖，圖上的數字不在寫作時查到的資料裡，這裡不補，也不裁判誰的電性贏。
 
-CoWoS-L 這一方，底稿沒有矽品對照段落。結構上同屬局部橋接，本書不把矽品論文等同 CoWoS-L 量產。見 [CoWoS-R 與 CoWoS-L](../../cowos/html/06-cowos-r-l.html)。
+CoWoS-L 這一方，寫作時查到的資料沒有矽品對照段落。結構上同屬局部橋接，本書不把矽品論文等同 CoWoS-L 量產。見 [CoWoS-R 與 CoWoS-L](../../cowos/html/06-cowos-r-l.html)。
 
 ### 世代不要併成一行
 
@@ -84,7 +84,7 @@ FO-EB-T 的概念出現在 2021 年那篇 HPC 論文裡，不是 2023 年才忽�
 
 ## 逐步製程
 
-下面六步是 ECTC 2020 簡報的流程，經 3D InCites（2020-07-27）轉述，並與研究底稿的平台描述對得上。作者單位是矽品（Joe Lin、C. Key Chung、C. F. Lin 等，該篇作者都屬 SPIL）。[論文] [媒體報導]
+下面六步是 ECTC 2020 簡報的流程，經 3D InCites（2020-07-27）轉述。作者單位是矽品（Joe Lin、C. Key Chung、C. F. Lin 等，該篇作者都屬 SPIL）。[論文] [媒體報導]
 
 本書沒有逐站核對 IEEE 全文。站內的溫度、線寬、良率都不在這份轉述裡，表上不補。這也不是任何客戶的量產流程。
 
@@ -120,13 +120,13 @@ flowchart TD
 
 這條平台公開討論最多的限制是**翹曲**：不同材料熱脹冷縮不一樣，大片工件會彎。RDL 要做在比較平的面上，彎太大，後續對位與接合都會差。
 
-3D InCites 轉述該次簡報：製程中必須控制翹曲；要控的包括模封膠的熱膨脹係數（CTE）、玻璃轉移溫度（Tg），以及玻璃載板的 CTE。轉述並寫，測試結果是需要較高的玻璃 CTE 才處理得了這個封裝。同一則轉述中，SPIL 的結論是 FO-MCM 與 FO-EB 的翹曲相近，都優於 2.5D。[媒體報導] 這是相對結論。圖上若有微米數，底稿沒有抄下來，本書不補。
+3D InCites 轉述該次簡報：製程中必須控制翹曲；要控的包括模封膠的熱膨脹係數（CTE）、玻璃轉移溫度（Tg），以及玻璃載板的 CTE。轉述並寫，測試結果是需要較高的玻璃 CTE 才處理得了這個封裝。同一則轉述中，SPIL 的結論是 FO-MCM 與 FO-EB 的翹曲相近，都優於 2.5D。[媒體報導] 這是相對結論。圖上若有微米數，寫作時查到的資料沒有抄下來，本書不補。
 
 可靠度摘要要整句保留，不能改寫。EPTC 2021 寫：FO-EB 相對 2.5D，溫度循環做到 2 倍長，而且沒有一顆失效（“2x longer temperature cycle without a single failure as compared to 2.5D”）。[論文] [T8](appendix-sources.md#T8) 這是摘要裡**和 2.5D 的比較**。不要改成「壽命兩倍，而且已經量產」。
 
 同一篇首次提出下一代 FO-EB-T，並寫模擬顯示功耗比 FO-EB 低 55%。[論文] 55% 是**模擬**，不是量到的產品功耗，也不是客戶機櫃的用電。
 
-ECTC 2022 有一篇把 FO-EB 的製程翹曲、可靠度與認證放在一起。摘要結語的意思是 FO-EB “could be qualified pass and mass production”（底稿錄作 “F O-EB package could be qualified pass and mass production”，中間空格像是換行造成的）。[論文] [T9](appendix-sources.md#T9) 主詞是論文裡的封裝，不是某一家客戶的料號。另一篇 2022 論文比較 2.5D、FO-EB、FO-MCM 的電性與翹曲。底稿沒有錄下那些數字，本章不編。
+ECTC 2022 有一篇把 FO-EB 的製程翹曲、可靠度與認證放在一起。摘要結語的意思是 FO-EB “could be qualified pass and mass production”（擷取到的摘要寫作 “F O-EB package could be qualified pass and mass production”，中間空格像是換行造成的）。[論文] [T9](appendix-sources.md#T9) 主詞是論文裡的封裝，不是某一家客戶的料號。另一篇 2022 論文比較 2.5D、FO-EB、FO-MCM 的電性與翹曲。寫作時查到的資料沒有錄下那些數字，本章不編。
 
 FO-EB-T 到 2025 年還在處理翹曲。EPTC 2025 討論 dummy die 的尺寸與封膠調整，對象是「最多約 10% 晶圓面積的 RDL 缺陷區」。[論文] 這句話說明缺陷區仍然是研究題目。它**不是**「良率 90%」，更不是量產良率。
 
@@ -172,13 +172,13 @@ FO-EB-T 到 2025 年還在處理翹曲。EPTC 2025 討論 dummy die 的尺寸與
 | 20-F 把 FO-MCM／FO-EB 與 CoWoS、CoPoS、CoWoP、CPO、3D IC 並列 | ✅ 集團層級自述 | [公司自述]。2026-04 申報。文件沒有寫由矽品或日月光執行 |
 | 「FO-MCM／FO-EB 這兩項代表矽品平台」 | 🔶 推論 | [推論]。依據只是論文作者單位為 SPIL，而 20-F 沒有寫執行者 |
 | ECTC 2026 的 3D SRAM，Intel 與 SPIL 合著 | ✅ 研究合作 | [論文] [T14](appendix-sources.md#T14)。不是訂單 |
-| 與 EMIB、CoWoS-L 的電性對照 | ❓ 未知 | 底稿沒有可引用的對照數字 |
+| 與 EMIB、CoWoS-L 的電性對照 | ❓ 未知 | 寫作時查到的資料沒有可引用的對照數字 |
 
 **表 8-4**：矽品連結。客戶量產這一行保持未知。論文認證這一行只到論文自述。
 
 20-F 的策略段寫，集團發展了 “2.5D/FO-MCM/FO-EB/ CoWoS/CoPoS/CoWoP/CPO/3D IC” 這類方案。版本上，2024-04 申報版還沒有列出 2.5D／FO-MCM／FO-EB；2025-03 申報版加入這三項；2026-04 申報版再加入 CoWoS 等名稱。[公司自述] 列名是集團能力，不是矽品出貨證明。
 
-「這兩項代表矽品平台」不能升格。FO-MCM、FO-EB 確實是矽品論文使用的名字，所以**可以推論**列名裡的這兩項對得上矽品論文；20-F 自己沒有寫執行者。推論停在這裡。和日月光平台的結構像不像，是 [下一章之外的比對](11-sibling-platforms.md)，不是本章能證明的分工。
+「這兩項代表矽品平台」不能升格。FO-MCM、FO-EB 確實是矽品論文使用的名字，所以**可以推論**列名裡的這兩項對得上矽品論文；20-F 自己沒有寫執行者。推論停在這裡。和日月光平台的結構像不像，見 [第 11 章](11-sibling-platforms.md)，不是本章能證明的分工。
 
 ---
 
@@ -206,7 +206,7 @@ FO-EB-T 到 2025 年還在處理翹曲。EPTC 2025 討論 dummy die 的尺寸與
 
 ## 來源與待查
 
-正文用 [T6](appendix-sources.md#T6)、[T8](appendix-sources.md#T8)、[T9](appendix-sources.md#T9)、[T10](appendix-sources.md#T10)、[T14](appendix-sources.md#T14) 對來源索引。其餘 DOI 記在這裡。查閱與底稿快照日是 2026-10-12。
+正文用 [T6](appendix-sources.md#T6)、[T8](appendix-sources.md#T8)、[T9](appendix-sources.md#T9)、[T10](appendix-sources.md#T10)、[T14](appendix-sources.md#T14) 對來源索引。其餘 DOI 記在這裡。查閱日是 2026-10-12。
 
 | 主張 | 出處 | 等級 |
 |---|---|---|
@@ -227,6 +227,6 @@ FO-EB-T 到 2025 年還在處理翹曲。EPTC 2025 討論 dummy die 的尺寸與
 
 - FO-EB／FO-MCM 的客戶量產公告。沒有這份文件之前，維持 ❓ 未知。
 - IEEE 全文是否與 3D InCites 的六步逐字相同。本章步驟依轉述。
-- EMIB 比較圖與 2022 年電性比較論文裡的具體數字。底稿未錄，不回填。
-- 液態金屬 TIM、超薄晶片模組摘要中的厚度、壽命或良率。未入底稿者不補。
+- EMIB 比較圖與 2022 年電性比較論文裡的具體數字。寫作時未取得，不回填。
+- 液態金屬 TIM、超薄晶片模組摘要中的厚度、壽命或良率。寫作時未取得者不補。
 - 混合鍵合、玻璃核心基板的矽品公開資料。寫作時查無。

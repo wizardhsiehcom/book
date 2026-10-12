@@ -177,7 +177,7 @@ AiP 頁列出的量測設備是 Anritsu MS4647B（10 MHz–67 GHz）、ME7838E�
 
 凸塊表的數字是最小陣列間距。它沒有說現在出貨的產品用哪一列，也沒有說 40 µm 已經用在哪一個客戶。概述與能力表的晶圓尺寸不一致，已在上一節照原樣保留。
 
-翹曲、TIM 與 EMI 是另一種限制：底稿記錄 OpenAlex 自 2014 年以來的矽品具名作品共 278 筆，其中大量是 FCBGA／FCCSP 翹曲、TIM、EMI shielding、雙面 SiP 與 AiP 這類題目。**量產型論文很多，本書未逐篇核對全文。** 這裡的「量產型」是題目屬於量產封裝會遇到的問題，不是「論文已證明賣給某客戶」。因此本章沒有任何翹曲微米數，也不引用未核對的曲線。
+翹曲、TIM 與 EMI 是另一種限制：以 OpenAlex 檢索，自 2014 年以來的矽品具名作品共 278 筆，其中大量是 FCBGA／FCCSP 翹曲、TIM、EMI shielding、雙面 SiP 與 AiP 這類題目。**量產型論文很多，本書未逐篇核對全文。** 這裡的「量產型」是題目屬於量產封裝會遇到的問題，不是「論文已證明賣給某客戶」。因此本章沒有任何翹曲微米數，也不引用未核對的曲線。
 
 官網的公開分類停在通用技術名稱。寫作當日查到的技術頁沒有出現 FO-MCM、FO-EB、CoWoS、CPO 這些名字。[公司自述] 那些名字若出現，是在後面章節的論文或集團文件裡，不能倒過來說「官網有這個平台」。
 
@@ -219,7 +219,7 @@ FY2017 的四個百分比是截至 2017-12-31 的歷史口徑。[官方文件] �
 | 翹曲、TIM、EMI 的具體數值 | ❓ 未知 | 論文多，本書未逐篇核對全文 |
 | 混合鍵合 | ❓ 未知 | 寫作時查無具名公開資料 |
 | 官網技術頁有沒有 FO-MCM、FO-EB、CoWoS、CPO | ✅ 已證實沒有這些名稱 | [公司自述] |
-| Stacked Die、Multi-Package 等未展開頁的內容 | ❓ 未知 | 底稿未逐頁讀 |
+| Stacked Die、Multi-Package 等未展開頁的內容 | ❓ 未知 | 寫作時未逐頁讀 |
 
 ## 理解檢查
 
@@ -252,7 +252,7 @@ FY2017 的四個百分比是截至 2017-12-31 的歷史口徑。[官方文件] �
 | [Flip Chip 頁](https://www.spilglobal.com/TechnologyList/FanOutWLP2) | turnkey、2,597 顆以上、Cu Pillar／BOT 等名稱 |
 | [SiP 頁](https://www.spilglobal.com/TechnologyData/SysteminPackageSiP) | 功能模組與 One Stop Shop |
 | [AiP 頁](https://www.spilglobal.com/TechnologyData/AntennainPackageAiP) | 應用與三台量測設備 |
-| 矽品 FY2017 20-F（研究底稿代號 S5） | 只取營收組成四個百分比；整表見第 3 章 |
+| 矽品 FY2017 20-F（[S5](appendix-sources.md#S5)） | 只取營收組成四個百分比；整表見第 3 章 |
 
 待查，以及會改寫本章的資料：
 

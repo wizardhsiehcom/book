@@ -1,4 +1,4 @@
-# 第 11 章：矽品和日月光的平台重疊嗎
+# 第 11 章：矽品和日月光的平台重疊嗎？
 
 新聞會把矽品的 FO-EB 和日月光的 FOCoS-Bridge 放在同一句裡，好像集團裡有兩條互相競爭的產線，或其實是同一條。公開文件沒有這樣說。
 
@@ -34,7 +34,7 @@ flowchart TB
 
 ## 口徑
 
-20-F 的先進封裝表列出 FOCoS，引腳範圍寫成 3000–7000；列出 FOCoS-Bridge，引腳範圍寫成 3000–14000。Bridge 那一列的英文摘錄是 “tiny silicon bridge … embedded in the fan-out RDL layer”（一小塊矽橋埋在扇出 RDL 層裡；底稿在 bridge 與 embedded 之間有省略）。[公司自述]
+20-F 的先進封裝表列出 FOCoS，引腳範圍寫成 3000–7000；列出 FOCoS-Bridge，引腳範圍寫成 3000–14000。Bridge 那一列的英文摘錄是 “tiny silicon bridge … embedded in the fan-out RDL layer”（一小塊矽橋埋在扇出 RDL 層裡；擷取到的摘句在 bridge 與 embedded 之間有省略）。[公司自述]
 
 這是 ASEH 的說法，不是矽品自己的產品頁。3000–7000 與 3000–14000 **不能**抄成 FO-MCM 或 FO-EB 的引腳數。矽品論文摘要沒有給這組數字，本書不補。
 
@@ -108,7 +108,7 @@ FOCoS-Bridge 與它的 TSV 版本，階段和測試載具以日月光書為準�
 
 ## 來源與待查
 
-查閱與底稿快照日是 2026-10-12。FO-EB 的論文代號沿用 [第 8 章來源](08-fo-eb.md)，不在這裡重列製程。
+查閱日是 2026-10-12。FO-EB 的論文代號沿用 [第 8 章來源](08-fo-eb.md)，不在這裡重列製程。
 
 | 主張 | 出處 | 等級 |
 |---|---|---|

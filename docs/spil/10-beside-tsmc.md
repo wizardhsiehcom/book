@@ -1,4 +1,4 @@
-# 10　矽品在 CoWoS 供應鏈承接哪一段？
+# 第 10 章：矽品在 CoWoS 供應鏈承接哪一段？
 
 ## 開場問題
 
@@ -75,12 +75,12 @@ flowchart TD
 | 台積電長期把 WoS／oS 外包給 OSAT，矽品是其中之一 | 多家媒體的背景敘述；2024-08-06 科技新報轉載 MoneyDJ，以及其後沿用同一背景的報導 | `[媒體報導]` | 這是多家一致的產業背景，不是單一標題 | 不是台積電或矽品證實的訂單；不能指定廠區、年份片數，也不能改寫成「因此一定沒有 CoW」 |
 | 2024-08-06：台積電首度把 CoW 外包給矽品中科；2025 年第二季進機、第三季放量；矽品 CoWoS 相關產能一年約 4–5 萬片；首期為 CoWoS-S | [科技新報 2024-08-06](https://technews.tw/2024/08/06/tsmc-cow-spil/)；[TrendForce 英文轉述](https://www.trendforce.com/news/2024/08/06/news-tsmc-assigns-cow-order-for-the-first-time-reportedly-to-osat-provider-spil/) | `[業界消息]` | 市場從這天開始流傳一個很具體的故事 | 台積電與矽品未回應。進機、放量、4–5 萬片、CoWoS-S 全都歸因未具名人士。到查閱日仍沒有官方證實。具體不等於可靠 |
 | 吳田玉在法說表示：集團與晶圓代工夥伴共同開發 oS 與 CoW，已多年 | 同上 2024-08-06 報導所引法說 | `[公司自述]` | 集團公開談過這兩段的共同開發 | 不指出哪一段由矽品承接，也不是某一客戶的訂單。語句寫作時未另核法說逐字稿，但不因此升成官方訂單 |
-| 投控 20-F 把 CoWoS、CoPoS、CoWoP 列進集團封裝能力 | 投控 FY2025 Form 20-F，2026-04-01 申報（成書計畫所稱的 FY2026 申報版）。策略段原文包括 "2.5D/FO-MCM/FO-EB/ CoWoS/CoPoS/CoWoP/CPO/3D IC"。[SEC 檔案](https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm) | `[公司自述]` | 投控願意在年報裡用這些名字描述集團 | 主體是投控。"Our" 沒有指明矽品或日月光半導體。列名不是矽品承接證明，也不是量產證明 |
+| 投控 20-F 把 CoWoS、CoPoS、CoWoP 列進集團封裝能力 | 投控 FY2025 Form 20-F，2026-04-01 申報。策略段原文包括 "2.5D/FO-MCM/FO-EB/ CoWoS/CoPoS/CoWoP/CPO/3D IC"。[SEC 檔案](https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm) | `[公司自述]` | 投控願意在年報裡用這些名字描述集團 | 主體是投控。"Our" 沒有指明矽品或日月光半導體。列名不是矽品承接證明，也不是量產證明 |
 | CoWoP 是去除封裝基板、直接接到平台 PCB 的 WoS 改良架構 | ICEP-HBS 2026 論文 T13，〈New Advanced Packaging Architecture: CoWoP〉，DOI `10.23919/icep-hbs69241.2026.11550586`，2026-04-14。作者 Terry Hsu、Don Son Jiang 等，單位都是 SPIL | `[論文]` | 矽品人員提出並投稿了一個架構 | 不是試產、不是 NVIDIA 採用、不是獨家。論文自述的好處（訊號與電源完整性）停在提案 |
 | 矽品獨家試產 CoWoP、是 NVIDIA 導入的首選夥伴；設備 2026 年第一季進駐台中，最快第二季試產 | [鉅亨 2026-02-05](https://m.cnyes.com/news/id/6333131)（經優分析轉載）。文內寫「業界傳出」；相關業者不評論單一客戶 | `[業界消息]` | 有這則傳聞，以及業者拒絕評論單一客戶 | 不能寫成已試產或已獲選。與上一列的論文是兩件事 |
-| 反方：Rubin Ultra 未必採用 CoWoP | 研究底稿所記，2025 年 TrendForce 引美系券商的質疑。寫作時未核到該則 TrendForce 原文網址 | `[業界消息]` | 在「獨家、首選」之外，公開討論裡同時有相反的渠道說法 | 不是 NVIDIA 的官方否認，也不能反過來證明矽品論文不存在。反方必須留在表上 |
+| 反方：Rubin Ultra 未必採用 CoWoP | 二手報導轉述 2025 年 TrendForce 引美系券商的質疑。寫作時未核到該則 TrendForce 原文網址 | `[業界消息]` | 在「獨家、首選」之外，公開討論裡同時有相反的渠道說法 | 不是 NVIDIA 的官方否認，也不能反過來證明矽品論文不存在。反方必須留在表上 |
 | 矽品「握有台積電 CoWoS 封裝中的 CoW 製程訂單」 | [工商時報 2026-05-01](https://www.ctee.com.tw/news/20260501700067-430501) | `[媒體報導]` | 記者把 2024 年以來的說法寫成現在式 | 未引具名來源，公司未證實。等級高於「據了解」，低於公告 |
-| 台積電擴大把 CoW 外包 | [ETNews 2026-08-04](https://www.etnews.com/20260804000179)；[TrendForce 2026-08-05](https://www.trendforce.com/news/2026/08/05/news-tsmc-reportedly-expands-outsourcing-of-key-cowos-front-end-step-to-osats-amid-rising-nvidia-asic-demand/)；[鉅亨](https://news.cnyes.com/news/id/6560651) | `[業界消息]` | 依研究底稿，ETNews 點名的是「包括日月光在內」的 OSAT。背景句寫日月光、Amkor、矽品過去主要以授權做 WoS | 不是直接點名矽品為新增 CoW 承接者。中文轉述常把「等」寫成矽品，那一步是推論。韓文原文寫作時未逐句核對 |
+| 台積電擴大把 CoW 外包 | [ETNews 2026-08-04](https://www.etnews.com/20260804000179)；[TrendForce 2026-08-05](https://www.trendforce.com/news/2026/08/05/news-tsmc-reportedly-expands-outsourcing-of-key-cowos-front-end-step-to-osats-amid-rising-nvidia-asic-demand/)；[鉅亨](https://news.cnyes.com/news/id/6560651) | `[業界消息]` | 依 TrendForce 英文轉述，ETNews 點名的是「包括日月光在內」的 OSAT。背景句寫日月光、Amkor、矽品過去主要以授權做 WoS | 不是直接點名矽品為新增 CoW 承接者。中文轉述常把「等」寫成矽品，那一步是推論。韓文原文寫作時未逐句核對 |
 | 斗六新廠「將導入 CoWoS」 | 2026-08-11 動土報導，例如 [ETtoday](https://finance.ettoday.net/news/3217403)、[TrendForce 2026-08-12](https://www.trendforce.com/news/2026/08/12/news-ases-spil-breaks-ground-on-nearly-twd-100b-plant-in-douliu-to-boost-cowos-capacity-operations-set-for-2028/) | `[媒體報導]` | 媒體如此描述這座尚未營運的廠 | 未細分 CoW、oS 或 WoS。近千億、6 公頃、2028 第一期與職缺是副董事長談話的媒體轉述，同樣是 `[媒體報導]`，不是 20-F |
 
 表外還有幾則同一等級的傳聞，不另升級：2025-12-09 溢出訂單轉給日月光與矽品、2026-01-29 法人估計三家 OSAT 合計的 CoWoS-like 月產能、2026-06 Mirror Daily 稱日月光與矽品建自有 CoW 產線。它們都是 `[業界消息]`，沒有片數可以抄進矽品產能。
@@ -114,7 +114,7 @@ flowchart TD
     不能。它沒有具名來源，也沒有公司或客戶公告。等級可以高於「據了解」，仍然不能升成 `[官方文件]` 或 `[雙方公告]`。
 
 ??? question "ETNews 那則，證據缺口在哪裡？"
-    研究底稿的讀法是：韓媒點名「日月光等」，沒有直接點名矽品為新增 CoW 承接者。寫作時未逐句核對韓文原文。在補上原文之前，中文稿裡的「矽品也接到」只能算受惠推論。同則裡的台積電月產能與 NVIDIA 預訂片數，也不是矽品產能。
+    依 TrendForce 英文轉述，韓媒點名「日月光等」，沒有直接點名矽品為新增 CoW 承接者。寫作時未逐句核對韓文原文。在補上原文之前，中文稿裡的「矽品也接到」只能算受惠推論。同則裡的台積電月產能與 NVIDIA 預訂片數，也不是矽品產能。
 
 ??? question "什麼觀察會讓「矽品承接 CoW」從傳聞變成可寫的事實？"
     台積電或矽品的公告、法說逐字稿，或雙方新聞稿，明文寫出段落、廠區與期間。只再出現一次未具名片數，不夠。若新文件寫的是 oS 而不是 CoW，則 CoW 這句要撤回，不是改個同義詞。

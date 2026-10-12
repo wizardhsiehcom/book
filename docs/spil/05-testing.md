@@ -78,7 +78,7 @@ flowchart TD
 
 第 4 章的 wafer sort 是覆晶 turnkey 裡的一個詞。本章的 CP 是測試服務頁上的一個詞。兩頁都沒有寫「兩者是同一站」或「兩者一定先後相接」。缺這張對照，就不能合成一條從晶圓到出貨的唯一路徑。
 
-AiP 的儀器型號在第 4 章。測試這邊只補一篇論文：EPTC 2019 提出以正交訊號做 mmWave AiP 的 over-the-air 測試，用來提升產出（DOI 10.1109/eptc47984.2019.9026630）。[論文] IEEE 頁面未能抓取。底稿沒有提升百分比，這句也不等於某一客戶已經量產。
+AiP 的儀器型號在第 4 章。測試這邊只補一篇論文：EPTC 2019 提出以正交訊號做 mmWave AiP 的 over-the-air 測試，用來提升產出（DOI 10.1109/eptc47984.2019.9026630）。[論文] IEEE 頁面未能抓取。寫作時查到的資料沒有提升百分比，這句也不等於某一客戶已經量產。
 
 ## 缺陷與限制
 
@@ -90,7 +90,7 @@ SLT 的接觸力上限是 200 kg，封裝尺寸下限是 5×5 mm，測試板到 
 
 175°C 出現在溫度範圍的上端，但熱控的三個點只到 125°C 的 3,000 W。175°C 時還能控多少瓦，頁面沒有寫。
 
-Burn-in 不能借用 FT／SLT 的溫度與瓦數。測試服務頁只把它列為名稱；那組數字掛在 FT／SLT 規格頁。投控 20-F 另有一句集團層級的高功率冷卻 handler 與 burn-in，底稿標明不專指矽品。[公司自述] 不能拿集團句子來填矽品 Burn-in 的規格。
+Burn-in 不能借用 FT／SLT 的溫度與瓦數。測試服務頁只把它列為名稱；那組數字掛在 FT／SLT 規格頁。投控 20-F 另有一句集團層級的高功率冷卻 handler 與 burn-in，原文是集團層級，不專指矽品。[公司自述] 不能拿集團句子來填矽品 Burn-in 的規格。
 
 機台頁沒有記憶體類別，意思只是「這一頁沒有這一欄」。圖片裡的機型又讀不到。沒有這一欄，不足以證明矽品不做記憶體測試，也不足以證明它做。這是未知。
 
@@ -110,7 +110,7 @@ Burn-in 不能借用 FT／SLT 的溫度與瓦數。測試服務頁只把它列�
 | 測哪一類元件 | 官網寫數位、混合訊號、RF；機台類別為 Logic、Mixed signal、RF。[公司自述] | 記憶體是否在範圍內；機型名稱 |
 | 矽品在集團文件裡被寫到哪 | logic and mixed signal，加 turnkey。[公司自述] | 不能擴成 HPC 或矽光子 |
 
-集團測試研發要單獨放。2026-04 申報的投控 20-F 寫到 HPC、mmWave、SiP、矽光子、光感測模組測試，以及高功率冷卻 handler 與 burn-in 時，底稿的等級是集團層級，不專指矽品。[公司自述] 矽品自己的那句停在 logic and mixed signal 與 turnkey。把集團研發清單讀成「矽品獨有的測試平台」，是把主體寫錯。
+集團測試研發要單獨放。2026-04 申報的投控 20-F 寫到 HPC、mmWave、SiP、矽光子、光感測模組測試，以及高功率冷卻 handler 與 burn-in 時，原文是集團層級，不專指矽品。[公司自述] 矽品自己的那句停在 logic and mixed signal 與 turnkey。把集團研發清單讀成「矽品獨有的測試平台」，是把主體寫錯。
 
 成本帳上的控制則回到矽格那一章：平行度上升不一定讓每顆成本等比下降，因為還有測試時間與稼動。矽品沒有公開這兩個數，本章給不出矽品的每顆測試成本。
 
@@ -149,18 +149,18 @@ Burn-in 不能借用 FT／SLT 的溫度與瓦數。測試服務頁只把它列�
 
 ??? question "20-F 裡的矽光子與 HPC 測試，可以寫進矽品的能力簡介嗎？"
 
-    不能直接寫成矽品獨有。底稿把 HPC、mmWave、SiP、矽光子、光感測模組、高功率冷卻 handler 與 burn-in 放在集團測試研發。[公司自述] 同一份文件寫到矽品的句子只到 logic and mixed signal，另加 turnkey。主體要維持在集團，除非另有句子指明由矽品執行。
+    不能直接寫成矽品獨有。投控 20-F 把 HPC、mmWave、SiP、矽光子、光感測模組、高功率冷卻 handler 與 burn-in 放在集團測試研發。[公司自述] 同一份文件寫到矽品的句子只到 logic and mixed signal，另加 turnkey。主體要維持在集團，除非另有句子指明由矽品執行。
 
 ## 來源與待查
 
-官網沒有發布日期。本章官網句子的查閱日為 2026-10-12。論文的 IEEE 頁面未能抓取，年份與題旨依底稿，不把摘要以外的數字補進來。
+官網沒有發布日期。本章官網句子的查閱日為 2026-10-12。論文的 IEEE 頁面未能抓取，年份與題旨依擷取到的摘要，不把摘要以外的數字補進來。
 
 | 來源 | 本章用到的範圍 |
 |---|---|
 | [測試服務頁](https://www.spilglobal.com/ServiceSecond/Test) | CP、FT／SLT、Burn-in、Back end、Engineering；數位、混合訊號、RF |
 | [機台能力頁](https://www.spilglobal.com/ServiceThird/Testercapability) | Logic、Mixed signal、RF；沒有記憶體類別；機型為圖片 |
 | [FT／SLT 頁](https://www.spilglobal.com/ServiceThird/FTSLTservice) | 尺寸、接觸力、溫度、熱控、平行度、SLT 板 |
-| 投控 20-F（2026-04 申報；底稿所引） | 矽品句：logic and mixed signal 與 turnkey。集團句：HPC、mmWave、SiP、矽光子等 |
+| 投控 20-F（2026-04 申報） | 矽品句：logic and mixed signal 與 turnkey。集團句：HPC、mmWave、SiP、矽光子等 |
 | EPTC 2019，DOI 10.1109/eptc47984.2019.9026630 | 只保留 AiP OTA 的題旨；不在 T1–T14 對照表，故不編代號 |
 | [第 3 章](03-invisible-financials.md) | FY2017 測試營收占比的口徑，本章不重抄 |
 | [矽格書：測試時間為什麼就是錢](../../sigurd/html/02-test-cost-model.html) | 機台小時的成本結構；不代填矽品數字 |
