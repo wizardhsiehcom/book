@@ -380,6 +380,16 @@ const BOOKS = [
     glow: "rgba(20,184,166,0.18)",
   },
   {
+    icon: "🏭",
+    title: "從封裝測試看懂矽品",
+    desc: "先分清矽品、日月光半導體與投控，再沿著量產主力、中介層、扇出橋接到 CPO，用證據等級讀擴產與客戶新聞",
+    tags: ["advanced packaging", "OSAT", "SPIL"],
+    category: "半導體公司",
+    href: "book/spil/html/index.html",
+    accent: "#c2410c",
+    glow: "rgba(194,65,12,0.18)",
+  },
+  {
     icon: "🎯",
     title: "從晶粒分選到精密接合看懂均華",
     desc: "八章拆解薄晶粒、分選追溯、取放翻面、對位誤差與接合責任，再對照均華機型與公開證據",

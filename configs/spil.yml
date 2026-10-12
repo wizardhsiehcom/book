@@ -1,0 +1,85 @@
+site_name: 從封裝測試看懂矽品
+site_description: 矽品已下市且不再單獨公布財報，這本書用來分清新聞裡的主體，並看技術與產能能被公開證據證實到哪一步
+site_author: Edison Hsieh
+
+theme:
+  name: material
+  custom_dir: ../overrides
+  language: zh-TW
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切換為和紙朱印（淺色）
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切換為墨朱（深色）
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+docs_dir: ../docs/spil
+site_dir: ../book/spil/html
+use_directory_urls: false
+
+extra_css:
+  - assets/book-transition.css
+  - assets/custom.css
+  - assets/book-palette.css
+  - stylesheets/wiki-images.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+  - assets/font-init.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+extra:
+  bookshelf_url: ../../../index.html
+
+nav:
+  - 導讀: README.md
+  - 全書地圖: 00-map.md
+  - 一、先分清主體:
+      - "01 新聞裡的矽品是誰": 01-who-is-spil.md
+      - "02 併購為什麼花三年": 02-merger-war.md
+      - "03 為什麼看不到營收": 03-invisible-financials.md
+  - 二、技術路線:
+      - "04 基本盤": 04-mainstream-packaging.md
+      - "05 測試": 05-testing.md
+      - "06 中介層時代": 06-interposer-era.md
+      - "07 扇出到多晶片": 07-fanout-to-fomcm.md
+      - "08 扇出裡的矽橋": 08-fo-eb.md
+      - "09 光進封裝": 09-cpo.md
+  - 三、產能、客戶與讀新聞:
+      - "10 站在台積電旁邊": 10-beside-tsmc.md
+      - "11 和日月光的平台是否重疊": 11-sibling-platforms.md
+      - "12 購廠與產能": 12-capacity-and-plants.md
+      - "13 客戶與供應商": 13-customers-suppliers.md
+      - "14 怎樣讀一則新聞": 14-reading-news.md
+  - 附錄:
+      - "A 來源索引": appendix-sources.md
+      - "B 術語": appendix-glossary.md
+      - "C 待查": appendix-open-questions.md
+      - "D 圖片來源": 99-image-credits.md

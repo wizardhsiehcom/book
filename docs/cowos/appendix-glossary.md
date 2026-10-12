@@ -15,7 +15,7 @@ CoWoS 技術涉及大量縮寫與專業術語，本頁提供快速查閱。
 | SoW / SoW-X | System on Wafer | 整片晶圓當一個系統；SoW-X 為 CoWoS 基礎的 40 倍光罩版本 |
 | InFO | Integrated Fan-Out | TSMC 扇出型封裝 |
 | COUPE | Compact Universal Photonic Engine | TSMC 共封裝光學平台 |
-| CoWoP | Chip-on-Wafer-on-PCB | SPIL 主導、省掉封裝基板的方案 |
+| CoWoP | Chip-on-Wafer-on-PCB | 省掉封裝基板、改接到平台 PCB 的架構。矽品有論文提案；「由 SPIL 主導」是業界說法，不是已證實的分工 |
 | EMIB | Embedded Multi-die Interconnect Bridge | Intel 局部矽橋技術，CoWoS-L 的同源先行者 |
 | EMIB-T | EMIB with TSV | 橋接片中加入 TSV 的 EMIB 版本 |
 | Foveros | — | Intel 3D 堆疊家族；Foveros Direct 3D 為混合鍵合版本 |
