@@ -1,0 +1,401 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GPM 導讀來源</title><style>body{max-width:1000px;margin:40px auto;padding:0 24px;font:18px/1.8 system-ui;color:#243c4a;background:#faf9f5}a{color:#265a83}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:15px/1.8 system-ui;border-top:1px solid #ccc;padding-top:24px}
+.source-content h2,.source-content h3{line-height:1.4;margin-top:2em}
+.source-table{overflow-x:auto;margin:24px 0}table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.65}
+th,td{border:1px solid #cbd3d8;padding:12px;text-align:left;vertical-align:top;min-width:100px}
+th{background:#e9eff2}td{overflow-wrap:anywhere}tr:nth-child(even){background:#f1f4f4}
+.admonition{border-left:4px solid #a36642;background:#f5eee4;padding:12px 20px;margin:24px 0}
+.admonition-title{font-weight:bold}code{background:#e9eef0;padding:2px 5px;border-radius:3px}
+hr{border:0;border-top:1px solid #cbd3d8;margin:32px 0}
+</style><a href="../../index.html#reading">返回簡報</a><h1>來源與閱讀說明</h1><p>本簡報摘編自 book repo 的《從先進封裝看懂均豪》，原始章節位於 docs/gpm/。公司資訊沿用 2026-08-31 快照；這次製作沒有重新查核外部來源，也沒有更新公司現況。</p><p>投影片逐頁註明原書章節與適用的來源代號。技術圖是教學簡化，不按比例。產能互動改編第 14 章計算概念，明確採用無額外重工模型；所有參數都是教學假設。</p><p>操作：下方按鈕或方向鍵翻頁。頁首「✎ 編輯」可現場修改文字，「講稿」查看講者提示，「註解」留下意見，「🎤 講者」開啟簡報者視窗。另存的 edits.js 放回 resources/gpm/edits.js。簡報文字與互動可離線播放；Wikimedia Commons 圖片採動態連結，需要連網。圖片未載入時可讀替代文字及原有說明。</p><h2>原書來源索引快照</h2><p>以下為原書來源索引快照。章節名稱對應原書；外部來源連結需連網開啟，本文可離線閱讀。</p><article class="source-content"><h2 id="a">附錄 A：來源索引</h2>
+<p>本書所有數字與主張都要能回到這一頁的代號。<strong>沒有代號的數字就是沒有來源，不應該被引用。</strong></p>
+<p>查核日：<strong>2026-09-09</strong>　｜　均豪公開資訊快照日：<strong>2026-08-31</strong></p>
+<hr />
+<h3 id="_1">怎麼讀這張表</h3>
+<p>每個來源標三件事：</p>
+<div class="source-table"><table>
+<thead>
+<tr>
+<th>欄位</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>時間錨點</strong></td>
+<td>這份資料描述的是哪個時間點的世界。設備與封裝的世代更迭很快，2024 年的產能數字不能用來解釋 2026 年的訂單。</td>
+</tr>
+<tr>
+<td><strong>已讀範圍</strong></td>
+<td>本書寫作時實際讀進去的部分。標「未於本次重新取用」的，代表本書引用的是<strong>既有整理</strong>而非當次原文核對——這是真實限制，不是修辭。</td>
+</tr>
+<tr>
+<td><strong>能支持什麼</strong></td>
+<td>這份來源可以撐起哪一級的主張。用途錯配比來源本身錯誤更常見。</td>
+</tr>
+</tbody>
+</table></div>
+<p>證據等級（全書統一）：</p>
+<div class="source-table"><table>
+<thead>
+<tr>
+<th>標記</th>
+<th>意思</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[公司自述]</code></td>
+<td>公司在法說、年報、官網上自己說的</td>
+<td>「Carrier AOI 2026 Q2 進入量產放量」</td>
+</tr>
+<tr>
+<td><code>[雙方公告]</code></td>
+<td>交易雙方都有正式公告可對帳，且<strong>互相點名</strong></td>
+<td>本書快照範圍內<strong>尚無</strong>符合此等級的均豪客戶關係。昇陽半 2025-08-05 設備取得公告因未點名供應商，<strong>不能</strong>當此例</td>
+</tr>
+<tr>
+<td><code>[媒體報導]</code></td>
+<td>記者具名寫的，公司未否認也未證實</td>
+<td>「AOI 打進晶圓代工大廠先進封測廠區」</td>
+</tr>
+<tr>
+<td><code>[業界消息]</code></td>
+<td>媒體轉述未具名消息來源</td>
+<td>「部分製程取代 KLA」</td>
+</tr>
+<tr>
+<td><code>[推論]</code></td>
+<td>本書從結構或製程推導出來的</td>
+<td>「載板研磨需求會隨 PMIC 銅厚增加而上升」</td>
+</tr>
+<tr>
+<td><code>[未證實]</code></td>
+<td>有人講過但沒有可查核依據</td>
+<td>內部筆記中的客戶名</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3 id="g">一、均豪公開資訊（G 系列）</h3>
+<p>原始整理位於個人 Obsidian 筆記庫 <code>GPM/公司消息/</code>，蒐集日 <strong>2026-08-31</strong>。該資料夾七份筆記本次全數讀取。<strong>下表的原始連結未於 2026-09-09 逐條重新開啟</strong>，因此所有 G 系列數字的時效上限是 2026-08-31。理財周刊 2026-06-29 一則原被誤掛在 G1（官網／IR），現獨立為 <strong>G8</strong>。</p>
+<div class="source-table"><table>
+<thead>
+<tr>
+<th>代號</th>
+<th>來源</th>
+<th>時間錨點</th>
+<th>已讀範圍</th>
+<th>能支持什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>G1</strong></td>
+<td>均豪官網／IR：<a href="https://www.gpmcorp.com.tw">公司網站</a>、<a href="https://www.gpmcorp.com.tw/news_list.php">最新消息</a>、<a href="https://www.gpmcorp.com.tw/investors_finance.php">財務月營收</a>、<a href="https://www.gpmcorp.com.tw/investors_dividend.php">股利與法說</a></td>
+<td>持續更新，本書引用至 2026-08</td>
+<td>經 Obsidian 筆記轉述；官網頁面未於本次重新取用</td>
+<td><code>[公司自述]</code>：產品線名稱、法說簡報內容、月營收、股利、展覽行程；交叉持股約值（志聖持均豪約 27%、均豪持志聖約 12%、均豪持均華約 56.8%）；引用「2 nm 以下每片生產晶圓約 2.7 片再生晶圓」（<strong>與載具係數 2.5 不是同一題</strong>）</td>
+</tr>
+<tr>
+<td><strong>G2</strong></td>
+<td>2026-06-12 G2C+ Q1 法說會（晶華／凱基論壇），簡報 <code>20260612CN.pdf</code>、<a href="https://www.youtube.com/watch?v=fZu3GELEX0U">影片</a></td>
+<td>2026 Q1</td>
+<td>經筆記轉述之重點；簡報原檔與影片未於本次取用</td>
+<td><code>[公司自述]</code>：Q1 半導體占比 87%、毛利率 38.3%、Carrier AOI 認證量產、白光干涉國內 OSAT 認可、3D X-ray 目標 2027、陳政興三條戰線</td>
+</tr>
+<tr>
+<td><strong>G3</strong></td>
+<td>2026-08-12 櫃買中心 H1 業績發表會，簡報 <code>544320260812M001.pdf</code>、<a href="https://vimeopro.com/tpex/investor2026/video/1217585179">影片</a></td>
+<td>2026 H1</td>
+<td>同上</td>
+<td><code>[公司自述]</code>：H1 毛利率 36.6%、半導體占比 87%（<strong>合併</strong>）；PMIC 占母公司半導體 2024 約 0.5%／2025 約 1%／2026 H1 19%，在手訂單 12%；均華 2026 H1 營收 16.5 億、年增 41%，Bonder 占比已超過 Sorter；新增「前段來料檢查」站點；引用 GPU 功耗 2025 約 1,400 W → 2027 估 3,600 W、CoWoS 月產能、每片先進封裝晶圓約 2.5 片循環載具、載具月產 2022 約 1 萬 → 2026 約 13 萬</td>
+</tr>
+<tr>
+<td><strong>G4</strong></td>
+<td>2026-03-03 G2C 聯合法說（晶華／元大論壇）、<a href="https://www.youtube.com/watch?v=yIuHyVNinek">影片</a></td>
+<td>2025 全年回顧</td>
+<td>同上</td>
+<td><code>[公司自述]</code>：2025 合併營收<strong>約 46 億</strong>（法說約數；精確值見 G7 的 46.7 億）、半導體占比 79%、雙主軸、配息 2.2 元、Grinder 2026/27 展望</td>
+</tr>
+<tr>
+<td><strong>G5</strong></td>
+<td>鉅亨網 2026-04-27〈AOI 打進晶圓大廠與日月光〉<a href="https://news.cnyes.com/news/id/6433731">連結</a></td>
+<td>2026-04</td>
+<td>經筆記轉述</td>
+<td><code>[媒體報導]</code>：AOI 進入「晶圓代工大廠先進封測廠區」與日月光高雄廠、2026 個體設備出貨估 485 套（2025 估 162 套）、8 吋 SiC 全自動 CMP 開發；<code>[業界消息]</code>：部分製程取代 KLA</td>
+</tr>
+<tr>
+<td><strong>G6</strong></td>
+<td>《今周刊》／《財訊》2026-01-29 轉型專文，<a href="https://finance.technews.tw/2026/02/01/gpmcorp/">TechNews 轉載</a>、<a href="https://www.wealth.com.tw/articles/ecf22c7e-5a39-4e00-8b3b-ca85462e5d6b">今周刊（付費）</a>、<a href="https://www.chinatimes.com/realtimenews/20260201000004-260410">中時</a></td>
+<td>1978–2026 沿革</td>
+<td>經筆記轉述</td>
+<td><code>[媒體報導]</code>：轉型時間線、2014–16 玻璃載板 AOI 切入、研磨拋光曾占半導體營收逾六成、陳政興的方法論；交叉持股約值（同 G1）；「2 nm 以下每片約 2.7 片再生晶圓」為媒體轉述之公司引用（<strong>與載具 2.5 不是同一題</strong>）</td>
+</tr>
+<tr>
+<td><strong>G7</strong></td>
+<td>財報與營收新聞群：<a href="https://www.cna.com.tw/news/afe/202601140162.aspx">中央社 2026-01-14</a>、<a href="https://www.ctee.com.tw/news/20260115700266-439901">工商時報 2026-01-15</a>、<a href="https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=f3c873b9-20cd-403d-95fb-7c1b71b7b96c">MoneyDJ 2026-08-10</a>、<a href="https://money.udn.com/money/story/5612/8991013">經濟日報 2025-09-08</a>；公開資訊觀測站季報／月營收（經筆記轉述）</td>
+<td>2025 全年至 2026-08</td>
+<td>經筆記轉述</td>
+<td><code>[公司自述]</code>＋<code>[媒體報導]</code>：2025 合併營收 <strong>46.7 億</strong>／EPS 2.58（G4 法說寫「約 46 億」，是同一年的約數）；2026 Q1 觀測站稅後 0.93 億、歸屬母公司自結 0.31 億；2026 Q2 合併營收 11.44 億、毛利率 35.4%、營益率 1.9%、業外 1.66 億、稅前純益率約 21%；2026 年 1 月月減 51.5%、5 月月減 39.5%；前 7 月 30.09 億／年增 22.38%、7 月單月 8.37 億；法人預估 EPS 4–5 元（<strong>是法人預估，不是公司財測</strong>）</td>
+</tr>
+<tr>
+<td><strong>G8</strong></td>
+<td>《理財周刊》2026-06-29 均豪題材報導</td>
+<td>2026-06</td>
+<td>經 Obsidian 筆記轉述；<strong>原文未於本次取用</strong></td>
+<td><code>[媒體報導]</code>：3D NIR、TGV／CoWoS／FOPLP AOI 題材。<strong>不是 IR 產品清單，不能掛在 G1</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="g_1">G 系列使用時的三個陷阱</h4>
+<ol>
+<li><strong>合併與個體混用</strong>。半導體營收占比有時講個體（均豪本身）、有時講合併（含均華）。差距可達二十個百分點以上。看到「87%」要先確認口徑——2026 H1 的 87% 是<strong>合併</strong>。</li>
+<li><strong>「晶圓代工大廠」不會自己變成台積電</strong>。台灣媒體慣用此稱謂指涉台積電，但均豪的稿件極少直接印出三個字。本書一律維持未具名。</li>
+<li><strong>第三方法說整理會混淆聯盟成員</strong>。BigGo、Vocus 等整理會把志聖、均豪、均華的數字放在同一篇。引用前要確認是哪家在講。</li>
+</ol>
+<h4 id="_2">出貨套數的口徑衝突（未解）</h4>
+<div class="source-table"><table>
+<thead>
+<tr>
+<th>出處</th>
+<th>2025</th>
+<th>2026</th>
+<th>口徑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G5（鉅亨網 2026-04-27）</td>
+<td>162 套</td>
+<td>485 套</td>
+<td>個體，不含均華</td>
+</tr>
+<tr>
+<td>2026 年報英文版（經筆記轉述）</td>
+<td>—</td>
+<td>714 套（＋顯示器 14 套）</td>
+<td><strong>口徑不明</strong>，可能含均華或不同產品定義</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>這兩組數字不可混用，也不可相減。</strong> 待查：年報英文版原文的定義說明。</p>
+<div class="admonition note">
+<p class="admonition-title">兩條不可混用的乘數</p>
+<ul>
+<li>每片先進封裝晶圓約 <strong>2.5</strong> 片循環載具（G3）——Carrier AOI 需求的假設。</li>
+<li>2 nm 以下每片生產晶圓約 <strong>2.7</strong> 片再生晶圓（G1／G6）——reclaim 需求的假設。
+加工對象不同，不可相減或互相代入。</li>
+</ul>
+</div>
+<hr />
+<h3 id="tmi">二、封裝技術來源（T／M／I 系列）</h3>
+<p>本書的技術章節是<strong>跨來源教學整理</strong>，不是任何一家公司的實際產線流程。以下列出本領域的權威來源類別與其邊界。</p>
+<div class="source-table"><table>
+<thead>
+<tr>
+<th>代號</th>
+<th>來源</th>
+<th>時間錨點</th>
+<th>已讀範圍</th>
+<th>能支持什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T1</strong></td>
+<td>TSMC 3DFabric 官方技術說明（CoWoS-S／R／L、InFO、SoIC 系列頁面與白皮書）</td>
+<td>隨官網更新</td>
+<td><strong>未於本次重新取用</strong>；本書透過 B1／B2 的既有整理引用</td>
+<td>技術分類、平台命名與世代關係的權威定義。<strong>不支持</strong>任何特定客戶的產線細節</td>
+</tr>
+<tr>
+<td><strong>T2</strong></td>
+<td>TSMC InFO／Fan-Out 相關研討會論文（ECTC、IEDM 等）</td>
+<td>各篇發表年</td>
+<td>未於本次重新取用</td>
+<td>Fan-Out 流程原理、chip-first／chip-last 差異</td>
+</tr>
+<tr>
+<td><strong>T3</strong></td>
+<td>封裝互連結構的教科書級材料（bump／RDL／TSV／underfill／molding）</td>
+<td>通用</td>
+<td>未於本次重新取用</td>
+<td>結構與名詞定義；不支持具體尺寸的最新世代數字</td>
+</tr>
+<tr>
+<td><strong>T4</strong></td>
+<td>Samsung I-Cube 官方說明</td>
+<td>隨官網更新</td>
+<td>未於本次重新取用</td>
+<td>I-Cube 各版本的官方定義。<strong>各版本必須按來源分列，不可跨版本混寫</strong></td>
+</tr>
+<tr>
+<td><strong>T5</strong></td>
+<td>混合鍵合（hybrid bonding）相關原始論文與設備商技術文件</td>
+<td>各篇發表年</td>
+<td>未於本次重新取用</td>
+<td>表面粗糙度、潔淨度、對位精度的量級要求</td>
+</tr>
+<tr>
+<td><strong>M1</strong></td>
+<td>SK hynix HBM 官方技術說明（MR-MUF 等）</td>
+<td>隨官網更新</td>
+<td>未於本次重新取用</td>
+<td>HBM 堆疊接合方法的官方定義</td>
+</tr>
+<tr>
+<td><strong>M2</strong></td>
+<td>Samsung／Micron HBM 官方技術說明（TC-NCF 等）</td>
+<td>隨官網更新</td>
+<td>未於本次重新取用</td>
+<td>同上；<strong>不同廠商方法不可互相代入</strong></td>
+</tr>
+<tr>
+<td><strong>I1</strong></td>
+<td>Intel EMIB 官方技術說明</td>
+<td>隨官網更新</td>
+<td>未於本次重新取用</td>
+<td>EMIB 結構定義與版本差異（EMIB／EMIB-T）</td>
+</tr>
+<tr>
+<td><strong>I2</strong></td>
+<td>Intel Foveros 官方技術說明</td>
+<td>隨官網更新</td>
+<td>未於本次重新取用</td>
+<td>3D 堆疊與 EMIB 的組合關係</td>
+</tr>
+<tr>
+<td><strong>E1</strong></td>
+<td>AOI／光學檢測設備商技術文件</td>
+<td>通用</td>
+<td>未於本次重新取用</td>
+<td>檢測方法的能力邊界與盲點</td>
+</tr>
+<tr>
+<td><strong>E2</strong></td>
+<td>X-ray／超音波掃描（SAT）檢測原理文件</td>
+<td>通用</td>
+<td>未於本次重新取用</td>
+<td>內部缺陷檢測的物理限制</td>
+</tr>
+<tr>
+<td><strong>E3</strong></td>
+<td>背磨、CMP、研磨設備技術文件</td>
+<td>通用</td>
+<td>未於本次重新取用</td>
+<td>研磨類別、TTV／粗糙度指標定義</td>
+</tr>
+<tr>
+<td><strong>E4</strong></td>
+<td>濕製程（清洗、蝕刻、去膠、顯影）技術文件</td>
+<td>通用</td>
+<td>未於本次重新取用</td>
+<td>濕製程分類、選擇比與殘留控制</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition warning">
+<p class="admonition-title">T／M／I／E 系列的共同限制</p>
+<p>這些來源在本次寫作期間<strong>沒有逐份重新開啟核對</strong>。本書技術章節的作用是建立可推理的心智模型，不是提供可直接引用的規格數字。凡是本書寫出的具體數值，若沒有標註來源代號與日期，請一律當成<strong>量級示意</strong>，需要精確值時回原廠文件核對。</p>
+</div>
+<hr />
+<h3 id="b">三、本書庫既有書（B 系列）</h3>
+<p>這些是同一書庫裡已完成的筆記，作為<strong>交叉連結與延伸閱讀</strong>使用，不作為技術權威來源引用。</p>
+<div class="source-table"><table>
+<thead>
+<tr>
+<th>代號</th>
+<th>書</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B1</strong></td>
+<td>CoWoS 技術精讀筆記</td>
+<td>TSV、矽中介板、CoWoS-S/R/L、HBM 整合、SoIC 的深入技術細節</td>
+</tr>
+<tr>
+<td><strong>B2</strong></td>
+<td>CoPoS 面板級先進封裝筆記</td>
+<td>Fan-Out／FOPLP 脈絡、面板級製程挑戰、die shift、設備生態</td>
+</tr>
+<tr>
+<td><strong>B3</strong></td>
+<td>半導體職務完全指南</td>
+<td>設備、良率、封裝、FAE 等職務的實際工作內容</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3 id="_3">四、本書自建的內容（不是來源，是作者責任）</h3>
+<p>以下內容<strong>沒有外部來源</strong>，是本書為了教學而建立的，讀者不應把它們當成產業數據引用：</p>
+<div class="source-table"><table>
+<thead>
+<tr>
+<th>內容</th>
+<th>位置</th>
+<th>性質</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>產能與良率算例</td>
+<td>第 14 章</td>
+<td><strong>假設數字</strong>，用來示範計算方法。所有假設均已在頁面上明示</td>
+</tr>
+<tr>
+<td>「缺陷—形成站點—檢測方法—盲點」矩陣</td>
+<td>第 11 章</td>
+<td>跨來源整理，用於推理訓練</td>
+</tr>
+<tr>
+<td>教學用製程流程圖</td>
+<td>第 5–10 章</td>
+<td><strong>教學簡化</strong>，站點順序經過合併與省略</td>
+</tr>
+<tr>
+<td>消息分析模板</td>
+<td>第 16 章</td>
+<td>本書設計的推理框架</td>
+</tr>
+<tr>
+<td>證據等級標記</td>
+<td>全書</td>
+<td>本書自訂的分級，不是產業標準</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3 id="_4">五、更新這份索引的時機</h3>
+<div class="source-table"><table>
+<thead>
+<tr>
+<th>觸發事件</th>
+<th>要更新什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>均豪發布新的法說簡報或年報</td>
+<td>G 系列，並重新檢查第 15 章矩陣中「尚待查證」的項目是否已被證實</td>
+</tr>
+<tr>
+<td>有客戶關係從 <code>[業界消息]</code> 升級為 <code>[雙方公告]</code></td>
+<td>第 15 章矩陣的證據等級欄</td>
+</tr>
+<tr>
+<td>TSMC／記憶體廠發布新世代技術</td>
+<td>T／M 系列，並檢查第 6–10 章是否有世代混寫</td>
+</tr>
+<tr>
+<td>超過六個月未更新</td>
+<td>整份索引標為過期快照，正文結論仍成立但數字需重新核對</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<blockquote>
+<p>← 上一頁：附錄 C 待查事項總表　｜　相關：附錄 B 術語表 ｜ 第 15 章 均豪產品地圖 ｜ 第 16 章 如何讀懂一則消息</p>
+</blockquote></article></html>

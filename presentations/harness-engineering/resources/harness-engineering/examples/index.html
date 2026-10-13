@@ -1,0 +1,84 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>三組小實驗</title><style>body{max-width:960px;margin:40px auto;padding:0 24px;font:17px/1.8 system-ui;color:#243c4a;background:#faf9f5}
+a{color:#265a83}h2{margin-top:2em;line-height:1.4}code{background:#e9eef0;padding:2px 5px;border-radius:3px}
+pre{background:#e9eef0;padding:12px 16px;overflow-x:auto}pre code{padding:0}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.65;margin:20px 0}
+th,td{border:1px solid #cbd3d8;padding:10px;text-align:left;vertical-align:top}th{background:#e9eff2}
+.note{border-left:4px solid #a36642;background:#f5eee4;padding:10px 18px;margin:20px 0}</style><a href="../../../index.html">返回簡報</a><h1>三組不用模型服務金鑰的實驗</h1><p class="note">摘自《Coding Agent 的運作原理》的實驗導讀。程式只用 Python 標準函式庫，不呼叫模型、不連網。文中提到的原書章節只作對照，本簡報未收錄全文。</p>
+<p>這三組實驗讓你直接觀察工作迴圈、檔案編輯與資訊保留。它們使用固定資料，不代表真實模型的解題能力。</p>
+<p>需要 Python 3.8 以上版本。下載檔案後，在存放檔案的資料夾開啟終端機，用 <code>python 檔名.py</code> 執行；若電腦以 <code>python3</code> 啟動 Python，請替換命令開頭。不要加 <code>-O</code>，它會停用本實驗的 <code>assert</code> 檢查。</p>
+<h2>先看工作何時算完成</h2>
+<p>下載 <a href="loop_demo.py">loop_demo.py</a>，執行：</p>
+<pre><code class="language-text">python loop_demo.py
+</code></pre>
+<p>程式列出每一步的編號、工具與結果，最後印出 <code>PASS: loop checks</code>。</p>
+<div class="wrap"><table>
+<thead>
+<tr>
+<th>情境</th>
+<th>預期狀態</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>讀取、修正、檢查、完成</td>
+<td><code>completed</code></td>
+<td>模擬狀態通過三個指定檢查</td>
+</tr>
+<tr>
+<td>要求不存在的工具，再修正</td>
+<td><code>completed</code>，前面有錯誤紀錄</td>
+<td>錯誤保留下來，後續動作仍可修正</td>
+</tr>
+<tr>
+<td>讀檔工具模擬執行失敗，再修正</td>
+<td><code>completed</code>，前面有錯誤紀錄</td>
+<td>工具內的例外也回到流程</td>
+</tr>
+<tr>
+<td>持續讀取而超出上限</td>
+<td><code>step_limit</code></td>
+<td>沒有完成，也沒有執行超出上限的動作</td>
+</tr>
+<tr>
+<td>修正後直接說完成</td>
+<td><code>unverified</code></td>
+<td>缺少檢查證據</td>
+</tr>
+<tr>
+<td>對原本錯誤狀態檢查</td>
+<td><code>unverified</code></td>
+<td>1,000 元邊界仍失敗</td>
+</tr>
+<tr>
+<td>檢查通過後再次修改</td>
+<td><code>unverified</code></td>
+<td>舊驗證不替新修改背書</td>
+</tr>
+</tbody>
+</table></div>
+<p>這裡的 <code>fix</code> 只改變記憶體中的布林狀態，不編輯真正程式。工具白名單包含 <code>read</code>、<code>read_missing</code>、<code>fix</code>、<code>check</code>、<code>finish</code>；沒有可執行任意命令的工具。<code>read_missing</code> 故意拋出模擬的檔案不存在錯誤，沒有碰觸磁碟。請把正常案例中的 <code>check</code> 移到 <code>fix</code> 前面，再執行：你應看到該案例的斷言失敗，因為舊檢查不能替新修改背書。</p>
+<p>要恢復原本檢查，請重新下載或改回動作順序。這是本書的故意失敗練習，不表示 Python 安裝有問題。</p>
+<h2>再確認拒絕修改時檔案沒有變</h2>
+<p>下載 <a href="edit_demo.py">edit_demo.py</a>，執行：</p>
+<pre><code class="language-text">python edit_demo.py
+</code></pre>
+<p>程式在暫存資料夾自行建立 <code>price.py</code>，完成後由 Python 清理。唯一匹配會成功；找不到原文、兩處匹配、重疊匹配與空字串會拒絕。最後印出 <code>PASS: edit checks</code>。</p>
+<p>程式使用位元組替換，讓原有 CRLF 換行（Windows 常見的換行格式）保持原樣；先寫旁邊的暫存檔，再替換目標，減少直接寫壞原檔的風險。它沒有模擬磁碟損毀，也沒有協調其他同時寫入者。實驗也不保證保留檔案權限、時間戳記等附加資料。</p>
+<p><code>replace_unique</code> 的檔案路徑由可信的示範程式提供。若要把函式直接公開成代理工具，還必須加入工作目錄及路徑授權；不要把這個函式當成沙箱。</p>
+<p>閱讀第 7 章後，試著說明：為什麼找到第一處之後，仍要從下一個位置搜尋第二處？<code>aaa</code> 中的 <code>aa</code> 又有幾個可能起點？</p>
+<h2>最後比較摘要保留了什麼</h2>
+<p>下載 <a href="context_demo.py">context_demo.py</a>，執行：</p>
+<pre><code class="language-text">python context_demo.py
+</code></pre>
+<p>預期輸出：</p>
+<pre><code class="language-text">漏掉事實: ['constraint', 'evidence']
+把未知改成成功: ['evidence']
+保留必要資訊: []
+PASS: context checks
+</code></pre>
+<p><code>REQUIRED</code> 是事先由人指定的驗收資料，不是程式自行從對話發現的真相。空串列表示這五項固定資料吻合，沒有表示任意自由文字都被理解。把正確資料改成同義句也會判為不吻合；這正是精確檢查的範圍限制。</p>
+<p>練習新增一項事實：「測試只能在指定副本執行」。然後觀察舊摘要缺少哪個欄位。回到第 9 章，說明哪些資訊應保留原文，哪些可摘要。</p>
+<h2>三組通過之後能說什麼</h2>
+<p>你能說：這些固定案例下，停止狀態、唯一匹配與關鍵資訊核對符合程式中的預期。你還不能說：模型能穩定修好陌生專案、摘要語意一定正確，或此原型適合執行不可信程式。</p>
+<p>下一步回到第 16 章，把你的任務與驗收條件寫成自己的設計卡。</p>

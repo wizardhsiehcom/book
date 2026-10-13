@@ -1,0 +1,41 @@
+/* 主題內圖解與兩個互動實驗；框架品牌由 agentdeck/assets/theme 持有。前綴 he-。 */
+.he-code{font:18px/1.6 ui-monospace,Consolas,monospace;background:var(--tint);border-left:4px solid var(--deck-primary);padding:16px 20px;margin:0;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink)}
+.he-code mark,.he-lab mark{background:var(--deck-highlight);color:var(--card);padding:0 2px}
+.he-bug{display:grid;gap:28px;width:100%;max-width:980px;margin:auto}
+.he-bug .he-code{font-size:24px}
+.he-chain{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
+.he-chain b{border:2px solid var(--deck-primary);padding:12px 16px;font-size:20px;color:var(--deck-primary)}
+.he-chain i{font-style:normal;color:var(--muted);font-size:16px}
+.he-chain i::after{content:" →"}
+.he-json{font-size:16px;margin-top:22px}
+
+.he-lab{width:100%;box-sizing:border-box;min-height:420px;display:grid;align-content:start;gap:16px}
+.he-controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:16px;color:var(--muted)}
+.he-seg{display:flex;flex-wrap:wrap;border:1px solid var(--line)}
+.he-seg button,.he-go{font:inherit;font-size:16px;padding:7px 12px;border:0;background:var(--card);color:var(--ink);cursor:pointer}
+.he-seg button+button{border-left:1px solid var(--line)}
+.he-seg button[aria-pressed="true"]{background:var(--deck-primary);color:var(--card)}
+.he-go{background:var(--deck-accent);color:var(--card);font-weight:700}
+.he-panes{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px}
+.he-panes small{display:block;font-size:15px;color:var(--muted);margin-bottom:6px}
+.he-panes pre{font:17px/1.6 ui-monospace,Consolas,monospace;background:var(--tint);padding:14px 16px;margin:0;height:210px;box-sizing:border-box;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto;color:var(--ink)}
+.he-verdict{font-size:19px;margin:10px 0 0;padding:8px 12px;border-left:4px solid var(--line);color:var(--muted)}
+.he-verdict.ok{border-color:var(--deck-accent);color:var(--deck-primary)}
+.he-verdict.no{border-color:var(--deck-highlight);color:var(--deck-highlight);font-weight:700}
+.he-sumtable{width:100%;border-collapse:collapse;font-size:18px}
+.he-sumtable th,.he-sumtable td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+.he-sumtable thead th{font-size:15px;color:var(--muted)}
+.he-sumtable tbody th{white-space:nowrap}
+.he-sumtable td:last-child{white-space:nowrap;font-weight:700}
+.he-sumtable tr.ok td:last-child{color:var(--deck-accent)}
+.he-sumtable tr.miss td:last-child{color:var(--deck-highlight)}
+.he-sumtable tr.bad td:last-child{color:var(--deck-highlight)}
+.he-sumtable tr.bad td:nth-child(2){color:var(--deck-highlight);font-weight:700}
+
+@media(max-width:700px){
+  .he-bug .he-code{font-size:17px}.he-chain b{font-size:16px;padding:8px 10px}
+  .he-panes{grid-template-columns:1fr}.he-panes pre{height:150px;font-size:14px}
+  .he-lab{min-height:560px}.he-seg button,.he-go{font-size:14px;padding:6px 9px}
+  .he-sumtable{font-size:14px}.he-sumtable th,.he-sumtable td{padding:7px 6px}.he-sumtable td:last-child{white-space:normal}
+}
+.he-panes>div+div pre{font-size:15px}

@@ -1,0 +1,12 @@
+/* Mermaid 使用共用 default 主題；固定淺色底保留深色箭頭的對比。 */
+.md-typeset .mermaid {
+  background: #f2ede3;
+  color: #242421;
+  border-radius: .25rem;
+  overflow-x: auto;
+  padding: 1rem;
+}
+
+.md-typeset .mermaid svg {
+  min-width: 32rem;
+}

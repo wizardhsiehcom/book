@@ -6,6 +6,16 @@ const CATEGORIES = ["半導體公司","半導體技術與產業","AI 與機器�
 
 const BOOKS = [
   {
+    icon: "🔧",
+    title: "程式開發代理的運作原理",
+    desc: "從模型到可控的工作系統：16 章理解迴圈、工具、上下文與權限，搭配三組 Python 小實驗",
+    tags: ["Harness", "coding agents", "系統設計"],
+    category: "AI 與機器學習",
+    href: "book/harness-engineering/html/index.html",
+    accent: "#0f766e",
+    glow: "rgba(15,118,110,0.18)",
+  },
+  {
     icon: "✍️",
     title: "設備 AI 工程師的 LinkedIn 寫作",
     desc: "從半導體設備與視覺 AI 取材，用六種發文模式累積軟體、LLM 與 Agent 的作品與同行交流",
@@ -368,6 +378,16 @@ const BOOKS = [
     href: "book/gpm/html/index.html",
     accent: "#14b8a6",
     glow: "rgba(20,184,166,0.18)",
+  },
+  {
+    icon: "🏭",
+    title: "從封裝測試看懂矽品",
+    desc: "先分清矽品、日月光半導體與投控，再沿著量產主力、中介層、扇出橋接到 CPO，用證據等級讀擴產與客戶新聞",
+    tags: ["advanced packaging", "OSAT", "SPIL"],
+    category: "半導體公司",
+    href: "book/spil/html/index.html",
+    accent: "#c2410c",
+    glow: "rgba(194,65,12,0.18)",
   },
   {
     icon: "🎯",

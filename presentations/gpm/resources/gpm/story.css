@@ -1,0 +1,39 @@
+﻿/* 主題內圖解；框架品牌由 agentdeck/assets/theme 持有。 */
+.gpm-section{padding:20px 34px;display:grid;gap:9px;text-align:center;max-width:1000px;margin:auto}
+.gpm-dies{display:grid;grid-template-columns:1fr 1.65fr 1fr;gap:30px;align-items:end}
+.gpm-hbm{background:repeating-linear-gradient(to bottom,#dce6ee 0,#dce6ee 17px,#9eb6c9 18px,#9eb6c9 21px);padding:20px 8px;color:#193951;border:2px solid #57758c;font-weight:700}
+.gpm-logic{background:#365569;color:white;padding:32px 12px;font-weight:700}
+.gpm-joints{color:#815129;font-size:17px;border-top:5px dotted #b9783b;padding-top:4px}
+.gpm-interposer{background:#d9e3e9;border:2px solid #66869b;padding:20px;color:#213d4f;font-weight:700}
+.gpm-substrate{background:#dce7dc;border:2px solid #799a7c;padding:15px;color:#244229}
+.gpm-board{border-top:7px dotted #9b856b;padding:12px;color:#5d503f}
+.gpm-bond{max-width:900px;margin:20px auto;text-align:center}
+.gpm-bond-surface{background:#e1e8ec;border:2px solid #7794a5;padding:24px;color:#263f4e;display:flex;align-items:center;justify-content:space-evenly;gap:12px}
+.gpm-bond-surface b{background:#bd7548;color:white;padding:12px 20px}
+.gpm-interface{padding:24px 8px;border-left:5px solid #b84f37;color:#8c422f}
+.gpm-bond p{font-size:22px;padding-top:18px}
+.gpm-yield{max-width:900px;margin:20px auto;display:grid;gap:24px}
+.gpm-yield>div{display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center}
+.gpm-yield>div>div{background:linear-gradient(to right,#43677d var(--fill),#e5e8e8 var(--fill));height:60px;display:flex;align-items:center}
+.gpm-yield b{color:white;padding-left:20px;font-size:28px}
+.gpm-yield p{font-size:20px}
+.gpm-lab{padding:10px 18px;min-height:350px}
+.gpm-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.gpm-controls label{display:grid;gap:10px;font-size:19px}
+.gpm-controls input{width:100%;accent-color:#496c80}
+.gpm-controls output{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.gpm-result{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin:30px 0}
+.gpm-result>div{border-top:3px solid #9d5c43;padding:16px 0}
+.gpm-result small{display:block;font-size:17px}
+.gpm-result strong{display:block;color:#365569;font-size:42px;font-variant-numeric:tabular-nums}
+.gpm-result em{font-size:18px;font-style:normal}
+.gpm-formula{font-size:18px;line-height:1.7;margin:0}
+.gpm-question{font-size:27px;line-height:1.9;padding:35px 25px;border-left:5px solid #9d5c43}
+@media(max-width:650px){.gpm-section{padding:10px 0}.gpm-dies{gap:8px}.gpm-hbm{font-size:15px}.gpm-logic{font-size:17px}.gpm-joints{font-size:14px}.gpm-controls{gap:12px}.gpm-controls label{font-size:14px}.gpm-result{gap:10px}.gpm-result strong{font-size:29px}.gpm-result small{font-size:14px}.gpm-lab{padding:5px;min-height:340px}.gpm-yield>div{grid-template-columns:100px 1fr;gap:10px}.gpm-bond-surface{padding:14px 4px;font-size:15px}.gpm-bond-surface b{padding:10px}.gpm-question{font-size:21px}}
+.gpm-section,.gpm-bond,.gpm-yield{width:100%;box-sizing:border-box}
+
+.gpm-illustrated{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;width:100%;align-items:center}
+.gpm-wiki{margin:0;min-width:0}.gpm-wiki img{display:block;width:100%;height:240px;object-fit:contain;background:#f5f7f8;color:#34495a;font-size:17px}
+.gpm-wiki figcaption{font-size:16px;line-height:1.5;margin-top:10px}.gpm-wiki small{display:block;font-size:12px;margin-top:6px;color:#637080}.gpm-wiki a{color:#27657c}
+.gpm-image-context .deck-compare{grid-template-columns:1fr}.gpm-image-context{min-width:0}
+@media(max-width:700px){.gpm-illustrated{grid-template-columns:1fr}.gpm-wiki img{height:220px}}
