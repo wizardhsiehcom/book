@@ -41,6 +41,8 @@ markdown_extensions:
 nav:
   - 導讀: README.md
   - 研究與作者案例:
+      - 貼文剖析與比較: post-anatomy.md
+      - 候選與編修示例: llm-editing-examples.md
       - 統整分析與你的寫作方向: integrated-analysis.md
       - 流量、內容與個人魅力: reach-content-persona.md
       - 發文模式與語氣方向: tone-and-voice.md
