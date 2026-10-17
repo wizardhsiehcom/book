@@ -140,9 +140,15 @@ cases:
       - 留在三星
       - 轉往其他代工廠（需對方有能力且有產能）
     choice: 留在三星
+    feasibility_of_alternative:
+      - DigiTimes 2011 年即報導 Apple 將轉向台積電，但當時沒有發生
+      - DigiTimes 2013 年 6 月：台積電與創意簽下 Apple 20/16/10 奈米三年合約；2013 年 7 月小量試產，2014 Q1 完成約 5 萬片產能的 20 奈米設備
     uncertain:
-      - 當時台積電是否已有可承接的製程與產能，需查證
-    sources: []
+      - 兩則都是 DigiTimes 供應鏈傳聞，台積電與 Apple 均未證實；證據等級為報導
+      - 2011–2012 年台積電 28 奈米產能吃緊的程度，尚未查證
+    sources:
+      - https://www.mactrast.com/2013/06/rumor-tsmc-signs-deal-with-apple-to-build-20nm-a8-chips/
+      - https://www.newelectronics.co.uk/content/news/tsmc-to-make-20nm-a8-chips-for-apple
 
   - id: apple_moves_tsmc_2014_2016
     title: Apple 轉向台積電
@@ -191,25 +197,35 @@ cases:
   - id: intel_7nm_delay_2020
     title: Intel 7 奈米延後，首度表示考慮委外
     period: "2020-07"
-    evidence_status: unverified
+    evidence_status: verified
     roles:
       intel: IDM，製程只服務自家產品
-    outcome: 10 奈米多次延期後，7 奈米再延；公開表示考慮外部代工
+    facts:
+      - 2020 Q2 法說會：7 奈米落後約六個月，良率落後內部目標約一年
+      - Intel 自述原因：製程中發現導致良率下降的缺陷模式
+      - 執行長 Bob Swan 表示有備援計畫，會務實考慮外部代工（2022 年以後的產品）
     alternatives_on_record:
-      - 10 奈米密度目標過於激進
-      - EUV 導入時機
-    sources: []
+      - 10 奈米密度目標過於激進（待查）
+      - EUV 導入時機（待查）
+    sources:
+      - https://at-web1.www.anandtech.com/show/15926/intel-7nm-delayed-by-6-months-company-to-take-pragmatic-approach-in-using-3rd-party-fabs
 
   - id: intel_customer_and_rival
     title: Intel 同時是台積電的客戶與代工對手
     period: "2021–"
-    evidence_status: unverified
+    evidence_status: partial
     roles:
       intel: 經營代工業務，同時委託台積電生產部分晶片塊
       tsmc: 代工廠
     relations:
       - Intel 的代工業務需要說服外部客戶，自己卻還有自有產品
-    sources: []
+    facts:
+      - Lunar Lake（2024）的運算晶片塊由台積電 N3B 生產，平台控制晶片塊為 N6；Intel 只做 22FFL 基底晶片塊與 Foveros 封裝
+      - 季辛格：選台積電是因為那個時間點它是對的技術
+    uncertain:
+      - Intel 代工業務（2021 年 IDM 2.0 起）爭取外部客戶的成果，尚未查證；不能把「Intel 難以取信」寫成事實
+    sources:
+      - https://www.eenewseurope.com/en/intel-details-tsmc-made-lunar-lake-processor-for-ai-pcs
 
   - id: huawei_fdpr_2020
     title: 外國直接產品規則切斷台積電與華為
@@ -270,3 +286,32 @@ cases:
     sources:
       - https://www.taiwannews.com.tw/news/6310676
       - https://investor.tsmc.com/japanese/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf
+
+  - id: gf_samsung_14nm_license_2014
+    title: 格羅方德取消自研 14 奈米，改授權三星製程
+    period: "2014"
+    evidence_status: partial
+    roles:
+      globalfoundries: 代工廠，自研 14XM 進度不順
+      samsung: 技術授權方
+      amd: 主要客戶
+    choice: 取消 14XM，取得三星 14 奈米 FinFET 多年期授權
+    outcome: 2016 年起供應 AMD 的 14 奈米產品（Zen 世代）
+    uncertain:
+      - 授權後的良率與成本表現，只有公司自身說法
+    sources:
+      - https://siliconsemiconductor.net/article/80002/Samsung_and_GlobalFoundries_unite_to_broaden_14nm_FinFET_technology
+      - https://amp.hothardware.com/news/globalfoundries-performs-amd-zen-magic-with-successful-14nm-finfet-tape-out
+
+  - id: tsmc_share_2014_2015
+    title: 市占過半，但尚未被當成安全問題
+    period: "2014–2015"
+    evidence_status: verified
+    facts:
+      - Gartner：2014 年 53.7%、2015 年 54.3%；台積電年報估 54%、55%
+      - 同期三星、格羅方德仍在 14 奈米與台積電 16 奈米競爭，最先進節點並非獨家
+    uncertain:
+      - 此時期是否有政府施壓，只是「未見報導」，不是查證過的否定
+    sources:
+      - https://www.gartner.com/en/newsroom/press-releases/2016-04-12-worldwide-semiconductor-foundry-market-grew-4-percent-in-2015-according-to-final-results-by-gartner
+      - https://investor.tsmc.com/static/annualReports/2015/english/e_2_2.html

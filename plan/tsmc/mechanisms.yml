@@ -29,6 +29,8 @@ mechanisms:
         note: 跨產業的同構案例；官方理由直接是「客戶抱怨被競爭」，但施振榮另有競爭力理由
       - case: apple_moves_tsmc_2014_2016
         note: 只在「替代者已可行」之後才成立；不能單獨歸因
+      - case: intel_customer_and_rival
+        note: 連代工對手都向台積電下單；但季辛格給的理由是技術，不是中立，屬弱支持
     challenges:
       - case: apple_samsung_stay_2011_2013
         note: 訴訟期間仍留在三星三年，代表不信任不是充分條件；需加上「替代者可行」的前提
@@ -64,7 +66,7 @@ mechanisms:
         note: 定錨位置從手機移到 AI，但這是定錨換人，不是機制本身的證據
     challenges:
       - case: intel_7nm_delay_2020
-        note: Intel 落後有技術選擇的替代解釋，不能直接當成「跑道窄」的證據（且此卡尚未查證）
+        note: Intel 自述原因是製程缺陷模式，這是技術解釋；不能當成「跑道窄」的證據
     return_point: 判斷一個節點的競爭，先問「誰在餵它產量」。
 
   - id: countercyclical_bet
@@ -99,9 +101,11 @@ mechanisms:
     supports:
       - case: tsmc_013_copper_2000
         note: 只有一方說法，IBM 否認；結果的因果鏈未建立
-    challenges: []
+    challenges:
+      - case: gf_samsung_14nm_license_2014
+        note: 授權外部製程的一方，在 14 奈米上順利供應主要客戶；「不自研」不必然落後
     status: weak
-    gap: 缺 challenges 案例；在找到之前，章節只寫選擇與結果，不寫因果。
+    chapter_rule: 章節只寫選擇與結果，不寫「自主路線導致領先」的因果。
 
   - id: irreplaceability_dual
     name: 不可替代的雙重意義
@@ -122,8 +126,10 @@ mechanisms:
       - case: sophgo_huawei_2024
         note: 供應者看不到最終流向，卻要為它負責；中立承諾被外部改寫
       - case: overseas_fabs_2020_2027
-    challenges: []
-    gap: 缺反例；可找其他高市占但未被政治化的供應者（如特定材料或設備商）對照。
+    challenges:
+      - case: tsmc_share_2014_2015
+        note: 市占已過半卻未被當成安全問題；不可替代本身不夠，還需要「最先進節點獨家」加上「國安競爭升溫」兩個前提
+    boundary: 2014–2015 年的最先進節點仍有三星競爭，所以這個反例同時檢驗了「市占」與「獨家」的差別。
     return_point: 「不可替代」不是一個事實，而是一張要看站在哪一列才讀得懂的表（見 frames）。
 
 # 意義框架層：同一個詞在不同位置上的指涉與評價。描述與評價分開存。
@@ -171,8 +177,8 @@ tests:
   - id: apple_stay_vs_leave
     inputs: [apple_samsung_stay_2011_2013, apple_moves_tsmc_2014_2016]
     expected: neutral_supplier 單獨無法區分兩者；必須加上「替代者可行」前提才能解釋為何 2011 年留下、2014 年起離開
-    status: open
-    blocks: 需查證台積電 2011–2013 年是否有可承接 Apple 的節點與產能
+    status: pass_weak
+    result: 時序吻合：2011 年轉單傳聞未成真；2013 年才有 20 奈米合約與 2014 Q1 產能。但證據只是供應鏈報導，章節須寫成「時序吻合」，不能寫成「原因是」
 
   - id: trust_vs_cost
     inputs: [umc_pure_play_1995, nvidia_samsung_8nm_2020]
@@ -181,6 +187,11 @@ tests:
 
   - id: exit_reason
     inputs: [gf_7nm_exit_2018, intel_7nm_delay_2020]
-    expected: 前者歸 anchor_learning_curve（官方明說是業務與財務）；後者在查證前只能列替代解釋，不能歸因
-    status: open
-    blocks: intel_7nm_delay_2020 尚未查證
+    expected: 前者歸 anchor_learning_curve（官方明說是業務與財務）；後者歸技術原因（Intel 自述缺陷模式）
+    status: pass
+    result: 兩個「退出或延後」得到不同解釋，代表機制沒有把所有落後都讀成產量問題
+
+  - id: share_vs_exclusivity
+    inputs: [tsmc_share_2014_2015, sophgo_huawei_2024]
+    expected: 前者市占過半但未政治化；後者被外部劃界。irreplaceability_dual 必須用「獨家＋國安競爭」區分，不能只用市占
+    status: pass
