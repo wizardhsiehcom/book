@@ -1,0 +1,186 @@
+# 台積電書的機制層與意義框架層。
+# 每個機制都是待檢驗的假說：必須寫適用條件、替代解釋、反證觀察，以及至少一個 challenges 案例。
+# 案例 id 對應 cases.yml。章節裡的每個「詮釋」框，都要能追溯到這裡的某個機制。
+
+mechanisms:
+  - id: neutral_supplier
+    name: 中立供應者承諾
+    hypothesis: 供應者若同時和客戶競爭，客戶一有可行的替代就會轉移；不競爭的承諾要長期不越界才可信。
+    prerequisites:
+      - 存在能力與產能都可行的替代供應者（沒有替代時，不信任只是不滿）
+      - 客戶交出的資訊或產能分配對其競爭力敏感
+    causal_path:
+      - 供應者兼有自有產品
+      - 客戶擔心設計外洩或排產被犧牲
+      - 替代者出現時，客戶轉移
+    alternative_explanations:
+      - 純粹是價格、良率或技術差距
+      - 分拆是為了財務或管理效率，而不是信任
+    disconfirming_observations:
+      - 有可行替代時，客戶仍長期留在與自己競爭的供應者
+      - 中立供應者在價格與技術相當時，沒有贏得更多客戶
+    boundary: 成本或產能差距夠大時，信任會讓位（nvidia_samsung_8nm_2020）。
+    supports:
+      - case: tsmc_founding_1987
+        note: 機制的原型；但「早期客戶為何選台積電」缺第一手證詞
+      - case: umc_pure_play_1995
+        note: 不同公司獨立做出同一選擇；是比台積電自身更強的佐證
+      - case: acer_wistron_2000
+        note: 跨產業的同構案例；官方理由直接是「客戶抱怨被競爭」，但施振榮另有競爭力理由
+      - case: apple_moves_tsmc_2014_2016
+        note: 只在「替代者已可行」之後才成立；不能單獨歸因
+    challenges:
+      - case: apple_samsung_stay_2011_2013
+        note: 訴訟期間仍留在三星三年，代表不信任不是充分條件；需加上「替代者可行」的前提
+      - case: nvidia_samsung_8nm_2020
+        note: 成本可以壓過對「供應者也有自有產品」的顧慮
+    scene_seed:
+      roles: [fabless, idm]
+      tension: 旺季時誰的訂單先排；設計交出去後會不會出現在對方產品裡
+      allowed: 只能寫角色處境與選項，不能替特定真實人物編台詞
+    return_point: 新增一位客戶時，要問的是「他還有別的選擇嗎」，而不是「他信不信任我們」。
+
+  - id: anchor_learning_curve
+    name: 定錨客戶與學習曲線
+    hypothesis: 先進節點需要大量、可預測的需求來攤提學習成本；服務越多客戶的代工者學得越快，缺乏客戶量的玩家會退出。
+    prerequisites:
+      - 新節點的良率提升主要靠產量累積
+      - 開發成本高到單一公司產品難以攤提
+    causal_path:
+      - 定錨客戶先付首發溢價
+      - 產量帶動良率
+      - 後續客戶加入，進一步擴大產量
+    alternative_explanations:
+      - 落後者是因為技術選擇失誤，而不是產量不足（如 Intel 10 奈米的密度目標）
+      - 資本實力差異
+    disconfirming_observations:
+      - 產量大的玩家仍在新節點落後
+      - 小產量的玩家靠技術突破追上
+    boundary: 三星的總產量不小，卻沒有在先進代工拿到同等優勢，說明「產量」要細到「同一節點上的外部客戶量」。
+    supports:
+      - case: gf_7nm_exit_2018
+        note: 官方明說是業務前景與財務，不是技術
+      - case: nvidia_overtakes_apple_2025
+        note: 定錨位置從手機移到 AI，但這是定錨換人，不是機制本身的證據
+    challenges:
+      - case: intel_7nm_delay_2020
+        note: Intel 落後有技術選擇的替代解釋，不能直接當成「跑道窄」的證據（且此卡尚未查證）
+    return_point: 判斷一個節點的競爭，先問「誰在餵它產量」。
+
+  - id: countercyclical_bet
+    name: 谷底加碼
+    hypothesis: 在週期谷底加碼的公司，若撐得過谷底，會在下一輪取得位置。
+    prerequisites:
+      - 財務承受得起谷底的虧損
+      - 技術不落後，加碼的產能有人要
+      - 需求最終回升
+    alternative_explanations:
+      - 倖存者偏差：加碼後倒下的公司不會被寫進成功故事
+      - 下一輪的勝出主要來自技術或客戶，而非加碼本身
+    disconfirming_observations:
+      - 谷底加碼卻破產的公司，數量與倖存者相當
+    supports:
+      - case: tsmc_2009_return
+        note: 單一案例，且結果無法與其他因素分開
+    challenges:
+      - case: elpida_2012
+        note: 候選反例；在查證爾必達是否曾谷底擴產之前，不能使用
+    status: weak
+    return_point: 只有在前提三條都能檢查時，才可以寫「谷底加碼」；否則只寫事實。
+
+  - id: own_roadmap
+    name: 自主路線與客戶配合
+    hypothesis: 不加入外部技術聯盟、自行開發，讓代工者能依客戶需求調整製程。
+    alternative_explanations:
+      - 聯盟本身的執行問題，而不是「加入聯盟」這個選擇
+      - 價格因素（張忠謀自己也列了價格太高）
+    disconfirming_observations:
+      - 加入聯盟的一方在同一世代與之後都沒有落後
+    supports:
+      - case: tsmc_013_copper_2000
+        note: 只有一方說法，IBM 否認；結果的因果鏈未建立
+    challenges: []
+    status: weak
+    gap: 缺 challenges 案例；在找到之前，章節只寫選擇與結果，不寫因果。
+
+  - id: irreplaceability_dual
+    name: 不可替代的雙重意義
+    hypothesis: 一旦成為唯一供應者，不可替代性同時是議價籌碼與被各方要求的理由；中立位置會被外部力量重新劃界。
+    prerequisites:
+      - 市占與技術差距大到短期無替代
+      - 供應者所在地或客戶涉及國家安全競爭
+    causal_path:
+      - 不可替代
+      - 各國把供應者視為安全問題
+      - 以補助、管制、要求設廠重新劃定可服務的客戶與地點
+    alternative_explanations:
+      - 海外設廠主要由客戶需求與補助的商業計算推動，而非安全考量
+    disconfirming_observations:
+      - 市占上升時，外部要求並未增加
+    supports:
+      - case: huawei_fdpr_2020
+      - case: sophgo_huawei_2024
+        note: 供應者看不到最終流向，卻要為它負責；中立承諾被外部改寫
+      - case: overseas_fabs_2020_2027
+    challenges: []
+    gap: 缺反例；可找其他高市占但未被政治化的供應者（如特定材料或設備商）對照。
+    return_point: 「不可替代」不是一個事實，而是一張要看站在哪一列才讀得懂的表（見 frames）。
+
+# 意義框架層：同一個詞在不同位置上的指涉與評價。描述與評價分開存。
+frames:
+  - term: 代工
+    description: 替他人生產晶片
+    readings:
+      - position: IDM 主導的秩序
+        means: 消化多餘產能的副業；代工廠可替換
+        evaluation_of_no_design: 能力不足
+      - position: Fabless＋Foundry 秩序
+        means: 產業的核心生產者
+        evaluation_of_no_design: 中立、可信
+    status: 詮釋；「幫人打工」的社會語感缺出處
+
+  - term: 不可替代
+    description: 台積電約七成代工營收，最先進節點短期無替代（2025–2026）
+    readings:
+      - position: 台灣
+        means: 國際社會不能坐視台灣出事（矽盾）
+        overseas_fab_called: 一部分人稱「去台化」
+      - position: 美國政府
+        means: 關鍵供應鏈集中在海峽一側
+        overseas_fab_called: 供應鏈回流、風險分散
+      - position: 中國
+        means: 取得先進晶片要經過受美國管制的關口
+      - position: 主要客戶
+        means: 沒有第二供應商
+        overseas_fab_called: 多一層保險
+      - position: 台積電
+        means: 議價籌碼，也是被要求的理由
+    status: 詮釋；各方立場的代表性陳述待補出處
+
+  - term: 客戶集中
+    description: 前兩大客戶約占 36% 營收（2025）
+    readings:
+      - position: 一般供應商
+        means: 客戶握有議價權，風險在客戶離開
+      - position: 先進製程代工
+        means: 雙向鎖定，風險在整類終端需求下滑
+    status: 詮釋，依附於 anchor_learning_curve
+
+# 區辨力測試：同一組機制面對不同輸入，必須給出不同解釋。
+tests:
+  - id: apple_stay_vs_leave
+    inputs: [apple_samsung_stay_2011_2013, apple_moves_tsmc_2014_2016]
+    expected: neutral_supplier 單獨無法區分兩者；必須加上「替代者可行」前提才能解釋為何 2011 年留下、2014 年起離開
+    status: open
+    blocks: 需查證台積電 2011–2013 年是否有可承接 Apple 的節點與產能
+
+  - id: trust_vs_cost
+    inputs: [umc_pure_play_1995, nvidia_samsung_8nm_2020]
+    expected: 前者支持中立承諾；後者落在 boundary（成本壓過顧慮）。若兩者得到同一結論，代表機制太粗
+    status: pass
+
+  - id: exit_reason
+    inputs: [gf_7nm_exit_2018, intel_7nm_delay_2020]
+    expected: 前者歸 anchor_learning_curve（官方明說是業務與財務）；後者在查證前只能列替代解釋，不能歸因
+    status: open
+    blocks: intel_7nm_delay_2020 尚未查證

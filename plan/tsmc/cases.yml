@@ -1,0 +1,272 @@
+# 台積電書的案例層：每張卡記局面，不記結論。
+# evidence_status: verified（有出處且已核對）| partial（主幹有出處，細節待查）| unverified（尚未找到出處）
+# 機制連結只寫在 mechanisms.yml，這裡不預設「這個案例證明了什麼」。
+
+cases:
+  - id: tsmc_founding_1987
+    title: 台積電成立，承諾不做自有品牌晶片
+    period: "1987"
+    evidence_status: partial
+    roles:
+      fabless: 沒有工廠的設計公司，需要量產產能
+      idm: 有工廠也有自有產品，賣多餘產能
+      tsmc: 新進代工廠，製程落後先進廠
+    relations:
+      - 設計公司把完整設計交給代工方
+      - IDM 旺季時可優先排自己的產品
+    options:
+      - 繼續向 IDM 買產能
+      - 交給不做自有產品的代工廠
+    choice: 台積電只做製造，不推出自有品牌晶片
+    outcome: Fabless＋Foundry 分工成形（長期結果，非單一原因）
+    funding: 行政院開發基金約 48%、飛利浦約 27.5%（並授權技術）、民間其餘
+    uncertain:
+      - 出資比例需以台積電官方史料核對
+      - 早期客戶實際為何選台積電，缺第一手證詞
+    sources: []
+
+  - id: umc_pure_play_1995
+    title: 聯電轉型純代工，分拆設計部門
+    period: "1995–1996"
+    evidence_status: partial
+    roles:
+      umc: 原為兼做自有產品的 IDM
+      design_units: 聯電內部的 IC 設計部門
+      foundry_customers: 委託聯電生產的外部設計公司
+    relations:
+      - 聯電的設計部門與外部客戶在終端市場可能競爭
+    options:
+      - 保留設計部門，維持 IDM
+      - 分拆設計部門，成為純代工
+    choice: 1995 年決定轉型；1996 年分拆出聯發科、聯詠、智原等
+    outcome: 聯電成為純代工；分拆出的公司成為獨立 fabless
+    uncertain:
+      - 分拆的完整公司清單主要來自二手整理
+      - 聯電自述的轉型理由需第一手來源
+    sources:
+      - https://en.wikipedia.org/wiki/United_Microelectronics_Corporation
+      - https://ethw.org/Ming-kai_Tsai
+
+  - id: acer_wistron_2000
+    title: 宏碁分拆代工製造（後成緯創）
+    period: "2000–2001"
+    evidence_status: partial
+    roles:
+      acer_brand: 宏碁自有品牌電腦
+      acer_odm: 宏碁替他牌代工的部門
+      odm_clients: 委託宏碁代工的品牌商，同時是宏碁品牌的對手
+    relations:
+      - 代工客戶與宏碁品牌在市場上直接競爭
+    options:
+      - 品牌與代工同屬一家
+      - 分拆代工，各自獨立
+    choice: 2000 年分拆代工業務；緯創於 2001 年 5 月 30 日正式成立
+    outcome: 品牌與代工分家
+    stated_reasons:
+      - 官方說法：客戶抱怨宏碁用自家產品跟他們競爭
+      - 施振榮：代工業務輸給廣達、仁寶，品牌在美國持續虧損
+    uncertain:
+      - 兩種理由的相對比重無法判定
+    sources:
+      - https://en.wikipedia.org/wiki/Wistron
+      - https://networkcomputing.com/network-infrastructure/executive-interview-acer-s-stan-shih
+
+  - id: tsmc_013_copper_2000
+    title: 台積電拒絕加入 IBM 0.13 微米聯盟
+    period: "2000"
+    evidence_status: partial
+    roles:
+      ibm: 銅製程技術方
+      umc: 加入 IBM、英飛凌聯盟
+      tsmc: 評估後拒絕，自行開發
+    options:
+      - 授權聯盟技術
+      - 自行開發
+    choice: 台積電自行開發
+    stated_reasons:
+      - 張忠謀：價格太高、無助於加快時程、自行開發較能配合代工客戶的特殊需求
+    contested:
+      - IBM 否認曾認真考慮與台積電合作
+    outcome: 台積電先於聯電穩定量產（相對時程細節待查）
+    uncertain:
+      - 聯電其後落後是否主要源於此一選擇，缺乏可區辨的證據
+    sources:
+      - https://www.cecs.uci.edu/~papers/mpr/MPR/2000/20000214/140702.pdf
+
+  - id: tsmc_2009_return
+    title: 張忠謀回任執行長，谷底加碼
+    period: "2009–2010"
+    evidence_status: partial
+    roles:
+      tsmc: 海嘯中裁員、40 奈米良率不佳
+      morris_chang: 董事長，2009-06-12 回任執行長
+    options:
+      - 延續縮減支出
+      - 加碼產能與研發
+    choice: 請回被裁員工；2010 年調高資本支出，研發預算增加約 25%
+    outcome: 之後的市占與營收成長（不能單獨歸因於此）
+    uncertain:
+      - 2010 年實際資本支出金額待補
+      - 員工召回的範圍只見新聞標題
+    sources:
+      - https://www.sec.gov/Archives/edgar/data/0001046179/000095012309028010/h03545e6vk.htm
+
+  - id: elpida_2012
+    title: 爾必達破產
+    period: "2012"
+    evidence_status: partial
+    roles:
+      elpida: 日本 DRAM 廠
+    outcome: 2012 年 2 月申請破產，美光於 7 月收購資產
+    stated_reasons:
+      - TrendForce：DRAM 長期供過於求；製程並未落後
+    uncertain:
+      - 爾必達是否曾在谷底積極擴產，尚未查證；在查證前不能當逆週期投資的反例
+    sources:
+      - https://www.trendforce.com/presscenter/news/20120227-7473.html
+
+  - id: apple_samsung_stay_2011_2013
+    title: 互告專利期間，Apple 仍交給三星代工
+    period: "2011–2013"
+    evidence_status: partial
+    roles:
+      apple: 手機品牌，需要先進製程代工
+      samsung: 代工廠、記憶體供應商，同時是手機對手與訴訟對手
+      tsmc: 當時尚未供應 Apple 處理器
+    relations:
+      - 2011 年 4 月起，Apple 與三星在多國互告專利
+      - A5、A6、A7 仍由三星代工
+    options:
+      - 留在三星
+      - 轉往其他代工廠（需對方有能力且有產能）
+    choice: 留在三星
+    uncertain:
+      - 當時台積電是否已有可承接的製程與產能，需查證
+    sources: []
+
+  - id: apple_moves_tsmc_2014_2016
+    title: Apple 轉向台積電
+    period: "2014–2016"
+    evidence_status: partial
+    roles:
+      apple: 手機品牌
+      samsung: 同上
+      tsmc: 代工廠，推出 InFO 封裝
+    relations:
+      - A8（2014）台積電；A9（2015）兩家分攤；A10（2016）起台積電獨家，搭配 InFO
+    choice: 由兩家分攤到台積電獨家
+    alternatives_on_record:
+      - Apple 從未公開理由；良率、封裝（InFO）、產能都可能是因素
+    sources: []
+
+  - id: nvidia_samsung_8nm_2020
+    title: NVIDIA 遊戲 GPU 改用三星 8 奈米
+    period: "2020"
+    evidence_status: partial
+    roles:
+      nvidia: GPU 設計公司，資料中心 Ampere 用台積電 7 奈米
+      samsung: 有自有產品的代工廠
+    choice: GeForce RTX 30 全系列採三星 8N
+    stated_reasons:
+      - 分析推測：每顆晶粒成本明顯較低
+    outcome: 遊戲 GPU 留在三星一代，之後回到台積電（待查）
+    uncertain:
+      - NVIDIA 未公開理由
+    sources:
+      - https://www.pcgamer.com/au/nvidia-ampere-samsung-8nm-process
+
+  - id: gf_7nm_exit_2018
+    title: 格羅方德放棄 7 奈米
+    period: "2018-08"
+    evidence_status: verified
+    roles:
+      globalfoundries: 代工廠，AMD 為主要客戶
+      amd: 改由台積電生產 7 奈米
+    choice: 無限期擱置 7 奈米，轉攻 14/12 奈米與特殊製程
+    stated_reasons:
+      - 技術長 Gary Patton：不是技術問題，而是評估業務前景與財務考量
+    sources:
+      - https://at-web1.www.anandtech.com/show/13277/globalfoundries-stops-all-7nm-development
+
+  - id: intel_7nm_delay_2020
+    title: Intel 7 奈米延後，首度表示考慮委外
+    period: "2020-07"
+    evidence_status: unverified
+    roles:
+      intel: IDM，製程只服務自家產品
+    outcome: 10 奈米多次延期後，7 奈米再延；公開表示考慮外部代工
+    alternatives_on_record:
+      - 10 奈米密度目標過於激進
+      - EUV 導入時機
+    sources: []
+
+  - id: intel_customer_and_rival
+    title: Intel 同時是台積電的客戶與代工對手
+    period: "2021–"
+    evidence_status: unverified
+    roles:
+      intel: 經營代工業務，同時委託台積電生產部分晶片塊
+      tsmc: 代工廠
+    relations:
+      - Intel 的代工業務需要說服外部客戶，自己卻還有自有產品
+    sources: []
+
+  - id: huawei_fdpr_2020
+    title: 外國直接產品規則切斷台積電與華為
+    period: "2020"
+    evidence_status: partial
+    roles:
+      us_gov: 管制方
+      huawei: 原為台積電大客戶
+      tsmc: 使用美國設備的代工廠
+    choice: 台積電停止供貨華為
+    sources:
+      - https://www.koreatimes.co.kr/amp/world/20241110/us-ordered-tsmc-to-halt-shipments-to-china-of-chips-used-in-ai-applications-source
+
+  - id: sophgo_huawei_2024
+    title: 台積電晶片出現在華為 AI 處理器中
+    period: "2024-10/11"
+    evidence_status: verified
+    roles:
+      sophgo: 中國設計公司，向台積電下單
+      huawei: 實際使用者（依 TechInsights 拆解）
+      tsmc: 代工廠，看不到晶片最終流向
+      us_gov: 以告知函要求停止出貨
+    choice: 台積電停供算能；自 11 月 11 日起停止向中國客戶出貨 7 奈米以下 AI 晶片
+    contested:
+      - 算能否認與華為有直接或間接業務關係
+    sources:
+      - https://www.koreatimes.co.kr/amp/world/20241110/us-ordered-tsmc-to-halt-shipments-to-china-of-chips-used-in-ai-applications-source
+
+  - id: overseas_fabs_2020_2027
+    title: 美、日、德設廠
+    period: "2020–2027"
+    evidence_status: partial
+    roles:
+      us_gov: 補助方，要求本土產能
+      japan_gov: 補助方
+      customers: 要求地理分散
+      taiwan_public: 一部分人擔憂「去台化」
+      tsmc: 投資方
+    facts:
+      - 亞利桑那第一廠 2024 Q4 以 N4 量產；第二廠 3 奈米預定 2027 下半年
+      - 補助最高 66 億美元（2024-11 定案）另貸款最高約 50 億；投資規劃約 1,650 億美元（2025-03）
+      - 熊本 JASM 2024-12 量產（28–12 奈米）
+      - 德勒斯登 ESMC 2024 動工，官網目標 2027 年底
+    uncertain:
+      - 書中 07 章寫 ESMC 2029 年投產，與官網不一致
+    sources:
+      - https://azcir.org/news/2025/05/09/has-a-taiwanese-chip-manufacturer-pledged-165-billion-in-arizona-investments-yes/
+      - https://siliconangle.com/2024/12/27/tsmc-begins-mass-producing-chips-newly-opened-fab-japan/
+      - https://tsmc.com/english/aboutTSMC
+
+  - id: nvidia_overtakes_apple_2025
+    title: NVIDIA 成為最大客戶
+    period: "2025"
+    evidence_status: verified
+    facts:
+      - 客戶 A（NVIDIA）占營收約 19%（2024 約 12%）；客戶 B（Apple）約 17%（2024 約 22%）
+      - HPC 占營收 58%（2024 為 51%）；手機 29%（2024 為 35%）
+    sources:
+      - https://www.taiwannews.com.tw/news/6310676
+      - https://investor.tsmc.com/japanese/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf
