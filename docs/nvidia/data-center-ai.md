@@ -52,7 +52,7 @@ flowchart TD
     end
 ```
 
-NVIDIA 在 2020 年以 $69 億美元收購 Mellanox，獲得 InfiniBand 技術，讓它能提供從 GPU 到網路的完整 AI 基礎設施解決方案。FY2026 Q4 網路業務年增達 **263%**。
+NVIDIA 在 2020 年以 $69 億美元收購 Mellanox，獲得 InfiniBand 技術，讓它能提供從 GPU 到網路的完整 AI 基礎設施解決方案。FY2026 網路業務營收 314 億美元，約占資料中心營收的六分之一；Q4 單季約 110 億美元，約為一年前的 3.5 倍。
 
 ## AI 工廠概念
 
