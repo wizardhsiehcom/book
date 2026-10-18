@@ -32,7 +32,7 @@ mechanisms:
       - case: x86_itanium_amd64
         note: 主題外佐證：連平台擁有者自己推出不相容的新架構都會輸，說明鎖定的是互補資產，不是公司
       - case: opencl_2009_2018
-        note: 主題外佐證：開放標準本身不足以拆掉鎖定；落敗原因尚未查證
+        note: 主題外佐證：核心效能相當，輸在函式庫與各廠實作的一致性；鎖定的是互補資產，不是語言本身
     challenges:
       - case: amd_openai_2025
         note: 最大型買方之一大規模導入第二供應商
@@ -102,6 +102,8 @@ mechanisms:
         note: 美國放行與中國勸阻、反壟斷調查幾乎同時
       - case: h200_china_2026
         note: 放行後出貨量極少
+      - case: china_revenue_share
+        note: 10-K 自述 FY2026 年底實質被排除在中國資料中心市場之外；H20 許可只帶來約 6,000 萬美元
       - case: asml_euv_china
         note: 主題外對照；此卡尚未查證
     challenges:
@@ -145,9 +147,8 @@ tests:
   - id: open_standard_vs_upper_layer
     inputs: [opencl_2009_2018, abstraction_layer_2021_2023]
     expected: 兩者都想降低對 CUDA 的依賴；差別應在於是否長在開發者已經在用的那一層（OpenCL 要開發者改寫，PyTorch 不用）
-    status: open
-    blocks: OpenCL 落敗原因仍未找到可靠分析
-    consequence: abstraction_shift 維持 weak；章節不得用 OpenCL 對照來論證「上層抽象能拆掉鎖定」
+    status: pass_weak
+    result: OpenCL 給的是另一套底層語言，缺高階函式庫，開發者要改寫；Triton 與 PyTorch 長在開發者已經在用的那一層。來源是二手分析且有利害關係，abstraction_shift 仍只有單一支持案例，維持 weak
 
   - id: customer_stays_vs_leaves
     inputs: [dgx_cloud_2023_2025, google_tpu_anthropic_2025]

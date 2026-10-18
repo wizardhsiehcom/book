@@ -147,9 +147,14 @@ cases:
       khronos: 標準組織
       nvidia: 同時支援 OpenCL 與自家 CUDA
     outcome: 2018 年 Apple 在 macOS Mojave 棄用 OpenCL，改推自家 Metal
+    stated_reasons:
+      - Modular 分析：各廠實作不一致、相容性測試薄弱，且缺少訓練與推論所需的高階 AI 函式庫
+      - arXiv 1611.06945：在 NVIDIA 硬體上，同一份程式以 CUDA 或 OpenCL 撰寫，單一運算耗時幾乎相同
     uncertain:
-      - OpenCL 在深度學習落敗的原因，尚未找到可靠分析
+      - Modular 本身販售 CUDA 的替代方案，屬利害關係人；兩份來源都不是對深度學習生態的系統性研究
     sources:
+      - https://www.modular.com/blog/democratizing-ai-compute-part-5-what-about-cuda-c-alternatives
+      - https://arxiv.org/pdf/1611.06945
       - https://www.macrumors.com/2018/06/05/apple-deprecates-opengl-opencl-gaming/amp/
 
   # ── 中立供應者 ──
@@ -259,6 +264,18 @@ cases:
       - 美國政府分成比例報導有 25% 與 15% 兩種
     sources:
       - https://www.nbcnews.com/world/asia/us-approves-nvidia-h200-chip-exports-china-conditions-rcna253948
+
+  - id: china_revenue_share
+    title: 中國營收占比下滑
+    period: "FY2024–FY2026"
+    evidence_status: verified
+    facts:
+      - 10-K 依直接客戶總部所在地：中國（含香港）FY2024 123.3 億美元（約 20.2%）、FY2025 250.5 億（約 19.2%）、FY2026 196.8 億（約 9.1%）
+      - 2026 財年第三季起改以客戶總部所在地認列，前期已重編；最終客戶與出貨地可能不同
+      - 10-K：H20 依 2025-08 許可只產生約 6,000 萬美元營收；2026-02 取得少量 H200 許可，尚無營收
+      - 10-K：截至 FY2026 年底，「實質上被排除在中國資料中心運算市場之外」
+    sources:
+      - https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm
 
   - id: asml_euv_china
     title: ASML 的 EUV 從未出貨中國（主題外）
