@@ -1,0 +1,38 @@
+# 機制層骨架：複製到 plan/<name>/mechanisms.yml 後刪掉這段註解。
+mechanisms:
+  - id: example_mechanism
+    name: 機制名稱
+    hypothesis: 待檢驗的假說
+    prerequisites:
+      - 成立的前提
+    causal_path:
+      - 因果步驟
+    alternative_explanations:
+      - 其他解釋
+    disconfirming_observations:
+      - 看到什麼就該放棄這個機制
+    boundary: 失效邊界
+    supports:
+      - case: example_case
+        note: 支持到什麼程度
+    challenges: []
+    scene_seed:
+      roles: [actor_a, actor_b]
+      tension: 角色之間的衝突
+      allowed: 只寫角色處境與選項
+    return_point: 讀者最後要帶走的問題
+    status: weak
+
+frames:
+  - term: 詞
+    description: 描述層的事實
+    readings:
+      - position: 某個位置
+        means: 在這個位置上的讀法
+    status: 詮釋；缺什麼出處
+
+tests:
+  - id: example_test
+    inputs: [example_case, example_case]
+    expected: 兩個案例應得到什麼不同解釋
+    status: open

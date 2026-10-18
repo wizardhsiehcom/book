@@ -1,0 +1,18 @@
+# 案例層骨架：複製到 plan/<name>/cases.yml 後刪掉這段註解。
+cases:
+  - id: example_case
+    title: 一句話描述局面
+    period: "2000"
+    evidence_status: unverified
+    roles:
+      actor_a: 位置與限制
+      actor_b: 位置與限制
+    relations:
+      - 誰依賴誰、誰承擔代價
+    options:
+      - 可選的路
+    choice: 實際的選擇
+    outcome: 結果（不寫成單一原因）
+    uncertain:
+      - 缺什麼證據
+    sources: []

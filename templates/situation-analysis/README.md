@@ -1,0 +1,70 @@
+# 局面分析資料層
+
+這是一套把素材整理成「可比較、可推論、也可被推翻」的資料結構的方法，源自對劉仲敬論述方式的拆解。資料層和產出分開：同一份資料可以拿來改寫章節、寫新章、審稿，或寫單篇文章。
+
+範例：`plan/tsmc/cases.yml`、`plan/tsmc/mechanisms.yml`。
+
+## 適用範圍
+
+素材必須同時滿足兩個條件：
+
+1. 有行動者在做選擇：誰依賴誰、誰承擔代價、誰能定義規則。
+2. 結論無法用實驗直接驗證。
+
+| 書的類型 | 用哪幾層 |
+|---|---|
+| 產業史、公司競爭 | 四層全用：局面、意義框架、論證、場景 |
+| 組織與權力 | 局面＋意義框架，場景要節制 |
+| 技術設計取捨 | 只用角色、承諾、代價；不用歷史敘事的語氣 |
+| 純機制、程序類 | 不適用 |
+
+## 兩個檔案
+
+**`cases.yml`：案例層。**只記局面，不記結論；機制連結只寫在 `mechanisms.yml`。
+
+| 欄位 | 必填 | 說明 |
+|---|---|---|
+| `id`、`title`、`period` | 是 | |
+| `evidence_status` | 是 | `verified`、`partial` 或 `unverified` |
+| `roles`、`relations` | 是 | 角色與依賴關係 |
+| `options`、`choice`、`outcome` | 視情況 | 選擇空間、實際選擇、結果 |
+| `uncertain` | 是 | 存疑處；沒有出處時寫明缺什麼 |
+| `sources` | 是 | 可為空，但要由 `uncertain` 說明 |
+| `stated_reasons`、`contested`、`facts`、`feasibility_of_alternative` | 否 | 當事人自述、爭議、數字、替代方案是否可行 |
+
+**`mechanisms.yml`：機制、意義框架與測試。**
+
+- `mechanisms`：`hypothesis`、`prerequisites`、`causal_path`、`alternative_explanations`、`disconfirming_observations`、`boundary`、`supports`、`challenges`、`scene_seed`、`return_point`、`status`
+- `frames`：同一個詞在不同位置上的讀法，描述與評價分開存
+- `tests`：兩個表面相似的案例，機制必須給出不同的解釋
+
+起始骨架見本目錄的 [`cases.yml`](cases.yml) 與 [`mechanisms.yml`](mechanisms.yml)。
+
+## 規則
+
+- **跨案例：**至少 1/4 的案例來自主題之外。建卡時要問：「還有誰在不同條件下面對同一個機制？」
+- **反例：**每個機制至少一個 `challenges` 案例。沒有反例或只有單一支持案例的機制，標 `status: weak`，產出時只能寫選擇與結果，不能寫因果。
+- **區辨力：**每個 `tests` 都要是 `pass` 或 `pass_weak`，`pass_weak` 要寫明弱在哪。過不了就把機制降為弱機制，不要硬湊。
+- **描述與評價分開：**「背叛」「成功」「不可替代」這類詞是框架下的讀法，放進 `frames`。
+- **證據措辭：**報導或傳聞寫成「報導」或「時序吻合」，不寫「原因是」。沒查證的全稱說法（「第一次」「再也沒有」）不寫。
+- **時效：**時程、市占、排名要查最新來源。
+- **場景：**只描寫角色的處境與選項，不替真實人物編內心戲或台詞。
+
+## 檢查
+
+```bash
+uv run python tools/check-situation-data.py plan/<name>
+```
+
+會列出缺漏的案例引用、沒被引用的案例、沒有反例的機制、各測試狀態，以及各證據等級的案例數。
+
+## 產出方式
+
+| 用途 | 做法 |
+|---|---|
+| 改寫既有章節 | `/mkdocs-liu-rewrite` |
+| 寫新章或新書 | 先建資料，再用 `/mkdocs-update` 或 `/mkdocs-create` 寫；詮釋框依下方格式 |
+| 審稿 | 拿既有章節的每個推論對照 `mechanisms.yml`，找不到支撐的就列為問題 |
+| 單篇文章 | 從一個機制和它的 `supports`、`challenges` 取材 |
+
+章節裡的詮釋寫在 `!!! note "詮釋"` 裡（弱機制用 `"詮釋的限制"`），場景寫在 `!!! example "示意場景"` 裡，並在提示框正上方放 `<!-- mech: <id> -->`、`<!-- frame: <term> -->` 或 `<!-- test: <id> -->`，讓每個推論都能追溯回資料。
