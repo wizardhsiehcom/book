@@ -79,6 +79,18 @@ Book themes use 墨朱 (dark `slate`) and 和紙朱印 (light `default`), both w
 - **One concept per page**; cross-link with relative paths.
 - **No notebook references**: never cite notebook filenames or cell numbers (e.g. 「在 Cell 3 中…」); notebooks change often — describe the concept directly.
 - Standard Markdown + Mermaid; inline HTML is allowed when needed.
+
+## Facts and sources
+
+Apply whenever writing, updating, or reviewing a chapter that states facts about real companies, people, or events.
+
+- **Every number, share, ranking, price, date, and superlative ("first", "largest", "near-monopoly") needs a source** listed in the chapter's `## 資料來源`. If no reliable source is found, delete the claim; do not keep an estimate, a "~", or a vague restatement of it.
+- **Primary filings win.** For a listed company, check the latest annual report (10-K, 20-F, 年報) before secondary coverage; when they disagree, follow the filing. State the reporting basis when it changes the meaning (e.g. geographic revenue by customer headquarters, not end use).
+- **Do not state what the filing does not disclose.** If the company does not publish segment margins or name its largest customers, say what it does disclose instead of filling the gap with a guess or "estimated".
+- **Time-sensitive claims are checked against today's date.** Roadmaps, "預計", launch and shipment status, guidance, and "目前" statements: re-verify, and write the source's own wording and as-of date. A forecast with no source is deleted, not softened.
+- **Attribute company self-description.** Marketing claims ("world's first GPU", "AI factory") are written as 「X 稱」, not as fact.
+- **One fact, one home.** After fixing a fact, grep the whole book for the same claim and its variants; fix or remove contradictions, keep the fact in one chapter, and link to it from the others.
+- **Check that examples match the source's categories.** Do not name customers, partners, or competitors as "the largest" unless the source names them.
 - Prefer `flowchart`, `sequenceDiagram`, or `graph` diagram types.
 
 ## Mermaid rules (mermaid@10)

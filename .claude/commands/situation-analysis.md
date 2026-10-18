@@ -23,7 +23,7 @@ check_cmd: `uv run python tools/check-situation-data.py plan/<name>`
    - Check the fit conditions in `method_doc`. If the material fails them, say so and stop.
    - Name the questions the data must answer (e.g. chapters to rewrite, a claim to audit, a post topic).
 2. **Fact-check source material (gate: corrections listed)**
-   - If the target is an existing book, verify its relevant facts with sources and list errors and stale items.
+   - If the target is an existing book, verify its facts per `CLAUDE.md` 〈Facts and sources〉 across every chapter, not only those the analysis will use, and list errors, stale items, unsourced claims, and cross-chapter contradictions.
 3. **Build cases (gate: coverage)**
    - Copy `starter_files` into `plan_dir` if absent. Write 15–20 cards for a book, fewer for a single post.
    - Gate: the outside-subject share and source rules in `method_doc` hold.
