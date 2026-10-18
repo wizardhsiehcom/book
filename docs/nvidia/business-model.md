@@ -29,7 +29,7 @@ flowchart TD
     C["台積電<br/>4nm / 3nm 製程"]
     D["CoWoS 封裝<br/>台積電 / 日月光"]
     E["HBM 記憶體<br/>SK Hynix / Micron"]
-    F["終端客戶<br/>微軟 / Google / Meta / AWS"]
+    F["間接客戶<br/>雲端業者 / AI 模型公司 / 企業"]
 
     B -->|設計交付| C
     C -->|晶片| D
@@ -41,9 +41,7 @@ flowchart TD
 
 ## 定價權與毛利率
 
-Fabless 模式加上接近壟斷的市場地位，讓 NVIDIA 享有極高的定價權。H100 GPU 在 AI 需求最旺盛時，黑市價格一度超過 $40,000 美元，而 B200 的售價也在 $30,000–$40,000 美元區間。
-
-這帶來驚人的毛利率：NVIDIA 資料中心 GPU 的毛利率長期維持在 **70–80%** 以上。
+黃仁勳在 2024 年 3 月受訪時表示，Blackwell 每顆售價約 3 萬到 4 萬美元；他稍後在 GTC 對記者的說法有所保留。NVIDIA 不公布各部門的毛利率；公司整體 GAAP 毛利率 FY2025 為 75.0%、FY2026 為 71.1%，變動原因見[財務分析](financials.md)。
 
 ## 與台積電的相互依賴
 
@@ -51,8 +49,13 @@ Fabless 模式加上接近壟斷的市場地位，讓 NVIDIA 享有極高的定�
 |------|------------|----------|
 | 關係性質 | 最大客戶之一，依賴 CoWoS 產能 | NVIDIA 是最重要的先進製程客戶之一 |
 | 風險 | 台積電產能不足、地緣政治 | NVIDIA 若轉單（理論上），影響巨大 |
-| 議價能力 | 需求遠大於供給時，NVIDIA 優先取得產能 | 台積電對先進製程具有近乎壟斷地位 |
+| 議價能力 | 依賴台積電的 CoWoS 封裝產能 | 晶圓代工市占約七成（見台積電一書〈地緣政治與全球化〉） |
 
 ## 客戶集中度風險
 
-FY2026 美國客戶佔 NVIDIA 總營收約 **69%**。前幾大客戶（微軟、Google、Meta、亞馬遜）的採購決策對 NVIDIA 財務有重大影響。這種集中度在景氣反轉時是系統性風險。
+以客戶總部所在地認列，FY2026 美國客戶占總營收約 **69%**。直接與間接客戶的集中度見[財務分析](financials.md)〈客戶集中度風險〉。
+
+## 資料來源
+
+- 毛利率、地區營收：[NVIDIA FY2026 Form 10-K](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm)
+- B200 售價：[NBC 轉載 CNBC（2024-03）](https://nbcsandiego.com/news/business/money-report/nvidias-latest-ai-chip-will-cost-more-than-30000-ceo-says/3465447)

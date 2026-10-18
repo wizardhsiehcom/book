@@ -1,6 +1,6 @@
 # 公司概覽
 
-NVIDIA 創立於 1993 年，由 Jensen Huang（黃仁勳）、Chris Malachowsky 與 Curtis Priem 共同創辦。最初以遊戲 GPU 起家，30 年後已成為全球 AI 基礎設施最關鍵的供應商。
+NVIDIA 創立於 1993 年，由 Jensen Huang（黃仁勳）、Chris Malachowsky 與 Curtis Priem 共同創辦。最初以遊戲 GPU 起家；到 FY2026，約九成營收來自資料中心。
 
 ## 公司定位
 
@@ -39,14 +39,18 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    A["1993<br/>創立"] --> B["1999<br/>GeForce 256<br/>全球首顆 GPU"]
+    A["1993<br/>創立"] --> B["1999<br/>GeForce 256<br/>NVIDIA 稱為首顆 GPU"]
     B --> C["2006<br/>CUDA 發布<br/>通用運算開始"]
     C --> D["2016<br/>DGX-1<br/>AI 訓練系統"]
     D --> E["2022<br/>Hopper H100<br/>AI 爆炸期"]
     E --> F["2024<br/>Blackwell B200<br/>多晶片 GPU"]
-    F --> G["2026<br/>Rubin 架構<br/>預計推出"]
+    F --> G["FY2027 下半年<br/>Rubin<br/>開始量產出貨"]
 ```
 
 ## 與台積電的依賴關係
 
-NVIDIA 所有高階 GPU 均由台積電以 4nm / 3nm 等先進製程代工。這種深度依賴既是優勢（專注設計）也是風險（地緣政治、產能分配）。以客戶總部所在地認列，台灣客戶（主要是代工組裝的供應鏈夥伴）占 NVIDIA FY2026 總營收約 **19.6%**；最終客戶與出貨地可能不在台灣。
+NVIDIA 的高階資料中心 GPU 由台積電以先進製程代工（10-K 列出的晶圓代工夥伴是台積電與三星）。這種深度依賴既是優勢（專注設計）也是風險（地緣政治、產能分配）。以客戶總部所在地認列，台灣客戶（主要是代工組裝的供應鏈夥伴）占 NVIDIA FY2026 總營收約 **19.6%**；最終客戶與出貨地可能不在台灣。
+
+## 資料來源
+
+- 部門營收、地區營收、代工夥伴、Rubin 時程：[NVIDIA FY2026 Form 10-K](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm)

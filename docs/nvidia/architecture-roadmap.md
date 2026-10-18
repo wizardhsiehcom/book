@@ -1,6 +1,6 @@
 # 架構演進：從 Hopper 到 Blackwell
 
-NVIDIA 每 2 年左右推出一代新的 GPU 微架構。每一代的命名都向偉大科學家致敬：Hopper（電腦先驅 Grace Hopper）、Blackwell（數學家 David Blackwell）、Rubin（天文學家 Vera Rubin）。
+NVIDIA 的資料中心產品目前採一年一代的節奏（10-K 的用語是 one-year product cadence）。每一代的命名都向偉大科學家致敬：Hopper（電腦先驅 Grace Hopper）、Blackwell（數學家 David Blackwell）、Rubin（天文學家 Vera Rubin）。
 
 ## 架構世代時間軸
 
@@ -9,13 +9,13 @@ flowchart LR
     A["Ampere<br/>A100<br/>2020"] --> B["Hopper<br/>H100<br/>2022"]
     B --> C["Blackwell<br/>B200<br/>2024"]
     C --> D["Blackwell Ultra<br/>B300<br/>2025 下半"]
-    D --> E["Rubin<br/>R100<br/>2026 預計"]
+    D --> E["Rubin<br/>FY2027 下半年<br/>開始量產出貨"]
     E --> F["Rubin Ultra<br/>2027 預計"]
 ```
 
 ## Hopper H100（2022–2024 主力）
 
-H100 是 AI 熱潮的硬體代名詞。ChatGPT 爆紅後，全球雲端業者瘋搶 H100，供不應求持續超過 18 個月。
+H100 是 ChatGPT 之後這波 AI 建置的主力產品。
 
 **關鍵規格：**
 - 製程：台積電 4N（類 4nm）
@@ -76,11 +76,15 @@ flowchart LR
     B <--> NVS
 ```
 
-## 為什麼每代都有大幅提升？
+## 每代提升從哪裡來
 
-NVIDIA 的效能提升遠超 Moore's Law，關鍵在於同時推進三個軸：
+每一代同時在三個軸上推進：
 1. **製程**：更新的 TSMC 節點
-2. **架構**：Tensor Core 設計、低精度支援
+2. **架構**：Tensor Core 設計、低精度支援（FP8、FP4）
 3. **系統**：NVLink / NVSwitch 互連頻寬
 
-過去十年 AI 訓練效能提升超過 100 萬倍，Moore's Law 只能解釋其中百倍。
+三者各自貢獻多少，沒有公開的拆解。
+
+## 資料來源
+
+- 一年一代節奏、Rubin 量產出貨時程：[NVIDIA FY2026 Form 10-K](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm)（時程以 2026 年 1 月底為準）

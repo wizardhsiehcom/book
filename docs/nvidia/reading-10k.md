@@ -13,7 +13,7 @@ flowchart TD
     B["Part II<br/>財務資訊"] --> B1["Item 7: MD&A<br/>管理層討論與分析"]
     B --> B2["Item 8: Financial Statements<br/>財務報表"]
 
-    C["Part III<br/>治理"] --> C1["Item 10: Directors<br/>董事會成員"]
+    C["Part III<br/>治理（內容多半見股東會委託書）"] --> C1["Item 10: Directors<br/>董事會成員"]
     C --> C2["Item 11: Executive Compensation<br/>高管薪酬"]
 ```
 
