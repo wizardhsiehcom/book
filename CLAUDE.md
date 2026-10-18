@@ -96,4 +96,5 @@ Book themes use 墨朱 (dark `slate`) and 和紙朱印 (light `default`), both w
 | `/mkdocs-review` | Review a book end to end and write a multi-agent improvement plan to `plan/<name>/` |
 | `/mkdocs-theme` | Change a book's MkDocs theme in `configs/<name>.yml` |
 | `/mkdocs-add-images` | Find Wikimedia Commons images and insert them into book pages with captions and credit entries |
+| `/mkdocs-liu-rewrite` | Rewrite selected chapters with situation analysis: build `plan/<name>/cases.yml` and `mechanisms.yml` first, then generate traceable prose |
 | `/sync-agent` | Synchronize Claude Code, Codex, and Antigravity project instructions and shared skills |
