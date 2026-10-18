@@ -28,6 +28,10 @@ build_cmd: `uv run mkdocs build -f configs/<folder>.yml`
 2. **Generate chapters (gate: traceability)**
    - Rewrite only the selected chapters from the data, using the layers `method_doc` assigns to this book type. Open with the reframed question; keep facts in body text; format interpretations, weak-mechanism limits, scenes, and trace comments as `method_doc` specifies.
    - Short punchline sentences only where a non-weak mechanism supports them.
+   - No process residue in prose: no notes on what the original said, what was removed, what lacks a source, or what each box type means. That belongs in `plan_dir` and the report.
+   - Limit boxes may not exceed half the interpretation boxes; fold the rest into one plain section of open questions, two or three sentences each, keeping the trace comments.
+   - A scene must show roles facing the same situation and choosing differently for a reason the mechanism names; if it cannot, drop it. A frame table needs a sourced reading per row; otherwise drop it.
+   - A chapter whose data yields no non-weak mechanism stays a fact chapter: fix the facts, add no interpretation for its own sake.
    - Move lookup material (timelines, rosters) to an appendix table; add a sources section and a pointer to `plan_dir`.
 3. **Build and verify**
    - Run `./sync-assets.sh`, then `build_cmd`. Confirm admonitions render: the count of `class="admonition` in each built HTML page should be twice the count of `!!!` lines in the Markdown.
