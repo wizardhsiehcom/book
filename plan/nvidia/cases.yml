@@ -1,0 +1,273 @@
+# NVIDIA 書的案例層：只記局面，不記結論。機制連結見 mechanisms.yml。
+# 方法與欄位：templates/situation-analysis/README.md
+# 跨書引用的卡片以 ref 標出正本位置，這裡只留摘要。
+
+cases:
+  # ── 生態鎖定的形成 ──
+  - id: cuda_launch_2006
+    title: CUDA 發表，多年沒有對應的主力市場
+    period: "2006–2011"
+    evidence_status: partial
+    roles:
+      nvidia: 遊戲顯示卡廠，自費建立通用運算平台
+      researchers: 科學運算與學術使用者，早期主要採用者
+    choice: 2006 年 11 月發表，此後每一代 GPU 都支援並維持向下相容
+    outcome: 在深度學習興起前已累積工具、教材與使用者
+    uncertain:
+      - 早期投入金額與內部爭議缺第一手資料
+      - 「維持向下相容」的範圍需以官方文件核對
+    sources: []
+
+  - id: alexnet_2012
+    title: AlexNet 在兩張 GTX 580 上訓練
+    period: "2012"
+    evidence_status: partial
+    roles:
+      researchers: 多倫多大學團隊
+      nvidia: 消費級 GPU 與 CUDA 提供者
+    relations:
+      - 研究者用現成的 CUDA 與遊戲卡，而不是為深度學習設計的硬體
+    outcome: 深度學習研究大量轉向 GPU；後續框架以 CUDA 為預設後端
+    uncertain:
+      - 「轉向 GPU」主要因為 AlexNet 還是同期多項成果，無法分開
+    sources: []
+
+  - id: cudnn_frameworks_2014
+    title: cuDNN 推出，主流框架以 CUDA 為預設後端
+    period: "2014–"
+    evidence_status: partial
+    roles:
+      nvidia: 提供深度學習基礎函式庫
+      framework_teams: Caffe、TensorFlow、PyTorch 等框架開發者
+      developers: 只寫框架層程式碼的使用者
+    relations:
+      - 框架開發者整合 cuDNN；一般開發者不直接寫 CUDA，卻依賴它
+    uncertain:
+      - 各框架導入 cuDNN 的年份需逐一核對
+    sources: []
+
+  # ── 鎖定鬆動的條件 ──
+  - id: amd_mi300x_rocm
+    title: MI300X 規格領先，市占仍小
+    period: "2023–2025"
+    evidence_status: partial
+    roles:
+      amd: 硬體競爭者，ROCm 軟體棧追趕中
+      buyers: 一般企業與雲端客戶
+    facts:
+      - MI300X HBM 192GB、FP16 稠密 1,307 TFLOPS；H100 SXM 為 80GB、989 TFLOPS（廠商規格）
+    uncertain:
+      - 「NVIDIA 約九成、AMD 約 5–10%」的市占數字，原稿未附出處
+    sources: []
+
+  - id: amd_openai_2025
+    title: OpenAI 與 AMD 簽 6 GW 多代合約
+    period: "2025-10"
+    evidence_status: verified
+    roles:
+      openai: 最大型的模型開發者之一，有能力自行移植軟體
+      amd: 供應方，以認股權證綁定
+    facts:
+      - 6 GW 多年期、多世代；首批 1 GW MI450 於 2026 下半年部署
+      - AMD 發給 OpenAI 最多 1.6 億股認股權證，依部署量與股價等里程碑分批生效
+    choice: 在既有 NVIDIA 採購之外，大規模導入第二供應商
+    sources:
+      - https://ir.amd.com/news-events/press-releases/detail/1260/amd-and-openai-announce-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus
+
+  - id: google_tpu_anthropic_2025
+    title: Anthropic 取得最多一百萬顆 Google TPU
+    period: "2025-10"
+    evidence_status: partial
+    roles:
+      google: 自研晶片，透過雲端出租
+      anthropic: 模型開發者，同時用 TPU、Trainium、NVIDIA GPU
+    facts:
+      - 最多一百萬顆 TPU、超過 1 GW，2026 年上線；金額報導為數百億美元，未公開
+    sources:
+      - https://www.datacenterdynamics.com/en/news/google-and-anthropic-confirm-massive-1gw-cloud-deal-with-up-to-one-million-google-tpus/
+
+  - id: abstraction_layer_2021_2023
+    title: Triton 與 PyTorch 2.0 讓開發者離 CUDA 更遠一層
+    period: "2021–2023"
+    evidence_status: partial
+    roles:
+      openai: 2021 年開源 Triton，以 Python 寫 GPU 核心
+      pytorch_team: 2023 年 PyTorch 2.0 的 torch.compile 以 Triton 產生核心
+      developers: 寫框架層程式碼的人
+    relations:
+      - 開發者面對的介面從 CUDA 上移到 Python 與編譯器
+    facts:
+      - AMD 官方文件：Triton 可在 ROCm 5.7 以上的 AMD GPU 上使用
+      - 二手基準測試（2026-09）：同一份 Triton 原始碼可在 H100 與 MI300 上執行，但 AMD 的正式產線另加硬體專屬的排列與手調組語核心
+    uncertain:
+      - 上移後的抽象層由誰控制、是否中立，尚未查證
+    sources:
+      - https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-triton.html
+
+  - id: deepseek_ptx_2025
+    title: DeepSeek 在 H800 上改用 PTX 最佳化
+    period: "2025-01"
+    evidence_status: partial
+    roles:
+      deepseek: 受出口管制、只能用降規版 H800 的模型開發者
+      nvidia: PTX 是它的 GPU 中介指令集
+    facts:
+      - 報導（引用 Mirae Asset 分析）：部分功能以 PTX 撰寫，132 個 SM 中撥 20 個做伺服器間通訊
+      - 2025-01-27 NVIDIA 股價單日跌約 17%，市值蒸發約 5,890 億美元
+    contested:
+      - 「繞過 CUDA」的說法有爭議：PTX 仍是 NVIDIA 專屬，反而更綁定其硬體
+    uncertain:
+      - 消息來源是券商分析，不是 DeepSeek 揭露
+      - 股價下跌的原因不能單獨歸給 PTX 報導
+    sources:
+      - https://tomshardware.com/tech-industry/artificial-intelligence/deepseeks-ai-breakthrough-bypasses-industry-standard-cuda-uses-assembly-like-ptx-programming-instead
+
+  # ── 主題外：生態鎖定 ──
+  - id: x86_itanium_amd64
+    title: Intel 自己的新架構敗給相容舊架構的 AMD64
+    period: "2001–2021"
+    evidence_status: partial
+    roles:
+      intel: x86 擁有者，推出不相容 x86 的 IA-64（Itanium）
+      amd: 推出相容 x86 的 64 位元擴充
+      software_base: 既有的 x86 軟體與使用者
+    choice: 市場選擇 AMD64；Intel 隨後以 EM64T 採用同一套擴充
+    outcome: Itanium 最後一批出貨在 2021 年年中
+    uncertain:
+      - Itanium 失敗的其他原因（效能、編譯器）比重無法判定
+    sources:
+      - https://en.wikipedia.org/wiki/X86-64
+
+  - id: opencl_2009_2018
+    title: OpenCL 開放標準未能取代 CUDA
+    period: "2009–2018"
+    evidence_status: partial
+    roles:
+      apple: OpenCL 的發起者
+      khronos: 標準組織
+      nvidia: 同時支援 OpenCL 與自家 CUDA
+    outcome: 2018 年 Apple 在 macOS Mojave 棄用 OpenCL，改推自家 Metal
+    uncertain:
+      - OpenCL 在深度學習落敗的原因，尚未找到可靠分析
+    sources:
+      - https://www.macrumors.com/2018/06/05/apple-deprecates-opengl-opencl-gaming/amp/
+
+  # ── 中立供應者 ──
+  - id: nvidia_arm_2020_2022
+    title: NVIDIA 收購 Arm 失敗
+    period: "2020-09 – 2022-02"
+    evidence_status: verified
+    roles:
+      nvidia: 收購方，同時是 Arm 授權客戶的競爭者
+      arm: 授權方，被 FTC 稱為「半導體業的瑞士」
+      licensees: Qualcomm、Microsoft、Google 等，向監管機構表達反對
+      regulators: FTC、英國 CMA、歐盟
+    relations:
+      - 收購後，NVIDIA 能看到競爭者的授權資訊，並影響 Arm 的研發方向
+    choice: 2022-02-07 放棄 400 億美元交易，Arm 轉向上市
+    stated_reasons:
+      - 雙方：重大監管障礙
+      - 黃仁勳曾承諾維持 Arm 的開放授權模式
+    sources:
+      - https://techcrunch.com/2021/12/02/ftc-sues-to-block-nvidias-purchase-of-arm/
+      - https://redmondmag.com/Articles/2022/02/08/Nvidia-40B-Proposed-Acquisition-of-Arm-Shuts-Down.aspx
+
+  - id: dgx_cloud_2023_2025
+    title: DGX Cloud 與雲端客戶競爭，後來收縮
+    period: "2023–2025"
+    evidence_status: partial
+    roles:
+      nvidia: 向 AWS 等租回產能，再轉售給企業客戶
+      clouds: NVIDIA 的最大客戶，同時是 DGX Cloud 的競爭對象
+    facts:
+      - The Information（2025-09）：NVIDIA 縮減對外推廣，DGX Cloud 主要轉為內部研究使用；需求偏低，部分因價格高於一般雲端
+      - 報導：NVIDIA 約投入 130 億美元向各雲端租回 GPU 產能
+    contested:
+      - NVIDIA 公開否認策略轉向，稱 DGX Cloud 已滿載
+    uncertain:
+      - 雲端客戶是否因此減少採購 NVIDIA，沒有證據
+    sources:
+      - https://www.tipranks.com/news/the-fly/nvidia-to-scale-back-dgx-cloud-business-the-information-reports-thefly
+
+  - id: umc_pure_play_1995
+    ref: plan/tsmc/cases.yml#umc_pure_play_1995
+    title: 聯電轉型純代工，分拆設計部門（跨書引用）
+    period: "1995–1996"
+    evidence_status: partial
+    sources:
+      - https://en.wikipedia.org/wiki/United_Microelectronics_Corporation
+
+  - id: apple_samsung_stay_2011_2013
+    ref: plan/tsmc/cases.yml#apple_samsung_stay_2011_2013
+    title: 互告專利期間，Apple 仍交給三星代工（跨書引用）
+    period: "2011–2013"
+    evidence_status: partial
+    sources:
+      - https://www.mactrast.com/2013/06/rumor-tsmc-signs-deal-with-apple-to-build-20nm-a8-chips/
+
+  # ── 出口管制與不可替代 ──
+  - id: export_controls_2022_2023
+    title: A100/H100 管制與降規版的循環
+    period: "2022-08 – 2023-10"
+    evidence_status: partial
+    roles:
+      us_gov: 管制方
+      nvidia: 推出 A800/H800 降規版，後又被納管
+      chinese_buyers: 百度、字節跳動、騰訊、阿里巴巴
+    facts:
+      - FT（2023-08）：四家公司訂購約 10 億美元、約 10 萬顆 A800（2023 年交貨），另有 40 億美元於 2024 年交貨
+      - 報導將搶購歸因於擔心管制進一步收緊
+    uncertain:
+      - 各階段管制日期與門檻需以 BIS 規則與 NVIDIA 8-K 核對
+      - 當時中國政府是否曾勸阻採購，未見報導（不是查證過的否定）
+    sources:
+      - https://technode.com/2023/08/10/chinese-tech-giants-place-5-billion-orders-with-nvidia-for-generative-ai-chips/
+
+  - id: h20_cycle_2025
+    title: H20 從需許可、恢復出口到中國勸阻採購
+    period: "2025"
+    evidence_status: partial
+    roles:
+      us_gov: 4 月要求許可；夏季以營收分成換取恢復出口
+      china_gov: 網信辦 7 月約談 NVIDIA 詢問後門風險，並約談騰訊、字節跳動等買家
+      nvidia: 為中國設計、規格壓在門檻下的晶片
+    facts:
+      - 2025-04 須取得許可，NVIDIA 認列約 45 億美元費用
+      - 2025-09 中國市場監管總局初步認定 NVIDIA 收購 Mellanox 違反反壟斷法
+      - Bloomberg（2025-08）：官方通知企業勿用 H20，尤其政府與安全相關項目；FT：部分大買家因此減單；未正式禁止
+      - 同期華為昇騰 910C 開始送樣給大型科技公司
+    uncertain:
+      - 15% 營收分成的正式法律形式
+      - 網信辦審查的結果
+    sources:
+      - https://www.theregister.com/2025/09/15/china_nvidia_antitrust/
+      - https://www.theweek.in/news/biz-tech/2025/08/12/dont-want-leftover-chips-china-says-no-to-nvidia-less-advanced-h20-semiconductor.amp.html
+      - https://www.jurist.org/news/2025/09/china-finds-nvidia-violated-antimonopoly-law-in-preliminary-probe/
+
+  - id: h200_china_2026
+    title: H200 獲准出口，實際出貨量極少
+    period: "2025-12 – 2026"
+    evidence_status: partial
+    roles:
+      us_gov: 附條件放行，收取費用
+      china_gov: 海關一度擋下
+      nvidia: 供應方
+    facts:
+      - 規則 2026 年 1 月生效；對中銷量上限為對美銷量的 50%
+      - 2026-07-14 商務部官員向國會表示出口已開始，數量「極少」
+    contested:
+      - 美國政府分成比例報導有 25% 與 15% 兩種
+    sources:
+      - https://www.nbcnews.com/world/asia/us-approves-nvidia-h200-chip-exports-china-conditions-rcna253948
+
+  - id: asml_euv_china
+    title: ASML 的 EUV 從未出貨中國（主題外）
+    period: "2019–"
+    evidence_status: unverified
+    roles:
+      asml: 唯一的 EUV 曝光機供應者
+      dutch_gov: 出口許可方
+      us_gov: 施壓方
+    uncertain:
+      - 許可遭擱置的時間與 2023 年後的 DUV 管制範圍，需以荷蘭政府與 ASML 公告核對
+    sources: []

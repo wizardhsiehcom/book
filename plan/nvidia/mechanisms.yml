@@ -1,0 +1,162 @@
+# NVIDIA 書的機制層、意義框架與區辨力測試。案例 id 對應 cases.yml。
+# 與 plan/tsmc/mechanisms.yml 共用 neutral_supplier、irreplaceability_dual 兩個機制的定義；
+# 這裡只記 NVIDIA 情境下的前提差異與案例。
+
+mechanisms:
+  - id: ecosystem_lockin
+    name: 互補資產鎖定
+    hypothesis: 切換成本來自累積在平台上的互補資產（程式碼、函式庫、技能、論文）；只要切換成本大於價格與效能差距，買方就留下。
+    prerequisites:
+      - 買方無法把移植成本攤提到夠大的用量上
+      - 工作負載多樣，無法只為少數模型最佳化
+    causal_path:
+      - 平台早期累積使用者與工具
+      - 框架以它為預設後端
+      - 一般開發者間接依賴，切換要重寫或重驗證
+    alternative_explanations:
+      - 純粹是硬體效能與供貨領先，不是軟體鎖定
+      - 系統整合（網路、整櫃交付）才是主因
+    disconfirming_observations:
+      - 規格領先的競爭者在一般買方中快速取得市占
+      - 大型買方導入第二供應商後，沒有付出明顯的移植代價
+    boundary: 鎖定在買方規模足以攤提移植成本時鬆動，所以鬆動從最大型的買方開始（amd_openai_2025、google_tpu_anthropic_2025）。
+    supports:
+      - case: cuda_launch_2006
+        note: 在主力市場出現前就累積資產；但「早期投入是刻意布局」缺第一手證據
+      - case: alexnet_2012
+        note: 研究者用現成的遊戲卡與 CUDA，資產開始往深度學習累積；不能單獨歸因
+      - case: cudnn_frameworks_2014
+        note: 間接依賴的形成機制
+      - case: amd_mi300x_rocm
+        note: 規格領先但市占小；市占數字尚無出處，屬弱支持
+      - case: x86_itanium_amd64
+        note: 主題外佐證：連平台擁有者自己推出不相容的新架構都會輸，說明鎖定的是互補資產，不是公司
+      - case: opencl_2009_2018
+        note: 主題外佐證：開放標準本身不足以拆掉鎖定；落敗原因尚未查證
+    challenges:
+      - case: amd_openai_2025
+        note: 最大型買方之一大規模導入第二供應商
+      - case: google_tpu_anthropic_2025
+        note: 完全不同的軟硬體堆疊也能被大買方採用
+    scene_seed:
+      roles: [developers, buyers]
+      tension: 硬體便宜兩成，但團隊要花多久重新驗證整套訓練流程
+      allowed: 只寫角色處境與選項
+    return_point: 判斷鎖定是否鬆動，先問「這個買方的規模，攤提得了移植成本嗎」。
+    status: active
+
+  - id: abstraction_shift
+    name: 抽象層上移
+    hypothesis: 開發者面對的介面往上移（Python、編譯器、框架）時，鎖定會移到控制那一層的人手上。
+    prerequisites:
+      - 上層能產生足夠好的底層程式碼
+      - 上層支援多種硬體
+    alternative_explanations:
+      - 上移只是換了寫法，產生的程式碼仍針對單一硬體最佳化
+    disconfirming_observations:
+      - 追求極致效能的團隊反而往下走到硬體專屬層
+    supports:
+      - case: abstraction_layer_2021_2023
+        note: Triton 可跨 NVIDIA 與 AMD 執行；但 AMD 正式產線仍加上硬體專屬最佳化，上移並未消除底層差異
+    challenges:
+      - case: deepseek_ptx_2025
+        note: 受限於硬體時，頂尖團隊往下走到 NVIDIA 專屬的 PTX；上移不是唯一方向
+    status: weak
+    chapter_rule: 只能寫「介面正在上移」的事實，不能寫「CUDA 鎖定正在瓦解」。
+
+  - id: neutral_supplier
+    name: 中立供應者承諾（見 plan/tsmc/mechanisms.yml）
+    hypothesis: 供應者若同時和客戶競爭，客戶一有可行的替代就會轉移；不競爭的承諾要長期不越界才可信。
+    prerequisites:
+      - 存在能力與產能都可行的替代供應者
+    nvidia_specific: NVIDIA 不是中立供應者。它和雲端客戶（DGX Cloud）、和 Arm 授權客戶都有競爭關係。
+    alternative_explanations:
+      - 雲端業者自研晶片主要是成本考量，與 NVIDIA 是否競爭無關
+    disconfirming_observations:
+      - NVIDIA 收縮競爭業務後，客戶自研的速度沒有改變
+    supports:
+      - case: nvidia_arm_2020_2022
+        note: 授權客戶與監管機構反對的理由，正是 Arm 會失去中立
+      - case: umc_pure_play_1995
+        note: 跨書引用，機制原型
+    challenges:
+      - case: dgx_cloud_2023_2025
+        note: 雲端客戶在 NVIDIA 與之競爭時仍持續大量採購，因為沒有可行替代；DGX Cloud 收縮的報導理由是需求與價格，不是客戶反彈
+      - case: apple_samsung_stay_2011_2013
+        note: 跨書同構案例：客戶與供應者互為對手時，在替代者可行之前仍留下
+    boundary: 和台積電的 Apple 案例同構：不信任只有在替代者可行時才會變成轉移。
+    return_point: 客戶自研晶片時，要分開問「它有沒有退路」和「它信不信任你」。
+    status: active
+
+  - id: irreplaceability_dual
+    name: 不可替代的雙重意義（見 plan/tsmc/mechanisms.yml）
+    hypothesis: 唯一供應者的不可替代性，同時是議價籌碼與被各方要求的理由。
+    nvidia_specific: 在中國，買 NVIDIA 本身成了依賴的訊號；美國放行時，中國反而勸阻採購。
+    alternative_explanations:
+      - 中國勸阻採購主要是扶植本土供應商的產業政策，與「依賴的意義」無關
+      - 管制鬆緊主要隨美中談判起伏，而不是隨不可替代性
+    disconfirming_observations:
+      - 美國放行後，中國買方大量採購且政府不干預
+    supports:
+      - case: h20_cycle_2025
+        note: 美國放行與中國勸阻、反壟斷調查幾乎同時
+      - case: h200_china_2026
+        note: 放行後出貨量極少
+      - case: asml_euv_china
+        note: 主題外對照；此卡尚未查證
+    challenges:
+      - case: export_controls_2022_2023
+        note: 2023 年四大網路公司訂購約 50 億美元 A800，當時未見勸阻；2025 年昇騰 910C 送樣時開始勸阻。機制需加上「本土替代可行」前提
+      - case: deepseek_ptx_2025
+        note: 管制沒有阻止受限方做出有競爭力的模型；「不可替代」對使用者的意義可能被高估
+    prerequisites:
+      - 受限方的本土替代品已可用
+    status: active
+
+frames:
+  - term: 護城河
+    description: NVIDIA 在 AI 加速器的領先地位與高毛利
+    readings:
+      - position: 投資人
+        means: 可持續的超額利潤
+      - position: 大型買方
+        means: 被單一供應商定價的依賴
+      - position: 監管機構
+        means: 可能濫用的市場力量（中國反壟斷初步認定，2025-09）
+    status: 詮釋；投資人與買方的讀法缺代表性陳述
+
+  - term: 降規版晶片
+    description: 規格壓在出口門檻下、專供中國的 H20 等產品
+    readings:
+      - position: NVIDIA
+        means: 合規產品，保住市場
+      - position: 美國對中強硬派
+        means: 管制漏洞
+      - position: 中國政府
+        means: 次等品，且有安全疑慮（網信辦約談）
+    status: 詮釋；美國強硬派的讀法缺出處
+
+tests:
+  - id: lockin_by_buyer_scale
+    inputs: [amd_mi300x_rocm, amd_openai_2025]
+    expected: 同樣是 AMD 硬體，一般買方留在 NVIDIA、最大型買方導入 AMD；ecosystem_lockin 必須靠「買方規模」前提區分
+    status: pass
+
+  - id: open_standard_vs_upper_layer
+    inputs: [opencl_2009_2018, abstraction_layer_2021_2023]
+    expected: 兩者都想降低對 CUDA 的依賴；差別應在於是否長在開發者已經在用的那一層（OpenCL 要開發者改寫，PyTorch 不用）
+    status: open
+    blocks: OpenCL 落敗原因仍未找到可靠分析
+    consequence: abstraction_shift 維持 weak；章節不得用 OpenCL 對照來論證「上層抽象能拆掉鎖定」
+
+  - id: customer_stays_vs_leaves
+    inputs: [dgx_cloud_2023_2025, google_tpu_anthropic_2025]
+    expected: 雲端客戶在 NVIDIA 與之競爭時仍採購（沒有退路）；Google 自己有 TPU（有退路），且開始外售。neutral_supplier 必須靠「替代者可行」區分
+    status: pass_weak
+    result: 時序與前提吻合，但 Google 發展 TPU 的動機（成本或對 NVIDIA 的不信任）沒有證據，不能寫成因果
+
+  - id: china_buys_vs_refuses
+    inputs: [export_controls_2022_2023, h20_cycle_2025]
+    expected: 前一階段中國大量採購降規版，後一階段勸阻；irreplaceability_dual 需加上「本土替代可行」前提才能區分
+    status: pass_weak
+    result: 2023 年搶購 A800 時無本土替代、未見勸阻；2025 年昇騰 910C 送樣時開始勸阻。時序吻合前提，但「扶植本土供應商的產業政策」這個替代解釋無法排除，章節須並列兩者
