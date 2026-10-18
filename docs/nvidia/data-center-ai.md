@@ -68,3 +68,7 @@ flowchart LR
 ## 推理市場的成長
 
 目前大多數 AI 算力用於**訓練**，但未來幾年**推理**的比重將快速上升——因為每一次用戶呼叫 ChatGPT、GitHub Copilot、Gemini，都需要推理算力。這意味著 GPU 需求不是「一次性建置」而是「持續消耗」。
+
+## 資料來源
+
+- 資料中心與網路營收：[NVIDIA FY2026 Form 10-K](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm)、[Computing（Q4 FY2026）](https://www.computing.co.uk/news-network/2026/nvidia-hits-record-quarterly-growth)
