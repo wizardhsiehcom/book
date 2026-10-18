@@ -1,15 +1,19 @@
-# CUDA 軟體護城河
+# CUDA 軟體生態
 
-硬體可以被複製，軟體生態很難。NVIDIA 最深的護城河不是 GPU 晶片本身，而是圍繞 **CUDA（Compute Unified Device Architecture）** 建立的軟體生態系。
+談 CUDA，常見的說法是：NVIDIA 用軟體築了一道護城河。
 
-## CUDA 是什麼？
+這個說法只看到 NVIDIA 一方。CUDA 上累積的程式碼、函式庫、論文和技能，大部分不是 NVIDIA 寫的。**比較要緊的問題是：這些東西是誰、在什麼處境下投進去的？**
 
-CUDA 是 NVIDIA 在 2006 年發布的平行運算平台與程式設計模型，讓開發者可以用類似 C/C++ 的語法，直接對 GPU 的數千個核心進行程式設計。
+---
+
+## 分層：開發者站在哪一層
+
+CUDA（Compute Unified Device Architecture）是 NVIDIA 的平行運算平台與程式設計模型，讓開發者用類似 C/C++ 的語法對 GPU 程式設計。
 
 ```mermaid
 flowchart TD
     A["應用層<br/>PyTorch / TensorFlow / JAX"]
-    B["框架層<br/>cuDNN（深度學習）<br/>cuBLAS（線性代數）<br/>NCCL（多卡通訊）"]
+    B["函式庫層<br/>cuDNN（深度學習）<br/>cuBLAS（線性代數）<br/>NCCL（多卡通訊）"]
     C["CUDA Runtime / Driver"]
     D["NVIDIA GPU 硬體"]
 
@@ -18,47 +22,61 @@ flowchart TD
     C --> D
 ```
 
-## 護城河的深度
+多數開發者只寫最上面一層，從不直接寫 CUDA，但他們的程式碼仍然跑在下面三層上。
 
-CUDA 生態擁有 **近 20 年的先發優勢**（2006 年發布至今）。競爭者（AMD ROCm、Intel oneAPI）雖然技術上可行，但要讓現有的 CUDA 程式碼庫遷移，一家大型 AI 公司估計需要 **6–12 個月的工程師人力**，且有潛在的效能迴歸風險。
+---
 
-| 生態要素 | 規模 |
-|----------|------|
-| CUDA 版本歷史 | 2006 至今，持續向下相容 |
-| CUDA-X 函式庫數量 | 300+ |
-| 已訓練的 AI 模型（依賴 CUDA） | 幾乎全部主流開源模型 |
-| 工程師的 CUDA 知識 | 難以在短期內培養替代品 |
+## 三個角色，三次投入
 
-## CUDA-X：垂直整合的軟體棧
+| 時間 | 角色 | 處境 | 做了什麼 |
+|------|------|------|---------|
+| 2006 年 11 月 | NVIDIA | 遊戲顯示卡廠，通用運算還沒有主力市場 | 隨 G80（GeForce 8800 GTX）發表 CUDA；8800 GTX 是第一張支援 CUDA 的消費級 GeForce |
+| 2012 年 | 多倫多大學的研究團隊 | 要訓練一個單張顯示卡記憶體放不下的網路 | 用兩張 GTX 580 遊戲卡訓練 AlexNet，在 ILSVRC 2012 以 top-5 錯誤率 15.3% 勝出（第二名 26.2%） |
+| 2014 年 | NVIDIA 與框架團隊 | 每出一種新處理器，研究者就得重寫核心 | NVIDIA 發表 cuDNN；整合進 Caffe 後，標準模型提速 36% |
 
-NVIDIA 不只提供底層 CUDA，還提供整個軟體棧：
+<!-- mech: ecosystem_lockin -->
+!!! note "詮釋"
+    三次投入的成本由不同角色負擔：NVIDIA 先付了平台的錢；研究者用手邊買得起的遊戲卡做出成果；框架團隊把 cuDNN 接進框架，讓之後的使用者不必碰 CUDA 也能受益。每一方都只是在解決自己的問題，累積下來的程式碼和工具卻全都長在 CUDA 上。**所以要離開 CUDA，付的是重做別人十幾年投入的代價，而不是換一家供應商。**
 
-```mermaid
-flowchart TD
-    subgraph "CUDA-X 函式庫"
-        A["cuDNN<br/>深度神經網路"]
-        B["cuBLAS<br/>BLAS 線性代數"]
-        C["NCCL<br/>多 GPU / 多節點通訊"]
-        D["TensorRT<br/>推理最佳化"]
-        E["Triton Inference Server<br/>生產推理服務"]
-        F["NeMo<br/>大型語言模型訓練框架"]
-        G["cuSPARSE / cuFFT<br/>稀疏矩陣 / 快速傅立葉"]
-    end
-```
+這三步之間的因果不能拉得太緊：NVIDIA 早年投入是否就是為了 AI，沒有第一手證據；深度學習轉向 GPU 也不只是因為 AlexNet。
 
-**TensorRT** 尤其重要：它將訓練好的模型（PyTorch、ONNX）最佳化成高效率的推理引擎，專門針對 NVIDIA GPU 微架構進行算子融合與量化，可將推理速度提升 2–5×。
+---
 
-## 軟硬體協同設計
+## NVIDIA 自己累積的部分
 
-NVIDIA 的根本競爭優勢在於**硬體和軟體是同一家公司設計的**。當新的 GPU 架構引入 FP8、FP4 等新精度時，CUDA 和 cuDNN 立刻針對這些精度最佳化。競爭者往往需要等待第三方框架支援。
+函式庫層是 NVIDIA 直接投入的部分。CUDA-X 是這些函式庫的統稱，NVIDIA 官方的說法是「數百個」：
 
-## AI 框架的依賴
+| 函式庫 | 用途 |
+|--------|------|
+| cuDNN | 深度神經網路基本運算 |
+| cuBLAS | 線性代數 |
+| NCCL | 多 GPU、多節點通訊 |
+| TensorRT | 把訓練好的模型最佳化成針對 NVIDIA GPU 的推理引擎 |
+| cuSPARSE、cuFFT | 稀疏矩陣、快速傅立葉轉換 |
 
-| 框架 | CUDA 依賴程度 |
-|------|--------------|
-| PyTorch | 高度依賴；CUDA 是預設後端 |
-| TensorFlow | 高度依賴 |
+硬體和軟體由同一家公司設計：2022 年 Hopper 架構加入 FP8 精度時，NVIDIA 同時推出對應的 Transformer Engine 軟體庫。
+
+---
+
+## 框架層的依賴
+
+| 框架 | 和 CUDA 的關係 |
+|------|---------------|
+| PyTorch | NVIDIA GPU 上以 CUDA 為後端；2.0 起的編譯器以 Triton 產生核心 |
+| TensorFlow | NVIDIA GPU 上以 CUDA 為後端；也支援 TPU |
 | JAX | 支援 CUDA，也支援 TPU |
-| Hugging Face Transformers | 透過 PyTorch / TF 間接依賴 |
+| Hugging Face Transformers | 透過底下的框架間接依賴 |
 
-> 幾乎所有主流 AI 研究都在 CUDA 上完成。這意味著每一篇論文、每一個開源模型，都在間接強化 CUDA 的生態護城河。
+這層的依賴正在變化，見[市場競爭與護城河](competitive-moat.md)〈還沒定論的兩個問題〉。誰付得起離開的代價，也見該章。
+
+---
+
+## 資料來源
+
+- CUDA 與 G80：[Wikipedia：CUDA](https://en.wikipedia.org/wiki/CUDA)、[Wikipedia：GeForce 8 series](https://en.wikipedia.org/wiki/GeForce_8_series)
+- AlexNet：[Krizhevsky et al., NeurIPS 2012](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks)
+- cuDNN：[Chetlur et al., arXiv 1410.0759](https://arxiv.org/abs/1410.0759)
+- CUDA-X：[NVIDIA](https://www.nvidia.com/en-us/technologies/cuda-x/)
+- Hopper 與 Transformer Engine：[NVIDIA H100](https://www.nvidia.com/en-us/data-center/h100/)
+
+本章的案例與機制底稿見 `plan/nvidia/cases.yml` 與 `plan/nvidia/mechanisms.yml`。
