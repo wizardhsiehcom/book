@@ -268,13 +268,14 @@ cases:
       - 亞利桑那第一廠 2024 Q4 以 N4 量產；第二廠 3 奈米預定 2027 下半年
       - 補助最高 66 億美元（2024-11 定案）另貸款最高約 50 億；投資規劃約 1,650 億美元（2025-03）
       - 熊本 JASM 2024-12 量產（28–12 奈米）
-      - 德勒斯登 ESMC 2024 動工，官網目標 2027 年底
+      - 德勒斯登 ESMC 2024-08 動工，2026-09 上樑；首批製程設備 2027 下半年進機；量產時間未公布（官網早先目標 2027 年底）
     uncertain:
-      - 書中 07 章寫 ESMC 2029 年投產，與官網不一致
+      - ESMC 量產時間：設備 2027 下半年才進機，早先「2027 年底投產」的目標可能已不成立
     sources:
       - https://azcir.org/news/2025/05/09/has-a-taiwanese-chip-manufacturer-pledged-165-billion-in-arizona-investments-yes/
       - https://siliconangle.com/2024/12/27/tsmc-begins-mass-producing-chips-newly-opened-fab-japan/
       - https://tsmc.com/english/aboutTSMC
+      - https://focustaiwan.tw/business/202609150007
 
   - id: nvidia_overtakes_apple_2025
     title: NVIDIA 成為最大客戶

@@ -71,7 +71,7 @@ flowchart TD
 |------|------|------|------|
 | 美國亞利桑那 | TSMC Arizona | N4 起，後續 3 奈米、2 奈米 | 第一座廠 2024 年第四季量產；第二座廠 3 奈米預定 2027 年下半年量產 |
 | 日本熊本 | JASM | 28–12 奈米 | 第一座廠 2024 年 12 月量產；第二座廠時程有變動的報導 |
-| 德國德勒斯登 | ESMC | 28/22、16/12 奈米 | 2024 年動工，台積電公布的目標是 2027 年底投產 |
+| 德國德勒斯登 | ESMC | 28/22、16/12 奈米 | 2024 年動工，2026 年 9 月上樑；首批製程設備預定 2027 年下半年進機，量產時間未公布 |
 
 美國這邊的帳：2022 年《晶片與科學法案》編列約 527 億美元；台積電在 2024 年 11 月與商務部定案最高 66 億美元的直接補助，另有最高約 50 億美元的貸款。2025 年 3 月，台積電宣布再增加 1,000 億美元，在美國的規劃投資總額約 1,650 億美元。這兩個數字一個是政府補助的上限，一個是公司的投資規劃，不能相加。
 
@@ -94,7 +94,7 @@ flowchart TD
 - 市占：TrendForce 2026 年 9 月新聞稿（[連結](https://www.trendforce.com/presscenter/news/20260909-13225.html)）；2025 年全年：自由時報 / Taipei Times，2026 年 3 月 14 日（[連結](https://news.ltn.com.tw/news/focus/breakingnews/5369655)）
 - 7 奈米 AI 晶片出貨限制：Korea Times 轉載路透社，2024 年 11 月 10 日（[連結](https://www.koreatimes.co.kr/amp/world/20241110/us-ordered-tsmc-to-halt-shipments-to-china-of-chips-used-in-ai-applications-source)）
 - 美國投資與補助：Arizona Center for Investigative Reporting，2025 年 5 月 9 日（[連結](https://azcir.org/news/2025/05/09/has-a-taiwanese-chip-manufacturer-pledged-165-billion-in-arizona-investments-yes/)）
-- ESMC 時程：台積電官網（[連結](https://tsmc.com/english/aboutTSMC)）
+- ESMC 時程：中央社 / Focus Taiwan，2026 年 9 月 15 日（[連結](https://focustaiwan.tw/business/202609150007)）
 
 ---
 
