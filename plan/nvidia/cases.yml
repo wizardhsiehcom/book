@@ -16,7 +16,11 @@ cases:
     uncertain:
       - 早期投入金額與內部爭議缺第一手資料
       - 「維持向下相容」的範圍需以官方文件核對
-    sources: []
+    facts:
+      - 隨 G80（GeForce 8800 GTX，2006-11-08）發表，8800 GTX 是第一張支援 CUDA 的消費級 GeForce
+    sources:
+      - https://en.wikipedia.org/wiki/CUDA
+      - https://en.wikipedia.org/wiki/GeForce_8_series
 
   - id: alexnet_2012
     title: AlexNet 在兩張 GTX 580 上訓練
@@ -30,7 +34,11 @@ cases:
     outcome: 深度學習研究大量轉向 GPU；後續框架以 CUDA 為預設後端
     uncertain:
       - 「轉向 GPU」主要因為 AlexNet 還是同期多項成果，無法分開
-    sources: []
+    facts:
+      - 論文載明以兩張 GTX 580 3GB 訓練，因為單張記憶體放不下網路；ILSVRC 2012 top-5 錯誤率 15.3%，第二名 26.2%
+    sources:
+      - https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks
+      - https://en.wikipedia.org/wiki/AlexNet
 
   - id: cudnn_frameworks_2014
     title: cuDNN 推出，主流框架以 CUDA 為預設後端
@@ -44,7 +52,11 @@ cases:
       - 框架開發者整合 cuDNN；一般開發者不直接寫 CUDA，卻依賴它
     uncertain:
       - 各框架導入 cuDNN 的年份需逐一核對
-    sources: []
+    facts:
+      - cuDNN 論文 2014-10 發表（NVIDIA 與 Baidu、UC Berkeley 合著），整合進 Caffe 後標準模型提速 36%
+      - 論文自述動機：每出一種新處理器，研究者就得重寫核心
+    sources:
+      - https://arxiv.org/abs/1410.0759
 
   # ── 鎖定鬆動的條件 ──
   - id: amd_mi300x_rocm
