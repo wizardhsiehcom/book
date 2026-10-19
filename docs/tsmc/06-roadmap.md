@@ -10,8 +10,8 @@
 flowchart LR
     N3["N3 / N3E<br/>2022–2024<br/>FinFET FinFlex"]
     N2["N2 / N2P<br/>2025–2026<br/>GAA NSFET"]
-    A16["A16<br/>2026<br/>GAA + BSPDN"]
-    A14["A14<br/>2028+<br/>持續微縮"]
+    A16["A16<br/>2026 風險試產<br/>GAA + BSPDN"]
+    A14["A14<br/>2028 預定"]
 
     N3 --> N2 --> A16 --> A14
 ```
@@ -30,12 +30,13 @@ flowchart LR
 
 | 平台 | 應用 | 代表節點 |
 |------|------|----------|
-| RF（射頻） | 5G 手機前端模組 | N6RF、N4RF |
+| RF（射頻） | 5G 手機前端模組 | N6RF、N4PRF |
 | BCD | 電源管理 IC | 各 BCD 版本 |
 | SiGe | 毫米波雷達、光通訊 | SiGe BiCMOS |
-| GaN | 快充、基站功放 | GaN-on-SiC |
 | HV CMOS | 顯示驅動、汽車 | 各 HV 版本 |
 | Embedded NVM | 微控制器 MCU | eFlash、eMRAM |
+
+台積電原本也提供氮化鎵（GaN）代工，但已通知客戶將在 2027 年 7 月底前退出。
 
 ---
 
@@ -46,7 +47,7 @@ flowchart TD
     P1["CoWoS-S<br/>現有主力（AI GPU）"]
     P2["CoWoS-L<br/>混合型（2024+）"]
     P3["SoIC + CoWoS<br/>3D 堆疊 + 2.5D 整合"]
-    P4["超大封裝<br/>面積突破 3,500mm²+"]
+    P4["更大的封裝面積"]
 
     P1 --> P2 --> P3
     P1 --> P4
@@ -70,3 +71,8 @@ flowchart TD
 ---
 
 → 延伸閱讀：[製程節點](04-nodes.md)、[先進封裝](05-advanced-packaging.md)
+
+## 資料來源
+
+- A16 風險試產：[TSMC 2025 Form 20-F](https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm)
+- 退出 GaN：[TrendForce 轉述 Navitas 公告（2025-07）](https://www.ledinside.com/node/35291)

@@ -9,7 +9,7 @@
 ```mermaid
 graph TD
     subgraph "台灣（核心）"
-        TW_HC["新竹<br/>Fab 2 / 3 / 5 / 8<br/>Fab 12A / 12B / 20<br/>ABF 1"]
+        TW_HC["新竹<br/>Fab 2 / 3 / 5 / 8<br/>Fab 12 / 20<br/>ABF 1"]
         TW_TN["台南<br/>Fab 6 / 14 / 18<br/>ABF 2"]
         TW_TC["台中<br/>Fab 15 / ABF 5"]
         TW_KH["高雄<br/>Fab 22"]
@@ -18,12 +18,12 @@ graph TD
         TW_CY["嘉義太保<br/>ABF 7"]
     end
     subgraph "海外"
-        US["美國 鳳凰城<br/>Fab 21（N4P/N2/A16）"]
-        JP["日本 熊本<br/>JASM Fab 23（12/22/28nm）"]
+        US["美國 鳳凰城<br/>Fab 21（量產 N4；規劃 3nm、2nm）"]
+        JP["日本 熊本<br/>JASM Fab 23（量產 28nm）"]
         DE["德國 德勒斯登<br/>ESMC（28/22、16/12nm）興建中"]
         SG["新加坡<br/>SSMC（200mm）合資"]
         CN_SH["中國 上海<br/>Fab 10（200mm）"]
-        CN_NJ["中國 南京<br/>Fab 16（300mm/28nm）"]
+        CN_NJ["中國 南京<br/>Fab 16（300mm/16nm）"]
         US_WA["美國 華盛頓州<br/>Fab 11 / WaferTech（200mm）"]
     end
 ```
@@ -34,20 +34,19 @@ graph TD
 
 ### 前段晶圓廠（Wafer Fab）
 
-| 廠號 | 位置 | 晶圓尺寸 | 主要製程 / 備註 |
+| 廠號 | 位置 | 晶圓尺寸 | 量產最先進製程（2025 年底，20-F）/ 備註 |
 |------|------|---------|----------------|
-| **Fab 2** | 新竹科學園區 | 150 mm | 成熟製程，早期設施 |
-| **Fab 3** | 新竹科學園區 | 200 mm | 成熟製程 |
-| **Fab 5** | 新竹科學園區 | 200 mm | 成熟製程 |
-| **Fab 6** | 台南善化 | 200 mm | 成熟製程，Phase 1 & 2 運作中 |
-| **Fab 8** | 新竹科學園區 | 200 mm | 成熟製程 |
-| **Fab 12A** | 新竹寶山 | 300 mm | **台積電總部所在地**；Phase 1/2/4–7 運作中，Phase 8 興建中；涵蓋 7nm / 5nm |
-| **Fab 12B** | 新竹科學園區 | 300 mm | **研發中心**；Phase 3 運作中；先進製程研發 |
-| **Fab 14** | 台南善化 | 300 mm | Phase 1–7 運作中，Phase 8 興建中；7nm / 5nm 主力 |
-| **Fab 15** | 台中科學園區 | 300 mm | Phase 1–7 運作中；12nm / 16nm 主力 |
-| **Fab 18** | 台南安定 | 300 mm | Phase 1–8 全數運作；**3nm / 5nm 最大量產廠** |
-| **Fab 20** | 新竹寶山 | 300 mm | **2nm（N2）首批量產廠**，規劃 4 期；2025 年起量產 |
-| **Fab 22** | 高雄楠梓 | 300 mm | Phase 1 運作中，Phase 2 興建，Phase 3–5 規劃中；目標 2nm / A16 |
+| **Fab 2** | 新竹科學園區 | 150 mm | 450 nm；早期設施 |
+| **Fab 3** | 新竹科學園區 | 200 mm | 150 nm |
+| **Fab 5** | 新竹科學園區 | 200 mm | 150 nm |
+| **Fab 6** | 南部科學園區 | 200 mm | 110 nm |
+| **Fab 8** | 新竹科學園區 | 200 mm | 110 nm |
+| **Fab 12** | 新竹科學園區 | 300 mm | 40 nm；總部與研發所在地 |
+| **Fab 14** | 南部科學園區 | 300 mm | 16 nm |
+| **Fab 15** | 中部科學園區 | 300 mm | 7 nm |
+| **Fab 18** | 南部科學園區 | 300 mm | 3 nm |
+| **Fab 20** | 新竹科學園區（寶山） | 300 mm | 2 nm；2025 年開始量產 |
+| **Fab 22** | 高雄楠梓 | 300 mm | 2 nm；2025 年開始量產 |
 
 ### 後段先進封裝廠（Advanced Backend Fab，ABF）
 
@@ -68,26 +67,15 @@ graph TD
 
 ### 🇺🇸 美國 — Fab 21（鳳凰城，亞利桑那州）
 
-```mermaid
-flowchart LR
-    P1["Phase 1<br/>N4P<br/>2024 量產"]
-    P2["Phase 2<br/>N2<br/>2028 量產"]
-    P3["Phase 3–5<br/>A16<br/>2030 預計"]
-    P4["Phase 7–10<br/>規劃中<br/>2030+"]
-    P1 --> P2 --> P3 --> P4
-```
-
 | 項目 | 說明 |
 |------|------|
 | 位置 | 鳳凰城（Phoenix），亞利桑那州 |
 | 晶圓尺寸 | 300 mm |
-| 總投資額 | 超過 650 億美元（最終目標） |
-| 補貼 | 美國晶片法案（CHIPS Act）直接補助 66 億美元 + 50 億美元貸款 |
-| Phase 1 | N4P，2024 年量產 |
-| Phase 2 | N2，2028 年量產 |
-| Phase 3–5 | A16，目標 2030 年 |
-| 特別承諾 | 台積電承諾在亞利桑那導入最先進 A16 製程，5 年內不回購股票 |
-| 挑戰 | 建廠成本比台灣高 4–5 倍；工程人才招募困難；供應鏈生態待建立 |
+| 第一座廠 | N4，2024 年第四季量產 |
+| 第二座廠 | 3 奈米，報導預定 2027 年下半年量產 |
+| 第三座廠 | 報導規劃 2 奈米與 A16 |
+| 投資與補助 | 見[地緣政治與全球化](11-geopolitics.md)〈海外布局〉 |
+| 成本 | 張忠謀 2022 年表示，台積電奧勒岡廠生產同樣產品的成本比台灣高約 50% |
 
 ---
 
@@ -96,11 +84,11 @@ flowchart LR
 | 項目 | 說明 |
 |------|------|
 | 正式名稱 | Japan Advanced Semiconductor Manufacturing（JASM） |
-| 股權結構 | 台積電 70%、Sony Semiconductor Solutions 20%、Denso 10% |
-| Phase 1 | 已於 2024 年 12 月開始商業生產；製程：12 / 22 / 28 nm |
-| Phase 1 建廠費用 | 約 86 億美元；日本政府補貼 4,760 億日圓 |
-| Phase 2 | 興建中（Fab 23 旁）；製程 6 nm / 12 nm；估計成本 139 億美元；政府補貼 7,320 億日圓 |
-| 預計就業 | 第一廠直接創造約 1,700 個高技術工作機會 |
+| 股權結構 | 台積電約 86.5%、Sony Semiconductor Solutions 6.0%、Denso 5.5%、Toyota 2.0%（2024 年 2 月第二座廠宣布後） |
+| Phase 1 | 2024 年 12 月開始量產；規劃 12/16 與 22/28 nm，2025 年底量產最先進為 28 nm（20-F） |
+| Phase 2 | 2024 年宣布時規劃 6/7 nm，預定 2027 年底前營運；之後有時程變動的報導 |
+| 總投資 | 兩座廠合計超過 200 億美元 |
+| 預計就業 | 兩座廠合計直接創造超過 3,400 個工作機會 |
 | 戰略意義 | 供應 Sony 影像感測器、Denso 汽車晶片及其他日本電子廠商 |
 
 ---
@@ -136,7 +124,7 @@ flowchart LR
 | 廠號 | 位置 | 晶圓尺寸 | 製程 | 備註 |
 |------|------|---------|------|------|
 | **Fab 10** | 上海松江 | 200 mm | 成熟製程 | TSMC China Company Limited |
-| **Fab 16** | 南京（江蘇） | 300 mm | 28 nm | TSMC Nanjing Company Limited；因美國出口管制無法升級至先進製程 |
+| **Fab 16** | 南京（江蘇） | 300 mm | 16 nm | TSMC Nanjing Company Limited；美方 VEU 授權 2025 年 12 月到期，改以年度出口許可維持設備供應（20-F） |
 
 ---
 
@@ -161,14 +149,20 @@ flowchart TD
     WHY --> RISK["分散台灣地緣風險"]
 
     COST["成本挑戰"]
-    COST --> C1["建廠成本比台灣高 4–5 倍"]
+    COST --> C1["生產成本較高<br/>張忠謀：奧勒岡約高 50%"]
     COST --> C2["工程師薪資與生活成本高"]
     COST --> C3["供應鏈生態系尚未建立"]
-    COST --> C4["設備維修技師需從台灣派駐"]
 ```
 
-儘管有龐大補貼，海外廠生產的晶片成本仍比台灣廠高出至少 50%，這也是台灣廠持續擴張的重要原因。
+台積電在 2026 年 1 月法說會預期，海外廠量產初期會稀釋毛利率約 2–3 個百分點（見[財務表現](10-financials.md)）。
 
 ---
 
 → 延伸閱讀：[地緣政治](11-geopolitics.md)、[上下游供應鏈](09-supply-chain.md)
+
+## 資料來源
+
+- 各廠量產最先進製程、Fab 16 出口許可：[TSMC 2025 Form 20-F](https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm)
+- JASM 股權、投資與就業：[TSMC 新聞稿（2024-02）](https://pr.tsmc.com/japanese/news/3105)
+- Arizona 第二座廠時程：[TrendForce 轉述 Nikkei（2025-12）](https://www.trendforce.com/news/2025/12/18/news-tsmc-reportedly-accelerates-arizona-2nd-fab-eyes-3q26-tool-install-2027-3nm-production/)
+- 張忠謀談美國成本：[Taipei Times（2022-04）](https://www.taipeitimes.com/News/biz/archives/2022/04/22/2003776996)

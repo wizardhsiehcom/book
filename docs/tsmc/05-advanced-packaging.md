@@ -44,13 +44,12 @@ graph TD
 
 最成熟的 2.5D 封裝方案，核心概念是在「矽中介板」上同時放置 GPU/TPU 晶片與 HBM 記憶體。
 
-**主要應用**：NVIDIA H100、H200、B100 等 AI 加速器
+**主要應用**：NVIDIA H100、H200 等 AI 加速器（Blackwell 世代改用 CoWoS-L）
 
 | 特性 | 說明 |
 |------|------|
 | 中介板材質 | 矽（Si） |
 | HBM 頻寬 | 可達數 TB/s |
-| 封裝尺寸 | 最大約 2,500 mm²（持續擴大中） |
 | 優點 | 互連密度高、訊號完整性佳 |
 
 ### CoWoS-R（RDL Interposer）
@@ -65,7 +64,7 @@ graph TD
 
 ## SoIC：3D 垂直堆疊
 
-SoIC（System on Integrated Chips）使用**混合鍵合（Hybrid Bonding）**技術，將兩個晶片以銅對銅直接接合，間距可低至 9μm，遠優於傳統凸塊（Bump）的 40μm 以上。
+SoIC（System on Integrated Chips）使用**混合鍵合（Hybrid Bonding）**技術，將兩個晶片以銅對銅直接接合，接點間距比傳統凸塊（Bump）小得多。
 
 **應用場景**：將邏輯晶片與快取/記憶體晶片垂直堆疊，顯著縮短存取延遲。
 

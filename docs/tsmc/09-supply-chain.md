@@ -25,7 +25,7 @@ flowchart TD
         TSMC["台積電<br/>晶圓製造"]
     end
     subgraph "下游：封測"
-        PKG1["日月光 ASE<br/>全球最大封測廠"]
+        PKG1["日月光 ASE"]
         PKG2["矽品 SPIL"]
         PKG3["京元電子、頎邦"]
     end
@@ -49,7 +49,7 @@ flowchart TD
 
 ## ASML 的關鍵地位
 
-EUV（極紫外光）微影設備是 7nm 以下製程的必要條件，而 ASML 是全球唯一能製造 EUV 機台的公司。一台 EUV 機台售價超過 1 億美元，交期長達數年，形成極高的供應鏈風險。
+台積電從 N7+ 起在先進製程使用 EUV（極紫外光）微影，而 ASML 是唯一的 EUV 機台供應商。
 
 ```mermaid
 flowchart LR
@@ -71,9 +71,14 @@ flowchart LR
 | 矽晶圓 | 環球晶（GlobalWafers） |
 | 光罩 | 台灣光罩 |
 | 封測 | 日月光、矽品、頎邦 |
-| PCB / 基板 | 南亞科、台光電子 |
+| PCB / 銅箔基板 | 南亞電路板、台光電子 |
 | 設備維修 | 漢民科技等代理商 |
 
 ---
 
 → 延伸閱讀：[廠區分布](07-fabs.md)、[地緣政治](11-geopolitics.md)
+
+## 資料來源
+
+- ASML 與 EUV：[Wikipedia：ASML](https://en.wikipedia.org/wiki/ASML_Holding)
+- N7+ 首用 EUV：[TSMC 新聞稿（2019-10）](https://pr.tsmc.com/english/news/2010)
