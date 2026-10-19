@@ -90,6 +90,7 @@ Apply whenever writing, updating, or reviewing a chapter that states facts about
 - **Time-sensitive claims are checked against today's date.** Roadmaps, "預計", launch and shipment status, guidance, and "目前" statements: re-verify, and write the source's own wording and as-of date. A forecast with no source is deleted, not softened.
 - **Attribute company self-description.** Marketing claims ("world's first GPU", "AI factory") are written as 「X 稱」, not as fact.
 - **One fact, one home.** After fixing a fact, grep the whole book for the same claim and its variants; fix or remove contradictions, keep the fact in one chapter, and link to it from the others.
+- **Diagrams and tables are claims too.** Mermaid node labels, table cells, and section headings like 「關鍵數字（2023 年）」 get the same check as prose; after a fix, grep them for the old value.
 - **Check that examples match the source's categories.** Do not name customers, partners, or competitors as "the largest" unless the source names them.
 - Prefer `flowchart`, `sequenceDiagram`, or `graph` diagram types.
 
