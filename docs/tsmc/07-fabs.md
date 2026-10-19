@@ -9,13 +9,13 @@
 ```mermaid
 graph TD
     subgraph "台灣（核心）"
-        TW_HC["新竹<br/>Fab 2 / 3 / 5 / 8<br/>Fab 12 / 20<br/>ABF 1"]
-        TW_TN["台南<br/>Fab 6 / 14 / 18<br/>ABF 2"]
-        TW_TC["台中<br/>Fab 15 / ABF 5"]
+        TW_HC["新竹<br/>Fab 2 / 3 / 5 / 8<br/>Fab 12 / 20<br/>AP1"]
+        TW_TN["台南<br/>Fab 6 / 14 / 18<br/>AP2 / AP8"]
+        TW_TC["台中<br/>Fab 15 / AP5"]
         TW_KH["高雄<br/>Fab 22"]
-        TW_TY["桃園龍潭<br/>ABF 3"]
-        TW_ML["苗栗竹南<br/>ABF 6"]
-        TW_CY["嘉義太保<br/>ABF 7"]
+        TW_TY["桃園龍潭<br/>AP3"]
+        TW_ML["苗栗竹南<br/>AP6"]
+        TW_CY["嘉義<br/>AP7"]
     end
     subgraph "海外"
         US["美國 鳳凰城<br/>Fab 21（量產 N4；規劃 3nm、2nm）"]
@@ -48,12 +48,21 @@ graph TD
 | **Fab 20** | 新竹科學園區（寶山） | 300 mm | 2 nm；2025 年開始量產 |
 | **Fab 22** | 高雄楠梓 | 300 mm | 2 nm；2025 年開始量產 |
 
-### 後段先進封裝廠（Advanced Backend Fab，ABF）
+### 後段先進封裝廠（Advanced Backend Fab，AP）
 
-台積電自建封裝廠以整合 CoWoS / SoIC 等先進封裝技術，不再完全依賴外部封測廠。
+台積電自建封裝廠，承接 CoWoS、InFO、SoIC 等先進封裝。依 20-F，截至 2026 年初營運中的先進封裝廠共七座，但年報沒有逐座列名。下表的位置來自 20-F 的土地租約與官方新聞稿；各廠用途多來自產業報導，可能隨擴產計畫調整。
 
-| 廠號 | 位置 | 狀態 | 備註 |
-|------|------|------|------|
+| 廠號 | 位置 | 用途（報導） | 備註 |
+|------|------|-------------|------|
+| **AP1** | 新竹科學園區 | 測試與後段封裝 | 有報導稱將轉為研發用途 |
+| **AP2** | 南部科學園區（台南） | 微凸塊與少量 CoWoS | |
+| **AP3** | 桃園龍潭 | 以 InFO 為主 | |
+| **AP5** | 中部科學園區（台中） | CoWoS | |
+| **AP6** | 苗栗竹南 | CoWoS、SoIC、InFO | 2023 年 6 月啟用，官方稱為當時最大的先進封裝廠 |
+| **AP7** | 嘉義科學園區 | 原規劃 SoIC、WMCM，報導稱部分改為 CoWoS | 報導稱第一期 2026 年量產 |
+| **AP8** | 南部科學園區（台南） | CoWoS | 向群創購入的既有廠房改建；2025 年 12 月起租約生效 |
+
+------|------|------|------|
 | **ABF 1** | 新竹科學園區 | 運作中 | CoWoS 先進封裝 |
 | **ABF 2** | 台南善化 | AP2B & AP2C 運作中 | CoWoS 先進封裝 |
 | **ABF 3** | 桃園龍潭 | 運作中 | 先進封裝 |
@@ -165,4 +174,7 @@ flowchart TD
 - 各廠量產最先進製程、Fab 16 出口許可：[TSMC 2025 Form 20-F](https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm)
 - JASM 股權、投資與就業：[TSMC 新聞稿（2024-02）](https://pr.tsmc.com/japanese/news/3105)
 - Arizona 第二座廠時程：[TrendForce 轉述 Nikkei（2025-12）](https://www.trendforce.com/news/2025/12/18/news-tsmc-reportedly-accelerates-arizona-2nd-fab-eyes-3q26-tool-install-2027-3nm-production/)
+- 先進封裝廠數量與租約：[TSMC 2025 Form 20-F](https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm)
+- AP6 啟用：[TSMC 新聞稿（2023-06）](https://pr.tsmc.com/english/news/3033)
+- 各廠用途：[Nomad Semi](https://www.nomadsemi.com/p/tsmcs-cowos-capacity)、[DigiTimes（2026-01）](https://www.digitimes.com/news/a20260129PD220/tsmc-packaging-fab-cowos-genai.html)、[TrendForce（2025-12）](https://www.trendforce.com/news/2025/12/04/news-tsmc-speeds-advanced-packaging-ap7-targets-2026-output-arizona-p6-eyed-for-u-s-packaging-hub/)
 - 張忠謀談美國成本：[Taipei Times（2022-04）](https://www.taipeitimes.com/News/biz/archives/2022/04/22/2003776996)
