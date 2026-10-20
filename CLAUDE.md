@@ -82,7 +82,7 @@ Book themes use 墨朱 (dark `slate`) and 和紙朱印 (light `default`), both w
 
 ## Facts and sources
 
-Apply whenever writing, updating, or reviewing a chapter that states facts about real companies, people, or events.
+Apply whenever writing, updating, or reviewing a chapter that states facts about real companies, people, or events. These rules govern facts in body text, tables, and diagrams. Labeled interpretation, analogy, and conjecture follow `templates/situation-analysis/README.md` and may go beyond the evidence.
 
 - **Every number, share, ranking, price, date, and superlative ("first", "largest", "near-monopoly") needs a source** listed in the chapter's `## 資料來源`. If no reliable source is found, delete the claim; do not keep an estimate, a "~", or a vague restatement of it.
 - **Primary filings win.** For a listed company, check the latest annual report (10-K, 20-F, 年報) before secondary coverage; when they disagree, follow the filing. State the reporting basis when it changes the meaning (e.g. geographic revenue by customer headquarters, not end use).
