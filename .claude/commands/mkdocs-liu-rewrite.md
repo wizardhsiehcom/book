@@ -25,12 +25,12 @@ build_cmd: `uv run mkdocs build -f configs/<folder>.yml`
 1. **Data gate**
    - Identify the book and chapters from `rewrite_request`; if none, list `configs/*.yml` and ask.
    - Run `check_cmd`. If `plan_dir` lacks data or the check fails, run the `/situation-analysis` workflow first for these chapters.
-   - Read `plan_dir/stance.md`. If absent, write one per `method_doc` (a partial, defensible thesis, its supporting facts, and the counterexamples to answer) and report it so the user can change it.
+   - Read `plan_dir/voices.md` and `plan_dir/stance.md`. If `voices.md` is absent, search for the sharpest attributed claims on the topic from founders, architects, rivals, politicians, and critics, on both sides, and record them per `method_doc`. If `stance.md` is absent, write one per `method_doc`, borrowing a voice where one fits, with its strongest opposing voice; report it so the user can change it.
 2. **Generate chapters (gate: traceability)**
    - Rewrite only the selected chapters from the data, using the layers `method_doc` assigns to this book type. Open with the reframed question; keep facts in body text; format interpretations, weak-mechanism limits, scenes, and trace comments as `method_doc` specifies.
    - Short punchline sentences are fine where a mechanism or a labeled conjecture supports them.
    - No process residue in prose: no notes on what the original said, what was removed, what lacks a source, or what each box type means. That belongs in `plan_dir` and the report.
-   - Every interpretation argues the stance: extend it, read a fact through it, or answer a counterexample head-on. No per-box falsifiers or hedges on details that do not change the conclusion; a cautious cliché is worse than no box. Facts that cut against the stance stay in body text.
+   - Every interpretation argues the stance: extend it, read a fact through it, or answer a counterexample head-on. No per-box falsifiers or hedges on details that do not change the conclusion; a cautious cliché is worse than no box. Facts that cut against the stance stay in body text. Quote voices in body text with name, date, and venue; name the person when an interpretation borrows their frame.
    - A scene must show roles facing the same situation and choosing differently for a reason the mechanism names; if it cannot, drop it. A frame table needs a sourced reading per row; otherwise drop it.
    - A chapter whose data yields no mechanism, not even a weak one, stays a fact chapter: fix the facts, add no interpretation for its own sake.
    - Move lookup material (timelines, rosters) to an appendix table; add a sources section and a pointer to `plan_dir`.

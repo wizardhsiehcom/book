@@ -29,7 +29,9 @@ check_cmd: `uv run python tools/check-situation-data.py plan/<name>`
    - Gate: the outside-subject share and source rules in `method_doc` hold.
 4. **Build mechanisms, frames, tests (gate: discrimination)**
    - Run `check_cmd`. Gate: no missing or unused cases, every mechanism has a challenge, every test is `pass` or `pass_weak`. Research and add cases until it passes, or mark the mechanism `weak`.
-5. **Commit** the data files on their own.
+5. **Voices and stance (gate: attributed)**
+   - Write `voices.md` and `stance.md` per `method_doc`. Gate: every quote has a date and a source, and the stance names its strongest opposing voice.
+6. **Commit** the data files on their own.
 
 ## Examples
 
