@@ -19,7 +19,7 @@
 
 <!-- mech: ecosystem_lockin -->
 !!! note "詮釋"
-    連平台擁有者自己都推不動不相容的新架構，開放標準在核心效能相當時也贏不了。**鎖住買方的不是 NVIDIA，是買方自己累積在 CUDA 上的東西。**所以 NVIDIA 最該擔心的不是更快的 GPU，而是一層讓舊程式碼不必重寫就能搬走的轉譯層。如果有對手只靠硬體規格、沒有相容層，就從 NVIDIA 手上拿走大量既有工作負載，這個解釋就錯了。
+    收稅靠的不是稅吏，是納稅人自己搬不走的家當。連 x86 的擁有者 Intel 都推不動不相容的 Itanium，開放標準 OpenCL 在核心效能相當時也輸了。**鎖住買方的不是 NVIDIA，是買方自己累積在 CUDA 上的東西。**所以 NVIDIA 最該怕的不是更快的 GPU，而是讓家當不必重搬的那一層。
 
 ---
 
@@ -46,7 +46,7 @@ AMD 的 MI300X 在廠商規格上不輸 H100：
 
 <!-- mech: ecosystem_lockin, test: lockin_by_buyer_scale -->
 !!! note "詮釋"
-    同樣面對 AMD 的硬體，一般買方留下，最大型的買方卻導入了。差別在規模：移植成本是固定的，用量越大，攤到每張卡上越便宜。所以護城河不是均勻變淺，而是從最深的那一端開始被跨過。
+    逃稅是大戶的特權。移植成本是固定的，用量越大，攤到每張卡上越便宜。OpenAI 和 Anthropic 先跨出去，不是因為它們比較不依賴 CUDA，而是因為它們繳的稅最多。護城河不是均勻變淺，而是從最大的納稅人那一端開始被跨過。
 
 <!-- mech: ecosystem_lockin -->
 !!! example "示意場景"
@@ -65,23 +65,23 @@ NVIDIA 不是中立的供應者，它和自己的客戶有兩次正面衝突：
 
 <!-- mech: neutral_supplier, test: customer_stays_vs_leaves -->
 !!! note "詮釋"
-    Arm 的授權客戶有反對的管道（監管機構），所以交易被擋下。雲端業者面對 DGX Cloud 卻照樣大量採購，因為短期內沒有退路。這和台積電一書裡 Apple 在 2011–2013 年和三星互告專利、卻仍交給三星代工是同一個結構：不信任要等到替代者可行，才會變成轉移。
+    收稅者下場做生意，納稅人就會想自立門戶。Arm 的授權客戶有監管機構可以求助，交易被擋下；雲端業者面對 DGX Cloud 沒有退路，只能繼續繳。這和台積電一書裡 Apple 在 2011–2013 年和三星互告、卻照樣交給三星代工是同一個結構：不滿要等到有了退路，才會變成轉移。
 
 Google 是 NVIDIA 的客戶，也自研 TPU。據 SemiAnalysis，Gemini 各代模型都只用 TPU 訓練；Google 也把 TPU 租給外部客戶，包括上一節的 Anthropic。
 
 <!-- mech: neutral_supplier (weak) -->
 !!! note "詮釋"
-    推測：Google 的 TPU 起點是成本，不是不信任，但結果一樣——它替其他大買方示範了退路長什麼樣子。客戶自己造出來的退路，最後會租給別的客戶。如果外部客戶的 TPU 用量一直停在試用規模，這條退路就只是 Google 自己的。
+    Google 是第一個建出自己稅區的大戶。TPU 的起點也許只是成本，但它造出來的退路，現在租給了 Anthropic 這些其他大戶。客戶自己蓋的避稅天堂，最後會對外營業。
 
 ---
 
-## 還沒定論的兩個問題
+## 稅基的兩道裂縫
 
 <!-- mech: abstraction_shift (weak), test: open_standard_vs_upper_layer -->
-**介面上移會不會鬆動 CUDA？**OpenAI 在 2021 年開源 Triton，用 Python 寫 GPU 核心；2023 年 PyTorch 2.0 的編譯器以 Triton 產生核心，AMD 文件說明 Triton 可在 ROCm 上執行。和 OpenCL 不同，它們長在開發者已經在用的那一層，不必改寫。但反方向的證據也在：AMD 正式產線仍另加硬體專屬的手調核心；DeepSeek 受限於 H800，反而往下走到 NVIDIA 專屬的 PTX 指令集。目前能確定的只有「介面正在上移」。
+**介面上移會不會鬆動 CUDA？**OpenAI 在 2021 年開源 Triton，用 Python 寫 GPU 核心；2023 年 PyTorch 2.0 的編譯器以 Triton 產生核心，AMD 文件說明 Triton 可在 ROCm 上執行。和 OpenCL 不同，它們長在開發者已經在用的那一層，不必改寫。但反方向的證據也在：AMD 正式產線仍另加硬體專屬的手調核心；DeepSeek 受限於 H800，反而往下走到 NVIDIA 專屬的 PTX 指令集。介面上移是在改寫稅基本身：如果新家當長在 Triton 上，就不必再向 CUDA 繳稅。
 
 <!-- mech: ecosystem_lockin (boundary) -->
-**飛輪轉得比誘因快嗎？**常見說法是開發者越多、工具越多、切換成本越高，毛利再投入研發。但毛利越高，大買方自研或導入第二供應商的誘因也越大；OpenAI 與 AMD、Anthropic 與 Google 的合約，都發生在 NVIDIA 毛利最高的時期。兩股力量同時在轉，哪一股快，現有資料判斷不了。
+**飛輪轉得比誘因快嗎？**常見說法是開發者越多、工具越多、切換成本越高，毛利再投入研發。但毛利越高，大買方自研或導入第二供應商的誘因也越大；OpenAI 與 AMD、Anthropic 與 Google 的合約，都發生在 NVIDIA 毛利最高的時期。毛利率就是稅率，稅率越高，自立稅區越划算；飛輪轉得越快，替自己培養的逃稅者也越多。
 
 針對推理的新創（Groq、Cerebras、SambaNova）不在本章範圍。
 
