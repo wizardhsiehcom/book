@@ -36,7 +36,7 @@ flowchart TD
 
 <!-- mech: ecosystem_lockin -->
 !!! note "詮釋"
-    稅基是別人替 NVIDIA 打下的。NVIDIA 先付了平台的錢；研究者用買得起的遊戲卡做出 AlexNet；框架團隊把 cuDNN 接進框架，讓後來的人不必碰 CUDA 也能受益。每一方都只在解決自己的問題，累積下來的程式碼和技能卻全長在 CUDA 上。**離開 CUDA，付的是重做別人十幾年投入的代價。這筆搬不走的家當，就是 NVIDIA 能收的稅。**
+    這片沼澤是三方一起積出來的。NVIDIA 先付了平台的錢；研究者用買得起的遊戲卡做出 AlexNet；框架團隊把 cuDNN 接進框架，讓後來的人不必碰 CUDA 也能受益。每一方都只在解決自己的問題，泥卻全積在 CUDA 上。**離開 CUDA，付的是重做別人十幾年投入的代價。**
 
 ---
 
@@ -65,7 +65,7 @@ flowchart TD
 | JAX | 支援 CUDA，也支援 TPU |
 | Hugging Face Transformers | 透過底下的框架間接依賴 |
 
-這層的依賴正在變化，見[市場競爭與護城河](competitive-moat.md)〈稅基的兩道裂縫〉。誰付得起離開的代價，也見該章。
+這層的依賴正在變化，見[市場競爭與護城河](competitive-moat.md)〈沼澤還在漲水嗎〉。誰付得起離開的代價，也見該章。
 
 ---
 
