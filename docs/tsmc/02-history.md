@@ -4,8 +4,6 @@
 
 1987 年的台積電沒有領先的技術。它有的是一個位置：不和客戶競爭的製造者。本章追蹤這個位置在什麼條件下有用、在什麼條件下不夠用。
 
-本章用三種標記區分不同性質的內容：正文是可查證的事實；「詮釋」是根據事實所做的推論，並寫明它的限制；「示意場景」只描寫角色的處境與選項，不是任何真實人物的原話。
-
 ---
 
 ## 1987：不是發明了分工，是填補了一個信任空缺
@@ -16,7 +14,7 @@
 !!! example "示意場景"
     旺季到了，產能吃緊。IDM 的代工部門手上有兩張單：一張是自家下一代產品，一張是外面設計公司的晶片。廠長沒有惡意，只是照公司利益排了順序。設計公司看懂了這個順序，下一代寧可分兩家下單、多付一點，也不再把整套設計押在一個可能是對手的工廠上。
 
-台積電的做法是不推出自有品牌的晶片產品。出資結構顯示這個位置沒有人能單獨佔住：行政院開發基金出資約 48%，荷蘭飛利浦約 27.5%（同時授權製程技術），其餘來自台灣民間，技術團隊由工研院衍生。
+張忠謀在 2024 年出版的自傳下冊說，晶圓代工這個商業模式「價值連城」，誕生在 1985 年 8 月 21 日到 9 月 4 日的兩週裡。台積電的做法是不推出自有品牌的晶片產品。出資結構顯示這個位置沒有人能單獨佔住：行政院開發基金出資約 48%，荷蘭飛利浦約 27.5%（同時授權製程技術），其餘來自台灣民間，技術團隊由工研院衍生。
 
 <!-- mech: neutral_supplier -->
 !!! note "詮釋"
@@ -141,6 +139,7 @@ A4 到 A7 這幾代 Apple 處理器都由三星代工。三星同時是晶圓代
 - 宏碁分拆：[Wikipedia：Wistron](https://en.wikipedia.org/wiki/Wistron)、[施振榮訪談](https://networkcomputing.com/network-infrastructure/executive-interview-acer-s-stan-shih)
 - 2009 年人事：台積電 Form 6-K，2009 年 6 月（[SEC](https://www.sec.gov/Archives/edgar/data/0001046179/000095012309028010/h03545e6vk.htm)）
 - Apple 20 奈米合約報導：[MacTrast 轉述 DigiTimes](https://www.mactrast.com/2013/06/rumor-tsmc-signs-deal-with-apple-to-build-20nm-a8-chips/)
+- 張忠謀自傳談代工模式：[TechNews](https://technews.tw/2024/11/28/morris-chang-foundry-mode/)
 - NVIDIA 三星 8 奈米：[PC Gamer](https://www.pcgamer.com/au/nvidia-ampere-samsung-8nm-process)
 - Intel 7 奈米延後：[AnandTech](https://at-web1.www.anandtech.com/show/15926/intel-7nm-delayed-by-6-months-company-to-take-pragmatic-approach-in-using-3rd-party-fabs)
 - 格羅方德放棄 7 奈米：[AnandTech](https://at-web1.www.anandtech.com/show/13277/globalfoundries-stops-all-7nm-development)
