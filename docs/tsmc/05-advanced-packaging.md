@@ -22,18 +22,20 @@ flowchart LR
 
 ## 3DFabric 平台架構
 
-台積電將先進封裝技術統稱為 **3DFabric**，分為兩大類：
+台積電將先進封裝技術統稱為 **3DFabric**，包含三個平台：前段的 SoIC（3D 堆疊），以及後段的 CoWoS 與 InFO（扇出型封裝）。
 
 ```mermaid
 graph TD
     T["3DFabric 平台"]
-    T --> A["2.5D 封裝<br/>同一平面整合"]
-    T --> B["3D 封裝<br/>垂直堆疊"]
-    A --> A1["CoWoS-S<br/>矽中介板"]
-    A --> A2["CoWoS-R<br/>RDL 中介板"]
-    A --> A3["CoWoS-L<br/>Local Si Interconnect"]
-    B --> B1["SoIC-X<br/>混合鍵合"]
-    B --> B2["SoIC-C<br/>銅直連"]
+    T --> F["前段：3D 堆疊"]
+    T --> B["後段：封裝"]
+    F --> F1["SoIC-X<br/>混合鍵合"]
+    F --> F2["SoIC-P<br/>微凸塊"]
+    B --> C["CoWoS"]
+    B --> I["InFO<br/>扇出型封裝"]
+    C --> C1["CoWoS-S<br/>矽中介板"]
+    C --> C2["CoWoS-R<br/>RDL 中介板"]
+    C --> C3["CoWoS-L<br/>局部矽橋接＋RDL"]
 ```
 
 ---
@@ -42,29 +44,23 @@ graph TD
 
 ### CoWoS-S（Silicon Interposer）
 
-最成熟的 2.5D 封裝方案，核心概念是在「矽中介板」上同時放置 GPU/TPU 晶片與 HBM 記憶體。
+CoWoS 最早的版本，在「矽中介板」上同時放置運算晶片與 HBM 記憶體。
 
-**主要應用**：NVIDIA H100、H200 等 AI 加速器（Blackwell 世代改用 CoWoS-L）
-
-| 特性 | 說明 |
-|------|------|
-| 中介板材質 | 矽（Si） |
-| HBM 頻寬 | 可達數 TB/s |
-| 優點 | 互連密度高、訊號完整性佳 |
+**主要應用**：NVIDIA H100、H200 與 AMD MI300 等 AI 加速器。黃仁勳表示 Blackwell 主要改用 CoWoS-L，Hopper 仍用 CoWoS-S。
 
 ### CoWoS-R（RDL Interposer）
 
-以再佈線層（Redistribution Layer）取代矽中介板，成本較低但互連密度稍低。
+以再佈線層（Redistribution Layer，RDL）取代矽中介板。
 
 ### CoWoS-L（Local Si Interconnect）
 
-混合型：部分採用矽橋接（Si Bridge），其餘用 RDL，在成本與效能間取得平衡。
+2020 年發表。以局部矽橋接晶片（Local Silicon Interconnect）搭配 RDL 中介板，保留 CoWoS-S 的矽穿孔，同時避開大面積矽中介板的良率問題。
 
 ---
 
 ## SoIC：3D 垂直堆疊
 
-SoIC（System on Integrated Chips）使用**混合鍵合（Hybrid Bonding）**技術，將兩個晶片以銅對銅直接接合，接點間距比傳統凸塊（Bump）小得多。
+SoIC（System on Integrated Chips）把晶片垂直堆疊，有兩個版本：SoIC-X 使用**混合鍵合（Hybrid Bonding）**，以銅對銅直接接合，鎖定 HPC 與 AI；SoIC-P 使用微凸塊堆疊，鎖定手機等重視成本的產品。
 
 **應用場景**：將邏輯晶片與快取/記憶體晶片垂直堆疊，顯著縮短存取延遲。
 
@@ -81,9 +77,20 @@ flowchart TD
     HBM --> COWOS["CoWoS 產能成為瓶頸"]
     BW --> COWOS
     SIZE --> COWOS
-    COWOS --> TSMC["台積電 CoWoS 產能快速擴張<br/>2023–2025"]
 ```
 
 ---
 
+各封裝廠的位置與用途見[廠區分布](07-fabs.md)。
+
 → 延伸閱讀：[技術路線圖](06-roadmap.md)、[客戶結構](08-customers.md)
+
+---
+
+## 資料來源
+
+- 3DFabric 名稱與服務：[TSMC 2025 Form 20-F](https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm)
+- 三個平台、前段與後段：[3D InCites](https://3dincites.com/?p=62893)
+- SoIC-X 與 SoIC-P：[TrendForce](https://www.trendforce.com/news/?p=9959)
+- CoWoS-L 於 2020 年發表：[AnandTech](https://www.anandtech.com/show/16031/tsmcs-version-of-emib-lsi-3dfabric)
+- CoWoS-S 應用、CoWoS-L 結構、黃仁勳談 Blackwell：[TrendForce](https://www.trendforce.com/news/2024/03/21/news-blackwell-enters-the-scene-a-closer-look-at-tsmcs-cowos-branch/)

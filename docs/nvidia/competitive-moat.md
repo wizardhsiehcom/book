@@ -67,9 +67,11 @@ NVIDIA 不是中立的供應者，它和自己的客戶有兩次正面衝突：
 !!! note "詮釋"
     Arm 的授權客戶有反對的管道（監管機構），所以交易被擋下。雲端業者面對 DGX Cloud 卻照樣大量採購，因為短期內沒有退路。這和台積電一書裡 Apple 在 2011–2013 年和三星互告專利、卻仍交給三星代工是同一個結構：不信任要等到替代者可行，才會變成轉移。
 
+Google 是 NVIDIA 的客戶，也自研 TPU。據 SemiAnalysis，Gemini 各代模型都只用 TPU 訓練；Google 也把 TPU 租給外部客戶，包括上一節的 Anthropic。
+
 <!-- mech: neutral_supplier (weak) -->
 !!! note "詮釋"
-    推測：Google 的 TPU 起點是成本，不是不信任，但結果一樣——它替其他大買方示範了退路長什麼樣子，Anthropic 的 TPU 合約就是有人走上這條路。客戶自己造出來的退路，最後會租給別的客戶。如果 Google 自家的大型訓練仍主要買 NVIDIA，這條退路就還只是談判籌碼。
+    推測：Google 的 TPU 起點是成本，不是不信任，但結果一樣——它替其他大買方示範了退路長什麼樣子。客戶自己造出來的退路，最後會租給別的客戶。如果外部客戶的 TPU 用量一直停在試用規模，這條退路就只是 Google 自己的。
 
 ---
 
@@ -94,6 +96,7 @@ NVIDIA 不是中立的供應者，它和自己的客戶有兩次正面衝突：
 - x86-64 與 Itanium：[Wikipedia](https://en.wikipedia.org/wiki/X86-64)
 - OpenCL：[MacRumors（Apple 棄用）](https://www.macrumors.com/2018/06/05/apple-deprecates-opengl-opencl-gaming/amp/)、[Modular 分析](https://www.modular.com/blog/democratizing-ai-compute-part-5-what-about-cuda-c-alternatives)、[arXiv 1611.06945](https://arxiv.org/pdf/1611.06945)
 - Triton on ROCm：[AMD 文件](https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-triton.html)
+- Gemini 以 TPU 訓練：[SemiAnalysis](https://newsletter.semianalysis.com/p/tpuv7-google-takes-a-swing-at-the)
 - DeepSeek PTX：[Tom's Hardware](https://tomshardware.com/tech-industry/artificial-intelligence/deepseeks-ai-breakthrough-bypasses-industry-standard-cuda-uses-assembly-like-ptx-programming-instead)
 - 中國反壟斷初步認定：[JURIST](https://www.jurist.org/news/2025/09/china-finds-nvidia-violated-antimonopoly-law-in-preliminary-probe/)
 
