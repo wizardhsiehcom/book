@@ -41,9 +41,11 @@ flowchart TD
 | 主要客戶 | 沒有第二供應商 | 產能保證與地理分散 |
 | 台積電 | 議價籌碼，也是被各方要求的理由 | 不被迫選邊，維持全球客戶 |
 
+「矽盾」一詞出自記者 Craig Addison 2001 年的書《Silicon Shield》，主張台灣在半導體供應鏈的地位能嚇阻攻擊。站在帝國那一側的人讀法不同：2021 年 12 月，Intel 執行長季辛格說「台灣不是一個穩定的地方」；2025 年 3 月，川普在白宮說晶片生意「現在幾乎全在台灣」，「他們從我們手上偷走的」。
+
 <!-- frame: 不可替代 -->
 !!! note "詮釋"
-    「矽盾」的爭論吵不完，是因為支持者和反對者站在表格的不同列。自由港的處境向來如此：越不可或缺，各帝國越不願意它落在對手手裡。香港的自由港地位曾讓各方都希望它維持原樣，也讓北京終究要把它納入自己的秩序。矽盾越有效，美國越有理由把它拆掉。
+    Addison、季辛格、川普看的是同一個事實：最先進的晶片幾乎全在台灣。Addison 讀到嚇阻，季辛格讀到不穩定，川普讀到竊取。自由港越繁榮，帝國越會把它的繁榮讀成自己的損失，這就是收編的理由。所以矽盾越有效，美國越有理由把它拆掉。
 
 ---
 
@@ -74,9 +76,11 @@ flowchart TD
 
 美國這邊的帳：2022 年《晶片與科學法案》編列約 527 億美元；台積電在 2024 年 11 月與商務部定案最高 66 億美元的直接補助，另有最高約 50 億美元的貸款。2025 年 3 月，台積電宣布再增加 1,000 億美元，在美國的規劃投資總額約 1,650 億美元。這兩個數字一個是政府補助的上限，一個是公司的投資規劃，不能相加。
 
+2022 年 4 月，張忠謀在 Brookings 與 CSIS 的 podcast 上說，在美國擴大晶片製造「會是一場非常昂貴、徒勞的嘗試」。同年 12 月，他在亞利桑那廠的移機典禮上說：「全球化幾乎已死，自由貿易幾乎已死。」
+
 <!-- frame: 不可替代 -->
 !!! note "詮釋"
-    海外設廠是自由港向帝國繳的貢品。同一座亞利桑那廠，客戶叫它保險，美國叫它回流，台灣有人叫它去台化；三個名字說的是同一件事：港口的設施正被搬進帝國的領土。對客戶越成功，對矽盾越不利。
+    張忠謀的兩句話替這一節下了註腳。半年前他說在美國製造是徒勞，半年後他站在亞利桑那的典禮上宣告全球化已死。台積電是全球化的產物，自由港靠的就是自由貿易；創辦人親口說它死了，海外設廠就不再是生意判斷，而是向帝國繳的貢品。同一座廠，客戶叫它保險，美國叫它回流，台灣有人叫它去台化。對客戶越成功，對矽盾越不利。
 
 ---
 
@@ -93,6 +97,10 @@ flowchart TD
 - 市占：TrendForce 2026 年 9 月新聞稿（[連結](https://www.trendforce.com/presscenter/news/20260909-13225.html)）；2025 年全年：自由時報 / Taipei Times，2026 年 3 月 14 日（[連結](https://news.ltn.com.tw/news/focus/breakingnews/5369655)）
 - 7 奈米 AI 晶片出貨限制：Korea Times 轉載路透社，2024 年 11 月 10 日（[連結](https://www.koreatimes.co.kr/amp/world/20241110/us-ordered-tsmc-to-halt-shipments-to-china-of-chips-used-in-ai-applications-source)）
 - 美國投資與補助：Arizona Center for Investigative Reporting，2025 年 5 月 9 日（[連結](https://azcir.org/news/2025/05/09/has-a-taiwanese-chip-manufacturer-pledged-165-billion-in-arizona-investments-yes/)）
+- 矽盾一詞：[USIP](https://www.usip.org/node/158641)
+- 季辛格：[Taipei Times](https://taipeitimes.com/News/biz/archives/2021/12/04/2003768960)
+- 川普：[Korea Times](https://www.koreatimes.co.kr/www/world/2025/03/501_393689.html)
+- 張忠謀談美國製造：[Taipei Times](https://taipeitimes.com/News/biz/archives/2022/04/22/2003776996)；談全球化：[The Register](https://www.theregister.com/2022/12/08/tsmc_founder_globalization/)
 - ESMC 時程：中央社 / Focus Taiwan，2026 年 9 月 15 日（[連結](https://focustaiwan.tw/business/202609150007)）
 
 ---

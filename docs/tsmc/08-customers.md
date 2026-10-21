@@ -69,15 +69,18 @@ AI 改變的是定錨位置的歸屬。NVIDIA 的資料中心 GPU 不只要先�
 
 Intel 自 2021 年起經營晶圓代工業務，和台積電競爭；同時，它 2024 年推出的 Lunar Lake 處理器，運算晶片塊由台積電 N3B 生產，平台控制晶片塊用 N6，Intel 自己只做基底晶片塊與 Foveros 封裝。季辛格的說法是：在那個時間點，台積電是對的技術。
 
+同一個季辛格，2021 年多次公開以台灣的地緣風險替 Intel 爭取美國補助（見[地緣政治與全球化](11-geopolitics.md)）。據路透社 2024 年的調查報導，張忠謀公開說他「有點無禮」；私下，台積電不再給 Intel 約 40% 的 3 奈米晶圓折扣。
+
 <!-- mech: neutral_supplier (weak support) -->
 !!! note "詮釋"
-    連帝國自己的艦隊都進港了。Intel 給的理由是技術，不是中立；但結果和自由港的邏輯一致：最好的碼頭只有一個時，對手也得付港口費。反過來，Intel 代工招攬外部客戶時，最難說服人的正是它自己示範過的處境：把晶片交給一個同時在賣 CPU 的工廠。
+    連帝國自己的艦隊都進港了。自由港的中立有底線：不和客戶搶生意，但也不替一個公開說港口不安全的客戶打折。最好的碼頭只有一個時，對手也得付港口費；說了不該說的話，付的是全價。反過來，Intel 代工招攬外部客戶時，最難說服人的正是它自己示範過的處境：把晶片交給一個同時在賣 CPU 的工廠。
 
 ---
 
 ## 資料來源
 
 - 2025 年平台占比：台積電 2025 年第四季法說會逐字稿（[PDF](https://investor.tsmc.com/japanese/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf)）
+- 季辛格與台積電的折扣：[路透社調查報導（AOL 轉載）](https://www.aol.com/news/special-report-inside-intel-ceo-173510904.html)
 - 客戶 A / B 占比：Taiwan News 報導台積電年報（[連結](https://www.taiwannews.com.tw/news/6310676)）
 
 ---
