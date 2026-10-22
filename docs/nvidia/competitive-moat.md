@@ -82,13 +82,19 @@ Google 是 NVIDIA 的客戶，也自研 TPU。據 SemiAnalysis，Gemini 各代�
 ## 沼澤還在漲水嗎
 
 <!-- mech: abstraction_shift (weak), test: open_standard_vs_upper_layer -->
-**介面上移會不會鬆動 CUDA？**OpenAI 在 2021 年開源 Triton，用 Python 寫 GPU 核心；2023 年 PyTorch 2.0 的編譯器以 Triton 產生核心，AMD 文件說明 Triton 可在 ROCm 上執行。和 OpenCL 不同，它們長在開發者已經在用的那一層，不必改寫。但反方向的證據也在：AMD 正式產線仍另加硬體專屬的手調核心；DeepSeek 受限於 H800，反而往下走到 NVIDIA 專屬的 PTX 指令集。Triton 就是那座橋：新寫的核心長在它上面，就不必陷進 CUDA。
+**介面上移會不會鬆動 CUDA？**OpenAI 在 2021 年開源 Triton，用 Python 寫 GPU 核心；2023 年 PyTorch 2.0 的編譯器以 Triton 產生核心，AMD 文件說明 Triton 可在 ROCm 上執行。和 OpenCL 不同，它們長在開發者已經在用的那一層，不必改寫。但反方向的證據也在：AMD 正式產線仍另加硬體專屬的手調核心；DeepSeek 受限於 H800，反而往下走到 NVIDIA 專屬的 PTX 指令集。
+
+做這類上層的人自己也不樂觀。2025 年 3 月，Chris Lattner 在 Modular 的部落格寫道，Triton 在 H100 上「常見會損失 20%」，「移到 AMD GPU 更糟」，「Triton 並沒有統一生態系，也沒有挑戰 CUDA 的主導地位」，而且「Triton 是開源的，但路線圖握在 OpenAI 手上」。Modular 賣的正是另一套跨硬體的軟體堆疊。2024 年 12 月，SemiAnalysis 實測 MI300X 後寫道，「AMD 還沒有跨過 CUDA 護城河」，NVIDIA 的工程師正在加班用新功能、函式庫和效能更新把它挖深。
+
+<!-- mech: abstraction_shift (weak) -->
+!!! note "詮釋"
+    公共的橋走不過這片沼澤。Triton 在 NVIDIA 自家的卡上就短少兩成，搬到 AMD 更糟，路線圖還握在一家模型公司手裡。真正跨過去的人，走的都是硬體廠自己蓋的橋：Google 用自己的 TPU 和軟體訓練 Gemini，Anthropic 走 Google 和 Amazon 的橋，AMD 乾脆發認股權證，付錢請 OpenAI 過橋。SemiAnalysis 說 NVIDIA 在挖深護城河；挖深的其實是沼澤，泥越深，橋越只能由帶著自家硬體的人來蓋。
 
 **黃仁勳的回答。**在 2026 年的 Dwarkesh Patel 訪談裡，黃仁勳說，要發明新的注意力機制、混合 SSM，或融合擴散與自迴歸的模型，「你需要一個通用可程式的架構」。
 
 <!-- mech: ecosystem_lockin (boundary) -->
 !!! note "詮釋"
-    這是對 Keller 最強的回答，也是這場爭論真正的戰場。橋要架在穩定的地基上，而 NVIDIA 的策略是讓地基每年都變：每一種新模型架構若仍先在 CUDA 上跑起來，沼澤就一直在漲水，橋永遠差一年。所以要盯的不是 AMD 的規格表，而是下一種新架構的第一個開源實作，寫在 CUDA 還是寫在 Triton 這類上層。
+    這是對 Keller 最強的回答，也是這場爭論真正的戰場。橋要架在穩定的地基上，而 NVIDIA 的策略是讓地基每年都變：每一種新模型架構若仍先在 CUDA 上跑起來，沼澤就一直在漲水，橋永遠差一年。所以要盯的不是 AMD 的規格表，而是下一種新架構的第一個開源實作，寫在 CUDA，還是寫在某家硬體廠自己的堆疊上。
 
 針對推理的新創（Groq、Cerebras、SambaNova）不在本章範圍。
 
@@ -102,6 +108,8 @@ Google 是 NVIDIA 的客戶，也自研 TPU。據 SemiAnalysis，Gemini 各代�
 - DGX Cloud：[TipRanks 轉述 The Information](https://www.tipranks.com/news/the-fly/nvidia-to-scale-back-dgx-cloud-business-the-information-reports-thefly)
 - x86-64 與 Itanium：[Wikipedia](https://en.wikipedia.org/wiki/X86-64)
 - OpenCL：[MacRumors（Apple 棄用）](https://www.macrumors.com/2018/06/05/apple-deprecates-opengl-opencl-gaming/amp/)、[Modular 分析](https://www.modular.com/blog/democratizing-ai-compute-part-5-what-about-cuda-c-alternatives)、[arXiv 1611.06945](https://arxiv.org/pdf/1611.06945)
+- Triton 的限制：[Chris Lattner，Modular，2025 年 3 月 26 日](https://www.modular.com/blog/democratizing-ai-compute-part-7-what-about-triton-and-python-edsls)
+- MI300X 實測：[SemiAnalysis，2024 年 12 月 22 日](https://newsletter.semianalysis.com/p/mi300x-vs-h100-vs-h200-benchmark-part-1-training)
 - Triton on ROCm：[AMD 文件](https://rocm.docs.amd.com/projects/radeon/en/latest/docs/install/native_linux/install-triton.html)
 - Gemini 以 TPU 訓練：[SemiAnalysis](https://newsletter.semianalysis.com/p/tpuv7-google-takes-a-swing-at-the)
 - Jim Keller：[Wccftech](https://wccftech.com/jim-keller-calls-nvidia-cuda-a-swamp-says-x86-was-a-swamp-too/amp/)
