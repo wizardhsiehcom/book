@@ -33,10 +33,13 @@ build_cmd: `uv run mkdocs build -f configs/<folder>.yml`
    - Every interpretation argues the stance: extend it, read a fact through it, or answer a counterexample head-on. No per-box falsifiers or hedges on details that do not change the conclusion; a cautious cliché is worse than no box. Facts that cut against the stance stay in body text. Quote voices in body text with name, date, and venue; name the person when an interpretation borrows their frame. Quote only the few voices that move the stance or bring a new fact; the rest stay in `voices.md`. Evidence for the stance must lead directly to the conclusion: a fact that merely points the same way but has a more direct explanation stays in body as a fact, not as an argument; search for direct evidence instead.
    - A scene must show roles facing the same situation and choosing differently for a reason the mechanism names; if it cannot, drop it. A frame table needs a sourced reading per row; otherwise drop it.
    - A chapter whose data yields no mechanism, not even a weak one, stays a fact chapter: fix the facts, add no interpretation for its own sake.
-   - Move lookup material (timelines, rosters) to an appendix table; add a sources section and a pointer to `plan_dir`.
+   - Move lookup material (timelines, rosters) to an appendix table; add a sources section. Do not link or name `plan_dir` in chapters; it is not published, and the trace comments already point to it.
 3. **Build and verify**
    - Run `./sync-assets.sh`, then `build_cmd`. Confirm admonitions render: the count of `class="admonition` in each built HTML page should be twice the count of `!!!` lines in the Markdown.
    - Commit chapters separately from data changes.
+4. **Independent review (gate: fresh eyes)**
+   - Spawn a reviewer agent that did not write the chapters. Give it the method doc, `CLAUDE.md` 〈Facts and sources〉, the stance and voices files, and the chapter list; ask it to rank problems: facts without sources, evidence that only points the same way, unfavorable facts left out, interpretations that do not argue the stance, the strongest hostile reading the chapter ignores. Do not rely on your own review.
+   - Verify each finding before acting; the reviewer can be wrong or work from memory. Fix, revise the stance if needed, and record why in `stance.md`.
 
 ## Examples
 
@@ -45,4 +48,4 @@ build_cmd: `uv run mkdocs build -f configs/<folder>.yml`
 
 ## Report
 
-Report: chapters rewritten; which interpretations were weakened or removed because the data could not support them; contradictions found in other chapters; build result and commits.
+Report: chapters rewritten; the reviewer's findings and what was fixed or rejected; which interpretations were weakened or removed because the data could not support them; contradictions found in other chapters; build result and commits.
