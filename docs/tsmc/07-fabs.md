@@ -73,7 +73,7 @@ graph TD
 | 位置 | 鳳凰城（Phoenix），亞利桑那州 |
 | 晶圓尺寸 | 300 mm |
 | 第一座廠 | N4，2024 年第四季量產 |
-| 第二座廠 | 3 奈米，報導預定 2027 年下半年量產 |
+| 第二座廠 | 3 奈米；已完工、正在移機，預定 2027 年第三季量產（2026 年 10 月法說會） |
 | 第三座廠 | 報導規劃 2 奈米與 A16 |
 | 投資與補助 | 見[地緣政治與全球化](11-geopolitics.md)〈海外布局〉 |
 | 成本 | 張忠謀 2022 年表示，台積電奧勒岡廠生產同樣產品的成本比台灣高約 50% |
@@ -87,7 +87,7 @@ graph TD
 | 正式名稱 | Japan Advanced Semiconductor Manufacturing（JASM） |
 | 股權結構 | 台積電約 86.5%、Sony Semiconductor Solutions 6.0%、Denso 5.5%、Toyota 2.0%（2024 年 2 月第二座廠宣布後） |
 | Phase 1 | 2024 年 12 月開始量產；規劃 12/16 與 22/28 nm，2025 年底量產最先進為 28 nm（20-F） |
-| Phase 2 | 2024 年宣布時規劃 6/7 nm，預定 2027 年底前營運；之後有時程變動的報導 |
+| Phase 2 | 2024 年宣布時規劃 6/7 nm；之後改用 3 奈米，預定 2028 年量產（2026 年 10 月法說會） |
 | 總投資 | 兩座廠合計超過 200 億美元 |
 | 預計就業 | 兩座廠合計直接創造超過 3,400 個工作機會 |
 | 戰略意義 | 供應 Sony 影像感測器、Denso 汽車晶片及其他日本電子廠商 |
@@ -165,7 +165,7 @@ flowchart TD
 
 - 各廠量產最先進製程、Fab 16 出口許可：[TSMC 2025 Form 20-F](https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm)
 - JASM 股權、投資與就業：[TSMC 新聞稿（2024-02）](https://pr.tsmc.com/japanese/news/3105)
-- Arizona 第二座廠時程：[TrendForce 轉述 Nikkei（2025-12）](https://www.trendforce.com/news/2025/12/18/news-tsmc-reportedly-accelerates-arizona-2nd-fab-eyes-3q26-tool-install-2027-3nm-production/)
+- Arizona 第二座廠、JASM 第二座廠時程：[台積電 2026 年第三季法說會逐字稿（The Motley Fool，2026-10-15）](https://www.fool.com/earnings/call-transcripts/2026/10/15/tsmc-tsm-q3-2026-earnings-call-transcript/)
 - 先進封裝廠數量與租約：[TSMC 2025 Form 20-F](https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm)
 - AP6 啟用：[TSMC 新聞稿（2023-06）](https://pr.tsmc.com/english/news/3033)
 - 各廠用途：[Nomad Semi](https://www.nomadsemi.com/p/tsmcs-cowos-capacity)、[DigiTimes（2026-01）](https://www.digitimes.com/news/a20260129PD220/tsmc-packaging-fab-cowos-genai.html)、[TrendForce（2025-12）](https://www.trendforce.com/news/2025/12/04/news-tsmc-speeds-advanced-packaging-ap7-targets-2026-output-arizona-p6-eyed-for-u-s-packaging-hub/)

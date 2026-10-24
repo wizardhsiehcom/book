@@ -1,6 +1,6 @@
 # 先進封裝：CoWoS 與 3DFabric
 
-當製程微縮的物理極限越來越近，**先進封裝**成為提升效能的重要路徑。台積電的 3DFabric 平台整合了多種封裝技術。
+製程微縮之外，台積電還把多顆晶片封在一起，讓它們像一顆晶片一樣溝通。這套技術統稱 **3DFabric**。
 
 ---
 
@@ -62,7 +62,7 @@ CoWoS 最早的版本，在「矽中介板」上同時放置運算晶片與 HBM 
 
 SoIC（System on Integrated Chips）把晶片垂直堆疊，有兩個版本：SoIC-X 使用**混合鍵合（Hybrid Bonding）**，以銅對銅直接接合，鎖定 HPC 與 AI；SoIC-P 使用微凸塊堆疊，鎖定手機等重視成本的產品。
 
-**應用場景**：將邏輯晶片與快取/記憶體晶片垂直堆疊，顯著縮短存取延遲。
+**用途**：把邏輯晶片與快取或記憶體晶片垂直堆疊。
 
 ---
 
@@ -79,6 +79,12 @@ flowchart TD
     SIZE --> COWOS
 ```
 
+2025 年 3 月，台積電宣布的美國追加投資包括三座新晶圓廠、兩座先進封裝廠和一個研發中心（金額見[地緣政治與全球化](11-geopolitics.md)）。
+
+<!-- mech: irreplaceability_dual -->
+!!! note "詮釋"
+    如果最先進的製程讓台積電成了要塞，CoWoS 就是要塞的城門。黃仁勳說 Blackwell 主要用 CoWoS-L；晶片在亞利桑那造好，若還得送回台灣封裝，帝國拿到的只是半座要塞。所以特許狀的下一筆貢品是封裝廠。製程可以有人追，城門一旦也搬進帝國境內，台灣手上剩下的就只有研發的領先時間。
+
 ---
 
 各封裝廠的位置與用途見[廠區分布](07-fabs.md)。
@@ -93,4 +99,5 @@ flowchart TD
 - 三個平台、前段與後段：[3D InCites](https://3dincites.com/?p=62893)
 - SoIC-X 與 SoIC-P：[TrendForce](https://www.trendforce.com/news/?p=9959)
 - CoWoS-L 於 2020 年發表：[AnandTech](https://www.anandtech.com/show/16031/tsmcs-version-of-emib-lsi-3dfabric)
+- 美國追加投資：[台積電 Form 6-K，2025 年 3 月 4 日](https://www.sec.gov/Archives/edgar/data/1046179/000104617925000024/tsmcexpandinvestmentintheu.htm)
 - CoWoS-S 應用、CoWoS-L 結構、黃仁勳談 Blackwell：[TrendForce](https://www.trendforce.com/news/2024/03/21/news-blackwell-enters-the-scene-a-closer-look-at-tsmcs-cowos-branch/)
