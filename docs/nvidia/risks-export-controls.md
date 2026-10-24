@@ -14,12 +14,13 @@
 | 2022 年底 | NVIDIA 推出降規版 A800、H800 |
 | 2023 年 8 月 | 據 FT 報導，百度、字節跳動、騰訊、阿里巴巴訂購約 10 億美元、約 10 萬顆 A800（2023 年交貨），另有約 40 億美元於 2024 年交貨；報導將搶購歸因於擔心管制再收緊 |
 | 2023 年 10 月 | A800、H800 也被納入管制；NVIDIA 隨後推出 H20 等進一步降規的產品 |
+| 2024 年 10 月 | 據《南華早報》報導，華為開始向中國大型伺服器與網路公司送樣昇騰 910C |
 | 2025 年 4 月 | H20 出口須取得許可；NVIDIA 因 H20 需求下滑認列 45 億美元的存貨與採購承諾費用 |
 | 2025 年 7 月 | 中國網信辦約談 NVIDIA，要求說明 H20 是否有後門風險 |
-| 2025 年 8 月 | 美國核發部分 H20 許可（報導附帶 15% 營收分成）；據 Bloomberg 報導，中國官方通知企業勿用 H20，尤其是政府與安全相關項目，FT 報導部分大買家因此減單；同期華為昇騰 910C 開始送樣給大型科技公司 |
+| 2025 年 8 月 | 美國核發部分 H20 許可（報導附帶 15% 營收分成）；據 Bloomberg 報導，中國官方要求企業、尤其是國企避免使用 H20，政府與國安相關項目尤甚，並詢問企業在有國產選項時為何還要用 NVIDIA；報導稱官員擔心晶片有定位追蹤或遠端關閉等隱藏風險，NVIDIA 否認 |
 | 2025 年 9 月 | 中國市場監管總局初步認定 NVIDIA 收購 Mellanox 違反反壟斷法 |
 | 2026 年 1–2 月 | 美國附條件放行 H200：對中銷量上限為對美銷量的 50%；2 月核發少量許可。美國政府的分成比例，報導有 25% 與 15% 兩種說法 |
-| 2026 年 7 月 | 美國商務部官員向國會表示 H200 出口已開始，但數量「極少」 |
+| 2026 年 7 月 | 美國商務部次長 Jeffrey Kessler 在眾議院外交委員會表示，H200 對中國出貨已開始，但數量「微不足道」 |
 
 ---
 
@@ -45,7 +46,7 @@
 
 <!-- mech: irreplaceability_dual, test: china_buys_vs_refuses -->
 !!! note "詮釋"
-    北京看懂了沼澤的道理：陷得越久，越出不來。2023 年沒有替代品，四大網路公司只能搶購 A800；2025 年昇騰 910C 開始送樣，北京就開始勸阻採購，趁還沒陷得更深先把腳拔出來。買 NVIDIA 從必需品，變成了依賴的證據。
+    沼澤困人的前提是外面沒有路。2023 年沒有國產替代，四大網路公司只能搶購 A800；到 2025 年，910C 已經送樣將近一年，北京開始反問企業：有國產選項，為什麼還要買 NVIDIA？國內一旦有了一條次等但屬於自己的路，降規再降規的 H20 就成了最不值得陷進去的那塊泥。
 
 <!-- mech: irreplaceability_dual (challenge) -->
 !!! note "詮釋"
@@ -60,7 +61,6 @@
 | 出口管制與中國反制 | FY2026 中國營收占比降到約 9%；10-K 自述實質被排除在中國資料中心市場之外 | 中國本土 AI 晶片的出貨與良率；H200 許可下的實際出貨量 |
 | 大型買方導入第二供應商 | 2026 財年兩家直接客戶分別占營收 22% 與 14% | 大買方與 AMD、Google、自研晶片的合約規模（見[市場競爭與護城河](competitive-moat.md)） |
 | 製造集中在台灣 | 先進 GPU 幾乎都由台積電生產 | 台積電海外廠的先進製程產能；地緣分析見台積電一書〈地緣政治與全球化〉 |
-| AI 投資放緩 | 估值反映很高的成長預期 | 大型雲端業者的資本支出指引 |
 
 ---
 
@@ -69,8 +69,8 @@
 - 中國營收、H20 費用與許可、H200 許可、客戶集中度：[NVIDIA FY2026 Form 10-K](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm)
 - A800 訂單：[TechNode 轉述 FT](https://technode.com/2023/08/10/chinese-tech-giants-place-5-billion-orders-with-nvidia-for-generative-ai-chips/)
 - 網信辦約談、反壟斷初步認定：[The Register](https://www.theregister.com/2025/09/15/china_nvidia_antitrust/)、[JURIST](https://www.jurist.org/news/2025/09/china-finds-nvidia-violated-antimonopoly-law-in-preliminary-probe/)
-- 中國勸阻 H20：[The Week 轉述 Bloomberg、FT](https://www.theweek.in/news/biz-tech/2025/08/12/dont-want-leftover-chips-china-says-no-to-nvidia-less-advanced-h20-semiconductor.amp.html)
+- 910C 送樣：[TrendForce，2024 年 10 月 1 日](https://www.trendforce.com/news/2024/10/01/news-huawei-reportedly-begins-sampling-of-ascend-910c-to-rival-nvidia/)
+- H200 出貨「微不足道」：[SCMP，2026 年 7 月](https://www.scmp.com/news/china/diplomacy/article/3360582/us-says-nvidias-h200-exports-china-remain-trivial-despite-approvals)
+- 中國勸阻 H20：[The Week 轉述 Bloomberg](https://www.theweek.in/news/biz-tech/2025/08/12/dont-want-leftover-chips-china-says-no-to-nvidia-less-advanced-h20-semiconductor.amp.html)
 - H200 放行：[NBC News](https://www.nbcnews.com/world/asia/us-approves-nvidia-h200-chip-exports-china-conditions-rcna253948)
 - DeepSeek：[Tom's Hardware](https://tomshardware.com/tech-industry/artificial-intelligence/deepseeks-ai-breakthrough-bypasses-industry-standard-cuda-uses-assembly-like-ptx-programming-instead)
-
-本章的案例與機制底稿見 `plan/nvidia/cases.yml` 與 `plan/nvidia/mechanisms.yml`。

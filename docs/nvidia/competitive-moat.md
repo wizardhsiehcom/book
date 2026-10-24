@@ -33,24 +33,26 @@ AMD 的 MI300X 在廠商規格上不輸 H100：
 |----------|-----------------|------------|
 | HBM 容量 | 80 GB | 192 GB |
 | 峰值算力（FP16，稠密） | 989 TFLOPS | 1,307 TFLOPS |
-| 軟體生態 | CUDA | ROCm（追趕中） |
+| 軟體生態 | CUDA | ROCm |
 
 規格領先，並沒有讓多數買方換掉 NVIDIA。
 
 ---
 
-## 鎖定從最大的買方開始鬆動
+## 最大的買方兩邊收錢
 
 | 時間 | 事件 |
 |------|------|
+| 2025 年 9 月 | OpenAI 與 NVIDIA 簽署意向書，部署至少 10 GW 的 NVIDIA 系統；NVIDIA 打算隨每 1 GW 上線，分批投資 OpenAI 最多 1,000 億美元 |
 | 2025 年 10 月 | OpenAI 與 AMD 簽下 6 GW、多年期多世代合約，首批 1 GW MI450 於 2026 年下半年部署；AMD 發給 OpenAI 最多 1.6 億股認股權證，依部署量等里程碑分批生效 |
 | 2025 年 10 月 | Anthropic 宣布取得最多一百萬顆 Google TPU、超過 1 GW 的運算量，2026 年上線；Anthropic 同時使用 TPU、Amazon Trainium 與 NVIDIA GPU，並以 Amazon 為主要訓練夥伴 |
+| 2025 年 11 月 | Anthropic 承諾購買 300 億美元的 Azure 運算，初期最多 1 GW 採用 NVIDIA Grace Blackwell 與 Vera Rubin 系統；NVIDIA、Microsoft 分別承諾投資 Anthropic 最多 100 億、50 億美元 |
 
-2023 年，George Hotz 創辦 tiny corp，要讓 AMD GPU 成為 NVIDIA 的對手。他寫道：「只要有 3% 的機會推翻 NVIDIA、吃進它 80% 的毛利，我們就會非常非常有錢。」
+2023 年 5 月，要讓 AMD GPU 成為 NVIDIA 對手的 tiny corp 創辦人 George Hotz 寫道：「只要有 3% 的機會推翻 NVIDIA、吃進它 80% 的毛利，我們就會非常非常有錢。」
 
 <!-- mech: ecosystem_lockin, test: lockin_by_buyer_scale -->
 !!! note "詮釋"
-    架橋是大戶的特權。橋的造價固定，用量越大，攤到每張卡上越便宜；OpenAI 和 Anthropic 先跨出去，正因為它們陷得最深、付得最多。Hotz 把毛利率讀成懸賞金額，這比任何護城河分析都直接：毛利越高，來架橋的人越多。黃仁勳說 Anthropic 是「特例，不是趨勢」；但懸賞掛在那裡，特例不會只有一個。
+    大戶沒有爬出沼澤，而是站在岸邊兩邊收錢。2025 年秋天，OpenAI 幾週內先後拿到 NVIDIA 最多 1,000 億美元的投資意向和 AMD 最多 1.6 億股的認股權證，兩筆都按部署量分批兌現；Anthropic 一邊用 TPU 和 Trainium，一邊收下 NVIDIA 最多 100 億美元的投資。這就是沼澤和護城河的差別：真有護城河的人，不必付錢讓客戶留下。Hotz 把毛利率讀成懸賞，懸賞確實發出去了，領走的是陷得最深、離開的威脅也最可信的大戶。黃仁勳說 Anthropic 是特例；他自己開的支票說明，這種特例的價錢不低。
 
 <!-- mech: ecosystem_lockin -->
 !!! example "示意場景"
@@ -75,7 +77,7 @@ Google 是 NVIDIA 的客戶，也自研 TPU。據 SemiAnalysis，Gemini 各代�
 
 <!-- mech: neutral_supplier (weak) -->
 !!! note "詮釋"
-    Google 是第一個在沼澤上填出自己乾地的大戶。TPU 的起點也許只是成本，但它填出來的地，現在租給了 Anthropic 這些其他大戶。客戶自己造的退路，最後會對外營業。
+    Google 是第一個自己架橋的大戶。這座橋不是給所有人的另一片沼澤，只承載蓋得起的人；但蓋好之後，Google 開始收過橋費，Anthropic 就是過橋的客人。客戶自己造的退路，最後會對外營業。
 
 ---
 
@@ -84,11 +86,11 @@ Google 是 NVIDIA 的客戶，也自研 TPU。據 SemiAnalysis，Gemini 各代�
 <!-- mech: abstraction_shift (weak), test: open_standard_vs_upper_layer -->
 **介面上移會不會鬆動 CUDA？**OpenAI 在 2021 年開源 Triton，用 Python 寫 GPU 核心；2023 年 PyTorch 2.0 的編譯器以 Triton 產生核心，AMD 文件說明 Triton 可在 ROCm 上執行。和 OpenCL 不同，它們長在開發者已經在用的那一層，不必改寫。但反方向的證據也在：AMD 正式產線仍另加硬體專屬的手調核心；DeepSeek 受限於 H800，反而往下走到 NVIDIA 專屬的 PTX 指令集。
 
-做這類上層的人自己也不樂觀。2025 年 3 月，Chris Lattner 在 Modular 的部落格寫道，Triton 在 H100 上「常見會損失 20%」，「移到 AMD GPU 更糟」，「Triton 並沒有統一生態系，也沒有挑戰 CUDA 的主導地位」，而且「Triton 是開源的，但路線圖握在 OpenAI 手上」。Modular 賣的正是另一套跨硬體的軟體堆疊。2024 年 12 月，SemiAnalysis 實測 MI300X 後寫道，「AMD 還沒有跨過 CUDA 護城河」，NVIDIA 的工程師正在加班用新功能、函式庫和效能更新把它挖深。
+做這類上層的人自己也不樂觀。2025 年 3 月，Chris Lattner 在 Modular 的部落格寫道，Triton 在 H100 上「常見會損失 20%」，「移到 AMD GPU 更糟」，而且「Triton 是開源的，但路線圖握在 OpenAI 手上」。Modular 賣的正是另一套跨硬體的軟體堆疊。2024 年 12 月，SemiAnalysis 實測 MI300X 後寫道，「AMD 還沒有跨過 CUDA 護城河」，NVIDIA 的工程師正在加班用新功能、函式庫和效能更新把它挖深。
 
 <!-- mech: abstraction_shift (weak) -->
 !!! note "詮釋"
-    公共的橋走不過這片沼澤。Triton 在 NVIDIA 自家的卡上就短少兩成，搬到 AMD 更糟，路線圖還握在一家模型公司手裡。真正跨過去的人，走的都是硬體廠自己蓋的橋：Google 用自己的 TPU 和軟體訓練 Gemini，Anthropic 走 Google 和 Amazon 的橋，AMD 乾脆發認股權證，付錢請 OpenAI 過橋。SemiAnalysis 說 NVIDIA 在挖深護城河；挖深的其實是沼澤，泥越深，橋越只能由帶著自家硬體的人來蓋。
+    公共的橋走不過這片沼澤。橋短少兩成、路線圖握在一家模型公司手裡，小買家走上去只會掉下來。泥越深，橋越只能由帶著自家硬體的人來蓋，Google 就是這樣訓練 Gemini 的。其他大戶連橋都不必走完，只要讓 NVIDIA 相信它們走得過去，就能拿到上一節那些支票。
 
 **黃仁勳的回答。**在 2026 年的 Dwarkesh Patel 訪談裡，黃仁勳說，要發明新的注意力機制、混合 SSM，或融合擴散與自迴歸的模型，「你需要一個通用可程式的架構」。
 
@@ -102,6 +104,9 @@ Google 是 NVIDIA 的客戶，也自研 TPU。據 SemiAnalysis，Gemini 各代�
 
 ## 資料來源
 
+- MI300X、H100 規格：[AMD](https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html)、[NVIDIA](https://www.nvidia.com/en-us/data-center/h100/)
+- NVIDIA × OpenAI：[NVIDIA 新聞稿，2025 年 9 月 22 日](https://investor.nvidia.com/news/press-release-details/2025/OpenAI-and-NVIDIA-Announce-Strategic-Partnership-to-Deploy-10-Gigawatts-of-NVIDIA-Systems/)
+- Microsoft × NVIDIA × Anthropic：[NVIDIA 部落格，2025 年 11 月](https://blogs.nvidia.com/blog/microsoft-nvidia-anthropic-announce-partnership)
 - AMD × OpenAI：[AMD 新聞稿](https://ir.amd.com/news-events/press-releases/detail/1260/amd-and-openai-announce-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus)
 - Google × Anthropic：[DatacenterDynamics](https://www.datacenterdynamics.com/en/news/google-and-anthropic-confirm-massive-1gw-cloud-deal-with-up-to-one-million-google-tpus/)
 - NVIDIA × Arm：[TechCrunch（FTC 起訴）](https://techcrunch.com/2021/12/02/ftc-sues-to-block-nvidias-purchase-of-arm/)、[Redmond（交易終止）](https://redmondmag.com/Articles/2022/02/08/Nvidia-40B-Proposed-Acquisition-of-Arm-Shuts-Down.aspx)
@@ -116,6 +121,3 @@ Google 是 NVIDIA 的客戶，也自研 TPU。據 SemiAnalysis，Gemini 各代�
 - George Hotz：[Import AI 331](https://importai.substack.com/p/import-ai-331-16x-smaller-language)
 - 黃仁勳訪談：[The Transcript Desk 逐字稿](https://thetranscriptdesk.substack.com/p/jensen-huang-will-nvidias-moat-persist)
 - DeepSeek PTX：[Tom's Hardware](https://tomshardware.com/tech-industry/artificial-intelligence/deepseeks-ai-breakthrough-bypasses-industry-standard-cuda-uses-assembly-like-ptx-programming-instead)
-- 中國反壟斷初步認定：[JURIST](https://www.jurist.org/news/2025/09/china-finds-nvidia-violated-antimonopoly-law-in-preliminary-probe/)
-
-本章的案例與機制底稿見 `plan/nvidia/cases.yml`、`plan/nvidia/mechanisms.yml` 與 `plan/nvidia/voices.md`。

@@ -2,7 +2,7 @@
 
 談 CUDA，常見的說法是：NVIDIA 用軟體築了一道護城河。
 
-這個說法只看到 NVIDIA 一方。CUDA 上累積的程式碼、函式庫、論文和技能，大部分不是 NVIDIA 寫的。**比較要緊的問題是：這些東西是誰、在什麼處境下投進去的？**
+這個說法只看到 NVIDIA 一方。核心函式庫是 NVIDIA 寫的，但建在上面的模型、論文和工程師的技能，是使用者自己投進去的。**比較要緊的問題是：這些東西是誰、在什麼處境下投進去的？**
 
 ---
 
@@ -76,5 +76,3 @@ flowchart TD
 - cuDNN：[Chetlur et al., arXiv 1410.0759](https://arxiv.org/abs/1410.0759)
 - CUDA-X：[NVIDIA](https://www.nvidia.com/en-us/technologies/cuda-x/)
 - Hopper 與 Transformer Engine：[NVIDIA H100](https://www.nvidia.com/en-us/data-center/h100/)
-
-本章的案例與機制底稿見 `plan/nvidia/cases.yml` 與 `plan/nvidia/mechanisms.yml`。
