@@ -29,6 +29,8 @@ mechanisms:
         note: 間接依賴的形成機制
       - case: amd_mi300x_rocm
         note: 規格領先但市占小；市占數字尚無出處，屬弱支持
+      - case: nvidia_pays_buyers_2025
+        note: 供應方付錢給買方留下，說明鎖定靠的是買方離開的代價，不是對手進不來
       - case: x86_itanium_amd64
         note: 主題外佐證：連平台擁有者自己推出不相容的新架構都會輸，說明鎖定的是互補資產，不是公司
       - case: opencl_2009_2018

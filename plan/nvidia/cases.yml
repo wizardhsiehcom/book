@@ -86,6 +86,23 @@ cases:
     sources:
       - https://ir.amd.com/news-events/press-releases/detail/1260/amd-and-openai-announce-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus
 
+  - id: nvidia_pays_buyers_2025
+    title: NVIDIA 投資自己最大的買方
+    period: "2025-09 / 2025-11"
+    evidence_status: verified
+    roles:
+      nvidia: 供應方，以投資綁定部署
+      openai: 同時拿到 AMD 認股權證
+      anthropic: 同時用 TPU、Trainium
+    facts:
+      - 2025-09-22 OpenAI 與 NVIDIA 意向書：至少 10 GW；NVIDIA 隨每 1 GW 上線分批投資最多 1,000 億美元
+      - 2025-11 Anthropic 承諾購買 300 億美元 Azure 運算，初期最多 1 GW NVIDIA 系統；NVIDIA 最多投資 100 億美元、Microsoft 最多 50 億美元
+    choice: 大買方多源採購，雙方供應商都付錢給它
+    uncertain: OpenAI 意向書非最終合約
+    sources:
+      - https://investor.nvidia.com/news/press-release-details/2025/OpenAI-and-NVIDIA-Announce-Strategic-Partnership-to-Deploy-10-Gigawatts-of-NVIDIA-Systems/
+      - https://blogs.nvidia.com/blog/microsoft-nvidia-anthropic-announce-partnership
+
   - id: google_tpu_anthropic_2025
     title: Anthropic 取得最多一百萬顆 Google TPU
     period: "2025-10"
