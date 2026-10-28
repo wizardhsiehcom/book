@@ -2,7 +2,7 @@
 
 一本以**情境中的架構判斷**為主線的繁體中文學習書。從工具迴圈開始，理解任務編排、MCP、Claude Code、結構化輸出與可靠性，再用實作和原創題目檢驗理解。
 
-本書對應 **Claude Certified Architect – Foundations**。使用者常以 CCAF 或 CCA-F 稱呼；本書查覈的官方 Exam Guide v1.0，於 **2026 年 7 月生效**，列出的正式考試代碼是 **CCAR-F**。查覈日為 **2026-09-07**。[官方考綱與來源紀錄](appendix-sources.md)
+本書對應 **Claude Certified Architect – Foundations**。使用者常以 CCAF 或 CCA-F 稱呼；本書查覈的官方 Exam Guide v1.0，於 **2026 年 7 月生效**，列出的正式考試代碼是 **CCAR-F**。考綱查覈日為 **2026-09-07**；報考範圍及取消／改期政策於 **2026-10-28** 依 Pearson VUE 複查，見[報考流程](00-exam-map.md#報考流程)。[官方考綱與來源紀錄](appendix-sources.md)
 
 !!! warning "讀之前先確認你報得了名"
     考綱沒有記載一般大眾是否可報名，而第三方指南普遍稱 CCAR-F 限合作夥伴企業員工。報名與排程要跨 Partner Academy 與 Pearson VUE 兩個平臺。**先花十分鐘確認資格，再投入四週準備。**[報考流程與考試政策](00-exam-map.md#報考流程)

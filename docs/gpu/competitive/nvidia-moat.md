@@ -15,9 +15,9 @@ flowchart TB
         S3["NCCL / NVLink Fabric"]
     end
     subgraph "第三層：生態系"
-        E1["400 萬+ 開發者"]
-        E2["3,000+ GPU 加速應用"]
-        E3["40,000+ 使用 CUDA 的公司"]
+        E1["開發者與既有程式"]
+        E2["GPU 加速應用"]
+        E3["組織的部署與維運經驗"]
     end
     H1 --> S1
     S1 --> E1

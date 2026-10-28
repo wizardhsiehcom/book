@@ -49,7 +49,9 @@ allowed-tools: Read, Grep, Glob
 回傳摘要與下一個可驗證問題。
 ```
 
-`context: fork` 讓任務在分開的子代理上下文執行，適合產生大量探索內容的流程。`argument-hint` 是呼叫提示，不是參數驗證器。`allowed-tools` 依產品的工具權限機制生效，不應把它當成作業系統級 sandbox；必須禁止的操作仍要有設定與執行邊界。[Skills 官方文件](https://code.claude.com/docs/en/skills)
+`context: fork` 讓 skill 在分開的子代理上下文執行；依本次查核的文件，該子代理不會看到主對話歷史，因此任務說明要能獨立成立。這與 SDK 的 session fork 不是同一種用法。`argument-hint` 是呼叫提示，不是參數驗證器。
+
+`allowed-tools` 是預先允許所列工具，不是只准使用這些工具的白名單；未列出的工具仍依權限設定判斷。上例不能據此保證任務唯讀，必須禁止的操作仍需權限規則與執行邊界。[Skills 官方文件](https://code.claude.com/docs/en/skills)
 
 考綱也列出專案 `.claude/commands/` 與個人 `~/.claude/commands/`。目前文件把自訂 slash commands 與 skills 整合說明：讀考題須辨認兩種路徑，新建專案按所用版本選擇。個人 variant 應用不同名字，避免無意改變共享流程。[官方考綱 §6，3.2](appendix-sources.md)
 

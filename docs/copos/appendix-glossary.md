@@ -72,7 +72,7 @@
 |------|------|-----------|
 | OSAT | Outsourced Semiconductor Assembly and Test | 專業封裝測試代工廠（如日月光、力成），在供應鏈中承接封測環節（見 [10](10-supply-chain-competition.md)）。 |
 | 試產 | pilot production | 量產前的小規模試製階段，用來驗證製程與良率；CoPoS 規劃 2027 年試產。 |
-| 量產 | mass production | 大規模穩定生產階段；CoPoS 的量產時程各家說法為 2028 下半年至 2030，**台積電官方僅說「還要幾年」**（見 [09](09-tsmc-roadmap.md)）。 |
+| 量產 | mass production | 大規模穩定生產階段；與試產、驗證及投產目標分開。CoPoS 原始時程說法集中在 [09](09-tsmc-roadmap.md)。 |
 | 試產線 | pilot line | 專供試產與製程驗證的產線，CoPoS 試產線已於 2026 年年中完成。 |
 
 ## 面板級製程流程與良率

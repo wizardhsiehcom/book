@@ -1,85 +1,52 @@
 # 自研晶片：AWS、微軟、Meta
 
-大型科技公司投入自研 AI 晶片的核心動機只有一個：**以犧牲通用性換取特定工作負載的效率，並降低對 NVIDIA 的依賴。**
+自研加速器的比較，先看**誰能使用、支援什麼工作負載、需要哪套軟體**。雲端服務可以租用，不代表底層晶片能單獨採購；公司展示模型能跑，也不等於已用於正式服務。
 
-## 三家公司的策略比較
+本頁於 2026-10-28 查核下列官方公告。表內日期是公告當時的狀態，不把預告自動改成已交付。
 
-```mermaid
-flowchart TB
-    subgraph "AWS Trainium / Inferentia"
-        A1["Trainium 2：訓練用"]
-        A2["Inferentia 2：推論用"]
-        A3["整合在 AWS SageMaker"]
-    end
-    subgraph "微軟 Maia 100"
-        M1["Azure Maia 100：訓練 + 推論"]
-        M2["Cobalt 100：ARM CPU"]
-        M3["主要供 OpenAI 使用"]
-    end
-    subgraph "Meta MTIA v2"
-        T1["Meta Training & Inference Accelerator"]
-        T2["主要用於推薦系統"]
-        T3["不對外出售"]
-    end
-```
+## 三家的產品與使用邊界
 
-## AWS Trainium 2
+| 平台 | 已查核的官方說法 | 選型時要確認 |
+|---|---|---|
+| AWS Trainium3／EC2 Trn3 UltraServers | AWS 於 2025-12-02 宣布正式提供（general availability），用於生成式 AI 訓練與推論 | 所在區域、配額、Neuron 支援的模型與算子，以及實際租用成本 |
+| Microsoft Maia 200 | 微軟於 2026-01-26 發表推論加速器；公告稱已部署於 US Central，並提供 Maia SDK 預覽 | Azure 服務是否提供所需模型與容量；不能把基礎設施部署當成可任意租用裸晶片 |
+| Meta MTIA | Meta 的內部加速器系列；各代的排序、推薦與生成式 AI 用途不同，見下節 | 不把 Meta 內部部署當成公開雲端採購選項 |
 
-**設計目標**：在 AWS 上訓練大型 LLM，成本比 NVIDIA GPU 低 40%（AWS 官方宣稱）
+Trainium2、Maia 100 仍可作為歷史案例，但不能代表各家公司全部產品。廠商的成本或效能宣稱，也不能直接移植到另一個模型、精度或服務延遲要求。
 
-- 支援 FP8 / BF16 / FP32 精度
-- 透過 **NeuronSDK** 整合 PyTorch / JAX
-- NeuronSDK 自動把 PyTorch 模型編譯到 Trainium 上執行（類似 XLA）
-- 2024 年：Amazon 內部訓練 Titan 系列模型使用 Trainium
+## MTIA：推薦推論、訓練與生成式 AI 要分開
 
-**局限**：NeuronSDK 對非標準算子的支援有限，客製化困難。
+Meta 的 2024 年次世代 MTIA 公告，主要描述**排序與推薦廣告模型**。因此不能把當年的 MTIA v2 簡寫成「已擴展至 LLaMA 推論服務」。
 
-## 微軟 Maia 100
+Meta 於 2026-03-11 公告的新系列，則區分了以下狀態：
 
-**設計目標**：供 Microsoft Azure 和 OpenAI 使用，降低 NVIDIA 依賴
+| 型號 | 公告當時的定位與狀態 |
+|---|---|
+| MTIA 300 | 已用於正式環境的排序與推薦模型訓練 |
+| MTIA 400 | 面向生成式 AI；已完成實驗室測試，正往資料中心部署推進 |
+| MTIA 450 | 針對生成式 AI 推論優化；計畫於 2027 年初大規模部署 |
+| MTIA 500 | 延續生成式 AI 推論方向；計畫於 2027 年大規模部署 |
 
-- 2024 年在 Azure 開始小規模部署
-- 據報導用於 OpenAI 工作負載的推論服務
-- 微軟同時繼續大量採購 NVIDIA GPU，Maia 是補充而非替代
+同一公告提到曾用 Llama 測試 MTIA；**測試、部署與大規模服務是不同證據**。閱讀後續新聞時，應確認更新的是哪一代、哪種模型與哪一階段。
 
-**現況**：未對外開放，細節規格未公開。屬於 Azure 基礎架構投資，不是商業加速器。
+## 用自己的工作負載比較
 
-## Meta MTIA v2（Meta Training and Inference Accelerator）
+以下是工程評估順序，不是品牌排名：
 
-**設計目標**：Meta 內部的推薦系統（Ranking 模型）和 LLM 推論
+1. 先確認模型能否正確執行，包括必要算子、精度與輸出品質。
+2. 在相同輸入長度、輸出長度、併發與延遲目標下，量測吞吐和記憶體需求。
+3. 加入移植、除錯、容量預留及營運成本，再比較每次合格結果的成本。
 
-- v1（2023）：針對 Ranking 模型設計，效率比 GPU 高
-- v2（2024）：擴展到 LLM 推論（LLaMA 系列）
-- **不對外出售**，純粹為 Meta 自用
+自研晶片可能改善特定工作負載的成本，也可能增加移植與服務綁定的成本。是否划算，要由這組測量回答。
 
-Meta 的推薦系統每天為數十億用戶服務，對計算效率的極致追求驅動了自研。
+## 資料來源
 
-## 自研晶片的共同取捨
-
-```mermaid
-flowchart LR
-    subgraph "自研晶片優勢"
-        P1["特定工作負載效率極高"]
-        P2["降低 NVIDIA 依賴和議價空間"]
-        P3["與自家雲端 / 基礎架構深度整合"]
-    end
-    subgraph "自研晶片代價"
-        D1["通用性差：只適合特定模型"]
-        D2["開發者生態系幾乎為零"]
-        D3["研發成本極高（數億美元）"]
-        D4["軟體工具鏈需從頭建立"]
-    end
-```
-
-## 對 NVIDIA 的影響
-
-這些自研晶片的長期意義在於：
-
-1. **定價談判籌碼**：「我們有自己的晶片」讓大型客戶在採購 NVIDIA 時更有談判空間
-2. **特定工作負載分流**：推薦系統、批次推論可以用自研晶片處理，為 NVIDIA GPU 留下更高價值工作
-3. **長期技術路線**：若 CUDA 替代生態（JAX/XLA、Triton）成熟，切換成本會降低
+- [AWS：EC2 Trn3 UltraServers 正式提供](https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/)（2025-12-02）。
+- [Microsoft：Maia 200](https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/)（2026-01-26）。
+- [Meta：次世代 MTIA](https://ai.meta.com/blog/next-generation-meta-training-inference-accelerator-AI-MTIA/)（2024-04-10）。
+- [Meta：MTIA 300、400、450、500](https://ai.meta.com/blog/meta-mtia-scale-ai-chips-for-billions/)（2026-03-11）。
 
 ## 延伸閱讀
 
-- [Google TPU v5p](tpu-v5p.md) — 最成熟的自研加速器案例
-- [軟體生態決定勝負](../competitive/software-ecosystem.md) — 打破 CUDA 壟斷的策略
+- [加速器取捨總覽](tradeoffs.md)
+- [Google TPU v5p](tpu-v5p.md)

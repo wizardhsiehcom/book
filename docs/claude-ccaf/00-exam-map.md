@@ -43,10 +43,10 @@ Anthropic 目前有四張證照，都由 Pearson VUE 交付。確認你要考的
 3. 完成註冊與結帳；結帳金額會反映你所屬合作夥伴層級的折扣。
 4. 依確認信指示建立 Pearson VUE 帳號，登入後排程。
 5. 選日期，並選線上監考或 Pearson 考場。
-6. 取消或改期須在預約時間 **24 小時前**完成；24 小時內變更會沒收費用。
+6. 依 Pearson VUE 現行認證頁，取消或改期須至少提前 **48 小時**；未及時取消／改期或缺考會沒收費用。完成後確認收到新預約信，並核對帳號內的日期。[Pearson VUE 官方政策](https://www.pearsonvue.com/us/en/anthropic.html)（2026-10-28 查核）。
 
-!!! warning "報考資格請自行向官方查覈"
-    本版考綱**沒有**記載一般大眾是否可報名。多份第三方指南稱 CCAR-F 限 Claude Partner Network 成員企業的員工、且註冊信箱網域須符合合格企業，但這些說法本書未能在官方文件中證實。**在投入四週準備之前，先到官方認證入口確認自己報得了名。**[官方入口與來源](appendix-sources.md)
+!!! warning "先確認所屬組織與報名資格"
+    Pearson VUE 官方頁載明，認證開放給 **Claude Partner Network 的組織**，培訓則提供給該網路成員。這支持合作夥伴範圍，不能據此宣稱任何個人都可直接報名，也不能自行補出信箱網域審核規則。開始準備前，透過所屬組織及 Partner Academy 確認個人資格。[官方入口與來源](appendix-sources.md)
 
 ## 考試政策
 
@@ -80,7 +80,7 @@ Anthropic 目前有四張證照，都由 Pearson VUE 交付。確認你要考的
 
 ## 六個情境的讀法
 
-考綱 §5 **公開了全部六個情境的設定**，考試從中隨機出四個，每個情境框住一組題目。六個都會考到的機率不低，六個都值得先當成系統理解一遍。
+考綱 §5 **公開了全部六個情境的設定**，考試從中隨機出四個，每個情境框住一組題目。因為不能預先知道抽到哪些，六個都值得先當成系統理解一遍。
 
 | # | 官方情境 | 設定摘要 | 主要領域 | 本書對應 |
 |---|---|---|---|---|
@@ -91,7 +91,7 @@ Anthropic 目前有四張證照，都由 Pearson VUE 交付。確認你要考的
 | 5 | Claude Code for Continuous Integration | 接入 CI/CD 執行自動審查、產測試、回饋 PR，要求可採取行動且降低誤報 | 3、4 | [情境五](12-practice.md)；[07](07-ci-review.md) |
 | 6 | Structured Data Extraction | 從非結構文件抽取資訊、以 JSON schema 驗證，並優雅處理邊界情況 | 4、5 | [情境六](12-practice.md)；[08](08-structured-output.md) |
 
-情境一的官方設定直接點名 `get_customer`、`lookup_order`、`process_refund`、`escalate_to_human` 四個 MCP 工具。注意其中三個是唯讀或查詢、一個有真實副作用、一個是升級出口——[工具契約](04-tool-contracts.md)與[執行約束](03-enforcement.md)討論的正是這種組合的設計問題。
+情境一的官方設定直接點名 `get_customer`、`lookup_order`、`process_refund`、`escalate_to_human` 四個 MCP 工具。其中 `get_customer`、`lookup_order` 是查詢，`process_refund` 有退款副作用，`escalate_to_human` 是升級出口——[工具契約](04-tool-contracts.md)與[執行約束](03-enforcement.md)討論的正是這種組合的設計問題。
 
 讀題先標出目標、硬性條件、觀察到的失敗、可用工具，再選能直接修復問題的方案。較大型模型、更長提示詞、更多 agent 都不是不需證據的萬用答案。
 
@@ -167,6 +167,6 @@ Anthropic Partner Academy 為 CCAR-F 列出七門 prep 課程。本書不是官�
 | 三 | 08–10；Lab 3、4 | 有驗證、來源和恢復能力的流程 |
 | 四 | 18 題、訂正、[情境包計時](13-scenario-set.md)、官方考綱回查 | 弱項清單、重現實驗與一次限時作答紀錄 |
 
-四週之外還有兩件事要排進行事曆：**開始讀之前先確認報考資格**，以及排程時記住取消改期的 24 小時期限。兩者都見本頁[報考流程](#報考流程)。
+四週之外還有兩件事要排進行事曆：**開始讀之前先確認報考資格**，以及排程時記住取消改期至少提前 48 小時的期限。兩者都見本頁[報考流程](#報考流程)。
 
 開始：[01 Agent 迴圈](01-agent-loop.md)。

@@ -56,7 +56,7 @@ NVIDIA H100 基於 Hopper 微架構，關鍵創新包括：
 
 2024 年發布的 B200 延續 Hopper 的方向，改用雙晶片封裝並把精度推到 FP4。
 
-規格、NVLink 5.0 與推論效能的完整說明見 [NVIDIA B200](../ai-accelerators/b200.md)。
+整機規格、NVLink 與跨節點網路的區別見 [NVIDIA B200](../ai-accelerators/b200.md)。
 
 ## 延伸閱讀
 

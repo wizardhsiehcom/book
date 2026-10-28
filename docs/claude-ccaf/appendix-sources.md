@@ -1,6 +1,6 @@
 # 附錄｜官方來源、版本與更新方式
 
-**查覈日期：2026-09-07。** 本書以考綱決定範圍，以產品文件補充實作語意。動態文件未標發布日就不假定日期；查覈日不是發布日。
+**初版查覈日期：2026-09-07；局部複查日期：2026-10-28，範圍如下。** 本書以考綱決定範圍，以產品文件補充實作語意。動態文件未標發布日就不假定日期；查覈日不是發布日。
 
 ## S01：範圍的權威來源
 
@@ -23,7 +23,7 @@
 | pp.19–23，§6，5.1–5.6 | 上下文、升級、來源、人工校準 |
 | pp.23–26，§7–8 | 備考能力與實作方向 |
 | p.33，§10 | Scaled score 與 criterion-referenced 的意義、成績報告的領域百分比不計入判定 |
-| pp.33–34，§11 | 報考流程：Partner Academy 與 Pearson VUE 兩段式、24 小時取消改期期限 |
+| pp.33–34，§11 | 報考流程：Partner Academy 與 Pearson VUE 兩段式；原 24 小時期限已由下方現行政策複查修正 |
 | pp.34–35，§12–14 | 身分證件、特殊需求、重考等待與次數、缺考、閉卷應考規則、保密協定 |
 | pp.35–36，§15–16 | 效期 12 個月、準時續證與逾期重考、申訴期限 |
 | pp.36–39，§17–18 | 技術清單、範圍內外、版本紀錄 |
@@ -32,7 +32,7 @@
 
 **本書未讀取的官方文件：** 認證頁另提供 Certification Terms and Conditions 與 Anthropic Certification Exam Policy 兩份 PDF，本書未取得。因此本書關於政策的敘述**只以 Exam Guide §11–16 為依據**；若兩者有出入，以官方政策文件為準。
 
-**報考資格未經證實。** 本版 Exam Guide 沒有記載一般大眾能否報名，只在 §11 提到結帳金額反映「你所屬合作夥伴層級」的折扣。多份第三方指南稱 CCAR-F 限 Claude Partner Network 成員企業員工、須用企業信箱網域，本書**未能在官方文件中證實這項限制**，因此[考綱地圖](00-exam-map.md#報考流程)以待查方式呈現，請讀者自行向官方入口確認。
+**2026-10-28 報考範圍複查：** Pearson VUE 官方頁載明認證開放給 Claude Partner Network 的組織、培訓提供給其成員。已據此修正[報考流程](00-exam-map.md#報考流程)；個人資格與信箱審核細節仍應由 Partner Academy 確認。
 
 ### 認證計畫的其他官方頁面
 
@@ -41,7 +41,9 @@
 | S01a | [Pearson VUE：Claude Certification Program](https://www.pearsonvue.com/us/en/anthropic.html) | 四張證照的代碼、排程流程、線上監考與考場選項 |
 | S01b | [CCAR-F prep courses，Partner Academy](https://anthropic-partners.skilljar.com/page/claude-certified-architect-foundations-prep-courses) | 七門官方 prep 課程清單 |
 
-兩頁均於 2026-09-07 查覈。重考等待期與次數在 S01a 與 Exam Guide §12 一致。
+S01a 於 2026-10-28 複查：取消／改期至少提前 **48 小時**，與先前 Exam Guide §11 的 24 小時記載不同；現行操作以 Pearson VUE 排程政策及預約確認為準。重考等待期與次數未見與先前記錄的差異。S01b 的查覈日仍為 2026-09-07。
+
+本輪認證入口擷取回傳 403，未重新取得考綱與政策 PDF；不宣稱 v1.0 仍是最新版本，也不把考點查核日改成今日。
 
 ## 產品文件與架構補充
 
@@ -58,14 +60,14 @@
 | S10 | [Structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) | 動態文件，發布日未標 | Strict 與例外 |
 | S11 | [Batch processing](https://platform.claude.com/docs/en/build-with-claude/batch-processing) | 動態文件，發布日未標 | 窗口、折扣、custom_id |
 
-上述來源均於 2026-09-07 查覈相關段落，不宣稱逐字讀過每份動態文件的所有章節。
+上述來源初版均於 2026-09-07 查覈相關段落。2026-10-28 另複查 S06 的規範載入、S07 的 skill fork／allowed-tools、S08 的 MCP scope；已補明 skill fork 不帶主對話歷史，allowed-tools 是預先允許、不是限制其他工具。其餘段落不宣稱已逐項重新驗證。
 
 ## 考綱與產品不同步時
 
 | 議題 | 考綱錨點 | 本書補充 |
 |---|---|---|
 | 子代理工具 | Task、allowedTools | 現行稱 Agent，舊事件可需兼容兩名 |
-| 子代理上下文 | 明確傳入，不自動繼承 | 非 fork 與 fork 不可一概而論 |
+| 子代理上下文 | 明確傳入，不自動繼承 | 區分 SDK session fork 與 skill 的 context: fork；後者不帶主對話歷史 |
 | Commands／skills | 兩種路徑皆列為考點 | 現行文件整合說明，按版本操作 |
 | 結構輸出 | Tool use／schema | 分清一般、strict tool use 與 JSON outputs |
 | Hook 正規化 | PostToolUse | 依版本選替換介面，Post 不撤銷副作用 |
