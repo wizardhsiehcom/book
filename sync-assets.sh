@@ -126,7 +126,7 @@ fi
 
 # 單一 Python 行程複製全部檔案：Windows 上每個 cp 行程約 250ms，逐本 cp 會拖到數十秒。
 uv run python - "${configs[@]}" <<'PYEOF'
-import shutil, sys, yaml, pathlib
+import os, shutil, sys, yaml, pathlib
 
 src = pathlib.Path("docs/assets")
 cfg = yaml.safe_load(pathlib.Path("font.yml").read_text(encoding="utf-8"))
@@ -134,14 +134,26 @@ files = ["custom.css", "book-palette.css", "book-transition.css", "mermaid-init.
          # 每本書各帶一份閱讀器；主題範本與 playground 不屬於執行期資產。
          "story-reader/reader.js", "story-reader/reader.css"]
 files += [f"fonts/{w['file']}" for w in cfg["weights"].values()]
-# Cubic-11 永遠複製（pixel 模式需要）
+# Cubic-11 永遠同步（pixel 模式需要）
 files += ["fonts/Cubic_11.woff2", "fonts/Cubic_11.woff"]
 
 for config in sys.argv[1:]:
     target = pathlib.Path("docs") / pathlib.Path(config).stem / "assets"
     for f in files:
-        (target / f).parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(src / f, target / f)
+        dst = target / f
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        if f.startswith("fonts/"):
+            # 字型用相對 symlink 指回 docs/assets/fonts，不另存一份。
+            # 無法建立連結（例如 Windows 未開開發人員模式）時退回複製。
+            try:
+                link = os.path.relpath(src / f, dst.parent)
+                if not (dst.is_symlink() and os.readlink(dst) == link):
+                    dst.unlink(missing_ok=True)
+                    dst.symlink_to(link)
+                continue
+            except OSError:
+                pass
+        shutil.copyfile(src / f, dst)
 PYEOF
 
 echo "Synced shared assets into docs/<book>/assets"

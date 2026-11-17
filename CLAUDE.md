@@ -20,6 +20,9 @@ uv run mkdocs build -f configs/<name>.yml
 # Serve a single book locally (hot-reload)
 ./serve-book.sh <name>
 
+# Produce a standalone copy of one book to take away (dist/<name>/, git-ignored)
+./deliver-book.sh <name>
+
 # Sync shared assets into per-book dirs (required before manual build)
 ./sync-assets.sh
 
@@ -30,6 +33,8 @@ node tools/check-build-books.cjs
 ```
 
 **Prerequisites**: Python + `uv` installed. Run `uv sync` once to install dependencies. Node.js is required for the all-books wrapper's registry check and JS checks, not for standalone MkDocs builds or reading output.
+
+Fonts use relative symlinks: `sync-assets.sh` links `docs/<name>/assets/fonts/*` and `build-books.sh` links `book/<name>/html/assets/fonts/*` back to `docs/assets/fonts/`, falling back to real copies if symlink creation fails. Never edit fonts through these links; they point to the shared source. Moving the output can break the links, causing browsers to use system fonts. A manual `mkdocs build` leaves real copies. `book/` is the local all-books build; to hand a single book to someone, run `./deliver-book.sh <name>` and take `dist/<name>/`, which contains only real files.
 
 The all-books wrapper always rebuilds; legacy `.build-hash` files are ignored and no longer updated. Do not restore a partial-input cache. A failed build exits nonzero but may leave partial output; do not publish it as a completed build.
 
@@ -59,7 +64,7 @@ The all-books wrapper always rebuilds; legacy `.build-hash` files are ignored an
 - Return links in topic HTML / JS must target built chapter URLs; MkDocs does not rewrite these `.md` references. Verify links after building.
 - Run `./sync-assets.sh` before manual builds. Build/serve wrappers already sync; after editing shared assets during serve, sync again.
 - Checks: `node tools/check-story-reader.cjs` and `uv run python tools/check-story-package.py`.
-- Deliver the entire `book/<book>/html/` directory. Portability is not a claim of offline support: audit CDN dependencies and external bookshelf links separately. Automated checks do not replace browser visual QA.
+- Deliver the entire `dist/<book>/` directory produced by `./deliver-book.sh <book>`. Portability is not a claim of offline support: audit CDN dependencies and external bookshelf links separately. Automated checks do not replace browser visual QA.
 
 ## Adding a new book
 
