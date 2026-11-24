@@ -94,6 +94,26 @@
   border-bottom: 1px solid #484138;
   box-shadow: none;
 }
+.book-top-bar {
+  background: #10100f;
+  border-bottom: 1px solid #352f29;
+  font-size: .72rem;
+  letter-spacing: .08em;
+}
+.book-top-bar__inner {
+  display: flex;
+  align-items: center;
+  padding: .3rem .8rem;
+}
+.book-return-link--top {
+  color: #e58a83;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color .15s;
+}
+.book-return-link--top:hover {
+  color: #ffc2ad;
+}
 .md-typeset h1, .md-typeset h2, .md-typeset h3 { color: var(--book-text); }
 .md-typeset h1 { font-weight: 600; letter-spacing: .025em; }
 .md-typeset h2 { border-bottom: 1px solid var(--book-line); padding-bottom: .4em; }

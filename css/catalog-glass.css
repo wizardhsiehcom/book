@@ -11,9 +11,9 @@
   --glass-blur: 9px;
   --glass-opacity: var(--hover-opacity);
   --glass-tint: #281c1b99;
-  --glass-light: #e4514938;
-  --glass-edge: #ffcbb8a6;
-  --glass-rim: #df897263;
+  --glass-light: var(--card-glow, #e4514938);
+  --glass-edge: color-mix(in srgb, var(--card-accent, #ffcbb8) 55%, #ffcbb8);
+  --glass-rim: color-mix(in srgb, var(--card-accent, #df8972) 45%, #df897263);
   --glass-reflection: #ffe1ce0d;
   border-radius: var(--glass-radius);
   border-bottom-color: #3b363099;

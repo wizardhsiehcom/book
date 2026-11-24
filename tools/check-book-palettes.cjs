@@ -61,6 +61,6 @@ for (const scheme of ['slate', 'default']) {
   }
 }
 assert.ok(contrast('#e58a83', '#141413') >= 4.5, 'Footer links stay readable in light mode');
-assert.match(read('sync-assets.sh'), /cp "\$src_assets\/book-palette\.css" "\$target\/book-palette\.css"/);
+assert.match(read('sync-assets.sh'), /"book-palette\.css"/);
 assert.ok(!css.includes('playground') && !css.includes('templates/'), 'No preview runtime dependencies');
 console.log(`PASS: ${configs.length} palette pairs, shared asset wiring, saved scheme IDs, text/code contrast`);

@@ -49,7 +49,14 @@ lines.append("""@font-face {
 
 # ── 預設字型（主字型）──
 lines.append(f"""/* ── 預設（{family}）── */
+:root {{
+    --md-text-font: '{family}', {fallback};
+}}
 body,
+.md-typeset,
+.md-nav,
+.md-header,
+.md-footer,
 .content p,
 .content li,
 .content td,
@@ -59,6 +66,12 @@ body,
     font-family: '{family}', {fallback};
     font-weight: {reg_val};
 }}
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6,
 .content h1,
 .content h2,
 .content h3,
@@ -73,7 +86,15 @@ body,
 
 # ── 系統字型 class ──
 lines.append("""/* ── 系統字型 ── */
+html.font-system,
+body.font-system {
+    --md-text-font: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
 body.font-system,
+body.font-system .md-typeset,
+body.font-system .md-nav,
+body.font-system .md-header,
+body.font-system .md-footer,
 body.font-system .content p,
 body.font-system .content li,
 body.font-system .content td,
@@ -81,6 +102,12 @@ body.font-system .content th {
     font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
     font-weight: 400;
 }
+body.font-system .md-typeset h1,
+body.font-system .md-typeset h2,
+body.font-system .md-typeset h3,
+body.font-system .md-typeset h4,
+body.font-system .md-typeset h5,
+body.font-system .md-typeset h6,
 body.font-system .content h1,
 body.font-system .content h2,
 body.font-system .content h3,
@@ -95,7 +122,21 @@ body.font-system .content h6 {
 
 # ── 像素字型 class ──
 lines.append("""/* ── 像素字型 ── */
+html.font-pixel,
+body.font-pixel {
+    --md-text-font: 'Cubic-11', monospace;
+}
 body.font-pixel,
+body.font-pixel .md-typeset,
+body.font-pixel .md-nav,
+body.font-pixel .md-header,
+body.font-pixel .md-footer,
+body.font-pixel .md-typeset h1,
+body.font-pixel .md-typeset h2,
+body.font-pixel .md-typeset h3,
+body.font-pixel .md-typeset h4,
+body.font-pixel .md-typeset h5,
+body.font-pixel .md-typeset h6,
 body.font-pixel .content p,
 body.font-pixel .content li,
 body.font-pixel .content td,

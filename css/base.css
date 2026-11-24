@@ -66,6 +66,8 @@ input::placeholder { color: var(--muted); }
 .card-number { padding-top: 3px; color: var(--red); font: 13px/1.5 ui-monospace, monospace; }
 .card-body { flex: 1; min-width: 0; }
 .card-title { font-size: 20px; line-height: 1.4; font-weight: 650; margin: 0 0 10px; overflow-wrap: anywhere; }
+.card-icon { display: inline-block; margin-right: 8px; font-size: .92em; vertical-align: -1px; filter: saturate(.88); transition: transform .2s, filter .2s; }
+.card:hover .card-icon, .card:focus-visible .card-icon { transform: scale(1.08); filter: saturate(1.1); }
 .card-desc { color: var(--muted); font-size: 12px; line-height: 1.9; margin: 0 0 13px; }
 .card-footer { display: flex; flex-wrap: wrap; gap: 5px 12px; }
 .card-tag { color: #b8a88d; font-size: 10px; letter-spacing: .04em; }
