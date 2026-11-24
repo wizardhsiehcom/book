@@ -3,8 +3,15 @@ const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
 const samurai = document.getElementById('samuraiWrap');
 const blade = document.getElementById('blade');
 let selectedBook = null;
+let poseTimer;
+const readyFrame = document.getElementById('imgSvg');
+const strikeFrame = document.getElementById('slashStrike');
 
 function resetBookTransition() {
+  if (poseTimer !== undefined) clearTimeout(poseTimer);
+  poseTimer = undefined;
+  samurai.classList.remove('slash-ready');
+  samurai.classList.remove('slash-strike');
   for (const element of [samurai, blade]) {
     element.getAnimations().forEach(animation => animation.cancel());
     element.style.viewTransitionName = '';
@@ -47,6 +54,20 @@ document.getElementById('grid').addEventListener('click', event => {
   selectedBook = card;
   if (!positionBlade()) return;
 
+  if ([readyFrame, strikeFrame].every(frame => frame?.complete && frame.naturalWidth)) {
+    event.preventDefault();
+    samurai.classList.add('slash-ready');
+    poseTimer = setTimeout(() => {
+      samurai.classList.remove('slash-ready');
+      samurai.classList.add('slash-strike');
+      poseTimer = setTimeout(() => {
+        poseTimer = undefined;
+        location.assign(card.href);
+      }, 260);
+    }, 90);
+    return;
+  }
+
   const crossPage = 'onpageswap' in window && 'onpagereveal' in window &&
     /^https?:$/.test(location.protocol);
   // ponytail: 沿用整張角色做蓄勢；關節動作需要分層素材。
@@ -82,7 +103,14 @@ window.addEventListener('pageswap', event => {
 
 // 返回快取頁面或中途更改動畫偏好時，清掉快照狀態。
 window.addEventListener('pageshow', resetBookTransition);
-motionPreference.addEventListener('change', resetBookTransition);
+motionPreference.addEventListener('change', () => {
+  const destination = poseTimer !== undefined && selectedBook?.href;
+  resetBookTransition();
+  if (destination) location.assign(destination);
+});
+window.addEventListener('pagehide', () => {
+  if (poseTimer !== undefined) resetBookTransition();
+});
 
 window.addEventListener('resize', positionBlade, { passive: true });
 window.addEventListener('scroll', positionBlade, { passive: true });

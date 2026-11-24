@@ -2,6 +2,15 @@
 .samurai-stage { position: fixed; left: 4%; bottom: 12px; width: 30%; z-index: 4; pointer-events: none; }
 .samurai-wrap { position: relative; width: min(100%, 41vh); margin: auto; transform-origin: 64% 35%; }
 .samurai-wrap img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
+.samurai-wrap .slash-frame { position: absolute; left: 0; bottom: 0; visibility: hidden; }
+.samurai-wrap #slashStrike { width: 131.25%; transform: translateY(12.3%); }
+.slash-strike #imgSvg { visibility: hidden; }
+.slash-strike #slashStrike { visibility: visible; }
+@media (max-width: 760px) {
+  .samurai-stage:has(.slash-ready, .slash-strike) { right: 2vw; width: min(215px, 75vw); }
+  .catalog-scrolled .samurai-stage:has(.slash-ready, .slash-strike) { right: 2vw; width: 88px; }
+  .samurai-wrap #slashStrike { left: auto; right: 0; }
+}
 #blade { position: fixed; z-index: 101; pointer-events: none; height: 10px; transform-origin: left center; }
 @media (max-width: 760px) {
   .samurai-stage { left: auto; right: -20px; top: 64px; bottom: auto; width: 215px; }

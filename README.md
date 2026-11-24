@@ -28,7 +28,7 @@ bash build-books.sh
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-開啟 <http://127.0.0.1:8765/>。點書時以 Web Animations API 短促蓄勢，書頁就緒後由原生 View Transitions 出刀一次。切線從角色刀的位置穿過目標卡片，使用直線光效；載入時只捕捉透明定位框，不會凍結半截刀光。不攔截連結、不等待動畫完成。跨頁效果需瀏覽器支援與同源 HTTP(S)，直接開啟本機 HTML 時仍可正常進書。系統設定「減少動態效果」會停用動畫。
+開啟 <http://127.0.0.1:8765/>。角色關鍵圖載入後，點書或按 Enter 會顯示 Scarlet 蓄勢 90 毫秒、出刀定格 260 毫秒，再進入書頁。支援同源跨頁 View Transitions 的瀏覽器會接續顯示書卡切線。減少動態效果、隱藏角色及修飾鍵開書沿用原生導覽。
 
 共用轉場樣式為 `docs/assets/book-transition.css`，由 `sync-assets.sh` 複製到各書；新書設定的 `extra_css` 需包含 `assets/book-transition.css`。
 
@@ -135,4 +135,4 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory book/cowos/html
 
 修改共用配色後重新同步並建置；檢查設定與文字對比：`node tools/check-book-palettes.cjs`。
 
-入口視覺採煤黑、猩紅與暖白的編號書目，角色素材由內建 imagegen 生成，提示詞與來源見 [素材說明](docs/assets/characters/raster/archivist-scarlet.md)。顯示設定可切換角色、字型與背景動態；手機海報捲離後縮小角色。
+入口視覺採煤黑、猩紅與暖白的編號書目，角色素材由內建 imagegen 生成，提示詞與來源見 [素材說明](docs/assets/characters/archive/scarlet-original/archivist-scarlet.md)。顯示設定可切換角色、字型與背景動態；手機海報捲離後縮小角色。
