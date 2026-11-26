@@ -1,0 +1,10 @@
+{
+  "name": "book-presentations",
+  "private": true,
+  "scripts": {
+    "deck:build": "node node_modules/agentdeck/templates/host/build.mjs"
+  },
+  "dependencies": {
+    "agentdeck": "https://codeload.github.com/Echoslayer/AgentDeck/tar.gz/185219f1b357b9d0f4965dd71c54498f667f5581"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "contract": 2,
+  "core": {
+    "commit": "185219f1b357",
+    "files": {
+      "LICENSE": "0adf9c8b8bfdc3bd",
+      "AGENTDECK.md": "ae4624bfdf6ea33e",
+      "assets/deck/deck-core.js": "b385a508398092d9",
+      "assets/deck/deck-editor.js": "a3dc3dc26008c995",
+      "assets/deck/deck.css": "4f1f76c6c9ec278d",
+      "assets/story-reader/export.js": "68930a933117869c",
+      "assets/story-reader/reader.css": "3a3b15bf52389d4a",
+      "assets/story-reader/reader.js": "e86d696e0a409d09",
+      "assets/story-reader/tree-map.js": "7fe8ca0b53cfc7f1",
+      "templates/blank/edits.js": "2236732a134736dd",
+      "templates/blank/index.html": "424d0829bcb063ec",
+      "templates/blank/plan.md": "354233eec4fcb4f4",
+      "templates/blank/story.css": "3506911b52de6f49",
+      "templates/blank/story.js": "1d9030da3b6d10a3"
+    }
+  },
+  "components": {},
+  "source": "github:Echoslayer/AgentDeck#185219f1b357b9d0f4965dd71c54498f667f5581",
+  "cli": "npm exec --offline -- agentdeck",
+  "theme": {
+    "commit": "4e3f5f830789"
+  }
+}

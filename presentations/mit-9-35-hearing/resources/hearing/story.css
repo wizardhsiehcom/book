@@ -1,0 +1,19 @@
+﻿#page .lead:empty,#page .point:empty {display:none}
+.stage audio {display:block;width:min(100%,32rem);margin:0 auto .4rem}
+.hearing-figure,.hearing-map {margin:0 auto;text-align:center}
+.hearing-chart {position:relative;width:min(100%,72vh);margin:auto}
+.hearing-chart img {display:block;width:100%}
+.hearing-pin {position:absolute;transform:translate(-50%,-100%);color:white;font:bold 1.6rem/1 sans-serif;text-shadow:0 1px 3px black}
+.hearing-map {width:min(100%,44rem);padding:1rem 0}
+.hearing-ends,.hearing-line,.hearing-tones {display:flex;justify-content:space-between}
+.hearing-line,.hearing-tones {margin:.6em 0 1em;border-bottom:3px solid currentColor;padding:0 8% .4em}
+.hearing-tones {justify-content:center;gap:8%;align-items:end}
+.hearing-tones span {font-size:1.4em}
+.hearing-line b:last-child,.hearing-tones b {color:var(--accent,#be542f)}
+.hearing-map figcaption,.hearing-figure figcaption {margin:.65em 0;font-size:.9em}
+
+.course-harmonics{margin:auto;border-collapse:collapse;font-variant-numeric:tabular-nums;text-align:center}
+.course-harmonics caption{padding-bottom:.5rem;font-weight:650}
+.course-harmonics :is(th,td){padding:.45em .6em;border-bottom:1px solid var(--line)}
+.course-harmonics strong{color:var(--accent);border-bottom:2px solid currentColor}
+@media(max-width:540px){.course-harmonics :is(th,td){padding:.35em .25em}}

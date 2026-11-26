@@ -1,0 +1,24 @@
+# AgentDeck stock files (one literal path per line)
+/AGENTDECK.md
+/LICENSE
+/assets/deck/deck-core.js
+/assets/deck/deck-editor.js
+/assets/deck/deck.css
+/assets/story-reader/export.js
+/assets/story-reader/reader.css
+/assets/story-reader/reader.js
+/assets/story-reader/tree-map.js
+/assets/theme/README.md
+/assets/theme/img/README.md
+/assets/theme/img/cover-bg.svg
+/assets/theme/img/end-bg.svg
+/assets/theme/img/logo-white.svg
+/assets/theme/img/logo.svg
+/assets/theme/theme.css
+/assets/theme/theme.js
+/templates/blank/edits.js
+/templates/blank/index.html
+/templates/blank/plan.md
+/templates/blank/story.css
+/templates/blank/story.js
+# End AgentDeck stock files

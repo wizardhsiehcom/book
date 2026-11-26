@@ -15,6 +15,8 @@
 
 三個腳本都會自動掃描 `configs/*.yml`。新增書時只要新增 `configs/<book>.yml` 與 `docs/<book>/`，不需改腳本。
 
+書籍的 AgentDeck 簡報放在 `presentations/`。要在新電腦播放 MIT 9.35、查詢可用元件，或讓原廠框架檔退出 Git 追蹤，從[書籍簡報操作說明](presentations/README.md)開始。
+
 ## 初次使用
 
 安裝 Python 3.10 以上版本與 `uv`，在 repo 根目錄執行 `uv sync`。全書建置入口與 JavaScript 檢查另需 Node.js；直接執行單本 MkDocs 建置不需要 Node.js，讀者開啟書籍也不需要安裝它。以下指令皆從 repo 根目錄執行。

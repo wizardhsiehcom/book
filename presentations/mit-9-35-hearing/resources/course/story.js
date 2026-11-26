@@ -1,0 +1,4 @@
+const map=groups.map((name,i)=>'<section><h3>'+name+'</h3>'+lectures.filter(d=>group(d.n)===i).map(d=>'<a href="branches/'+branch(d.n)+'/index.html">'+String(d.n).padStart(2,'0')+'　'+d.name+'</a>').join('')+'</section>').join('');
+const story={sequence:courseSequence,title:'感覺與知覺',label:'MIT 9.35｜Sensation and Perception',pages:[
+{id:'intro',section:'MIT 9.35・2009 春季',title:'兩個灰塊一樣亮嗎？',lead:'',art:pair(lectures[0]),point:'兩個灰塊的像素值相同，背景卻能改變看起來的明暗。接下來 25 講都在問：感官收到什麼訊號？周圍的環境又怎麼影響判斷？',detail:'自編明度對比示範。 <a href="#map">進入 25 講課程地圖</a>',instruction:'觀察後進入地圖。'},
+{id:'map',section:'課程地圖',title:'25 講課程地圖：你想先探索哪一種感覺？',lead:'點講名開始。進入後可用翻頁列的「簡報樹」跳講，或按頁首「回課程地圖」回到這裡。',art:'<div class="course-map" data-key="map">'+map+'</div>',point:'',detail:'講次依 2009 年講義排列，五個主題是為自學整理的分組。 <a target="_blank" href="'+courseBase+'lecture-notes/">官方講次</a>　<a target="_blank" href="'+courseBase+'readings/">指定閱讀（節次另排）</a>',instruction:'點選講次。'}]};
