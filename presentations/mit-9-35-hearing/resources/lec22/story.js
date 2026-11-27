@@ -12,3 +12,5 @@ const evidence={id:'method',section,title:'常用一個手勢，是否表示那�
  point:'實驗 1 看人自然會選哪個手勢。實驗 2 限制手勢，再看哪些特性變得難以辨認。描邊時也可能摸到材質，一個動作能提供好幾種線索。',detail:source(1,'摘要、實驗 1 與實驗 2')+'。對照為中文整理。'};
 check.detail+='　'+source(5,'圖 1，沿輪廓探索');
 story.pages=[intro,choose,evidence,check];
+
+addCourseNarration(story.pages);

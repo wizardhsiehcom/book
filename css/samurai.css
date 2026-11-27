@@ -1,19 +1,94 @@
-/* 人物與海報共用固定欄位；窄螢幕捲動後保留小型出刀角色。 */
-.samurai-stage { position: fixed; left: 4%; bottom: 12px; width: 30%; z-index: 4; pointer-events: none; }
-.samurai-wrap { position: relative; width: min(100%, 41vh); margin: auto; transform-origin: 64% 35%; }
+/* 以出刀畫布（1344 px）預留空間；三格共用站姿畫布（1024 px）的左緣與靴底。 */
+.samurai-stage { --frame-ratio: 1.3125; position: fixed; left: 0; right: 64%; bottom: 12px; width: min(34vw, calc(41vh * var(--frame-ratio))); margin-inline: auto; z-index: 4; pointer-events: none; }
+.samurai-wrap { position: relative; width: calc(100% / var(--frame-ratio)); transform-origin: 64% 35%; }
 .samurai-wrap img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
 .samurai-wrap .slash-frame { position: absolute; left: 0; bottom: 0; visibility: hidden; }
-.samurai-wrap #slashStrike { width: 131.25%; transform: translateY(12.3%); }
-.slash-strike #imgSvg { visibility: hidden; }
-.slash-strike #slashStrike { visibility: visible; }
-@media (max-width: 760px) {
-  .samurai-stage:has(.slash-ready, .slash-strike) { right: 2vw; width: min(215px, 75vw); }
-  .catalog-scrolled .samurai-stage:has(.slash-ready, .slash-strike) { right: 2vw; width: 88px; }
-  .samurai-wrap #slashStrike { left: auto; right: 0; }
+.samurai-wrap #slashStrike { width: calc(100% * var(--frame-ratio)); }
+.slash-draw #imgSvg, .slash-strike #imgSvg { visibility: hidden; }
+.slash-draw #slashDraw, .slash-strike #slashStrike { visibility: visible; }
+/* 各裁片以 1024 × 1536 原圖定位。外襬固定上緣，內襯在褲管後方起落。 */
+@property --scarlet-idle-weight {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+.samurai-wrap { container-type: inline-size; }
+.scarlet-motion { display: none; position: absolute; inset: 0; --cloth-cycle: 5.4s; --blink-cycle: 6.8s; }
+.scarlet-draw { --cloth-cycle: 4.7s; --blink-cycle: 5.9s; }
+.motion-base { position: relative; }
+.scarlet-motion .motion-piece {
+  position: absolute; left: calc(100% * var(--x) / 1024); top: calc(100% * var(--y) / 1536);
+  width: calc(100% * var(--w) / 1024); transform-origin: center top;
+}
+.hem-left { animation: scarlet-hem-left var(--cloth-cycle) ease-in-out infinite; }
+.hem-right { animation: scarlet-hem-right var(--cloth-cycle) ease-in-out infinite; }
+.hem-lining { animation: scarlet-lining var(--cloth-cycle) ease-in-out infinite; }
+@keyframes scarlet-hem-left {
+  0%, 100% { transform: skewX(0deg); }
+  23% { transform: skewX(calc(2.35deg * var(--scarlet-idle-weight))); }
+  68% { transform: skewX(calc(-1.8deg * var(--scarlet-idle-weight))); }
+}
+@keyframes scarlet-hem-right {
+  0%, 100% { transform: skewX(0deg); }
+  35% { transform: skewX(calc(1.65deg * var(--scarlet-idle-weight))); }
+  79% { transform: skewX(calc(-1.35deg * var(--scarlet-idle-weight))); }
+}
+@keyframes scarlet-lining {
+  0%, 100% { transform: skewX(0deg) scaleY(1); }
+  45% { transform: skewX(calc(1.8deg * var(--scarlet-idle-weight))) scaleY(calc(1 - .034 * var(--scarlet-idle-weight))); }
+  86% { transform: skewX(calc(-1.45deg * var(--scarlet-idle-weight))) scaleY(calc(1 + .018 * var(--scarlet-idle-weight))); }
+}
+.blink-window { overflow: hidden; aspect-ratio: 89 / 24; }
+.scarlet-motion .blink-window img { width: 500%; animation: scarlet-blink var(--blink-cycle) steps(4, end) infinite; }
+@keyframes scarlet-blink {
+  0%, 20%, 23.6%, 77%, 80.6%, 100% { transform: translateX(0); }
+  21.4%, 21.9%, 78.4%, 78.9% { transform: translateX(-80%); }
+}
+.slash-ready .scarlet-idle {
+  --scarlet-idle-weight: 0;
+  transition: --scarlet-idle-weight 55ms ease-out;
+}
+.slash-ready .blink-window { visibility: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  @container (width > 88px) {
+    .samurai-wrap:not(.slash-draw, .slash-strike) .scarlet-idle.is-ready { display: block; }
+    .scarlet-idle.is-ready ~ #imgSvg { visibility: hidden; }
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  @container (width > 88px) {
+    body:has(#grid a.card:is(:hover, :focus-visible)) .samurai-wrap:not(.slash-ready, .slash-strike):has(#slashDraw.is-ready) {
+      & #slashDraw { visibility: visible; }
+      & .sheath-glint { display: inline; }
+      & #imgSvg { visibility: hidden; }
+      & .scarlet-idle { display: none; }
+      & .scarlet-draw.is-ready { display: block; }
+      /* 點書以 visibility 判定是否已出鞘。完整底圖在分層就緒後才隱藏。 */
+      &:has(.scarlet-draw.is-ready) #slashDraw { opacity: 0; }
+    }
+  }
+}
+/* 特效與出刀圖共用畫布，縮放時亮點仍貼住金屬。 */
+.scarlet-fx { position: absolute; left: 0; top: 0; width: calc(100% * var(--frame-ratio)); height: 100%; pointer-events: none; }
+.sheath-glint, .strike-wake { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .slash-draw .sheath-glint, .slash-strike .strike-wake { display: inline; }
+  .sheath-glint { transform-origin: 455px 667px; animation: sheath-flash 320ms ease-out both; }
+  .strike-wake { animation: scarlet-cut 190ms ease-out both; }
+}
+@keyframes sheath-flash {
+  0% { opacity: 0; transform: scale(.25); }
+  22% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(.6); }
+}
+@keyframes scarlet-cut {
+  0% { opacity: 0; clip-path: inset(0 65% 0 0); }
+  18% { opacity: .95; }
+  47% { opacity: 1; clip-path: inset(0 0 0 0); }
+  100% { opacity: 0; clip-path: inset(0 0 0 48%); }
 }
 #blade { position: fixed; z-index: 101; pointer-events: none; height: 10px; transform-origin: left center; }
 @media (max-width: 760px) {
-  .samurai-stage { left: auto; right: -20px; top: 64px; bottom: auto; width: 215px; }
-  .catalog-scrolled .samurai-stage { top: auto; bottom: 0; right: -12px; width: 88px; opacity: .5; }
-  .samurai-wrap { width: 100%; }
+  .samurai-stage { left: auto; right: 2vw; top: 64px; bottom: auto; width: min(63vw, calc(215px * var(--frame-ratio))); }
+  .catalog-scrolled .samurai-stage { top: auto; bottom: 0; width: calc(88px * var(--frame-ratio)); opacity: .5; }
 }

@@ -31,3 +31,5 @@ story.pages.push(
   },
   originalCheck
 );
+
+addCourseNarration(story.pages);

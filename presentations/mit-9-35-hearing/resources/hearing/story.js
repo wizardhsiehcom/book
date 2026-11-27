@@ -36,3 +36,5 @@ story.pages.push({
  question:{prompt:'只拿到「雙耳時間差為零」這筆資訊，可以選出哪個位置？',choices:[{value:'front',label:'正前方',feedback:'前方符合，但後方也符合。講義圖中 0° 與 180° 都標為 0 微秒。'},{value:'both',label:'兩者都可能',feedback:'是。時間差限制了可能方向，但單靠這個值無法分清前後。'}]},
  point:'',detail:'依原圖兩端條件改編。'+lecture(20)+'　<a href="../lec20/index.html">下一講：聽覺場景分析</a>',instruction:'用聲音走到兩耳的路徑，解釋何以會有兩個答案。'
 });
+
+addCourseNarration(story.pages);

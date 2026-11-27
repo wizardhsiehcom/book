@@ -88,9 +88,48 @@
     <header class="poster">
       <div class="samurai-stage" id="samuraiStage" aria-hidden="true">
         <div class="samurai-wrap" id="samuraiWrap">
-          <img id="slashStrike" class="slash-frame" src="docs/assets/characters/scarlet-slash/book-keyframe-strike-v13.png" alt="">
+          <img id="slashStrike" class="slash-frame" src="docs/assets/characters/scarlet-slash/book-keyframe-strike-v14.png" alt="">
+          <img id="slashDraw" class="slash-frame" onload="this.classList.add('is-ready')" src="docs/assets/characters/scarlet-slash/book-keyframe-draw-v2.png" alt="" decoding="async">
+          <div id="scarletIdle" class="scarlet-motion scarlet-idle" aria-hidden="true">
+            <img class="motion-piece hem-lining" style="--x:341;--y:1010;--w:201" src="docs/assets/characters/scarlet-slash/idle-lining-motion.webp" alt="" decoding="async" fetchpriority="low">
+            <img class="motion-base" src="docs/assets/characters/scarlet-slash/idle-base-motion.webp" alt="" decoding="async" fetchpriority="low">
+            <img class="motion-piece hem-left" style="--x:75;--y:1066;--w:260" src="docs/assets/characters/scarlet-slash/idle-left.webp" alt="" decoding="async" fetchpriority="low">
+            <img class="motion-piece hem-right" style="--x:617;--y:869;--w:202" src="docs/assets/characters/scarlet-slash/idle-right.webp" alt="" decoding="async" fetchpriority="low">
+            <span class="motion-piece blink-window" style="--x:420;--y:132;--w:89"><img src="docs/assets/characters/scarlet-slash/eye-blink.webp" alt="" decoding="async" fetchpriority="low"></span>
+          </div>
+          <div id="scarletDrawMotion" class="scarlet-motion scarlet-draw" aria-hidden="true">
+            <img class="motion-piece hem-lining" style="--x:343;--y:1028;--w:209" src="docs/assets/characters/scarlet-slash/draw-lining-motion.webp" alt="" decoding="async" fetchpriority="low">
+            <img class="motion-base" src="docs/assets/characters/scarlet-slash/draw-base-motion.webp" alt="" decoding="async" fetchpriority="low">
+            <img class="motion-piece hem-left" style="--x:78;--y:1081;--w:253" src="docs/assets/characters/scarlet-slash/draw-left-motion.webp" alt="" decoding="async" fetchpriority="low">
+            <img class="motion-piece hem-right" style="--x:628;--y:889;--w:219" src="docs/assets/characters/scarlet-slash/draw-right-motion.webp" alt="" decoding="async" fetchpriority="low">
+            <span class="motion-piece blink-window" style="--x:427;--y:156;--w:89"><img src="docs/assets/characters/scarlet-slash/eye-blink.webp" alt="" decoding="async" fetchpriority="low"></span>
+          </div>
           <img id="imgSvg" data-src="docs/assets/characters/scarlet-slash/book-keyframe-ready-v5.png"
                width="1024" height="1536" alt="" fetchpriority="high">
+          <svg class="scarlet-fx" viewBox="0 0 1344 1536" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="steel-glow">
+                <stop stop-color="#fff6ce" stop-opacity=".92"/>
+                <stop offset=".22" stop-color="#f6ce9b" stop-opacity=".62"/>
+                <stop offset="1" stop-color="#dc7d56" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="scarlet-wake" x1="0" y1="0" x2="1" y2=".26">
+                <stop stop-color="#7e202b" stop-opacity="0"/>
+                <stop offset=".32" stop-color="#a02835" stop-opacity=".65"/>
+                <stop offset=".74" stop-color="#e45b58" stop-opacity=".92"/>
+                <stop offset="1" stop-color="#fff0d1"/>
+              </linearGradient>
+            </defs>
+            <g class="sheath-glint">
+              <circle cx="455" cy="667" r="35" fill="url(#steel-glow)"/>
+              <path d="M427 694l25-29-9-13 13 11 22-22-19 26 10 14-15-11z" fill="#fff0ce"/>
+            </g>
+            <g class="strike-wake">
+              <path d="M488 708C628 854 943 955 1273 887C996 932 691 831 488 708Z" fill="url(#scarlet-wake)"/>
+              <path d="M645 845C801 913 977 935 1124 915C976 931 802 906 645 845Z" fill="#b84849" opacity=".66"/>
+              <path d="M771 794Q1044 873 1230 886Q1251 889 1273 887" fill="none" stroke="#fff0d9" stroke-width="4" stroke-linecap="round"/>
+            </g>
+          </svg>
         </div>
       </div>
       <p class="eyebrow">私人藏書室 <span>／ 閱讀筆記</span></p>

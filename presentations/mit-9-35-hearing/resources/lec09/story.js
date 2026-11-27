@@ -65,3 +65,5 @@ story.pages.splice(-1,0,{
     {value:'black',label:'畫面既然是黑色，換顯示範圍也無法看到細節',feedback:'可以回上一頁試一次。改用室內設定後，電視旁的物件會浮現。黑色可能來自顯示端裁切，物體實際反射多少還要考慮照明。'}]},
   point:'',detail:hdrSource+' 灰紙情境為自編。 <a href="../lec01/index.html#illumination">回看第 1 講的白紙與灰紙算例</a>',instruction:'把顯示讀值、原始光量與表面反射比例分開。'
 });
+
+addCourseNarration(story.pages);

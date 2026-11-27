@@ -27,3 +27,53 @@ function lesson(n){
  {id:'observe',section,title:d.title,lead:'',art:pair(d),point:d.why,detail,instruction:'先看兩個條件，再讀下方解釋。'},
  {id:'check',section,title:d.q,lead:'',art:'',question:{prompt:'選一個答案，再看理由。',choices:n%2?[correct,other]:[other,correct]},point:'',detail:'<a href="'+home+'">回課程地圖</a>'+(n<25?'　<a href="../'+branch(n+1)+'/index.html">下一講：'+lectures[n].name+'</a>':''),instruction:'用自己的話解釋所選答案。'}]};
 }
+
+function addCourseNarration(pages) {
+  const fragment = html => {
+    const template = document.createElement('template');
+    template.innerHTML = html || '';
+    return template.content;
+  };
+  const plain = html => fragment(html).textContent.trim();
+  const sentence = value => value && (/[。！？!?]$/.test(value) ? value : value + '。');
+  for (const page of pages) {
+    const art = fragment(page.art);
+    const lines = [], steps = [];
+    function say(words, target) {
+      if (!words) return;
+      const at = 1 + lines.join('').split(/[。！？!?；;]/).filter(Boolean).length;
+      if (target) steps.push({at, clear:true}, {at, box:target});
+      lines.push(sentence(words));
+    }
+    say(plain(page.title));
+    say(plain(page.lead));
+    if (page.question) {
+      page.question.choices.forEach((choice, i) => {
+        say('第' + ['一','二','三','四'][i] + '個說法，' + plain(choice.label),
+            '[data-answer="' + choice.value + '"]');
+      });
+      say('選出你的答案，再看看回饋能不能解釋你的觀察。');
+    } else if (page.id === 'map') {
+      say('想從剛才的灰塊開始，就選第一講。想先用耳朵做實驗，可以直接到第十九講。', 'a[href*="lec19"]');
+    } else if (page.id === 'cover') {
+      say('等一下會聽到兩段錄音。每聽到一次變化，就到圖上找同一個時刻。', '[data-key="title"]');
+    } else {
+      const conditions = art.querySelectorAll('.course-pair > div > strong');
+      if (conditions.length === 2) {
+        conditions.forEach((el,i) => say((i ? '再看，' : '先看，') + el.textContent,
+          '.course-pair > div:nth-of-type(' + (i+1) + ') > strong'));
+      }
+      const caption = art.querySelector('figcaption');
+      const target = ['.hearing-pin','figcaption','summary','input','button','th','strong','[data-key]'].find(s => art.querySelector(s));
+      if (caption) say(caption.textContent, target);
+      else if (!conditions.length) say(plain(page.instruction) || '先觀察畫面中的條件，再預測結果。', target);
+      say(plain(page.point));
+    }
+    if (steps.length) steps.push({at:lines.join('').split(/[。！？!?；;]/).filter(Boolean).length, clear:true});
+    // Keep the last highlight visible if it begins on the final sentence.
+    if (steps.length >= 2 && steps.at(-2).at === steps.at(-1).at) steps.pop();
+    page.speech = lines.join('');
+    page.record = steps;
+    if (page.question) page.instruction = (page.instruction || '') + ' 依序指出各選項，等學習者說出理由，再讓他作答。';
+  }
+}

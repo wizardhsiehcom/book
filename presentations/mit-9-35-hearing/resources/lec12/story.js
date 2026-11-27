@@ -32,3 +32,5 @@ story.pages = [
 ];
 
 
+
+addCourseNarration(story.pages);

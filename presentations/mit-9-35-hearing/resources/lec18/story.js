@@ -16,3 +16,5 @@ story.pages.push({
  point:'從纖毛彎曲到細胞電位改變，就是這裡的感覺轉導：毛細胞把機械運動轉成電訊號。',detail:anatomy+'，步驟 4–6。',instruction:'從每個動詞判斷目前追蹤的是運動還是電位。'
 },check);
 check.detail += '　'+anatomy+'，步驟 5。';
+
+addCourseNarration(story.pages);

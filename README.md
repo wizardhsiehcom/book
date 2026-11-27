@@ -30,7 +30,9 @@ bash build-books.sh
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-開啟 <http://127.0.0.1:8765/>。角色關鍵圖載入後，點書或按 Enter 會顯示 Scarlet 蓄勢 90 毫秒、出刀定格 260 毫秒，再進入書頁。支援同源跨頁 View Transitions 的瀏覽器會接續顯示書卡切線。減少動態效果、隱藏角色及修飾鍵開書沿用原生導覽。
+開啟 <http://127.0.0.1:8765/>。滑鼠停在書卡或在支援懸停的裝置上用 Tab 聚焦書卡時，角色預先出鞘；此時點書或按 Enter 直接出刀，定格 210 毫秒後進書。從待機直接點書時，角色關鍵圖載入後會顯示 Scarlet 握柄 60 毫秒、出鞘 80 毫秒、出刀定格 210 毫秒，再進入書頁。角色縮到 88 像素或中間格未就緒時，沿用 90／260 毫秒的兩格轉場。支援同源跨頁 View Transitions 的瀏覽器會接續顯示書卡切線。減少動態效果、隱藏角色及修飾鍵開書沿用原生導覽。
+
+Scarlet 站立和預備出鞘時都會眨眼，左右外襬先後擺動，中間的紅色內襯跟著起落。滑入書卡時，姿勢 2 微蹲，護手與鞘口之間露出一小段刀身。點書切到姿勢 3 時，看畫面左靴是否站穩、右腳是否跨出，以及刀尖是否完整留在海報內。[姿勢 2、3 首頁實拍](plan/scarlet-draw-strike-v14.jpg) · [姿勢 1、2 動態實拍](plan/scarlet-ready-hover-motion.webp) · [拔刀分鏡與素材](plan/scarlet-index-draw.md)
 
 共用轉場樣式為 `docs/assets/book-transition.css`，由 `sync-assets.sh` 複製到各書；新書設定的 `extra_css` 需包含 `assets/book-transition.css`。
 

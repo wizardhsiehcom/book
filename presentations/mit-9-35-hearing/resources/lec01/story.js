@@ -42,3 +42,5 @@ story.pages.push({
     {value:'reference',label:'看同一盞燈下、一直沒換的參考灰卡',feedback:'若灰卡也跟著變暗，支持照明改變；若灰卡穩定而紙變暗，支持紙本身改變。這個判斷假設兩者照明一致、沒有新增局部陰影。'}]},
   point:'',detail:cite(2400,'40:00–40:48')+' 灰卡題為自編延伸。',instruction:'用兩種可能原因各自預測灰卡會怎樣。'
 },originalCheck);
+
+addCourseNarration(story.pages);

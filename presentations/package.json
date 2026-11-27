@@ -5,6 +5,6 @@
     "deck:build": "node node_modules/agentdeck/templates/host/build.mjs"
   },
   "dependencies": {
-    "agentdeck": "https://codeload.github.com/Echoslayer/AgentDeck/tar.gz/185219f1b357b9d0f4965dd71c54498f667f5581"
+    "agentdeck": "https://codeload.github.com/Echoslayer/AgentDeck/tar.gz/b43471900c80d7198686fab6af6faee6c89f87d0"
   }
 }

@@ -11,3 +11,5 @@ const leakage={id:'leakage',section,title:'學生追問：如果氣味飄到了�
  point:'跨側效應支持共享處理的可能性。要進一步判斷，得分開控制兩側氣流，或監測測試側是否接觸到刺激。',detail:lecture(1850,'30:50–31:28')+'。隔離與監測是依學生質疑延伸的實驗設計。'};
 check.detail+='　'+lecture(1499,'24:59–25:35')+'。濃度控制題為自編。';
 story.pages=[intro,transfer,leakage,check];
+
+addCourseNarration(story.pages);

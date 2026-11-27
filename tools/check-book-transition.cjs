@@ -12,7 +12,7 @@ function element() {
   const classes = new Set();
   return {
     style: {},
-    classList: { add: c => classes.add(c), remove: c => classes.delete(c), contains: c => classes.has(c) },
+    classList: { add: c => classes.add(c), remove: (...names) => names.forEach(c => classes.delete(c)), contains: c => classes.has(c) },
     getBoundingClientRect: () => ({ left: 0, top: 600, width: 200, height: 280 }),
     getAnimations: () => animations.filter(a => !a.cancelled),
     animate: () => { animations.push({ cancelled: false, cancel() { this.cancelled = true; } }); },
@@ -21,6 +21,7 @@ function element() {
 }
 const elements = { samuraiWrap: element(), blade: element(), grid: element() };
 const context = {
+  getComputedStyle: frame => ({ visibility: frame.visibility || 'hidden' }),
   matchMedia: () => motion,
   document: {
     getElementById: id => elements[id],
@@ -149,4 +150,67 @@ for (const variant of ['none', 'svg', 'none', 'invalid']) {
   assert.equal(bodyClasses.has('variant-none'), hidden);
   assert.equal(storedVariant, hidden ? 'none' : 'svg');
 }
+// 已載入的關鍵圖走真正的點書計時分支，手動推進計時器以核對每格。
+{
+  const timers = new Map();
+  let id = 0;
+  const frame = { complete: true, naturalWidth: 1024 };
+  Object.assign(elements, { imgSvg: frame, slashDraw: { ...frame }, slashStrike: frame });
+  context.location.assign = href => { context.destination = href; };
+  context.setTimeout = (fn, ms) => { timers.set(++id, { fn, ms }); return id; };
+  context.clearTimeout = key => timers.delete(key);
+  runInNewContext(readFileSync(join(__dirname, '../js/book-transition.js'), 'utf8'),
+    { ...context });
+  function tick(ms) {
+    assert.equal(timers.size, 1);
+    const [key, timer] = timers.entries().next().value;
+    assert.equal(timer.ms, ms);
+    timers.delete(key);
+    timer.fn();
+  }
+  const classes = elements.samuraiWrap.classList;
+  const activate = () => click({ preventDefault() {} });
+  activate(); tick(60); assert.ok(classes.contains('slash-draw'));
+  listeners.pageshow(); assert.equal(timers.size, 0); assert.ok(!classes.contains('slash-draw'));
+  activate(); tick(60); tick(80); assert.ok(classes.contains('slash-strike'));
+  listeners.pageswap({ ...swap, activation: { entry: { url: card.href } } });
+  const actor = elements.samuraiWrap.getBoundingClientRect();
+  assert.equal(parseFloat(elements.blade.style.left), actor.left + actor.width * 1273 / 1024);
+  assert.equal(parseFloat(elements.blade.style.top) + 5, actor.top + actor.height * 887 / 1536);
+  tick(210); assert.equal(context.destination, card.href);
+  listeners.pageshow();
+  elements.slashDraw.visibility = 'visible';
+  activate(); assert.ok(classes.contains('slash-strike')); tick(210);
+  listeners.pageshow();
+  elements.slashDraw.visibility = 'hidden';
+  elements.slashDraw.complete = false;
+  activate(); tick(90); assert.ok(classes.contains('slash-strike')); tick(260);
+  listeners.pageshow();
+}
 console.log('PASS：原生導覽、修飾鍵、減少動畫、無角色、連點、快照與返回清理');
+
+// 兩個姿勢分別載入。單一姿勢缺少裁片時，另一個仍可播放。
+async function checkMotionLayers(failedId) {
+  const stacks = {};
+  const finish = {};
+  for (const id of ['scarletIdle', 'scarletDrawMotion']) {
+    const stack = stacks[id] = element();
+    const pending = new Promise((resolve, reject) => {
+      finish[id] = id === failedId ? () => reject(new Error(id)) : resolve;
+    });
+    stack.querySelectorAll = () => [Promise.resolve(), pending].map(result => ({ decode: () => result }));
+  }
+  runInNewContext(readFileSync(join(__dirname, '../js/book-transition.js'), 'utf8'), {
+    ...context,
+    document: { ...context.document, getElementById: id => stacks[id] || elements[id] },
+  });
+  for (const id of Object.keys(stacks)) {
+    assert.equal(stacks[id].classList.contains('is-ready'), false);
+    finish[id]();
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(stacks[id].classList.contains('is-ready'), id !== failedId);
+  }
+}
+Promise.all([undefined, 'scarletIdle', 'scarletDrawMotion'].map(checkMotionLayers)).then(() => {
+  console.log('PASS：姿勢 1、2 的圖層分別就緒與缺圖備援');
+}).catch(error => { console.error(error); process.exitCode = 1; });

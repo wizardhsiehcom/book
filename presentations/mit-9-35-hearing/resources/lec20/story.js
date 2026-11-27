@@ -16,3 +16,5 @@ const groupPage = {id:'onsets',section:intro.section,title:'同時起音，也�
  point:'同時開始、頻率又有諧波關係的成分，可能聽成同一個音色。前後出現的音，則可能因為音高接近而聽成同一串。',detail:'同步起音示意圖依 '+source('3–4')+' 自繪。'};
 check.detail += '　'+source('10–11');
 story.pages = [intro,hear,groupPage,check];
+
+addCourseNarration(story.pages);

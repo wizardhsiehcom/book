@@ -1,17 +1,26 @@
-// 動畫只提供回饋；導覽完全交給原生 <a>，不攔截、不計時等待。
+// 關鍵圖就緒時播放點書動作，其餘情況沿用連結導覽。
 const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
 const samurai = document.getElementById('samuraiWrap');
 const blade = document.getElementById('blade');
 let selectedBook = null;
 let poseTimer;
 const readyFrame = document.getElementById('imgSvg');
+const drawFrame = document.getElementById('slashDraw');
 const strikeFrame = document.getElementById('slashStrike');
+
+for (const id of ['scarletIdle', 'scarletDrawMotion']) {
+  const layers = document.getElementById(id);
+  if (layers) {
+    Promise.all(Array.from(layers.querySelectorAll('img'), image => image.decode()))
+      .then(() => layers.classList.add('is-ready'))
+      .catch(() => {}); // 各姿勢獨立就緒，缺圖時保留該姿勢的完整原畫。
+  }
+}
 
 function resetBookTransition() {
   if (poseTimer !== undefined) clearTimeout(poseTimer);
   poseTimer = undefined;
-  samurai.classList.remove('slash-ready');
-  samurai.classList.remove('slash-strike');
+  samurai.classList.remove('slash-ready', 'slash-draw', 'slash-strike');
   for (const element of [samurai, blade]) {
     element.getAnimations().forEach(animation => animation.cancel());
     element.style.viewTransitionName = '';
@@ -26,8 +35,10 @@ function positionBlade() {
   samurai.getAnimations().forEach(animation => animation.cancel());
   const rect = selectedBook.getBoundingClientRect();
   const actor = samurai.getBoundingClientRect();
-  const x = actor.left + actor.width * 0.64;
-  const y = actor.top + actor.height * 0.35;
+  // 出刀 v14 的刀尖與特效末端位於 (1273, 887)，以站姿的 1024 × 1536 畫布換算。
+  const atStrike = samurai.classList.contains('slash-strike');
+  const x = actor.left + actor.width * (atStrike ? 1273 / 1024 : 0.64);
+  const y = actor.top + actor.height * (atStrike ? 887 / 1536 : 0.35);
   const dx = rect.left + rect.width / 2 - x;
   const dy = rect.top + rect.height / 2 - y;
   const distance = Math.hypot(dx, dy);
@@ -56,15 +67,29 @@ document.getElementById('grid').addEventListener('click', event => {
 
   if ([readyFrame, strikeFrame].every(frame => frame?.complete && frame.naturalWidth)) {
     event.preventDefault();
-    samurai.classList.add('slash-ready');
-    poseTimer = setTimeout(() => {
-      samurai.classList.remove('slash-ready');
+    const showDraw = drawFrame?.complete && drawFrame.naturalWidth > 0 &&
+      samurai.getBoundingClientRect().width > 88;
+    function strike() {
+      samurai.classList.remove('slash-ready', 'slash-draw');
       samurai.classList.add('slash-strike');
       poseTimer = setTimeout(() => {
         poseTimer = undefined;
         location.assign(card.href);
-      }, 260);
-    }, 90);
+      }, showDraw ? 210 : 260);
+    }
+    if (showDraw && getComputedStyle(drawFrame).visibility === 'visible') {
+      strike();
+      return;
+    }
+    samurai.classList.add('slash-ready');
+    if (showDraw) {
+      poseTimer = setTimeout(() => {
+        samurai.classList.add('slash-draw');
+        poseTimer = setTimeout(strike, 80);
+      }, 60);
+    } else {
+      poseTimer = setTimeout(strike, 90);
+    }
     return;
   }
 

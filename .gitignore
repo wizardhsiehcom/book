@@ -21,6 +21,14 @@ docs/assets/fonts/GenWanMin2-ttc/
 
 # Source PDFs and other copyrighted materials
 data/
+/plan/mit-9-35/
+
+# Superseded Scarlet animation drafts and previews
+/docs/assets/characters/scarlet-slash/book-keyframe-draw-v1.png
+/docs/assets/characters/scarlet-slash/idle-base.webp
+/plan/scarlet-draw-homepage-preview.jpg
+/plan/scarlet-draw-v1-layers.psd
+/plan/scarlet-idle-homepage.webp
 
 playground/
 # Vendor JS bundled into each book (tracked in template only)

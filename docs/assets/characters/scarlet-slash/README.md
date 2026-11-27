@@ -1,8 +1,10 @@
 # Book 首頁素材交接
 
-首頁的 `#imgSvg` 直接顯示[新版 Scarlet 蓄勢 v5](book-keyframe-ready-v5.png)，點書後短停 90 毫秒再切換出刀 v13。最初的[Scarlet 原畫](../archive/scarlet-original/archivist-scarlet.png)保留作為臉部畫風基準。下文的 localhost 試播需另行啟動 Mesh Avatar Studio。
+首頁的 `#imgSvg` 直接顯示[新版 Scarlet 蓄勢 v5](book-keyframe-ready-v5.png)，桌面書卡懸停時預覽出鞘格，此時點書直接接到[出刀 v14](book-keyframe-strike-v14.png)。從待機點書則短停 60 毫秒，顯示[出鞘過渡格](book-keyframe-draw-v2.png) 80 毫秒，再切換出刀 v14 並定格 210 毫秒。手機縮到 88 像素或過渡圖未載妥時使用原有兩格節奏。最初的[Scarlet 原畫](../archive/scarlet-original/archivist-scarlet.png)保留作為臉部畫風基準。下文的 localhost 試播需另行啟動 Mesh Avatar Studio。
 
-# Scarlet 斬擊轉場試作紀錄
+[首頁分鏡與分層 PSD](../../../../plan/scarlet-index-draw.md) · [站姿與出鞘的眨眼、衣襬實拍](../../../../plan/scarlet-ready-hover-motion.webp) · [姿勢 2 新舊實拍](../../../../plan/scarlet-hover-v2-comparison.jpg) · [姿勢 2 接新版出刀](../../../../plan/scarlet-draw-strike-v14.jpg)
+
+## 早期兩格試作紀錄
 
 目標是在 Book 書庫點書時，讓 Scarlet 的出刀瞬間有張力。以《邊獄巴士》斬擊給人的短促、銳利感為節奏參考。試作以兩張關鍵圖呈現角色的蓄勢與出刀。
 
@@ -20,7 +22,7 @@
 - 保留原圖偏瘦、帶骨相的臉。下唇到下巴的距離收短，顴骨、鼻側和下顎以柔和的明暗轉折呈現體積，保留乾筆質感。眉眼和嘴角自然放鬆。眼影用低彩度灰棕集中在上眼皮和外眼角，下眼周只留淡影。
 - 骨相靠臉部輪廓與明暗塑造。眉眼的銳利程度要以原圖的淡然神情核對。
 
-## 本機試播
+## Mesh 兩格試播
 
 [播放蓄勢與出刀](http://127.0.0.1:5173/projects/archivist-scarlet-layered/slash-blocking-preview.html?art=pose-match)。斬擊光預設關閉，可以先核對角色動作。
 

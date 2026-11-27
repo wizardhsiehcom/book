@@ -37,3 +37,5 @@ story.pages = [
   checkpoint
 ];
 
+
+addCourseNarration(story.pages);

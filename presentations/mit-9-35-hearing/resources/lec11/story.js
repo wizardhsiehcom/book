@@ -34,3 +34,49 @@ story.pages = [
   },
   checkpoint
 ];
+
+const faceSheet = document.currentScript.getAttribute('src').replace(/story\.js$/, 'faces.png');
+function portrait(id) {
+  const index = id - 1;
+  return '<span role="img" aria-label="照片 '+id+'" style="display:inline-block;vertical-align:middle;width:46px;height:56px;background-image:url('+faceSheet+');background-size:368px 280px;background-position:-'+(index%8*46)+'px -'+(Math.floor(index/8)*56)+'px"></span>';
+}
+const rawRank = [24,12,2,15,17];
+const adjustedRank = [24,12,11,27,8];
+const gallery = Array.from({length:39},(_,i)=>'<button type="button" data-face="'+(i+2)+'" aria-pressed="false">'+portrait(i+2)+'<br>'+ (i+2)+'</button>').join('');
+const faceCredit = observation.detail+' 圖像來自 ORL Database of Faces（AT&amp;T Laboratories Cambridge），使用 MIT 附件 orlFaces.mat；排名由原始灰階矩陣計算。';
+story.pages.splice(1,0,{
+ id:'rank-faces',section,title:'你覺得誰最像 1 號？',lead:'依相似程度點五張照片，最像的先選。再點一次可取消。',
+ art:'<div data-key="experiment" style="width:min(100%,48rem)"><p>'+portrait(1)+'　參考臉 1 號</p><div style="display:flex;flex-wrap:wrap;gap:3px;max-height:32vh;overflow:auto" aria-label="候選照片">'+gallery+'</div><p aria-live="polite" data-picks></p><button type="button" data-reveal>比較我的排名與像素排名</button><div aria-live="polite" data-result></div></div>',
+ previewArt:'<p data-key="target">'+portrait(1)+'　參考臉 1 號，與其餘 39 張比較。</p>',point:'',detail:faceCredit,instruction:'請先自行排序，再揭曉結果。',
+ mount(root,state){
+  const panel=root.querySelector('[data-key="experiment"]');
+  state.picks ??= [];
+  function draw(){
+   for(const b of panel.querySelectorAll('[data-face]')){
+    const picked=state.picks.includes(Number(b.dataset.face));
+    b.setAttribute('aria-pressed',String(picked)); b.style.outline=picked?'2px solid currentColor':'';
+    b.disabled=!picked && state.picks.length===5;
+   }
+   panel.querySelector('[data-picks]').textContent='你的順序（'+state.picks.length+'/5）　'+state.picks.join(' → ');
+   panel.querySelector('[data-reveal]').disabled=state.picks.length!==5;
+   panel.querySelector('[data-result]').textContent=state.revealed?'原始像素距離　'+rawRank.join(' → ')+'。前五名與你重疊 '+state.picks.filter(i=>rawRank.includes(i)).length+' 張。':'';
+  }
+  function click(e){
+   const b=e.target.closest('button');
+   if(!b)return;
+   if(b.hasAttribute('data-face')){
+    const i=Number(b.dataset.face);
+    state.picks=state.picks.includes(i)?state.picks.filter(n=>n!==i):[...state.picks,i];
+    state.revealed=false;
+   }else if(b.hasAttribute('data-reveal'))state.revealed=true;
+   draw();
+  }
+  draw();panel.addEventListener('click',click);return ()=>panel.removeEventListener('click',click);
+ }
+},{
+ id:'normalize-faces',section,title:'照片相同，換一種距離算法，哪幾個名次會留下？',lead:'依原作業第 5 題，每張照片先減自己的平均亮度，再除以自己的樣本變異數，最後重算歐氏距離。',
+ art:'<div data-key="ranks"><p>原始灰階　'+rawRank.map(i=>portrait(i)+' '+i).join('　')+'</p><details><summary>揭曉調整後的前五名</summary><p>調整後　'+adjustedRank.map(i=>portrait(i)+' '+i).join('　')+'</p><p>24、12 號仍居前兩名，其餘三席都換了。每張影像的整體亮度與像素值的分散程度，都會影響兩種算法的比較。</p></details></div>',
+ point:'這是 1 號和其他人的相似度排序。要測能否認出同一人，還需要同一人的另一張照片。',detail:faceCredit,instruction:'先預測第一名是否會換，再展開對照。'
+});
+
+addCourseNarration(story.pages);

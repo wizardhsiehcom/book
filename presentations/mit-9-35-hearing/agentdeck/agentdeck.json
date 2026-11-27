@@ -1,7 +1,7 @@
 {
   "contract": 2,
   "core": {
-    "commit": "185219f1b357",
+    "commit": "b43471900c80",
     "files": {
       "LICENSE": "0adf9c8b8bfdc3bd",
       "AGENTDECK.md": "ae4624bfdf6ea33e",
@@ -20,7 +20,7 @@
     }
   },
   "components": {},
-  "source": "github:Echoslayer/AgentDeck#185219f1b357b9d0f4965dd71c54498f667f5581",
+  "source": "github:Echoslayer/AgentDeck#b43471900c80d7198686fab6af6faee6c89f87d0",
   "cli": "npm exec --offline -- agentdeck",
   "theme": {
     "commit": "4e3f5f830789"

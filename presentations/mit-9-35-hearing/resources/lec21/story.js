@@ -11,3 +11,5 @@ const watch={id:'measure',section,title:'指尖和前臂，要隔多遠才摸得
  point:'測兩個部位時，老師都混著給一點或兩點，請志願者回答摸到幾點。在前臂，要把兩點拉開一些才比較分得出來。每個人剛好能分辨的間距，要多測幾次才能估計。',detail:'依官方英文逐字稿 '+lecture(2880,'48:00–50:24')+' 整理。'};
 check.detail+='　'+lecture(2743,'45:43–47:05')+'。控制變項題為自編。';
 story.pages=[intro,fields,watch,check];
+
+addCourseNarration(story.pages);

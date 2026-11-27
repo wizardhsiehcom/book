@@ -11,3 +11,5 @@ const test={id:'juice',section,title:'糖變多，為什麼連「果香」的評
  point:'比較兩種配方時，請受試者分開評甜度和果香，並確保到達鼻腔的香氣刺激相同。',detail:source(6,'第 6 頁')+'。A／B 配方與判讀題為自編。'};
 check.detail+='　'+source(6,'第 6 頁')+'。控制變項題為自編。';
 story.pages=[intro,route,test,check];
+
+addCourseNarration(story.pages);
