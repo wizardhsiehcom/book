@@ -2,7 +2,7 @@
 
 首頁的 `#imgSvg` 直接顯示[新版 Scarlet 蓄勢 v5](book-keyframe-ready-v5.png)，桌面書卡懸停時預覽出鞘格，此時點書直接接到[出刀 v14](book-keyframe-strike-v14.png)。從待機點書則短停 60 毫秒，顯示[出鞘過渡格](book-keyframe-draw-v2.png) 80 毫秒，再切換出刀 v14 並定格 210 毫秒。手機縮到 88 像素或過渡圖未載妥時使用原有兩格節奏。最初的[Scarlet 原畫](../archive/scarlet-original/archivist-scarlet.png)保留作為臉部畫風基準。下文的 localhost 試播需另行啟動 Mesh Avatar Studio。
 
-[首頁分鏡與分層 PSD](../../../../plan/scarlet-index-draw.md) · [站姿與出鞘的眨眼、衣襬實拍](../../../../plan/scarlet-ready-hover-motion.webp) · [姿勢 2 新舊實拍](../../../../plan/scarlet-hover-v2-comparison.jpg) · [姿勢 2 接新版出刀](../../../../plan/scarlet-draw-strike-v14.jpg)
+[首頁分鏡與分層 PSD](../../../../plan/scarlet-index-draw.md)
 
 ## 早期兩格試作紀錄
 

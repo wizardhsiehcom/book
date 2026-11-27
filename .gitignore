@@ -26,9 +26,11 @@ data/
 # Superseded Scarlet animation drafts and previews
 /docs/assets/characters/scarlet-slash/book-keyframe-draw-v1.png
 /docs/assets/characters/scarlet-slash/idle-base.webp
-/plan/scarlet-draw-homepage-preview.jpg
 /plan/scarlet-draw-v1-layers.psd
-/plan/scarlet-idle-homepage.webp
+
+# Keep Scarlet verification screenshots and recordings local
+/plan/scarlet-*.jpg
+/plan/scarlet-*.webp
 
 playground/
 # Vendor JS bundled into each book (tracked in template only)
